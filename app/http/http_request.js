@@ -22,7 +22,7 @@ const httpRequest = (() => {
       headers: generateAuthorizationHeader(token),
     })
     .then((response) => {
-      return response.data;
+      return response;
     })
     .catch((error) => {
       return {error: error};
