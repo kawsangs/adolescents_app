@@ -19,7 +19,10 @@ import {
 } from 'react-native';
 
 import { Colors, Header, } from 'react-native/Libraries/NewAppScreen';
-import { NavigationContainer } from '@react-navigation/native';
+
+import AppNavigator from './app/navigators/app_navigator';
+
+import HomeView from './app/views/home/homeView';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,22 +32,17 @@ const App: () => Node = () => {
   };
 
   return (
-    <NavigationContainer>
+    <AppNavigator>
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
           <Header />
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Text>Home screen</Text>
-          </View>
+          <HomeView/>
         </ScrollView>
       </SafeAreaView>
-    </NavigationContainer>
+    </AppNavigator>
   );
 };
 
