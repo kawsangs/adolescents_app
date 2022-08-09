@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
-import App from '../../../App';
 import IntroButtonComponent from '../../components/introductions/IntroButtonComponent';
 import IntroItemComponent from '../../components/introductions/IntroItemComponent';
 import color from '../../themes/color';
 import { slides } from '../../constants/intro_constant';
 
-const IntroductionView = () => {
-  const [ skipIntro, setSkipIntro ] = useState(false);
-
+const IntroductionView = (props) => {
   const renderItem = ({ item }) => {
     return <IntroItemComponent
               image={item.image}
@@ -19,9 +16,7 @@ const IntroductionView = () => {
   }
 
   const onDone = () => {
-    // User finished the introduction. Show real app through
-    // navigation or simply by controlling state
-    setSkipIntro(true);
+    props.navigation.reset({ index: 1, routes: [{ name: 'BottomTabHome' }] });
   }
 
   const renderNextButton = () => {
@@ -36,17 +31,14 @@ const IntroductionView = () => {
     return <IntroButtonComponent label='Skip' />
   }
 
-  if (!skipIntro)
-    return <AppIntroSlider
-              renderItem={renderItem} data={slides} onDone={onDone}
-              showSkipButton={true}
-              renderNextButton={renderNextButton}
-              renderDoneButton={renderDoneButton}
-              renderSkipButton={renderSkipButton}
-              activeDotStyle={{backgroundColor: color.primaryColor}}
-           />;
-
-  return <App />;
+  return <AppIntroSlider
+            renderItem={renderItem} data={slides} onDone={onDone}
+            showSkipButton={true}
+            renderNextButton={renderNextButton}
+            renderDoneButton={renderDoneButton}
+            renderSkipButton={renderSkipButton}
+            activeDotStyle={{backgroundColor: color.primaryColor}}
+          />;
 }
 
 export default IntroductionView;
