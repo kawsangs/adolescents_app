@@ -23,7 +23,7 @@ const App: () => Node = () => {
   return (
     <React.Fragment>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppNavigator/>
+      <AppNavigator />
     </React.Fragment>
   );
 };

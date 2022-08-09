@@ -2,29 +2,34 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import MainView from '../views/main/MainView';
 import IntroductionView from '../views/introductions/IntroductionView';
 import BottomTabNavigator from './bottom_tab_navigator';
-import { environment } from '../config/environment';
 
 const Stack = createNativeStackNavigator();
 
 function AppNaviator() {
-  const initialRouteName = environment.showIntroSlider ? 'IntroductionScreen' : 'BottomTab';
-
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={initialRouteName}
+        initialRouteName='MainView'
       >
         <Stack.Screen
-          name="IntroductionScreen"
+          name="MainView"
+          component={MainView}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="IntroductionView"
           component={IntroductionView}
           options={{
             header: () => null,
           }}
         />
 
-        <Stack.Screen name="BottomTab" component={BottomTabNavigator}
+        <Stack.Screen name="BottomTabs" component={BottomTabNavigator}
           options={{
             header: () => null,
           }}
@@ -33,5 +38,7 @@ function AppNaviator() {
     </NavigationContainer>
   );
 }
+
+export const navigationRef = React.createRef();
 
 export default AppNaviator;
