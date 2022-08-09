@@ -16,7 +16,7 @@ const IntroductionView = (props) => {
   }
 
   const onDone = () => {
-    props.navigation.reset({ index: 1, routes: [{ name: 'BottomTabHome' }] });
+    props.navigation.reset({ index: 1, routes: [{ name: 'BottomTab' }] });
   }
 
   const renderNextButton = () => {
