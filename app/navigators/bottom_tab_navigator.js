@@ -3,14 +3,19 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import HomeView from '../views/home/homeView';
-import SettingView from '../views/settings/settingView';
 import VideoView from '../views/videos/videoView';
+import SettingsStackNavigator from './settings_stack_navigator';
+import color from '../themes/color';
 
 const Tab = createMaterialBottomTabNavigator();
 
 function BottomTabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      barStyle={{backgroundColor: color.primaryColor}}
+      activeColor={color.whiteColor}
+      inactiveColor={color.mutedColor}
+    >
       <Tab.Screen name="Home" component={HomeView}
         options={{
           tabBarIcon: ({focused, color}) => (<Icon name="home" color={color} size={25} />)
@@ -21,7 +26,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({focused, color}) => (<Icon name="film" color={color} size={20} />)
         }}
       />
-      <Tab.Screen name="Settings" component={SettingView}
+      <Tab.Screen name="Settings" component={SettingsStackNavigator}
         options={{
           tabBarIcon: ({focused, color}) => (<Icon name="gear" color={color} size={25} />)
         }}

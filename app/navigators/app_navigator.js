@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -14,14 +12,15 @@ function AppNaviator() {
       <Stack.Navigator>
         <Stack.Screen name="BottomTabHome" component={BottomTabNavigator}
           options={{
-            title: 'Youth Mobile App',
-            headerRight: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="black"
-              />
-            ),
+            header: () => null,
+            // title: 'Youth Mobile App',
+            // headerRight: () => (
+            //   <Button
+            //     onPress={() => alert('This is a button!')}
+            //     title="Info"
+            //     color="black"
+            //   />
+            // ),
           }}
         />
       </Stack.Navigator>
