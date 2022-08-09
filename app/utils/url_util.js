@@ -2,12 +2,12 @@ import { environment } from '../config/environment';
 
 const urlUtil = (() => {
   return {
-    concat,
+    getRelativeUrl,
     getAbsoluteUrl,
   }
 
-  function concat(responsibleUrl, subUrl) {
-    return responsibleUrl + subUrl;
+  function getRelativeUrl(responsibleModel) {
+    return `/api/v1/${responsibleModel}`;
   }
 
   function getAbsoluteUrl(relativeUrl) {
