@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const settingProfileComponent = () => {
+const SettingProfileComponent = () => {
   return (
     <View style={{flexDirection: 'row', paddingHorizontal: 12, borderWidth: 1}}>
       <Text>Sign in header</Text>
@@ -9,4 +9,4 @@ const settingProfileComponent = () => {
   );
 }
 
-export default settingProfileComponent;
+export default SettingProfileComponent;

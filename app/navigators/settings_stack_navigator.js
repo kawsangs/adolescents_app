@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import SettingView from '../views/settings/settingView';
+import SettingView from '../views/settings/SettingView';
 import color from '../themes/color';
 
 const Stack = createNativeStackNavigator();

@@ -2,8 +2,8 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import HomeView from '../views/home/homeView';
-import VideoView from '../views/videos/videoView';
+import HomeView from '../views/home/HomeView';
+import VideoView from '../views/videos/VideoView';
 import SettingsStackNavigator from './settings_stack_navigator';
 import color from '../themes/color';
 
