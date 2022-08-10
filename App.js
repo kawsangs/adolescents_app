@@ -8,7 +8,7 @@
 
 import React, { useEffect } from 'react';
 import type {Node} from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import AppNavigator from './app/navigators/app_navigator';
@@ -18,11 +18,9 @@ const App: () => Node = () => {
     SplashScreen.hide();
   }, []);
 
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <React.Fragment>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar barStyle={'light-content'} />
       <AppNavigator />
     </React.Fragment>
   );

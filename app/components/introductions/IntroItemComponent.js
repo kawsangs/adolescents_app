@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 
 import color from '../../themes/color';
 
@@ -12,6 +12,8 @@ const IntroItemComponent = (props) => {
     </View>
   );
 }
+
+const screenHeight = Dimensions.get('screen').height;
 
 const styles = StyleSheet.create({
   slide: {
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     width: '70%',
     height: 290,
     marginBottom: 30,
-    marginTop: '-10%'
+    marginTop: -(screenHeight / 8)
   }
 });
 
