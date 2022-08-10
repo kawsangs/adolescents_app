@@ -5,17 +5,17 @@ import { environment } from '../config/environment';
 
 const APP_LANGUAGE = 'APP_LANGUAGE'
 
-const useAppLanguage = () => {
+const useChangeAppLanguage = () => {
   const [appLanguage, setAppLanguage] = useState(environment.defaultLanguage);
   const { i18n } = useTranslation();
 
-  function changeAppLanguage(language) {
+  function handleChangeLanguage(language) {
     i18n.changeLanguage(language);
     setAppLanguage(language);
     AsyncStorage.setItem(APP_LANGUAGE, language)
   }
 
-  return [appLanguage, changeAppLanguage];
+  return [appLanguage, handleChangeLanguage];
 }
 
-export default useAppLanguage;
+export default useChangeAppLanguage;
