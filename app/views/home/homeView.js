@@ -1,14 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import CardItemComponent from '../../components/shared/CardItemComponent';
-
 const HomeView = () => {
   return (
-    <View style={{paddingHorizontal: 16}}>
+    <View>
       <Text>Home screen</Text>
-
-      <CardItemComponent/>
     </View>
   )
 }
