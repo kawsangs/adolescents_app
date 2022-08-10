@@ -6,13 +6,18 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {Node} from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import AppNavigator from './app/navigators/app_navigator';
 
 const App: () => Node = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
