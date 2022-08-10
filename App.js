@@ -21,7 +21,7 @@ const App: () => Node = () => {
   return (
     <React.Fragment>
       <StatusBar barStyle={'light-content'} />
-      <AppNavigator />
+      <AppNavigator/>
     </React.Fragment>
   );
 };
