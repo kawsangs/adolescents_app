@@ -12,6 +12,7 @@ import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import AppNavigator from './app/navigators/app_navigator';
+import i18next from './app/localizations/i18next';
 
 const App: () => Node = () => {
   useEffect(() => {
