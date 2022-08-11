@@ -3,4 +3,5 @@ export const environment = {
   type: 'development',
   showIntroSlider: true,
   defaultLanguage: 'km',
+  sentryDSN: ''
 };
