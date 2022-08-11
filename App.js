@@ -13,12 +13,14 @@ import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 
 import AppNavigator from './app/navigators/app_navigator';
-import i18next from './app/localizations/i18next';
+import i18nextInit from './app/localizations/i18next';
 import { environment } from './app/config/environment';
 
 Sentry.init({
   dsn: environment.sentryDSN,
 });
+
+i18nextInit();
 
 const App: () => Node = () => {
   useEffect(() => {
