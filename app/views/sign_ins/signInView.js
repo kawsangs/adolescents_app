@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 import authenticationService from '../../services/authentication_service';
+import VisitorApi from '../../api/visitorApi';
 
 const SignInView = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +17,14 @@ const SignInView = () => {
     })
   }
 
+  const createVisitor = () => {
+    new VisitorApi().create((res) => {
+      console.log('create visitor success = ', res);
+    }, (error) => {
+      console.log('create visitor error = ', error);
+    });
+  }
+
   return (
     <View style={{padding: 26}}>
       <Text>Setting screen</Text>
@@ -26,6 +35,12 @@ const SignInView = () => {
         style={{width: 200, marginLeft: 100, marginTop: 100}}
       >
         Authenticate
+      </Button>
+
+      <Button mode="contained" onPress={() => createVisitor()}
+        style={{width: 200, marginLeft: 100, marginTop: 100}}
+      >
+        Create visitor
       </Button>
     </View>
   )

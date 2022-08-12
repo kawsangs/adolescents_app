@@ -1,6 +1,7 @@
 import axios from 'axios';
-
 import qs from 'qs';
+
+import errorUtil from '../utils/error_util';
 
 const httpRequest = (() => {
   return {
@@ -25,7 +26,7 @@ const httpRequest = (() => {
       return response;
     })
     .catch((error) => {
-      return {error: error};
+      return { error: errorUtil.getApiErrorObject(error) };
     })
   }
 

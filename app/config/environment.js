@@ -5,4 +5,5 @@ export const environment = {
   defaultLanguage: 'km',
   sentryDSN: '',
   encryptionKey: '',        // Use 256 bytes key
+  accessToken: '43e51d6befa8a430c20663c19657f514',
 };
