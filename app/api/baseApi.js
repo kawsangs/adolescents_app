@@ -1,13 +1,10 @@
-import EncryptedStorage from 'react-native-encrypted-storage';
 import urlUtil from '../utils/url_util';
-import authenticationService from '../services/authentication_service';
 import apiService from '../services/api_service';
 import httpRequest from '../http/http_request';
-import { environment } from '../config/environment';
-import { AUTH_TOKEN } from '../constants/authentication_constant';
 
 class BaseApi {
-  constructor(responsibleModel, subModel = '') {
+  constructor(strategy, responsibleModel, subModel = '') {
+    this.strategry = strategy;
     this.responsibleModel = responsibleModel;
     this.subModel = subModel;
   }
@@ -28,39 +25,20 @@ class BaseApi {
     return `${this.listingObjectUrl(id)}/${this.subModel}`;
   }
 
-  load = async (id, successCallback, failedCallback) => {
-    const options = { method: 'GET' };
+  load = (id, successCallback, failureCallback) => {
     const url = urlUtil.getAbsoluteUrl(this.listingObjectUrl(id));
-
-    if (await EncryptedStorage.getItem(AUTH_TOKEN)) {
-      BaseApi.sendAuthenticatedRequest(url, options, 'json', successCallback, failedCallback);
-      return;
-    }
-
-    BaseApi.sendUnauthenticatedRequest(url, options, 'json', successCallback, failedCallback);
+    const options = { method: 'GET'}
+    this.sendRequest(url, options, successCallback, failureCallback);
   }
 
-  static sendAuthenticatedRequest = (url, options, contentType = 'json', successCallback, failureCallback) => {
-    if (!url) return;
-
-    // Reauthenticate to get the new auth token before sending API request
-    authenticationService.reauthenticate((token) => {
-      this.handleRequest(url, options, token, contentType, successCallback, failureCallback);
-    });
-  }
-
-  static sendUnauthenticatedRequest = (url, options, contentType = 'json', successCallback, failureCallback) => {
-    if (!url) return;
-    
-    this.handleRequest(url, options, environment.accessToken, contentType, successCallback, failureCallback);
-  }
-
-  static handleRequest = async (url, options, token, contentType = 'json', successCallback, failureCallback) => {
-    const response = await httpRequest.send(url, options, token, contentType);
-    apiService.handleApiResponse(response, (res) => {
-      !!successCallback && successCallback(res);
-    }, (error) => {
-      !!failureCallback && failureCallback(error);
+  sendRequest = (url, options, successCallback, failureCallback) => {
+    this.strategry.sendRequest(async (token) => {
+      const response = await httpRequest.send(url, options, token, 'json');
+      apiService.handleApiResponse(response, (res) => {
+        !!successCallback && successCallback(res);
+      }, (error) => {
+        !!failureCallback && failureCallback(error);
+      });
     });
   }
 }

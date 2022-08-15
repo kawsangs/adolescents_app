@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 import color from '../../themes/color';
-import SettingProfileComponent from '../../components/settings/SettingProfileComponent';
+// import SettingProfileComponent from '../../components/settings/SettingProfileComponent';
 import SignInView from '../sign_ins/SignInView';
 
 const SettingView = () => {
