@@ -31,6 +31,24 @@ class BaseApi {
     this.sendRequest(url, options, successCallback, failureCallback);
   }
 
+  put = (id, data, successCallback, failureCallback) => {
+    const url = urlUtil.getAbsoluteUrl(this.listingObjectUrl(id));
+    const options = {
+      method: 'PUT',
+      data: data,
+    };
+    this.sendRequest(url, options, successCallback, failureCallback);
+  }
+
+  post = (id, data, successCallback, failureCallback) => {
+    const url = urlUtil.getAbsoluteUrl(this.listingNestedObjectUrl(id));
+    const options = {
+      method: 'POST',
+      data: data,
+    };
+    this.sendRequest(url, options, successCallback, failureCallback);
+  }
+
   sendRequest = (url, options, successCallback, failureCallback) => {
     this.strategry.sendRequest(async (token) => {
       const response = await httpRequest.send(url, options, token, 'json');
