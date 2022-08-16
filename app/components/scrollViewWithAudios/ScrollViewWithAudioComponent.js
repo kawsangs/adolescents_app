@@ -3,10 +3,6 @@ import { Animated, View, ScrollView, Text, StyleSheet } from 'react-native';
 
 import ScrollViewWithAudioHeaderComponent from './ScrollViewWithAudioHeaderComponent';
 
-const HEADER_MAX_HEIGHT = 320;
-const HEADER_MIN_HEIGHT = 160;
-const HEADER_SCROLL_DISTANCE = (HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT);
-
 const ScrollViewWithAudioComponent = (props) => {
   const scrollY = new Animated.Value(0);
 
@@ -25,20 +21,13 @@ const ScrollViewWithAudioComponent = (props) => {
 
   return (
     <View style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}
-        scrollEventThrottle={16}
+      <ScrollView style={{flex: 1}} scrollEventThrottle={16}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
         { renderScrollViewContent() }
       </ScrollView>
 
-      <ScrollViewWithAudioHeaderComponent
-        title={props.title}
-        scrollY={scrollY}
-        headerScrollDistance={HEADER_SCROLL_DISTANCE}
-        headerMaxheight={HEADER_MAX_HEIGHT}
-        headerMinHeight={HEADER_MIN_HEIGHT}
-      />
+      <ScrollViewWithAudioHeaderComponent title={props.title} scrollY={scrollY} />
     </View>
   )
 }

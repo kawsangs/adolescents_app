@@ -1,10 +1,13 @@
 import React from 'react';
 import { Animated, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import componentUtil from '../../utils/component_util';
 
-const iconSize = 30;
-const playPauseIconSize = 60;
+import componentUtil from '../../utils/component_util';
+import { getStyleOfDevice } from '../../utils/responsive_util';
+import { headerWithAudioScrollDistance } from '../../constants/component_constant';
+
+const iconSize = 28;
+const playPauseIconSize = 70;
 
 const HeaderAudioControlsComponent = (props) => {
   const button = (iconName, size) => {
@@ -15,14 +18,14 @@ const HeaderAudioControlsComponent = (props) => {
 
   // Scale for making the audio controls smaller or bigger when scrolling
   const audioControlScale = props.scrollY.interpolate({
-    inputRange: [0, props.headerScrollDistance],
-    outputRange: [1, 0.8],
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: [1, 0.7],
     extrapolate: 'clamp',
   });
 
   const audioControlPositionY = props.scrollY.interpolate({
-    inputRange: [0, props.headerScrollDistance],
-    outputRange: [40, 20],
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: getStyleOfDevice([40, 20], [30, 10]),
     extrapolate: 'clamp'
   });
 
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     minHeight: componentUtil.pressableItemSize(),
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: componentUtil.pressableItemSize() - 15,
+    marginHorizontal: componentUtil.pressableItemSize() - getStyleOfDevice(15, 20),
   }
 });
 

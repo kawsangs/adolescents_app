@@ -4,11 +4,12 @@ import { Appbar } from 'react-native-paper';
 
 import color from '../../themes/color';
 import HeaderAudioControlsComponent from './HeaderAudioControlsComponent';
+import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../constants/component_constant';
 
 const ScrollViewWithAudioHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
-    inputRange: [0, props.headerScrollDistance],
-    outputRange: [props.headerMaxheight, props.headerMinHeight],
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
     extrapolate: 'clamp',
   });
 
@@ -21,10 +22,7 @@ const ScrollViewWithAudioHeaderComponent = (props) => {
         </Appbar.Header>
       </Animated.View>
 
-      <HeaderAudioControlsComponent
-        scrollY={props.scrollY}
-        headerScrollDistance={props.headerScrollDistance}
-      />
+      <HeaderAudioControlsComponent scrollY={props.scrollY} />
     </Animated.View>
   )
 }
