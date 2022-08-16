@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import AnimatedScrollViewComponent from '../../components/animatedScrollViews/animatedScrollViewComponent';
+import ScrollViewWithAudioComponent from '../../components/scrollViewWithAudios/ScrollViewWithAudioComponent';
 
 const HomeView = () => {
   return (
     <View style={{flex: 1}}>
       {/* <Text>Home screen</Text> */}
-      <AnimatedScrollViewComponent/>
+      <ScrollViewWithAudioComponent
+        title="Header Title"
+      />
     </View>
   )
 }

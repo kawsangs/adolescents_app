@@ -6,21 +6,34 @@ import componentUtil from '../../utils/component_util';
 const iconSize = 30;
 const playPauseIconSize = 60;
 
-const AudioControlComponent = (props) => {
+const HeaderAudioControlsComponent = (props) => {
   const button = (iconName, size) => {
     return <TouchableOpacity style={styles.button}>
               <Icon name={iconName} size={size} color='black' />
            </TouchableOpacity>
   }
 
+  // Scale for making the audio controls smaller or bigger when scrolling
+  const audioControlScale = props.scrollY.interpolate({
+    inputRange: [0, props.headerScrollDistance],
+    outputRange: [1, 0.8],
+    extrapolate: 'clamp',
+  });
+
+  const audioControlPositionY = props.scrollY.interpolate({
+    inputRange: [0, props.headerScrollDistance],
+    outputRange: [40, 20],
+    extrapolate: 'clamp'
+  });
+
   return (
     <View style={{paddingHorizontal: 16, flex: 1, borderWidth: 0}}>
       <View style={{flex: 1}}>
         <Animated.View style={[styles.audioControl,
-          {transform: [{scaleX: props.audioControlScale}, {scaleY: props.audioControlScale}, {translateY: props.audioControlMarginTop}]}]}
+          {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
         >
           { button('step-backward', iconSize) }
-          { button('pause-circle', playPauseIconSize) }
+          { button('play-circle', playPauseIconSize) }
           { button('step-forward', iconSize) }
         </Animated.View>
       </View>
@@ -37,7 +50,6 @@ const styles = StyleSheet.create({
   audioControl: {
     flexDirection: 'row',
     justifyContent: 'center',
-    borderWidth: 0
   },
   button: {
     minWidth: componentUtil.pressableItemSize(),
@@ -48,4 +60,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AudioControlComponent;
+export default HeaderAudioControlsComponent;
