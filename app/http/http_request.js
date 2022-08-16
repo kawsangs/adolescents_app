@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 import errorUtil from '../utils/error_util';
+import { environment } from '../config/environment';
 
 const httpRequest = (() => {
   return {
@@ -32,9 +33,10 @@ const httpRequest = (() => {
 
   // private method
   function generateAuthorizationHeader(token) {
+    const prefix = environment.isUserBasedApi ? 'Token' : 'Apikey';
     return {
       Accept: 'application/json',
-      Authorization: `Token ${token ?? ''}`,
+      Authorization: `${prefix} ${token ?? ''}`,
     };
   }
 })();

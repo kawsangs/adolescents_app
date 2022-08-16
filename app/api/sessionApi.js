@@ -16,7 +16,7 @@ class SessionApi {
     };
 
     const url = urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('sign_in'));
-    return httpRequest.send(url, options, environment.accessToken, 'json');
+    return httpRequest.send(url, options, environment.apiKey, 'json');
   }
 }
 

@@ -7,7 +7,7 @@ const urlUtil = (() => {
   }
 
   function getRelativeUrl(responsibleModel) {
-    return `/api/v1/${responsibleModel}`;
+    return `/api/${environment.apiVersion}/${responsibleModel}`;
   }
 
   function getAbsoluteUrl(relativeUrl) {

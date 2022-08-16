@@ -6,9 +6,10 @@ const apiService = (() => {
   function handleApiResponse(response, successCallback, failureCallback) {
     if (response.error != undefined) {
       !!failureCallback && failureCallback(response.error);
+      return;
     }
-    else
-      !!successCallback && successCallback(response.data);
+
+    !!successCallback && successCallback(response.data);
   }
 })();
 

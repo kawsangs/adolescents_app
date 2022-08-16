@@ -1,10 +1,14 @@
 import urlUtil from '../utils/url_util';
 import apiService from '../services/api_service';
 import httpRequest from '../http/http_request';
+import { environment } from '../config/environment';
+
+import UserBasedApi from './userBasedApi';
+import KeyBasedApi from './keyBasedApi';
 
 class BaseApi {
-  constructor(strategy, responsibleModel, subModel = '') {
-    this.strategry = strategy;
+  constructor(responsibleModel, subModel = '') {
+    this.apiType = environment.isUserBasedApi ? new UserBasedApi() : new KeyBasedApi();
     this.responsibleModel = responsibleModel;
     this.subModel = subModel;
   }
@@ -31,26 +35,24 @@ class BaseApi {
     this.sendRequest(url, options, successCallback, failureCallback);
   }
 
-  put = (id, data, successCallback, failureCallback) => {
-    const url = urlUtil.getAbsoluteUrl(this.listingObjectUrl(id));
+  put = (url, params, successCallback, failureCallback) => {
     const options = {
       method: 'PUT',
-      data: data,
+      params: params,
     };
     this.sendRequest(url, options, successCallback, failureCallback);
   }
 
-  post = (id, data, successCallback, failureCallback) => {
-    const url = urlUtil.getAbsoluteUrl(this.listingNestedObjectUrl(id));
+  post = (url, params, successCallback, failureCallback) => {
     const options = {
       method: 'POST',
-      data: data,
+      params: params,
     };
     this.sendRequest(url, options, successCallback, failureCallback);
   }
 
   sendRequest = (url, options, successCallback, failureCallback) => {
-    this.strategry.sendRequest(async (token) => {
+    this.apiType.sendRequest(async (token) => {
       const response = await httpRequest.send(url, options, token, 'json');
       apiService.handleApiResponse(response, (res) => {
         !!successCallback && successCallback(res);
