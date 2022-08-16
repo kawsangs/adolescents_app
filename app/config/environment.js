@@ -3,5 +3,6 @@ export const environment = {
   type: 'development',
   showIntroSlider: true,
   defaultLanguage: 'km',
-  sentryDSN: ''
+  sentryDSN: '',
+  encryptionKey: '',        // Use 256 bytes key
 };

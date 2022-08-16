@@ -3,6 +3,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import SessionApi from '../api/sessionApi';
 import apiService from './api_service';
 import { AUTH_ACCOUNT, AUTH_TOKEN } from '../constants/authentication_constant';
+import cryptoUtil from '../utils/crypto_util';
 
 const authenticationService = (() => {
   return {
@@ -11,13 +12,13 @@ const authenticationService = (() => {
   }
 
   async function authenticate(email, password, successCallback, failureCallback) {
-    EncryptedStorage.setItem(AUTH_ACCOUNT, JSON.stringify({ email: email, password: password }));
+    EncryptedStorage.setItem(AUTH_ACCOUNT, JSON.stringify({ email: cryptoUtil.encrypt(email), password: cryptoUtil.encrypt(password) }));
     handleAuthenticate(email, password, (token) => successCallback(token), failureCallback);
   }
 
   async function reauthenticate(successCallback, failureCallback) {
     const account = JSON.parse(await EncryptedStorage.getItem(AUTH_ACCOUNT));
-    handleAuthenticate(account.email, account.password, (token) => successCallback(token), failureCallback);
+    handleAuthenticate(cryptoUtil.decrypt(account.email), cryptoUtil.decrypt(account.password), (token) => successCallback(token), failureCallback);
   }
 
   // private method
