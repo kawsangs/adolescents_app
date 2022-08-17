@@ -1,17 +1,17 @@
 import React from 'react';
-import { Animated, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Animated, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { headerWithAudioScrollDistance } from '../../constants/component_constant';
 import componentUtil from '../../utils/component_util';
 import { getStyleOfDevice } from '../../utils/responsive_util';
-import { headerWithAudioScrollDistance } from '../../constants/component_constant';
 
 const iconSize = 28;
-const playPauseIconSize = 70;
+const playPauseIconSize = 65;
 
-const HeaderAudioControlsComponent = (props) => {
-  const button = (iconName, size) => {
-    return <TouchableOpacity style={styles.button}>
+const HeaderAudioControlButtonsComponent = (props) => {
+  const audioButton = (iconName, size, onPress) => {
+    return <TouchableOpacity onPress={() => onPress()} style={styles.button}>
               <Icon name={iconName} size={size} color='black' />
            </TouchableOpacity>
   }
@@ -25,26 +25,19 @@ const HeaderAudioControlsComponent = (props) => {
 
   const audioControlPositionY = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: getStyleOfDevice([40, 20], [30, 10]),
+    outputRange: getStyleOfDevice([40, 15], [30, 10]),
     extrapolate: 'clamp'
   });
 
   return (
-    <View style={{paddingHorizontal: 16, flex: 1, borderWidth: 0}}>
-      <View style={{flex: 1}}>
-        <Animated.View style={[styles.audioControl,
-          {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
-        >
-          { button('step-backward', iconSize) }
-          { button('play-circle', playPauseIconSize) }
-          { button('step-forward', iconSize) }
-        </Animated.View>
-      </View>
-
-      <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
-        <Text>00:14</Text>
-        <Text>03:45</Text>
-      </View>
+    <View style={{flex: 1}}>
+      <Animated.View style={[styles.audioControl,
+        {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
+      >
+        { audioButton('step-backward', iconSize, null) }
+        { audioButton('play-circle', playPauseIconSize, null) }
+        { audioButton('step-forward', iconSize, null) }
+      </Animated.View>
     </View>
   )
 }
@@ -63,4 +56,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HeaderAudioControlsComponent;
+export default HeaderAudioControlButtonsComponent;

@@ -3,7 +3,7 @@ import { Animated, StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 
 import color from '../../themes/color';
-import HeaderAudioControlsComponent from './HeaderAudioControlsComponent';
+import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../constants/component_constant';
 
 const ScrollViewWithAudioHeaderComponent = (props) => {
@@ -14,7 +14,7 @@ const ScrollViewWithAudioHeaderComponent = (props) => {
   });
 
   return (
-    <Animated.View style={[styles.header, { height: headerHeight, paddingBottom: 10 }]}>
+    <Animated.View style={[styles.header, { height: headerHeight }]}>
       <Animated.View>
         <Appbar.Header style={{backgroundColor: color.primaryColor, elevation: 0}}>
           <Appbar.BackAction />
@@ -22,7 +22,7 @@ const ScrollViewWithAudioHeaderComponent = (props) => {
         </Appbar.Header>
       </Animated.View>
 
-      <HeaderAudioControlsComponent scrollY={props.scrollY} />
+      <HeaderAudioControlComponent scrollY={props.scrollY} />
     </Animated.View>
   )
 }
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: color.primaryColor,
     overflow: 'hidden',
+    zIndex: 1
   },
 });
 
