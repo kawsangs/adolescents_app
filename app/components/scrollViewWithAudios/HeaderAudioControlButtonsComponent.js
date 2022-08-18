@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Animated, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -15,8 +15,7 @@ const playPauseIconSize = 65;
 const HeaderAudioControlButtonsComponent = (props) => {
   const [state, setState] = useState({
     audioPlayer: null,
-    interval: null,
-    playSeconds: 0
+    countInterval: null,
   });
 
   const audioButton = (iconName, size, onPress) => {
@@ -39,18 +38,14 @@ const HeaderAudioControlButtonsComponent = (props) => {
   });
 
   const playAudio = () => {
-    audioPlayerService.togglePlay(audioFile, setState.audioPlayer, setState.interval, (sound, seconds, countInterval) => {
-      setAudioPlayer(prevValues => ({
-        ...prevValues,
-        audioPlayer: sound,
-        playSeconds: seconds,
-        interval: countInterval
-      }))
+    audioPlayerService.togglePlay(audioFile, state.audioPlayer, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
+      setState({ audioPlayer, countInterval });
+      props.updateAudioPlayer(playSeconds, duration);
     });
   }
 
   const stopAudio = () => {
-    audioPlayerService.stop(setState.audioPlayer, setState.interval);
+    audioPlayerService.stop(state.audioPlayer, state.countInterval);
   }
 
   return (
@@ -59,7 +54,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
         {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
       >
         { audioButton('step-backward', forwardBackwardIconSize, null) }
-        { audioButton(!!setState.interval ? 'pause-circle' : 'play-circle', playPauseIconSize, playAudio) }
+        { audioButton(!!state.countInterval ? 'pause-circle' : 'play-circle', playPauseIconSize, playAudio) }
         { audioButton('step-forward', forwardBackwardIconSize, stopAudio) }
       </Animated.View>
     </View>

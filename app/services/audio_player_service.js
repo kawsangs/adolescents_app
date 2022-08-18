@@ -6,19 +6,18 @@ const audioPlayerService = (() => {
     stop,
   }
 
-  function togglePlay(filename, audioPlayer, interval, callback) {
+  function togglePlay(filename, audioPlayer, countInterval, callback) {
     if (!!audioPlayer) {
-      if (!!interval) {
-        clearInterval(interval);
+      if (!!countInterval) {
+        clearInterval(countInterval);
         audioPlayer.pause();
         audioPlayer.getCurrentTime((seconds) => {
-          callback(audioPlayer, seconds, null)
+          callback(audioPlayer, seconds, audioPlayer.getDuration(), null);
         });
       }
-      else {
-        audioPlayer.play();
-        _countPlaySecond(audioPlayer, callback);
-      }
+      else
+        _playAudio(audioPlayer, countInterval, callback);
+
       return;
     }
 
@@ -26,31 +25,43 @@ const audioPlayerService = (() => {
       if (!!error)
         return console.log('failed to play audio = ', error);
 
-      _countPlaySecond(sound, callback);
-      sound.play()
+      _playAudio(sound, countInterval, callback);
     })
   }
 
-  function stop(audioPlayer, interval) {
+  function stop(audioPlayer, countInterval) {
     if (!audioPlayer)
       return;
 
-    clearInterval(interval);
+    clearInterval(countInterval);
     audioPlayer.stop();
   }
 
   // private method
-  function _countPlaySecond(sound, callback) {
+  function _countPlaySecond(audioPlayer, callback) {
     const countInterval = setInterval(() => {
-      if (!!sound) {
-        sound.getCurrentTime((seconds) => {
-          if (seconds == sound.getDuration())
+      if (!!audioPlayer) {
+        audioPlayer.getCurrentTime((seconds) => {
+          if (seconds == audioPlayer.getDuration())
             return clearInterval(countInterval);
 
-          callback(sound, seconds, countInterval);
+          callback(audioPlayer, seconds, audioPlayer.getDuration(), countInterval);
         });
       }
-    }, 100);
+    }, 1000);
+  }
+
+  function _playAudio(audioPlayer, countInterval, callback) {
+    audioPlayer.play((success) => {
+      if (success) {
+        clearInterval(countInterval);
+        audioPlayer.release();
+        callback(null, 0, 0, null);     // clear the audioPlayer, playSeconds, duration and countInterval
+      }
+      else
+        console.log('playback failed due to audio decoding errors');
+    });
+    _countPlaySecond(audioPlayer, callback);
   }
 })();
 
