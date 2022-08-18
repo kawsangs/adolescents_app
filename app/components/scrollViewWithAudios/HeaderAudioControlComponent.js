@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
 
 import HeaderAudioControlButtonsComponent from './HeaderAudioControlButtonsComponent';
 import HeaderAudioSliderComponent from './HeaderAudioSliderComponent';
 
 const HeaderAudioControlComponent = (props) => {
-  const [audioPlayer, setAudioPlayer] = useState({
+  const [state, setState] = useState({
+    audioPlayer: null,
     playSeconds: 0,
-    duration: 0
+    duration: 0,
+    countInterval: null,
   })
 
-  const updateAudioPlayer = (playSeconds, duration) => {
-    setAudioPlayer({ playSeconds, duration })
+  const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
+    setState({ audioPlayer, playSeconds, duration, countInterval })
   }
 
   return (
     <React.Fragment>
-      <View style={{paddingHorizontal: 16, flex: 1}}>
-        <HeaderAudioControlButtonsComponent scrollY={props.scrollY}
-          updateAudioPlayer={updateAudioPlayer}
-        />
-
-      </View>
-      <HeaderAudioSliderComponent scrollY={props.scrollY} duration={audioPlayer.duration} playSeconds={audioPlayer.playSeconds} />
+      <HeaderAudioControlButtonsComponent scrollY={props.scrollY}
+        audioPlayer={state.audioPlayer} countInterval={state.countInterval}
+        updateAudioPlayer={updateState}
+      />
+      <HeaderAudioSliderComponent scrollY={props.scrollY}
+        audioPlayer={state.audioPlayer} duration={state.duration} playSeconds={state.playSeconds}
+        countInterval={state.countInterval}
+        updateAudioPlayer={updateState}
+      />
     </React.Fragment>
   )
 }

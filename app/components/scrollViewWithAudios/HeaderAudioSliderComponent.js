@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import {Slider} from '@miblanchard/react-native-slider';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import timeUtil from '../../utils/time_util';
+import audioUtil from '../../utils/audio_util';
 import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
@@ -16,42 +16,61 @@ const HeaderAudioSliderComponent = (props) => {
   });
 
   const onSlidingComplete = (value) => {
-    console.log('sliding complete = ', value)
-    audioPlayerService.seekTo(value);
+    // Seek and resume play the audio after stop sliding
+    audioPlayerService.seekTo(props.audioPlayer, value[0]);
+    audioPlayerService.playPause(props.audioPlayer, null,
+      (audioPlayer, playSeconds, duration, countInterval) => {
+        props.updateAudioPlayer(audioPlayer, playSeconds, duration, countInterval);
+      }
+    );
   }
 
-  const getReverseSecond = () => {
-    if (props.playSeconds) {
-      const reverseSecond = props.duration - props.playSeconds;
-      return timeUtil.getFormattedMinuteFromSeconds(reverseSecond);
-    }
+  const onSlidingStart = () => {
+    clearInterval(props.countInterval);
+    if (!props.audioPlayer)
+      return;
 
-    return '00:00';
+    props.audioPlayer.pause();
   }
 
   return (
     <React.Fragment>
-      <View style={{flexDirection: 'row', justifyContent:'space-between', paddingHorizontal: screenPaddingHorizontal}}>
-        <Text>{ timeUtil.getFormattedMinuteFromSeconds(props.playSeconds) }</Text>
-        <Text>- { getReverseSecond() }</Text>
+      <View style={styles.secondsContainer}>
+        <Text>{ audioUtil.getFormattedPlaySeconds(props.playSeconds) }</Text>
+        <Text>- { audioUtil.getReverseSeconds(props.playSeconds, props.duration) }</Text>
       </View>
 
-      <View style={{paddingHorizontal: screenPaddingHorizontal, height: 13, borderWidth: 0, backgroundColor: color.whiteColor, marginTop: 16}}>
+      <View style={styles.sliderContainer}>
         <Slider
-          // value={props.value}
-          value={0}
+          value={props.playSeconds}
+          disabled={props.playSeconds == props.duration}
           minimumValue={0}
-          maximumValue={100}
+          maximumValue={props.duration}
           maximumTrackTintColor={color.lightGrayColor}
           minimumTrackTintColor={color.lightBlackColor}
           containerStyle={{top: -22}}
           thumbTouchSize={{ width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize() }}
           thumbStyle={{backgroundColor: color.whiteColor, borderColor: color.blackColor, borderWidth: 2, width: thumbSize, height: thumbSize }}
           onSlidingComplete={(value) => onSlidingComplete(value)}
+          onSlidingStart={(value) => onSlidingStart()}
         />
       </View>
     </React.Fragment>
   )
 }
+
+const styles = StyleSheet.create({
+  secondsContainer: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    paddingHorizontal: screenPaddingHorizontal
+  },
+  sliderContainer: {
+    paddingHorizontal: screenPaddingHorizontal,
+    height: 13,
+    backgroundColor: color.whiteColor,
+    marginTop: 16
+  }
+});
 
 export default HeaderAudioSliderComponent;

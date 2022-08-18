@@ -2,31 +2,32 @@ import Sound from 'react-native-sound';
 
 const audioPlayerService = (() => {
   return {
-    togglePlay,
+    play,
+    playPause,
     stop,
+    seekTo,
   }
 
-  function togglePlay(filename, audioPlayer, countInterval, callback) {
-    if (!!audioPlayer) {
-      if (!!countInterval) {
-        clearInterval(countInterval);
-        audioPlayer.pause();
-        audioPlayer.getCurrentTime((seconds) => {
-          callback(audioPlayer, seconds, audioPlayer.getDuration(), null);
-        });
-      }
-      else
-        _playAudio(audioPlayer, countInterval, callback);
-
-      return;
-    }
-
+  function play(filename, callback) {
     const sound = new Sound(filename, (error) => {
       if (!!error)
         return console.log('failed to play audio = ', error);
 
-      _playAudio(sound, countInterval, callback);
+      _playAudio(sound, callback);
     })
+  }
+
+  function playPause(audioPlayer, countInterval, callback) {
+    if (!!countInterval) {
+      clearInterval(countInterval);
+      audioPlayer.pause();
+      audioPlayer.getCurrentTime((seconds) => {
+        callback(audioPlayer, seconds, audioPlayer.getDuration(), null);
+      });
+      return;
+    }
+
+    _playAudio(audioPlayer, callback, countInterval);
   }
 
   function stop(audioPlayer, countInterval) {
@@ -37,8 +38,13 @@ const audioPlayerService = (() => {
     audioPlayer.stop();
   }
 
+  function seekTo(audioPlayer, seconds) {
+    if (!!audioPlayer)
+      audioPlayer.setCurrentTime(seconds);
+  }
+
   // private method
-  function _countPlaySecond(audioPlayer, callback) {
+  function _countPlaySeconds(audioPlayer, callback) {
     const countInterval = setInterval(() => {
       if (!!audioPlayer) {
         audioPlayer.getCurrentTime((seconds) => {
@@ -48,20 +54,24 @@ const audioPlayerService = (() => {
           callback(audioPlayer, seconds, audioPlayer.getDuration(), countInterval);
         });
       }
-    }, 1000);
+    }, 150);
+
+    return countInterval;
   }
 
-  function _playAudio(audioPlayer, countInterval, callback) {
+  function _playAudio(audioPlayer, callback, countInterval = null) {
+    clearInterval(countInterval);
+
+    const countPlaySeconds = _countPlaySeconds(audioPlayer, callback);
     audioPlayer.play((success) => {
       if (success) {
-        clearInterval(countInterval);
+        clearInterval(countPlaySeconds);
         audioPlayer.release();
         callback(null, 0, 0, null);     // clear the audioPlayer, playSeconds, duration and countInterval
       }
       else
         console.log('playback failed due to audio decoding errors');
     });
-    _countPlaySecond(audioPlayer, callback);
   }
 })();
 
