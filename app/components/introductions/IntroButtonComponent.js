@@ -3,23 +3,24 @@ import { Text, StyleSheet, View } from 'react-native';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import { buttonBorderRadius } from '../../constants/component_constant';
 
 const IntroButtonComponent = (props) => {
   return <View style={styles.btn}>
-            <Text style={styles.text}>{props.label}</Text>
+            <Text style={styles.text}>></Text>
+            {/* <Text style={styles.text}>{props.label}</Text> */}
          </View>
 }
 
 const styles = StyleSheet.create({
   btn: {
     backgroundColor: color.primaryColor,
-    minWidth: componentUtil.pressableItemSize(20),
-    height: componentUtil.pressableItemSize(),
-    borderRadius: buttonBorderRadius,
+    width: componentUtil.pressableItemSize(8),
+    height: componentUtil.pressableItemSize(8),
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 6
+    marginTop: -24,
+    elevation: 2
   },
   text: {
     fontSize: 18,

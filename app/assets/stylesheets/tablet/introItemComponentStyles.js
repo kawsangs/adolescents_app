@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import color from '../../../themes/color';
-import { introViewPaddingHorizontal } from '../../../constants/component_constant' ;
+import { FontFamily } from '../../../themes/font';
 
 const screenHeight = Dimensions.get('screen').height;
 
@@ -10,15 +10,13 @@ const introItemComponentStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: color.whiteColor,
-    borderWidth: 2,
-    // paddingHorizontal: introViewPaddingHorizontal
     paddingHorizontal: 44
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
     color: color.blackColor,
     alignSelf: 'flex-start',
+    fontFamily: FontFamily.title
   },
   label: {
     fontSize: 16,

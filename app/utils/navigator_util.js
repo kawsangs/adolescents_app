@@ -7,7 +7,7 @@ const navigatorUtil = (() => {
   }
 
   async function getInitialRouteName() {
-    if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
+    // if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
       return 'IntroductionView';
 
     return 'BottomTabs';
