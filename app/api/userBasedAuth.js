@@ -1,6 +1,6 @@
 import authenticationService from '../services/authentication_service';
 
-class UserBasedApi {
+class UserBasedAuth {
   sendRequest = (requestCallback) => {
     authenticationService.reauthenticate((token) => {
       requestCallback(token);
@@ -8,4 +8,4 @@ class UserBasedApi {
   }
 }
 
-export default UserBasedApi;
+export default UserBasedAuth;

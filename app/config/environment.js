@@ -6,6 +6,6 @@ export const environment = {
   sentryDSN: '',
   encryptionKey: '',        // Use 256 bytes key
   apiKey: '',
-  isUserBasedApi: true,
+  isUserBasedAuth: true,
   apiVersion: 'v1'
 };

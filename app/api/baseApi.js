@@ -3,12 +3,12 @@ import apiService from '../services/api_service';
 import httpRequest from '../http/http_request';
 import { environment } from '../config/environment';
 
-import UserBasedApi from './userBasedApi';
-import KeyBasedApi from './keyBasedApi';
+import UserBasedAuth from './userBasedAuth';
+import KeyBasedAuth from './keyBasedAuth';
 
 class BaseApi {
   constructor(responsibleModel, subModel = '') {
-    this.apiType = environment.isUserBasedApi ? new UserBasedApi() : new KeyBasedApi();
+    this.authenticationType = environment.isUserBasedAuth ? new UserBasedAuth() : new KeyBasedAuth();
     this.responsibleModel = responsibleModel;
     this.subModel = subModel;
   }
@@ -52,7 +52,7 @@ class BaseApi {
   }
 
   sendRequest = (url, options, successCallback, failureCallback) => {
-    this.apiType.sendRequest(async (token) => {
+    this.authenticationType.sendRequest(async (token) => {
       const response = await httpRequest.send(url, options, token, 'json');
       apiService.handleApiResponse(response, (res) => {
         !!successCallback && successCallback(res);

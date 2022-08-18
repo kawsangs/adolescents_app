@@ -1,9 +1,9 @@
 import { environment } from '../config/environment';
 
-class KeyBasedApi {
+class KeyBasedAuth {
   sendRequest = (requestCallback) => {
     requestCallback(environment.apiKey);
   }
 }
 
-export default KeyBasedApi;
+export default KeyBasedAuth;
