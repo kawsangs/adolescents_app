@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import {Slider} from '@miblanchard/react-native-slider';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import audioUtil from '../../utils/audio_util';
 import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
@@ -34,37 +33,25 @@ const HeaderAudioSliderComponent = (props) => {
   }
 
   return (
-    <React.Fragment>
-      <View style={styles.secondsContainer}>
-        <Text>{ audioUtil.getFormattedPlaySeconds(props.playSeconds) }</Text>
-        <Text>- { audioUtil.getReverseSeconds(props.playSeconds, props.duration) }</Text>
-      </View>
-
-      <View style={styles.sliderContainer}>
-        <Slider
-          value={props.playSeconds}
-          disabled={props.playSeconds == props.duration}
-          minimumValue={0}
-          maximumValue={props.duration}
-          maximumTrackTintColor={color.lightGrayColor}
-          minimumTrackTintColor={color.lightBlackColor}
-          containerStyle={{top: -22}}
-          thumbTouchSize={{ width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize() }}
-          thumbStyle={{backgroundColor: color.whiteColor, borderColor: color.blackColor, borderWidth: 2, width: thumbSize, height: thumbSize }}
-          onSlidingComplete={(value) => onSlidingComplete(value)}
-          onSlidingStart={(value) => onSlidingStart()}
-        />
-      </View>
-    </React.Fragment>
+    <View style={styles.sliderContainer}>
+      <Slider
+        value={props.playSeconds}
+        disabled={props.playSeconds == props.duration}
+        minimumValue={0}
+        maximumValue={props.duration}
+        maximumTrackTintColor={color.lightGrayColor}
+        minimumTrackTintColor={color.lightBlackColor}
+        containerStyle={{top: -22}}
+        thumbTouchSize={{ width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize() }}
+        thumbStyle={{backgroundColor: color.whiteColor, borderColor: color.blackColor, borderWidth: 2, width: thumbSize, height: thumbSize }}
+        onSlidingComplete={(value) => onSlidingComplete(value)}
+        onSlidingStart={(value) => onSlidingStart()}
+      />
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  secondsContainer: {
-    flexDirection: 'row',
-    justifyContent:'space-between',
-    paddingHorizontal: screenPaddingHorizontal
-  },
   sliderContainer: {
     paddingHorizontal: screenPaddingHorizontal,
     height: 13,

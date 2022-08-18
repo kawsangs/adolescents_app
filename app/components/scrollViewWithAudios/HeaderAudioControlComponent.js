@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import HeaderAudioControlButtonsComponent from './HeaderAudioControlButtonsComponent';
+import AudioDurationLabelComponent from './AudioDurationLabelComponent';
 import HeaderAudioSliderComponent from './HeaderAudioSliderComponent';
 
 const HeaderAudioControlComponent = (props) => {
@@ -21,6 +22,7 @@ const HeaderAudioControlComponent = (props) => {
         audioPlayer={state.audioPlayer} countInterval={state.countInterval}
         updateAudioPlayer={updateState}
       />
+      <AudioDurationLabelComponent playSeconds={state.playSeconds} duration={state.duration} />
       <HeaderAudioSliderComponent scrollY={props.scrollY}
         audioPlayer={state.audioPlayer} duration={state.duration} playSeconds={state.playSeconds}
         countInterval={state.countInterval}

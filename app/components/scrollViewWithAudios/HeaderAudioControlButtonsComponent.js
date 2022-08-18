@@ -35,18 +35,14 @@ const HeaderAudioControlButtonsComponent = (props) => {
     });
   }
 
-  const stopAudio = () => {
-    audioPlayerService.stop(props.audioPlayer, props.countInterval);
-  }
-
   return (
     <View style={{flex: 1, paddingHorizontal: screenPaddingHorizontal}}>
       <Animated.View style={[styles.audioControl,
         {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
       >
-        <AudioControlButton iconName='step-backward' size={28} onPress={null} />
+        <AudioControlButton iconName='step-backward' size={28} />
         <AudioControlButton iconName={!!props.countInterval ? 'pause-circle' : 'play-circle'} size={65} onPress={() => playAudio()} />
-        <AudioControlButton iconName='step-forward' size={28} onPress={() => stopAudio()} />
+        <AudioControlButton iconName='step-forward' size={28} />
       </Animated.View>
     </View>
   )

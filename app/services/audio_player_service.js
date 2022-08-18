@@ -9,11 +9,11 @@ const audioPlayerService = (() => {
   }
 
   function play(filename, callback) {
-    const sound = new Sound(filename, (error) => {
+    const audioPlayer = new Sound(filename, (error) => {
       if (!!error)
         return console.log('failed to play audio = ', error);
 
-      _playAudio(sound, callback);
+      _playAudio(audioPlayer, callback);
     })
   }
 
@@ -31,10 +31,10 @@ const audioPlayerService = (() => {
   }
 
   function stop(audioPlayer, countInterval) {
+    clearInterval(countInterval);
     if (!audioPlayer)
       return;
 
-    clearInterval(countInterval);
     audioPlayer.stop();
   }
 
@@ -45,29 +45,30 @@ const audioPlayerService = (() => {
 
   // private method
   function _countPlaySeconds(audioPlayer, callback) {
-    const countInterval = setInterval(() => {
-      if (!!audioPlayer) {
-        audioPlayer.getCurrentTime((seconds) => {
-          if (seconds == audioPlayer.getDuration())
-            return clearInterval(countInterval);
+    if (!audioPlayer)
+      return null;
 
-          callback(audioPlayer, seconds, audioPlayer.getDuration(), countInterval);
-        });
-      }
-    }, 150);
+    const countInterval = setInterval(() => {
+      audioPlayer.getCurrentTime((seconds) => {
+        if (seconds == audioPlayer.getDuration())
+          return clearInterval(countInterval);
+
+        callback(audioPlayer, seconds, audioPlayer.getDuration(), countInterval);
+      });
+    }, 150);  // Use 150 ms to make the slider move smoother
 
     return countInterval;
   }
 
   function _playAudio(audioPlayer, callback, countInterval = null) {
+    // Clear the previous counting and start a new count when start playing the audio
     clearInterval(countInterval);
-
     const countPlaySeconds = _countPlaySeconds(audioPlayer, callback);
     audioPlayer.play((success) => {
       if (success) {
         clearInterval(countPlaySeconds);
         audioPlayer.release();
-        callback(null, 0, 0, null);     // clear the audioPlayer, playSeconds, duration and countInterval
+        callback(null, 0, 0, null);     // reset the audioPlayer, playSeconds, duration and countInterval
       }
       else
         console.log('playback failed due to audio decoding errors');

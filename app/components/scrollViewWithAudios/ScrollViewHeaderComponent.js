@@ -6,7 +6,7 @@ import color from '../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../constants/component_constant';
 
-const ScrollViewWithAudioHeaderComponent = (props) => {
+const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScrollViewWithAudioHeaderComponent;
+export default ScrollViewHeaderComponent;
