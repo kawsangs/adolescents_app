@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 const HomeView = () => {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>Home screen</Text>
     </View>
   )
