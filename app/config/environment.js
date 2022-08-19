@@ -5,4 +5,7 @@ export const environment = {
   defaultLanguage: 'km',
   sentryDSN: '',
   encryptionKey: '',        // Use 256 bytes key
+  apiKey: '',
+  isUserBasedAuth: true,
+  apiVersion: 'v1'
 };

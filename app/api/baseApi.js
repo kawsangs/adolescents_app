@@ -1,10 +1,14 @@
 import urlUtil from '../utils/url_util';
-import authenticationService from '../services/authentication_service';
 import apiService from '../services/api_service';
 import httpRequest from '../http/http_request';
+import { environment } from '../config/environment';
+
+import UserBasedAuth from './userBasedAuth';
+import KeyBasedAuth from './keyBasedAuth';
 
 class BaseApi {
   constructor(responsibleModel, subModel = '') {
+    this.authenticationType = environment.isUserBasedAuth ? new UserBasedAuth() : new KeyBasedAuth();
     this.responsibleModel = responsibleModel;
     this.subModel = subModel;
   }
@@ -25,19 +29,31 @@ class BaseApi {
     return `${this.listingObjectUrl(id)}/${this.subModel}`;
   }
 
-  load = (id, successCallback, failedCallback) => {
-    const options = { method: 'GET' };
-
-    const url = urlUtil.getAbsoluteUrl(this.listingNestedObjectUrl(id));
-    this.sendRequest(url, options, 'json', successCallback, failedCallback);
+  load = (id, successCallback, failureCallback) => {
+    const url = urlUtil.getAbsoluteUrl(this.listingObjectUrl(id));
+    const options = { method: 'GET'}
+    this.sendRequest(url, options, successCallback, failureCallback);
   }
 
-  sendRequest = (url, options, contentType = 'json', successCallback, failureCallback) => {
-    if (!url) return;
+  put = (url, params, successCallback, failureCallback) => {
+    const options = {
+      method: 'PUT',
+      params: params,
+    };
+    this.sendRequest(url, options, successCallback, failureCallback);
+  }
 
-    // Reauthenticate to get the new auth token before sending API request
-    authenticationService.reauthenticate(async (token) => {
-      const response = await httpRequest.send(url, options, token, contentType);
+  post = (url, params, successCallback, failureCallback) => {
+    const options = {
+      method: 'POST',
+      params: params,
+    };
+    this.sendRequest(url, options, successCallback, failureCallback);
+  }
+
+  sendRequest = (url, options, successCallback, failureCallback) => {
+    this.authenticationType.sendRequest(async (token) => {
+      const response = await httpRequest.send(url, options, token, 'json');
       apiService.handleApiResponse(response, (res) => {
         !!successCallback && successCallback(res);
       }, (error) => {
