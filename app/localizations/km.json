@@ -1,5 +1,4 @@
 {
-  "hello": "សួស្ដី",
-  "myName": "ឈ្មោះរបស់ខ្ញុំគឺ {{ firstName }} {{ lastName }}",
-  "myDob": "ខែឆ្នាំកំណើត <bold>{{ month }}</bold> <i>{{ year }}</i>"
+  "skip": "រំលង",
+  "startUsingApp": "ចាប់ផ្តេីមប្រេីកម្មវិធី"
 }

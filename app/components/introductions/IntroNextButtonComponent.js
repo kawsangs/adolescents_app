@@ -1,32 +1,31 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 
-const IntroButtonComponent = (props) => {
+const IntroNextButtonComponent = (props) => {
   return <View style={styles.btn}>
-            <Text style={styles.text}>></Text>
-            {/* <Text style={styles.text}>{props.label}</Text> */}
+            <Icon name="chevron-right" color={color.primaryColor} size={32} style={styles.icon} />
          </View>
 }
 
 const styles = StyleSheet.create({
   btn: {
-    backgroundColor: color.primaryColor,
+    backgroundColor: color.whiteColor,
     width: componentUtil.pressableItemSize(8),
     height: componentUtil.pressableItemSize(8),
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -24,
-    elevation: 2
+    marginTop: -6,
+    elevation: 3
   },
-  text: {
-    fontSize: 18,
-    color: color.whiteColor,
-    fontWeight: '400'
+  icon: {
+    height: 32,
+    width: 32,
   }
 });
 
-export default IntroButtonComponent;
+export default IntroNextButtonComponent;

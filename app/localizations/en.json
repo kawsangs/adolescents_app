@@ -1,5 +1,4 @@
 {
-  "hello": "hello world",
-  "myName": "My name is {{ firstName }} {{ lastName }}",
-  "myDob": "DOB is <bold>{{ month }}</bold> <i>{{ year }}</i>"
+  "skip": "Skip",
+  "startUsingApp": "Start using app"
 }

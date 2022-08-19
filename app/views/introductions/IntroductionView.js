@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { useTranslation } from 'react-i18next';
 
-import IntroButtonComponent from '../../components/introductions/IntroButtonComponent';
+import IntroNextButtonComponent from '../../components/introductions/IntroNextButtonComponent';
+import IntroPressableLabelComponent from '../../components/introductions/IntroPressableLabelComponent';
 import IntroItemComponent from '../../components/introductions/IntroItemComponent';
-import color from '../../themes/color';
 import { slides } from '../../constants/intro_constant';
+import color from '../../themes/color';
 
 const IntroductionView = (props) => {
+  const { t } = useTranslation();
+  const [isLastIndex, setIsLastIndex] = useState(0);
+  let slider = useRef();
+
   const renderItem = ({ item }) => {
     return <IntroItemComponent
               image={item.image}
@@ -20,24 +26,34 @@ const IntroductionView = (props) => {
   }
 
   const renderNextButton = () => {
-    return <IntroButtonComponent label='Next' />
+    return <IntroNextButtonComponent label='Next' />
   }
 
   const renderDoneButton = () => {
-    return <IntroButtonComponent label='Done' />
+    return <IntroPressableLabelComponent label={ t('startUsingApp') } containerStyle={{ alignSelf: 'center', width: 'auto' }} />
   }
 
   const renderSkipButton = () => {
-    return <IntroButtonComponent label='Skip' />
+    return <IntroPressableLabelComponent label={ t('skip') } />
+  }
+
+  const onSkip = () => {
+    setIsLastIndex(true)
+    slider.goToSlide(slides.length - 1);
   }
 
   return <AppIntroSlider
+            ref={ref => slider = ref}
             renderItem={renderItem} data={slides} onDone={onDone}
             showSkipButton={true}
             renderNextButton={renderNextButton}
             renderDoneButton={renderDoneButton}
             renderSkipButton={renderSkipButton}
-            activeDotStyle={{backgroundColor: color.primaryColor}}
+            activeDotStyle={{backgroundColor: isLastIndex ? color.whiteColor : '#ce3581'}}
+            dotStyle={{backgroundColor: isLastIndex ? color.whiteColor : '#cbcbcb'}}
+            bottomButton={isLastIndex}
+            onSlideChange={(index, lastIndex) => setIsLastIndex(index == slides.length - 1)}
+            onSkip={() => onSkip()}
           />;
 }
 
