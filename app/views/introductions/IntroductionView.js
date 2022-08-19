@@ -10,35 +10,31 @@ import color from '../../themes/color';
 
 const IntroductionView = (props) => {
   const { t } = useTranslation();
-  const [isLastIndex, setIsLastIndex] = useState(0);
+  const [state, setState] = useState({
+    currentIndex: 0,
+    isLastIndex: false,
+  });
   let slider = useRef();
 
   const renderItem = ({ item }) => {
-    return <IntroItemComponent
-              image={item.image}
-              title={item.title}
-              description={item.text}
-           />
+    return <IntroItemComponent image={item.image} title={item.title} description={item.text} />
   }
 
   const onDone = () => {
     props.navigation.reset({ index: 0, routes: [{ name: 'BottomTabs' }] });
   }
 
-  const renderNextButton = () => {
-    return <IntroNextButtonComponent label='Next' />
-  }
+  const renderNextSlide = () => {
+    if (state.isLastIndex)
+      return;
 
-  const renderDoneButton = () => {
-    return <IntroPressableLabelComponent label={ t('startUsingApp') } containerStyle={{ alignSelf: 'center', width: 'auto' }} />
-  }
-
-  const renderSkipButton = () => {
-    return <IntroPressableLabelComponent label={ t('skip') } />
+    const nextIndex = state.currentIndex + 1;
+    slider.goToSlide(state.currentIndex + 1);
+    setState({ currentIndex: nextIndex, isLastIndex: nextIndex == slides.length - 1 })
   }
 
   const onSkip = () => {
-    setIsLastIndex(true)
+    setState({ currentIndex: slides.length - 1, isLastIndex: true });
     slider.goToSlide(slides.length - 1);
   }
 
@@ -46,13 +42,13 @@ const IntroductionView = (props) => {
             ref={ref => slider = ref}
             renderItem={renderItem} data={slides} onDone={onDone}
             showSkipButton={true}
-            renderNextButton={renderNextButton}
-            renderDoneButton={renderDoneButton}
-            renderSkipButton={renderSkipButton}
-            activeDotStyle={{backgroundColor: isLastIndex ? color.whiteColor : '#ce3581'}}
-            dotStyle={{backgroundColor: isLastIndex ? color.whiteColor : '#cbcbcb'}}
-            bottomButton={isLastIndex}
-            onSlideChange={(index, lastIndex) => setIsLastIndex(index == slides.length - 1)}
+            renderNextButton={() => <IntroNextButtonComponent label='Next' onPress={() => renderNextSlide()} />}
+            renderDoneButton={() => <IntroPressableLabelComponent label={ t('startUsingApp') } containerStyle={{ alignSelf: 'center', width: 'auto' }} />}
+            renderSkipButton={() => <IntroPressableLabelComponent label={ t('skip') } containerStyle={{marginLeft: 8}} />}
+            activeDotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#ce3581'}}
+            dotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#cbcbcb'}}
+            bottomButton={state.isLastIndex}
+            onSlideChange={(index, lastIndex) => setState({ currentIndex: index, isLastIndex: index == slides.length - 1 })}
             onSkip={() => onSkip()}
           />;
 }

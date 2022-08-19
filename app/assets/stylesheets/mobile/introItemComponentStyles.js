@@ -1,30 +1,34 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
-
-const screenHeight = Dimensions.get('screen').height;
+import { bigFontSize } from '../../../utils/font_size_util';
 
 const introItemComponentStyles = StyleSheet.create({
   slide: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: color.whiteColor,
+    flex: 1,
+    flexDirection: 'column',
+  },
+  labelContainer: {
+    alignSelf: 'flex-start',
+    flex: 2,
+    paddingHorizontal: 24,
+    width: '100%',
   },
   title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: color.blackColor,
+    color: color.lightBlackColor,
+    fontSize: 20,
+    textAlign: 'left',
   },
   label: {
-    fontSize: 16,
-    color: color.lightBlackColor,
-    marginTop: 36,
+    color: color.blackColor,
+    fontSize: bigFontSize(),
+    marginTop: 8,
+    textAlign: 'left',
   },
   image: {
-    width: '70%',
-    height: 290,
-    marginBottom: 30,
-    marginTop: -(screenHeight / 8)
+    flex: 3,
+    marginBottom: 24,
   }
 });
 

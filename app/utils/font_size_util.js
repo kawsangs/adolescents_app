@@ -11,8 +11,6 @@ const getMobileFontSizeByPixelRatio = (smallRatioFontSize, bigRatioFontSize) => 
 
 export const bigFontSize = () => {
   const mobileFontSize = getMobileFontSizeByPixelRatio(18, 16);
-  console.log('mobile big font size = ', mobileFontSize);
-
   return getStyleOfDevice(18, mobileFontSize);
 }
 

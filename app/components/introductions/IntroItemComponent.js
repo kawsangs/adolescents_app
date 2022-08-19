@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
+import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/introItemComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/introItemComponentStyles';
@@ -8,11 +10,15 @@ import mobileStyles from '../../assets/stylesheets/mobile/introItemComponentStyl
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const IntroItemComponent = (props) => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.slide}>
       <Image source={props.image} style={styles.image} resizeMode='contain' />
-      <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.label}>{props.description}</Text>
+      <View style={styles.labelContainer}>
+        <BoldLabelComponent label={t(props.title)} style={styles.title} />
+        <Text style={styles.label}>{t(props.description)}</Text>
+      </View>
     </View>
   );
 }
