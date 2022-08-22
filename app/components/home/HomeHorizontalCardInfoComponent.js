@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import AudioButtonComponent from '../shared/AudioButtonComponent';
@@ -7,6 +8,7 @@ import color from '../../themes/color';
 import { normalFontSize, smallFontSize } from '../../utils/font_size_util';
 
 const HomeHorizontalCardInfoComponent = () => {
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View style={{flex: 1, paddingVertical: 8}}>
@@ -14,7 +16,7 @@ const HomeHorizontalCardInfoComponent = () => {
       </View>
 
       <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>{props.points} ចំនុច</Text>
+        <Text style={styles.subtitle}>{t('point', { count: props.points })}</Text>
         <AudioButtonComponent hasAudio={props.hasAudio} />
       </View>
     </View>
