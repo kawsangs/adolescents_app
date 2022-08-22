@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, StyleSheet } from 'react-native';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
+import AudioButtonComponent from '../shared/AudioButtonComponent';
 import color from '../../themes/color';
-import componentUtil from '../../utils/component_util';
-import { normalFontSize } from '../../utils/font_size_util';
+import { normalFontSize, smallFontSize } from '../../utils/font_size_util';
 
 const HomeHorizontalCardInfoComponent = () => {
   return (
@@ -15,10 +14,8 @@ const HomeHorizontalCardInfoComponent = () => {
       </View>
 
       <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>7 ចំនុច</Text>
-        <TouchableOpacity style={styles.btnPlay}>
-          <Icon name="volume-medium-outline" size={30} color={color.primaryColor} />
-        </TouchableOpacity>
+        <Text style={styles.subtitle}>{props.points} ចំនុច</Text>
+        <AudioButtonComponent hasAudio={props.hasAudio} />
       </View>
     </View>
   )
@@ -28,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 2,
     flexDirection: 'column',
-    paddingLeft: 8
+    paddingLeft: 8,
   },
   subtitleContainer: {
     alignItems: 'center',
@@ -36,16 +33,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   subtitle: {
+    color: color.blackColor,
     flex: 1,
-    fontSize: normalFontSize(),
+    fontSize: smallFontSize(),
   },
-  btnPlay: {
-    alignItems: 'flex-end',
-    height: componentUtil.pressableItemSize(),
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: componentUtil.pressableItemSize(),
-  }
 });
 
 export default HomeHorizontalCardInfoComponent;

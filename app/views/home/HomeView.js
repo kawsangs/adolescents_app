@@ -6,9 +6,9 @@ import HomeHorizontalCardComponent from '../../components/home/HomeHorizontalCar
 const HomeView = () => {
   const renderCards = () => {
     const data = [
-      { title: 'សេវាសុខភាពបន្តពូជ', points: 10, image: require('../../assets/images/intro_1.jpg') },
-      { title: 'ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ', points: 7, image: require('../../assets/images/intro_2.jpg' )},
-      { title: 'ការយល់ដឹងពីយេនឌ័រ', points: 5, image: require('../../assets/images/intro_3.jpg') }
+      { title: 'សេវាសុខភាពបន្តពូជ', points: 10, image: require('../../assets/images/intro_1.jpg'), has_audio: true },
+      { title: 'ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ', points: 7, image: require('../../assets/images/intro_2.jpg'), has_audio: true},
+      { title: 'ការយល់ដឹងពីយេនឌ័រ', points: 5, image: require('../../assets/images/intro_3.jpg'), has_audio: false }
     ];
 
     return (
