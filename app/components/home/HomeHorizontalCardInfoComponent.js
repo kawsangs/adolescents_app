@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
+import { normalFontSize } from '../../utils/font_size_util';
 
 const HomeHorizontalCardInfoComponent = () => {
   return (
@@ -13,7 +14,7 @@ const HomeHorizontalCardInfoComponent = () => {
       </View>
 
       <View style={styles.subtitleContainer}>
-        <Text style={{flex: 1, borderWidth: 1}}>7 ចំនុច</Text>
+        <Text style={styles.subtitle}>7 ចំនុច</Text>
         <TouchableOpacity style={styles.btnPlay}>
           <Icon name="volume-medium-outline" size={30} color={color.primaryColor} />
         </TouchableOpacity>
@@ -24,22 +25,24 @@ const HomeHorizontalCardInfoComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // borderWidth: 1,
     flex: 2,
     flexDirection: 'column',
+    paddingLeft: 8
   },
   subtitleContainer: {
     alignItems: 'center',
-    borderColor: 'blue',
-    // borderWidth: 1,
     flex: 1,
     flexDirection: 'row',
   },
+  subtitle: {
+    flex: 1,
+    fontSize: normalFontSize(),
+  },
   btnPlay: {
     alignItems: 'flex-end',
-    borderWidth: 1,
     height: componentUtil.pressableItemSize(),
     justifyContent: 'center',
+    alignItems: 'center',
     width: componentUtil.pressableItemSize(),
   }
 });

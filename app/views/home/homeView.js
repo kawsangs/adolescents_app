@@ -7,9 +7,9 @@ const HomeView = () => {
   const renderCards = () => {
     const data = Array.from({length: 3});
     return (
-      <View>
+      <View style={{backgroundColor: '#347cb6', flex: 1, paddingTop: 20}}>
         {data.map((_, i) =>
-          <HomeHorizontalCardComponent key={i} containerStyle={{marginVertical: 10, marginHorizontal: 16}} />
+          <HomeHorizontalCardComponent key={i} containerStyle={{marginVertical: 25, marginHorizontal: 16}} />
         )}
       </View>
     );
