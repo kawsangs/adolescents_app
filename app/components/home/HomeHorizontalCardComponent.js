@@ -12,7 +12,7 @@ const HomeHorizontalCardComponent = (props) => {
       onPress={() => console.log('on press card ===')}
     >
       <View style={{flexDirection: 'row'}}>
-        <HomeHorizontalCardImageComponent />
+        <HomeHorizontalCardImageComponent image={props.item.image} />
         <HomeHorizontalCardInfoComponent />
       </View>
     </Card>

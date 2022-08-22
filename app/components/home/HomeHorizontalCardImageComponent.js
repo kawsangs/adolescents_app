@@ -3,16 +3,12 @@ import { ImageBackground, Image, View, Text, StyleSheet } from 'react-native';
 
 import { cardBorderRadius } from '../../constants/component_constant';
 
-const HomeHorizontalCardImageComponent = () => {
+const HomeHorizontalCardImageComponent = (props) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../assets/images/intro_1.jpg')} resizeMode='cover'
+      <ImageBackground source={props.image} resizeMode='cover'
         style={styles.image} imageStyle={{borderRadius: cardBorderRadius}}
       />
-      
-      {/* <View style={styles.imageContainer}>
-        <Image source={require('../../assets/images/intro_1.jpg')} style={styles.image} resizeMode='cover' />
-      </View> */}
     </View>
   )
 }
