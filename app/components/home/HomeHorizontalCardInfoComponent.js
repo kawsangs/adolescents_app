@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import { normalFontSize } from '../../utils/font_size_util';
@@ -10,7 +11,7 @@ const HomeHorizontalCardInfoComponent = () => {
   return (
     <View style={styles.container}>
       <View style={{flex: 1, paddingVertical: 8}}>
-        <Text>ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ</Text>
+        <BoldLabelComponent label='ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ' style={{ fontSize: normalFontSize() }} />
       </View>
 
       <View style={styles.subtitleContainer}>
