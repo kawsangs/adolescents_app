@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { cardBorderRadius } from '../../../constants/component_constant';
 
-const homeHorizontalCardComponentStyles = StyleSheet.create({
+const horizontalCardComponentStyles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
     height: 115,
@@ -10,4 +10,4 @@ const homeHorizontalCardComponentStyles = StyleSheet.create({
   }
 });
 
-export default homeHorizontalCardComponentStyles;
+export default horizontalCardComponentStyles;

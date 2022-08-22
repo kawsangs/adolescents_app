@@ -2,16 +2,16 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
-import BoldLabelComponent from '../shared/BoldLabelComponent';
-import AudioButtonComponent from '../shared/AudioButtonComponent';
-import {normalFontSize} from '../../utils/font_size_util';
-import {getStyleOfDevice} from '../../utils/responsive_util';
-import tabletStyles from '../../assets/stylesheets/tablet/homeHorizontalCardInfoComponentStyles';
-import mobileStyles from '../../assets/stylesheets/mobile/homeHorizontalCardInfoComponentStyles';
+import BoldLabelComponent from '../BoldLabelComponent';
+import AudioButtonComponent from '../AudioButtonComponent';
+import {normalFontSize} from '../../../utils/font_size_util';
+import {getStyleOfDevice} from '../../../utils/responsive_util';
+import tabletStyles from '../../../assets/stylesheets/tablet/horizontalCardInfoComponentStyles';
+import mobileStyles from '../../../assets/stylesheets/mobile/horizontalCardInfoComponentStyles';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
-const HomeHorizontalCardInfoComponent = (props) => {
+const HorizontalCardInfoComponent = (props) => {
   const {t} = useTranslation();
 
   return (
@@ -28,4 +28,4 @@ const HomeHorizontalCardInfoComponent = (props) => {
   )
 }
 
-export default HomeHorizontalCardInfoComponent;
+export default HorizontalCardInfoComponent;

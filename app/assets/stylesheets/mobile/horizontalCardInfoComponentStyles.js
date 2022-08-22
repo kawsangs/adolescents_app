@@ -2,16 +2,16 @@ import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
 import { smallFontSize } from '../../../utils/font_size_util';
 
-const homeHorizontalCardInfoComponentStyles = StyleSheet.create({
+const horizontalCardInfoComponentStyles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 3,
     flexDirection: 'column',
     paddingLeft: 8,
     paddingTop: 8,
   },
   titleContainer: {
     flex: 1,
-    paddingRight: 12
+    paddingRight: 8,
   },
   subtitleContainer: {
     alignItems: 'center',
@@ -24,4 +24,4 @@ const homeHorizontalCardInfoComponentStyles = StyleSheet.create({
   },
 });
 
-export default homeHorizontalCardInfoComponentStyles;
+export default horizontalCardInfoComponentStyles;
