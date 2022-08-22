@@ -1,28 +1,30 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import HomeHorizontalCardComponent from '../../components/home/HomeHorizontalCardComponent';
+import SquareCardComponent from '../../components/shared/squareCard/SquareCardComponent';
 
 const HomeView = () => {
   const renderCards = () => {
     const data = [
-      { title: 'សេវាសុខភាពបន្តពូជ', points: 10, image: require('../../assets/images/intro_1.jpg'), has_audio: true },
-      { title: 'ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ', points: 7, image: require('../../assets/images/intro_2.jpg'), has_audio: true},
-      { title: 'ការយល់ដឹងពីយេនឌ័រ', points: 5, image: require('../../assets/images/intro_3.jpg'), has_audio: false }
+      { title: 'ការយល់ដឹងពីយេនឌ័រ', points: 5, has_audio: true },
+      { title: 'គ្លីនិចសុខភាពនិងសេវារំលូត', points: 10, has_audio: true },
+      { title: 'សេវាគាំទ្រផ្លូវចិត្តនិងចិត្តសង្គម', points: 2, has_audio: true },
+      { title: 'ការកំសាន្ត (វីដេអូអប់រំ)', points: 7, has_audio: false },
     ];
 
     return (
-      <View style={{backgroundColor: '#347cb6', flex: 1, paddingTop: 20}}>
-        {data.map((item, i) =>
-          <HomeHorizontalCardComponent key={i} containerStyle={{marginVertical: 25, marginHorizontal: 16}} item={item} />
+      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+        {data.map((item, index) =>
+          <SquareCardComponent containerStyle={{marginLeft: 16, marginTop: 40}} key={index} item={item} />
         )}
       </View>
-    );
+    )
   }
 
   return (
-    <View style={{flex: 1}}>
-      {/* <Text>Home screen</Text> */}
+    <View style={{flex: 1, backgroundColor: 'gray'}}>
+      <Text>Home screen</Text>
+
       { renderCards() }
     </View>
   )
