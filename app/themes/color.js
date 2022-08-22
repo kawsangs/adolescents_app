@@ -10,7 +10,7 @@ const color = {
   successColor: '#28a745',
   warningColor: '#ffc107',
   dangerColor: '#dc3545',
-  mutedColor: '#6c757d',
+  mutedColor: '#ce3581',
   grayColor: '#808080',
   lightGrayColor: '#D3D3D3',
   whiteSmokeColor: '#F5F5F5',

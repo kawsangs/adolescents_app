@@ -1,10 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
 import HomeHorizontalCardImageComponent from './HomeHorizontalCardImageComponent';
 import HomeHorizontalCardInfoComponent from './HomeHorizontalCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
+import { getStyleOfDevice } from '../../utils/responsive_util';
 
 const HomeHorizontalCardComponent = (props) => {
   return (
@@ -13,7 +14,7 @@ const HomeHorizontalCardComponent = (props) => {
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
         <HomeHorizontalCardImageComponent image={props.item.image} />
-        <HomeHorizontalCardInfoComponent title={props.item.title} points={props.item.points} />
+        <HomeHorizontalCardInfoComponent title={props.item.title} points={props.item.points} hasAudio={props.item.has_audio} />
       </View>
     </Card>
   )
@@ -22,7 +23,7 @@ const HomeHorizontalCardComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 120,
+    height: getStyleOfDevice(104, 94),
     paddingLeft: 12,
     paddingRight: 4,
   }
