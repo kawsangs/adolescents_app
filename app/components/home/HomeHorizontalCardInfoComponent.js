@@ -3,14 +3,18 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import AudioButtonComponent from '../shared/AudioButtonComponent';
-import color from '../../themes/color';
-import { normalFontSize, smallFontSize } from '../../utils/font_size_util';
+import { normalFontSize } from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/homeHorizontalCardInfoComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/homeHorizontalCardInfoComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HomeHorizontalCardInfoComponent = (props) => {
   return (
     <View style={styles.container}>
-      <View style={{flex: 1, paddingVertical: 8}}>
-        <BoldLabelComponent label={props.title} style={{ fontSize: normalFontSize() }} />
+      <View style={styles.titleContainer}>
+        <BoldLabelComponent label={props.title} numberOfLines={2} style={{ fontSize: normalFontSize() }} />
       </View>
 
       <View style={styles.subtitleContainer}>
@@ -20,23 +24,5 @@ const HomeHorizontalCardInfoComponent = (props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    flexDirection: 'column',
-    paddingLeft: 8,
-  },
-  subtitleContainer: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-  },
-  subtitle: {
-    color: color.blackColor,
-    flex: 1,
-    fontSize: smallFontSize(),
-  },
-});
 
 export default HomeHorizontalCardInfoComponent;

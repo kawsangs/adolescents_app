@@ -15,7 +15,7 @@ const BoldLabelComponent = (props) => {
   : { fontWeight: 'bold', fontFamily: null }
 
   return (
-    <Text style={[{ color: color.lightBlackColor },props.style, styles]}>
+    <Text {...props} style={[{ color: color.lightBlackColor },props.style, styles]}>
       {props.label}
     </Text>
   )

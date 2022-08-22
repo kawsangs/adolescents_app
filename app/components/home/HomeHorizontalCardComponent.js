@@ -6,6 +6,10 @@ import HomeHorizontalCardImageComponent from './HomeHorizontalCardImageComponent
 import HomeHorizontalCardInfoComponent from './HomeHorizontalCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import { getStyleOfDevice } from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/homeHorizontalCardComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/homeHorizontalCardComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HomeHorizontalCardComponent = (props) => {
   return (
@@ -19,14 +23,5 @@ const HomeHorizontalCardComponent = (props) => {
     </Card>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    borderRadius: cardBorderRadius,
-    height: getStyleOfDevice(104, 94),
-    paddingLeft: 12,
-    paddingRight: 4,
-  }
-});
 
 export default HomeHorizontalCardComponent;

@@ -13,7 +13,9 @@ const iconSize = getStyleOfDevice(28, 26);
 const AudioButtonComponent = (props) => {
   return (
     <TouchableOpacity style={[styles.btn, props.style]}>
-      <Icon name="volume-medium-outline" size={iconSize} color={props.hasAudio ? color.primaryColor : color.mutedColor} />
+      <Icon name="volume-medium-outline" size={iconSize} color={props.hasAudio ? color.primaryColor : color.mutedColor}
+        style={{height: iconSize}}
+      />
     </TouchableOpacity>
   )
 }

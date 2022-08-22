@@ -1,29 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import HomeHorizontalCardComponent from '../../components/home/HomeHorizontalCardComponent';
+import color from '../../themes/color';
 
 const HomeView = () => {
-  const renderCards = () => {
-    const data = [
-      { title: 'សេវាសុខភាពបន្តពូជ', points: 10, image: require('../../assets/images/intro_1.jpg'), has_audio: true },
-      { title: 'ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ', points: 7, image: require('../../assets/images/intro_2.jpg'), has_audio: true},
-      { title: 'ការយល់ដឹងពីយេនឌ័រ', points: 5, image: require('../../assets/images/intro_3.jpg'), has_audio: false }
-    ];
-
-    return (
-      <View style={{backgroundColor: '#347cb6', flex: 1, paddingTop: 20}}>
-        {data.map((item, i) =>
-          <HomeHorizontalCardComponent key={i} containerStyle={{marginVertical: 25, marginHorizontal: 16}} item={item} />
-        )}
-      </View>
-    );
-  }
-
   return (
-    <View style={{flex: 1}}>
-      {/* <Text>Home screen</Text> */}
-      { renderCards() }
+    <View style={{color: color.primaryColor,flex: 1}}>
+      <Text>Home screen</Text>
     </View>
   )
 }
