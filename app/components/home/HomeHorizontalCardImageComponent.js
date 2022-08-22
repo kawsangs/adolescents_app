@@ -5,7 +5,7 @@ import { cardBorderRadius } from '../../constants/component_constant';
 
 const HomeHorizontalCardImageComponent = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1 }}>
       <ImageBackground source={props.image} resizeMode='cover'
         style={styles.image} imageStyle={{borderRadius: cardBorderRadius}}
       />
@@ -14,16 +14,11 @@ const HomeHorizontalCardImageComponent = (props) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: 120,
-    position: 'relative',
-  },
   image: {
     borderRadius: cardBorderRadius,
-    elevation: 4,
+    elevation: 6,
     width: '100%',
-    height: '100%',
+    height: '103%',
     position: 'absolute',
     top: -16,
   }

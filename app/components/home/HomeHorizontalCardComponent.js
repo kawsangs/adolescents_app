@@ -11,9 +11,9 @@ const HomeHorizontalCardComponent = (props) => {
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => console.log('on press card ===')}
     >
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flex: 1, flexDirection: 'row'}}>
         <HomeHorizontalCardImageComponent image={props.item.image} />
-        <HomeHorizontalCardInfoComponent />
+        <HomeHorizontalCardInfoComponent title={props.item.title} points={props.item.points} />
       </View>
     </Card>
   )
@@ -22,7 +22,6 @@ const HomeHorizontalCardComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    flexDirection: 'row',
     height: 120,
     paddingLeft: 12,
     paddingRight: 4,
