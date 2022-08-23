@@ -3,15 +3,15 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../BoldLabelComponent';
-import SquareCardImageComponent from './SquareCardImageComponent';
+import TiltedCardImageComponent from './TiltedCardImageComponent';
 import CardPointAndAudioFooterComponent from '../CardPointAndAudioFooterComponent';
 import { getStyleOfDevice } from '../../../utils/responsive_util';
-import tabletStyles from '../../../assets/stylesheets/tablet/squareCardComponentStyles';
-import mobileStyles from '../../../assets/stylesheets/mobile/squareCardComponentStyles';
+import tabletStyles from '../../../assets/stylesheets/tablet/tiltedCardComponentStyles';
+import mobileStyles from '../../../assets/stylesheets/mobile/tiltedCardComponentStyles';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
-const SquareCardComponent = (props) => {
+const TiltedCardComponent = (props) => {
   const { t } = useTranslation();
 
   return (
@@ -20,7 +20,7 @@ const SquareCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <SquareCardImageComponent image={require('../../../assets/images/img_no_background.png')} />
+          <TiltedCardImageComponent image={require('../../../assets/images/img_no_background.png')} />
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.title} numberOfLines={1} style={styles.title} />
@@ -32,4 +32,4 @@ const SquareCardComponent = (props) => {
   );
 }
 
-export default SquareCardComponent;
+export default TiltedCardComponent;

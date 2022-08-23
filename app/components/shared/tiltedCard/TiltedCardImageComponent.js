@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
-const SquareCardImageComponent = (props) => {
+const TiltedCardImageComponent = (props) => {
   return <View style={{flex: 2}}>
             <Image source={props.image} style={styles.image} resizeMode='contain' />
          </View>
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SquareCardImageComponent;
+export default TiltedCardImageComponent;

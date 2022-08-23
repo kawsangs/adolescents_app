@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
-import {smallFontSize} from '../../../utils/font_size_util';
+import {normalFontSize} from '../../../utils/font_size_util';
 
-const squareCardComponentStyles = StyleSheet.create({
+const tiltedCardComponentStyles = StyleSheet.create({
   container: {
     height: 160,
     width: 190,
@@ -36,7 +36,7 @@ const squareCardComponentStyles = StyleSheet.create({
     flexGrow: 1,
   },
   title: {
-    fontSize: smallFontSize()
+    fontSize: normalFontSize()
   },
   footer: {
     flex: 2,
@@ -44,4 +44,4 @@ const squareCardComponentStyles = StyleSheet.create({
   }
 });
 
-export default squareCardComponentStyles;
+export default tiltedCardComponentStyles;
