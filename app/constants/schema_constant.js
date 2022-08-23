@@ -1,3 +1,3 @@
 export const schemaNames = [
-  'FrequentlyAskQuestion'
+  'SchemaSample'
 ];

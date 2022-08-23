@@ -1,5 +1,5 @@
 import { schemaNames } from '../constants/schema_constant';
-import FrequentlyAskQuestion from '../db/migrations/v1/frequentlyAskQuestion';
+import SchemaSample from '../db/migrations/v1/schemaSample';
 
 const schemaUtil = (() => {
   return {
@@ -8,10 +8,9 @@ const schemaUtil = (() => {
 
   function getSchemas(changedSchemas) {
     // changedSchemas parameter format (e.g: [label: 'Language', data: LanguageSchema])
-
     // this schames order must be the same order to schema constant
     let schemas = [
-      FrequentlyAskQuestion,
+      SchemaSample,
     ];
 
     changedSchemas.map((schema) => {
