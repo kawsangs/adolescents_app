@@ -5,7 +5,7 @@ import { Card } from 'react-native-paper';
 import CardWithSoundWaveAudioComponent from './CardWithSoundWaveAudioComponent';
 import CardWithSoundWaveInfoComponent from './CardWithSoundWaveInfoComponent';
 import color from '../../../themes/color';
-import {cardElevation} from '../../../constants/component_constant';
+import {cardElevation, cardBorderRadius} from '../../../constants/component_constant';
 
 const CardWithSoundWaveComponent = (props) => {
   return (
@@ -19,12 +19,13 @@ const CardWithSoundWaveComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: color.whiteColor,
+    borderRadius: cardBorderRadius,
     flexDirection: 'column',
     height: 118,
     marginHorizontal: 16,
     marginTop: 30,
     paddingHorizontal: 16,
-    paddingVertical: 6,
+    paddingVertical: 8,
     width: '95%',
   }
 });

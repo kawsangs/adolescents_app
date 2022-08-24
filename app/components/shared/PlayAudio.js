@@ -10,7 +10,7 @@ const PlayAudio = (props) => {
   const iconName = props.iconName || 'volume-high-outline';
   return (
     <TouchableOpacity onPress={() => props.onPress()} style={[styles.btn, props.btnStyle]}>
-      <Icon name={iconName} size={props.size} color={props.color} />
+      <Icon name={iconName} size={props.size} color={props.color} style={props.iconStyle} />
     </TouchableOpacity>
   )
 }
