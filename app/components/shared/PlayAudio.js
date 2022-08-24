@@ -7,9 +7,10 @@ import componentUtil from '../../utils/component_util';
 import { outlinedButtonBorderWidth } from '../../constants/component_constant';
 
 const PlayAudio = (props) => {
+  const iconName = props.iconName || 'volume-high-outline';
   return (
-    <TouchableOpacity style={[styles.btn, props.btnStyle]}>
-      <Icon name='volume-high-outline' size={props.size} color={props.color} />
+    <TouchableOpacity onPress={() => props.onPress()} style={[styles.btn, props.btnStyle]}>
+      <Icon name={iconName} size={props.size} color={props.color} />
     </TouchableOpacity>
   )
 }
