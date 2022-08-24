@@ -7,7 +7,7 @@ import componentUtil from '../../../utils/component_util';
 
 const size = componentUtil.pressableItemSize();
 
-const WaveButton = () => {
+const AudioWaveButtonComponent = (props) => {
   const [state, setState] = useState({
     opacity1: new Animated.Value(1),
     opacity2: new Animated.Value(1),
@@ -83,10 +83,10 @@ const WaveButton = () => {
   }
 
   return (
-    <View style={[styles.center]}>
+    <View style={[styles.center, props.containerStyle]}>
       { [...Array(3).keys()].map((index) => animatedView(index)) }
       <PlayAudio size={20} color={color.primaryColor}
-        btnStyle={{backgroundColor: color.whiteColor, borderColor: color.whiteColor, zIndex: 10}}
+        btnStyle={{backgroundColor: color.whiteColor, borderColor: color.whiteColor, zIndex: 10, elevation: 2}}
         onPress={() => toggleAnimation()}
       />
     </View>
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     height: size,
     width: size,
     borderRadius: size,
-    backgroundColor: color.primaryColor
+    backgroundColor: color.blackColor
   }
 });
 
-export default WaveButton;
+export default AudioWaveButtonComponent;
