@@ -10,7 +10,7 @@ import {cardElevation, cardBorderRadius} from '../../constants/component_constan
 const CardWithSoundWaveComponent = (props) => {
   return (
     <Card mode='elevated' elevation={cardElevation} style={styles.container}>
-      <CardWithSoundWaveAudioComponent/>
+      <CardWithSoundWaveAudioComponent audioFile={props.item.audio} duration={props.item.duration} />
       <CardWithSoundWaveInfoComponent title={props.item.title} description={props.item.description} />
     </Card>
   )

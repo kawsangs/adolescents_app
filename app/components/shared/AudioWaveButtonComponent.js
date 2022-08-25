@@ -17,10 +17,15 @@ const AudioWaveButtonComponent = (props) => {
   return (
     <View style={[styles.center, props.containerStyle]}>
       <AudioWaveButtonRippleComponent size={size} startAnimating={startAnimating} />
-      <PlayAudio iconName='play-outline' size={24} color={color.primaryColor}
+      <PlayAudio
+        playIcon='play'
+        pauseIcon='pause'
+        size={24}
+        color={color.primaryColor}
+        audioFile={props.audioFile}
         btnStyle={styles.audioBtn}
-        iconStyle={{marginLeft: 2}}
-        onPress={() => toggleAnimation()}
+        toggleAnimation={() => toggleAnimation()}
+        stopAnimation={() => setStartAnimating(false)}
       />
     </View>
   )
