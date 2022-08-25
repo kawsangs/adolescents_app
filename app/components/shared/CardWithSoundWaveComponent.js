@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
-import CardWithSoundWaveAudioComponent from './CardWithSoundWaveAudioComponent';
-import CardWithSoundWaveInfoComponent from './CardWithSoundWaveInfoComponent';
-import color from '../../../themes/color';
-import {cardElevation, cardBorderRadius} from '../../../constants/component_constant';
+import CardWithSoundWaveAudioComponent from './cardWithSoundWave/CardWithSoundWaveAudioComponent';
+import CardWithSoundWaveInfoComponent from './cardWithSoundWave/CardWithSoundWaveInfoComponent';
+import color from '../../themes/color';
+import {cardElevation, cardBorderRadius} from '../../constants/component_constant';
 
 const CardWithSoundWaveComponent = (props) => {
   return (

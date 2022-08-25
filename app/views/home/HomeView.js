@@ -6,7 +6,7 @@ import color from '../../themes/color';
 import audioFile from '../../assets/audios/safety_plan.mp3';
 
 // import AudioWaveButtonComponent from '../../components/shared/audioWaveButton/AudioWaveButtonComponent';
-import CardWithSoundWaveComponent from '../../components/shared/cardWithSoundWave/CardWithSoundWaveComponent';
+import CardWithSoundWaveComponent from '../../components/shared/CardWithSoundWaveComponent';
 
 const HomeView = () => {
   return (

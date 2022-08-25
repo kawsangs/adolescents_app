@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import AudioWaveButtonRippleComponent from './AudioWaveButtonRippleComponent';
-import PlayAudio from '../PlayAudio';
-import color from '../../../themes/color';
-import componentUtil from '../../../utils/component_util';
+import AudioWaveButtonRippleComponent from './audioWaveButton/AudioWaveButtonRippleComponent';
+import PlayAudio from './PlayAudio';
+import color from '../../themes/color';
+import componentUtil from '../../utils/component_util';
 
 const size = componentUtil.pressableItemSize();
 
