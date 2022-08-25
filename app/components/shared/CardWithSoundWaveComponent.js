@@ -11,7 +11,7 @@ const CardWithSoundWaveComponent = (props) => {
   return (
     <Card mode='elevated' elevation={cardElevation} style={styles.container}>
       <CardWithSoundWaveAudioComponent/>
-      <CardWithSoundWaveInfoComponent/>
+      <CardWithSoundWaveInfoComponent title={props.item.title} description={props.item.description} />
     </Card>
   )
 }
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 16,
-    width: '95%',
   }
 });
 
