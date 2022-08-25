@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import color from '../../../themes/color';
+import rippleAnimationHelper from '../../../helpers/ripple_animation_helper';
 
 const AudioWaveButtonRippleComponent  = (props) => {
   const [componentDidMount, setComponentDidMount] = useState(false);
@@ -25,43 +26,8 @@ const AudioWaveButtonRippleComponent  = (props) => {
       return;
     }
 
-    props.startAnimating ? runAnimation() : resetAnimation();
+    props.startAnimating ? rippleAnimationHelper.start(animations) : rippleAnimationHelper.reset(animations);
   }, [props.startAnimating])
-
-  const runAnimation = () => {
-    animations.map((animation, index) => {
-      Animated.loop(
-        Animated.parallel([
-          animatedTiming(animation.scale, 1.5, index * 400),
-          animatedTiming(animation.opacity, 0, index * 400),
-        ], { useNativeDriver: true })
-      ).start();
-    });
-  }
-
-  const animatedTiming = (type, toValue, delay) => {
-    return Animated.timing(type, {
-            toValue: toValue,
-            duration: 2000,
-            delay: delay,
-            useNativeDriver: true
-          })
-  }
-
-  const resetAnimation = () => {
-    Animated.loop(
-      Animated.parallel(timingAnimations())
-    ).reset();
-  }
-
-  const timingAnimations = () => {
-    const animated = [];
-    animations.map(animation => {
-      animated.push(Animated.timing(animation.scale));
-      animated.push(Animated.timing(animation.opacity));
-    });
-    return animated;
-  }
 
   const rippleView = (index) => {
     return <Animated.View key={index} style={[ StyleSheet.absoluteFillObject, styles.ripple,
