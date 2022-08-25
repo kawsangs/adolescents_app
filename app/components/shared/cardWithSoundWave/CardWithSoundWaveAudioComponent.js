@@ -9,7 +9,13 @@ import audioUtil from '../../../utils/audio_util';
 const CardWithSoundWaveAudioComponent = (props) => {
   return (
     <View>
-      <AudioWaveButtonComponent audioFile={props.audioFile} containerStyle={styles.btn} />
+      <AudioWaveButtonComponent
+        itemId={props.itemId}
+        audioFile={props.audioFile}
+        playingId={props.playingId}
+        containerStyle={styles.btn}
+        updatePlayingId={props.updatePlayingId}
+      />
       <Text style={styles.label}>{ audioUtil.getFormattedPlaySeconds(props.duration) }</Text>
     </View>
   )

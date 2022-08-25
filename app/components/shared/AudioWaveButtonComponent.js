@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import AudioWaveButtonRippleComponent from './audioWaveButton/AudioWaveButtonRippleComponent';
@@ -9,23 +9,39 @@ import componentUtil from '../../utils/component_util';
 const size = componentUtil.pressableItemSize();
 
 const AudioWaveButtonComponent = (props) => {
-  const [startAnimating, setStartAnimating] = useState(false);
-  const toggleAnimation = () => {
-    setStartAnimating(!startAnimating);
+  const [isPlaying, setIsPlaying] = useState(false);
+  useEffect(() => {
+    if (!!props.playingId && props.playingId != props.itemId)
+      setIsPlaying(false);
+  }, [props.playingId]);
+
+  // Called when toggle the play button
+  const toggleIsPlaying = () => {
+    setIsPlaying(!isPlaying);
+    props.updatePlayingId(props.itemId)
+  }
+
+  // Called when the audio is finish playing
+  const stopPlaying = () => {
+    setIsPlaying(false);
+    props.updatePlayingId(null);
   }
 
   return (
     <View style={[styles.center, props.containerStyle]}>
-      <AudioWaveButtonRippleComponent size={size} startAnimating={startAnimating} />
+      <AudioWaveButtonRippleComponent size={size} startPlaying={isPlaying} />
       <PlayAudio
         playIcon='play'
         pauseIcon='pause'
-        size={24}
-        color={color.primaryColor}
+        iconSize={24}
+        iconColor={color.primaryColor}
         audioFile={props.audioFile}
         btnStyle={styles.audioBtn}
-        toggleAnimation={() => toggleAnimation()}
-        stopAnimation={() => setStartAnimating(false)}
+        itemId={props.itemId}
+        playingId={props.playingId}
+        isPlaying={isPlaying}
+        toggleIsPlaying={() => toggleIsPlaying()}
+        stopPlaying={() => stopPlaying()}
       />
     </View>
   )

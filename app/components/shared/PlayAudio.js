@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -15,6 +15,17 @@ const PlayAudio = (props) => {
     countInterval: null,
   });
 
+  useEffect(() => {
+    if (!!props.playingId && props.playingId != props.itemId) {
+      setState({
+        audioPlayer: null,
+        playSeconds: 0,
+        duration: 0,
+        countInterval: null
+      });
+    }
+  }, [props.playingId])
+
   const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
     setState({ audioPlayer, playSeconds, duration, countInterval })
   }
@@ -23,33 +34,48 @@ const PlayAudio = (props) => {
     if (!!state.audioPlayer) {
       audioPlayerService.playPause(state.audioPlayer, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
         global.audioPlayer = audioPlayer;
+        global.countInterval = countInterval;
         updateState(audioPlayer, playSeconds, duration, countInterval);
-        handleAnimation(countInterval);
+        handleStopAnimation(countInterval);
       });
       return;
     }
 
+    // Clear all the playing audio when starting to play a new audio
+    if (!!global.audioPlayer || !!global.countInterval)
+      clearAudioPlayer()
+
     audioPlayerService.play(props.audioFile, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
+      global.countInterval = countInterval;
       updateState(audioPlayer, playSeconds, duration, countInterval);
-      handleAnimation(countInterval);
+      handleStopAnimation(countInterval);
     });
   }
 
-  const handleAnimation = (countInterval) => {
+  const handleStopAnimation = (countInterval) => {
     if (!countInterval)
-      props.stopAnimation();
+      props.stopPlaying();
+  }
+
+  const clearAudioPlayer = () => {
+    global.audioPlayer.release();
+    clearInterval(global.countInterval)
+    global.audioPlayer = null;
+    global.countInterval = null;
   }
 
   const onPress = () => {
-    props.toggleAnimation();
+    props.toggleIsPlaying();
     toggleAudio();
   }
 
   return (
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]}>
-      <Icon name={!state.countInterval ? props.playIcon : props.pauseIcon} size={props.size} color={props.color}
-        style={[props.iconStyle, { marginLeft: !state.countInterval ? 0 : -2 }]}
+      <Icon
+        name={props.isPlaying ? props.pauseIcon : props.playIcon}
+        size={props.iconSize} color={props.iconColor}
+        style={[props.iconStyle, { marginLeft: !props.startPlaying ? 0 : -2 }]}
       />
     </TouchableOpacity>
   )
@@ -70,4 +96,16 @@ const styles = StyleSheet.create({
 export default PlayAudio;
 
 // How to use
-// <PlayAudio btnStyle={styles} />
+{/* <PlayAudio
+  playIcon='play'
+  pauseIcon='pause'
+  iconSize={24}
+  iconColor={color.primaryColor}
+  audioFile={props.audioFile}
+  btnStyle={styles.audioBtn}
+  itemId={props.itemId}             // id of the item that render on the card
+  playingId={props.playingId}       // id of the item that is playing the audio
+  isPlaying={isPlaying}             // playing status of the audio
+  toggleIsPlaying={() => toggleIsPlaying()}
+  stopPlaying={() => stopPlaying()}
+/> */}
