@@ -10,11 +10,10 @@ import {normalFontSize, smallFontSize} from '../../../utils/font_size_util';
 
 const CardWithSoundWaveAudioComponent = (props) => {
   return (
-    <React.Fragment>
-      <AudioWaveButtonComponent containerStyle={{ width: 48, height: 48, borderWidth: 0, position: 'absolute', top: -28, zIndex: 10 }} />
-
+    <View>
+      <AudioWaveButtonComponent containerStyle={{ width: 48, height: 48, borderWidth: 0, position: 'absolute', top: -20, zIndex: 10 }} />
       <Text style={{textAlign: 'right', fontSize: smallFontSize()}}>02:30</Text>
-    </React.Fragment>
+    </View>
   )
 }
 

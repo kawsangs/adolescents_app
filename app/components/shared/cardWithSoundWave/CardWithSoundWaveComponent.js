@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: cardBorderRadius,
     flexDirection: 'column',
-    height: 118,
     marginHorizontal: 16,
     marginTop: 30,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingTop: 8,
+    paddingBottom: 16,
     width: '95%',
   }
 });
