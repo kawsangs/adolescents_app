@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
 
-import CardWithSoundWaveAudioComponent from './cardWithSoundWave/CardWithSoundWaveAudioComponent';
-import CardWithSoundWaveInfoComponent from './cardWithSoundWave/CardWithSoundWaveInfoComponent';
+import CardWithSoundWaveAudioComponent from './cardWithSoundWaves/CardWithSoundWaveAudioComponent';
+import CardWithSoundWaveInfoComponent from './cardWithSoundWaves/CardWithSoundWaveInfoComponent';
 import color from '../../themes/color';
 import {cardElevation, cardBorderRadius} from '../../constants/component_constant';
 

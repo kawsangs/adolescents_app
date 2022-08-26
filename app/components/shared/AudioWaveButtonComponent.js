@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import AudioWaveButtonRippleComponent from './audioWaveButton/AudioWaveButtonRippleComponent';
+import AudioWaveButtonRippleComponent from './audioWaveButtons/AudioWaveButtonRippleComponent';
 import PlayAudio from './PlayAudio';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';

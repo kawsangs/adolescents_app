@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Sound from 'react-native-sound';
 
 import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
 import {smallFontSize} from '../../../utils/font_size_util';
@@ -7,6 +8,17 @@ import componentUtil from '../../../utils/component_util';
 import audioUtil from '../../../utils/audio_util';
 
 const CardWithSoundWaveAudioComponent = (props) => {
+  const [duration, setDuration] = useState(0);      // duration is in second
+  useEffect(() => {
+    const audioPlayer = new Sound(props.audioFile, (error) => {
+      if (!!error)
+        return console.log('failed to play audio = ', error);
+
+      setDuration(audioPlayer.getDuration());
+      audioPlayer.release();
+    })
+  }, [])
+
   return (
     <View>
       <AudioWaveButtonComponent
@@ -16,7 +28,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
         containerStyle={styles.btn}
         updatePlayingId={props.updatePlayingId}
       />
-      <Text style={styles.label}>{ audioUtil.getFormattedPlaySeconds(props.duration) }</Text>
+      <Text style={styles.label}>{ audioUtil.getFormattedPlaySeconds(duration) }</Text>
     </View>
   )
 }
