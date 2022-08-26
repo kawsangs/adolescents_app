@@ -7,7 +7,7 @@ import componentUtil from '../../utils/component_util';
 import { outlinedButtonBorderWidth } from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
-const PlayAudio = (props) => {
+const PlayAudioComponent = (props) => {
   const [state, setState] = useState({
     audioPlayer: null,
     playSeconds: 0,
@@ -36,6 +36,7 @@ const PlayAudio = (props) => {
         global.audioPlayer = audioPlayer;
         global.countInterval = countInterval;
         updateState(audioPlayer, playSeconds, duration, countInterval);
+        props.updatePlaySeconds(playSeconds);  // update the play seconds to its parent component
         handleStopAnimation(countInterval);
       });
       return;
@@ -45,10 +46,11 @@ const PlayAudio = (props) => {
     if (!!global.audioPlayer || !!global.countInterval)
       clearAudioPlayer()
 
-    audioPlayerService.play(props.audioFile, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audioFile, props.itemId, props.playingId, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
       global.countInterval = countInterval;
       updateState(audioPlayer, playSeconds, duration, countInterval);
+      props.updatePlaySeconds(playSeconds);
       handleStopAnimation(countInterval);
     });
   }
@@ -75,7 +77,7 @@ const PlayAudio = (props) => {
       <Icon
         name={props.isPlaying ? props.pauseIcon : props.playIcon}
         size={props.iconSize} color={props.iconColor}
-        style={[props.iconStyle, { marginLeft: !props.startPlaying ? 0 : -2 }]}
+        style={[props.iconStyle, { marginLeft: !props.isPlaying ? 0 : -2 }]}
       />
     </TouchableOpacity>
   )
@@ -93,10 +95,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PlayAudio;
+export default PlayAudioComponent;
 
 // How to use
-{/* <PlayAudio
+{/* <PlayAudioComponent
   playIcon='play'
   pauseIcon='pause'
   iconSize={24}

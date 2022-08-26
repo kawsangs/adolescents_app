@@ -4,12 +4,12 @@ const audioUtil = (() => {
     getReverseSeconds,
   }
 
-  function getFormattedPlaySeconds(seconds) {
+  function getFormattedPlaySeconds(seconds = 0) {
     return new Date(Math.round(seconds) * 1000).toISOString().substr(14, 5);
   }
 
-  function getReverseSeconds(playSeconds, duration) {
-    if (playSeconds) {
+  function getReverseSeconds(playSeconds = 0, duration = 0) {
+    if (playSeconds || duration) {
       const reverseSecond = duration - playSeconds;
       return getFormattedPlaySeconds(reverseSecond);
     }

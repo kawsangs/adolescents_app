@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 
 import color from '../../themes/color';
 import {smallFontSize} from '../../utils/font_size_util';
@@ -13,8 +13,7 @@ const CardSubtitleLabelComponent = (props) => {
 const styles = StyleSheet.create({
   label: {
     color: color.blackColor,
-    fontSize: smallFontSize(),
-    // marginTop: 8,
+    fontSize: smallFontSize()
   },
 })
 

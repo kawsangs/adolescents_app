@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import {ScrollView} from 'react-native';
 
 import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
+
+// This component is for rendering a list of cards with a sound wave component.
+// It has palyingId as a state to prevent the audio from playing overlap each other
 
 const CardWithSoundWaveListComponent = (props) => {
   const [playingId, setPlayingId] = useState(null);

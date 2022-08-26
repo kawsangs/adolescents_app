@@ -26,8 +26,8 @@ const AudioWaveButtonRippleComponent  = (props) => {
       return;
     }
 
-    props.startPlaying ? rippleAnimationHelper.start(animations) : rippleAnimationHelper.reset(animations);
-  }, [props.startPlaying])
+    props.isPlaying ? rippleAnimationHelper.start(animations) : rippleAnimationHelper.reset(animations);
+  }, [props.isPlaying])
 
   const rippleView = (index) => {
     return <Animated.View key={index} style={[ StyleSheet.absoluteFillObject, styles.ripple,

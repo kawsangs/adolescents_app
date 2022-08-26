@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: cardBorderRadius,
     flexDirection: 'column',
-    marginHorizontal: 16,
     marginTop: 30,
     paddingHorizontal: 16,
     paddingTop: 8,

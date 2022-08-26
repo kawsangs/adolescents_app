@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Sound from 'react-native-sound';
 
@@ -8,16 +8,31 @@ import componentUtil from '../../../utils/component_util';
 import audioUtil from '../../../utils/audio_util';
 
 const CardWithSoundWaveAudioComponent = (props) => {
-  const [duration, setDuration] = useState(0);      // duration is in second
-  useEffect(() => {
-    const audioPlayer = new Sound(props.audioFile, (error) => {
-      if (!!error)
-        return console.log('failed to play audio = ', error);
+  const [duration, setDuration] = useState(0);      // duration in second
+  const [playSeconds, setPlaySeconds] = useState(0);
 
-      setDuration(audioPlayer.getDuration());
-      audioPlayer.release();
-    })
-  }, [])
+  // Get the duration of the audio file
+  const audioPlayer = new Sound(props.audioFile, (error) => {
+    if (!!error)
+      return console.log('failed to play audio = ', error);
+
+    setDuration(audioPlayer.getDuration());
+    audioPlayer.release();
+  });
+
+  // useMemo will update the displayDuration only when the playSeconds and duration has changed
+  const displayDuration = useMemo(() =>  audioUtil.getReverseSeconds(playSeconds, duration));
+
+  useEffect(() => {
+    // Watch the playing audio id if it is not the same then clear the play seconds
+    if (!!props.playingId && props.playingId != props.itemId)
+      setPlaySeconds(0);
+  }, [props.playingId]);
+
+  const updatePlaySeconds = (seconds) => {
+    if (playSeconds != Math.round(seconds) || seconds == 0)
+      setPlaySeconds(Math.round(seconds));
+  }
 
   return (
     <View>
@@ -27,8 +42,9 @@ const CardWithSoundWaveAudioComponent = (props) => {
         playingId={props.playingId}
         containerStyle={styles.btn}
         updatePlayingId={props.updatePlayingId}
+        updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}
       />
-      <Text style={styles.label}>{ audioUtil.getFormattedPlaySeconds(duration) }</Text>
+      <Text style={styles.label}>{ displayDuration }</Text>
     </View>
   )
 }

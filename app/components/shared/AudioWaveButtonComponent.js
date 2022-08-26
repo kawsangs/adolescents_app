@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import AudioWaveButtonRippleComponent from './audioWaveButtons/AudioWaveButtonRippleComponent';
-import PlayAudio from './PlayAudio';
+import PlayAudioComponent from './PlayAudioComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 
@@ -21,7 +21,7 @@ const AudioWaveButtonComponent = (props) => {
     props.updatePlayingId(props.itemId)
   }
 
-  // Called when the audio is finish playing
+  // Called when the audio is finished playing
   const stopPlaying = () => {
     setIsPlaying(false);
     props.updatePlayingId(null);
@@ -29,8 +29,8 @@ const AudioWaveButtonComponent = (props) => {
 
   return (
     <View style={[styles.center, props.containerStyle]}>
-      <AudioWaveButtonRippleComponent size={size} startPlaying={isPlaying} />
-      <PlayAudio
+      <AudioWaveButtonRippleComponent size={size} isPlaying={isPlaying} />
+      <PlayAudioComponent
         playIcon='play'
         pauseIcon='pause'
         iconSize={24}
@@ -42,6 +42,7 @@ const AudioWaveButtonComponent = (props) => {
         isPlaying={isPlaying}
         toggleIsPlaying={() => toggleIsPlaying()}
         stopPlaying={() => stopPlaying()}
+        updatePlaySeconds={props.updatePlaySeconds}
       />
     </View>
   )
