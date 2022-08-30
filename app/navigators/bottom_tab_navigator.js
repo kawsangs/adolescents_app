@@ -1,37 +1,86 @@
 import React from 'react';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {useTranslation} from 'react-i18next';
 
 import HomeView from '../views/home/HomeView';
 import VideoView from '../views/videos/VideoView';
+import BottomTabNavigatorItemComponent from '../components/bottomTabNavigator/BottomTabNavigatorItemComponent';
 import color from '../themes/color';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
-      barStyle={{backgroundColor: color.primaryColor}}
-      activeColor={color.whiteColor}
-      inactiveColor={color.mutedColor}
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarStyle: styles.tabBar,
+        tabBarActiveTintColor: '#ce3581',
+        tabBarInactiveTintColor: color.primaryColor,
+        tabBarShowLabel: false
+      }}
     >
-      <Tab.Screen name="Home" component={HomeView}
+      <Tab.Screen
+        name="Home"
+        component={HomeView}
         options={{
-          tabBarIcon: ({focused, color}) => (<Icon name="home" color={color} size={25} />)
+          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
+          tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
         }}
       />
-      <Tab.Screen name="Videos" component={VideoView}
+      <Tab.Screen
+        name="Video"
+        component={VideoView}
         options={{
-          tabBarIcon: ({focused, color}) => (<Icon name="film" color={color} size={20} />)
+          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
+          tabBarItemStyle: styles.tabBarItem,
         }}
       />
-      <Tab.Screen name="Settings" component={VideoView}
+      <Tab.Screen
+        name="Map"
+        component={VideoView}
         options={{
-          tabBarIcon: ({focused, color}) => (<Icon name="gear" color={color} size={25} />)
+          tabBarLabel: t('map'),
+          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='map' color={color} size={size} label={t('map')} />,
+          tabBarItemStyle: styles.tabBarItem,
+        }}
+      />
+      <Tab.Screen
+        name="Consult"
+        component={VideoView}
+        options={{
+          tabBarLabel: t('consult'),
+          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
+          tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
         }}
       />
     </Tab.Navigator>
-  );
+  )
 }
+const BORDER_RADIUS = 12;
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: color.primaryColor,
+    borderTopWidth: 0,
+    elevation: 0,
+    height: 62,
+    paddingBottom: 6,
+    paddingHorizontal: 8,
+  },
+  tabBarItem: {
+    backgroundColor: color.whiteColor,
+  },
+  tabBarLeftItem: {
+    borderBottomLeftRadius: BORDER_RADIUS,
+    borderTopLeftRadius: BORDER_RADIUS,
+    marginRight: -1
+  },
+  tabBarRightItem: {
+    borderBottomRightRadius: BORDER_RADIUS,
+    borderTopRightRadius: BORDER_RADIUS
+  }
+});
 
 export default BottomTabNavigator;
