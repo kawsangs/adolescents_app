@@ -2,12 +2,12 @@ import React from 'react';
 import {View} from 'react-native';
 import {Card} from 'react-native-paper';
 
-import HorizontalCardImageComponent from './HorizontalCardImageComponent';
-import HorizontalCardInfoComponent from './HorizontalCardInfoComponent';
-import { cardElevation } from '../../../constants/component_constant';
-import { getStyleOfDevice } from '../../../utils/responsive_util';
-import tabletStyles from '../../../assets/stylesheets/tablet/horizontalCardComponentStyles';
-import mobileStyles from '../../../assets/stylesheets/mobile/horizontalCardComponentStyles';
+import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageComponent';
+import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComponent';
+import { cardElevation } from '../../constants/component_constant';
+import { getStyleOfDevice } from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponentStyles';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
