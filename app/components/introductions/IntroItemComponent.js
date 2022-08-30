@@ -1,43 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
-import color from '../../themes/color';
+import BoldLabelComponent from '../shared/BoldLabelComponent';
+import { getStyleOfDevice } from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/introItemComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/introItemComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const IntroItemComponent = (props) => {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.slide}>
       <Image source={props.image} style={styles.image} resizeMode='contain' />
-      <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.text}>{props.description}</Text>
+      <View style={styles.labelContainer}>
+        <BoldLabelComponent label={t(props.title)} style={styles.title} />
+        <Text style={styles.label}>{t(props.description)}</Text>
+      </View>
     </View>
   );
 }
-
-const screenHeight = Dimensions.get('screen').height;
-
-const styles = StyleSheet.create({
-  slide: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: color.whiteColor,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: color.blackColor,
-  },
-  text: {
-    fontSize: 16,
-    color: color.lightBlackColor,
-    marginTop: 36,
-  },
-  image: {
-    width: '70%',
-    height: 290,
-    marginBottom: 30,
-    marginTop: -(screenHeight / 8)
-  }
-});
 
 export default IntroItemComponent;

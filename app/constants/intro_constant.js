@@ -1,22 +1,29 @@
 export const slides = [
   {
     key: 'one',
-    title: 'Introductin title 1',
-    text: 'Description of the introduction screen 1.\nContent of the indroduction 1',
+    title: 'firstIntroTitle',
+    text: 'firstIntroDescription',
     image: require('../assets/images/intro_2.jpg'),
     backgroundColor: '#59b2ab',
   },
   {
     key: 'two',
-    title: 'Introduction title 2',
-    text: 'Description of the introduction screen 2.\nContent of the indroduction 2',
+    title: 'secondIntroTitle',
+    text: 'secondIntroDescription',
     image: require('../assets/images/intro_2.jpg'),
     backgroundColor: '#febe29',
   },
   {
     key: 'three',
-    title: 'Introuction title 3',
-    text: 'Description of the introduction screen 3.\nContent of the indroduction 3',
+    title: 'thirdIntroTitle',
+    text: 'thirdIntroDescription',
+    image: require('../assets/images/intro_3.jpg'),
+    backgroundColor: '#22bcb5',
+  },
+  {
+    key: 'four',
+    title: 'fourthIntroTitle',
+    text: 'fourthIntroDescription',
     image: require('../assets/images/intro_3.jpg'),
     backgroundColor: '#22bcb5',
   }

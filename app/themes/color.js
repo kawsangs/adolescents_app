@@ -1,10 +1,10 @@
 const color = {
-  primaryColor: '#94B49F',
+  primaryColor: '#347cb6',
   secondaryColor: '#CEE5D0',
   tertiaryColor: '#FCF8E8',
   quaternaryColor: '#ECB390',
   blackColor: '#000000',
-  lightBlackColor: '#5b5a56',
+  lightBlackColor: '#333333',
   paleBlackColor: '#807e79',
   whiteColor: '#ffffff',
   successColor: '#28a745',

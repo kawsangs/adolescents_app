@@ -1,5 +1,12 @@
 {
-  "hello": "hello world",
-  "myName": "My name is {{ firstName }} {{ lastName }}",
-  "myDob": "DOB is <bold>{{ month }}</bold> <i>{{ year }}</i>"
+  "skip": "Skip",
+  "startUsingApp": "Start using app",
+  "firstIntroTitle": "First intro title",
+  "firstIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
+  "secondIntroTitle": "Second intro title",
+  "secondIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
+  "thirdIntroTitle": "Third intro title",
+  "thirdIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
+  "fourthIntroTitle": "Fourth intro title",
+  "fourthIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help."
 }
