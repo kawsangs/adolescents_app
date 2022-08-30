@@ -1,6 +1,6 @@
 const color = {
   primaryColor: '#347cb6',
-  secondaryColor: '#CEE5D0',
+  secondaryColor: '#ce3581',
   tertiaryColor: '#FCF8E8',
   quaternaryColor: '#ECB390',
   blackColor: '#000000',
@@ -10,7 +10,7 @@ const color = {
   successColor: '#28a745',
   warningColor: '#ffc107',
   dangerColor: '#dc3545',
-  mutedColor: '#ce3581',
+  mutedColor: '#6c757d',
   grayColor: '#808080',
   lightGrayColor: '#D3D3D3',
   whiteSmokeColor: '#F5F5F5',
