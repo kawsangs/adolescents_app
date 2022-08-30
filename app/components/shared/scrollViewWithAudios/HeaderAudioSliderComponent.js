@@ -40,10 +40,10 @@ const HeaderAudioSliderComponent = (props) => {
         minimumValue={0}
         maximumValue={props.duration}
         maximumTrackTintColor={color.lightGrayColor}
-        minimumTrackTintColor={color.pinkColor}
+        minimumTrackTintColor={color.secondaryColor}
         containerStyle={{top: -22}}
         thumbTouchSize={{ width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize() }}
-        thumbStyle={{backgroundColor: color.whiteColor, borderColor: color.pinkColor, borderWidth: 2.5, width: thumbSize, height: thumbSize }}
+        thumbStyle={{backgroundColor: color.whiteColor, borderColor: color.secondaryColor, borderWidth: 2.5, width: thumbSize, height: thumbSize }}
         trackStyle={{height: 4}}
         onSlidingComplete={(value) => onSlidingComplete(value)}
         onSlidingStart={(value) => onSlidingStart()}

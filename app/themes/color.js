@@ -14,7 +14,6 @@ const color = {
   grayColor: '#808080',
   lightGrayColor: '#D3D3D3',
   whiteSmokeColor: '#F5F5F5',
-  pinkColor: '#ce3581',
 }
 
 export default color;

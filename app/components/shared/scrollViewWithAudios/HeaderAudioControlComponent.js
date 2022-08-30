@@ -22,7 +22,7 @@ const HeaderAudioControlComponent = (props) => {
         audioPlayer={state.audioPlayer} countInterval={state.countInterval}
         updateAudioPlayer={updateState}
       />
-      <AudioDurationLabelComponent playSeconds={state.playSeconds} duration={state.duration} />
+      <AudioDurationLabelComponent playSeconds={state.playSeconds} duration={state.duration} scrollY={props.scrollY} />
       <HeaderAudioSliderComponent scrollY={props.scrollY}
         audioPlayer={state.audioPlayer} duration={state.duration} playSeconds={state.playSeconds}
         countInterval={state.countInterval}
