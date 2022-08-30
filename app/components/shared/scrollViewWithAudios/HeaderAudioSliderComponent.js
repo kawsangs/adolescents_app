@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {Slider} from '@miblanchard/react-native-slider';
 
-import color from '../../themes/color';
-import componentUtil from '../../utils/component_util';
-import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../constants/component_constant';
-import audioPlayerService from '../../services/audio_player_service';
+import color from '../../../themes/color';
+import componentUtil from '../../../utils/component_util';
+import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../../constants/component_constant';
+import audioPlayerService from '../../../services/audio_player_service';
 
 const HeaderAudioSliderComponent = (props) => {
   const thumbSize = props.scrollY.interpolate({

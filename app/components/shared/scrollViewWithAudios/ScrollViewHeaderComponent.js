@@ -2,9 +2,9 @@ import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 
-import color from '../../themes/color';
+import color from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
-import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../constants/component_constant';
+import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
