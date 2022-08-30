@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const BottomTabNavigatorItemComponent = (props) => {
+const TabBarItemComponent = (props) => {
   return (
     <View style={{flex: 1, width: 50}}>
       <View style={{flex: 1, alignItems: 'center', paddingBottom: 12, paddingTop: 8}}>
-        <Icon name={props.icon} color={props.color} size={props.size - 1} />
+        <Icon name={props.icon} color={props.color} size={24} />
         <Text style={{fontSize: 12, color: props.color}}>{props.label}</Text>
       </View>
 
@@ -17,4 +17,4 @@ const BottomTabNavigatorItemComponent = (props) => {
   )
 }
 
-export default BottomTabNavigatorItemComponent;
+export default TabBarItemComponent;

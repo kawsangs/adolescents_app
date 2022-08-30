@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 
 import HomeView from '../views/home/HomeView';
 import VideoView from '../views/videos/VideoView';
-import BottomTabNavigatorItemComponent from '../components/bottomTabNavigator/BottomTabNavigatorItemComponent';
+import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +17,7 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         tabBarStyle: styles.tabBar,
-        tabBarActiveTintColor: '#ce3581',
+        tabBarActiveTintColor: color.secondaryColor,
         tabBarInactiveTintColor: color.primaryColor,
         tabBarShowLabel: false
       }}
@@ -26,7 +26,7 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeView}
         options={{
-          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
         }}
       />
@@ -34,7 +34,7 @@ function BottomTabNavigator() {
         name="Video"
         component={VideoView}
         options={{
-          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
           tabBarItemStyle: styles.tabBarItem,
         }}
       />
@@ -43,7 +43,7 @@ function BottomTabNavigator() {
         component={VideoView}
         options={{
           tabBarLabel: t('map'),
-          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='map' color={color} size={size} label={t('map')} />,
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map' color={color} size={size} label={t('map')} />,
           tabBarItemStyle: styles.tabBarItem,
         }}
       />
@@ -52,7 +52,7 @@ function BottomTabNavigator() {
         component={VideoView}
         options={{
           tabBarLabel: t('consult'),
-          tabBarIcon: ({focused, color, size}) => <BottomTabNavigatorItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
         }}
       />
