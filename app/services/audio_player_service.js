@@ -1,4 +1,5 @@
 import Sound from 'react-native-sound';
+import { FAST_FORWARD, REVERSE, SEEK_SECOND } from '../constants/audio_constant';
 
 // Notice: The audio file must have the Bit Rate Mode as Constant in order to prevent the library from
 // returning invalid audio duration
@@ -9,6 +10,7 @@ const audioPlayerService = (() => {
     playPause,
     stop,
     seekTo,
+    fastForwardOrReverse,
   }
 
   function play(filename, itemId, playingId, callback) {
@@ -46,6 +48,18 @@ const audioPlayerService = (() => {
   function seekTo(audioPlayer, seconds) {
     if (!!audioPlayer)
       audioPlayer.setCurrentTime(seconds);
+  }
+
+  function fastForwardOrReverse(audioPlayer, type) {
+    if (!audioPlayer) return;
+
+    audioPlayer.getCurrentTime((seconds) => {
+      const seekTo = {
+        FAST_FORWARD: seconds + SEEK_SECOND,
+        REVERSE: seconds > SEEK_SECOND ? seconds - SEEK_SECOND : 0,
+      }
+      audioPlayer.setCurrentTime(seekTo[type])
+    })
   }
 
   // private method
