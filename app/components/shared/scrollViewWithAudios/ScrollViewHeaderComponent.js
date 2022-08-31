@@ -1,16 +1,23 @@
 import React from 'react';
-import { Animated, StyleSheet, ImageBackground } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
 
 import color from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
+import {getStyleOfDevice} from '../../../utils/responsive_util';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
+    extrapolate: 'clamp',
+  });
+
+  const imageOpacity = props.scrollY.interpolate({
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: [1, 0],
     extrapolate: 'clamp',
   });
 
@@ -21,16 +28,15 @@ const ScrollViewHeaderComponent = (props) => {
         start={{x: 0, y: 0}} end={{x: 1, y: 0}}
         style={{height: '100%', width: '100%'}}
       >
-        <ImageBackground
+        <Animated.Image
           source={require('../../../assets/images/android_landscape.jpeg')}
+          style={[styles.headerImage, {opacity: imageOpacity}]}
           resizeMode="cover"
-          style={{width: '100%', height: 100}}
-        >
-          <Appbar.Header style={{backgroundColor: 'rgba(0, 0, 0, 0)', elevation: 0, zIndex: 1}}>
-            <Appbar.BackAction />
-            <Appbar.Content title={props.title} />
-          </Appbar.Header>
-        </ImageBackground>
+        />
+        <Appbar.Header style={{backgroundColor: 'rgba(0, 0, 0, 0)', elevation: 0}}>
+          <Appbar.BackAction />
+          <Appbar.Content title={props.title} />
+        </Appbar.Header>
 
         <HeaderAudioControlComponent scrollY={props.scrollY} />
       </LinearGradient>
@@ -48,6 +54,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     zIndex: 1
   },
+  headerImage: {
+    height: getStyleOfDevice(110, 100),
+    width: '100%',
+    position: 'absolute', top: 0,
+  }
 });
 
 export default ScrollViewHeaderComponent;
