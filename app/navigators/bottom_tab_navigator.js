@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 
-import HomeView from '../views/home/HomeView';
+import homeNavigator from './home_navigator';
 import VideoView from '../views/videos/VideoView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
@@ -24,10 +24,11 @@ function BottomTabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeView}
+        component={homeNavigator}
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
+          headerShown: false
         }}
       />
       <Tab.Screen
