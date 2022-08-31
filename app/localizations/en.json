@@ -10,5 +10,9 @@
   "fourthIntroTitle": "Fourth intro title",
   "fourthIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
   "point_one": "{{count}} point",
-  "point_other": "{{count}} points"
+  "point_other": "{{count}} points",
+  "home": "Home",
+  "video": "Video",
+  "map": "Map",
+  "consult": "Consult"
 }
