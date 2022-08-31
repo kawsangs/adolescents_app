@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import HomeView from '../views/home/HomeView';
 import VideoView from '../views/videos/VideoView';
-import SettingsStackNavigator from './settings_stack_navigator';
 import color from '../themes/color';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -26,7 +25,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({focused, color}) => (<Icon name="film" color={color} size={20} />)
         }}
       />
-      <Tab.Screen name="Settings" component={SettingsStackNavigator}
+      <Tab.Screen name="Settings" component={VideoView}
         options={{
           tabBarIcon: ({focused, color}) => (<Icon name="gear" color={color} size={25} />)
         }}
