@@ -18,7 +18,13 @@ const ScrollViewHeaderComponent = (props) => {
   const imageOpacity = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [1, 0],
-    extrapolate: 'clamp',
+    extrapolate: 'extend'
+  });
+
+  const titleOpacity = props.scrollY.interpolate({
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: [0, 1],
+    extrapolate: 'extend'
   });
 
   return (
@@ -35,7 +41,9 @@ const ScrollViewHeaderComponent = (props) => {
         />
         <Appbar.Header style={{backgroundColor: 'rgba(0, 0, 0, 0)', elevation: 0}}>
           <Appbar.BackAction />
-          <Appbar.Content title={props.title} />
+          <Animated.View style={{flex: 1, paddingLeft: 8, opacity: titleOpacity}}>
+            <Appbar.Content title={props.title} style={{justifyContent: 'center'}} />
+          </Animated.View>
         </Appbar.Header>
 
         <HeaderAudioControlComponent scrollY={props.scrollY} />
