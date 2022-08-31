@@ -13,7 +13,6 @@ const CardWithSoundWaveComponent = (props) => {
       <CardWithSoundWaveAudioComponent
         itemId={props.item.id}
         audioFile={props.item.audio}
-        duration={props.item.duration}
         playingId={props.playingId}
         updatePlayingId={props.updatePlayingId}
       />

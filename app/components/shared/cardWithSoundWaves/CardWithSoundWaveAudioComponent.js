@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     height: componentUtil.pressableItemSize(),
     width: componentUtil.pressableItemSize(),
     position: 'absolute',
-    top: -20,
+    top: -32,
     zIndex: 10
   },
   label: {
