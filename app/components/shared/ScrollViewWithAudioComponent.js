@@ -2,7 +2,7 @@ import React from 'react';
 import { Animated, View, ScrollView, Text, StyleSheet } from 'react-native';
 
 import color from '../../themes/color';
-import ScrollViewHeaderComponent from './ScrollViewHeaderComponent';
+import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
 import { headerWithAudioMaxHeight } from '../../constants/component_constant';
 
 const ScrollViewWithAudioComponent = (props) => {
@@ -22,12 +22,13 @@ const ScrollViewWithAudioComponent = (props) => {
   }
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flexGrow: 1}}>
       <ScrollViewHeaderComponent title={props.title} scrollY={scrollY} />
-      <ScrollView style={{flex: 1, backgroundColor: color.whiteColor}} scrollEventThrottle={16}
+      <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}} scrollEventThrottle={16}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
         { renderScrollViewContent() }
+        <Text>Listitemsldfajsdlfkj</Text>
       </ScrollView>
     </View>
   )

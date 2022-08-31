@@ -2,10 +2,11 @@ import React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 
 import AudioControlButton from './AudioControlButton';
-import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../constants/component_constant';
-import { getStyleOfDevice } from '../../utils/responsive_util';
-import audioPlayerService from '../../services/audio_player_service';
-import audioFile from '../../assets/audios/safety_plan.mp3';
+import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../../constants/component_constant';
+import { FAST_FORWARD, REVERSE } from '../../../constants/audio_constant';
+import { getStyleOfDevice } from '../../../utils/responsive_util';
+import audioPlayerService from '../../../services/audio_player_service';
+import audioFile from '../../../assets/audios/safety_plan.mp3';
 
 const HeaderAudioControlButtonsComponent = (props) => {
   // Scale for making the audio controls smaller or bigger when scrolling
@@ -40,9 +41,9 @@ const HeaderAudioControlButtonsComponent = (props) => {
       <Animated.View style={[styles.audioControl,
         {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
       >
-        <AudioControlButton iconName='step-backward' size={28} />
-        <AudioControlButton iconName={!!props.countInterval ? 'pause-circle' : 'play-circle'} size={65} onPress={() => playAudio()} />
-        <AudioControlButton iconName='step-forward' size={28} />
+        <AudioControlButton iconName='play-back' size={34} onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, REVERSE)} />
+        <AudioControlButton iconName={!!props.countInterval ? 'pause' : 'play'} size={55} onPress={() => playAudio()} />
+        <AudioControlButton iconName='play-forward' size={34} onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, FAST_FORWARD)} />
       </Animated.View>
     </View>
   )
