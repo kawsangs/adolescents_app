@@ -4,7 +4,7 @@ import { Card } from 'react-native-paper';
 
 import color from '../../themes/color';
 import { cardElevation } from '../../constants/component_constant';
-import CardInfoComponent from './card/CardInfoComponent';
+import CardInfoComponent from './cards/CardInfoComponent';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 
 const cardHeight = getStyleOfDevice(320, 290);

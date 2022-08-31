@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import PlayAudio from '../PlayAudio';
+import PlayAudioComponent from '../PlayAudioComponent';
 import color from '../../../themes/color';
 import { getStyleOfDevice } from '../../../utils/responsive_util';
 import tabletStyles from '../../../assets/stylesheets/tablet/cardInfoComponentStyles';
@@ -15,7 +15,12 @@ const CardInfoComponent = (props) => {
   return (
     <Card.Content style={styles.container}>
       <View style={{flex: 1}}>
-        <PlayAudio size={28} color={color.primaryColor} />
+        <PlayAudioComponent
+          playIcon='volume-2'
+          pauseIcon='pause-outline'
+          iconSize={28}
+          iconColor={color.primaryColor}
+        />
         <Card.Title
           title={ props.title }
           subtitle={props.subtitle}

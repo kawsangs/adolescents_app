@@ -1,5 +1,8 @@
 import Sound from 'react-native-sound';
 
+// Notice: The audio file must have the Bit Rate Mode as Constant in order to prevent the library from
+// returning invalid audio duration
+
 const audioPlayerService = (() => {
   return {
     play,
@@ -8,7 +11,9 @@ const audioPlayerService = (() => {
     seekTo,
   }
 
-  function play(filename, callback) {
+  function play(filename, itemId, playingId, callback) {
+    if (itemId == playingId) return;    // prevent the player from playing the same audio muliple time overlap each other
+
     const audioPlayer = new Sound(filename, (error) => {
       if (!!error)
         return console.log('failed to play audio = ', error);
