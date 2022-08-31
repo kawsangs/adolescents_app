@@ -1,10 +1,10 @@
 import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
-import { Appbar } from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
 
 import color from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
+import HeaderNavigationComponent from './HeaderNavigationComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 
@@ -21,12 +21,6 @@ const ScrollViewHeaderComponent = (props) => {
     extrapolate: 'extend'
   });
 
-  const titleOpacity = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: [0, 1],
-    extrapolate: 'extend'
-  });
-
   return (
     <Animated.View style={[styles.header, { height: headerHeight }]}>
       <LinearGradient
@@ -39,13 +33,7 @@ const ScrollViewHeaderComponent = (props) => {
           style={[styles.headerImage, {opacity: imageOpacity}]}
           resizeMode="cover"
         />
-        <Appbar.Header style={{backgroundColor: 'rgba(0, 0, 0, 0)', elevation: 0}}>
-          <Appbar.BackAction />
-          <Animated.View style={{flex: 1, paddingLeft: 8, opacity: titleOpacity}}>
-            <Appbar.Content title={props.title} style={{justifyContent: 'center'}} />
-          </Animated.View>
-        </Appbar.Header>
-
+        <HeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
         <HeaderAudioControlComponent scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>
