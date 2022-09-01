@@ -16,7 +16,7 @@ const PlayAudioComponent = (props) => {
   });
 
   useEffect(() => {
-    if (!!props.playingId && props.playingId != props.itemId) {
+    if (!!props.playingUuid && props.playingUuid != props.itemUuid) {
       setState({
         audioPlayer: null,
         playSeconds: 0,
@@ -24,7 +24,7 @@ const PlayAudioComponent = (props) => {
         countInterval: null
       });
     }
-  }, [props.playingId])
+  }, [props.playingUuid])
 
   const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
     setState({ audioPlayer, playSeconds, duration, countInterval })
@@ -46,7 +46,7 @@ const PlayAudioComponent = (props) => {
     if (!!global.audioPlayer || !!global.countInterval)
       clearAudioPlayer()
 
-    audioPlayerService.play(props.audio, props.itemId, props.playingId, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audio, props.itemUuid, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
       global.countInterval = countInterval;
       updateState(audioPlayer, playSeconds, duration, countInterval);
@@ -107,8 +107,8 @@ export default PlayAudioComponent;
   iconColor={color.primaryColor}
   audio={props.audio}
   btnStyle={styles.audioBtn}
-  itemId={props.itemId}             // id of the item that render on the card
-  playingId={props.playingId}       // id of the item that is playing the audio
+  itemUuid={props.itemUuid}             // uuid of the item that render on the card
+  playingUuid={props.playingUuid}       // uuid of the item that is playing the audio
   isPlaying={isPlaying}             // playing status of the audio
   toggleIsPlaying={() => toggleIsPlaying()}
   stopPlaying={() => stopPlaying()}

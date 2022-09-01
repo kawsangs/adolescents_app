@@ -11,20 +11,20 @@ const size = componentUtil.pressableItemSize();
 const AudioWaveButtonComponent = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   useEffect(() => {
-    if (!!props.playingId && props.playingId != props.itemId)
+    if (!!props.playingUuid && props.playingUuid != props.itemUuid)
       setIsPlaying(false);
-  }, [props.playingId]);
+  }, [props.playingUuid]);
 
   // Called when toggle the play button
   const toggleIsPlaying = () => {
     setIsPlaying(!isPlaying);
-    props.updatePlayingId(props.itemId)
+    props.updatePlayingUuid(props.itemUuid)
   }
 
   // Called when the audio is finished playing
   const stopPlaying = () => {
     setIsPlaying(false);
-    props.updatePlayingId(null);
+    props.updatePlayingUuid(null);
   }
 
   return (
@@ -36,8 +36,8 @@ const AudioWaveButtonComponent = (props) => {
         iconSize={24}
         audio={props.audio}
         btnStyle={styles.audioBtn}
-        itemId={props.itemId}
-        playingId={props.playingId}
+        itemUuid={props.itemUuid}
+        playingUuid={props.playingUuid}
         isPlaying={isPlaying}
         toggleIsPlaying={() => toggleIsPlaying()}
         stopPlaying={() => stopPlaying()}

@@ -7,7 +7,7 @@ import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
 // It has palyingId as a state to prevent the audio from playing overlap each other
 
 const CardWithSoundWaveListComponent = (props) => {
-  const [playingId, setPlayingId] = useState(null);
+  const [playingUuid, setPlayingUuid] = useState(null);
 
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}}>
@@ -16,8 +16,8 @@ const CardWithSoundWaveListComponent = (props) => {
           return <CardWithSoundWaveComponent
                     key={index}
                     item={item}
-                    playingId={playingId}
-                    updatePlayingId={(id) => setPlayingId(id)}
+                    playingUuid={playingUuid}
+                    updatePlayingUuid={(id) => setPlayingUuid(id)}
                  />
         })
       }

@@ -3,7 +3,6 @@ import {View, Text} from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import PlayAudioComponent from './PlayAudioComponent';
-import color from '../../themes/color';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/cardPointAndAudioFooterComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/cardPointAndAudioFooterComponentStyles';
@@ -38,8 +37,8 @@ const CardPointAndAudioFooterComponent = (props) => {
         iconSize={24}
         audio={props.audio}
         btnStyle={{borderWidth: 0, borderRadius: 0}}
-        itemId={props.uuid}
-        playingId={props.playingUuid}
+        itemUuid={props.uuid}
+        playingUuid={props.playingUuid}
         isPlaying={isPlaying}
         toggleIsPlaying={() => toggleIsPlaying()}
         stopPlaying={() => stopPlaying()}
