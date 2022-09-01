@@ -63,20 +63,21 @@ function BottomTabNavigator() {
 const BORDER_RADIUS = 12;
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: color.primaryColor,
+    backgroundColor: 'transparent',
     borderTopWidth: 0,
     elevation: 0,
     height: 62,
     paddingBottom: 6,
     paddingHorizontal: 8,
+    position: 'absolute',
   },
   tabBarItem: {
     backgroundColor: color.whiteColor,
+    opacity: 0.98
   },
   tabBarLeftItem: {
     borderBottomLeftRadius: BORDER_RADIUS,
     borderTopLeftRadius: BORDER_RADIUS,
-    marginRight: -1
   },
   tabBarRightItem: {
     borderBottomRightRadius: BORDER_RADIUS,
