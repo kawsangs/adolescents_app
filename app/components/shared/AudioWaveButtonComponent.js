@@ -34,8 +34,7 @@ const AudioWaveButtonComponent = (props) => {
         playIcon='play'
         pauseIcon='pause'
         iconSize={24}
-        iconColor={color.primaryColor}
-        audioFile={props.audioFile}
+        audio={props.audio}
         btnStyle={styles.audioBtn}
         itemId={props.itemId}
         playingId={props.playingId}

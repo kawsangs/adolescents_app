@@ -36,8 +36,8 @@ const PlayAudioComponent = (props) => {
         global.audioPlayer = audioPlayer;
         global.countInterval = countInterval;
         updateState(audioPlayer, playSeconds, duration, countInterval);
-        props.updatePlaySeconds(playSeconds);  // update the play seconds to its parent component
-        handleStopAnimation(countInterval);
+        !!props.updatePlaySeconds && props.updatePlaySeconds(playSeconds);  // update the play seconds to its parent component
+        handleStopPlaying(countInterval);
       });
       return;
     }
@@ -46,16 +46,16 @@ const PlayAudioComponent = (props) => {
     if (!!global.audioPlayer || !!global.countInterval)
       clearAudioPlayer()
 
-    audioPlayerService.play(props.audioFile, props.itemId, props.playingId, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audio, props.itemId, props.playingId, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
       global.countInterval = countInterval;
       updateState(audioPlayer, playSeconds, duration, countInterval);
-      props.updatePlaySeconds(playSeconds);
-      handleStopAnimation(countInterval);
+      !!props.updatePlaySeconds && props.updatePlaySeconds(playSeconds);
+      handleStopPlaying(countInterval);
     });
   }
 
-  const handleStopAnimation = (countInterval) => {
+  const handleStopPlaying = (countInterval) => {
     if (!countInterval)
       props.stopPlaying();
   }
@@ -73,10 +73,12 @@ const PlayAudioComponent = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]}>
+    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]}
+      disabled={!props.audio}
+    >
       <Icon
         name={props.isPlaying ? props.pauseIcon : props.playIcon}
-        size={props.iconSize} color={props.iconColor}
+        size={props.iconSize} color={!!props.audio ? color.primaryColor : color.mutedColor}
         style={[props.iconStyle, { marginLeft: !props.isPlaying ? 0 : -2 }]}
       />
     </TouchableOpacity>
@@ -103,7 +105,7 @@ export default PlayAudioComponent;
   pauseIcon='pause'
   iconSize={24}
   iconColor={color.primaryColor}
-  audioFile={props.audioFile}
+  audio={props.audio}
   btnStyle={styles.audioBtn}
   itemId={props.itemId}             // id of the item that render on the card
   playingId={props.playingId}       // id of the item that is playing the audio

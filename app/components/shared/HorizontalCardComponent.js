@@ -18,7 +18,14 @@ const HorizontalCardComponent = (props) => {
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
         <HorizontalCardImageComponent image={props.item.image} />
-        <HorizontalCardInfoComponent title={props.item.title} points={props.item.points} hasAudio={props.item.has_audio} />
+        <HorizontalCardInfoComponent
+          uuid={props.item.uuid}
+          title={props.item.title}
+          points={props.item.points}
+          audio={props.item.audio}
+          playingUuid={props.playingUuid}
+          updatePlayingUuid={props.updatePlayingUuid}
+        />
       </View>
     </Card>
   )

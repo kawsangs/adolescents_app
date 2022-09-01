@@ -12,7 +12,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
   const [playSeconds, setPlaySeconds] = useState(0);
 
   // Get the duration of the audio file
-  const audioPlayer = new Sound(props.audioFile, (error) => {
+  const audioPlayer = new Sound(props.audio, (error) => {
     if (!!error)
       return console.log('failed to play audio = ', error);
 
@@ -38,7 +38,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
     <View>
       <AudioWaveButtonComponent
         itemId={props.itemId}
-        audioFile={props.audioFile}
+        audio={props.audio}
         playingId={props.playingId}
         containerStyle={styles.btn}
         updatePlayingId={props.updatePlayingId}

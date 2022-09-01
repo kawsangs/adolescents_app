@@ -19,7 +19,6 @@ const CardInfoComponent = (props) => {
           playIcon='volume-2'
           pauseIcon='pause-outline'
           iconSize={28}
-          iconColor={color.primaryColor}
         />
         <Card.Title
           title={ props.title }
