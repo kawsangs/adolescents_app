@@ -7,9 +7,6 @@ import HomeHeaderPressableIconComponent from './HomeHeaderPressableIconComponent
 const HomeHeaderRightButtonsComponent = (props) => {
   return (
     <React.Fragment>
-      <HomeHeaderPressableIconComponent btnStyle={{marginRight: 24}}>
-        <FeatherIcon name="calendar"/>
-      </HomeHeaderPressableIconComponent>
       <HomeHeaderPressableIconComponent>
         <IonIcon name="notifications-outline"/>
       </HomeHeaderPressableIconComponent>

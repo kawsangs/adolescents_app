@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   tabBarLeftItem: {
     borderBottomLeftRadius: BORDER_RADIUS,
     borderTopLeftRadius: BORDER_RADIUS,
+    marginRight: -1,
   },
   tabBarRightItem: {
     borderBottomRightRadius: BORDER_RADIUS,

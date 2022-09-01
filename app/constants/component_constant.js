@@ -11,6 +11,6 @@ export const screenPaddingHorizontal = 16;
 export const navigationHeaderButtonSize = 24;
 export const navigationHeaderIconSize = 24;
 export const navigationHeaderHorizontalPadding = 16;
-export const screenHorizontalPadding = getStyleOfDevice(32, 16);
+export const screenHorizontalPadding = 16;
 export const bottomTabBarHeight = 62;
 export const scrollViewPaddingBottom = bottomTabBarHeight + 16;
