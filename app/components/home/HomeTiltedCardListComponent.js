@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
 import TiltedCardComponent from '../shared/TiltedCardComponent';
 import uuidv4 from '../../utils/uuidv4_util';
@@ -31,7 +31,9 @@ const HomeTiltedCardListComponent = (props) => {
   return (
     <View style={{marginTop: 32, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
       { items.map((item, index) => {
-          return <TiltedCardComponent key={index} item={item} containerStyle={{marginTop: 28, marginBottom: 16}}
+          return <TiltedCardComponent key={index}
+                    item={item}
+                    containerStyle={{marginTop: 28, marginBottom: 16}}
                     playingUuid={props.playingUuid}
                     updatePlayingUuid={props.updatePlayingUuid}
                  />

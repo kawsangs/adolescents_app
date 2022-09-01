@@ -14,6 +14,7 @@ const PlayAudioComponent = (props) => {
     duration: 0,
     countInterval: null,
   });
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (!!props.playingUuid && props.playingUuid != props.itemUuid) {
@@ -23,6 +24,8 @@ const PlayAudioComponent = (props) => {
         duration: 0,
         countInterval: null
       });
+      setIsPlaying(false);
+      !!props.toggleIsPlaying && props.toggleIsPlaying(false);  // toggledIsPlaying props is used for updating the ripple animation of its parent component
     }
   }, [props.playingUuid])
 
@@ -56,8 +59,11 @@ const PlayAudioComponent = (props) => {
   }
 
   const handleStopPlaying = (countInterval) => {
-    if (!countInterval)
-      props.stopPlaying();
+    if (!countInterval) {
+      setIsPlaying(false);
+      props.updatePlayingUuid(null);
+      !!props.toggleIsPlaying && props.toggleIsPlaying(false);
+    }
   }
 
   const clearAudioPlayer = () => {
@@ -68,18 +74,18 @@ const PlayAudioComponent = (props) => {
   }
 
   const onPress = () => {
-    props.toggleIsPlaying();
+    props.updatePlayingUuid(props.itemUuid);
+    !!props.toggleIsPlaying && props.toggleIsPlaying(!isPlaying);
+    setIsPlaying(!isPlaying);
     toggleAudio();
   }
 
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]}
-      disabled={!props.audio}
-    >
+    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio}>
       <Icon
-        name={props.isPlaying ? props.pauseIcon : props.playIcon}
+        name={isPlaying ? props.pauseIcon : props.playIcon}
         size={props.iconSize} color={!!props.audio ? color.primaryColor : color.mutedColor}
-        style={[props.iconStyle, { marginLeft: !props.isPlaying ? 0 : -2 }]}
+        style={[props.iconStyle, { marginLeft: !isPlaying ? 0 : -2 }]}
       />
     </TouchableOpacity>
   )
@@ -104,12 +110,10 @@ export default PlayAudioComponent;
   playIcon='play'
   pauseIcon='pause'
   iconSize={24}
-  iconColor={color.primaryColor}
   audio={props.audio}
   btnStyle={styles.audioBtn}
   itemUuid={props.itemUuid}             // uuid of the item that render on the card
   playingUuid={props.playingUuid}       // uuid of the item that is playing the audio
-  isPlaying={isPlaying}             // playing status of the audio
-  toggleIsPlaying={() => toggleIsPlaying()}
-  stopPlaying={() => stopPlaying()}
+  updatePlayingUuid={() => updatePlayingUuid(uuid)}
+  toggleIsPlaying={(status) => toggleIsPlaying(status)}     // optional
 /> */}

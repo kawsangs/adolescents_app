@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View, Text} from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -7,29 +7,13 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/cardPointAndAudioFooterComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/cardPointAndAudioFooterComponentStyles';
 
-const cardStyles = getStyleOfDevice(tabletStyles, mobileStyles);
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CardPointAndAudioFooterComponent = (props) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const {t} = useTranslation();
-  useEffect(() => {
-    if (!!props.playingUuid && props.playingUuid != props.uuid)
-      setIsPlaying(false);
-  }, [props.playingUuid]);
-
-  const toggleIsPlaying = () => {
-    setIsPlaying(!isPlaying);
-    props.updatePlayingUuid(props.uuid)
-  }
-
-  const stopPlaying = () => {
-    setIsPlaying(false);
-    props.updatePlayingUuid(null);
-  }
-
   return (
-    <View style={cardStyles.container}>
-      <Text style={cardStyles.label}>{t('point', { count: props.points })}</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>{t('point', { count: props.points })}</Text>
 
       <PlayAudioComponent
         playIcon='volume-2'
@@ -39,9 +23,7 @@ const CardPointAndAudioFooterComponent = (props) => {
         btnStyle={{borderWidth: 0, borderRadius: 0}}
         itemUuid={props.uuid}
         playingUuid={props.playingUuid}
-        isPlaying={isPlaying}
-        toggleIsPlaying={() => toggleIsPlaying()}
-        stopPlaying={() => stopPlaying()}
+        updatePlayingUuid={props.updatePlayingUuid}
       />
     </View>
   )
