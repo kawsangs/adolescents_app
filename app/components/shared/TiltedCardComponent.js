@@ -17,11 +17,17 @@ const TiltedCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <TiltedCardImageComponent image={require('../../assets/images/img_no_background.png')} />
+          <TiltedCardImageComponent image={props.item.image} />
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.title} numberOfLines={1} style={styles.title} />
-            <CardPointAndAudioFooterComponent points={props.item.points} audio={props.item.audio} />
+            <CardPointAndAudioFooterComponent
+              uuid={props.item.uuid}
+              points={props.item.points}
+              audio={props.item.audio}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+            />
           </View>
         </View>
       </View>
