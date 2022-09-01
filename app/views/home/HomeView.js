@@ -1,23 +1,25 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
 
+import GradientBackgroundComponent from '../../components/shared/GradientBackgroundComponent';
 import HomeNavigationHeader from '../../components/home/HomeNavigationHeader';
 import HomeHorizontalCardListComponent from '../../components/home/HomeHorizontalCardListComponent';
 import HomeTiltedCardListComponent from '../../components/home/HomeTiltedCardListComponent';
-import color from '../../themes/color';
-import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
 
 const HomeView = () => {
-  return (
-    <View style={{flex: 1, backgroundColor: color.primaryColor}}>
-      <HomeNavigationHeader/>
-
-      <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
+  const renderBody = () => {
+    return (
+      <React.Fragment>
         <HomeHorizontalCardListComponent/>
-
         <HomeTiltedCardListComponent/>
-      </ScrollView>
-    </View>
+      </React.Fragment>
+    )
+  }
+
+  return (
+    <GradientBackgroundComponent
+      header={<HomeNavigationHeader/>}
+      body={renderBody()}
+    />
   )
 }
 
