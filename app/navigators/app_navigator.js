@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import MainView from '../views/main/MainView';
 import IntroductionView from '../views/introductions/IntroductionView';
+import LoginSelectionView from '../views/loginSelections/LoginSelectionView';
 import BottomTabNavigator from './bottom_tab_navigator';
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +29,13 @@ function AppNaviator() {
             header: () => null,
           }}
         />
-
+        <Stack.Screen
+          name="LoginSelectionView"
+          component={LoginSelectionView}
+          options={{
+            header: () => null,
+          }}
+        />
         <Stack.Screen name="BottomTabs" component={BottomTabNavigator}
           options={{
             header: () => null,
