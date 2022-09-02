@@ -1,13 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import componentUtil from '../../utils/component_util';
-import {bigFontSize} from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionButtonComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const LoginSelectionButtonComponent = (props) => {
   return (
@@ -15,32 +18,17 @@ const LoginSelectionButtonComponent = (props) => {
       onPress={() => !!props.onPress && props.onPress()}
       style={[styles.container, props.btnStyle]}
     >
-      <GradientViewComponent
-        style={{width: 56, height: '100%', borderTopLeftRadius: 25, borderBottomLeftRadius: 25}}
-      >
-        <TouchableOpacity style={{width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', borderTopLeftRadius: 25, borderBottomLeftRadius: 25}}>
-          <FeatherIcon name={props.iconName} color={color.whiteColor} size={24} />
-        </TouchableOpacity>
+      <GradientViewComponent style={styles.leftIconContainer}>
+        <FeatherIcon name={props.iconName} color={color.whiteColor} style={styles.leftIcon} />
       </GradientViewComponent>
 
-      <BoldLabelComponent label={props.label} style={{flex: 1, paddingLeft: 24, color: color.primaryColor, fontSize: bigFontSize()}} />
+      <BoldLabelComponent label={props.label} style={styles.label} />
 
-      <TouchableOpacity style={{width: componentUtil.pressableItemSize(), alignItems: 'center'}}>
+      <TouchableOpacity style={styles.rightBtn}>
         <IonIcon name="volume-high-outline" color={color.primaryColor} size={24} />
       </TouchableOpacity>
     </TouchableOpacity>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center', elevation: 4,
-    backgroundColor: color.whiteColor,
-    borderRadius: 25,
-    flexDirection: 'row',
-    height: componentUtil.pressableItemSize(),
-    width: '100%'
-  }
-});
 
 export default LoginSelectionButtonComponent;

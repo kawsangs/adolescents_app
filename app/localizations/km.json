@@ -15,5 +15,10 @@
   "video": "វីដេអូ",
   "map": "ផែនទី",
   "consult": "ប្រឹក្សា",
-  "myHealth": "សុខភាពខ្ញុំ"
+  "myHealth": "សុខភាពខ្ញុំ",
+  "welcomeToMyHealth": "សុខភាពខ្ញុំ សូមស្វាគមន៏",
+  "youCanUseThisAppInFollowingChoices": "អ្នកអាចប្រេីកម្មវីធីនេះតាមរបៀបណាមួយខាងក្រោម",
+  "useWithPersonalInfo": "ភ្ជាប់អត្តសញ្ញាណ",
+  "useWithoutPersonalInfo": "មិនភ្ជាប់អត្តសញ្ញាណ",
+  "or": "ឬ"
 }
