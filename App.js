@@ -8,7 +8,7 @@
 
 import React, { useEffect } from 'react';
 import type {Node} from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -31,6 +31,9 @@ const theme = {
     primary: color.primaryColor,
   },
 };
+
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
 
 const App: () => Node = () => {
   useEffect(() => {

@@ -31,7 +31,8 @@ const HeaderAudioControlButtonsComponent = (props) => {
       return;
     }
 
-    audioPlayerService.play(audioFile, (audioPlayer, playSeconds, duration, countInterval) => {
+    // The item id = 1 and playing id = null is for static displa only
+    audioPlayerService.play(audioFile, 1, null, (audioPlayer, playSeconds, duration, countInterval) => {
       props.updateAudioPlayer(audioPlayer, playSeconds, duration, countInterval);
     });
   }
@@ -43,9 +44,13 @@ const HeaderAudioControlButtonsComponent = (props) => {
       <Animated.View style={[styles.audioControl,
         {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
       >
-        <AudioControlButton iconName='play-back' size={forwardBackwardSize} />
+        <AudioControlButton iconName='play-back' size={forwardBackwardSize}
+          onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, REVERSE)}
+        />
         <AudioControlButton iconName={!!props.countInterval ? 'pause' : 'play'} size={getStyleOfDevice(55, 50)} onPress={() => playAudio()} />
-        <AudioControlButton iconName='play-forward' size={forwardBackwardSize} />
+        <AudioControlButton iconName='play-forward' size={forwardBackwardSize}
+          onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, FAST_FORWARD)}
+        />
       </Animated.View>
     </View>
   )

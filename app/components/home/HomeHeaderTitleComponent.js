@@ -4,12 +4,12 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {navigationHeaderIconSize} from '../../constants/component_constant';
+import {bigFontSize} from '../../utils/font_size_util';
 
 const HomeHeaderTitleComponent = () => {
   const {t} = useTranslation();
   return (
-    <View style={{flexDirection: 'row', flex: 1}}>
+    <View style={{flexDirection: 'row', flex: 1, height: '100%', alignItems: 'center'}}>
       <Image source={require('../../assets/images/header_icon.png')} style={styles.image} />
       <BoldLabelComponent label={t('myHealth')} style={styles.label} />
     </View>
@@ -18,12 +18,12 @@ const HomeHeaderTitleComponent = () => {
 
 const styles = StyleSheet.create({
   image: {
-    height: 'auto',
-    width: navigationHeaderIconSize
+    height: 36,
+    width: 32,
   },
   label: {
     color: color.whiteColor,
-    fontSize: 18,
+    fontSize: bigFontSize(),
     marginLeft: 8,
     textTransform: 'capitalize'
   }

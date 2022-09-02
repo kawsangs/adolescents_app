@@ -1,4 +1,5 @@
 import { getStyleOfDevice } from '../utils/responsive_util';
+import {mobileFontSize, normalFontSize, smallFontSize} from '../utils/font_size_util';
 
 export const buttonBorderRadius = 10;
 export const cardElevation = 2;
@@ -14,3 +15,7 @@ export const navigationHeaderHorizontalPadding = 16;
 export const screenHorizontalPadding = 16;
 export const bottomTabBarHeight = 62;
 export const scrollViewPaddingBottom = bottomTabBarHeight + 16;
+export const tabletNormalTitleFontSize = normalFontSize();
+export const tabletSmallTitleFontSize = smallFontSize();
+export const mobileNormalTitleFontSize = mobileFontSize(15);
+export const mobileSmallTitleFontSize = normalFontSize();

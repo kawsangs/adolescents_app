@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
@@ -80,13 +79,22 @@ const PlayAudioComponent = (props) => {
     toggleAudio();
   }
 
+  const getIcon = () => {
+    if (!props.audio)
+      return props.muteIcon;
+
+    return isPlaying ? props.pauseIcon : props.playIcon
+  }
+
   return (
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio}>
-      <Icon
-        name={isPlaying ? props.pauseIcon : props.playIcon}
-        size={props.iconSize} color={!!props.audio ? color.primaryColor : color.mutedColor}
-        style={[props.iconStyle, { marginLeft: !isPlaying ? 0 : -2 }]}
-      />
+      {/* CloneElement is used so we can pass different type of icon and still using the same configuration */}
+      {  React.cloneElement(props.children, {
+          name: getIcon(),
+          size: props.iconSize, color: !!props.audio ? color.primaryColor : color.mutedColor,
+          style: [props.iconStyle, { marginLeft: !isPlaying ? 0 : -2 }]
+        })
+      }
     </TouchableOpacity>
   )
 }
@@ -116,4 +124,7 @@ export default PlayAudioComponent;
   playingUuid={props.playingUuid}       // uuid of the item that is playing the audio
   updatePlayingUuid={() => updatePlayingUuid(uuid)}
   toggleIsPlaying={(status) => toggleIsPlaying(status)}     // optional
-/> */}
+> 
+  {icon component}
+</PlayAudioComponent>
+*/}

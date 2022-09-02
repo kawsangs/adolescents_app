@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import AudioWaveButtonRippleComponent from './audioWaveButtons/AudioWaveButtonRippleComponent';
 import PlayAudioComponent from './PlayAudioComponent';
@@ -16,6 +17,7 @@ const AudioWaveButtonComponent = (props) => {
       <PlayAudioComponent
         playIcon='play'
         pauseIcon='pause'
+        muteIcon='play'
         iconSize={24}
         audio={props.audio}
         btnStyle={styles.audioBtn}
@@ -24,7 +26,9 @@ const AudioWaveButtonComponent = (props) => {
         toggleIsPlaying={(isPlaying) => setIsPlaying(isPlaying)}
         updatePlaySeconds={props.updatePlaySeconds}
         updatePlayingUuid={props.updatePlayingUuid}
-      />
+      >
+        <FeatherIcon/>
+      </PlayAudioComponent>
     </View>
   )
 }

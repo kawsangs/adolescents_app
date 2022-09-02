@@ -4,7 +4,7 @@ import { cardBorderRadius } from '../../../constants/component_constant';
 const horizontalCardComponentStyles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 108,
+    height: 112,
     paddingLeft: 12,
     paddingRight: 4,
   }
