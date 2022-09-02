@@ -15,7 +15,6 @@ const HomeHeaderLeftButtonComponent = () => {
 
 const styles = StyleSheet.create({
   btnBack: {
-    alignItems: 'center',
     justifyContent: 'center',
     height: componentUtil.pressableItemSize(),
     width: componentUtil.pressableItemSize(),

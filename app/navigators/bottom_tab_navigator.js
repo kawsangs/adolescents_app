@@ -7,6 +7,7 @@ import homeNavigator from './home_navigator';
 import VideoView from '../views/videos/VideoView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
+import {screenHorizontalPadding} from '../constants/component_constant';
 
 const Tab = createBottomTabNavigator();
 
@@ -68,12 +69,13 @@ const styles = StyleSheet.create({
     elevation: 0,
     height: 62,
     paddingBottom: 6,
-    paddingHorizontal: 8,
+    paddingHorizontal: screenHorizontalPadding,
     position: 'absolute',
   },
   tabBarItem: {
     backgroundColor: color.whiteColor,
-    opacity: 0.98
+    opacity: 0.98,
+    marginRight: -1
   },
   tabBarLeftItem: {
     borderBottomLeftRadius: BORDER_RADIUS,

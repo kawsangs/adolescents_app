@@ -8,7 +8,7 @@ import {navigationHeaderHorizontalPadding} from '../../constants/component_const
 
 const HomeNavigationHeader = () => {
   return (
-    <Appbar.Header style={{paddingRight: navigationHeaderHorizontalPadding, elevation: 0}}>
+    <Appbar.Header style={{paddingHorizontal: navigationHeaderHorizontalPadding, elevation: 0}}>
       <HomeHeaderLeftButtonComponent/>
       <HomeHeaderTitleComponent/>
       <HomeHeaderRightButtonsComponent/>
