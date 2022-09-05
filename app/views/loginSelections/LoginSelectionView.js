@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
-import GradientBackgroundComponent from '../../components/shared/GradientBackgroundComponent';
+import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import BoldLabelComponent from '../../components/shared/BoldLabelComponent';
 import LoginSelectionButtonsComponent from '../../components/loginSelections/LoginSelectionButtonsComponent';
+import {getStyleOfDevice} from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionViewStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionViewStyles';
 
-import color from '../../themes/color';
-import {bigFontSize} from '../../utils/font_size_util';
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const LoginSelectionView = (props) => {
   const {t} = useTranslation();
@@ -24,36 +26,12 @@ const LoginSelectionView = (props) => {
   }
 
   return (
-    <GradientBackgroundComponent
+    <GradientScrollViewComponent
       scrollable={false}
       scrollViewStyle={{paddingBottom: 0, paddingHorizontal: 34}}
       body={renderBody()}
     />
   )
 }
-
-const styles = StyleSheet.create({
-  logo: {
-    alignSelf: 'center',
-    width: 80,
-    height: 98,
-  },
-  title: {
-    color: color.whiteColor,
-    fontSize: 20,
-    marginTop: 16,
-    textAlign: 'center',
-    textShadowColor: '#000',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 6,
-    paddingBottom: 2
-  },
-  label: {
-    color: color.whiteColor,
-    marginTop: 78,
-    textAlign: 'center',
-    fontSize: bigFontSize()
-  }
-});
 
 export default LoginSelectionView;

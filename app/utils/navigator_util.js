@@ -11,7 +11,6 @@ const navigatorUtil = (() => {
       return 'IntroductionView';
 
     return 'LoginSelectionView';
-    // return 'BottomTabs';
   }
 })();
 

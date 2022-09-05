@@ -14,30 +14,33 @@ import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonCo
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const LoginSelectionButtonComponent = (props) => {
+  const renderAudioButton = () => {
+    return <PlayAudioComponent
+              playIcon='volume-high-outline'
+              pauseIcon='pause'
+              muteIcon='volume-mute-outline'
+              iconSize={24}
+              audio={props.audio}
+              btnStyle={styles.audioBtn}
+              itemUuid={props.uuid}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           >
+              <IonIcon/>
+           </PlayAudioComponent>
+  }
+
+  const renderGradientIcon = () => {
+    return <GradientViewComponent style={styles.leftIconContainer}>
+              <FeatherIcon name={props.iconName} color={color.whiteColor} style={styles.leftIcon} />
+           </GradientViewComponent>
+  }
+
   return (
-    <TouchableOpacity
-      onPress={() => !!props.onPress && props.onPress()}
-      style={[styles.container, props.btnStyle]}
-    >
-      <GradientViewComponent style={styles.leftIconContainer}>
-        <FeatherIcon name={props.iconName} color={color.whiteColor} style={styles.leftIcon} />
-      </GradientViewComponent>
-
+    <TouchableOpacity onPress={() => !!props.onPress && props.onPress()} style={[styles.container, props.btnStyle]}>
+      { renderGradientIcon() }
       <BoldLabelComponent label={props.label} style={styles.label} />
-
-      <PlayAudioComponent
-        playIcon='volume-high-outline'
-        pauseIcon='pause'
-        muteIcon='volume-mute-outline'
-        iconSize={24}
-        audio={props.audio}
-        btnStyle={styles.audioBtn}
-        itemUuid={props.uuid}
-        playingUuid={props.playingUuid}
-        updatePlayingUuid={props.updatePlayingUuid}
-      >
-        <IonIcon/>
-      </PlayAudioComponent>
+      { renderAudioButton() }
     </TouchableOpacity>
   )
 }

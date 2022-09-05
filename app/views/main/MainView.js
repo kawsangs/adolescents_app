@@ -8,8 +8,6 @@ import navigatorUtil from '../../utils/navigator_util';
 const MainView = () => {
   useEffect(() => {
     const initialNavigation = async () => {
-      console.log('init route name = ', await navigatorUtil.getInitialRouteName());
-
       navigationRef.current?.reset({ index: 0, routes: [{ name: await navigatorUtil.getInitialRouteName() }] });
       appStatusService.handleAppLaunchingStatus();
     }
