@@ -3,10 +3,11 @@ import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 
-import HomeView from '../views/home/HomeView';
+import homeNavigator from './home_navigator';
 import VideoView from '../views/videos/VideoView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
+import {screenHorizontalPadding} from '../constants/component_constant';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,10 +25,11 @@ function BottomTabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeView}
+        component={homeNavigator}
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
+          headerShown: false
         }}
       />
       <Tab.Screen
@@ -62,20 +64,23 @@ function BottomTabNavigator() {
 const BORDER_RADIUS = 12;
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: color.primaryColor,
+    backgroundColor: 'transparent',
     borderTopWidth: 0,
     elevation: 0,
     height: 62,
     paddingBottom: 6,
-    paddingHorizontal: 8,
+    paddingHorizontal: screenHorizontalPadding,
+    position: 'absolute',
   },
   tabBarItem: {
     backgroundColor: color.whiteColor,
+    opacity: 0.98,
+    marginRight: -1
   },
   tabBarLeftItem: {
     borderBottomLeftRadius: BORDER_RADIUS,
     borderTopLeftRadius: BORDER_RADIUS,
-    marginRight: -1
+    marginRight: -1,
   },
   tabBarRightItem: {
     borderBottomRightRadius: BORDER_RADIUS,

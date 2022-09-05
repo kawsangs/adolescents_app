@@ -3,7 +3,6 @@ import {View} from 'react-native';
 
 import BoldLabelComponent from '../BoldLabelComponent';
 import CardPointAndAudioFooterComponent from '../CardPointAndAudioFooterComponent';
-import {normalFontSize} from '../../../utils/font_size_util';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 import tabletStyles from '../../../assets/stylesheets/tablet/horizontalCardInfoComponentStyles';
 import mobileStyles from '../../../assets/stylesheets/mobile/horizontalCardInfoComponentStyles';
@@ -14,10 +13,12 @@ const HorizontalCardInfoComponent = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <BoldLabelComponent label={props.title} numberOfLines={2} style={{ fontSize: normalFontSize() }} />
+        <BoldLabelComponent label={props.title} numberOfLines={2} style={styles.title} />
       </View>
 
-      <CardPointAndAudioFooterComponent points={props.points} hasAudio={props.hasAudio} />
+      <CardPointAndAudioFooterComponent uuid={props.uuid} points={props.points} audio={props.audio} playingUuid={props.playingUuid}
+        updatePlayingUuid={props.updatePlayingUuid}
+      />
     </View>
   )
 }

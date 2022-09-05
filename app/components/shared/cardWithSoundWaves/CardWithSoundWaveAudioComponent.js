@@ -12,7 +12,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
   const [playSeconds, setPlaySeconds] = useState(0);
 
   // Get the duration of the audio file
-  const audioPlayer = new Sound(props.audioFile, (error) => {
+  const audioPlayer = new Sound(props.audio, (error) => {
     if (!!error)
       return console.log('failed to play audio = ', error);
 
@@ -25,9 +25,9 @@ const CardWithSoundWaveAudioComponent = (props) => {
 
   useEffect(() => {
     // Watch the playing audio id if it is not the same then clear the play seconds
-    if (!!props.playingId && props.playingId != props.itemId)
+    if (!!props.playingUuid && props.playingUuid != props.itemUuid)
       setPlaySeconds(0);
-  }, [props.playingId]);
+  }, [props.playingUuid]);
 
   const updatePlaySeconds = (seconds) => {
     if (playSeconds != Math.round(seconds) || seconds == 0)
@@ -37,11 +37,11 @@ const CardWithSoundWaveAudioComponent = (props) => {
   return (
     <View>
       <AudioWaveButtonComponent
-        itemId={props.itemId}
-        audioFile={props.audioFile}
-        playingId={props.playingId}
+        itemUuid={props.itemUuid}
+        audio={props.audio}
+        playingUuid={props.playingUuid}
         containerStyle={styles.btn}
-        updatePlayingId={props.updatePlayingId}
+        updatePlayingUuid={props.updatePlayingUuid}
         updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}
       />
       <Text style={styles.label}>{ displayDuration }</Text>

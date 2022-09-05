@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
 import { smallFontSize } from '../../../utils/font_size_util';
+import {tabletNormalTitleFontSize} from '../../../constants/component_constant';
 
 const horizontalCardInfoComponentStyles = StyleSheet.create({
   container: {
@@ -16,6 +17,9 @@ const horizontalCardInfoComponentStyles = StyleSheet.create({
   subtitleContainer: {
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  title: {
+    fontSize: tabletNormalTitleFontSize
   },
   subtitle: {
     color: color.blackColor,

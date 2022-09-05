@@ -2,16 +2,23 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {getStyleOfDevice, mobileIconSize} from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/tabBarItemComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/tabBarItemComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
+const iconSize = getStyleOfDevice(24, mobileIconSize(24));
+
 const TabBarItemComponent = (props) => {
   return (
-    <View style={{flex: 1, width: 50}}>
-      <View style={{flex: 1, alignItems: 'center', paddingBottom: 12, paddingTop: 8}}>
-        <Icon name={props.icon} color={props.color} size={24} />
-        <Text style={{fontSize: 12, color: props.color}}>{props.label}</Text>
+    <View style={styles.container}>
+      <View style={styles.itemContainer}>
+        <Icon name={props.icon} color={props.color} size={iconSize} />
+        <Text style={styles.label}>{props.label}</Text>
       </View>
 
       { props.focused &&
-        <View style={{height: 2.1, borderRadius: 6, backgroundColor: props.color, alignSelf: 'stretch', marginBottom: 0.6}} />
+        <View style={[styles.focusedLine, {backgroundColor: props.color}]} />
       }
     </View>
   )

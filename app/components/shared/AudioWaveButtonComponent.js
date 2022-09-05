@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import AudioWaveButtonRippleComponent from './audioWaveButtons/AudioWaveButtonRippleComponent';
 import PlayAudioComponent from './PlayAudioComponent';
@@ -10,40 +11,24 @@ const size = componentUtil.pressableItemSize();
 
 const AudioWaveButtonComponent = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  useEffect(() => {
-    if (!!props.playingId && props.playingId != props.itemId)
-      setIsPlaying(false);
-  }, [props.playingId]);
-
-  // Called when toggle the play button
-  const toggleIsPlaying = () => {
-    setIsPlaying(!isPlaying);
-    props.updatePlayingId(props.itemId)
-  }
-
-  // Called when the audio is finished playing
-  const stopPlaying = () => {
-    setIsPlaying(false);
-    props.updatePlayingId(null);
-  }
-
   return (
     <View style={[styles.center, props.containerStyle]}>
       <AudioWaveButtonRippleComponent size={size} isPlaying={isPlaying} />
       <PlayAudioComponent
         playIcon='play'
         pauseIcon='pause'
+        muteIcon='play'
         iconSize={24}
-        iconColor={color.primaryColor}
-        audioFile={props.audioFile}
+        audio={props.audio}
         btnStyle={styles.audioBtn}
-        itemId={props.itemId}
-        playingId={props.playingId}
-        isPlaying={isPlaying}
-        toggleIsPlaying={() => toggleIsPlaying()}
-        stopPlaying={() => stopPlaying()}
+        itemUuid={props.itemUuid}
+        playingUuid={props.playingUuid}
+        toggleIsPlaying={(isPlaying) => setIsPlaying(isPlaying)}
         updatePlaySeconds={props.updatePlaySeconds}
-      />
+        updatePlayingUuid={props.updatePlayingUuid}
+      >
+        <FeatherIcon/>
+      </PlayAudioComponent>
     </View>
   )
 }

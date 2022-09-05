@@ -11,10 +11,10 @@ const CardWithSoundWaveComponent = (props) => {
   return (
     <Card mode='elevated' elevation={cardElevation} style={styles.container}>
       <CardWithSoundWaveAudioComponent
-        itemId={props.item.id}
-        audioFile={props.item.audio}
-        playingId={props.playingId}
-        updatePlayingId={props.updatePlayingId}
+        itemUuid={props.item.uuid}
+        audio={props.item.audio}
+        playingUuid={props.playingUuid}
+        updatePlayingUuid={props.updatePlayingUuid}
       />
       <CardWithSoundWaveInfoComponent title={props.item.title} description={props.item.description} />
     </Card>

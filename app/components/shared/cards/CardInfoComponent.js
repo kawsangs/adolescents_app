@@ -16,11 +16,13 @@ const CardInfoComponent = (props) => {
     <Card.Content style={styles.container}>
       <View style={{flex: 1}}>
         <PlayAudioComponent
-          playIcon='volume-2'
-          pauseIcon='pause-outline'
+          playIcon='volume-high-outline'
+          pauseIcon='pause'
+          muteIcon='volume-mute-outline'
           iconSize={28}
-          iconColor={color.primaryColor}
-        />
+        >
+          <Icon/>
+        </PlayAudioComponent>
         <Card.Title
           title={ props.title }
           subtitle={props.subtitle}

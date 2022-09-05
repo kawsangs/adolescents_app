@@ -1,4 +1,4 @@
-import { PixelRatio } from 'react-native';
+import { PixelRatio, Dimensions } from 'react-native';
 import { isShortScreenDevice, getStyleOfDevice } from './responsive_util';
 import { XHDPIRatio } from '../constants/screen_size_constant';
 
@@ -10,16 +10,22 @@ const getMobileFontSizeByPixelRatio = (smallRatioFontSize, bigRatioFontSize) => 
 }
 
 export const bigFontSize = () => {
-  const mobileFontSize = getMobileFontSizeByPixelRatio(18, 16);
-  return getStyleOfDevice(18, mobileFontSize);
+  return getStyleOfDevice(18, mobileFontSize(16));
 }
 
 export const normalFontSize = () => {
-  const mobileFontSize = getMobileFontSizeByPixelRatio(16, 14);
-  return getStyleOfDevice(16, mobileFontSize);
+  return getStyleOfDevice(16, mobileFontSize(14));
 }
 
 export const smallFontSize = () => {
-  const mobileFontSize = getMobileFontSizeByPixelRatio(14, 12);
-  return getStyleOfDevice(14, mobileFontSize);
+  return getStyleOfDevice(14, mobileFontSize(12));
+}
+
+export const mobileFontSize = (size) => {
+  const scale = Dimensions.get('window').width / 320;
+  const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
+  if (devicePixelRatio <= XHDPIRatio)
+    return size - scale;
+
+  return size;
 }
