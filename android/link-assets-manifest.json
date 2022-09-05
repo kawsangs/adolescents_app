@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "app/assets/fonts/Khmer-Regular.ttf",
+      "sha1": "fed08f4093bdd157db43b221f3f198dbece443df"
+    },
+    {
       "path": "app/assets/fonts/Koulen-Regular.ttf",
       "sha1": "f7e8dded278ed9b0c78fb3680ec4cb64f32f04f5"
     }

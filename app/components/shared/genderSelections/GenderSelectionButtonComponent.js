@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
+import TextComponent from '../TextComponent';
 import PlayAudioComponent from '../PlayAudioComponent';
 import color from '../../../themes/color';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
@@ -36,7 +37,7 @@ const GenderSelectionButtonComponent = (props) => {
               <Icon name={props.icon} size={props.size} color={color.whiteColor}/>
             </View>
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <Text style={styles.label}>{props.label}</Text>
+              <TextComponent label={props.label} style={styles.label} />
             </View>
           </TouchableOpacity>
   }

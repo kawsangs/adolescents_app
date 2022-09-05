@@ -16,6 +16,7 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
 import color from './app/themes/color';
+import {FontFamily} from './app/themes/font';
 import { environment } from './app/config/environment';
 
 Sentry.init({
@@ -30,6 +31,10 @@ const theme = {
     ...DefaultTheme.colors,
     primary: color.primaryColor,
   },
+  fonts: {
+    ...DefaultTheme.fonts,
+    regular: { fontFamily: FontFamily.body },
+  }
 };
 
 Text.defaultProps = Text.defaultProps || {};

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
+import TextComponent from './TextComponent';
 import GenderSelectionButtonComponent from './genderSelections/GenderSelectionButtonComponent';
 import color from '../../themes/color';
 import {normalFontSize} from '../../utils/font_size_util';
@@ -32,7 +33,7 @@ const GenderSelectionComponent = () => {
 
   return (
     <View style={{paddingHorizontal: 16, marginTop: 16}}>
-      <Text style={{color: color.whiteColor, fontSize: normalFontSize()}}>{t('genderIdentity')}</Text>
+      <TextComponent label={t('genderIdentity')} style={{color: color.whiteColor, fontSize: normalFontSize()}} />
       <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'space-between'}}>
         { renderGenders() }
       </View>
