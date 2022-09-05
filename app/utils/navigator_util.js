@@ -10,7 +10,8 @@ const navigatorUtil = (() => {
     if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
       return 'IntroductionView';
 
-    return 'LoginSelectionView';
+    // return 'LoginSelectionView';
+    return 'CreateAccountView';
   }
 })();
 

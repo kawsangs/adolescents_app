@@ -21,7 +21,7 @@ const LoginSelectionButtonsComponent = () => {
         audio={safetyPlan}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-        onPress={() => navigationRef.current?.navigate('BottomTabs')}
+        onPress={() => navigationRef.current?.navigate('CreateAccountView')}
       />
       <LoginSelectionLineComponent/>
       <LoginSelectionButtonComponent
@@ -31,6 +31,7 @@ const LoginSelectionButtonsComponent = () => {
         audio={yourStory}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+        onPress={() => navigationRef.current?.navigate('BottomTabs')}
       />
     </React.Fragment>
   )
