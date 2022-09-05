@@ -1,10 +1,10 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import color from '../../themes/color';
 import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
 
-const GradientBackgroundComponent = (props) => {
+const GradientScrollViewComponent = (props) => {
   return (
     <LinearGradient
       colors={[color.primaryColor, 'rgba(170, 73, 133, 0.88)']}
@@ -13,11 +13,21 @@ const GradientBackgroundComponent = (props) => {
     >
       {props.header}
 
-      <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
+      <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
+        scrollEnabled={props.scrollable ?? true}
+      >
         {props.body}
       </ScrollView>
     </LinearGradient>
   )
 }
 
-export default GradientBackgroundComponent;
+const styles = StyleSheet.create({
+  scrollView: {
+    flexGrow: 1,
+    paddingHorizontal: screenHorizontalPadding,
+    paddingBottom: scrollViewPaddingBottom
+  }
+});
+
+export default GradientScrollViewComponent;

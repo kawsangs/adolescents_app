@@ -13,7 +13,7 @@ const MainView = () => {
     }
 
     initialNavigation();
-  });
+  }, []);
 
   return <View/>
 }

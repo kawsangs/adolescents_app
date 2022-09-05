@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import GradientBackgroundComponent from '../../components/shared/GradientBackgroundComponent';
+import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeader from '../../components/home/HomeNavigationHeader';
 import HomeHorizontalCardListComponent from '../../components/home/HomeHorizontalCardListComponent';
 import HomeTiltedCardListComponent from '../../components/home/HomeTiltedCardListComponent';
@@ -18,7 +18,7 @@ const HomeView = () => {
   }
 
   return (
-    <GradientBackgroundComponent
+    <GradientScrollViewComponent
       header={<HomeNavigationHeader/>}
       body={renderBody()}
     />

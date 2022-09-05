@@ -15,5 +15,10 @@
   "video": "Video",
   "map": "Map",
   "consult": "Consult",
-  "myHealth": "My health"
+  "myHealth": "My health",
+  "welcomeToMyHealth": "Welcome to My Health",
+  "youCanUseThisAppInFollowingChoices": "You can use this mobile app via the following choices",
+  "useWithPersonalInfo": "Use with personal info",
+  "useWithoutPersonalInfo": "Use without personal info",
+  "or": "Or"
 }

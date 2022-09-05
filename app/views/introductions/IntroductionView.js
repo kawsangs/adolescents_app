@@ -21,7 +21,7 @@ const IntroductionView = (props) => {
   }
 
   const onDone = () => {
-    props.navigation.reset({ index: 0, routes: [{ name: 'BottomTabs' }] });
+    props.navigation.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }] });
   }
 
   const renderNextSlide = () => {
