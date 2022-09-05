@@ -5,7 +5,7 @@ import {normalFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 const screenWidth = Dimensions.get('screen').width;
-const genderMargin = (32 * 2) + (24 * 3);
+const genderMargin = (64 * 2) + (24 * 3);  // 64 is the total number of the margin left and right from the screen
 const genderWidth = (screenWidth - genderMargin) / 4;
 
 const genderSelectionButtonComponentStyles = StyleSheet.create({

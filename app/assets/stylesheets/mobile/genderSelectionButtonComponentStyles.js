@@ -1,12 +1,16 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, PixelRatio} from 'react-native';
 import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation} from '../../../constants/component_constant';
+import { XHDPIRatio } from '../../../constants/screen_size_constant';
 import {normalFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
+
+const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
 const screenWidth = Dimensions.get('screen').width;
-const genderMargin = (32 * 2) + (24 * 3);
-const genderWidth = (screenWidth - genderMargin) / 4;
+const itemMargin = devicePixelRatio <= XHDPIRatio ? 20 : 24; // the margin between each item
+const totalMargin = (32 * 2) + (itemMargin * 3); // total margin of each item + horizontal margin of the screen (32dp * 2)
+const genderWidth = (screenWidth - totalMargin) / 4;
 
 const genderSelectionButtonComponentStyles = StyleSheet.create({
   container: {
