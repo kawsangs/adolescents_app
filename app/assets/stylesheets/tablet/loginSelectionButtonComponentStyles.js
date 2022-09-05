@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import color from '../../../themes/color';
 import componentUtil from '../../../utils/component_util';
-import {bigFontSize} from '../../../utils/font_size_util';
+import {normalFontSize} from '../../../utils/font_size_util';
 
 const borderRadius = 25;
 
@@ -29,16 +29,13 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
   label: {
     color: color.primaryColor,
     flex: 1,
-    fontSize: bigFontSize(),
+    fontSize:normalFontSize(),
     paddingLeft: 24,
   },
-  rightBtn: {
-    alignItems: 'center',
-    borderBottomRightRadius: borderRadius,
-    borderTopRightRadius: borderRadius,
-    justifyContent: 'center',
-    height: componentUtil.pressableItemSize(),
-    width: componentUtil.pressableItemSize(),
+  audioBtn: {
+    borderWidth: 0,
+    borderRadius: 0,
+    width: componentUtil.pressableItemSize(10)
   }
 });
 

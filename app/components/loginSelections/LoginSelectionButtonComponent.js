@@ -5,6 +5,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
+import PlayAudioComponent from '../shared/PlayAudioComponent';
 import color from '../../themes/color';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionButtonComponentStyles';
@@ -24,9 +25,19 @@ const LoginSelectionButtonComponent = (props) => {
 
       <BoldLabelComponent label={props.label} style={styles.label} />
 
-      <TouchableOpacity style={styles.rightBtn}>
-        <IonIcon name="volume-high-outline" color={color.primaryColor} size={24} />
-      </TouchableOpacity>
+      <PlayAudioComponent
+        playIcon='volume-high-outline'
+        pauseIcon='pause'
+        muteIcon='volume-mute-outline'
+        iconSize={24}
+        audio={props.audio}
+        btnStyle={styles.audioBtn}
+        itemUuid={props.uuid}
+        playingUuid={props.playingUuid}
+        updatePlayingUuid={props.updatePlayingUuid}
+      >
+        <IonIcon/>
+      </PlayAudioComponent>
     </TouchableOpacity>
   )
 }

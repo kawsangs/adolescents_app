@@ -32,13 +32,10 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     fontSize: bigFontSize(),
     paddingLeft: 24,
   },
-  rightBtn: {
-    alignItems: 'center',
-    borderBottomRightRadius: borderRadius,
-    borderTopRightRadius: borderRadius,
-    justifyContent: 'center',
-    height: componentUtil.pressableItemSize(),
-    width: componentUtil.pressableItemSize(),
+  audioBtn: {
+    borderWidth: 0,
+    borderRadius: 0,
+    width: componentUtil.pressableItemSize(10)
   }
 });
 
