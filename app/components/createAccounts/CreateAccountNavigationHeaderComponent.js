@@ -1,12 +1,14 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderCloseButtonComponent from '../shared/navigationHeaders/NavigationHeaderCloseButtonComponent';
 
 const CreateAccountNavigationHeaderComponent = () => {
+  const {t} = useTranslation();
   return <NavigationHeaderComponent
             leftButton={<NavigationHeaderCloseButtonComponent/>}
-            label="ផ្ដល់អត្តសញ្ញាណ"
+            label={t('provideIdentity')}
          />
 }
 

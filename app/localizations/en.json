@@ -20,5 +20,11 @@
   "youCanUseThisAppInFollowingChoices": "You can use this mobile app via the following choices",
   "useWithPersonalInfo": "Use with personal info",
   "useWithoutPersonalInfo": "Use without personal info",
-  "or": "Or"
+  "or": "Or",
+  "provideIdentity": "Provide Identity",
+  "genderIdentity": "Gender identity",
+  "male": "Male",
+  "female": "Female",
+  "lgbt": "LGBT+",
+  "unknow": "Unknow"
 }

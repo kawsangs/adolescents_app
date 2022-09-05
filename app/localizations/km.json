@@ -20,5 +20,11 @@
   "youCanUseThisAppInFollowingChoices": "អ្នកអាចប្រេីកម្មវីធីនេះតាមរបៀបណាមួយខាងក្រោម",
   "useWithPersonalInfo": "ភ្ជាប់អត្តសញ្ញាណ",
   "useWithoutPersonalInfo": "មិនភ្ជាប់អត្តសញ្ញាណ",
-  "or": "ឬ"
+  "or": "ឬ",
+  "provideIdentity": "ផ្តល់អត្តសញ្ញាណ",
+  "genderIdentity": "អត្តសញ្ញាណយែនឌ័រ",
+  "male": "ប្រុស",
+  "female": "ស្រី",
+  "lgbt": "LGBT+",
+  "unknow": "មិនដឹង"
 }
