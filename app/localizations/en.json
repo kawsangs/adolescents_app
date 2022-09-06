@@ -30,5 +30,9 @@
   "yourAge": "Your age",
   "yourLocation": "Your location",
   "yourCharacteristic": "Your characteristic",
-  "saveThisIndentity": "Save this indentity"
+  "saveThisIndentity": "Save this indentity",
+  "loginRequired": "Login required",
+  "pleaseLoginWithYourAccount": "Please login with your account.",
+  "somethingWentWrong": "Something went wrong.",
+  "somethingWentWrongPleaseTryAgain": "Something went wrong. Please check your internet connection then try again."
 }

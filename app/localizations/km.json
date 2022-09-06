@@ -30,5 +30,9 @@
   "yourAge": "អាយុរបស់អ្នក",
   "yourLocation": "ទីតាំងរបស់អ្នក",
   "yourCharacteristic": "ស្ថានភាពរស់នៅរបស់អ្នក",
-  "saveThisIndentity": "រក្សាទុកអត្តសញ្ញាណនេះ"
+  "saveThisIndentity": "រក្សាទុកអត្តសញ្ញាណនេះ",
+  "loginRequired": "ត្រូវការផ្ទៀងផ្ទាត់គណនី",
+  "pleaseLoginWithYourAccount": "សូមធ្វើការផ្ទៀងផ្ទាត់ជាមួយគណនីរបស់អ្នក។",
+  "somethingWentWrong": "មានបញ្ហារអាក់រអួល",
+  "somethingWentWrongPleaseTryAgain": "មានបញ្ហារអាក់រអួល សូមធ្វើការពិនិត្យសេវាអ៊ីនធឺណិតរបស់អ្នកហើយព្យាយាមម្ដងទៀត។"
 }

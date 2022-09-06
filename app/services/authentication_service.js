@@ -2,7 +2,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 
 import SessionApi from '../api/sessionApi';
 import apiService from './api_service';
-import { AUTH_ACCOUNT, AUTH_TOKEN } from '../constants/authentication_constant';
+import { AUTH_ACCOUNT, AUTH_TOKEN } from '../constants/async_storage_constant';
 import cryptoUtil from '../utils/crypto_util';
 
 const authenticationService = (() => {

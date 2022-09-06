@@ -26,7 +26,7 @@ const RadioButtonsComponent = (props) => {
         nestedScrollEnabled={true}
         showsVerticalScrollIndicator={false}
       >
-        <RadioButton.Group onValueChange={newValue => props.updateValue(newValue)}>
+        <RadioButton.Group onValueChange={newValue => props.updateValues(newValue)}>
           { props.items.map((item, index) => (
               <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} value={item.value}
                 selectedValues={props.selectedValues}

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, ToastAndroid} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
@@ -9,7 +9,8 @@ import BigButtonComponent from '../shared/BigButtonComponent';
 import provinces from '../../db/json/provinces';
 import characteristics from '../../db/json/characteristics';
 import createAccountService from '../../services/create_account_service';
-
+import errorUtil from '../../utils/error_util';
+import {navigationRef} from '../../navigators/app_navigator';
 import yourStory from '../../assets/audios/your_story.mp3';
 
 const CreateAccountBodyComponent = () => {
@@ -39,18 +40,29 @@ const CreateAccountBodyComponent = () => {
   }
 
   const save = () => {
-    const params = {
+    const user = {
       gender: state.gender,
       age: state.age,
       province_id: state.provinces[0],
+      characteristics: state.characteristics
     }
 
-    const characteristicAttrs = [];
-    state.characteristics.map(characteristic => {
-      characteristicAttrs.push({ characteristic_attributes: { code: characteristic } });
+    createAccountService.create(user, (res) => {
+      console.log('+ create app user succ = ', res)
+      navigationRef.current?.navigate('BottomTabs');
+    }, (error) => {
+      showErrorMessage(errorUtil.getErrorMessage(error.status, t).description);
     });
-    params.app_user_characteristics_attributes = characteristicAttrs;
-    createAccountService.create(params);
+  }
+
+  const showErrorMessage = (message) => {
+    ToastAndroid.showWithGravityAndOffset(
+      message,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      0,
+      200
+    );
   }
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>

@@ -7,6 +7,7 @@ const errorUtil = (() => {
   return {
     getApiErrorObject,
     getErrorTypeByStatus,
+    getErrorMessage,
   }
 
   function getApiErrorObject(error) {
@@ -29,6 +30,25 @@ const errorUtil = (() => {
     }
 
     return errorDictionary[errorStatus] || errorDictionary['default'];
+  }
+
+  function getErrorMessage(type, translation) {
+    const errors = {
+      'ERROR_AUTHENTICATION': {
+        title: translation('loginRequired'),
+        description: translation('pleaseLoginWithYourAccount')
+      },
+      'ERROR_UNAUTHORIZED': {
+        title: translation('loginRequired'),
+        description: translation('pleaseLoginWithYourAccount')
+      },
+      'default': {
+        title: translation('somethingWentWrong'),
+        description: translation('somethingWentWrongPleaseTryAgain')
+      }
+    };
+
+    return errors[type] || errors.default;
   }
 })();
 

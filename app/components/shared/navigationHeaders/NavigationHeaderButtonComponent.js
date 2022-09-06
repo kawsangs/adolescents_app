@@ -5,7 +5,7 @@ import componentUtil from '../../../utils/component_util';
 
 const NavigationHeaderButtonComponent = (props) => {
   return (
-    <TouchableOpacity style={styles.btnBack}>
+    <TouchableOpacity onPress={() => props.onPress()} style={styles.btnBack}>
       {props.icon}
     </TouchableOpacity>
   )
