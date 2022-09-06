@@ -5,14 +5,17 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import TextComponent from './TextComponent';
 import PlayAudioComponent from './PlayAudioComponent';
 import {cardBorderRadius} from '../../constants/component_constant';
+import componentUtil from '../../utils/component_util';
 
 const TextInputWithAudioComponent = (props) => {
+  const pressableSize = componentUtil.mediumPressableItemSize();
+
   return (
     <View style={props.style}>
       <TextComponent label={props.label} style={{color: 'white'}} />
 
-      <View style={{backgroundColor: 'white', height: 48, borderRadius: cardBorderRadius, marginTop: 10}}>
-        <TextInput style={{borderWidth: 0, borderRadius: cardBorderRadius}}/>
+      <View style={{backgroundColor: 'white', height: pressableSize, borderRadius: cardBorderRadius, marginTop: 10}}>
+        <TextInput style={{borderWidth: 0, borderRadius: cardBorderRadius, height: pressableSize, paddingLeft: 16, paddingRight: pressableSize}}/>
 
         <PlayAudioComponent
           playIcon='volume-high-outline'

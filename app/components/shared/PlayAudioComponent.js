@@ -101,8 +101,8 @@ const PlayAudioComponent = (props) => {
 
 const styles = StyleSheet.create({
   btn: {
-    width: componentUtil.pressableItemSize(),
-    height: componentUtil.pressableItemSize(),
+    width: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.mediumPressableItemSize(),
     borderWidth: outlinedButtonBorderWidth,
     borderColor: color.primaryColor,
     borderRadius: 25,

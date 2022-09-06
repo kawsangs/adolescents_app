@@ -26,5 +26,8 @@
   "male": "Male",
   "female": "Female",
   "lgbt": "LGBT+",
-  "unknow": "Unknow"
+  "unknow": "Unknow",
+  "yourAge": "Your age",
+  "yourLocation": "Your location",
+  "yourLivingCondition": "Your living condition"
 }
