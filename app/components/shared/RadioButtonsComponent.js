@@ -20,7 +20,7 @@ const RadioButtonsComponent = (props) => {
 
   return (
     <View style={props.style}>
-      <TextComponent label={props.title} style={{color: 'white'}} />
+      <TextComponent label={props.title} required={props.required} style={{color: 'white'}} />
 
       <ScrollView style={{backgroundColor: 'white', marginTop: 10, borderRadius: 10, maxHeight: 224,}}
         nestedScrollEnabled={true}
@@ -28,7 +28,7 @@ const RadioButtonsComponent = (props) => {
       >
         <RadioButton.Group onValueChange={newValue => props.updateValue(newValue)}>
           { props.items.map((item, index) => (
-              <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} code={item.code}
+              <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} value={item.value}
                 selectedValues={props.selectedValues}
                 updateValues={updateValues}
               />
@@ -41,3 +41,11 @@ const RadioButtonsComponent = (props) => {
 }
 
 export default RadioButtonsComponent;
+
+// Data format for the Radio button
+// const data = [
+//   { value: '01',
+//     name_km: 'Name in Khmer',
+//     name_en: 'Name in English'
+//   }
+// ]

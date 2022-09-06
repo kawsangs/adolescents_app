@@ -12,10 +12,13 @@ const TextInputWithAudioComponent = (props) => {
 
   return (
     <View style={props.style}>
-      <TextComponent label={props.label} style={{color: 'white'}} />
+      <TextComponent label={props.label} required={true} style={{color: 'white'}} />
 
       <View style={{backgroundColor: 'white', height: pressableSize, borderRadius: cardBorderRadius, marginTop: 10}}>
-        <TextInput style={{borderWidth: 0, borderRadius: cardBorderRadius, height: pressableSize, paddingLeft: 16, paddingRight: pressableSize}}/>
+        <TextInput style={{borderWidth: 0, borderRadius: cardBorderRadius, height: pressableSize, paddingLeft: 16, paddingRight: pressableSize}}
+          value={props.value}
+          onChangeText={(value) => props.updateValue(value)}
+        />
 
         <PlayAudioComponent
           playIcon='volume-high-outline'

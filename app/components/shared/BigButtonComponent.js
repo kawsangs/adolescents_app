@@ -10,7 +10,7 @@ import {bigFontSize} from '../../utils/font_size_util';
 
 const BigButtonComponent = (props) => {
   return (
-    <TouchableOpacity style={[styles.btn, props.style]}>
+    <TouchableOpacity onPress={() => props.onPress()} style={[styles.btn, props.style]}>
       <BoldLabelComponent label={props.label} style={styles.label} />
 
       <PlayAudioComponent

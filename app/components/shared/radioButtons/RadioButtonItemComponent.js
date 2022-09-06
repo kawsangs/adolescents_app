@@ -11,11 +11,11 @@ import color from '../../../themes/color';
 const RadioButtonItemComponent = (props) => {
   const renderRadioBtn = () => {
     return <TouchableOpacity style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
-              onPress={() => props.updateValues(props.code)}
+              onPress={() => props.updateValues(props.value)}
             >
               <RadioButton.Item
-                status={props.selectedValues.filter(item => item == props.code).length > 0 ? 'checked' : 'unchecked'}
-                value={props.code}
+                status={props.selectedValues.filter(item => item == props.value).length > 0 ? 'checked' : 'unchecked'}
+                value={props.value}
                 color={color.secondaryColor} uncheckedColor={color.primaryColor}
               />
               <TextComponent label={props.label} style={{color: "black"}} />
