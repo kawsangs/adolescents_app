@@ -9,6 +9,7 @@ const CreateAccountView = () => {
     <GradientScrollViewComponent
       header={<CreateAccountNavigationHeaderComponent/>}
       body={<CreateAccountBodyComponent/>}
+      scrollViewStyle={{paddingBottom: 16}}
     />
   )
 }
