@@ -30,7 +30,7 @@ const GenderSelectionComponent = (props) => {
 
   return (
     <View>
-      <TextComponent label={t('genderIdentity')} style={{color: color.whiteColor, fontSize: normalFontSize()}} />
+      <TextComponent label={t('genderIdentity')} required={true} style={{color: color.whiteColor, fontSize: normalFontSize()}} />
       <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'space-between'}}>
         { renderGenders() }
       </View>

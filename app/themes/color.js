@@ -14,6 +14,7 @@ const color = {
   grayColor: '#808080',
   lightGrayColor: '#D3D3D3',
   whiteSmokeColor: '#F5F5F5',
+  redColor: '#ff0000',
 }
 
 export default color;
