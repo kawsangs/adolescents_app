@@ -8,6 +8,16 @@ import RadioButtonItemComponent from './radioButtons/RadioButtonItemComponent';
 
 const RadioButtonsComponent = (props) => {
   const {i18n} = useTranslation();
+  const updateValues = (value) => {
+    if (!props.mutipleSelection)
+      return props.updateValues([value]);
+
+    const selectedValues = props.selectedValues.indexOf(value) != -1
+                          ? props.selectedValues.filter(item => item != value)
+                          : [...props.selectedValues, value]
+    props.updateValues(selectedValues);
+  }
+
   return (
     <View style={props.style}>
       <TextComponent label={props.title} style={{color: 'white'}} />
@@ -16,9 +26,12 @@ const RadioButtonsComponent = (props) => {
         nestedScrollEnabled={true}
         showsVerticalScrollIndicator={false}
       >
-        <RadioButton.Group onValueChange={newValue => setValue(newValue)} value='first'>
+        <RadioButton.Group onValueChange={newValue => props.updateValue(newValue)}>
           { props.items.map((item, index) => (
-              <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} />
+              <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} code={item.code}
+                selectedValues={props.selectedValues}
+                updateValues={updateValues}
+              />
             ))
           }
         </RadioButton.Group>

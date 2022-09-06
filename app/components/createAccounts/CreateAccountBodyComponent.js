@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
@@ -13,12 +13,36 @@ import yourStory from '../../assets/audios/your_story.mp3';
 
 const CreateAccountBodyComponent = () => {
   const {t} = useTranslation();
-  return <View style={{paddingHorizontal: 16, marginTop: 16}}>
-            <GenderSelectionComponent/>
-            <TextInputWithAudioComponent label={t('yourAge')} style={{marginTop: 22}}/>
+  const [state, setState] = useState({
+    gender: 'male',
+    age: null,
+    provinces: [],
+    characteristics: []
+  });
+  const sectionMarginTop = 22
 
-            <RadioButtonsComponent items={provinces} title={t('yourLocation')} style={{marginTop: 22}}/>
-            <RadioButtonsComponent items={characteristics} title={t('yourCharacteristic')} style={{marginTop: 22}}/>
+  const renderRadioButtons = () => {
+    return <React.Fragment>
+              <RadioButtonsComponent items={provinces} title={t('yourLocation')} style={{marginTop: sectionMarginTop}}
+                selectedValues={state.provinces}
+                mutipleSelection={false}
+                updateValues={(values) => setState(prevValues => ({...prevValues, provinces: values}))}
+              />
+              <RadioButtonsComponent items={characteristics} title={t('yourCharacteristic')} style={{marginTop: sectionMarginTop}}
+                selectedValues={state.characteristics}
+                mutipleSelection={true}
+                updateValues={(values) => setState(prevValues => ({...prevValues, characteristics: values}))}
+              />
+           </React.Fragment>
+  }
+
+  return <View style={{paddingHorizontal: 16, marginTop: 16}}>
+            <GenderSelectionComponent
+              selectedValue={state.gender}
+              updateValue={(gender) => setState(prevValues => ({...prevValues, gender}))}
+            />
+            <TextInputWithAudioComponent label={t('yourAge')} style={{marginTop: sectionMarginTop}}/>
+            { renderRadioButtons() }
             <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
               uuid='123'
               audio={yourStory}

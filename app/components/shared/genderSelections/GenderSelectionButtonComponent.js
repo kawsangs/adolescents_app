@@ -32,12 +32,17 @@ const GenderSelectionButtonComponent = (props) => {
   }
 
   const renderGenderIcon = () => {
-    return <TouchableOpacity style={styles.iconContainer}>
+    const bgColor = (props.selectedValue == props.value) ? color.secondaryColor : '#ebedf1';
+    const labelColor = (props.selectedValue == props.value) ? color.whiteColor : color.primaryColor;
+
+    return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }]}
+              onPress={() => props.updateValue(props.value)}
+            >
             <View style={{flex: 2, justifyContent: 'flex-end'}}>
-              <Icon name={props.icon} size={props.size} color={color.whiteColor}/>
+              <Icon name={props.icon} size={props.size} color={labelColor}/>
             </View>
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <TextComponent label={props.label} style={styles.label} />
+              <TextComponent label={props.label} style={[styles.label, { color: labelColor }]} />
             </View>
           </TouchableOpacity>
   }

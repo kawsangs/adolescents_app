@@ -17,7 +17,6 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
   },
   iconContainer: {
     alignItems: 'center',
-    backgroundColor: color.secondaryColor,
     borderTopRightRadius: cardBorderRadius,
     borderTopLeftRadius: cardBorderRadius,
     flex: 3,
