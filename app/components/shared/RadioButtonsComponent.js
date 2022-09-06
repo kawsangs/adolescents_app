@@ -1,11 +1,13 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
-import { RadioButton, Text } from 'react-native-paper';
+import {RadioButton} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 import TextComponent from './TextComponent';
 import RadioButtonItemComponent from './radioButtons/RadioButtonItemComponent';
 
 const RadioButtonsComponent = (props) => {
+  const {i18n} = useTranslation();
   return (
     <View style={props.style}>
       <TextComponent label={props.title} style={{color: 'white'}} />
@@ -16,7 +18,7 @@ const RadioButtonsComponent = (props) => {
       >
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value='first'>
           { props.items.map((item, index) => (
-              <RadioButtonItemComponent key={index} label={item.label} />
+              <RadioButtonItemComponent key={index} label={item[`name_${i18n.language}`]} />
             ))
           }
         </RadioButton.Group>
