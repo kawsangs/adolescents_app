@@ -16,8 +16,12 @@ const TextInputWithAudioComponent = (props) => {
 
       <View style={{backgroundColor: 'white', height: pressableSize, borderRadius: cardBorderRadius, marginTop: 10}}>
         <TextInput style={{borderWidth: 0, borderRadius: cardBorderRadius, height: pressableSize, paddingLeft: 16, paddingRight: pressableSize}}
+          keyboardType={props.keyboardType}
           value={props.value}
           onChangeText={(value) => props.updateValue(value)}
+          onBlur={() => !!props.onBlur && props.onBlur()}
+          onFocus={() => !!props.onFocus && props.onFocus()}
+          maxLength={props.maxLength || null}
         />
 
         <PlayAudioComponent

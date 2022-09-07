@@ -27,7 +27,7 @@ const createAccountService = (() => {
 
     const response = await new AppUserApi().post(params);
     apiService.handleApiResponse(response, (res) => {
-      asyncStorageService.setItem(APP_USER, params);
+      asyncStorageService.setItem(APP_USER, res);
       !!successCallback && successCallback(res);
     }, (error) => {
       !!failureCallback && failureCallback(error);

@@ -3,7 +3,7 @@ import {View, ToastAndroid} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
-import TextInputWithAudioComponent from '../shared/TextInputWithAudioComponent';
+import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
 import RadioButtonsComponent from '../shared/RadioButtonsComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import provinces from '../../db/json/provinces';
@@ -17,7 +17,7 @@ const CreateAccountBodyComponent = () => {
   const {t} = useTranslation();
   const [state, setState] = useState({
     gender: 'male',
-    age: null,
+    age: 0,
     provinces: [],
     characteristics: []
   });
@@ -42,13 +42,12 @@ const CreateAccountBodyComponent = () => {
   const save = () => {
     const user = {
       gender: state.gender,
-      age: state.age,
+      age: parseInt(state.age),
       province_id: state.provinces[0],
       characteristics: state.characteristics
     }
 
     createAccountService.create(user, (res) => {
-      console.log('+ create app user succ = ', res)
       navigationRef.current?.navigate('BottomTabs');
     }, (error) => {
       showErrorMessage(errorUtil.getErrorMessage(error.status, t).description);
@@ -70,8 +69,8 @@ const CreateAccountBodyComponent = () => {
               selectedValue={state.gender}
               updateValue={(gender) => setState(prevValues => ({...prevValues, gender}))}
             />
-            <TextInputWithAudioComponent label={t('yourAge')} style={{marginTop: sectionMarginTop}}
-              value={state.age}
+            <NumericInputWithAudioComponent label={t('yourAge')} value={state.age.toString()}
+              style={{marginTop: sectionMarginTop}}
               updateValue={(age) => setState(prevValues => ({...prevValues, age}))}
             />
             { renderRadioButtons() }
