@@ -4,7 +4,7 @@ import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
-import RadioButtonsComponent from '../shared/RadioButtonsComponent';
+import RadioButtonComponent from '../shared/RadioButtonComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import provinces from '../../db/json/provinces';
 import characteristics from '../../db/json/characteristics';
@@ -18,24 +18,24 @@ const CreateAccountBodyComponent = () => {
   const [state, setState] = useState({
     gender: 'male',
     age: 0,
-    provinces: [],
+    province: null,
     characteristics: []
   });
   const sectionMarginTop = 22
 
   const renderRadioButtons = () => {
     return <React.Fragment>
-              <RadioButtonsComponent items={provinces} title={t('yourLocation')} style={{marginTop: sectionMarginTop}}
-                selectedValues={state.provinces}
+              <RadioButtonComponent items={provinces} title={t('yourLocation')} style={{marginTop: sectionMarginTop}}
+                selectedValue={state.province}
                 required={true}
                 mutipleSelection={false}
-                updateValues={(values) => setState(prevValues => ({...prevValues, provinces: values}))}
+                updateValue={(province) => setState(prevValues => ({...prevValues, province}))}
               />
-              <RadioButtonsComponent items={characteristics} title={t('yourCharacteristic')} style={{marginTop: sectionMarginTop}}
+              {/* <RadioButtonComponent items={characteristics} title={t('yourCharacteristic')} style={{marginTop: sectionMarginTop}}
                 selectedValues={state.characteristics}
                 mutipleSelection={true}
                 updateValues={(values) => setState(prevValues => ({...prevValues, characteristics: values}))}
-              />
+              /> */}
            </React.Fragment>
   }
 
@@ -43,7 +43,7 @@ const CreateAccountBodyComponent = () => {
     const user = {
       gender: state.gender,
       age: parseInt(state.age),
-      province_id: state.provinces[0],
+      province_id: state.province,
       characteristics: state.characteristics
     }
 
