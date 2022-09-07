@@ -6,11 +6,10 @@ import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
-import createAccountService from '../../services/create_account_service';
+import appUserService from '../../services/app_user_service';
 import errorUtil from '../../utils/error_util';
 import toastMessageHelper from '../../helpers/toast_message_helper';
 import {navigationRef} from '../../navigators/app_navigator';
-import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import yourStory from '../../assets/audios/your_story.mp3';
 
 const CreateAccountBodyComponent = () => {
@@ -27,7 +26,7 @@ const CreateAccountBodyComponent = () => {
     const newState = state;
     newState[fieldName] = value;
     setState({...newState});
-    setIsValid(createAccountService.isValidForm(state.age, state.province));
+    setIsValid(appUserService.isValidForm(state.age, state.province));
   }
 
   const renderSelectionComponents = () => {
@@ -46,9 +45,7 @@ const CreateAccountBodyComponent = () => {
       characteristics: state.characteristics
     }
 
-    console.log('=== user data = ', user)
-
-    createAccountService.create(user, (res) => {
+    appUserService.createUser(user, (res) => {
       navigationRef.current?.navigate('BottomTabs');
     }, (error) => {
       toastMessageHelper(errorUtil.getErrorMessage(error.status, t).description);

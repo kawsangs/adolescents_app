@@ -8,11 +8,13 @@ import asyncStorageService from './async_storage_service';
 
 const createAccountService = (() => {
   return {
-    create,
-    isValidForm
+    createUser,
+    isValidForm,
+    createAnonymousUser,
+    removeUser
   }
 
-  async function create(user, successCallback, failureCallback) {
+  async function createUser(user, successCallback, failureCallback) {
     const characteristicAttrs = [];
     user.characteristics.map(characteristic => {
       characteristicAttrs.push({ characteristic_attributes: { code: characteristic } });
@@ -37,6 +39,24 @@ const createAccountService = (() => {
 
   function isValidForm(age, province) {
     return age > 0 && !!province;
+  }
+
+  function createAnonymousUser() {
+    const user = {
+      id: null,
+      gender: null,
+      age: 0,
+      province_id: null,
+      device_id: DeviceInfo.getDeviceId(),
+      registered_at: Moment().format(apiDateTimeFormat),
+      app_user_characteristics_attributes: [],
+    };
+
+    asyncStorageService.setItem(APP_USER, user);
+  }
+
+  function removeUser() {
+    asyncStorageService.removeItem(APP_USER);
   }
 })();
 
