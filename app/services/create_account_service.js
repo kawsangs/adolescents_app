@@ -8,7 +8,8 @@ import asyncStorageService from './async_storage_service';
 
 const createAccountService = (() => {
   return {
-    create
+    create,
+    isValidForm
   }
 
   async function create(user, successCallback, failureCallback) {
@@ -32,6 +33,10 @@ const createAccountService = (() => {
     }, (error) => {
       !!failureCallback && failureCallback(error);
     })
+  }
+
+  function isValidForm(age, province) {
+    return age > 0 && !!province;
   }
 })();
 

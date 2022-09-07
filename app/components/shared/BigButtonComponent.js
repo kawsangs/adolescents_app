@@ -9,9 +9,16 @@ import componentUtil from '../../utils/component_util';
 import {bigFontSize} from '../../utils/font_size_util';
 
 const BigButtonComponent = (props) => {
+  const colorSet = () => {
+    if (props.disabled)
+      return { bgColor: color.disabledColor, textColor: color.mutedColor };
+
+    return { bgColor: color.primaryColor, textColor: color.whiteColor };
+  }
+
   return (
-    <TouchableOpacity onPress={() => props.onPress()} style={[styles.btn, props.style]}>
-      <BoldLabelComponent label={props.label} style={styles.label} />
+    <TouchableOpacity onPress={() => !props.disabled && props.onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}>
+      <BoldLabelComponent label={props.label} style={{ fontSize: bigFontSize(), color: colorSet().textColor }} />
 
       <PlayAudioComponent
         playIcon='volume-high-outline'

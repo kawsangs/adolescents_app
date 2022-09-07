@@ -15,6 +15,7 @@ const color = {
   lightGrayColor: '#D3D3D3',
   whiteSmokeColor: '#F5F5F5',
   redColor: '#ff0000',
+  disabledColor: '#b5b5b5',
 }
 
 export default color;

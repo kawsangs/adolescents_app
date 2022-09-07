@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import {View, ToastAndroid} from 'react-native';
+import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
-import RadioButtonComponent from '../shared/RadioButtonComponent';
-import CheckboxComponent from '../shared/CheckboxComponent';
+import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
-import provinces from '../../db/json/provinces';
-import characteristics from '../../db/json/characteristics';
 import createAccountService from '../../services/create_account_service';
 import errorUtil from '../../utils/error_util';
+import toastMessageHelper from '../../helpers/toast_message_helper';
 import {navigationRef} from '../../navigators/app_navigator';
 import yourStory from '../../assets/audios/your_story.mp3';
 
@@ -22,22 +20,21 @@ const CreateAccountBodyComponent = () => {
     province: null,
     characteristics: []
   });
-  const sectionMarginTop = 22
+  const [isValid, setIsValid] = useState(false);
 
-  const renderRadioButtons = () => {
-    return <React.Fragment>
-              <RadioButtonComponent items={provinces} title={t('yourLocation')} style={{marginTop: sectionMarginTop}}
-                selectedValue={state.province}
-                required={true}
-                mutipleSelection={false}
-                updateValue={(province) => setState(prevValues => ({...prevValues, province}))}
-              />
-              <CheckboxComponent items={characteristics} title={t('yourCharacteristic')}
-                selectedItems={state.characteristics}
-                style={{marginTop: sectionMarginTop}}
-                updateSelectedItems={(characteristics) => setState(prevValues => ({...prevValues, characteristics}))}
-              />
-           </React.Fragment>
+  const updateState = (fieldName, value) => {
+    const newState = state;
+    newState[fieldName] = value;
+    setState({...newState});
+    setIsValid(createAccountService.isValidForm(state.age, state.province));
+  }
+
+  const renderSelectionComponents = () => {
+    return <CreateAccountSelectionsComponent
+              province={state.province}
+              characteristics={state.characteristics}
+              updateState={(fieldName, value) => updateState(fieldName, value)}
+           />
   }
 
   const save = () => {
@@ -48,38 +45,28 @@ const CreateAccountBodyComponent = () => {
       characteristics: state.characteristics
     }
 
+    console.log('=== user data = ', user)
+
     createAccountService.create(user, (res) => {
       navigationRef.current?.navigate('BottomTabs');
     }, (error) => {
-      showErrorMessage(errorUtil.getErrorMessage(error.status, t).description);
+      toastMessageHelper(errorUtil.getErrorMessage(error.status, t).description);
     });
   }
 
-  const showErrorMessage = (message) => {
-    ToastAndroid.showWithGravityAndOffset(
-      message,
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM,
-      0,
-      200
-    );
-  }
-
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
-            <GenderSelectionComponent
-              selectedValue={state.gender}
-              updateValue={(gender) => setState(prevValues => ({...prevValues, gender}))}
-            />
+            <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
             <NumericInputWithAudioComponent label={t('yourAge')} value={state.age.toString()}
-              style={{marginTop: sectionMarginTop}}
-              updateValue={(age) => setState(prevValues => ({...prevValues, age}))}
+              style={{marginTop: 22}}
+              updateValue={(age) => updateState('age', age)}
             />
-            { renderRadioButtons() }
+            { renderSelectionComponents() }
             <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
               uuid='123'
               audio={yourStory}
               playingUuid={null}
               updatePlayingUuid={() => console.log('update uuid')}
+              disabled={!isValid}
               onPress={() => save()}
             />
          </View>
