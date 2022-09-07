@@ -22,11 +22,13 @@ const NumericInputWithAudioComponent = (props) => {
   }
 
   return (
-    <TextInputWithAudioComponent label={props.label} style={props.style}
+    <TextInputWithAudioComponent label={props.label} required={props.required} requiredMsg={props.requiredMsg}
+      requiredVisible={props.requiredVisible}
       keyboardType="number-pad"
       value={props.value}
       updateValue={updateValue}
       maxLength={2}
+      style={props.style}
       onBlur={() => onBlur()}
       onFocus={() => onFocus()}
     />

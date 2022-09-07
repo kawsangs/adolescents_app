@@ -28,11 +28,13 @@
   "lgbt": "LGBT+",
   "unknow": "Unknow",
   "yourAge": "Your age",
-  "yourLocation": "Your location",
+  "yourProvince": "Your province",
   "yourCharacteristic": "Your characteristic",
   "saveThisIndentity": "Save this indentity",
   "loginRequired": "Login required",
   "pleaseLoginWithYourAccount": "Please login with your account.",
   "somethingWentWrong": "Something went wrong.",
-  "somethingWentWrongPleaseTryAgain": "Something went wrong. Please check your internet connection then try again."
+  "somethingWentWrongPleaseTryAgain": "Something went wrong. Please check your internet connection then try again.",
+  "pleaseInputYourAge": "(please input your age)",
+  "pleaseChooseYourProvince": "(please choose your province)"
 }

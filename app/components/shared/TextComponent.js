@@ -8,7 +8,7 @@ const TextComponent = (props) => {
   
   return <Text style={[{fontFamily: FontFamily.body, letterSpacing: -1}, props.style]}>
             { props.label }
-            { props.required && <Text style={{color: color.redColor}}> *</Text> }
+            { props.required && <Text style={{color: color.requiredColor}}> *</Text> }
          </Text>
 }
 

@@ -4,12 +4,13 @@ import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
-import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
+import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
 import createAccountService from '../../services/create_account_service';
 import errorUtil from '../../utils/error_util';
 import toastMessageHelper from '../../helpers/toast_message_helper';
 import {navigationRef} from '../../navigators/app_navigator';
+import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import yourStory from '../../assets/audios/your_story.mp3';
 
 const CreateAccountBodyComponent = () => {
@@ -56,8 +57,11 @@ const CreateAccountBodyComponent = () => {
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
             <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
-            <NumericInputWithAudioComponent label={t('yourAge')} value={state.age.toString()}
+            <NumericInputWithAudioComponent label={t('yourAge')} requiredMsg={t('pleaseInputYourAge')}
+              required={true}
+              value={state.age.toString()}
               style={{marginTop: 22}}
+              requiredVisible={state.age <= 0}
               updateValue={(age) => updateState('age', age)}
             />
             { renderSelectionComponents() }

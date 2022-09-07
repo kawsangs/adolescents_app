@@ -1,19 +1,31 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
 import TextComponent from './TextComponent';
 import RadioButtonItemComponent from './radioButtons/RadioButtonItemComponent';
+import color from '../../themes/color';
+import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 
 const RadioButtonComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
+  const requiredVisible = props.required && !props.selectedValue;
+
+  const renderTitle = () => {
+    return <View style={{flexDirection: 'row'}}>
+            <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor}} />
+            { requiredVisible &&
+              <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6}} />
+            }
+          </View>
+  }
 
   return (
     <View style={props.style}>
-      <TextComponent label={props.title} required={props.required} style={{color: 'white'}} />
+      { renderTitle() }
 
-      <ScrollView style={{backgroundColor: 'white', marginTop: 10, borderRadius: 10, maxHeight: 224,}}
+      <ScrollView style={[styles.radioBtnContainer, requiredVisible ? sharedStyles.requiredBorder : {}]}
         nestedScrollEnabled={true}
         showsVerticalScrollIndicator={false}
       >
@@ -30,6 +42,15 @@ const RadioButtonComponent = (props) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  radioBtnContainer: {
+    backgroundColor: color.whiteColor,
+    borderRadius: 10,
+    marginTop: 10,
+    maxHeight: 224,
+  }
+});
 
 export default RadioButtonComponent;
 

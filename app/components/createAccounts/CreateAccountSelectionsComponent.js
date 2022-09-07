@@ -10,7 +10,8 @@ const CreateAccountSelectionsComponent = (props) => {
   const {t} = useTranslation();
   const sectionMarginTop = 22
   return <React.Fragment>
-            <RadioButtonComponent items={provinces} title={t('yourLocation')} style={{marginTop: sectionMarginTop}}
+            <RadioButtonComponent items={provinces} title={t('yourProvince')} requiredMsg={t('pleaseChooseYourProvince')}
+              style={{marginTop: sectionMarginTop}}
               selectedValue={props.province}
               required={true}
               mutipleSelection={false}
