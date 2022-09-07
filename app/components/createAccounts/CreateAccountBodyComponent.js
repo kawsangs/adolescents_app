@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next';
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
 import RadioButtonComponent from '../shared/RadioButtonComponent';
+import CheckboxComponent from '../shared/CheckboxComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import provinces from '../../db/json/provinces';
 import characteristics from '../../db/json/characteristics';
@@ -31,11 +32,11 @@ const CreateAccountBodyComponent = () => {
                 mutipleSelection={false}
                 updateValue={(province) => setState(prevValues => ({...prevValues, province}))}
               />
-              {/* <RadioButtonComponent items={characteristics} title={t('yourCharacteristic')} style={{marginTop: sectionMarginTop}}
-                selectedValues={state.characteristics}
-                mutipleSelection={true}
-                updateValues={(values) => setState(prevValues => ({...prevValues, characteristics: values}))}
-              /> */}
+              <CheckboxComponent items={characteristics} title={t('yourCharacteristic')}
+                selectedItems={state.characteristics}
+                style={{marginTop: sectionMarginTop}}
+                updateSelectedItems={(characteristics) => setState(prevValues => ({...prevValues, characteristics}))}
+              />
            </React.Fragment>
   }
 
