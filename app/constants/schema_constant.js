@@ -1,1 +1,3 @@
-export const schemaNames = [];
+export const schemaNames = [
+  'User',
+];

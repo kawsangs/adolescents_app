@@ -1,8 +1,11 @@
 'use strict';
 
 import Realm from 'realm';
+import schemaV1 from './schemas/schemaV1';
 
-const schemas = [];
+const schemas = [
+  schemaV1,
+];
 
 let nextSchemaIndex = Realm.schemaVersion(Realm.defaultPath);
 if (nextSchemaIndex !== -1) {
