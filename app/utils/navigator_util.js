@@ -11,8 +11,7 @@ const navigatorUtil = (() => {
     if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
       return 'IntroductionView';
 
-    // return !!await appUserHelper.currentUser() ? 'BottomTabs' : 'LoginSelectionView';
-    return 'LoginSelectionView';
+    return !!await appUserHelper.currentUser() ? 'BottomTabs' : 'LoginSelectionView';
   }
 })();
 

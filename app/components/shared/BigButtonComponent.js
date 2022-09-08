@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.primaryColor,
     borderRadius: BORDER_RADIUS,
+    elevation: 4,
     height: componentUtil.mediumPressableItemSize(),
     justifyContent: 'center'
   },

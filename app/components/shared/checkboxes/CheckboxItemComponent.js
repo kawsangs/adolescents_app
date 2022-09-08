@@ -1,28 +1,24 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Checkbox} from 'react-native-paper';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
-import PlayAudioComponent from '../PlayAudioComponent';
+import SelectionItemAudioButtonComponent from '../SelectionItemAudioButtonComponent';
 import color from '../../../themes/color';
-import {normalFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
+import {getStyleOfDevice} from '../../../utils/responsive_util';
+import tabletStyles from '../../../assets/stylesheets/tablet/selectionItemComponentStyles';
+import mobileStyles from '../../../assets/stylesheets/mobile/selectionItemComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CheckboxItemComponent = (props) => {
   const renderAudioBtn = () => {
-    return <PlayAudioComponent
-              playIcon='volume-high-outline'
-              pauseIcon='pause'
-              muteIcon='volume-mute-outline'
-              iconSize={24}
+    return <SelectionItemAudioButtonComponent
               audio={props.audio}
-              btnStyle={styles.audioBtn}
               itemUuid={props.uuid}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
-            >
-              <IonIcon/>
-            </PlayAudioComponent>
+           />
   }
 
   return (
@@ -30,7 +26,7 @@ const CheckboxItemComponent = (props) => {
       <View style={{flex: 1}}>
         <Checkbox.Item label={props.label}
           status={props.isSelected ? 'checked' : 'unchecked'}
-          style={{height: componentUtil.mediumPressableItemSize()}}
+          style={styles.selectionItem}
           uncheckedColor={color.primaryColor}
           color={color.secondaryColor}
           labelStyle={styles.label}
@@ -43,20 +39,5 @@ const CheckboxItemComponent = (props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: normalFontSize(),
-    letterSpacing: -1,
-    paddingLeft: 16,
-    textAlign: 'left',
-  },
-  audioBtn: {
-    borderWidth: 0,
-    borderRadius: 0,
-    height: componentUtil.mediumPressableItemSize(),
-    width: componentUtil.mediumPressableItemSize()
-  }
-});
 
 export default CheckboxItemComponent;

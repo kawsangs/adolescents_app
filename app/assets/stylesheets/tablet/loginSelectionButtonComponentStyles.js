@@ -7,7 +7,8 @@ const borderRadius = 25;
 
 const loginSelectionButtonComponentStyles = StyleSheet.create({
   container: {
-    alignItems: 'center', elevation: 4,
+    alignItems: 'center',
+    elevation: 4,
     backgroundColor: color.whiteColor,
     borderRadius: borderRadius,
     flexDirection: 'row',

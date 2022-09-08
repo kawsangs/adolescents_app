@@ -1,41 +1,40 @@
 import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import {RadioButton} from 'react-native-paper';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
-import TextComponent from '../TextComponent';
-import PlayAudioComponent from '../PlayAudioComponent';
+import SelectionItemAudioButtonComponent from '../SelectionItemAudioButtonComponent';
 import componentUtil from '../../../utils/component_util';
 import color from '../../../themes/color';
 
+import {getStyleOfDevice} from '../../../utils/responsive_util';
+import tabletStyles from '../../../assets/stylesheets/tablet/selectionItemComponentStyles';
+import mobileStyles from '../../../assets/stylesheets/mobile/selectionItemComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
+
 const RadioButtonItemComponent = (props) => {
   const renderRadioBtn = () => {
-    return <TouchableOpacity style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
-              onPress={() => props.updateValue(props.value)}
-            >
+    return <View style={{flex: 1}}>
               <RadioButton.Item
                 status={props.selectedValue == props.value ? 'checked' : 'unchecked'}
                 value={props.value}
                 color={color.secondaryColor} uncheckedColor={color.primaryColor}
+                position='leading'
+                label={props.label}
+                labelStyle={styles.label}
+                onValueChange={() => props.updateValue(props.value)}
+                style={styles.selectionItem}
               />
-              <TextComponent label={props.label} style={{color: "black"}} />
-            </TouchableOpacity>
+           </View>
   }
 
   const renderAudioBtn = () => {
-    return <PlayAudioComponent
-              playIcon='volume-high-outline'
-              pauseIcon='pause'
-              muteIcon='volume-mute-outline'
-              iconSize={24}
+    return <SelectionItemAudioButtonComponent
               audio={props.audio}
-              btnStyle={{borderWidth: 0, borderRadius: 0, height: componentUtil.mediumPressableItemSize(), width: componentUtil.mediumPressableItemSize()}}
               itemUuid={props.uuid}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
-            >
-              <IonIcon/>
-            </PlayAudioComponent>
+           />
   }
 
   return (
