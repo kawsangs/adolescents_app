@@ -1,6 +1,6 @@
 import appStatusService from '../services/app_status_service';
 import { environment } from '../config/environment';
-import appUserHelper from '../helpers/app_user_helper';
+import User from '../models/User';
 
 const navigatorUtil = (() => {
   return {
@@ -11,7 +11,7 @@ const navigatorUtil = (() => {
     if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
       return 'IntroductionView';
 
-    return !!await appUserHelper.currentUser() ? 'BottomTabs' : 'LoginSelectionView';
+    return !!User.loggedInUser() ? 'BottomTabs' : 'LoginSelectionView';
   }
 })();
 

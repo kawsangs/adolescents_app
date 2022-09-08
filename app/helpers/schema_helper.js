@@ -1,4 +1,4 @@
-import UserSchema from '../db/migrations/v1/User';
+import UserSchema from '../db/migrations/v1/user';
 
 import { schemaNames } from '../constants/schema_constant';
 

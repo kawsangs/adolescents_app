@@ -6,10 +6,13 @@ const UserSchema = {
   properties: {
     uuid: 'string',
     id: 'string?',
+    gender: 'string?',
     age: 'int',
-    characteristic_code: 'string',
+    province_id: 'string?',
+    characteristics: {type:'string[]', default: [] },
     registered_at: 'date',
-    sync_status: 'int'    // 0 = unsynced, 1 = synced
+    synced: { type: 'bool', default: false },
+    logged_in: { type: 'bool', default: true }
   }
 }
 
