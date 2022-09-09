@@ -51,6 +51,17 @@ const CreateAccountBodyComponent = () => {
     appUserService.createUser(user, () => { navigationRef.current?.navigate('BottomTabs') });
   }
 
+  const renderSaveButton = () => {
+    return <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
+              uuid='123'
+              audio={yourStory}
+              playingUuid={null}
+              updatePlayingUuid={() => console.log('update uuid')}
+              disabled={!isValid}
+              onPress={() => save()}
+            />
+  }
+
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
             <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
             <NumericInputWithAudioComponent label={t('yourAge')} requiredMsg={t('pleaseInputYourAge')}
@@ -61,14 +72,7 @@ const CreateAccountBodyComponent = () => {
               updateValue={(age) => updateState('age', age)}
             />
             { renderSelectionComponents() }
-            <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
-              uuid='123'
-              audio={yourStory}
-              playingUuid={null}
-              updatePlayingUuid={() => console.log('update uuid')}
-              disabled={!isValid}
-              onPress={() => save()}
-            />
+            { renderSaveButton() }
          </View>
 }
 

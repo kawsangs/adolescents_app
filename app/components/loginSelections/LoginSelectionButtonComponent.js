@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
@@ -7,6 +7,7 @@ import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import PlayAudioComponent from '../shared/PlayAudioComponent';
 import color from '../../themes/color';
+import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionButtonComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonComponentStyles';
@@ -14,6 +15,7 @@ import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonCo
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const LoginSelectionButtonComponent = (props) => {
+  const [disabled, setDisabled] = useState(false);
   const renderAudioButton = () => {
     return <PlayAudioComponent
               playIcon='volume-high-outline'
@@ -36,8 +38,20 @@ const LoginSelectionButtonComponent = (props) => {
            </GradientViewComponent>
   }
 
+  const onPress = () => {
+    setDisabled(true);
+    !!props.onPress && props.onPress();
+
+    // Preventing the user from clicking the button mutiple times at once
+    setTimeout(() => {
+      setDisabled(false)
+    }, BUTTON_DELAY_DURATION);
+  }
+
   return (
-    <TouchableOpacity onPress={() => !!props.onPress && props.onPress()} style={[styles.container, props.btnStyle]}>
+    <TouchableOpacity onPress={() => onPress()} style={[styles.container, props.btnStyle]}
+      disabled={disabled}
+    >
       { renderGradientIcon() }
       <BoldLabelComponent label={props.label} style={styles.label} />
       { renderAudioButton() }
