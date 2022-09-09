@@ -6,7 +6,7 @@ const UserSchema = {
   properties: {
     uuid: 'string',
     id: 'string?',
-    gender: 'string?',
+    gender: 'string',
     age: 'int',
     province_id: 'string?',
     characteristics: {type:'string[]', default: [] },

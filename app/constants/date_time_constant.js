@@ -1,1 +1,0 @@
-export const apiDateTimeFormat = 'ddd, DD MMM YYYY';

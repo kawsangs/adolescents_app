@@ -2,7 +2,6 @@ import Moment from 'moment';
 import DeviceInfo from 'react-native-device-info';
 
 import AppUserApi from '../api/appUserApi';
-import {apiDateTimeFormat} from '../constants/date_time_constant';
 import apiService from './api_service';
 import networkService from './network_service';
 import User from '../models/User';
@@ -13,58 +12,85 @@ const createAccountService = (() => {
     createUser,
     isValidForm,
     createAnonymousUser,
+    syncUsers,
   }
 
-  function createUser(user, successCallback, failureCallback) {
-    const characteristicAttrs = [];
-    const params = _buildData(user);
-    _saveUserInLocal(params);    // save user to realm
+  function createUser(user, callback) {
+    if (!!User.loggedInUser())   // To prevent creating duplicate user when there is a logged in user
+      return callback();
 
-    networkService.checkConnection(() => {
-      user.characteristics.map(characteristic => {
-        characteristicAttrs.push({ characteristic_attributes: { code: characteristic } });
-      });
-      params['app_user_characteristics_attributes'] = characteristicAttrs;
-      params['device_id'] = DeviceInfo.getDeviceId();
-      delete params.characteristics;
-      _sendCreateRequest(params, successCallback, failureCallback)
-    }, successCallback);
+    const params = _buildData(user);
+    User.create(params);  // save the user to in local storage
+    _sendCreateRequest(params, callback);
   }
 
   function isValidForm(age, province) {
     return age > 0 && !!province;
   }
 
-  function createAnonymousUser() {
-    _saveUserInLocal(_buildData(null))
+  function createAnonymousUser(callback) {
+    const params = _buildData(null);
+    User.create(params);
+    _sendCreateRequest(params, callback);
+  }
+
+  function syncUsers() {
+    const unsyncedUsers = User.unsyncedUsers();
+    if (unsyncedUsers.length == 0)
+      return;
+
+    sendUnsyncUsers(0, unsyncedUsers);
   }
 
   // private method
-  async function _sendCreateRequest(params, successCallback, failureCallback) {
-    const response = await new AppUserApi().post(params);
-    apiService.handleApiResponse(response, (res) => {
-      User.update(params.uuid, { id: res.id, synced: true });
-      !!successCallback && successCallback(res);
-    }, (error) => {
-      !!failureCallback && failureCallback(error);
-    })
+  function sendUnsyncUsers(index, users) {
+    _sendCreateRequest(users[index], () => {
+      if (index == users.length - 1) return;
+
+      sendUnsyncUsers(index + 1, users);
+    });
   }
 
-  function _saveUserInLocal(params) {
-    const data = params;
-    data.synced = false;
-    User.create(data);
+  function _sendCreateRequest(params, callback) {
+    networkService.checkConnection(async () => {
+      const response = await new AppUserApi().post(_userApiParams(params));
+
+      apiService.handleApiResponse(response, (res) => {
+        User.update(params.uuid, { id: res.id, synced: true });
+        !!callback && callback();
+      }, (error) => {
+        !!callback && callback();
+      });
+    }, callback);
   }
 
   function _buildData(user) {
     const params = {
       uuid: uuidv4(),
       id: null,
-      gender: user ? user.gender : null,
+      gender: user ? user.gender : 'male',
       age: user ? user.age : 0,
       province_id: user ? user.province_id : null,
-      registered_at: Moment().format(apiDateTimeFormat),
+      registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
+      synced: false,
+    }
+
+    return params;
+  }
+
+  function _userApiParams(user) {
+    const characteristicAttrs = [];
+    user.characteristics.map(characteristic => {
+      characteristicAttrs.push({ characteristic_attributes: { code: characteristic } });
+    });
+    const params = {
+      device_id: DeviceInfo.getDeviceId(),
+      app_user_characteristics_attributes: characteristicAttrs,
+      registered_at: user.registered_at,
+      province_id: user.province_id,
+      gender: user.gender,
+      age: user.age,
     }
 
     return params;

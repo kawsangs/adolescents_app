@@ -48,9 +48,7 @@ const CreateAccountBodyComponent = () => {
       characteristics: state.characteristics
     }
 
-    appUserService.createUser(user, (res) => { navigationRef.current?.navigate('BottomTabs') }, (error) => {
-      toastMessageHelper.showMessage(errorUtil.getErrorMessage(error.status, t).description);
-    });
+    appUserService.createUser(user, () => { navigationRef.current?.navigate('BottomTabs') });
   }
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
