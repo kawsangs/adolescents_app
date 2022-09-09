@@ -54,7 +54,6 @@ const createAccountService = (() => {
   function _sendCreateRequest(params, callback) {
     networkService.checkConnection(async () => {
       const response = await new AppUserApi().post(_userApiParams(params));
-
       apiService.handleApiResponse(response, (res) => {
         User.update(params.uuid, { id: res.id, synced: true });
         !!callback && callback();
@@ -68,8 +67,8 @@ const createAccountService = (() => {
     const params = {
       uuid: uuidv4(),
       id: null,
-      gender: user ? user.gender : 'male',
-      age: user ? user.age : 0,
+      gender: user ? user.gender : null,
+      age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
