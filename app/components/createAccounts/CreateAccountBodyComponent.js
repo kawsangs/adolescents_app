@@ -7,10 +7,12 @@ import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioCompo
 import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
 import appUserService from '../../services/app_user_service';
+import asyncStorageService from '../../services/async_storage_service';
 import errorUtil from '../../utils/error_util';
 import toastMessageHelper from '../../helpers/toast_message_helper';
 import {navigationRef} from '../../navigators/app_navigator';
 import yourStory from '../../assets/audios/your_story.mp3';
+import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 
 const CreateAccountBodyComponent = () => {
   const {t} = useTranslation();
@@ -27,6 +29,7 @@ const CreateAccountBodyComponent = () => {
     newState[fieldName] = value;
     setState({...newState});
     setIsValid(appUserService.isValidForm(state.age, state.province));
+    asyncStorageService.setItem(USER_INFO_CHANGED, true);
   }
 
   const renderSelectionComponents = () => {

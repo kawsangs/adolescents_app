@@ -36,5 +36,8 @@
   "somethingWentWrong": "Something went wrong.",
   "somethingWentWrongPleaseTryAgain": "Something went wrong. Please check your internet connection then try again.",
   "pleaseInputYourAge": "(please input your age)",
-  "pleaseChooseYourProvince": "(please choose your province)"
+  "pleaseChooseYourProvince": "(please choose your province)",
+  "continue": "Continue",
+  "cancel": "Cancel",
+  "doYouReallyWantToCancel": "Do you really want to cancel?"
 }

@@ -33,7 +33,7 @@ const theme = {
   },
   fonts: {
     ...DefaultTheme.fonts,
-    regular: { fontFamily: FontFamily.body },
+    regular: { fontFamily: FontFamily.regular },
   }
 };
 
