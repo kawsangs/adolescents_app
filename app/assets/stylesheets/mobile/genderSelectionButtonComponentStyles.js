@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions, PixelRatio} from 'react-native';
 import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation} from '../../../constants/component_constant';
 import { XHDPIRatio } from '../../../constants/screen_size_constant';
-import {normalFontSize} from '../../../utils/font_size_util';
+import {mediumFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 
@@ -31,7 +31,7 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: normalFontSize(),
+    fontSize: mediumFontSize(),
     marginTop: 2,
   },
   audioContainer: {

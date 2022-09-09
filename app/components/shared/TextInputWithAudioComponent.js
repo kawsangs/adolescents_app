@@ -15,8 +15,8 @@ const styles = getStyleOfDevice(tableStyles, mobileStyles);
 const TextInputWithAudioComponent = (props) => {
   const renderTitle = () => {
     return <View style={{flexDirection: 'row'}}>
-            <TextComponent label={props.label} required={props.required} style={{color: color.whiteColor}} />
-            { props.requiredVisible && <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6}} /> }
+            <TextComponent label={props.label} required={props.required} style={styles.title} />
+            { props.requiredVisible && <TextComponent label={props.requiredMsg} style={[styles.title, {color: color.requiredColor, marginLeft: 6}]} /> }
           </View>
   }
 

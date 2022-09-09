@@ -6,7 +6,7 @@ import color from '../../themes/color';
 const TextComponent = (props) => {
 
   
-  return <Text style={[{fontFamily: FontFamily.regular, letterSpacing: -1}, props.style]}>
+  return <Text style={[{fontFamily: FontFamily.regular}, props.style]}>
             { props.label }
             { props.required && <Text style={{color: color.requiredColor}}> *</Text> }
          </Text>

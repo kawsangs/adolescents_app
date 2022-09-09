@@ -6,7 +6,7 @@ import BoldLabelComponent from './BoldLabelComponent';
 import PlayAudioComponent from './PlayAudioComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import {bigFontSize} from '../../utils/font_size_util';
+import {largeFontSize} from '../../utils/font_size_util';
 
 const BigButtonComponent = (props) => {
   const colorSet = () => {
@@ -18,7 +18,7 @@ const BigButtonComponent = (props) => {
 
   return (
     <TouchableOpacity onPress={() => !props.disabled && props.onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}>
-      <BoldLabelComponent label={props.label} style={{ fontSize: bigFontSize(), color: colorSet().textColor }} />
+      <BoldLabelComponent label={props.label} style={{ fontSize: largeFontSize(), color: colorSet().textColor }} />
 
       <PlayAudioComponent
         playIcon='volume-high-outline'
@@ -47,10 +47,6 @@ const styles = StyleSheet.create({
     elevation: 4,
     height: componentUtil.mediumPressableItemSize(),
     justifyContent: 'center'
-  },
-  label: {
-    color: color.whiteColor,
-    fontSize: bigFontSize()
   },
   audioBtn: {
     borderRadius: 0,

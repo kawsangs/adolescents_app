@@ -7,6 +7,7 @@ import TextComponent from './TextComponent';
 import RadioButtonItemComponent from './radioButtons/RadioButtonItemComponent';
 import color from '../../themes/color';
 import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
+import {mediumFontSize} from '../../utils/font_size_util';
 
 const RadioButtonComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -14,7 +15,7 @@ const RadioButtonComponent = (props) => {
 
   const renderTitle = () => {
     return <View style={{flexDirection: 'row'}}>
-            <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor}} />
+            <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: mediumFontSize()}} />
             { requiredVisible &&
               <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6}} />
             }

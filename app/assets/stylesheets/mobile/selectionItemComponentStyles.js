@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {FontFamily} from '../../../themes/font';
-import {normalFontSize} from '../../../utils/font_size_util';
+import {mediumFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 const selectionItemComponentStyles = StyleSheet.create({
@@ -9,7 +9,7 @@ const selectionItemComponentStyles = StyleSheet.create({
     paddingLeft: 8
   },
   label: {
-    fontSize: normalFontSize(),
+    fontSize: mediumFontSize(),
     fontFamily: FontFamily.regular,
     letterSpacing: -1,
     paddingLeft: 16,
