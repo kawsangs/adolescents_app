@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
-import { bigFontSize } from '../../../utils/font_size_util';
+import {xLargeFontSize, largeFontSize} from '../../../utils/font_size_util';
 
 const introItemComponentStyles = StyleSheet.create({
   slide: {
@@ -17,12 +17,12 @@ const introItemComponentStyles = StyleSheet.create({
   },
   title: {
     color: color.lightBlackColor,
-    fontSize: 20,
+    fontSize: xLargeFontSize(),
     textAlign: 'left',
   },
   label: {
     color: color.blackColor,
-    fontSize: bigFontSize(),
+    fontSize: largeFontSize(),
     marginTop: 8,
     textAlign: 'left',
   },
