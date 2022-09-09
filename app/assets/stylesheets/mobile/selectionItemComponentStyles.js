@@ -10,7 +10,7 @@ const selectionItemComponentStyles = StyleSheet.create({
   },
   label: {
     fontSize: normalFontSize(),
-    fontFamily: FontFamily.body,
+    fontFamily: FontFamily.regular,
     letterSpacing: -1,
     paddingLeft: 16,
     textAlign: 'left',

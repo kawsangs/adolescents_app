@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import color from '../../themes/color';
-import {normalFontSize} from '../../utils/font_size_util';
+import {mediumFontSize} from '../../utils/font_size_util';
 
 const LoginSelectionLineComponent = () => {
   const {t} = useTranslation();
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: normalFontSize(),
+    fontSize: mediumFontSize(),
     marginHorizontal: 13,
     textAlign: 'center',
   }
