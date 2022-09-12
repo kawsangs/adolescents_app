@@ -1,11 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
-const VideoView = () => {
+import HomeNavigationHeader from '../../components/home/HomeNavigationHeader';
+import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
+
+const VideoView = (props) => {
+  const renderBody = () => {
+    return <Text style={{color: 'white'}}>Video screennnnnn</Text>
+  }
+
   return (
-    <View>
-      <Text>Video screen</Text>
-    </View>
+    <GradientScrollViewComponent
+      header={<HomeNavigationHeader navigation={props.navigation}/>}
+      body={renderBody()}
+    />
   )
 }
 

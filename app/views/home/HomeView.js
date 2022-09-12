@@ -8,7 +8,7 @@ import HomeTiltedCardListComponent from '../../components/home/HomeTiltedCardLis
 
 import appUserService from '../../services/app_user_service';
 
-const HomeView = () => {
+const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const HomeView = () => {
 
   return (
     <GradientScrollViewComponent
-      header={<HomeNavigationHeaderComponent/>}
+      header={<HomeNavigationHeaderComponent navigation={props.navigation}/>}
       body={renderBody()}
     />
   )
