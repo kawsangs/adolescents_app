@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 
 const DrawerNavigatorItemsComponent = (props) => {
   const {t} = useTranslation();
@@ -18,10 +19,11 @@ const DrawerNavigatorItemsComponent = (props) => {
         {label: t('reset'), icon: 'rotate-ccw', route_name: ''},
       ]
     }
+    const mobileMarginTop = isLowPixelDensityDevice() ? 16 : 34;
     const listItems = [];
     for (const key in items) {
       listItems.push(
-        <View key={`container-${key}`} style={{marginTop: 34}}>
+        <View key={`container-${key}`} style={{marginTop: getStyleOfDevice(40, mobileMarginTop)}}>
           { items[key].map((item, index) => {
               return <DrawerNavigatorItemComponent key={`item-${index}`} label={item.label} iconName={item.icon} onPress={() => onPress(item.route_name)}/>
             })

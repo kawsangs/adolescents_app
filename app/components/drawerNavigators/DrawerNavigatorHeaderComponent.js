@@ -16,7 +16,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
 
   return (
     <View style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}>
-      <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}>
+      <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 30, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
         {renderIcon()}
       </GradientViewComponent>
 
