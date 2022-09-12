@@ -2,10 +2,10 @@ import {numbers} from '../db/json/number';
 
 const numberUtil = (() => {
   return {
-    translated
+    translate
   }
 
-  function translated(value, language) {
+  function translate(value, language) {
     const string = value.toString();
     let result = '';
 

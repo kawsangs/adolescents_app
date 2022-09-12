@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -18,7 +18,7 @@ const DrawerNavigatorComponent = (props) => {
         <DrawerNavigatorHeaderComponent/>
         <DrawerNavigatorItemsComponent navigation={props.navigation}/>
       </View>
-      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {numberUtil.translated(pkg.version, i18n.language)}</Text>
+      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {numberUtil.translate(pkg.version, i18n.language)}</Text>
     </View>
   )
 }
