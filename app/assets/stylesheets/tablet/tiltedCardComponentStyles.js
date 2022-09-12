@@ -1,13 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import color from '../../../themes/color';
-import {screenHorizontalPadding, tabletSmallTitleFontSize} from '../../../constants/component_constant';
+import {screenHorizontalPadding, cardTitleFontSize} from '../../../constants/component_constant';
 
 const screenWidth = Dimensions.get('screen').width;
 const cardWidth = ((screenWidth - (screenHorizontalPadding * 2)) / 2) - 8; // 8 is the margin between the card in a row
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
-    height: 154,
+    maxHeight: 188,
     width: cardWidth,
   },
   tiltedView: {
@@ -39,11 +39,14 @@ const tiltedCardComponentStyles = StyleSheet.create({
     flexGrow: 1,
   },
   title: {
-    fontSize: tabletSmallTitleFontSize
+    fontSize: cardTitleFontSize,
+    flex: 1,
+    lineHeight: 27
   },
   footer: {
-    flex: 2,
-    paddingHorizontal: 8
+    flex: 3,
+    paddingHorizontal: 8,
+    paddingTop: 8
   }
 });
 

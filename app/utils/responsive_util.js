@@ -23,11 +23,15 @@ export const isMediumScreenDevice = () => {
 }
 
 export const mobileIconSize = (size) => {
-  const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
-  if (devicePixelRatio <= XHDPIRatio) {
+  if (isLowPixelDensityDevice()) {
     const scale = Dimensions.get('window').width / 320;
     return size - (scale * 3);
   }
 
   return size;
+}
+
+export const isLowPixelDensityDevice = () => {
+  const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
+  return devicePixelRatio <= XHDPIRatio
 }

@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+import {smallFontSize} from '../../../utils/font_size_util';
+import {FontFamily} from '../../../themes/font';
 
 const TabBarItemComponentStyles = StyleSheet.create({
   container: {
@@ -12,7 +14,8 @@ const TabBarItemComponentStyles = StyleSheet.create({
     paddingTop: 6
   },
   label: {
-    fontSize: 12,
+    fontSize: smallFontSize(),
+    fontFamily: FontFamily.regular,
     marginTop: 2
   },
   focusedLine: {

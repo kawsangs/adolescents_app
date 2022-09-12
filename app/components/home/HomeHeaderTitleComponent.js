@@ -4,7 +4,7 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {bigFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize} from '../../utils/font_size_util';
 
 const HomeHeaderTitleComponent = () => {
   const {t} = useTranslation();
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: bigFontSize(),
+    fontSize: xLargeFontSize(),
     marginLeft: 8,
     textTransform: 'capitalize'
   }

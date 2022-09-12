@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { FontFamily } from '../../themes/font';
 import color from '../../themes/color';
 import {mediumFontSize} from '../../utils/font_size_util';
 
@@ -9,7 +8,7 @@ import {mediumFontSize} from '../../utils/font_size_util';
 // the English text in uppercase only
 const BoldLabelComponent = (props) => {
   return (
-    <Text {...props} style={[{ color: color.lightBlackColor, fontSize: mediumFontSize(), fontFamily: FontFamily.bold },props.style]}>
+    <Text {...props} style={[{ color: color.lightBlackColor, fontSize: mediumFontSize() },props.style, styles]}>
       {props.label}
     </Text>
   )
