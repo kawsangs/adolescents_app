@@ -1,25 +1,15 @@
 import React from 'react';
 import HorizontalCardComponent from '../shared/HorizontalCardComponent';
-import uuidv4 from '../../utils/uuidv4_util';
 
-import safetyAudio from '../../assets/audios/safety_plan.mp3';
-import yourStoryAudio from '../../assets/audios/your_story_long.mp3';
-
-const items = [
-  {
-    uuid: uuidv4(), title: "សេវាសុខភាពបន្តពូជ", points: 10, image: require('../../assets/images/intro_1.jpg'),
-    audio: safetyAudio
-  },
-  {
-    uuid: uuidv4(), title: "ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ", points: 7, image: require('../../assets/images/intro_1.jpg'),
-    audio: yourStoryAudio
-  },
-]
+import Category from '../../models/Category';
+import {GUI_CARD} from '../../constants/card_constant';
 
 const HomeHorizontalCardListComponent = (props) => {
+  const categories = Category.findByDisplayType(GUI_CARD);
+
   return (
     <React.Fragment>
-      { items.map((item, index) => {
+      { categories.map((item, index) => {
           return <HorizontalCardComponent key={index}
                     item={item}
                     containerStyle={{marginTop: 32}}

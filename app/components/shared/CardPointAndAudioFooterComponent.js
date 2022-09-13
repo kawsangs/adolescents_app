@@ -13,8 +13,6 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CardPointAndAudioFooterComponent = (props) => {
   const {t, i18n} = useTranslation();
-  const points = translationHelper.translateNumber(props.points, 'km');
-
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{translationHelper.translateNumber(props.points, i18n.language)} {t('point')}</Text>

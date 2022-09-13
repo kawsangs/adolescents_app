@@ -1,10 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {Card} from 'react-native-paper';
 
 import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageComponent';
 import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComponent';
 import { cardElevation } from '../../constants/component_constant';
+import Category from '../../models/Category';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponentStyles';
@@ -17,12 +18,12 @@ const HorizontalCardComponent = (props) => {
       onPress={() => console.log('on press card ===')}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
-        <HorizontalCardImageComponent image={props.item.image} />
+        <HorizontalCardImageComponent image={props.item.image_url} />
         <HorizontalCardInfoComponent
           uuid={props.item.uuid}
-          title={props.item.title}
-          points={props.item.points}
-          audio={props.item.audio}
+          title={props.item.name}
+          points={Category.getChildCategory(props.item.uuid).length}
+          audio={props.item.audio_url}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
         />
