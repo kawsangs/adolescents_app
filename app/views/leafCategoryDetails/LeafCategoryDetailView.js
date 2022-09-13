@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import ScrollViewWithAudioComponent from '../../components/shared/ScrollViewWithAudioComponent';
+import Category from '../../models/Category';
 
-const LeafCategoryDetailView = () => {
+const LeafCategoryDetailView = ({route, navigation}) => {
+  const category = Category.findByUuid(route.params.uuid)
+
   return (
-    <View>
-      <Text>Leaf category detail</Text>
-    </View>
+    <ScrollViewWithAudioComponent
+      title={category.name}
+      description={category.description}
+      audio={category.audio_url}
+      image={category.image_url}
+    />
   )
 }
 

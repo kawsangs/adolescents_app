@@ -18,7 +18,7 @@ const HeaderAudioControlComponent = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderAudioControlButtonsComponent scrollY={props.scrollY}
+      <HeaderAudioControlButtonsComponent audio={props.audio} scrollY={props.scrollY}
         audioPlayer={state.audioPlayer} countInterval={state.countInterval}
         updateAudioPlayer={updateState}
       />

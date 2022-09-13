@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next';
 import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
 import componentUtil from '../../../utils/component_util';
 import audioUtil from '../../../utils/audio_util';
-import numberUtil from '../../../utils/number_util';
+import translationUtil from '../../../utils/translation_util';
 import {mediumFontSize} from '../../../utils/font_size_util';
 
 const CardWithSoundWaveAudioComponent = (props) => {
@@ -47,7 +47,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
         updatePlayingUuid={props.updatePlayingUuid}
         updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}
       />
-      <Text style={styles.label}>{ numberUtil.translate(displayDuration.toString(), i18n.language) }</Text>
+      <Text style={styles.label}>{ translationUtil.translateNumber(displayDuration.toString(), i18n.language) }</Text>
     </View>
   )
 }

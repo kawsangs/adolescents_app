@@ -1,34 +1,35 @@
 import React from 'react';
-import { Animated, View, ScrollView, Text, StyleSheet } from 'react-native';
+import { Animated, View, ScrollView, StyleSheet } from 'react-native';
+import {Text} from 'react-native-paper';
 
-import color from '../../themes/color';
+import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
-import { headerWithAudioMaxHeight } from '../../constants/component_constant';
+import color from '../../themes/color';
+import {FontFamily} from '../../themes/font';
+import { headerWithAudioMaxHeight, scrollViewPaddingBottom } from '../../constants/component_constant';
+import {xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 
 const ScrollViewWithAudioComponent = (props) => {
   const scrollY = new Animated.Value(0);
-
-  const renderScrollViewContent = () => {
-    const data = Array.from({length: 30});
+  const renderContent = () => {
     return (
       <View style={styles.scrollViewContent}>
-        {data.map((_, i) =>
-          <View key={i} style={styles.row}>
-            <Text>{i}</Text>
-          </View>
-        )}
+        <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: xLargeFontSize(), marginTop: 14}} />
+        {/* <Text style={{fontSize: largeFontSize(), marginTop: 16, color: '#333333', lineHeight: 28, fontWeight: FontFamily.regular}}> */}
+        <Text style={{fontSize: 16, marginTop: 16, color: '#333333', lineHeight: 28, fontWeight: FontFamily.regular}}>
+          {props.description}
+        </Text>
       </View>
-    );
+    )
   }
 
   return (
     <View style={{flexGrow: 1}}>
-      <ScrollViewHeaderComponent title={props.title} scrollY={scrollY} />
+      <ScrollViewHeaderComponent title={props.title} image={props.image} audio={props.audio} scrollY={scrollY} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}} scrollEventThrottle={16}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
-        { renderScrollViewContent() }
-        <Text>Listitemsldfajsdlfkj</Text>
+        { renderContent() }
       </ScrollView>
     </View>
   )
@@ -43,7 +44,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   scrollViewContent: {
-    marginTop: headerWithAudioMaxHeight
+    marginTop: headerWithAudioMaxHeight,
+    paddingHorizontal: 24,
+    paddingBottom: scrollViewPaddingBottom,
   }
 });
 

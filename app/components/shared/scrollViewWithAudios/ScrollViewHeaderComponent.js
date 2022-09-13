@@ -29,12 +29,12 @@ const ScrollViewHeaderComponent = (props) => {
         style={{height: '100%', width: '100%'}}
       >
         <Animated.Image
-          source={require('../../../assets/images/android_landscape.jpeg')}
+          source={props.image}
           style={[styles.headerImage, {opacity: imageOpacity}]}
           resizeMode="cover"
         />
         <HeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
-        <HeaderAudioControlComponent scrollY={props.scrollY} />
+        <HeaderAudioControlComponent audio={props.audio} scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>
   )
