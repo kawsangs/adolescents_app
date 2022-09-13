@@ -1,6 +1,7 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 import color from '../../../themes/color';
 import {screenHorizontalPadding, cardTitleFontSize} from '../../../constants/component_constant';
+import componentUtil from '../../../utils/component_util';
 
 const screenWidth = Dimensions.get('screen').width;
 const cardWidth = ((screenWidth - (screenHorizontalPadding * 2)) / 2) - 8; // 8 is the margin between the card in a row
@@ -13,7 +14,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
   tiltedView: {
     backgroundColor: "transparent",
     borderStyle: "solid",
-    borderRightWidth: cardWidth,
+    borderRightWidth: componentUtil.getGridCardWidth(),
     borderTopWidth: 30,
     borderRadius: 14,
     borderRightColor: "transparent",

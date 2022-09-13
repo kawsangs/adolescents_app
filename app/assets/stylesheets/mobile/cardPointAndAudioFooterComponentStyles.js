@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
-import { mediumFontSize } from '../../../utils/font_size_util';
+import {mediumFontSize} from '../../../utils/font_size_util';
 
 const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
   container: {
