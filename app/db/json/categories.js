@@ -1,4 +1,7 @@
 import {GUI_CARD, TILTED_CARD, GRID_CARD, AUDIO_CARD} from '../../constants/card_constant';
+import safety from '../../assets/audios/safety_plan.mp3';
+import storyLong from '../../assets/audios/your_story_long.mp3';
+import storyShort from '../../assets/audios/your_story.mp3';
 
 export default [
   {
@@ -7,7 +10,7 @@ export default [
     'code': 'parent_01',
     'name': 'សេវាសុខភាពបន្តពូជ',
     'description': null,
-    'audio_url': '../../assets/audios/safety_plan.mp3',
+    'audio_url': safety,
     'image_url': require('../../assets/images/intro_1.jpg'),
     'parent_id': null,
     'order': 1,
@@ -19,7 +22,7 @@ export default [
     'code': 'parent_02',
     'name': 'ការអប់រំពីសុខភាពផ្លូវចិត្ត និងសុខភាពផ្លូវភេទ',
     'description': null,
-    'audio_url': '../../assets/audios/your_story_long.mp3',
+    'audio_url': storyLong,
     'image_url': require('../../assets/images/intro_1.jpg'),
     'parent_id': null,
     'order': 2,
@@ -31,8 +34,8 @@ export default [
     'code': 'parent_03',
     'name': 'ការយល់ដឹងពីយេនឌ័រ',
     'description': null,
-    'audio_url': null,
-    'image_url': null,
+    'audio_url': safety,
+    'image_url': require('../../assets/images/img_no_background.png'),
     'parent_id': null,
     'order': 3,
     'display': TILTED_CARD,
@@ -43,8 +46,8 @@ export default [
     'code': 'parent_04',
     'name': 'គ្លីនិចសុខភាព និងសេវាកម្មពិនត្យ',
     'description': null,
-    'audio_url': null,
-    'image_url': null,
+    'audio_url': storyLong,
+    'image_url': require('../../assets/images/img_no_background.png'),
     'parent_id': null,
     'order': 4,
     'display': TILTED_CARD,
@@ -55,8 +58,8 @@ export default [
     'code': 'parent_05',
     'name': 'សេវាគាំទ្រផ្លូវចិត្ត',
     'description': null,
-    'audio_url': null,
-    'image_url': null,
+    'audio_url': storyShort,
+    'image_url': require('../../assets/images/img_no_background.png'),
     'parent_id': null,
     'order': 5,
     'display': TILTED_CARD,
@@ -68,7 +71,7 @@ export default [
     'name': 'ការកំសាន្ត (វីដេអូអប់រំ)',
     'description': null,
     'audio_url': null,
-    'image_url': null,
+    'image_url': require('../../assets/images/img_no_background.png'),
     'parent_id': null,
     'order': 6,
     'display': TILTED_CARD,
