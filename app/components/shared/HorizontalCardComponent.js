@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {Card} from 'react-native-paper';
 
 import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageComponent';
