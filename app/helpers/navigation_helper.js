@@ -7,14 +7,7 @@ const navigationHelper = (() => {
   }
 
   function navigateCategory(categoryUuid) {
-    // if (Category.isLeafCategory(categoryUuid))
-    //   navigationRef.current?.navigate('LeafCategoryDetailView', { uuid: categoryUuid });
-    // else if (Category.isSubCategory(categoryUuid))
-    //   navigationRef.current?.navigate('LeafCategoryView', { uuid: categoryUuid });
-    // else
-    //   navigationRef.current?.navigate('SubCategoryView', { uuid: categoryUuid });
-
-    let routeName = 'LeafCategroyDetailView';
+    let routeName = 'LeafCategoryDetailView';
     if (Category.isParentCategory(categoryUuid))
       routeName = 'SubCategoryView';
     else if (Category.isSubCategory(categoryUuid))

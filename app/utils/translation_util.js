@@ -1,11 +1,11 @@
 import {numbers} from '../db/json/number';
 
-const numberUtil = (() => {
+const translationUtil = (() => {
   return {
-    translate
+    translateNumber
   }
 
-  function translate(value, language) {
+  function translateNumber(value, language) {
     const string = value.toString();
     let result = '';
 
@@ -18,4 +18,4 @@ const numberUtil = (() => {
   }
 })();
 
-export default numberUtil;
+export default translationUtil;
