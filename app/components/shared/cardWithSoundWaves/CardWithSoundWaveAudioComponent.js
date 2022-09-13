@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Sound from 'react-native-sound';
+import {useTranslation} from 'react-i18next';
 
 import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
-import {smallFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 import audioUtil from '../../../utils/audio_util';
+import numberUtil from '../../../utils/number_util';
+import {mediumFontSize} from '../../../utils/font_size_util';
 
 const CardWithSoundWaveAudioComponent = (props) => {
+  const {i18n} = useTranslation();
   const [duration, setDuration] = useState(0);      // duration in second
   const [playSeconds, setPlaySeconds] = useState(0);
 
@@ -44,7 +47,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
         updatePlayingUuid={props.updatePlayingUuid}
         updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}
       />
-      <Text style={styles.label}>{ displayDuration }</Text>
+      <Text style={styles.label}>{ numberUtil.translate(displayDuration.toString(), i18n.language) }</Text>
     </View>
   )
 }
@@ -59,8 +62,9 @@ const styles = StyleSheet.create({
     zIndex: 10
   },
   label: {
-    fontSize: smallFontSize(),
+    fontSize: mediumFontSize(),
     textAlign: 'right',
+    color: 'black'
   }
 });
 

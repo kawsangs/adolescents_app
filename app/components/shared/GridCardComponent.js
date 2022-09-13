@@ -4,7 +4,7 @@ import {Card} from 'react-native-paper';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
-import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
+import {cardBorderRadius, cardElevation, cardTitleFontSize} from '../../constants/component_constant';
 import Category from '../../models/Category';
 import navigationHelper from '../../helpers/navigation_helper';
 
@@ -16,7 +16,7 @@ const GridCardComponent = (props) => {
       <Image source={props.item.image_url} resizeMode='contain' style={styles.image} />
 
       <View style={styles.infoContainer}>
-        <BoldLabelComponent label={props.item.name} numberOfLines={2} />
+        <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
 
         <CardPointAndAudioFooterComponent
           uuid={props.item.uuid}

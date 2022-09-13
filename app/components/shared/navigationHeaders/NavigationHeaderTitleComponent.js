@@ -8,7 +8,7 @@ import {xLargeFontSize} from '../../../utils/font_size_util';
 const NavigationHeaderTitleComponent = (props) => {
   return (
     <View style={styles.container}>
-      <BoldLabelComponent label={props.label} style={styles.label} />
+      <BoldLabelComponent label={props.label} style={styles.label} numberOfLines={1} />
     </View>
   )
 }

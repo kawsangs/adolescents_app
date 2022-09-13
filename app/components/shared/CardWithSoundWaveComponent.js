@@ -12,11 +12,11 @@ const CardWithSoundWaveComponent = (props) => {
     <Card mode='elevated' elevation={cardElevation} style={styles.container}>
       <CardWithSoundWaveAudioComponent
         itemUuid={props.item.uuid}
-        audio={props.item.audio}
+        audio={props.item.audio_url}
         playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
       />
-      <CardWithSoundWaveInfoComponent title={props.item.title} description={props.item.description} />
+      <CardWithSoundWaveInfoComponent title={props.item.name} description={props.item.description} />
     </Card>
   )
 }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: cardBorderRadius,
     flexDirection: 'column',
-    marginTop: 30,
+    marginTop: 38,
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 16,

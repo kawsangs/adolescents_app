@@ -29,14 +29,10 @@ const SubCategoryView = ({route, navigation}) => {
     )
   }
 
-  const renderBody = () => {
-    return <GridCardListComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
-  }
-
   return (
     <GradientScrollViewComponent
       header={renderHeader()}
-      body={renderBody()}
+      body={<GridCardListComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
     />
   )
 }
