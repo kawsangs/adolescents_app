@@ -24,9 +24,8 @@ class Category {
 
 Category.schema = {
   name: 'Category',
-  primaryKey: 'id',
+  primaryKey: 'uuid',
   properties: {
-    id: 'int',
     uuid: 'string',
     code: 'string',
     name: 'string',
@@ -35,33 +34,10 @@ Category.schema = {
     image_url: 'string?',
     audio: 'int?',
     image: 'int?',
-    parent_id: 'int?',
+    parent_code: 'string?',
     order: 'int',
     display: 'int',
-    updated_at: 'date',
   }
 }
 
 export default Category;
-
-// const CategorySchema = {
-//   name: 'Category',
-//   primaryKey: 'id',
-//   properties: {
-//     id: 'int',
-//     uuid: 'string',
-//     code: 'string',
-//     name: 'string',
-//     description: 'string?',
-//     audio_url: 'string?',
-//     image_url: 'string?',
-//     audio: 'int?',
-//     image: 'int?',
-//     parent_id: 'int?',
-//     order: 'int',
-//     display: 'int',
-//     updated_at: 'date',
-//   }
-// }
-
-// export default CategorySchema;

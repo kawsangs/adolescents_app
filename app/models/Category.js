@@ -1,5 +1,3 @@
-
-import Moment from 'moment';
 import realm from '../db/schema';
 import categories from '../db/json/categories';
 
@@ -20,7 +18,7 @@ const Category = (() => {
     realm.write(() => {
       categories.map((category) => {
         if (!findByUuid(category.uuid)) {
-          realm.create(MODEL, {...category, updated_at: Moment().toDate()});
+          realm.create(MODEL, category);
         }
       });
     })
@@ -36,12 +34,12 @@ const Category = (() => {
 
   function getSubCategories(uuid) {
     const category = findByUuid(uuid)
-    return realm.objects(MODEL).filtered(`parent_id = ${category.id}`);
+    return realm.objects(MODEL).filtered(`parent_code = '${category.code}'`);
   }
 
   function isParentCategory(uuid) {
     const category = findByUuid(uuid)
-    return !!category && !category.parent_id;
+    return !!category && !category.parent_code;
   }
 
   function isSubCategory(uuid) {
