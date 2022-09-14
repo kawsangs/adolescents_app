@@ -4,7 +4,6 @@ import {Checkbox} from 'react-native-paper';
 
 import SelectionItemAudioButtonComponent from '../SelectionItemAudioButtonComponent';
 import color from '../../../themes/color';
-import componentUtil from '../../../utils/component_util';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 import tabletStyles from '../../../assets/stylesheets/tablet/selectionItemComponentStyles';
 import mobileStyles from '../../../assets/stylesheets/mobile/selectionItemComponentStyles';

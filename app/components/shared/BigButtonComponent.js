@@ -7,7 +7,7 @@ import PlayAudioComponent from './PlayAudioComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import componentUtil from '../../utils/component_util';
-import {largeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize} from '../../utils/font_size_util';
 
 const BigButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
@@ -28,7 +28,7 @@ const BigButtonComponent = (props) => {
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}
       disabled={props.disabled || disabled}
     >
-      <BoldLabelComponent label={props.label} style={{ fontSize: largeFontSize(), color: colorSet().textColor }} />
+      <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor }} />
 
       <PlayAudioComponent
         playIcon='volume-high-outline'

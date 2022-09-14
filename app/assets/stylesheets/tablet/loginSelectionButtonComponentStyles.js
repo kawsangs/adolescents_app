@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import color from '../../../themes/color';
 import componentUtil from '../../../utils/component_util';
-import {xLargeFontSize} from '../../../utils/font_size_util';
+import {xxLargeFontSize} from '../../../utils/font_size_util';
 
 const borderRadius = 25;
 
@@ -25,12 +25,12 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     width: 56,
   },
   leftIcon: {
-    fontSize: 22
+    fontSize: 24
   },
   label: {
     color: color.primaryColor,
     flex: 1,
-    fontSize: xLargeFontSize(),
+    fontSize: xxLargeFontSize(),
     paddingLeft: 24,
   },
   audioBtn: {

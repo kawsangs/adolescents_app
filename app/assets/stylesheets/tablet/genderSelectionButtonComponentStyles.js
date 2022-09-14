@@ -1,7 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation} from '../../../constants/component_constant';
-import {mediumFontSize} from '../../../utils/font_size_util';
+import {largeFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 const screenWidth = Dimensions.get('screen').width;
@@ -27,7 +27,7 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: mediumFontSize(),
+    fontSize: largeFontSize(),
     marginTop: 2,
   },
   audioContainer: {
