@@ -15,4 +15,5 @@ export const screenHorizontalPadding = getStyleOfDevice(32, 16);
 export const bottomTabBarHeight = 62;
 export const scrollViewPaddingBottom = bottomTabBarHeight + 16;
 export const cardTitleFontSize = xLargeFontSize();
-export const cardDescriptionFontSize = largeFontSize();
+export const descriptionFontSize = largeFontSize();
+export const descriptionLineHeight = 28;

@@ -12,7 +12,7 @@ const CardWithSoundWaveInfoComponent = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>
-        <BoldLabelComponent label={props.title} numberOfLines={1} style={{fontSize: cardTitleFontSize}} />
+        <BoldLabelComponent label={props.title} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
         <CardSubtitleLabelComponent label={props.description} numberOfLines={2} labelStyle={{marginTop: 8}} />
       </View>
       <Icon name="chevron-right" color={color.primaryColor} size={32} style={styles.icon} />
