@@ -9,7 +9,6 @@ export const headerWithAudioMaxHeight = getStyleOfDevice(265, 230);
 export const headerWithAudioMinHeight = 170;
 export const headerWithAudioScrollDistance = (headerWithAudioMaxHeight - headerWithAudioMinHeight);
 export const screenPaddingHorizontal = 16;
-export const navigationHeaderButtonSize = 24;
 export const navigationHeaderIconSize = 24;
 export const navigationHeaderHorizontalPadding = getStyleOfDevice(32, 16);
 export const screenHorizontalPadding = getStyleOfDevice(32, 16);

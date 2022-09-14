@@ -53,7 +53,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Koulen-Regular.ttf</string>
+		<string>KantumruyPro-Regular.ttf</string>
+		<string>KantumruyPro-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>

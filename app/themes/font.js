@@ -1,3 +1,4 @@
 export const FontFamily = {
-  title: 'Koulen-Regular'
+  bold: 'KantumruyPro-SemiBold',
+  regular: 'KantumruyPro-Regular',
 };

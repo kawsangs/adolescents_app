@@ -86,12 +86,19 @@ const PlayAudioComponent = (props) => {
     return isPlaying ? props.pauseIcon : props.playIcon
   }
 
+  const getIconColor = () => {
+    if (isPlaying)
+      return color.secondaryColor;
+
+    return !!props.iconColor ? props.iconColor : color.primaryColor;
+  }
+
   return (
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio}>
       {/* CloneElement is used so we can pass different type of icon and still using the same configuration */}
       {  React.cloneElement(props.children, {
           name: getIcon(),
-          size: props.iconSize, color: !!props.audio ? color.primaryColor : color.mutedColor,
+          size: props.iconSize, color: !!props.audio ? getIconColor() : color.mutedColor,
           style: [props.iconStyle, { marginLeft: !isPlaying ? 0 : -2 }]
         })
       }
@@ -101,8 +108,8 @@ const PlayAudioComponent = (props) => {
 
 const styles = StyleSheet.create({
   btn: {
-    width: componentUtil.pressableItemSize(),
-    height: componentUtil.pressableItemSize(),
+    width: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.mediumPressableItemSize(),
     borderWidth: outlinedButtonBorderWidth,
     borderColor: color.primaryColor,
     borderRadius: 25,

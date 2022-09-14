@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: componentUtil.pressableItemSize(),
   },
   title: {
-    fontFamily: FontFamily.title,
+    fontFamily: FontFamily.bold,
     fontSize: bigFontSize()
   }
 });

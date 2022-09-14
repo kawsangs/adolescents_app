@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import color from '../../../themes/color';
-import {bigFontSize} from '../../../utils/font_size_util';
+import {largeFontSize} from '../../../utils/font_size_util';
 
 const loginSelectionViewStyles = StyleSheet.create({
   logo: {
@@ -10,7 +10,7 @@ const loginSelectionViewStyles = StyleSheet.create({
   },
   title: {
     color: color.whiteColor,
-    fontSize: 20,
+    fontSize: 24,
     marginTop: 16,
     textAlign: 'center',
     textShadowColor: '#000',
@@ -22,7 +22,7 @@ const loginSelectionViewStyles = StyleSheet.create({
     color: color.whiteColor,
     marginTop: 78,
     textAlign: 'center',
-    fontSize: bigFontSize()
+    fontSize: largeFontSize()
   }
 });
 

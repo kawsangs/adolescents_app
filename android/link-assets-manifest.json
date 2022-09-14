@@ -2,8 +2,12 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "app/assets/fonts/Koulen-Regular.ttf",
-      "sha1": "f7e8dded278ed9b0c78fb3680ec4cb64f32f04f5"
+      "path": "app/assets/fonts/KantumruyPro-Regular.ttf",
+      "sha1": "efc599ad18d87f450a30914ab8b609bcd7e6ce0c"
+    },
+    {
+      "path": "app/assets/fonts/KantumruyPro-SemiBold.ttf",
+      "sha1": "fd16b8a68384342095fb2c8f7f9b48aaccbb7995"
     }
   ]
 }
