@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, View } from 'react-native';
+import { ImageBackground, View, Text } from 'react-native';
 
 import { cardBorderRadius } from '../../../constants/component_constant';
 import { getStyleOfDevice } from '../../../utils/responsive_util';

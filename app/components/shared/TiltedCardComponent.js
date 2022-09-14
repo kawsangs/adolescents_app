@@ -18,7 +18,7 @@ const TiltedCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <TiltedCardImageComponent image={props.item.image_url} />
+          <TiltedCardImageComponent image={props.item.imageSource} />
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />

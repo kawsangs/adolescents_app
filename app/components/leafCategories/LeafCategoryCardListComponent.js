@@ -10,7 +10,7 @@ const LeafCategoryCardListComponent = (props) => {
 
   const renderImage = () => {
     return (
-      <Image source={props.category.image_url}
+      <Image source={props.category.imageSource}
         resizeMode='contain'
         style={{width: '100%', height: 200}}
       />

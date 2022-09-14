@@ -13,7 +13,7 @@ const GridCardComponent = (props) => {
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => navigationHelper.navigateCategory(props.item.uuid)}
     >
-      <Image source={props.item.image_url} resizeMode='contain' style={styles.image} />
+      <Image source={props.item.imageSource} resizeMode='contain' style={styles.image} />
 
       <View style={styles.infoContainer}>
         <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />

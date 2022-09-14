@@ -19,7 +19,7 @@ const HorizontalCardComponent = (props) => {
       onPress={() => navigationHelper.navigateCategory(props.item.uuid)}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
-        <HorizontalCardImageComponent image={props.item.image_url} />
+        <HorizontalCardImageComponent image={props.item.imageSource} />
         <HorizontalCardInfoComponent
           uuid={props.item.uuid}
           title={props.item.name}

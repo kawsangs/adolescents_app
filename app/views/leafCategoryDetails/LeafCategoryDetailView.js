@@ -10,7 +10,7 @@ const LeafCategoryDetailView = ({route, navigation}) => {
       title={category.name}
       description={category.description}
       audio={category.audio_url}
-      image={category.image_url}
+      image={category.imageSource}
     />
   )
 }
