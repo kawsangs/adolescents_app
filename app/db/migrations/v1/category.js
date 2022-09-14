@@ -4,14 +4,21 @@ import categories from '../../json/categories';
 
 class Category {
   get imageSource() {
-    if (!this.image) return '';
-
     if (!this.image_url) {
       const cate = categories.filter(category => category.uuid == this.uuid)[0];
-      return !!cate ? cate.image : '';
+      return (!!cate && !!cate.image) ? cate.image : null;
     }
 
     return { uri: `file://${this.image_url}` };
+  }
+
+  get audioSource() {
+    if (!this.audio_url) {
+      const cate = categories.filter(category => category.uuid == this.uuid)[0];
+      return (!!cate && !!cate.audio) ? cate.audio : null;
+    }
+
+    return { uri: `file://${this.audio_url}` };
   }
 }
 

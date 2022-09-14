@@ -24,7 +24,7 @@ const HorizontalCardComponent = (props) => {
           uuid={props.item.uuid}
           title={props.item.name}
           points={Category.getSubCategories(props.item.uuid).length}
-          audio={props.item.audio_url}
+          audio={props.item.audioSource}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
         />
