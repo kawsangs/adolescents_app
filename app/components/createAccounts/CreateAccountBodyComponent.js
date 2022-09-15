@@ -48,7 +48,7 @@ const CreateAccountBodyComponent = () => {
       characteristics: state.characteristics
     }
 
-    appUserService.createUser(user, () => { navigationRef.current?.navigate('BottomTabs') });
+    appUserService.createUser(user, () => { navigationRef.current?.navigate('DrawerNavigator') });
   }
 
   const renderSaveButton = () => {

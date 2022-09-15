@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainView from '../views/main/MainView';
 import IntroductionView from '../views/introductions/IntroductionView';
 import LoginSelectionView from '../views/loginSelections/LoginSelectionView';
+import CreateAccountView from '../views/createAccounts/CreateAccountView';
 import DrawerNavigator from './drawer_navigator';
 
 const Stack = createNativeStackNavigator();
@@ -33,6 +34,13 @@ function AppNaviator() {
           <Stack.Screen
             name="LoginSelectionView"
             component={LoginSelectionView}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="CreateAccountView"
+            component={CreateAccountView}
             options={{
               header: () => null,
             }}

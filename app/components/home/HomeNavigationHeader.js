@@ -3,7 +3,7 @@ import {Appbar} from 'react-native-paper';
 
 import HomeHeaderLeftButtonComponent from './HomeHeaderLeftButtonComponent';
 import HomeHeaderTitleComponent from './HomeHeaderTitleComponent';
-import HomeHeaderRightButtonsComponent from './HomeHeaderRightButtonsComponent';
+// import HomeHeaderRightButtonsComponent from './HomeHeaderRightButtonsComponent';
 import {navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 
 const HomeNavigationHeader = (props) => {
@@ -16,7 +16,7 @@ const HomeNavigationHeader = (props) => {
     <Appbar.Header style={{paddingHorizontal: navigationHeaderHorizontalPadding, elevation: 0}}>
       <HomeHeaderLeftButtonComponent onPress={() => openDrawer()}/>
       <HomeHeaderTitleComponent/>
-      <HomeHeaderRightButtonsComponent/>
+      {/* <HomeHeaderRightButtonsComponent/> */}
     </Appbar.Header>
   )
 }
