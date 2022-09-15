@@ -16,23 +16,3 @@ if (nextSchemaIndex !== -1) {
 }
 
 export default new Realm(schemas[schemas.length - 1]);
-
-
-
-// let nextSchemaIndex = Realm.schemaVersion(Realm.defaultPath);
-// if (nextSchemaIndex !== -1) {
-//   while (nextSchemaIndex < schemas.length) {
-//     const migraitonRealm = await Realm.open({
-//       schema: schemas[nextSchemaIndex++],
-//       schemaVersion: nextSchemaIndex++
-//     });
-//     migraitonRealm.close();
-//   }
-// }
-
-// const realmSchema = await Realm.open({
-//   schema: schemas[schemas.length - 1],
-//   schemaVersion: schemas.length
-// });
-
-// export default realmSchema;

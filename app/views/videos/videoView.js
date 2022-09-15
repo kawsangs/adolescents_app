@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import HomeNavigationHeader from '../../components/home/HomeNavigationHeader';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 
 const VideoView = (props) => {
@@ -10,10 +9,7 @@ const VideoView = (props) => {
   }
 
   return (
-    <GradientScrollViewComponent
-      header={<HomeNavigationHeader navigation={props.navigation}/>}
-      body={renderBody()}
-    />
+    <Text>Video View</Text>
   )
 }
 

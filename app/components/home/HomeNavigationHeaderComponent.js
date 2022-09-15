@@ -5,10 +5,10 @@ import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import NavigationHeaderNotificationButtonComponent from '../shared/navigationHeaders/NavigationHeaderNotificationButtonComponent';
 
-const HomeNavigationHeader = () => {
+const HomeNavigationHeader = (props) => {
   return (
     <NavigationHeaderComponent
-      leftButton={<NavigationHeaderMenuButtonComponent/>}
+      leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
       customTitle={<HomeHeaderTitleComponent/>}
       rightButton={<NavigationHeaderNotificationButtonComponent/>}
     />

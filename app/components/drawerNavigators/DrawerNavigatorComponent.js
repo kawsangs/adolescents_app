@@ -7,7 +7,7 @@ import DrawerNavigatorHeaderComponent from './DrawerNavigatorHeaderComponent';
 import DrawerNavigatorItemsComponent from './DrawerNavigatorItemsComponent';
 
 import {largeFontSize} from '../../utils/font_size_util';
-import numberUtil from '../../utils/number_util';
+import translationHelper from '../../helpers/translation_helper';
 import pkg from '../../../package';
 
 const DrawerNavigatorComponent = (props) => {
@@ -18,7 +18,7 @@ const DrawerNavigatorComponent = (props) => {
         <DrawerNavigatorHeaderComponent/>
         <DrawerNavigatorItemsComponent navigation={props.navigation}/>
       </View>
-      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {numberUtil.translate(pkg.version, i18n.language)}</Text>
+      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, i18n.language)}</Text>
     </View>
   )
 }

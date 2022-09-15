@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import {Text} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/Feather';
 
 import {getStyleOfDevice, mobileIconSize} from '../../utils/responsive_util';

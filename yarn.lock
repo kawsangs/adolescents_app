@@ -6977,7 +6977,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.42.0", "react-native@>=0.56.0", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.60", "react-native@>=0.8.0", "react-native@0.69.3":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.42.0", "react-native@>=0.56.0", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.66.0", "react-native@>=0.8.0", "react-native@0.69.3":
   "integrity" "sha512-SyGkcoEUa/BkO+wKVnv4OsnLSNfUM5zLNXS3iT/3eXjKX91/FKBH/nfR9BE1c60X5LQe/P5QYqr6WPX3TRSQkA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.3.tgz"
   "version" "0.69.3"
@@ -7132,10 +7132,10 @@
     "abort-controller" "^3.0.0"
     "node-fetch" "^2.6.0"
 
-"realm@^10.19.5":
-  "integrity" "sha512-JUJEgV7liaqt+xxY+H1PkeAcsHWAiFitUjmMV5i2BRxfvqyHG8Ey5cX3XBGBB7gWTKYmLZ/zIH+Yu0B3HUwhlA=="
-  "resolved" "https://registry.npmjs.org/realm/-/realm-10.19.5.tgz"
-  "version" "10.19.5"
+"realm@^11.0.0-rc.1":
+  "integrity" "sha512-ZboRZbDNpsPquRKYcRS4qJNzgDOfoPMDplaix5MDN+X2vafrkoNFDLz24iWdX23iPH/qmJdlcQgOQGHcMJqrbQ=="
+  "resolved" "https://registry.npmjs.org/realm/-/realm-11.0.0-rc.1.tgz"
+  "version" "11.0.0-rc.1"
   dependencies:
     "@realm.io/common" "^0.1.4"
     "bindings" "^1.5.0"

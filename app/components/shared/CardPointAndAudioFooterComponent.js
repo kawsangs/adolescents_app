@@ -5,7 +5,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import PlayAudioComponent from './PlayAudioComponent';
 import {getStyleOfDevice} from '../../utils/responsive_util';
-import numberUtil from '../../utils/number_util';
+import translationHelper from '../../helpers/translation_helper';
 import tabletStyles from '../../assets/stylesheets/tablet/cardPointAndAudioFooterComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/cardPointAndAudioFooterComponentStyles';
 
@@ -13,11 +13,11 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CardPointAndAudioFooterComponent = (props) => {
   const {t, i18n} = useTranslation();
-  const points = numberUtil.translate(props.points, 'km');
+  const points = translationHelper.translateNumber(props.points, 'km');
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{numberUtil.translate(props.points, i18n.language)} {t('point')}</Text>
+      <Text style={styles.label}>{translationHelper.translateNumber(props.points, i18n.language)} {t('point')}</Text>
 
       <PlayAudioComponent
         playIcon='volume-high-outline'

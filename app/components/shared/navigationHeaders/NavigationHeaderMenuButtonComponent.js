@@ -4,7 +4,7 @@ import NavigationHeaderButtonComponent from './NavigationHeaderButtonComponent';
 import color from '../../../themes/color';
 
 const NavigationHeaderMenuButtonComponent = (props) => {
-  return <NavigationHeaderButtonComponent
+  return <NavigationHeaderButtonComponent onPress={() => props.navigation.openDrawer()}
           icon={<IonIcon name="reorder-two-outline" color={color.whiteColor} size={28} />}
         />
 }

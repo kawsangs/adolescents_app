@@ -8,11 +8,14 @@ import GradientViewComponent from '../shared/GradientViewComponent';
 import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
+import translationHelper from '../../helpers/translation_helper';
+import User from '../../models/User';
 
 const DrawerNavigatorHeaderComponent = (props) => {
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
+  const loggedInUser = User.loggedInUser();
   const renderIcon = () => {
-    return props.isAnonymous ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
+    return User.isAnonymous() ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
                              : <FeatherIcon name='user' color={color.whiteColor} size={29} />
   }
 
@@ -22,8 +25,10 @@ const DrawerNavigatorHeaderComponent = (props) => {
         {renderIcon()}
       </GradientViewComponent>
 
-      { !props.isAnonymous &&
-        <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>ប្រុស | ២០{t('year')}</Text>
+      { !User.isAnonymous() &&
+        <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
+          {t(loggedInUser.gender)} | {translationHelper.translateNumber(loggedInUser.age, i18n.language)} {t('year')}
+        </Text>
       }
     </View>
   )

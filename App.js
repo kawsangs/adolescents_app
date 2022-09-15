@@ -14,7 +14,6 @@ import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 import AppNavigator from './app/navigators/app_navigator';
-import DrawerNavigator from './app/navigators/drawer_navigator';
 import i18nextInit from './app/localizations/i18next';
 import color from './app/themes/color';
 import {FontFamily} from './app/themes/font';
