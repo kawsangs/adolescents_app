@@ -6,7 +6,7 @@ import MainView from '../views/main/MainView';
 import IntroductionView from '../views/introductions/IntroductionView';
 import LoginSelectionView from '../views/loginSelections/LoginSelectionView';
 import CreateAccountView from '../views/createAccounts/CreateAccountView';
-import BottomTabNavigator from './bottom_tab_navigator';
+import DrawerNavigator from './drawer_navigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,28 +23,30 @@ function AppNaviator() {
             header: () => null,
           }}
         />
-        <Stack.Screen
-          name="IntroductionView"
-          component={IntroductionView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="LoginSelectionView"
-          component={LoginSelectionView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="CreateAccountView"
-          component={CreateAccountView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen name="BottomTabs" component={BottomTabNavigator}
+        <Stack.Group>
+          <Stack.Screen
+            name="IntroductionView"
+            component={IntroductionView}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="LoginSelectionView"
+            component={LoginSelectionView}
+            options={{
+              header: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="CreateAccountView"
+            component={CreateAccountView}
+            options={{
+              header: () => null,
+            }}
+          />
+        </Stack.Group>
+        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator}
           options={{
             header: () => null,
           }}

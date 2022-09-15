@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { FontFamily } from '../../themes/font';
+import {FontFamily, fontFamily} from '../../themes/font';
 import color from '../../themes/color';
 import {mediumFontSize} from '../../utils/font_size_util';
 

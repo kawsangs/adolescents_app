@@ -1,13 +1,17 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 
-import homeNavigator from './home_navigator';
+import HomeStackNavigator from './home_stack_navigator';
+import VideoStackNavigator from './video_stack_navigator';
 import VideoView from '../views/videos/VideoView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
-import {screenHorizontalPadding} from '../constants/component_constant';
+import {getStyleOfDevice} from '../utils/responsive_util';
+import tabletStyles from '../assets/stylesheets/tablet/bottomTabNavigatorStyles';
+import mobileStyles from '../assets/stylesheets/mobile/bottomTabNavigatorStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +19,7 @@ function BottomTabNavigator() {
   const { t } = useTranslation();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeViewStack"
       screenOptions={{
         tabBarStyle: styles.tabBar,
         tabBarActiveTintColor: color.secondaryColor,
@@ -24,8 +28,8 @@ function BottomTabNavigator() {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={homeNavigator}
+        name="HomeViewStack"
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
@@ -33,11 +37,12 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Video"
-        component={VideoView}
+        name="VideoViewStack"
+        component={VideoStackNavigator}
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
           tabBarItemStyle: styles.tabBarItem,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -61,31 +66,5 @@ function BottomTabNavigator() {
     </Tab.Navigator>
   )
 }
-const BORDER_RADIUS = 12;
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: 'transparent',
-    borderTopWidth: 0,
-    elevation: 0,
-    height: 62,
-    paddingBottom: 6,
-    paddingHorizontal: screenHorizontalPadding,
-    position: 'absolute',
-  },
-  tabBarItem: {
-    backgroundColor: color.whiteColor,
-    opacity: 0.98,
-    marginRight: -1
-  },
-  tabBarLeftItem: {
-    borderBottomLeftRadius: BORDER_RADIUS,
-    borderTopLeftRadius: BORDER_RADIUS,
-    marginRight: -1,
-  },
-  tabBarRightItem: {
-    borderBottomRightRadius: BORDER_RADIUS,
-    borderTopRightRadius: BORDER_RADIUS
-  }
-});
 
 export default BottomTabNavigator;

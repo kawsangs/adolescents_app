@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import {Text} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/Feather';
 
 import {getStyleOfDevice, mobileIconSize} from '../../utils/responsive_util';
@@ -14,7 +15,7 @@ const TabBarItemComponent = (props) => {
     <View style={styles.container}>
       <View style={styles.itemContainer}>
         <Icon name={props.icon} color={props.color} size={iconSize} />
-        <Text style={styles.label}>{props.label}</Text>
+        <Text style={[styles.label, {color: props.color}]}>{props.label}</Text>
       </View>
 
       { props.focused &&

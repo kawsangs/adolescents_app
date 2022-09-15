@@ -13,7 +13,7 @@ const LoginSelectionButtonsComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
 
   const anonymousUse = () => {
-    appUserService.createAnonymousUser(() => navigationRef.current?.navigate('BottomTabs'));
+    appUserService.createAnonymousUser(() => navigationRef.current?.navigate('DrawerNavigator'));
   }
 
   return (

@@ -5,7 +5,7 @@ import HomeView from '../views/home/HomeView';
 
 const Stack = createNativeStackNavigator();
 
-const HomeNavigator = () => {
+const HomeStackNavigator = () => {
   return (
      <Stack.Navigator
         initialRouteName='HomeView'
@@ -21,4 +21,4 @@ const HomeNavigator = () => {
   )
 }
 
-export default HomeNavigator;
+export default HomeStackNavigator;

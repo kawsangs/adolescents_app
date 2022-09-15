@@ -9,8 +9,7 @@
   "thirdIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
   "fourthIntroTitle": "Fourth intro title",
   "fourthIntroDescription": "Welcome to MyHealth mobile application. This app will help to find any answers related to adult help.",
-  "point_one": "{{count}} point",
-  "point_other": "{{count}} points",
+  "point": "point",
   "home": "Home",
   "video": "Video",
   "map": "Map",
@@ -39,5 +38,13 @@
   "pleaseChooseYourProvince": "(please choose your province)",
   "continue": "Continue",
   "cancel": "Cancel",
-  "doYouReallyWantToCancel": "Do you really want to cancel?"
+  "doYouReallyWantToCancel": "Do you really want to cancel?",
+  "year": "year",
+  "editProfile": "Edit profile",
+  "about": "about",
+  "privacyPolicy": "Privacy policy",
+  "termsAndConditions": "Term and conditions",
+  "share": "Share",
+  "reset": "Reset",
+  "version": "v"
 }

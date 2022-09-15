@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import color from '../../../themes/color';
 import { FontFamily } from '../../../themes/font';
-import {bigFontSize} from '../../../utils/font_size_util';
+import {largeFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 import {headerWithAudioScrollDistance} from '../../../constants/component_constant';
 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: FontFamily.bold,
-    fontSize: bigFontSize()
+    fontSize: largeFontSize()
   }
 });
 

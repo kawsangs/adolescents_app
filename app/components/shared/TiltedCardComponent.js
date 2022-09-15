@@ -20,7 +20,7 @@ const TiltedCardComponent = (props) => {
           <TiltedCardImageComponent image={props.item.image} />
 
           <View style={styles.footer}>
-            <BoldLabelComponent label={props.item.title} numberOfLines={1} style={styles.title} />
+            <BoldLabelComponent label={props.item.title} numberOfLines={2} style={styles.title} />
             <CardPointAndAudioFooterComponent
               uuid={props.item.uuid}
               points={props.item.points}

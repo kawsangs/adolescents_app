@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
-import { normalFontSize } from '../../../utils/font_size_util';
+import { mediumFontSize } from '../../../utils/font_size_util';
 
 const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
   label: {
     color: color.blackColor,
     flex: 1,
-    fontSize: normalFontSize(),
+    fontSize: mediumFontSize(),
   },
 });
 
