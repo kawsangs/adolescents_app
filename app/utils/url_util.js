@@ -13,8 +13,9 @@ const urlUtil = (() => {
   function getAbsoluteUrl(relativeUrl) {
     if (!relativeUrl) return null;
 
-    const endpointUrl = environment.domain;
-    return endpointUrl + relativeUrl;
+    // const endpointUrl = environment.domain;
+    // return endpointUrl + relativeUrl;
+    return environment.domain + relativeUrl;
   }
 })();
 

@@ -30,9 +30,8 @@ class BaseApi {
   }
 
   load = (id, successCallback, failureCallback) => {
-    const url = urlUtil.getAbsoluteUrl(this.listingObjectUrl(id));
     const options = { method: 'GET'}
-    this.sendRequest(url, options, successCallback, failureCallback);
+    this.sendRequest(urlUtil.getAbsoluteUrl(this.listingObjectUrl(id)), options, successCallback, failureCallback);
   }
 
   put = (url, params, successCallback, failureCallback) => {
@@ -40,7 +39,7 @@ class BaseApi {
       method: 'PUT',
       params: params,
     };
-    this.sendRequest(url, options, successCallback, failureCallback);
+    this.sendRequest(urlUtil.getAbsoluteUrl(url), options, successCallback, failureCallback);
   }
 
   post = (url, params, successCallback, failureCallback) => {
@@ -48,7 +47,7 @@ class BaseApi {
       method: 'POST',
       params: params,
     };
-    this.sendRequest(url, options, successCallback, failureCallback);
+    this.sendRequest(urlUtil.getAbsoluteUrl(url), options, successCallback, failureCallback);
   }
 
   sendRequest = (url, options, successCallback, failureCallback) => {

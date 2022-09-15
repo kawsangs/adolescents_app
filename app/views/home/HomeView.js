@@ -7,6 +7,7 @@ import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationH
 import CardListComponent from '../../components/shared/CardListComponent';
 
 import appUserService from '../../services/app_user_service';
+import visitService from '../../services/visit_service';
 import Category from '../../models/Category';
 
 const HomeView = (props) => {
@@ -16,8 +17,10 @@ const HomeView = (props) => {
   useEffect(() => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
-      if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable)
+      if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable) {
         appUserService.syncUsers();
+        visitService.syncVisits();
+      }
 
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;
     });

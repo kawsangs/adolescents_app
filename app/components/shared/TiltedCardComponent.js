@@ -5,6 +5,7 @@ import BoldLabelComponent from './BoldLabelComponent';
 import TiltedCardImageComponent from './tiltedCard/TiltedCardImageComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
 import Category from '../../models/Category';
+import visitService from '../../services/visit_service';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/tiltedCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/tiltedCardComponentStyles';
@@ -14,6 +15,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const TiltedCardComponent = (props) => {
   const onPress = () => {
     props.updatePlayingUuid(null);
+    visitService.recordVisitedCategory(props.item)
   }
 
   return (
