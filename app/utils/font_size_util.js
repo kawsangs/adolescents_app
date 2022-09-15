@@ -9,8 +9,12 @@ const getMobileFontSizeByPixelRatio = (smallRatioFontSize, bigRatioFontSize) => 
   return isShortScreenDevice() ? fontSize - 1 : fontSize;
 }
 
-export const xLargeFontSize = () => {
+export const xxLargeFontSize = () => {
   return getStyleOfDevice(22, mobileFontSize(20));
+}
+
+export const xLargeFontSize = () => {
+  return getStyleOfDevice(20, mobileFontSize(18));
 }
 
 export const largeFontSize = () => {

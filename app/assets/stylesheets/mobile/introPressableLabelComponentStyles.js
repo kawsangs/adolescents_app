@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import componentUtil from '../../../utils/component_util';
-import {largeFontSize} from '../../../utils/font_size_util';
+import {xLargeFontSize} from '../../../utils/font_size_util';
 import color from '../../../themes/color';
 
 const introPressableLabelComponentStyles = StyleSheet.create({
@@ -10,7 +10,7 @@ const introPressableLabelComponentStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   label: {
-    fontSize: largeFontSize(),
+    fontSize: xLargeFontSize(),
     color: color.primaryColor,
     width: '100%',
     textAlign: 'center'
