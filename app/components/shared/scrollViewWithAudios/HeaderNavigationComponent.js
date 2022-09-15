@@ -4,9 +4,6 @@ import { Appbar } from 'react-native-paper';
 
 import NavigationHeaderBackButtonComponent from '../NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../navigationHeaders/NavigationHeaderTitleComponent';
-import { FontFamily } from '../../../themes/font';
-import {largeFontSize} from '../../../utils/font_size_util';
-import componentUtil from '../../../utils/component_util';
 import {headerWithAudioScrollDistance} from '../../../constants/component_constant';
 
 const HeaderNavigationComponent = (props) => {
@@ -31,16 +28,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0)',
     elevation: 0
   },
-  btnBack: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: componentUtil.pressableItemSize(),
-    width: componentUtil.pressableItemSize(),
-  },
-  title: {
-    fontFamily: FontFamily.bold,
-    fontSize: largeFontSize()
-  }
 });
 
 export default HeaderNavigationComponent;

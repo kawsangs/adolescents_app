@@ -1,8 +1,9 @@
 'use strict';
 
+import Realm from 'realm';
 import categories from '../../json/categories';
 
-class Category {
+class Category extends Realm.Object {
   get imageSource() {
     if (!this.image_url) {
       const cate = categories.filter(category => category.uuid == this.uuid)[0];
