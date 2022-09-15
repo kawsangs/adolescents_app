@@ -10,9 +10,9 @@ const HomeTiltedCardListComponent = (props) => {
 
   return (
     <View style={{marginTop: 32, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-      { categories.map((item, index) => {
+      { categories.map((category, index) => {
           return <TiltedCardComponent key={index}
-                    item={item}
+                    item={category}
                     containerStyle={{marginTop: 28, marginBottom: 16}}
                     playingUuid={props.playingUuid}
                     updatePlayingUuid={props.updatePlayingUuid}

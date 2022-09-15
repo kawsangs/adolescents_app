@@ -6,7 +6,7 @@ import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageCo
 import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComponent';
 import { cardElevation } from '../../constants/component_constant';
 import Category from '../../models/Category';
-import navigationHelper from '../../helpers/navigation_helper';
+import navigationService from '../../services/navigation_service';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponentStyles';
@@ -16,7 +16,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const HorizontalCardComponent = (props) => {
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => navigationHelper.navigateCategory(props.item.uuid)}
+      onPress={() => navigationService.navigateCategory(props.item.uuid)}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
         <HorizontalCardImageComponent image={props.item.imageSource} />

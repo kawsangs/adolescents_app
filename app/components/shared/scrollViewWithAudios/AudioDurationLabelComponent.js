@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 import color from '../../../themes/color';
 import audioUtil from '../../../utils/audio_util';
 import {mediumFontSize} from '../../../utils/font_size_util';
-import translationUtil from '../../../utils/translation_util';
+import translationHelper from '../../../helpers/translation_helper';
 import { screenPaddingHorizontal, headerWithAudioScrollDistance } from '../../../constants/component_constant';
 
 const AudioDurationLabelComponent = (props) => {
@@ -20,8 +20,8 @@ const AudioDurationLabelComponent = (props) => {
   const reversePlaySeconds = audioUtil.getReverseSeconds(props.playSeconds, props.duration);
 
   return <Animated.View style={[styles.secondsContainer, {transform: [{translateY: labelPositionY}]}]}>
-            <Text style={styles.label}>{ translationUtil.translateNumber(playSeconds, i18n.language) }</Text>
-            <Text style={styles.label}>{ translationUtil.translateNumber(reversePlaySeconds, i18n.language) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(playSeconds, i18n.language) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(reversePlaySeconds, i18n.language) }</Text>
          </Animated.View>
 }
 

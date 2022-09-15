@@ -9,9 +9,9 @@ const HomeHorizontalCardListComponent = (props) => {
 
   return (
     <React.Fragment>
-      { categories.map((item, index) => {
+      { categories.map((category, index) => {
           return <HorizontalCardComponent key={index}
-                    item={item}
+                    item={category}
                     containerStyle={{marginTop: 32}}
                     playingUuid={props.playingUuid}
                     updatePlayingUuid={props.updatePlayingUuid}

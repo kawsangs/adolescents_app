@@ -34,14 +34,8 @@ const ScrollViewWithAudioComponent = (props) => {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    height: 40,
-    margin: 16,
-    backgroundColor: '#D3D3D3',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   scrollViewContent: {
+    backgroundColor: color.whiteSmokeColor,
     marginTop: headerWithAudioMaxHeight,
     paddingHorizontal: 24,
     paddingBottom: scrollViewPaddingBottom,

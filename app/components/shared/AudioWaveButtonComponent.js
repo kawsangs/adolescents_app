@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
   audioBtn: {
     backgroundColor: color.whiteColor,
     borderColor: color.whiteColor,
+    borderRadius: 45,
     borderWidth: 0,
-    elevation: 5,
+    elevation: 4,
     zIndex: 10,
   }
 });
