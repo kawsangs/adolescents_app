@@ -54,19 +54,6 @@ const Category = (() => {
   function isLeafCategory(uuid) {
     return getSubCategories(uuid).length == 0;
   }
-
-  function isParentCategory(uuid) {
-    const category = findByUuid(uuid)
-    return !!category && !category.parent_id;
-  }
-
-  function isSubCategory(uuid) {
-    return getSubCategories(uuid).length > 0;
-  }
-
-  function isLeafCategory(uuid) {
-    return getSubCategories(uuid).length == 0;
-  }
 })();
 
 export default Category;

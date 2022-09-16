@@ -17,27 +17,6 @@ const VideoStackNavigator = () => {
             header: () => null,
           }}
         />
-        <Stack.Screen
-          name="SubCategoryView"
-          component={SubCategoryView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="LeafCategoryView"
-          component={LeafCategoryView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="LeafCategoryDetailView"
-          component={LeafCategoryDetailView}
-          options={{
-            header: () => null,
-          }}
-        />
       </Stack.Navigator>
   )
 }
