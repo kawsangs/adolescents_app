@@ -11,7 +11,7 @@ const LeafCategoryCardListComponent = (props) => {
   return (
     <React.Fragment>
       <Image source={props.category.imageSource} resizeMode='contain' style={{width: '100%', height: 200}} />
-      { <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(id) => setPlayingUuid(id)} /> }
+      <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(id) => setPlayingUuid(id)} />
     </React.Fragment>
   )
 }

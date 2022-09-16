@@ -1,6 +1,6 @@
 import {Platform} from 'react-native';
 import Moment from 'moment';
-import navigationHelper from '../helpers/navigation_helper';
+import navigationService from '../services/navigation_service';
 import Visit from '../models/Visit';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
@@ -19,7 +19,7 @@ const visitService = (() => {
     }, () => {
       _saveVisitData(category);  // if no internet connection save visit data to realm
     });
-    navigationHelper.navigateCategory(category.uuid)
+    navigationService.navigateCategory(category.uuid)
   }
 
   function syncVisits() {

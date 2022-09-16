@@ -2,7 +2,7 @@ import appStatusService from '../services/app_status_service';
 import { environment } from '../config/environment';
 import User from '../models/User';
 
-const navigatorUtil = (() => {
+const navigationUtil = (() => {
   return {
     getInitialRouteName,
   }
@@ -15,4 +15,4 @@ const navigatorUtil = (() => {
   }
 })();
 
-export default navigatorUtil;
+export default navigationUtil;
