@@ -3,10 +3,9 @@ import {View} from 'react-native';
 
 import TiltedCardComponent from '../shared/TiltedCardComponent';
 import Category from '../../models/Category';
-import {TILTED_CARD} from '../../constants/card_constant';
 
-const HomeTiltedCardListComponent = (props) => {
-  const categories = Category.findByDisplayType(TILTED_CARD);
+const HomeCardListComponent = () => {
+  const categories = Category.getParentCategories();
 
   return (
     <View style={{marginTop: 32, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
@@ -23,4 +22,4 @@ const HomeTiltedCardListComponent = (props) => {
   )
 }
 
-export default HomeTiltedCardListComponent;
+export default HomeCardListComponent;

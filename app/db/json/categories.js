@@ -1,4 +1,4 @@
-import {GUI_CARD, TILTED_CARD, GRID_CARD, AUDIO_CARD} from '../../constants/card_constant';
+import {ROW_CARD, TILTED_CARD, GRID_CARD, AUDIO_CARD} from '../../constants/card_constant';
 import safety from '../../assets/audios/safety_plan.mp3';
 import storyLong from '../../assets/audios/your_story_long.mp3';
 import storyShort from '../../assets/audios/your_story.mp3';
@@ -15,7 +15,7 @@ export default [
     'image': require('../../assets/images/intro_1.jpg'),
     'parent_code': null,
     'order': 1,
-    'display': GUI_CARD,
+    'display': ROW_CARD,
   },
   {
     'uuid': 'category_02',
@@ -28,7 +28,7 @@ export default [
     'image': require('../../assets/images/intro_1.jpg'),
     'parent_code': null,
     'order': 2,
-    'display': GUI_CARD,
+    'display': ROW_CARD,
   },
   {
     'uuid': 'category_03',

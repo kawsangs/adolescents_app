@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
-import GridCardListComponent from '../../components/shared/GridCardListComponent';
+import CardListComponent from '../../components/shared/CardListComponent';
+
 import Category from '../../models/Category';
 
 const SubCategoryView = ({route, navigation}) => {
@@ -13,7 +14,7 @@ const SubCategoryView = ({route, navigation}) => {
   return (
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label={category.name} />}
-      body={<GridCardListComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
+      body={<CardListComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
     />
   )
 }

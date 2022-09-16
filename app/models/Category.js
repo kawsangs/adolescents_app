@@ -8,6 +8,7 @@ const Category = (() => {
     seedData,
     findByDisplayType,
     findByUuid,
+    getParentCategories,
     getSubCategories,
     isParentCategory,
     isSubCategory,
@@ -30,6 +31,10 @@ const Category = (() => {
 
   function findByUuid(uuid) {
     return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+  }
+
+  function getParentCategories() {
+    return realm.objects(MODEL).filtered(`parent_code = null || parent_code = ''`);
   }
 
   function getSubCategories(uuid) {

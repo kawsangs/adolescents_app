@@ -3,13 +3,15 @@ import NetInfo from '@react-native-community/netinfo';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
-import HomeHorizontalCardListComponent from '../../components/home/HomeHorizontalCardListComponent';
-import HomeTiltedCardListComponent from '../../components/home/HomeTiltedCardListComponent';
+
+import CardListComponent from '../../components/shared/CardListComponent';
 
 import appUserService from '../../services/app_user_service';
+import Category from '../../models/Category';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
+  const categories = Category.getParentCategories();
 
   useEffect(() => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection
@@ -24,12 +26,7 @@ const HomeView = (props) => {
   }, []);
 
   const renderBody = () => {
-    return (
-      <React.Fragment>
-        <HomeHorizontalCardListComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}/>
-        <HomeTiltedCardListComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}/>
-      </React.Fragment>
-    )
+    return <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
   }
 
   return (

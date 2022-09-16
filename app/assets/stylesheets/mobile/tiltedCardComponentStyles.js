@@ -5,7 +5,7 @@ import componentUtil from '../../../utils/component_util';
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
-    maxHeight: 170,
+    maxHeight: 188,
     width: componentUtil.getGridCardWidth(),
   },
   tiltedView: {
