@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import TiltedCardImageComponent from './tiltedCard/TiltedCardImageComponent';
@@ -12,8 +12,14 @@ import mobileStyles from '../../assets/stylesheets/mobile/tiltedCardComponentSty
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TiltedCardComponent = (props) => {
+  const onPress = () => {
+    props.updatePlayingUuid(null);
+  }
+
   return (
-    <View style={[styles.container, props.containerStyle]}>
+    <TouchableOpacity onPress={() => onPress()}
+      style={[styles.container, props.containerStyle]}
+    >
       <View style={styles.tiltedView} />
 
       <View style={styles.backgroundContainer}>
@@ -32,7 +38,7 @@ const TiltedCardComponent = (props) => {
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
