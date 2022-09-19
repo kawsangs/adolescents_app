@@ -1,13 +1,14 @@
 import Moment from 'moment';
 import realm from '../db/schema';
 import uuidv4 from '../utils/uuidv4_util'
+import User from './User';
 
 const MODEL = 'Visit';
 
 const Visit = (() => {
   return {
     create,
-    getUnsyncedVisits,
+    findUnsyncedVisitsByUserUuid,
     deleteByUuid,
   }
 
@@ -17,8 +18,8 @@ const Visit = (() => {
     });
   }
 
-  function getUnsyncedVisits() {
-    return [...realm.objects(MODEL).filtered(`synced = false SORT(visit_date ASC)`)];
+  function findUnsyncedVisitsByUserUuid(userUuid) {
+    return [...realm.objects(MODEL).filtered(`user_uuid = '${userUuid}' SORT(visit_date ASC)`)];
   }
 
   function deleteByUuid(uuid) {
@@ -34,9 +35,8 @@ const Visit = (() => {
     return {
       ...data,
       uuid: uuidv4(),
-      user_uuid: 'user_01', // Todo: use the uuid of the logged user
+      user_uuid: User.loggedInUser().uuid,
       visit_date: Moment().toDate(),
-      synced: false
     }
   }
 })();

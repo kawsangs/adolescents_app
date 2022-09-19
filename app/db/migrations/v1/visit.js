@@ -10,7 +10,6 @@ const VisitSchema = {
     name: 'string',
     code: 'string',
     parent_code: 'string?',
-    synced: { type: 'bool', default: false },
   },
 };
 

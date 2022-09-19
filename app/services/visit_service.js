@@ -2,6 +2,7 @@ import {Platform} from 'react-native';
 import Moment from 'moment';
 import navigationService from '../services/navigation_service';
 import Visit from '../models/Visit';
+import User from '../models/User';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
 
@@ -23,28 +24,42 @@ const visitService = (() => {
   }
 
   function syncVisits() {
-    const unsyncedVisits = Visit.getUnsyncedVisits()
-    if (unsyncedVisits.length == 0) return;
+    const syncedUsers = User.syncedUsers();
+    if (syncedUsers.length == 0) return;
 
-    _sendUnsyncedVisit(0, unsyncedVisits);
+    _syncVisitByUser(0, syncedUsers);
   }
 
   // private method
-  function _sendUnsyncedVisit(index, unsyncedVisits) {
-    if (index == unsyncedVisits.length) return;
+  function _syncVisitByUser(index, users) {
+    if (index == users.length) return;
+
+    const unsyncedVisits = Visit.findUnsyncedVisitsByUserUuid(users[index].uuid);
+    if (unsyncedVisits.length == 0) return;
+
+    _sendUnsyncedVisit(0, unsyncedVisits, () => _syncVisitByUser(index + 1, users));
+  }
+
+  function _sendUnsyncedVisit(index, unsyncedVisits, callback) {
+    if (index == unsyncedVisits.length) {
+      callback();
+      return;
+    }
 
     _sendCreateRequest(unsyncedVisits[index], () => {
       Visit.deleteByUuid(unsyncedVisits[index].uuid);  // when sync successful then remove synced visit from realm
-      _sendUnsyncedVisit(index + 1, unsyncedVisits);
+      _sendUnsyncedVisit(index + 1, unsyncedVisits, callback);
     }, () => {
-      _sendUnsyncedVisit(unsyncedVisits.length, unsyncedVisits); // if get error then stop syncing
+      return;  // if get error then stop syncing
     });
   }
 
   function _sendCreateRequest(category, successCallback, failureCallback) {
+    const userId = !!category.user_uuid ? User.find(category.user_uuid).id : User.loggedInUser().id;
+
     const params = {
       visit: {
-        app_user_id: 'ee424c72-2a82-492b-b3c5-9035b119e234',
+        app_user_id: userId,
         visit_date: Moment().toDate(),
         page_attributes: {
           code: category.code,
