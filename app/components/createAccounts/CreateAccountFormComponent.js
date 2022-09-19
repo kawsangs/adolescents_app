@@ -46,7 +46,7 @@ const CreateAccountFormComponent = () => {
       characteristics: state.characteristics
     }
 
-    appUserService.createUser(user, () => { navigationRef.current?.navigate('DrawerNavigator') });
+    appUserService.createUser(user, () => navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]}));
   }
 
   const renderSaveButton = () => {

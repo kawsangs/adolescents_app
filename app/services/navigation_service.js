@@ -11,7 +11,7 @@ const navigationService = (() => {
   function signOut() {
     const loggedInUser = User.loggedInUser();
     User.update(loggedInUser.uuid, { logged_in: false });
-    navigationRef.current?.navigate('LoginSelectionView');
+    navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 
   function navigateCategory(categoryUuid) {
