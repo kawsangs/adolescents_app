@@ -36,6 +36,7 @@ const TiltedCardComponent = (props) => {
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
+              containerStyle={{paddingLeft: 8}}
             />
           </View>
         </View>

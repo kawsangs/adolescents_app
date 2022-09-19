@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
+import PlayAudioIconComponent from './playAudios/PlayAudioIconComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import { outlinedButtonBorderWidth } from '../../constants/component_constant';
@@ -96,29 +97,11 @@ const PlayAudioComponent = (props) => {
     toggleAudio();
   }
 
-  const getIcon = () => {
-    if (!props.audio)
-      return props.muteIcon;
-
-    return isPlaying ? props.pauseIcon : props.playIcon
-  }
-
-  const getIconColor = () => {
-    if (isPlaying)
-      return color.secondaryColor;
-
-    return !!props.iconColor ? props.iconColor : color.primaryColor;
-  }
-
   return (
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio}>
-      {/* CloneElement is used so we can pass different type of icon and still using the same configuration */}
-      {  React.cloneElement(props.children, {
-          name: getIcon(),
-          size: props.iconSize, color: !!props.audio ? getIconColor() : color.mutedColor,
-          style: [props.iconStyle, { marginLeft: !isPlaying ? 0 : -2 }]
-        })
-      }
+      <PlayAudioIconComponent isPlaying={isPlaying} audio={props.audio} isSpeakerIcon={props.isSpeakerIcon}
+        iconStyle={props.iconStyle} iconSize={props.iconSize} iconColor={props.iconColor}
+      />
     </TouchableOpacity>
   )
 }
@@ -139,10 +122,9 @@ export default PlayAudioComponent;
 
 // How to use
 {/* <PlayAudioComponent
-  playIcon='play'
-  pauseIcon='pause'
   iconSize={24}
   audio={props.audio}
+  isSpeakerIcon={true/false}
   btnStyle={styles.audioBtn}
   itemUuid={props.itemUuid}             // uuid of the item that render on the card
   playingUuid={props.playingUuid}       // uuid of the item that is playing the audio

@@ -32,14 +32,12 @@ const TextInputWithAudioComponent = (props) => {
 
   const renderAudioBtn = () => {
     return <PlayAudioComponent
-              playIcon='volume-high-outline'
-              pauseIcon='pause'
-              muteIcon='volume-mute-outline'
               iconSize={24}
               audio={props.audio}
               btnStyle={{borderWidth: 0, position: 'absolute', right: 0, borderRadius: 0}}
               itemUuid={props.uuid}
               playingUuid={props.playingUuid}
+              isSpeakerIcon={true}
               updatePlayingUuid={props.updatePlayingUuid}
             >
               <IonIcon/>

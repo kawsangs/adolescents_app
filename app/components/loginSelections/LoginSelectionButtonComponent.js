@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -18,19 +17,17 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const LoginSelectionButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
   const renderAudioButton = () => {
-    return <PlayAudioComponent
-              playIcon='volume-high-outline'
-              pauseIcon='pause'
-              muteIcon='volume-mute-outline'
-              iconSize={24}
-              audio={props.audio}
-              btnStyle={styles.audioBtn}
-              itemUuid={props.uuid}
-              playingUuid={props.playingUuid}
-              updatePlayingUuid={props.updatePlayingUuid}
-           >
-              <IonIcon/>
-           </PlayAudioComponent>
+    return (
+      <PlayAudioComponent
+        iconSize={24}
+        audio={props.audio}
+        btnStyle={styles.audioBtn}
+        itemUuid={props.uuid}
+        playingUuid={props.playingUuid}
+        isSpeakerIcon={true}
+        updatePlayingUuid={props.updatePlayingUuid}
+      />
+    )
   }
 
   const renderGradientIcon = () => {

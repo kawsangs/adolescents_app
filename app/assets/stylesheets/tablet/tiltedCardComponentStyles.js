@@ -43,7 +43,6 @@ const tiltedCardComponentStyles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    paddingHorizontal: 8,
     paddingTop: 8
   }
 });

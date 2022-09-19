@@ -9,14 +9,12 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const SelectionItemAudioButtonComponent = (props) => {
   return <PlayAudioComponent
-            playIcon='volume-high-outline'
-            pauseIcon='pause'
-            muteIcon='volume-mute-outline'
             iconSize={24}
             audio={props.audio}
             btnStyle={styles.audioBtn}
             itemUuid={props.itemUuid}
             playingUuid={props.playingUuid}
+            isSpeakerIcon={true}
             updatePlayingUuid={props.updatePlayingUuid}
           >
             <IonIcon/>
