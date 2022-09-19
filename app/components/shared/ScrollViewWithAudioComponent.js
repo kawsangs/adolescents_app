@@ -14,7 +14,7 @@ const ScrollViewWithAudioComponent = (props) => {
     return (
       <View style={styles.scrollViewContent}>
         <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: xxLargeFontSize(), marginTop: 14, lineHeight: 30}} />
-        <Text style={{fontSize: largeFontSize(), marginTop: 16, color: color.descriptionTextColor, lineHeight: descriptionLineHeight}}>
+        <Text style={{fontSize: largeFontSize(), marginTop: 16, color: color.blackColor, lineHeight: descriptionLineHeight}}>
           {props.description}
         </Text>
       </View>

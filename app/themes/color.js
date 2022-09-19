@@ -17,7 +17,6 @@ const color = {
   redColor: '#ff0000',
   disabledColor: '#b5b5b5',
   requiredColor: '#d50000',
-  descriptionTextColor: '#333333',
 }
 
 export default color;

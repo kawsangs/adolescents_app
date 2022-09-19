@@ -13,7 +13,7 @@ const CardSubtitleLabelComponent = (props) => {
 
 const styles = StyleSheet.create({
   label: {
-    color: color.descriptionTextColor,
+    color: color.blackColor,
     fontSize: descriptionFontSize,
     lineHeight: 24,
     fontWeight: '100'
