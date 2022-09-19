@@ -6,6 +6,8 @@ const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
+    paddingRight: 3,
+    paddingVertical: 2,
   },
   label: {
     color: color.blackColor,

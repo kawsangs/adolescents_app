@@ -39,7 +39,8 @@ const tiltedCardComponentStyles = StyleSheet.create({
   title: {
     fontSize: cardTitleFontSize,
     flex: 1,
-    lineHeight: 27
+    lineHeight: 27,
+    paddingHorizontal: 8,
   },
   footer: {
     flex: 3,
