@@ -24,6 +24,7 @@ const LoginSelectionButtonsComponent = () => {
         iconName="user"
         btnStyle={{marginTop: 18}}
         audio={safetyPlan}
+        isAnonymous={false}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
         onPress={() => navigationRef.current?.navigate('CreateAccountView')}
@@ -32,8 +33,8 @@ const LoginSelectionButtonsComponent = () => {
       <LoginSelectionButtonComponent
         uuid='2'
         label={t('useWithoutPersonalInfo')}
-        iconName="user-x"
         audio={yourStory}
+        isAnonymous={true}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
         onPress={() => anonymousUse()}

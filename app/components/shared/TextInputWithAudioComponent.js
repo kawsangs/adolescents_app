@@ -5,7 +5,6 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import TextComponent from './TextComponent';
 import PlayAudioComponent from './PlayAudioComponent';
 import color from '../../themes/color';
-import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import tableStyles from '../../assets/stylesheets/tablet/textInputWithAudioComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/textInputWithAudioComponentStyles';
@@ -50,7 +49,7 @@ const TextInputWithAudioComponent = (props) => {
   return (
     <View style={props.style}>
       { renderTitle() }
-      <View style={[styles.inputContainer, props.requiredVisible ? sharedStyles.requiredBorder : {}]}>
+      <View style={styles.inputContainer}>
         { renderTextInput() }
         { renderAudioBtn() }
       </View>

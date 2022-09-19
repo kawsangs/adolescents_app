@@ -8,13 +8,11 @@ import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
 import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
-import errorUtil from '../../utils/error_util';
-import toastMessageHelper from '../../helpers/toast_message_helper';
 import {navigationRef} from '../../navigators/app_navigator';
 import yourStory from '../../assets/audios/your_story.mp3';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 
-const CreateAccountBodyComponent = () => {
+const CreateAccountFormComponent = () => {
   const {t} = useTranslation();
   const [state, setState] = useState({
     gender: 'male',
@@ -76,4 +74,4 @@ const CreateAccountBodyComponent = () => {
          </View>
 }
 
-export default CreateAccountBodyComponent;
+export default CreateAccountFormComponent;

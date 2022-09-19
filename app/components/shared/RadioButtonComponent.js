@@ -26,7 +26,7 @@ const RadioButtonComponent = (props) => {
     <View style={props.style}>
       { renderTitle() }
 
-      <ScrollView style={[styles.radioBtnContainer, requiredVisible ? sharedStyles.requiredBorder : {}]}
+      <ScrollView style={styles.radioBtnContainer}
         nestedScrollEnabled={true}
         showsVerticalScrollIndicator={false}
       >

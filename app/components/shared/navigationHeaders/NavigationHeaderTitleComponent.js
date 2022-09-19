@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import BoldLabelComponent from '../BoldLabelComponent';
 import color from '../../../themes/color';
-import {xLargeFontSize} from '../../../utils/font_size_util';
+import {xxLargeFontSize} from '../../../utils/font_size_util';
 
 const NavigationHeaderTitleComponent = (props) => {
   return (
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: xLargeFontSize(),
+    fontSize: xxLargeFontSize(),
     textTransform: 'capitalize',
   }
 });
