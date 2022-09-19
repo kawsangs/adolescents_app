@@ -23,7 +23,7 @@ const CardPointAndAudioFooterComponent = (props) => {
         muteIcon='volume-mute-outline'
         iconSize={24}
         audio={props.audio}
-        btnStyle={{borderWidth: 0, borderRadius: 0}}
+        btnStyle={{borderWidth: 0, borderRadius: 0, alignItems: 'flex-end', paddingRight: 6}}
         itemUuid={props.uuid}
         playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
