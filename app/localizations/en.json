@@ -47,5 +47,6 @@
   "share": "Share",
   "reset": "Reset",
   "version": "v",
-  "pressBackTwiceToExitTheApp": "Press back twice to exit the app"
+  "pressBackTwiceToExitTheApp": "Press back twice to exit the app",
+  "service": "Service"
 }
