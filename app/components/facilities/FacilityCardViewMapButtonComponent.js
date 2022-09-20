@@ -7,7 +7,7 @@ import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
 
-const ClinicCardViewMapButtonComponent = () => {
+const FacilityCardViewMapButtonComponent = () => {
   return <TouchableOpacity style={styles.viewMapBtn}>
             <FontAwesome name='route' light size={18} color={color.primaryColor} />
             <BoldLabelComponent label='បង្ហាញផ្លូវ' style={styles.viewMapLabel} />
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ClinicCardViewMapButtonComponent;
+export default FacilityCardViewMapButtonComponent;

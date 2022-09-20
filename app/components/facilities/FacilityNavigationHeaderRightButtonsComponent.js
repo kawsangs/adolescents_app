@@ -4,7 +4,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
 
-const ClinicNavigationHeaderRightButtonsComponent = () => {
+const FacilityNavigationHeaderRightButtonsComponent = () => {
   return (
     <View style={{flexDirection: 'row', height: '100%'}}>
       <NavigationHeaderButtonComponent
@@ -18,4 +18,4 @@ const ClinicNavigationHeaderRightButtonsComponent = () => {
   )
 }
 
-export default ClinicNavigationHeaderRightButtonsComponent;
+export default FacilityNavigationHeaderRightButtonsComponent;

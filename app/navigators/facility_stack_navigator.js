@@ -1,18 +1,18 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ClinicView from '../views/clinics/ClinicView';
+import FacilityView from '../views/clinics/FacilityView';
 
 const Stack = createNativeStackNavigator();
 
 const ClinicStackNavigator = () => {
   return (
      <Stack.Navigator
-        initialRouteName='ClinicView'
+        initialRouteName='FacilityView'
       >
         <Stack.Screen
-          name="ClinicView"
-          component={ClinicView}
+          name="FacilityView"
+          component={FacilityView}
           options={{
             header: () => null,
           }}

@@ -6,7 +6,7 @@ import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 
-const ClinicServiceScrollBarComponent = () => {
+const FacilityServiceScrollBarComponent = () => {
   const services = [
     {label: 'បន្តពូជ', value: 0},
     {label: 'រំលូត', value: 1},
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ClinicServiceScrollBarComponent;
+export default FacilityServiceScrollBarComponent;

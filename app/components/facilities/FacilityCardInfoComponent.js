@@ -3,25 +3,25 @@ import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
-import ClinicCardTitleComponent from './ClinicCardTitleComponent';
-import ClinicCardViewMapButtonComponent from './ClinicCardViewMapButtonComponent';
+import FacilityCardTitleComponent from './FacilityCardTitleComponent';
+import FacilityCardViewMapButtonComponent from './FacilityCardViewMapButtonComponent';
 import color from '../../themes/color';
 import {descriptionFontSize} from '../../constants/component_constant';
 
-const ClinicCardInfoComponent = (props) => {
+const FacilityCardInfoComponent = (props) => {
   const renderViewMapBtn = () => {
-    return <ClinicCardViewMapButtonComponent/>
+    return <FacilityCardViewMapButtonComponent/>
   }
 
   const renderTitle = () => {
-    return <ClinicCardTitleComponent label={props.name} audio={props.audio}
+    return <FacilityCardTitleComponent label={props.name} audio={props.audio}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />
   }
 
   return (
-    <View style={{flex: 3, paddingBottom: 8}}>
+    <View style={{flex: 4}}>
       { renderTitle() }
       <View style={{flexDirection: 'row', flex: 1, marginTop: 8, paddingHorizontal: 8}}>
         <Text style={styles.label} numberOfLines={2}>{props.description}</Text>
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClinicCardInfoComponent;
+export default FacilityCardInfoComponent;

@@ -2,20 +2,20 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {Card} from 'react-native-paper';
 
-import ClinicCardInfoComponent from './ClinicCardInfoComponent';
+import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 
-const ClinicCardItemComponent = (props) => {
+const FacilityCardItemComponent = (props) => {
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
-        <Image source={props.clinic.image} style={styles.image} resizeMode='cover' />
+        <Image source={props.facility.image} style={styles.image} resizeMode='cover' />
       </View>
     )
   }
 
   const renderInfo = () => {
-    return <ClinicCardInfoComponent name={props.clinic.name} description={props.clinic.description} audio={props.clinic.audio}
+    return <FacilityCardInfoComponent name={props.facility.name} description={props.facility.description} audio={props.facility.audio}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClinicCardItemComponent;
+export default FacilityCardItemComponent;

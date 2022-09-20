@@ -6,7 +6,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import PlayAudioComponent from '../shared/PlayAudioComponent';
 import { cardTitleFontSize } from '../../constants/component_constant';
 
-const ClinicCardTitleComponent = (props) => {
+const FacilityCardTitleComponent = (props) => {
   return (
     <View style={{flexDirection: 'row', borderWidth: 0}}>
       <BoldLabelComponent label={props.label} numberOfLines={2} style={styles.title} />
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ClinicCardTitleComponent;
+export default FacilityCardTitleComponent;
