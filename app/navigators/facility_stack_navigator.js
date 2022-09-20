@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import FacilityView from '../views/clinics/FacilityView';
+import FacilityView from '../views/facilities/FacilityView';
 
 const Stack = createNativeStackNavigator();
 

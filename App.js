@@ -22,6 +22,7 @@ import { environment } from './app/config/environment';
 import Category from './app/models/Category';
 import appVisitService from './app/services/app_visit_service'
 import systemBackButtonHelper from './app/helpers/system_back_button_helper';
+import Facility from './app/models/Facility';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -51,6 +52,7 @@ const App: () => Node = () => {
   useEffect(() => {
     SplashScreen.hide();
     Category.seedData();
+    Facility.seedData();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
 

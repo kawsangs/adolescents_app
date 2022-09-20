@@ -4,12 +4,13 @@ import {View} from 'react-native';
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import {screenPaddingHorizontal} from '../../constants/component_constant';
-import facilities from '../../db/json/facilities';
+import Facility from '../../models/Facility';
 
 const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
 
   const renderFacilities = () => {
+    const facilities = Facility.getAll();
     return facilities.map((facility, index) => {
       return <FacilityCardItemComponent key={index} facility={facility}
                 playingUuid={playingUuid}
