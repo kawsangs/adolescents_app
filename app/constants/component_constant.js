@@ -1,5 +1,5 @@
 import { getStyleOfDevice } from '../utils/responsive_util';
-import {largeFontSize, xLargeFontSize} from '../utils/font_size_util';
+import {xLargeFontSize, largeFontSize} from '../utils/font_size_util';
 
 export const buttonBorderRadius = 10;
 export const cardElevation = 2;
