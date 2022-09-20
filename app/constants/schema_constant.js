@@ -3,4 +3,5 @@ export const schemaNames = [
   'Category',
   'Visit',
   'Facility',
+  'Service',
 ];

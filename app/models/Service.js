@@ -1,9 +1,9 @@
 import realm from '../db/schema';
-import facilities from '../db/json/facilities';
+import services from '../db/json/services';
 
-const MODEL = 'Facility';
+const MODEL = 'Service';
 
-const Facility = (() => {
+const Service = (() => {
   return {
     seedData,
     getAll,
@@ -12,9 +12,9 @@ const Facility = (() => {
 
   function seedData() {
     realm.write(() => {
-      facilities.map((facility) => {
-        if (!findByUuid(facility.uuid)) {
-          realm.create(MODEL, facility);
+      services.map((service) => {
+        if (!findByUuid(service.uuid)) {
+          realm.create(MODEL, service);
         }
       });
     })
@@ -29,4 +29,4 @@ const Facility = (() => {
   }
 })();
 
-export default Facility;
+export default Service;

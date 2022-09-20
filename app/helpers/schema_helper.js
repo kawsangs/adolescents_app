@@ -2,6 +2,7 @@ import UserSchema from '../db/migrations/v1/user';
 import CategorySchema from '../db/migrations/v1/category';
 import VisitSchema from '../db/migrations/v1/visit';
 import FacilitySchema from '../db/migrations/v1/facility';
+import ServiceSchema from '../db/migrations/v1/service';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -19,6 +20,7 @@ const schemaHelper = (() => {
       CategorySchema,
       VisitSchema,
       FacilitySchema,
+      ServiceSchema,
     ];
 
     changedSchemas.map((schema) => {
