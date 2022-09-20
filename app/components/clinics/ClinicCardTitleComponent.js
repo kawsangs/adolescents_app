@@ -9,7 +9,7 @@ import { cardTitleFontSize } from '../../constants/component_constant';
 const ClinicCardTitleComponent = (props) => {
   return (
     <View style={{flexDirection: 'row', borderWidth: 0}}>
-      <BoldLabelComponent label='គ្លីនិកសុខភាពឯកទេសកម្ពុជា' numberOfLines={2} style={styles.title} />
+      <BoldLabelComponent label={props.label} numberOfLines={2} style={styles.title} />
 
       <PlayAudioComponent
         playIcon='volume-high-outline'

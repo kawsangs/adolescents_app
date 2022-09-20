@@ -9,13 +9,16 @@ const ClinicCardItemComponent = (props) => {
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
-        <Image source={require('../../assets/images/intro_1.jpg')} style={styles.image} resizeMode='cover' />
+        <Image source={props.clinic.image} style={styles.image} resizeMode='cover' />
       </View>
     )
   }
 
   const renderInfo = () => {
-    return <ClinicCardInfoComponent/>
+    return <ClinicCardInfoComponent name={props.clinic.name} description={props.clinic.description} audio={props.clinic.audio}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
   }
 
   return (
@@ -33,7 +36,8 @@ const ClinicCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 180
+    height: 180,
+    marginTop: 11
   },
   image: {
     borderTopLeftRadius: cardBorderRadius,

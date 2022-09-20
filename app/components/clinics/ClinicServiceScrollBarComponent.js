@@ -27,7 +27,7 @@ const ClinicServiceScrollBarComponent = () => {
 
   return (
     <ScrollView
-      contentContainerStyle={{flexDirection: 'row', marginTop: 8, paddingRight: 4, marginBottom: 16}}
+      contentContainerStyle={{flexDirection: 'row', marginTop: 8, paddingRight: 4, marginBottom: 5}}
       style={{flexGrow: 0}}
       horizontal={true}
       showsHorizontalScrollIndicator={false}

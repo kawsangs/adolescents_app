@@ -14,14 +14,17 @@ const ClinicCardInfoComponent = (props) => {
   }
 
   const renderTitle = () => {
-    return <ClinicCardTitleComponent/>
+    return <ClinicCardTitleComponent label={props.name} audio={props.audio}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
   }
 
   return (
     <View style={{flex: 3, paddingBottom: 8}}>
       { renderTitle() }
       <View style={{flexDirection: 'row', flex: 1, marginTop: 8, paddingHorizontal: 8}}>
-        <Text style={styles.label} numberOfLines={2}>ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជ និងសខុភាពបន្តរពូជ</Text>
+        <Text style={styles.label} numberOfLines={2}>{props.description}</Text>
         <Icon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -6 }} />
       </View>
       { renderViewMapBtn() }
@@ -33,7 +36,8 @@ const styles = StyleSheet.create({
   label: {
     fontSize: descriptionFontSize,
     flex: 1,
-    marginRight: 8
+    lineHeight: 25,
+    marginRight: 8,
   },
 });
 
