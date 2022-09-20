@@ -4,6 +4,7 @@ import storyShort from '../../assets/audios/your_story.mp3';
 
 export default [
   {
+    uuid: 'faci_1',
     id: 1,
     name: 'គ្លីនិកសុខភាពឯកទេសកម្ពុជា',
     tels: '012345678',
@@ -13,7 +14,7 @@ export default [
     facebook_pages: '[]',
     telegram_username: null,
     description: 'ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី',
-    latitute: null,
+    latitude: null,
     longitude: null,
     facility_batch_id: 1,
     image_url: '',
@@ -22,6 +23,7 @@ export default [
     image: require('../../assets/images/intro_1.jpg'),
   },
   {
+    uuid: 'faci_2',
     id: 2,
     name: 'គ្លីនិកសុខភាពផ្លូវភេទ',
     tels: '012876543',
@@ -31,7 +33,7 @@ export default [
     facebook_pages: '[]',
     telegram_username: null,
     description: 'ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី',
-    latitute: null,
+    latitude: null,
     longitude: null,
     facility_batch_id: 1,
     image_url: '',
@@ -40,6 +42,7 @@ export default [
     image: require('../../assets/images/intro_2.jpg'),
   },
   {
+    uuid: 'faci_3',
     id: 3,
     name: 'គ្លីនិកសុខភាពឯកទេសសម្ភព និងកុមារ',
     tels: '098765432',
@@ -49,7 +52,7 @@ export default [
     facebook_pages: '[]',
     telegram_username: null,
     description: 'ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី',
-    latitute: null,
+    latitude: null,
     longitude: null,
     facility_batch_id: 1,
     image_url: '',
@@ -58,6 +61,7 @@ export default [
     image: require('../../assets/images/intro_3.jpg'),
   },
   {
+    uuid: 'faci_4',
     id: 4,
     name: 'គ្លីនិកសុខភាពឯកទេសកម្ពុជា',
     tels: '011123123',
@@ -67,7 +71,7 @@ export default [
     facebook_pages: '[]',
     telegram_username: null,
     description: 'ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី',
-    latitute: null,
+    latitude: null,
     longitude: null,
     facility_batch_id: 1,
     image_url: '',
@@ -76,6 +80,7 @@ export default [
     image: require('../../assets/images/intro_1.jpg'),
   },
   {
+    uuid: 'faci_5',
     id: 5,
     name: 'គ្លីនិកសុខភាពឯកទេសសម្ភព និងកុមារ',
     tels: '070987654',
@@ -85,7 +90,7 @@ export default [
     facebook_pages: '[]',
     telegram_username: null,
     description: 'ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី',
-    latitute: null,
+    latitude: null,
     longitude: null,
     facility_batch_id: 1,
     image_url: '',
