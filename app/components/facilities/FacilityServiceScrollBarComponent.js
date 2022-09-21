@@ -1,19 +1,33 @@
-import React from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import Service from '../../models/Service';
+import Facility from '../../models/Facility';
 
-const FacilityServiceScrollBarComponent = () => {
+const FacilityServiceScrollBarComponent = (props) => {
+  const [selectedUuid, setSelectedUuid] = useState(null);
+  const toggleFilter = (service) => {
+    if (selectedUuid == service.uuid) {
+      setSelectedUuid(null);
+      return props.updateFacilities(Facility.getAll());
+    }
+
+    setSelectedUuid(service.uuid);
+    props.updateFacilities(Facility.findByServiceUuid(service.uuid));
+  }
+
   const renderList = () => {
     const services = Service.getAll();
     return services.map((service, index) => {
-      return <View key={index} style={styles.item}>
-                <Text style={styles.label}>{service.name}</Text>
-             </View>
+      return <TouchableOpacity key={index} style={[styles.item, selectedUuid == service.uuid && {backgroundColor: color.secondaryColor}]}
+                onPress={() => toggleFilter(service)}
+             >
+                <Text style={[styles.label, selectedUuid == service.uuid && {color: color.whiteColor}]}>{service.name}</Text>
+             </TouchableOpacity>
     });
   }
 

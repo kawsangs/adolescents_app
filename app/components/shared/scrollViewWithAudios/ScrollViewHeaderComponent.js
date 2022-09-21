@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import color from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
-import HeaderNavigationComponent from './HeaderNavigationComponent';
+import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 
@@ -33,8 +33,8 @@ const ScrollViewHeaderComponent = (props) => {
           style={[styles.headerImage, {opacity: imageOpacity}]}
           resizeMode="cover"
         />
-        <HeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
-        <HeaderAudioControlComponent audio={props.audio} scrollY={props.scrollY} />
+        <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
+        <HeaderAudioControlComponent scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>
   )

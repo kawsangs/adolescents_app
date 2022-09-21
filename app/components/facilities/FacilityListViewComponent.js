@@ -3,14 +3,14 @@ import {View} from 'react-native';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
-import {screenPaddingHorizontal} from '../../constants/component_constant';
+import {screenHorizontalPadding} from '../../constants/component_constant';
 import Facility from '../../models/Facility';
 
 const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
+  const [facilities, setFacilities] = useState(Facility.getAll());
 
   const renderFacilities = () => {
-    const facilities = Facility.getAll();
     return facilities.map((facility, index) => {
       return <FacilityCardItemComponent key={index} facility={facility}
                 playingUuid={playingUuid}
@@ -21,8 +21,8 @@ const FacilityListViewComponent = () => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityServiceScrollBarComponent/>
-      <View style={{flexGrow: 1, paddingRight: screenPaddingHorizontal}}>
+      <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)}/>
+      <View style={{flexGrow: 1, paddingRight: screenHorizontalPadding}}>
         { renderFacilities() }
       </View>
     </View>

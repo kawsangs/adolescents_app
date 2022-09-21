@@ -6,7 +6,7 @@ import color from '../../../themes/color';
 import audioUtil from '../../../utils/audio_util';
 import {mediumFontSize} from '../../../utils/font_size_util';
 import translationHelper from '../../../helpers/translation_helper';
-import { screenPaddingHorizontal, headerWithAudioScrollDistance } from '../../../constants/component_constant';
+import { screenHorizontalPadding, headerWithAudioScrollDistance } from '../../../constants/component_constant';
 
 const AudioDurationLabelComponent = (props) => {
   const {i18n} = useTranslation();
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   secondsContainer: {
     flexDirection: 'row',
     justifyContent:'space-between',
-    paddingHorizontal: screenPaddingHorizontal,
+    paddingHorizontal: screenHorizontalPadding,
   },
   label: {
     color: color.whiteColor,

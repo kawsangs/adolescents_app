@@ -1,3 +1,4 @@
+import services from './services';
 import safety from '../../assets/audios/safety_plan.mp3';
 import storyLong from '../../assets/audios/your_story_long.mp3';
 import storyShort from '../../assets/audios/your_story.mp3';
@@ -21,6 +22,7 @@ export default [
     audio_url: null,
     audio: safety,
     image: require('../../assets/images/intro_1.jpg'),
+    service_uuids: [services[0].uuid]
   },
   {
     uuid: 'faci_2',
@@ -40,6 +42,7 @@ export default [
     audio_url: null,
     audio: storyLong,
     image: require('../../assets/images/intro_2.jpg'),
+    service_uuids: [services[1].uuid]
   },
   {
     uuid: 'faci_3',
@@ -59,6 +62,7 @@ export default [
     audio_url: null,
     audio: storyShort,
     image: require('../../assets/images/intro_3.jpg'),
+    service_uuids: [services[0].uuid, services[2].uuid]
   },
   {
     uuid: 'faci_4',
@@ -78,6 +82,7 @@ export default [
     audio_url: null,
     audio: null,
     image: require('../../assets/images/intro_1.jpg'),
+    service_uuids: [services[2].uuid]
   },
   {
     uuid: 'faci_5',
@@ -97,5 +102,6 @@ export default [
     audio_url: null,
     audio: null,
     image: require('../../assets/images/intro_2.jpg'),
+    service_uuids: [services[3].uuid]
   }
 ];

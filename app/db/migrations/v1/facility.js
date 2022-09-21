@@ -44,6 +44,7 @@ Fascility.schema = {
     image_url: 'string?',
     audio: 'int?',
     image: 'int?',
+    service_uuids: {type: 'string[]'}
   }
 }
 

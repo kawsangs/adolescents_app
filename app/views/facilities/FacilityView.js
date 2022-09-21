@@ -5,14 +5,10 @@ import FacilityNavigationHeaderComponent from '../../components/facilities/Facil
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 
 const FacilityView = (props) => {
-  const renderBody = () => {
-    return <FacilityListViewComponent/>
-  }
-
   return (
     <GradientScrollViewComponent
       header={<FacilityNavigationHeaderComponent navigation={props.navigation}/>}
-      body={renderBody()}
+      body={<FacilityListViewComponent/>}
       scrollViewStyle={{paddingRight: 0}}
     />
   )
