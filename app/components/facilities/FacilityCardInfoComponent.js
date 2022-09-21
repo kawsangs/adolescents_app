@@ -7,6 +7,7 @@ import FacilityCardTitleComponent from './FacilityCardTitleComponent';
 import FacilityCardViewMapButtonComponent from './FacilityCardViewMapButtonComponent';
 import color from '../../themes/color';
 import {descriptionFontSize} from '../../constants/component_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const FacilityCardInfoComponent = (props) => {
   const renderViewMapBtn = () => {
@@ -14,7 +15,7 @@ const FacilityCardInfoComponent = (props) => {
   }
 
   const renderTitle = () => {
-    return <FacilityCardTitleComponent label={props.name} audio={props.audio}
+    return <FacilityCardTitleComponent uuid={props.uuid} label={props.name} audio={props.audio}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: descriptionFontSize,
     flex: 1,
-    lineHeight: 25,
+    lineHeight: getStyleOfDevice(27, 25),
     marginRight: 8,
   },
 });

@@ -48,5 +48,7 @@
   "reset": "Reset",
   "version": "v",
   "pressBackTwiceToExitTheApp": "Press back twice to exit the app",
-  "service": "Service"
+  "service": "Service",
+  "location": "Location",
+  "viewRoute": "View route"
 }
