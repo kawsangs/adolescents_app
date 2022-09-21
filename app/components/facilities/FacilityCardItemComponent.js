@@ -22,7 +22,7 @@ const FacilityCardItemComponent = (props) => {
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={[styles.container]}
+    <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => console.log('on press card ===')}
     >
       <View style={{flexDirection: 'row'}}>
