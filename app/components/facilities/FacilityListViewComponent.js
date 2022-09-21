@@ -11,7 +11,6 @@ const FacilityListViewComponent = () => {
   const [facilities, setFacilities] = useState(Facility.getAll());
 
   const renderFacilities = () => {
-    const facilities = Facility.getAll();
     return facilities.map((facility, index) => {
       return <FacilityCardItemComponent key={index} facility={facility}
                 playingUuid={playingUuid}
