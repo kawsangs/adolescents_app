@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {StyleSheet} from 'react-native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
@@ -17,9 +18,20 @@ const FacilityView = (props) => {
     <GradientScrollViewComponent
       header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
       body={renderBody()}
-      scrollViewStyle={{paddingRight: 0, paddingBottom: scrollViewPaddingBottom - 8}}
+      scrollViewStyle={isListView ? styles.listView : styles.mapView}
     />
   )
 }
+
+const styles = StyleSheet.create({
+  listView: {
+    paddingRight: 0,
+    paddingBottom: scrollViewPaddingBottom - 8
+  },
+  mapView: {
+    paddingHorizontal: 0,
+    paddingBottom: 0
+  }
+});
 
 export default FacilityView;
