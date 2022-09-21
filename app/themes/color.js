@@ -16,7 +16,6 @@ const color = {
   whiteSmokeColor: '#F5F5F5',
   redColor: '#ff0000',
   disabledColor: '#b5b5b5',
-  // requiredColor: '#f52626',
   requiredColor: '#d50000',
 }
 

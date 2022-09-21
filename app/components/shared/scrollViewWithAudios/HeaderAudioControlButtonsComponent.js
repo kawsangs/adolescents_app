@@ -32,7 +32,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
     }
 
     // The item id = 1 and playing id = null is for static displa only
-    audioPlayerService.play(audioFile, 1, null, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audio, 1, null, (audioPlayer, playSeconds, duration, countInterval) => {
       props.updateAudioPlayer(audioPlayer, playSeconds, duration, countInterval);
     });
   }

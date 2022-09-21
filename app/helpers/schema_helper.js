@@ -1,4 +1,5 @@
 import UserSchema from '../db/migrations/v1/user';
+import CategorySchema from '../db/migrations/v1/category';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -13,6 +14,7 @@ const schemaHelper = (() => {
     // schames order must be the same order to migration constant
     let schemas = [
       UserSchema,
+      CategorySchema,
     ];
 
     changedSchemas.map((schema) => {

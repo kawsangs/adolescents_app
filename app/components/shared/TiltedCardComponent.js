@@ -4,6 +4,7 @@ import {View} from 'react-native';
 import BoldLabelComponent from './BoldLabelComponent';
 import TiltedCardImageComponent from './tiltedCard/TiltedCardImageComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
+import Category from '../../models/Category';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/tiltedCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/tiltedCardComponentStyles';
@@ -17,14 +18,14 @@ const TiltedCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <TiltedCardImageComponent image={props.item.image} />
+          <TiltedCardImageComponent image={props.item.imageSource} />
 
           <View style={styles.footer}>
-            <BoldLabelComponent label={props.item.title} numberOfLines={2} style={styles.title} />
+            <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />
             <CardPointAndAudioFooterComponent
               uuid={props.item.uuid}
-              points={props.item.points}
-              audio={props.item.audio}
+              points={Category.getSubCategories(props.item.uuid).length}
+              audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
             />

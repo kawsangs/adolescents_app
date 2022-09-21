@@ -6,17 +6,20 @@ import CardWithSoundWaveAudioComponent from './cardWithSoundWaves/CardWithSoundW
 import CardWithSoundWaveInfoComponent from './cardWithSoundWaves/CardWithSoundWaveInfoComponent';
 import color from '../../themes/color';
 import {cardElevation, cardBorderRadius} from '../../constants/component_constant';
+import navigationService from '../../services/navigation_service';
 
 const CardWithSoundWaveComponent = (props) => {
   return (
-    <Card mode='elevated' elevation={cardElevation} style={styles.container}>
+    <Card mode='elevated' elevation={cardElevation} style={styles.container}
+      onPress={() => navigationService.navigateCategory(props.item.uuid)}
+    >
       <CardWithSoundWaveAudioComponent
         itemUuid={props.item.uuid}
-        audio={props.item.audio}
+        audio={props.item.audioSource}
         playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
       />
-      <CardWithSoundWaveInfoComponent title={props.item.title} description={props.item.description} />
+      <CardWithSoundWaveInfoComponent title={props.item.name} description={props.item.description} />
     </Card>
   )
 }
@@ -26,10 +29,11 @@ const styles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: cardBorderRadius,
     flexDirection: 'column',
-    marginTop: 30,
+    marginTop: 38,
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 16,
+    width: '100%',
   }
 });
 

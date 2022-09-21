@@ -18,6 +18,7 @@ import i18nextInit from './app/localizations/i18next';
 import color from './app/themes/color';
 import {FontFamily} from './app/themes/font';
 import { environment } from './app/config/environment';
+import Category from './app/models/Category';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -43,6 +44,7 @@ Text.defaultProps.allowFontScaling = false;
 const App: () => Node = () => {
   useEffect(() => {
     SplashScreen.hide();
+    Category.seedData();
   }, []);
 
   return (
