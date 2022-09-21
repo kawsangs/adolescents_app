@@ -9,13 +9,13 @@ const FacilityCardItemComponent = (props) => {
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
-        <Image source={props.facility.image} style={styles.image} resizeMode='cover' />
+        <Image source={props.facility.imageSource} style={styles.image} resizeMode='cover' />
       </View>
     )
   }
 
   const renderInfo = () => {
-    return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} description={props.facility.description} audio={props.facility.audio}
+    return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} description={props.facility.description} audio={props.facility.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />

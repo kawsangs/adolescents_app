@@ -42,8 +42,8 @@ Fascility.schema = {
     facility_batch_id: 'string?',
     audio_url: 'string?',
     image_url: 'string?',
-    audio: 'int?',
-    image: 'int?',
+    audio: 'string?',
+    image: 'string?',
     service_uuids: {type: 'string[]'}
   }
 }

@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {View, ScrollView, Text, Dimensions, StyleSheet} from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
-import mapStyles from '../../assets/stylesheets/shared/mapStyles';
 
 const screenWidth = Dimensions.get('screen').width;
 
 const FacilityMapViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
+  const [marker, setMarker] = useState({latitude: facilities[0].latitude, longitude: facilities[0].longitude});
 
   const renderFacilities = () => {
     return facilities.map((facility, index) => {
@@ -26,18 +25,7 @@ const FacilityMapViewComponent = () => {
   
   return (
     <View style={{flexGrow: 1}}>
-      <MapView
-        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-        style={{position: 'absolute', width: '100%', height: '100%'}}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
-        customMapStyle={mapStyles}
-      >
-      </MapView>
+      <MapComponent marker={marker} title={facilities[0].name}/>
 
       <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)}
         containerStyle={{paddingHorizontal: 16}}
