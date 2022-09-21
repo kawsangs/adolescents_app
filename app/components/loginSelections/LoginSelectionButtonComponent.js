@@ -6,6 +6,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import PlayAudioComponent from '../shared/PlayAudioComponent';
+import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
@@ -34,7 +35,10 @@ const LoginSelectionButtonComponent = (props) => {
 
   const renderGradientIcon = () => {
     return <GradientViewComponent style={styles.leftIconContainer}>
-              <FeatherIcon name={props.iconName} color={color.whiteColor} style={styles.leftIcon} />
+              { props.isAnonymous ? 
+                <AnonymousIconComponent size={26} color={color.whiteColor}/>
+                : <FeatherIcon name={props.iconName} color={color.whiteColor} style={styles.leftIcon} />
+              }
            </GradientViewComponent>
   }
 

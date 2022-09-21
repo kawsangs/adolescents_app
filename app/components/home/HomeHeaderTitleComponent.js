@@ -11,7 +11,7 @@ const HomeHeaderTitleComponent = () => {
   return (
     <View style={{flexDirection: 'row', flex: 1, height: '100%', alignItems: 'center'}}>
       <Image source={require('../../assets/images/header_icon.png')} style={styles.image} />
-      <BoldLabelComponent label={t('myHealth')} style={styles.label} />
+      <BoldLabelComponent label={t('youthHealth')} style={styles.label} />
     </View>
   )
 }
