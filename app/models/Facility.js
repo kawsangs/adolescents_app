@@ -1,5 +1,4 @@
 import realm from '../db/schema';
-// import facilities from '../db/json/facilities';
 import facilities from '../db/json/facilities.json';
 
 const MODEL = 'Facility';

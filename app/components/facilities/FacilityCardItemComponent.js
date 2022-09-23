@@ -6,6 +6,7 @@ import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 
 const FacilityCardItemComponent = (props) => {
+
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
