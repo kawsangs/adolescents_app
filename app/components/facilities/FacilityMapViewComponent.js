@@ -36,8 +36,11 @@ const FacilityMapViewComponent = () => {
     setFacilities(facilities);
 
     if (facilities.length > 0) {
+      setMarkers([]); // Clear the marker in order to prevent the current marker from showing the previous marker's title
       setMapRegion({latitude: facilities[0].latitude - regionOffset, longitude: facilities[0].longitude});
-      setMarkers(mapHelper.getMarkers(facilities));
+      setTimeout(() => {
+        setMarkers(mapHelper.getMarkers(facilities));
+      }, 100);
     }
   }
 
@@ -50,7 +53,7 @@ const FacilityMapViewComponent = () => {
       />
 
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <CurrentLocationButtonComponent  updatePosition={(coords) =>setMapRegion({latitude: coords.latitude, longitude: coords.longitude})}/>
+        <CurrentLocationButtonComponent  updatePosition={(coords) =>setMapRegion({latitude: coords.latitude - regionOffset, longitude: coords.longitude})}/>
         <ScrollView
           contentContainerStyle={{paddingBottom: 4, paddingLeft: 16, paddingRight: 8}}
           style={{flexGrow: 0, width: '100%'}}

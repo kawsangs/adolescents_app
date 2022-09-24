@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
-import mapStyles from '../../assets/stylesheets/shared/mapStyles';
+import mapStyles from '../../themes/mapStyles';
 import color from '../../themes/color';
 
 const MapComponent = (props) => {

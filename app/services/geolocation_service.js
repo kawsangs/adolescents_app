@@ -9,8 +9,6 @@ const geolocationService = (() => {
     Geolocation.requestAuthorization();
     Geolocation.getCurrentPosition((positions) => {
       callback(positions.coords);
-    }, (error) => {
-      console.log('get current position error = ', error);
     });
   }
 })();
