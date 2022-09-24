@@ -6,8 +6,8 @@ const geolocationService = (() => {
   }
 
   function getCurrentLocation(callback) {
+    Geolocation.requestAuthorization();
     Geolocation.getCurrentPosition((positions) => {
-      console.log('current positions = ', positions);
       callback(positions.coords);
     }, (error) => {
       console.log('get current position error = ', error);

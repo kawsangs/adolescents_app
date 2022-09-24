@@ -9,7 +9,7 @@ import geolocationService from '../../services/geolocation_service';
 
 const CurrentLocationButtonComponent = (props) => {
   const getCurrentLocation = () => {
-    geolocationService.getCurrentLocation((positions) => props.updatePosition(positions));
+    geolocationService.getCurrentLocation((coords) => props.updatePosition(coords));
   }
 
   return (

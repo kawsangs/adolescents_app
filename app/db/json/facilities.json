@@ -17,7 +17,7 @@
     "audio_url": null,
     "audio": "../../assets/audios/safety_plan.mp3",
     "image": "intro1",
-    "service_uuids": ["ser_01"]
+    "service_uuids": ["service_01"]
   },
   {
     "uuid": "facilitiy_2",
@@ -37,7 +37,7 @@
     "audio_url": null,
     "audio": "../../assets/audios/your_story_long.mp3",
     "image": "intro2",
-    "service_uuids": ["ser_02"]
+    "service_uuids": ["service_02"]
   },
   {
     "uuid": "facilitiy_3",
@@ -50,14 +50,14 @@
     "facebook_pages": [],
     "telegram_username": null,
     "description": "ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី",
-    "latitude": 11.5667297,
-    "longitude": 104.8895589,
+    "latitude": 11.5676580,
+    "longitude": 104.8989207,
     "facility_batch_id": null,
     "image_url": null,
     "audio_url": null,
     "audio": "../../assets/audios/your_story.mp3",
     "image": "intro3",
-    "service_uuids": ["ser_01", "ser_03"]
+    "service_uuids": ["service_01", "service_03"]
   },
   {
     "uuid": "facilitiy_4",
@@ -70,14 +70,14 @@
     "facebook_pages": [],
     "telegram_username": null,
     "description": "ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី",
-    "latitude": 11.5447542,
-    "longitude": 104.9200003,
+    "latitude": 11.5671744,
+    "longitude": 104.8977620,
     "facility_batch_id": null,
     "image_url": null,
     "audio_url": null,
     "audio": null,
     "image": "intro1",
-    "service_uuids": ["ser_03"]
+    "service_uuids": ["service_03"]
   },
   {
     "uuid": "facilitiy_5",
@@ -97,7 +97,7 @@
     "audio_url": null,
     "audio": null,
     "image": "intro2",
-    "service_uuids": ["ser_04"]
+    "service_uuids": ["service_04"]
   },
   {
     "uuid": "facilitiy_6",
@@ -117,6 +117,6 @@
     "audio_url": null,
     "audio": null,
     "image": "intro2",
-    "service_uuids": ["ser_05"]
+    "service_uuids": ["service_05"]
   }
 ]

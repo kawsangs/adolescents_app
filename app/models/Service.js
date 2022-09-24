@@ -1,5 +1,5 @@
 import realm from '../db/schema';
-import services from '../db/json/services';
+import services from '../db/json/services.json';
 
 const MODEL = 'Service';
 
