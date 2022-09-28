@@ -4,6 +4,7 @@ import {Card} from 'react-native-paper';
 
 import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
+import {isShortScreenDevice} from '../../utils/responsive_util';
 
 const FacilityCardItemComponent = (props) => {
 
@@ -37,7 +38,7 @@ const FacilityCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 180,
+    height: isShortScreenDevice() ? 160 : 180,
     marginTop: 11
   },
   image: {
