@@ -5,9 +5,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailWorkingHourComponent from './FacilityDetailWorkingHourComponent';
+import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
 import color from '../../themes/color';
 import {screenHorizontalPadding} from '../../constants/component_constant';
-import {xxLargeFontSize, xLargeFontSize} from '../../utils/font_size_util';
+import {xxLargeFontSize, xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 
 const FacilityDetailInfoComponent = () => {
@@ -21,10 +22,11 @@ const FacilityDetailInfoComponent = () => {
   return (
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
       <BoldLabelComponent label="គ្លីនិកសុខភាពឯកទេសកម្ពុជា" style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
-      <Text style={{fontSize: xLargeFontSize(), textAlign: 'center', marginTop: 8}}>ផ្លូវ 310, ខ័ណ្ឌមានជ័យ រាជធានីភ្នំពេញ</Text>
+      <Text style={{fontSize: largeFontSize(), textAlign: 'center', marginTop: 8}}>ផ្លូវ 310, ខ័ណ្ឌមានជ័យ រាជធានីភ្នំពេញ</Text>
 
       { renderButton() }
       <FacilityDetailWorkingHourComponent/>
+      <FacilityDetailServiceTagsComponent/>
     </View>
   )
 }

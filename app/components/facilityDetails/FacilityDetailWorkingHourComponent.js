@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {xxLargeFontSize, xLargeFontSize} from '../../utils/font_size_util';
+import {xxLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import translationHelper from '../../helpers/translation_helper';
 
 const FacilityDetailWorkingHourComponent = () => {
@@ -20,11 +20,11 @@ const FacilityDetailWorkingHourComponent = () => {
 
   const renderWorkingHours = () => {
     return <View style={{marginTop: 18}}>
-              <Text style={{fontSize: xLargeFontSize()}}>ច័ន្ទ - សុក្រ</Text>
-              <Text style={{fontSize: xLargeFontSize()}}>០៨:០០ ព្រឹក - ០៤:០០ ល្ងាច</Text>
+              <Text style={{fontSize: largeFontSize()}}>ច័ន្ទ - សុក្រ</Text>
+              <Text style={{fontSize: largeFontSize()}}>០៨:០០ ព្រឹក - ០៤:០០ ល្ងាច</Text>
 
-              <Text style={{fontSize: xLargeFontSize(), marginTop: 16}}>សៅរ៏</Text>
-              <Text style={{fontSize: xLargeFontSize()}}>០៩:០០ ព្រឹក - ១២:០០ ល្ងាច</Text>
+              <Text style={{fontSize: largeFontSize(), marginTop: 16}}>សៅរ៏</Text>
+              <Text style={{fontSize: largeFontSize()}}>០៩:០០ ព្រឹក - ១២:០០ ល្ងាច</Text>
            </View>
   }
 
@@ -32,7 +32,7 @@ const FacilityDetailWorkingHourComponent = () => {
     const numbers = ["012 44 44 44", "092 21 21 21", "097 34 55 345"];
 
     return numbers.map((number, index) => {
-      return <Text key={index} style={{fontSize: xLargeFontSize(), marginTop: 16, marginLeft: 8}}>
+      return <Text key={index} style={{fontSize: largeFontSize(), marginTop: 16, marginLeft: 8}}>
                 {translationHelper.translateNumber(number, i18n.language)}
              </Text>
     });
