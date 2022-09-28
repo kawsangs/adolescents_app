@@ -1,31 +1,20 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
-import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 
-import BoldLabelComponent from '../shared/BoldLabelComponent';
+import FacilityDetailTitleComponent from './FacilityDetailTitleComponent';
+import FacilityDetailViewRouteButtonComponent from './FacilityDetailViewRouteButtonComponent';
 import FacilityDetailWorkingHourComponent from './FacilityDetailWorkingHourComponent';
 import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
 import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
-import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
-import {xxLargeFontSize, xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
-import componentUtil from '../../utils/component_util';
+import {largeFontSize} from '../../utils/font_size_util';
 
-const FacilityDetailInfoComponent = () => {
-  const renderButton = () => {
-    return <TouchableOpacity style={styles.btnShowRoute}>
-              <FontAwesome name='route' size={20} color={color.whiteColor} />
-              <BoldLabelComponent label="បង្ហាញផ្លូវ" style={{fontSize: xLargeFontSize(), color: color.whiteColor, marginLeft: 8}} />
-           </TouchableOpacity>
-  }
-
+const FacilityDetailInfoComponent = (props) => {
   return (
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
-      <BoldLabelComponent label="គ្លីនិកសុខភាពឯកទេសកម្ពុជា" style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
-      <Text style={{fontSize: largeFontSize(), textAlign: 'center', marginTop: 8}}>ផ្លូវ 310, ខ័ណ្ឌមានជ័យ រាជធានីភ្នំពេញ</Text>
-
-      { renderButton() }
+      <FacilityDetailTitleComponent/>
+      <FacilityDetailViewRouteButtonComponent/>
       <FacilityDetailWorkingHourComponent/>
       <FacilityDetailServiceTagsComponent/>
       <FacilityDetailContactPlatformsComponent/>
@@ -36,19 +25,5 @@ const FacilityDetailInfoComponent = () => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  btnShowRoute: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: color.primaryColor,
-    borderRadius: 56,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 16,
-    height: componentUtil.mediumPressableItemSize(),
-    width: 200,
-  }
-});
 
 export default FacilityDetailInfoComponent;

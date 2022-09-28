@@ -11,7 +11,7 @@ const FacilityDetailView = (props) => {
   const scrollY = new Animated.Value(0);
 
   return (
-    <View style={{flex: 1, borderWidth: 1}}>
+    <View style={{flexGrow: 1}}>
       <FacilityDetailNavigationHeaderComponent scrollY={scrollY} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}}
         contentContainerStyle={{paddingBottom: scrollViewPaddingBottom}}
