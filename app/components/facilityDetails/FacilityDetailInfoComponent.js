@@ -6,8 +6,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailWorkingHourComponent from './FacilityDetailWorkingHourComponent';
 import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
+import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
 import color from '../../themes/color';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
 import {xxLargeFontSize, xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 
@@ -27,6 +28,11 @@ const FacilityDetailInfoComponent = () => {
       { renderButton() }
       <FacilityDetailWorkingHourComponent/>
       <FacilityDetailServiceTagsComponent/>
+      <FacilityDetailContactPlatformsComponent/>
+
+      <Text style={{fontSize: largeFontSize(), marginTop: 16, lineHeight: descriptionLineHeight}}>
+        អ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗ ងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗអ្នកអាចរកមេីលគ្លីនិកដែលនៅជិតលោកអ្នកជាមួយព័តិមានលំអិតអំពី សេវាកម្ម  ម៉ោងផ្តល់សេវា និងផែនទីងាយស្រួលក្នុងការរកទីតាំងគ្លីនិចនិមួយៗ
+      </Text>
     </View>
   )
 }
