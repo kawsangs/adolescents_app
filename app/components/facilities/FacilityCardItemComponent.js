@@ -5,6 +5,7 @@ import {Card} from 'react-native-paper';
 import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import {isShortScreenDevice} from '../../utils/responsive_util';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityCardItemComponent = (props) => {
 
@@ -25,7 +26,7 @@ const FacilityCardItemComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => console.log('on press card ===')}
+      onPress={() => navigationRef.current?.navigate('FacilityDetailView')}
     >
       <View style={{flexDirection: 'row'}}>
         { renderImage() }
