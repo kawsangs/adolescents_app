@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
 
-const FacilityDetailSliderComponent = (props) => {
+const FacilityDetailGalleryComponent = (props) => {
   const galleries = [
     require('../../assets/images/intro_2.jpg'),
     require('../../assets/images/intro_2.jpg'),
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default FacilityDetailSliderComponent;
+export default FacilityDetailGalleryComponent;
