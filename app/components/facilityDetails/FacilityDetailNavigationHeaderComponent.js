@@ -6,6 +6,7 @@ import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackB
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
 import color from '../../themes/color';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import Facility from '../../models/Facility';
 
 const scrollDistant = 100;
 
@@ -28,7 +29,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
       <Appbar.Header style={[styles.header]}>
         <NavigationHeaderBackButtonComponent/>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
-          <NavigationHeaderTitleComponent label={'Clinic detail'} />
+          <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />
         </Animated.View>
       </Appbar.Header>
     </Animated.View>

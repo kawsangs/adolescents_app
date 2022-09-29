@@ -8,8 +8,10 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
 import {xxLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import translationHelper from '../../helpers/translation_helper';
+import contactHelper from '../../helpers/contact_helper';
+import {PHONE} from '../../constants/contact_constant';
 
-const FacilityDetailWorkingHourComponent = () => {
+const FacilityDetailWorkingHourComponent = (props) => {
   const {i18n} = useTranslation();
   const renderTitle = (icon, label) => {
     return <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 16}}>
@@ -29,12 +31,14 @@ const FacilityDetailWorkingHourComponent = () => {
   }
 
   const renderContactNumbers = () => {
-    const numbers = ["012 44 44 44", "092 21 21 21", "097 34 55 345"];
-
-    return numbers.map((number, index) => {
-      return <Text key={index} style={{fontSize: largeFontSize(), marginTop: 16, marginLeft: 8}}>
-                {translationHelper.translateNumber(number, i18n.language)}
-             </Text>
+    return props.contactNumbers.map((number, index) => {
+      return <TouchableOpacity key={index} style={{justifyContent: 'center', height: 30, marginTop: 12, borderWidth: 0}}
+                onPress={() => contactHelper.openContactLink(PHONE, number)}
+             >
+                <Text style={{fontSize: largeFontSize(), marginLeft: 8,  color: color.primaryColor}}>
+                    {translationHelper.translateNumber(contactHelper.getFormattedPhoneNumber(number), i18n.language)}
+                </Text>
+             </TouchableOpacity>
     });
   }
 

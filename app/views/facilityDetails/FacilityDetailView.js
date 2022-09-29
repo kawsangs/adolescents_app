@@ -12,13 +12,13 @@ const FacilityDetailView = (props) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityDetailNavigationHeaderComponent scrollY={scrollY} />
+      <FacilityDetailNavigationHeaderComponent scrollY={scrollY} uuid={props.route.params.uuid} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}}
         contentContainerStyle={{paddingBottom: scrollViewPaddingBottom}}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
         <FacilityDetailGalleryComponent/>
-        <FacilityDetailInfoComponent/>
+        <FacilityDetailInfoComponent uuid={props.route.params.uuid}/>
       </ScrollView>
     </View>
   )

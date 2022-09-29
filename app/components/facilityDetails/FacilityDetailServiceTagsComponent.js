@@ -4,16 +4,19 @@ import {Text} from 'react-native-paper';
 
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
+import Service from '../../models/Service';
 
-const FacilityDetailServiceTagsComponent = () => {
+const FacilityDetailServiceTagsComponent = (props) => {
   const renderTags = () => {
-    const services = ['សុខភាពបន្តពូជ', 'មាតានិងទារក', 'ជំងឺកាមរោគ'];
-
-    return services.map((service, index) => {
-      return <View key={index} style={styles.tag}>
-                <Text style={{color: color.blackColor, fontSize: largeFontSize()}}>{service}</Text>
-             </View>
+    let doms = [];
+    props.serviceUuids.map((serviceUuid, index) => {
+      doms.push(
+        <View key={index} style={styles.tag}>
+          <Text style={{color: color.blackColor, fontSize: largeFontSize()}}>{Service.findByUuid(serviceUuid).name}</Text>
+        </View>
+      )
     });
+    return doms;
   }
 
   return (
