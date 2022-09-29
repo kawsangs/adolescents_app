@@ -17,7 +17,15 @@
     "audio_url": null,
     "audio": "../../assets/audios/safety_plan.mp3",
     "image": "intro1",
-    "service_uuids": ["service_01"]
+    "service_uuids": ["service_01"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"saturday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]}
+    ]
   },
   {
     "uuid": "facility_2",
@@ -37,7 +45,15 @@
     "audio_url": null,
     "audio": "../../assets/audios/your_story_long.mp3",
     "image": "intro2",
-    "service_uuids": ["service_02"]
+    "service_uuids": ["service_02"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"saturday", "open":true, "working_hours": [{"open_at":8, "close_at":12}]}
+    ]
   },
   {
     "uuid": "facility_3",
@@ -57,7 +73,15 @@
     "audio_url": null,
     "audio": "../../assets/audios/your_story.mp3",
     "image": "intro3",
-    "service_uuids": ["service_01", "service_03"]
+    "service_uuids": ["service_01", "service_03"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":false, "working_hours": [{"open_at":8, "close_at":15}]},
+      {"day":"saturday", "open":true, "working_hours": [{"open_at":8, "close_at":12}]}
+    ]
   },
   {
     "uuid": "facility_4",
@@ -77,7 +101,14 @@
     "audio_url": null,
     "audio": null,
     "image": "intro1",
-    "service_uuids": ["service_03"]
+    "service_uuids": ["service_03"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+    ]
   },
   {
     "uuid": "facility_5",
@@ -97,7 +128,15 @@
     "audio_url": null,
     "audio": null,
     "image": "intro2",
-    "service_uuids": ["service_04"]
+    "service_uuids": ["service_04"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"saturday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]}
+    ]
   },
   {
     "uuid": "facility_6",
@@ -117,6 +156,14 @@
     "audio_url": null,
     "audio": null,
     "image": "intro2",
-    "service_uuids": ["service_05"]
+    "service_uuids": ["service_05"],
+    "working_days": [
+      {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"wednesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"thursday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"friday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
+      {"day":"saturday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]}
+    ]
   }
 ]

@@ -50,5 +50,11 @@
   "pressBackTwiceToExitTheApp": "Press back twice to exit the app",
   "service": "Service",
   "location": "Location",
-  "viewRoute": "View route"
+  "viewRoute": "View route",
+  "workingHours": "Working hours",
+  "phone": "Phone",
+  "website": "Website",
+  "facebook": "Facebook",
+  "telegram": "Telegram",
+  "contactVia": "Contact via"
 }

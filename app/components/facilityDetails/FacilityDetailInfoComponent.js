@@ -4,7 +4,7 @@ import {Text} from 'react-native-paper';
 
 import FacilityDetailTitleComponent from './FacilityDetailTitleComponent';
 import FacilityDetailViewRouteButtonComponent from './FacilityDetailViewRouteButtonComponent';
-import FacilityDetailWorkingHourComponent from './FacilityDetailWorkingHourComponent';
+import FacilityDetailWorkingDayAndContactComponent from './FacilityDetailWorkingDayAndContactComponent';
 import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
 import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
@@ -18,7 +18,7 @@ const FacilityDetailInfoComponent = (props) => {
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
       <FacilityDetailTitleComponent name={facility.name} address={facility.address}/>
       <FacilityDetailViewRouteButtonComponent/>
-      <FacilityDetailWorkingHourComponent contactNumbers={facility.tels}/>
+      <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
       <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids}/>
       <FacilityDetailContactPlatformsComponent
         websites={facility.websites}

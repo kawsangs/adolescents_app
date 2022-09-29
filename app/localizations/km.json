@@ -50,5 +50,11 @@
   "pressBackTwiceToExitTheApp": "ចុចត្រលប់ក្រោយពីរដងដើម្បីចាកចេញ",
   "service": "សេវា",
   "location": "ទីតាំង",
-  "viewRoute": "បង្ហាញផ្លូវ"
+  "viewRoute": "បង្ហាញផ្លូវ",
+  "workingHours": "ម៉ោងធ្វើការ",
+  "phone": "ទូរស័ព្ទ",
+  "website": "គេហទំព័រ",
+  "facebook": "ហ្វេសបុក",
+  "telegram": "តេលេក្រាម",
+  "contactVia": "អាចទំនាក់ទំនងតាមរយៈ"
 }
