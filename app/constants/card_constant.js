@@ -1,4 +1,4 @@
-export const ROW_CARD = 1;
-export const TILTED_CARD = 2;
-export const GRID_CARD = 3;
-export const AUDIO_CARD = 4;
+export const ROW_CARD = "row_card";
+export const TILTED_CARD = "tilted_card";
+export const GRID_CARD = "grid_card";
+export const AUDIO_CARD = "audio_card";

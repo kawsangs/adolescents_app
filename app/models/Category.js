@@ -1,5 +1,6 @@
 import realm from '../db/schema';
-import categories from '../db/json/categories';
+// import categories from '../db/json/categories';
+import categories from '../db/json/categories.json';
 
 const MODEL = 'Category';
 
