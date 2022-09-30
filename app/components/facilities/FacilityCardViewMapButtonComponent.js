@@ -7,10 +7,15 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityCardViewMapButtonComponent = () => {
   const {t} = useTranslation();
-  return <TouchableOpacity style={styles.viewMapBtn}>
+  const openMap = () => {
+    navigationRef.current?.navigate("MapView");
+  }
+
+  return <TouchableOpacity onPress={() => openMap()} style={styles.viewMapBtn}>
             <FontAwesome name='route' light size={18} color={color.primaryColor} />
             <BoldLabelComponent label={t('viewRoute')} style={styles.viewMapLabel} />
           </TouchableOpacity>
