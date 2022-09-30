@@ -8,19 +8,25 @@ import VisitApi from '../api/visitApi';
 
 const visitService = (() => {
   return {
-    recordVisitedCategory,
+    recordVisitCategory,
+    recordVisitAction,
     syncVisits,
   }
 
-  function recordVisitedCategory(category) {
+  function recordVisitCategory(category) {
+    recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
+  }
+
+  function recordVisitAction(visitItem, callback) {
     networkService.checkConnection(() => {
-      _sendCreateRequest(category, null, () => {
-        _saveVisitData(category);  // if failed to send visit to server then save it to realm
+      _sendCreateRequest(visitItem, null, () => {
+        _saveVisitData(visitItem);  // if failed to send visit to server then save it to realm
       });
     }, () => {
-      _saveVisitData(category);  // if no internet connection save visit data to realm
+      _saveVisitData(visitItem);  // if no internet connection save visit data to realm
     });
-    navigationService.navigateCategory(category.uuid)
+
+    !!callback && callback()
   }
 
   function syncVisits() {
@@ -54,17 +60,17 @@ const visitService = (() => {
     });
   }
 
-  function _sendCreateRequest(category, successCallback, failureCallback) {
-    const userId = !!category.user_uuid ? User.find(category.user_uuid).id : User.loggedInUser().id;
+  function _sendCreateRequest(visitItem, successCallback, failureCallback) {
+    const userId = !!visitItem.user_uuid ? User.find(visitItem.user_uuid).id : User.loggedInUser().id;
 
     const params = {
       visit: {
         app_user_id: userId,
         visit_date: Moment().toDate(),
         page_attributes: {
-          code: category.code,
-          name: category.name,
-          parent_code: category.parent_code,
+          code: visitItem.code,
+          name: visitItem.name,
+          parent_code: visitItem.parent_code,
         },
         platform_attributes: {
           name: Platform.OS
@@ -80,12 +86,13 @@ const visitService = (() => {
     });
   }
 
-  function _saveVisitData(category) {
+  function _saveVisitData(visitItem) {
     const data = {
-      name: category.name,
-      code: category.code,
-      parent_code: category.parent_code,
+      name: visitItem.name,
+      code: visitItem.code,
+      parent_code: visitItem.parent_code,
     }
+
     Visit.create(data);
   }
 })();

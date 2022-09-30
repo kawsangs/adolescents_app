@@ -11,7 +11,7 @@ import visitService from '../../services/visit_service';
 const CardWithSoundWaveComponent = (props) => {
   return (
     <Card mode='elevated' elevation={cardElevation} style={styles.container}
-      onPress={() => visitService.recordVisitedCategory(props.item)}
+      onPress={() => visitService.recordVisitCategory(props.item)}
     >
       <CardWithSoundWaveAudioComponent
         itemUuid={props.item.uuid}

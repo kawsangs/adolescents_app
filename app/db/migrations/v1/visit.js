@@ -5,7 +5,7 @@ const VisitSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    user_uuid: 'string',
+    user_uuid: 'string?',
     visit_date: 'date',
     name: 'string',
     code: 'string',

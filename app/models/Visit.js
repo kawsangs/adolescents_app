@@ -2,6 +2,7 @@ import Moment from 'moment';
 import realm from '../db/schema';
 import uuidv4 from '../utils/uuidv4_util'
 import User from './User';
+import {APP_VISIT} from '../constants/visit_constant';
 
 const MODEL = 'Visit';
 
@@ -10,6 +11,8 @@ const Visit = (() => {
     create,
     findUnsyncedVisitsByUserUuid,
     deleteByUuid,
+    update,
+    getAppVisitsWithoutUser,
   }
 
   function create(data) {
@@ -31,11 +34,21 @@ const Visit = (() => {
     }
   }
 
+  function update(uuid, data) {
+    realm.write(() => {
+      realm.create(MODEL, Object.assign(data, { uuid: uuid }), 'modified');
+    });
+  }
+
+  function getAppVisitsWithoutUser() {
+    return realm.objects(MODEL).filtered(`code = '${APP_VISIT}' AND user_uuid = null`);
+  }
+
   function _buildData(data) {
     return {
       ...data,
       uuid: uuidv4(),
-      user_uuid: User.loggedInUser().uuid,
+      user_uuid: User.loggedInUser() ? User.loggedInUser().uuid : null,
       visit_date: Moment().toDate(),
     }
   }

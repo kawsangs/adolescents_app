@@ -11,7 +11,7 @@ import visitService from '../../services/visit_service';
 const GridCardComponent = (props) => {
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => visitService.recordVisitedCategory(props.item)}
+      onPress={() => visitService.recordVisitCategory(props.item)}
     >
       <Image source={props.item.imageSource} resizeMode='contain' style={styles.image} />
 

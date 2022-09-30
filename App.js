@@ -19,6 +19,7 @@ import color from './app/themes/color';
 import {FontFamily} from './app/themes/font';
 import { environment } from './app/config/environment';
 import Category from './app/models/Category';
+import appVisitService from './app/services/app_visit_service'
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -45,6 +46,7 @@ const App: () => Node = () => {
   useEffect(() => {
     SplashScreen.hide();
     Category.seedData();
+    appVisitService.recordVisit();
   }, []);
 
   return (
