@@ -17,7 +17,7 @@ const FacilityDetailView = (props) => {
         contentContainerStyle={{paddingBottom: scrollViewPaddingBottom}}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
-        <FacilityDetailGalleryComponent/>
+        <FacilityDetailGalleryComponent uuid={props.route.params.uuid}/>
         <FacilityDetailInfoComponent uuid={props.route.params.uuid}/>
       </ScrollView>
     </View>

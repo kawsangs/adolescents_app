@@ -3,6 +3,7 @@ import {View, StyleSheet, Image} from 'react-native';
 import {Card} from 'react-native-paper';
 
 import FacilityCardInfoComponent from './FacilityCardInfoComponent';
+import EmptyImageComponent from '../shared/EmptyImageComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import {isShortScreenDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
@@ -12,7 +13,9 @@ const FacilityCardItemComponent = (props) => {
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
-        <Image source={props.facility.imageSource} style={styles.image} resizeMode='cover' />
+        { props.facility.galleries[0] ? <Image source={props.facility.galleries[0]} style={styles.image} resizeMode='cover'/>
+          : <EmptyImageComponent style={styles.emptyView} />
+        }
       </View>
     )
   }
@@ -48,6 +51,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  emptyView: {
+    borderTopLeftRadius: cardBorderRadius,
+    borderBottomLeftRadius: cardBorderRadius,
+  }
 });
 
 export default FacilityCardItemComponent;
