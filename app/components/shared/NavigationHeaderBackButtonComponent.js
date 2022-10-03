@@ -5,11 +5,11 @@ import NavigationHeaderButtonComponent from '../../components/shared/navigationH
 import color from '../../themes/color';
 import {navigationRef} from '../../navigators/app_navigator';
 
-const NavigationHeaderBackButtonComponent = () => {
+const NavigationHeaderBackButtonComponent = (props) => {
   return <NavigationHeaderButtonComponent
             onPress={() => navigationRef.current?.goBack()}
-            icon={<Icon name="chevron-left" color={color.whiteColor} size={30} />}
-            buttonStyle={{alignItems: 'flex-start', paddingLeft: 8}}
+            icon={<Icon name="chevron-left" color={props.iconColor || color.whiteColor} size={30} style={props.iconStyle} />}
+            buttonStyle={[{alignItems: 'flex-start', paddingLeft: 8}, props.buttonStyle]}
           />
 }
 

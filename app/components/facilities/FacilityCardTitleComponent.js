@@ -17,6 +17,7 @@ const FacilityCardTitleComponent = (props) => {
         playIcon='volume-high-outline'
         pauseIcon='pause'
         muteIcon='volume-mute-outline'
+        isSpeakerIcon={true}
         iconSize={24}
         audio={props.audio}
         btnStyle={[{ borderWidth: 0 }, isShortScreenDevice() && {width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize()}]}
