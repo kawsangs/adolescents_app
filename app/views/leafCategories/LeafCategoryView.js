@@ -6,7 +6,7 @@ import LeafCategoryCardListComponent from '../../components/leafCategories/LeafC
 import Category from '../../models/Category';
 
 const LeafCategoryView = ({route, navigation}) => {
-  const category = Category.findByUuid(route.params.uuid);
+  const category = new Category().findByUuid(route.params.uuid);
 
   return (
     <GradientScrollViewComponent

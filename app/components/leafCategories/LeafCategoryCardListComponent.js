@@ -6,7 +6,7 @@ import CardListComponent from '../shared/CardListComponent';
 
 const LeafCategoryCardListComponent = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const categories = Category.getSubCategories(props.category.uuid);
+  const categories = new Category().getSubCategories(props.category.uuid);
 
   return (
     <React.Fragment>

@@ -32,7 +32,7 @@ const TiltedCardComponent = (props) => {
             <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />
             <CardPointAndAudioFooterComponent
               uuid={props.item.uuid}
-              points={Category.getSubCategories(props.item.uuid).length}
+              points={new Category().getSubCategories(props.item.uuid).length}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}

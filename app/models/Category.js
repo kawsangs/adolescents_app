@@ -1,60 +1,29 @@
-import realm from '../db/schema';
-// import categories from '../db/json/categories';
-import categories from '../db/json/categories.json';
+import BaseModel from './BaseModel';
 
 const MODEL = 'Category';
 
-const Category = (() => {
-  return {
-    seedData,
-    findByDisplayType,
-    findByUuid,
-    getParentCategories,
-    getSubCategories,
-    isParentCategory,
-    isSubCategory,
-    isLeafCategory,
+class Category extends BaseModel {
+  constructor() {
+    super(MODEL);
   }
 
-  function seedData() {
-    realm.write(() => {
-      categories.map((category) => {
-        if (!findByUuid(category.uuid)) {
-          realm.create(MODEL, category);
-        }
-      });
-    })
+  getParentCategories = () => {
+    return this.findByAttr({parent_code: null}, '', 'order', 'ASC');
   }
 
-  function findByDisplayType(type) {
-    return realm.objects(MODEL).filtered(`display = ${type}`);
+  getSubCategories = (uuid) => {
+    const parentCategory = this.findByUuid(uuid);
+    return this.findByAttr({parent_code: `'${parentCategory.code}'`});
   }
 
-  function findByUuid(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
-  }
-
-  function getParentCategories() {
-    return realm.objects(MODEL).filtered(`parent_code = null || parent_code = '' SORT(order ASC)`);
-  }
-
-  function getSubCategories(uuid) {
-    const category = findByUuid(uuid)
-    return realm.objects(MODEL).filtered(`parent_code = '${category.code}'`);
-  }
-
-  function isParentCategory(uuid) {
-    const category = findByUuid(uuid)
+  isParentCategory = (uuid) => {
+    const category = this.findByUuid(uuid)
     return !!category && !category.parent_code;
   }
 
-  function isSubCategory(uuid) {
-    return getSubCategories(uuid).length > 0;
+  isSubCategory = (uuid) => {
+    return this.getSubCategories(uuid).length > 0;
   }
-
-  function isLeafCategory(uuid) {
-    return getSubCategories(uuid).length == 0;
-  }
-})();
+}
 
 export default Category;

@@ -30,7 +30,7 @@ const HorizontalCardComponent = (props) => {
         <HorizontalCardInfoComponent
           uuid={props.item.uuid}
           title={props.item.name}
-          points={Category.getSubCategories(props.item.uuid).length}
+          points={new Category().getSubCategories(props.item.uuid).length}
           audio={props.item.audioSource}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}

@@ -15,10 +15,11 @@ const navigationService = (() => {
   }
 
   function navigateCategory(categoryUuid) {
+    const category = new Category();
     let routeName = 'LeafCategoryDetailView';
-    if (Category.isParentCategory(categoryUuid))
+    if (category.isParentCategory(categoryUuid))
       routeName = 'SubCategoryView';
-    else if (Category.isSubCategory(categoryUuid))
+    else if (category.isSubCategory(categoryUuid))
       routeName = 'LeafCategoryView';
 
     navigationRef.current?.navigate(routeName, { uuid: categoryUuid });
