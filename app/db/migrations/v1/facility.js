@@ -2,12 +2,13 @@
 
 import Realm from 'realm';
 import facilities from '../../json/facilities';
+import imageSources from '../../../constants/image_source_constant';
 
 class Fascility extends Realm.Object {
   get imageSource() {
     if (!this.image_url) {
       const faci = facilities.filter(category => category.uuid == this.uuid)[0];
-      return (!!faci && !!faci.image) ? faci.image : null;
+      return (!!faci && !!faci.image) ? imageSources[faci.image] : null;
     }
 
     return { uri: `file://${this.image_url}` };
@@ -42,8 +43,8 @@ Fascility.schema = {
     facility_batch_id: 'string?',
     audio_url: 'string?',
     image_url: 'string?',
-    audio: 'int?',
-    image: 'int?',
+    audio: 'string?',
+    image: 'string?',
     service_uuids: {type: 'string[]'}
   }
 }

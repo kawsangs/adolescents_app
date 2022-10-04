@@ -13,6 +13,7 @@ import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import Geolocation from '@react-native-community/geolocation';
 
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
@@ -53,6 +54,13 @@ const App: () => Node = () => {
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
+    Geolocation.setRNConfiguration(
+      {
+        skipPermissionRequests: false,
+        authorizationLevel: 'whenInUse',
+        locationProvider: 'auto',
+      }
+    );
 
     return () => backHandler.remove();
   }, []);

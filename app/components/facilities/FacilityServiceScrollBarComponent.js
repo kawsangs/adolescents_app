@@ -33,7 +33,7 @@ const FacilityServiceScrollBarComponent = (props) => {
 
   return (
     <ScrollView
-      contentContainerStyle={{flexDirection: 'row', marginTop: 8, paddingRight: 4, marginBottom: 5}}
+      contentContainerStyle={[{flexDirection: 'row', marginTop: 8, paddingRight: 4, marginBottom: 5}, props.containerStyle]}
       style={{flexGrow: 0}}
       horizontal={true}
       showsHorizontalScrollIndicator={false}

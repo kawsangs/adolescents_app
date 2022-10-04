@@ -1,0 +1,27 @@
+[
+  {
+    "uuid": "service_01",
+    "id": null,
+    "name": "បន្តពូជ"
+  },
+  {
+    "uuid": "service_02",
+    "id": null,
+    "name": "រំលូត"
+  },
+  {
+    "uuid": "service_03",
+    "id": null,
+    "name": "រលូត"
+  },
+  {
+    "uuid": "service_04",
+    "id": null,
+    "name": "កាមរោគ"
+  },
+  {
+    "uuid": "service_05",
+    "id": null,
+    "name": "គាំពាមាតានិងទារក"
+  },
+];
