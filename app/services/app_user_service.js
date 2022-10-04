@@ -4,6 +4,7 @@ import DeviceInfo from 'react-native-device-info';
 import AppUserApi from '../api/appUserApi';
 import apiService from './api_service';
 import networkService from './network_service';
+import appVisitService from './app_visit_service';
 import User from '../models/User';
 import uuidv4 from '../utils/uuidv4_util';
 
@@ -21,6 +22,7 @@ const createAccountService = (() => {
 
     const params = _buildData(user);
     User.create(params);  // save the user to in local storage
+    appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
     _sendCreateRequest(params, callback);
   }
 
@@ -31,23 +33,28 @@ const createAccountService = (() => {
   function createAnonymousUser(callback) {
     const params = _buildData(null);
     User.create(params);
+    appVisitService.updateAppVisitsWithoutUser(params.uuid);
     _sendCreateRequest(params, callback);
   }
 
-  function syncUsers() {
+  function syncUsers(callback) {
     const unsyncedUsers = User.unsyncedUsers();
-    if (unsyncedUsers.length == 0)
+    if (unsyncedUsers.length == 0) {
+      callback();
       return;
-
-    sendUnsyncUsers(0, unsyncedUsers);
+    }
+    sendUnsyncUsers(0, unsyncedUsers, callback);
   }
 
   // private method
-  function sendUnsyncUsers(index, users) {
-    _sendCreateRequest(users[index], () => {
-      if (index == users.length - 1) return;
+  function sendUnsyncUsers(index, users, callback) {
+    if (index == users.length) {
+      callback();
+      return;
+    }
 
-      sendUnsyncUsers(index + 1, users);
+    _sendCreateRequest(users[index], () => {
+      sendUnsyncUsers(index + 1, users, callback);
     });
   }
 

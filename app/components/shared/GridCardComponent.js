@@ -6,12 +6,12 @@ import BoldLabelComponent from './BoldLabelComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
 import {cardBorderRadius, cardElevation, cardTitleFontSize} from '../../constants/component_constant';
 import Category from '../../models/Category';
-import navigationService from '../../services/navigation_service';
+import visitService from '../../services/visit_service';
 
 const GridCardComponent = (props) => {
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => navigationService.navigateCategory(props.item.uuid)}
+      onPress={() => visitService.recordVisitCategory(props.item)}
     >
       <Image source={props.item.imageSource} resizeMode='contain' style={styles.image} />
 

@@ -9,6 +9,7 @@ const User = (() => {
     update,
     loggedInUser,
     unsyncedUsers,
+    syncedUsers,
     isAnonymous,
   };
 
@@ -35,6 +36,10 @@ const User = (() => {
   function unsyncedUsers() {
     // we use spread operator to prevent the live update of the realm object
     return [...realm.objects(MODEL).filtered(`synced = false SORT(registered_at ASC)`)];
+  }
+
+  function syncedUsers() {
+    return [...realm.objects(MODEL).filtered(`synced = true SORT(registered_at ASC)`)];
   }
 
   function isAnonymous() {

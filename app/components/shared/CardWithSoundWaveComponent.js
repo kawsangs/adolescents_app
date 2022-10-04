@@ -6,12 +6,12 @@ import CardWithSoundWaveAudioComponent from './cardWithSoundWaves/CardWithSoundW
 import CardWithSoundWaveInfoComponent from './cardWithSoundWaves/CardWithSoundWaveInfoComponent';
 import color from '../../themes/color';
 import {cardElevation, cardBorderRadius} from '../../constants/component_constant';
-import navigationService from '../../services/navigation_service';
+import visitService from '../../services/visit_service';
 
 const CardWithSoundWaveComponent = (props) => {
   return (
     <Card mode='elevated' elevation={cardElevation} style={styles.container}
-      onPress={() => navigationService.navigateCategory(props.item.uuid)}
+      onPress={() => visitService.recordVisitCategory(props.item)}
     >
       <CardWithSoundWaveAudioComponent
         itemUuid={props.item.uuid}

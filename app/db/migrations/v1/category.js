@@ -1,23 +1,20 @@
 'use strict';
 
 import Realm from 'realm';
-import categories from '../../json/categories';
+import imageSources from '../../../constants/image_source_constant';
+import audioSources from '../../../constants/audio_source_constant';
 
 class Category extends Realm.Object {
   get imageSource() {
-    if (!this.image_url) {
-      const cate = categories.filter(category => category.uuid == this.uuid)[0];
-      return (!!cate && !!cate.image) ? cate.image : null;
-    }
+    if (!this.image_url)
+      return this.image ? imageSources[this.image] : null;
 
     return { uri: `file://${this.image_url}` };
   }
 
   get audioSource() {
-    if (!this.audio_url) {
-      const cate = categories.filter(category => category.uuid == this.uuid)[0];
-      return (!!cate && !!cate.audio) ? cate.audio : null;
-    }
+    if (!this.audio_url)
+      return this.audio ? audioSources[this.audio] : null;
 
     return { uri: `file://${this.audio_url}` };
   }
@@ -33,11 +30,12 @@ Category.schema = {
     description: 'string?',
     audio_url: 'string?',
     image_url: 'string?',
-    audio: 'int?',
-    image: 'int?',
+    audio: 'string?',
+    image: 'string?',
     parent_code: 'string?',
     order: 'int',
-    display: 'int',
+    display: 'string',
+    level: 'int'
   }
 }
 

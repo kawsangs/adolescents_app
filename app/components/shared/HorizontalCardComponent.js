@@ -6,6 +6,7 @@ import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageCo
 import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComponent';
 import { cardElevation } from '../../constants/component_constant';
 import Category from '../../models/Category';
+import visitService from '../../services/visit_service';
 import navigationService from '../../services/navigation_service';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
@@ -16,6 +17,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const HorizontalCardComponent = (props) => {
   const onPress = () => {
     props.updatePlayingUuid(null);
+    visitService.recordVisitedCategory(props.item)
     navigationService.navigateCategory(props.item.uuid)
   }
 

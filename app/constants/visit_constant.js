@@ -1,0 +1,1 @@
+export const APP_VISIT = 'app_visit';
