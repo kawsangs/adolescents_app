@@ -6,7 +6,7 @@ import NavigationHeaderBackButtonComponent from '../NavigationHeaderBackButtonCo
 import NavigationHeaderTitleComponent from '../navigationHeaders/NavigationHeaderTitleComponent';
 import {headerWithAudioScrollDistance} from '../../../constants/component_constant';
 
-const HeaderNavigationComponent = (props) => {
+const ScrollViewHeaderNavigationComponent = (props) => {
   const titleOpacity = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [0, 1],
@@ -26,8 +26,8 @@ const HeaderNavigationComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
-    elevation: 0
+    elevation: 0,
   },
 });
 
-export default HeaderNavigationComponent;
+export default ScrollViewHeaderNavigationComponent;

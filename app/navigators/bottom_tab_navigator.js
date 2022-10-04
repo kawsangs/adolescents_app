@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 
 import HomeStackNavigator from './home_stack_navigator';
 import VideoStackNavigator from './video_stack_navigator';
+import FacilityStackNavigator from './facility_stack_navigator';
 import VideoView from '../views/videos/VideoView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
@@ -46,12 +47,13 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Map"
-        component={VideoView}
+        name="FacilityViewStack"
+        component={FacilityStackNavigator}
         options={{
-          tabBarLabel: t('map'),
-          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map' color={color} size={size} label={t('map')} />,
+          tabBarLabel: t('service'),
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map-pin' color={color} size={size} label={t('service')} />,
           tabBarItemStyle: styles.tabBarItem,
+          headerShown: false,
         }}
       />
       <Tab.Screen

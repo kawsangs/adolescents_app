@@ -4,7 +4,7 @@ import {Slider} from '@miblanchard/react-native-slider';
 
 import color from '../../../themes/color';
 import componentUtil from '../../../utils/component_util';
-import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../../constants/component_constant';
+import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
 import audioPlayerService from '../../../services/audio_player_service';
 
 const HeaderAudioSliderComponent = (props) => {
@@ -54,7 +54,7 @@ const HeaderAudioSliderComponent = (props) => {
 
 const styles = StyleSheet.create({
   sliderContainer: {
-    paddingHorizontal: screenPaddingHorizontal,
+    paddingHorizontal: screenHorizontalPadding,
     height: 13,
     backgroundColor: color.whiteSmokeColor,
     marginTop: 16

@@ -19,9 +19,9 @@ import i18nextInit from './app/localizations/i18next';
 import color from './app/themes/color';
 import {FontFamily} from './app/themes/font';
 import { environment } from './app/config/environment';
-import Category from './app/models/Category';
 import appVisitService from './app/services/app_visit_service'
 import systemBackButtonHelper from './app/helpers/system_back_button_helper';
+import seedDataService from './app/services/seed_data_service';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -50,7 +50,7 @@ const App: () => Node = () => {
 
   useEffect(() => {
     SplashScreen.hide();
-    Category.seedData();
+    seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
 

@@ -35,7 +35,7 @@ const Category = (() => {
   }
 
   function getParentCategories() {
-    return realm.objects(MODEL).filtered(`parent_code = null || parent_code = ''`);
+    return realm.objects(MODEL).filtered(`parent_code = null || parent_code = '' SORT(order ASC)`);
   }
 
   function getSubCategories(uuid) {

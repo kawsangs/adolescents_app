@@ -2,7 +2,7 @@ import React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 
 import AudioControlButton from './AudioControlButton';
-import { headerWithAudioScrollDistance, screenPaddingHorizontal } from '../../../constants/component_constant';
+import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
 import { FAST_FORWARD, REVERSE } from '../../../constants/audio_constant';
 import { getStyleOfDevice } from '../../../utils/responsive_util';
 import audioPlayerService from '../../../services/audio_player_service';
@@ -40,7 +40,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
   const forwardBackwardSize = getStyleOfDevice(34, 32);
 
   return (
-    <View style={{flex: 1, paddingHorizontal: screenPaddingHorizontal}}>
+    <View style={{flex: 1, paddingHorizontal: screenHorizontalPadding}}>
       <Animated.View style={[styles.audioControl,
         {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
       >
