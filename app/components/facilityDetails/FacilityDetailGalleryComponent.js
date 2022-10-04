@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
 
-const FacilityDetailGalleryComponent = (props) => {
-  const galleries = [
-    require('../../assets/images/intro_2.jpg'),
-    require('../../assets/images/intro_2.jpg'),
-    require('../../assets/images/intro_3.jpg'),
-    require('../../assets/images/intro_3.jpg')
-  ]
+import EmptyImageComponent from '../shared/EmptyImageComponent';
+import Facility from '../../models/Facility';
 
-  const renderItems = () => {
+const FacilityDetailGalleryComponent = (props) => {
+  const renderImages = () => {
+    const galleries = Facility.findByUuid(props.uuid).galleries;
+    if (galleries.length == 0)
+      return <EmptyImageComponent iconSize={26}/>
+
     return galleries.map((gallery, index) => {
       return <Image key={index} source={gallery} style={{width: '100%', height: '100%'}} />
     });
@@ -21,17 +21,7 @@ const FacilityDetailGalleryComponent = (props) => {
               dotStyle={{bottom: -20}}
               activeDotStyle={{bottom: -20}}
             >
-              {/* {renderItems()} */}
-
-              <View style={styles.slide1}>
-                <Text style={styles.text}>Hello Swiper</Text>
-              </View>
-              <View style={styles.slide2}>
-                <Text style={styles.text}>Beautiful</Text>
-              </View>
-              <View style={styles.slide3}>
-                <Text style={styles.text}>And simple</Text>
-              </View>
+              {renderImages()}
             </Swiper>
   }
 

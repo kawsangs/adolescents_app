@@ -16,7 +16,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": "../../assets/audios/safety_plan.mp3",
-    "image": "intro1",
+    "images": ["intro4", "intro1", "intro2", "intro3"],
     "service_uuids": ["service_01"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -44,7 +44,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": "../../assets/audios/your_story_long.mp3",
-    "image": "intro2",
+    "images": ["intro2", "intro3", "intro1"],
     "service_uuids": ["service_02"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -72,7 +72,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": "../../assets/audios/your_story.mp3",
-    "image": "intro3",
+    "images": ["intro3", "intro2", "intro1"],
     "service_uuids": ["service_01", "service_03"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -100,7 +100,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": null,
-    "image": "intro1",
+    "images": ["intro1", "intro3", "intro2"],
     "service_uuids": ["service_03"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -127,7 +127,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": null,
-    "image": "intro2",
+    "images": ["intro2", "intro3"],
     "service_uuids": ["service_04"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -155,7 +155,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": null,
-    "image": "intro2",
+    "images": [],
     "service_uuids": ["service_05"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},

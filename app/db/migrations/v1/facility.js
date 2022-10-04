@@ -4,19 +4,18 @@ import Realm from 'realm';
 import facilities from '../../json/facilities';
 import imageSources from '../../../constants/image_source_constant';
 
-class Fascility extends Realm.Object {
-  get imageSource() {
-    if (!this.image_url) {
-      const faci = facilities.filter(category => category.uuid == this.uuid)[0];
-      return (!!faci && !!faci.image) ? imageSources[faci.image] : null;
-    }
-
-    return { uri: `file://${this.image_url}` };
+class Facility extends Realm.Object {
+  get galleries() {
+    let images = [];
+    this.images.map(image => {
+      images.push(imageSources[image]);
+    });
+    return images;
   }
 
   get audioSource() {
     if (!this.audio_url) {
-      const faci = facilities.filter(category => category.uuid == this.uuid)[0];
+      const faci = facilities.filter(facility => facility.uuid == this.uuid)[0];
       return (!!faci && !!faci.audio) ? faci.audio : null;
     }
 
@@ -24,7 +23,7 @@ class Fascility extends Realm.Object {
   }
 }
 
-Fascility.schema = {
+Facility.schema = {
   name: 'Facility',
   primaryKey: 'uuid',
   properties: {
@@ -44,10 +43,10 @@ Fascility.schema = {
     audio_url: 'string?',
     image_url: 'string?',
     audio: 'string?',
-    image: 'string?',
+    images: {type: 'string[]', optional: true},
     service_uuids: {type: 'string[]'},
     working_days: 'string?'
   }
 }
 
-export default Fascility;
+export default Facility;
