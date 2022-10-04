@@ -12,6 +12,7 @@ import { StatusBar, Text } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
@@ -20,6 +21,7 @@ import {FontFamily} from './app/themes/font';
 import { environment } from './app/config/environment';
 import Category from './app/models/Category';
 import appVisitService from './app/services/app_visit_service'
+import systemBackButtonHelper from './app/helpers/system_back_button_helper';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -43,10 +45,16 @@ Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 
 const App: () => Node = () => {
+  const {t} = useTranslation();
+  let backHandler = null;
+
   useEffect(() => {
     SplashScreen.hide();
     Category.seedData();
     appVisitService.recordVisit();
+    backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
+
+    return () => backHandler.remove();
   }, []);
 
   return (

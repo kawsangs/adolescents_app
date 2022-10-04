@@ -46,5 +46,6 @@
   "termsAndConditions": "Term and conditions",
   "share": "Share",
   "reset": "Reset",
-  "version": "v"
+  "version": "v",
+  "pressBackTwiceToExitTheApp": "Press back twice to exit the app"
 }
