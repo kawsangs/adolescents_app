@@ -9,6 +9,7 @@ const NavigationHeaderBackButtonComponent = () => {
   return <NavigationHeaderButtonComponent
             onPress={() => navigationRef.current?.goBack()}
             icon={<Icon name="chevron-left" color={color.whiteColor} size={30} />}
+            buttonStyle={{alignItems: 'flex-start', paddingLeft: 8}}
           />
 }
 

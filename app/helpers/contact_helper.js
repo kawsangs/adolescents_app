@@ -26,12 +26,9 @@ const contactHelper = (() => {
   }
 
   function getFormattedPhoneNumber(value) {
-    let result = []
-    if (value.length == 9)
-      result = value.match(/(\d{3})(\d{3})(\d{3})/);
-    else
-      result = value.match(/(\d{3})(\d{3})(\d{4})/);
+    if (!value) return '';
 
+    const result = value.length == 9 ? value.match(/(\d{3})(\d{3})(\d{3})/) : value.match(/(\d{3})(\d{3})(\d{4})/);
     return `${result[1]} ${result[2]} ${result[3]}`;
   }
 })();

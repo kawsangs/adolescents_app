@@ -15,7 +15,7 @@ const Facility = (() => {
     realm.write(() => {
       facilities.map((facility) => {
         if (!findByUuid(facility.uuid)) {
-          realm.create(MODEL, facility);
+          realm.create(MODEL, {...facility, working_days: JSON.stringify(facility.working_days)});
         }
       });
     })
