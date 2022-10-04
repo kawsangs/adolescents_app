@@ -6,7 +6,7 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const NavigationHeaderComponent = (props) => {
   return (
-    <Appbar.Header style={{elevation: 0, paddingHorizontal: getStyleOfDevice(14, 0)}}>
+    <Appbar.Header style={[{elevation: 0, paddingHorizontal: getStyleOfDevice(14, 0)}, props.headerStyle]}>
       { props.leftButton }
       { !!props.customTitle ?
         props.customTitle
