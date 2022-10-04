@@ -15,12 +15,13 @@ const CardWithSoundWaveAudioComponent = (props) => {
   const [playSeconds, setPlaySeconds] = useState(0);
 
   // Get the duration of the audio file
-  const audioPlayer = new Sound(props.audio, (error) => {
+  let audioPlayer = new Sound(props.audio, (error) => {
     if (!!error)
       return console.log('failed to play audio = ', error);
 
     setDuration(audioPlayer.getDuration());
     audioPlayer.release();
+    audioPlayer = null;
   });
 
   // useMemo will update the displayDuration only when the playSeconds and duration has changed
@@ -48,7 +49,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
         updatePlayingUuid={props.updatePlayingUuid}
         updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}
       />
-      <Text style={styles.label}>{ translationHelper.translateNumber(displayDuration.toString(), i18n.language) }</Text>
+      <Text style={styles.label}>{ props.playingUuid == props.itemUuid ? translationHelper.translateNumber(displayDuration.toString(), i18n.language) : '' }</Text>
     </View>
   )
 }
