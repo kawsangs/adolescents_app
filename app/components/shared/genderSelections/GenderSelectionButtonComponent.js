@@ -16,14 +16,12 @@ const GenderSelectionButtonComponent = (props) => {
   const renderAudioButton = () => {
     return <View style={styles.audioContainer}>
             <PlayAudioComponent
-              playIcon='volume-high-outline'
-              pauseIcon='pause'
-              muteIcon='volume-mute-outline'
               iconSize={24}
               audio={props.audio}
               btnStyle={styles.audioBtn}
               itemUuid={props.uuid}
               playingUuid={props.playingUuid}
+              isSpeakerIcon={true}
               updatePlayingUuid={props.updatePlayingUuid}
             >
               <IonIcon/>

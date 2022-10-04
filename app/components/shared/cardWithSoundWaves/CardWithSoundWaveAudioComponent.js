@@ -43,6 +43,7 @@ const CardWithSoundWaveAudioComponent = (props) => {
         itemUuid={props.itemUuid}
         audio={props.audio}
         playingUuid={props.playingUuid}
+        isSpeakerIcon={false}
         containerStyle={styles.btn}
         updatePlayingUuid={props.updatePlayingUuid}
         updatePlaySeconds={(seconds) => updatePlaySeconds(seconds)}

@@ -17,7 +17,7 @@ const RadioButtonComponent = (props) => {
     return <View style={{flexDirection: 'row'}}>
             <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: largeFontSize()}} />
             { requiredVisible &&
-              <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6}} />
+              <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6, fontSize: largeFontSize()}} />
             }
           </View>
   }

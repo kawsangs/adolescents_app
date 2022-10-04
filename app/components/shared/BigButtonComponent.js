@@ -31,15 +31,13 @@ const BigButtonComponent = (props) => {
       <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor }} />
 
       <PlayAudioComponent
-        playIcon='volume-high-outline'
-        pauseIcon='pause'
-        muteIcon='volume-mute-outline'
         iconSize={24}
         audio={props.audio}
         btnStyle={styles.audioBtn}
         iconColor={color.whiteColor}
         itemUuid={props.uuid}
         playingUuid={props.playingUuid}
+        isSpeakerIcon={true}
         updatePlayingUuid={props.updatePlayingUuid}
       >
         <IonIcon/>

@@ -10,7 +10,7 @@ const rippleAnimationHelper = (() => {
     animations.map((animation, index) => {
       Animated.loop(
         Animated.parallel([
-          _animatedTiming(animation.scale, 1.5, index * 400),
+          _animatedTiming(animation.scale, 1.8, index * 400),
           _animatedTiming(animation.opacity, 0, index * 400),
         ], { useNativeDriver: true })
       ).start();

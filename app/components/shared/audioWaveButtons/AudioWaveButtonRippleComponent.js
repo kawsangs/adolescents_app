@@ -30,7 +30,7 @@ const AudioWaveButtonRippleComponent  = (props) => {
   }, [props.isPlaying])
 
   const rippleView = (index) => {
-    return <Animated.View key={index} style={[ StyleSheet.absoluteFillObject, styles.ripple,
+    return <Animated.View key={index} style={[ StyleSheet.absoluteFillObject, styles.ripple, props.rippleStyle,
               {opacity: animations[index].opacity, transform: [{ scale: animations[index].scale }], height: props.size, width: props.size, borderRadius: props.size }
             ]} />
   }

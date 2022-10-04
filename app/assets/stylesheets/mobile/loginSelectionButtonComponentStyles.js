@@ -36,8 +36,8 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
   },
   audioBtn: {
     borderWidth: 0,
-    borderRadius: 0,
-    width: componentUtil.pressableItemSize(10)
+    elevation: 0,
+    width: componentUtil.pressableItemSize(10),
   }
 });
 
