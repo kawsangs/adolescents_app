@@ -14,9 +14,14 @@ import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponen
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HorizontalCardComponent = (props) => {
+  const onPress = () => {
+    props.updatePlayingUuid(null);
+    navigationService.navigateCategory(props.item.uuid)
+  }
+
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => navigationService.navigateCategory(props.item.uuid)}
+      onPress={() => onPress()}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
         <HorizontalCardImageComponent image={props.item.imageSource} />

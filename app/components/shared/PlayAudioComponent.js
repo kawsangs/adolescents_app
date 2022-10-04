@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import color from '../../themes/color';
@@ -6,9 +6,12 @@ import componentUtil from '../../utils/component_util';
 import { outlinedButtonBorderWidth } from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
+
 const PlayAudioComponent = (props) => {
+  // we use useRef intead of useState because useState is asynchronous that will not update the value immediately
+  // and will cause the audio to play incorrectly when switching between different audios
+  const localAudioPlayer = useRef(null);
   const [state, setState] = useState({
-    audioPlayer: null,
     playSeconds: 0,
     duration: 0,
     countInterval: null,
@@ -16,56 +19,70 @@ const PlayAudioComponent = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (!!props.playingUuid && props.playingUuid != props.itemUuid) {
-      setState({
-        audioPlayer: null,
-        playSeconds: 0,
-        duration: 0,
-        countInterval: null
-      });
-      setIsPlaying(false);
-      !!props.toggleIsPlaying && props.toggleIsPlaying(false);  // toggledIsPlaying props is used for updating the ripple animation of its parent component
+    // Clear the local audio if the user is switching to play another audio
+    if (!!props.playingUuid && props.playingUuid != props.itemUuid)
+      clearLocalAudioPlayer();
+
+    // Clear all the audio if the playingUuid is null (ex: exit the screen)
+    if (!props.playingUuid && !!global.audioPlayer && !!localAudioPlayer.current) {
+      clearLocalAudioPlayer();
+      clearGlobalAudioPlayer();
     }
   }, [props.playingUuid])
 
-  const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
-    setState({ audioPlayer, playSeconds, duration, countInterval })
+  const clearLocalAudioPlayer = () => {
+    localAudioPlayer.current = null;
+    setState({
+      playSeconds: 0,
+      duration: 0,
+      countInterval: null
+    });
+    setIsPlaying(false);
+    !!props.toggleIsPlaying && props.toggleIsPlaying(false); // toggledIsPlaying props is used for updating the ripple animation of its parent component
+  }
+
+  const updateState = (playSeconds, duration, countInterval) => {
+    setState({ playSeconds, duration, countInterval })
   }
 
   const toggleAudio = () => {
-    if (!!state.audioPlayer) {
-      audioPlayerService.playPause(state.audioPlayer, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
+    if (!!localAudioPlayer.current) {
+      audioPlayerService.playPause(localAudioPlayer.current, state.countInterval, (audioPlayer, playSeconds, duration, countInterval) => {
         global.audioPlayer = audioPlayer;
         global.countInterval = countInterval;
-        updateState(audioPlayer, playSeconds, duration, countInterval);
+        localAudioPlayer.current = audioPlayer;
+        updateState(playSeconds, duration, countInterval);
         !!props.updatePlaySeconds && props.updatePlaySeconds(playSeconds);  // update the play seconds to its parent component
-        handleStopPlaying(countInterval);
+        handleStopPlaying(countInterval, playSeconds, duration);
       });
       return;
     }
 
     // Clear all the playing audio when starting to play a new audio
     if (!!global.audioPlayer || !!global.countInterval)
-      clearAudioPlayer()
+      clearGlobalAudioPlayer()
 
     audioPlayerService.play(props.audio, props.itemUuid, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
       global.countInterval = countInterval;
-      updateState(audioPlayer, playSeconds, duration, countInterval);
+      localAudioPlayer.current = audioPlayer;
+      updateState(playSeconds, duration, countInterval);
       !!props.updatePlaySeconds && props.updatePlaySeconds(playSeconds);
-      handleStopPlaying(countInterval);
+      handleStopPlaying(countInterval, playSeconds, duration);
     });
   }
 
-  const handleStopPlaying = (countInterval) => {
+  const handleStopPlaying = (countInterval, playSeconds, duration) => {
     if (!countInterval) {
       setIsPlaying(false);
-      props.updatePlayingUuid(null);
       !!props.toggleIsPlaying && props.toggleIsPlaying(false);
+
+      if (playSeconds == 0 && duration == 0)
+        props.updatePlayingUuid(null);
     }
   }
 
-  const clearAudioPlayer = () => {
+  const clearGlobalAudioPlayer = () => {
     global.audioPlayer.release();
     clearInterval(global.countInterval)
     global.audioPlayer = null;
