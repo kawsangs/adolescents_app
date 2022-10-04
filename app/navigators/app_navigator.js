@@ -6,6 +6,7 @@ import MainView from '../views/main/MainView';
 import IntroductionView from '../views/introductions/IntroductionView';
 import LoginSelectionView from '../views/loginSelections/LoginSelectionView';
 import CreateAccountView from '../views/createAccounts/CreateAccountView';
+import FacilityMapView from '../views/facilityMaps/FacilityMapView';
 import DrawerNavigator from './drawer_navigator';
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,11 @@ function AppNaviator() {
           />
         </Stack.Group>
         <Stack.Screen name="DrawerNavigator" component={DrawerNavigator}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen name="FacilityMapView" component={FacilityMapView}
           options={{
             header: () => null,
           }}

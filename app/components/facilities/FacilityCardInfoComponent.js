@@ -4,14 +4,18 @@ import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityCardTitleComponent from './FacilityCardTitleComponent';
-import FacilityCardViewMapButtonComponent from './FacilityCardViewMapButtonComponent';
+import FacilityViewRouteButtonComponent from '../shared/FacilityViewRouteButtonComponent';
 import color from '../../themes/color';
 import {descriptionFontSize} from '../../constants/component_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import componentUtil from '../../utils/component_util';
+import {largeFontSize} from '../../utils/font_size_util';
 
 const FacilityCardInfoComponent = (props) => {
   const renderViewMapBtn = () => {
-    return <FacilityCardViewMapButtonComponent/>
+    return <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={18}
+              buttonStyle={styles.viewRouteBtn} labelStyle={styles.viewRouteLabel}
+           />
   }
 
   const renderTitle = () => {
@@ -40,6 +44,17 @@ const styles = StyleSheet.create({
     lineHeight: getStyleOfDevice(27, 25),
     marginRight: 8,
   },
+  viewRouteBtn: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: componentUtil.pressableItemSize(),
+  },
+  viewRouteLabel: {
+    color: color.primaryColor,
+    fontSize: largeFontSize(),
+    marginLeft: 12
+  }
 });
 
 export default FacilityCardInfoComponent;

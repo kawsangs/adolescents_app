@@ -1,14 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 
 import FacilityDetailTitleComponent from './FacilityDetailTitleComponent';
-import FacilityDetailViewRouteButtonComponent from './FacilityDetailViewRouteButtonComponent';
 import FacilityDetailWorkingDayAndContactComponent from './FacilityDetailWorkingDayAndContactComponent';
 import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
 import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
+import FacilityViewRouteButtonComponent from '../shared/FacilityViewRouteButtonComponent';
+import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
-import {largeFontSize} from '../../utils/font_size_util';
+import {largeFontSize, xLargeFontSize} from '../../utils/font_size_util';
+import componentUtil from '../../utils/component_util';
 import Facility from '../../models/Facility';
 
 const FacilityDetailInfoComponent = (props) => {
@@ -17,7 +19,10 @@ const FacilityDetailInfoComponent = (props) => {
   return (
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
       <FacilityDetailTitleComponent name={facility.name} address={facility.address}/>
-      <FacilityDetailViewRouteButtonComponent/>
+      <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={20} iconColor={color.whiteColor}
+        buttonStyle={styles.viewRouteBtn} labelStyle={styles.viewRouteLabel}
+      />
+
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
       <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids}/>
       <FacilityDetailContactPlatformsComponent
@@ -31,5 +36,24 @@ const FacilityDetailInfoComponent = (props) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  viewRouteBtn: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: color.primaryColor,
+    borderRadius: 56,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 16,
+    height: componentUtil.mediumPressableItemSize(),
+    width: 200,
+  },
+  viewRouteLabel: {
+    color: color.whiteColor,
+    fontSize: xLargeFontSize(),
+    marginLeft: 8,
+  }
+});
 
 export default FacilityDetailInfoComponent;

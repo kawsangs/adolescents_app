@@ -4,14 +4,14 @@ import {StyleSheet} from 'react-native';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
-import FacilityMapViewComponent from '../../components/facilities/FacilityMapViewComponent';
+import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
 import {scrollViewPaddingBottom} from '../../constants/component_constant';
 
 const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
 
   const renderBody = () => {
-    return isListView ? <FacilityListViewComponent/> : <FacilityMapViewComponent/>;
+    return isListView ? <FacilityListViewComponent/> : <FacilityListMapViewComponent/>;
   }
 
   return (

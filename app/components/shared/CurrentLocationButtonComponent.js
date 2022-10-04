@@ -13,7 +13,7 @@ const CurrentLocationButtonComponent = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={() => getCurrentLocation()} style={styles.btn}>
+    <TouchableOpacity onPress={() => getCurrentLocation()} style={[styles.btn, props.buttonStyle]}>
       <Icon name="navigation" size={20} color={color.whiteColor} style={{marginTop: 4, marginRight: 4}} />
     </TouchableOpacity>
   )

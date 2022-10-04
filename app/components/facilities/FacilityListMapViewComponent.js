@@ -10,12 +10,14 @@ import mapHelper from '../../helpers/map_helper';
 
 const screenWidth = Dimensions.get('screen').width;
 
-const FacilityMapViewComponent = () => {
+const FacilityListMapViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [mapRegion, setMapRegion] = useState({});
   const [markers, setMarkers] = useState([]);
   const regionOffset = 0.0016;
+  const firstFacility = Facility.getAll().length > 0 ? Facility.getAll()[0] : null;
+  const initRegion = !!firstFacility ? {latitude: firstFacility.latitude - regionOffset, longitude: firstFacility.longitude} : null;
 
   useEffect(() => {
     setMapRegion({latitude: facilities[0].latitude - regionOffset, longitude: facilities[0].longitude});
@@ -46,7 +48,9 @@ const FacilityMapViewComponent = () => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <MapComponent region={mapRegion} markers={markers} facilities={facilities} />
+      <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
+        currentRegion={mapRegion} markers={markers}
+      />
 
       <FacilityServiceScrollBarComponent updateFacilities={(facilities) => updateFacilities(facilities)}
         containerStyle={{paddingHorizontal: 16}}
@@ -66,4 +70,4 @@ const FacilityMapViewComponent = () => {
   )
 }
 
-export default FacilityMapViewComponent;
+export default FacilityListMapViewComponent;
