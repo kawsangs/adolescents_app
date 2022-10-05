@@ -45,10 +45,11 @@ const Visit = (() => {
   }
 
   function _buildData(data) {
+    const user = new User();
     return {
       ...data,
       uuid: uuidv4(),
-      user_uuid: User.loggedInUser() ? User.loggedInUser().uuid : null,
+      user_uuid: user.loggedInUser() ? user.loggedInUser().uuid : null,
       visit_date: Moment().toDate(),
     }
   }

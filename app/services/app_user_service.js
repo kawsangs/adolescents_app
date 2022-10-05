@@ -17,11 +17,11 @@ const createAccountService = (() => {
   }
 
   function createUser(user, callback) {
-    if (!!User.loggedInUser())   // To prevent creating duplicate user when there is a logged in user
+    if (!!new User().loggedInUser())   // To prevent creating duplicate user when there is a logged in user
       return callback();
 
     const params = _buildData(user);
-    User.create(params);  // save the user to in local storage
+    new User().create(params);  // save the user to in local storage
     appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
     _sendCreateRequest(params, callback);
   }
@@ -32,13 +32,13 @@ const createAccountService = (() => {
 
   function createAnonymousUser(callback) {
     const params = _buildData(null);
-    User.create(params);
+    new User().create(params);
     appVisitService.updateAppVisitsWithoutUser(params.uuid);
     _sendCreateRequest(params, callback);
   }
 
   function syncUsers(callback) {
-    const unsyncedUsers = User.unsyncedUsers();
+    const unsyncedUsers = new User().unsyncedUsers();
     if (unsyncedUsers.length == 0) {
       callback();
       return;
@@ -62,7 +62,7 @@ const createAccountService = (() => {
     networkService.checkConnection(async () => {
       const response = await new AppUserApi().post(_userApiParams(params));
       apiService.handleApiResponse(response, (res) => {
-        User.update(params.uuid, { id: res.id, synced: true });
+        new User().update(params.uuid, { id: res.id, synced: true });
         !!callback && callback();
       }, (error) => {
         !!callback && callback();

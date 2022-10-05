@@ -8,12 +8,12 @@ class Category extends BaseModel {
   }
 
   getParentCategories = () => {
-    return this.findByAttr({parent_code: null}, '', 'order', 'ASC');
+    return this.findByAttr({parent_code: null}, '', {'ASC': 'order'});
   }
 
   getSubCategories = (uuid) => {
     const parentCategory = this.findByUuid(uuid);
-    return this.findByAttr({parent_code: `'${parentCategory.code}'`});
+    return this.findByAttr({parent_code: `'${parentCategory.code}'`}, '', {'ASC': 'order'});
   }
 
   isParentCategory = (uuid) => {

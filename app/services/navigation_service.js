@@ -9,8 +9,9 @@ const navigationService = (() => {
   }
 
   function signOut() {
-    const loggedInUser = User.loggedInUser();
-    User.update(loggedInUser.uuid, { logged_in: false });
+    const user = new User();
+    const loggedInUser = user.loggedInUser();
+    user.update(loggedInUser.uuid, { logged_in: false });
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 

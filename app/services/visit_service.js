@@ -30,7 +30,7 @@ const visitService = (() => {
   }
 
   function syncVisits() {
-    const syncedUsers = User.syncedUsers();
+    const syncedUsers = new User().syncedUsers();
     if (syncedUsers.length == 0) return;
 
     _syncVisitByUser(0, syncedUsers);
@@ -61,7 +61,8 @@ const visitService = (() => {
   }
 
   function _sendCreateRequest(visitItem, successCallback, failureCallback) {
-    const userId = !!visitItem.user_uuid ? User.find(visitItem.user_uuid).id : User.loggedInUser().id;
+    const user = new User();
+    const userId = !!visitItem.user_uuid ? user.find(visitItem.user_uuid).id : user.loggedInUser().id;
 
     const params = {
       visit: {

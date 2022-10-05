@@ -1,51 +1,29 @@
-import realm from '../db/schema';
+import BaseModel from './BaseModel';
 
 const MODEL = 'User';
 
-const User = (() => {
-  return {
-    find,
-    create,
-    update,
-    loggedInUser,
-    unsyncedUsers,
-    syncedUsers,
-    isAnonymous,
-  };
-
-  function find(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+class User extends BaseModel {
+  constructor() {
+    super(MODEL);
   }
 
-  function create(data) {
-    realm.write(() => {
-      realm.create(MODEL, data);
-    });
+  loggedInUser = () => {
+    return this.findByAttr({logged_in: true})[0];
   }
 
-  function update(uuid, data) {
-    realm.write(() => {
-      realm.create(MODEL, Object.assign(data, { uuid: uuid }), 'modified');
-    });
-  }
-
-  function loggedInUser() {
-    return realm.objects(MODEL).filtered(`logged_in = true`)[0];
-  }
-
-  function unsyncedUsers() {
+  unsyncedUsers = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...realm.objects(MODEL).filtered(`synced = false SORT(registered_at ASC)`)];
+    return [...this.findByAttr({synced: false}, '', {'ASC': 'registered_at'})];
   }
 
-  function syncedUsers() {
-    return [...realm.objects(MODEL).filtered(`synced = true SORT(registered_at ASC)`)];
+  syncedUsers = () => {
+    return [...this.findByAttr({synced: true}, '', {'ASC': 'registered_at'})];
   }
 
-  function isAnonymous() {
-    const user = loggedInUser();
+  isAnonymous = () => {
+    const user = this.loggedInUser();
     return !!user ? user.age == -1 : false;
   }
-})();
+}
 
 export default User;
