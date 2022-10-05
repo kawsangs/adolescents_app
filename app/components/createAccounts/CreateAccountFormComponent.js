@@ -6,6 +6,7 @@ import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
+import color from '../../themes/color';
 import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
@@ -64,6 +65,7 @@ const CreateAccountFormComponent = () => {
             <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
             <NumericInputWithAudioComponent label={t('yourAge')} requiredMsg={t('pleaseInputYourAge')}
               required={true}
+              requiredColor={color.blackColor}
               value={state.age.toString()}
               style={{marginTop: 22}}
               requiredVisible={state.age <= 0}

@@ -22,7 +22,7 @@ const NumericInputWithAudioComponent = (props) => {
   }
 
   return (
-    <TextInputWithAudioComponent label={props.label} required={props.required} requiredMsg={props.requiredMsg}
+    <TextInputWithAudioComponent label={props.label} required={props.required} requiredMsg={props.requiredMsg} requiredColor={props.requiredColor}
       requiredVisible={props.requiredVisible}
       keyboardType="number-pad"
       value={props.value}
