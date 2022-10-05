@@ -2,7 +2,7 @@ import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import color from '../../../themes/color';
+import color, {backgroundColors} from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
 import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
@@ -24,8 +24,8 @@ const ScrollViewHeaderComponent = (props) => {
   return (
     <Animated.View style={[styles.header, { height: headerHeight }]}>
       <LinearGradient
-        colors={['#347cb6', 'rgba(170, 73, 133, 0.88)']}
-        start={{x: 0, y: 0}} end={{x: 1, y: 0}}
+        colors={backgroundColors}
+        start={{x: 0, y: -0.3}} end={{x: 1, y: 0}}
         style={{height: '100%', width: '100%'}}
       >
         <Animated.Image

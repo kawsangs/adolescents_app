@@ -18,6 +18,8 @@ const color = {
   disabledColor: '#b5b5b5',
   requiredColor: '#d50000',
   bigButtonColor: '#ffffff',
+  facebookColor: '#4267b2',
+  telegramColor: '#0088cc',
 }
 
 export default color;

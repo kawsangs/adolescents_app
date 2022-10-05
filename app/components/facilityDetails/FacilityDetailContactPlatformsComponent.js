@@ -15,9 +15,9 @@ const FacilityDetailContactPlatformsComponent = (props) => {
   const {t} = useTranslation()
   const renderPlatformButtons = () => {
     const platforms = [
-      {name: t("website"), icon: "window-maximize", size: 26, value: !!props.websites ? props.websites[0] : null, type: WEBSITE},
-      {name: t("facebook"), icon: "facebook-f", size: 30, value: !!props.facebookPages ? props.facebookPages[0] : null, type: FACEBOOK},
-      {name: t("telegram"), icon: "paper-plane", size: 26, value: !!props.telegram ? props.telegram : null, type: TELEGRAM},
+      {name: t("website"), icon: "window-maximize", size: 26, value: !!props.websites ? props.websites[0] : null, type: WEBSITE, color: color.primaryColor},
+      {name: t("facebook"), icon: "facebook-f", size: 30, value: !!props.facebookPages ? props.facebookPages[0] : null, type: FACEBOOK, color: color.facebookColor},
+      {name: t("telegram"), icon: "paper-plane", size: 26, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: color.telegramColor},
     ]
 
     const openContactLink = (platform) => {
@@ -30,7 +30,7 @@ const FacilityDetailContactPlatformsComponent = (props) => {
       if (platform.value)
         return (
           <View key={index}>
-            <TouchableOpacity onPress={() => openContactLink(platform)} style={styles.btn}>
+            <TouchableOpacity onPress={() => openContactLink(platform)} style={[styles.btn, {backgroundColor: platform.color}]}>
               <FontAwesome name={platform.icon} size={platform.size} color={color.whiteColor} />
             </TouchableOpacity>
 
@@ -54,7 +54,6 @@ const FacilityDetailContactPlatformsComponent = (props) => {
 const styles = StyleSheet.create({
   btn: {
     alignItems: 'center',
-    backgroundColor: color.primaryColor,
     borderRadius: 56,
     justifyContent: 'center',
     height: componentUtil.mediumPressableItemSize(),

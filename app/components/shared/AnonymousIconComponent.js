@@ -5,7 +5,7 @@ import AntIcon from 'react-native-vector-icons/FontAwesome';
 
 const AnonymousIconComponent = (props) => {
   return (
-    <View style={{position: 'relative'}}>
+    <View style={[{position: 'relative'}, props.containerStyle]}>
       <FeatherIcon name='user' color={props.color} size={props.size} />
       <AntIcon name='question' color={props.color} size={props.size - 14} style={styles.subIcon} />
     </View>
