@@ -13,11 +13,11 @@ class User extends BaseModel {
 
   unsyncedUsers = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...this.findByAttr({synced: false}, '', {'ASC': 'registered_at'})];
+    return [...this.findByAttr({synced: false}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
   syncedUsers = () => {
-    return [...this.findByAttr({synced: true}, '', {'ASC': 'registered_at'})];
+    return [...this.findByAttr({synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
   isAnonymous = () => {
