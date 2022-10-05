@@ -12,13 +12,14 @@ import Facility from '../../models/Facility';
 const FacilityServiceScrollBarComponent = (props) => {
   const [selectedUuid, setSelectedUuid] = useState(null);
   const toggleFilter = (service) => {
+    const facility = new Facility();
     if (selectedUuid == service.uuid) {
       setSelectedUuid(null);
-      return props.updateFacilities(Facility.getAll());
+      return props.updateFacilities(facility.getAll());
     }
 
     setSelectedUuid(service.uuid);
-    props.updateFacilities(Facility.findByServiceUuid(service.uuid));
+    props.updateFacilities(facility.findByServiceUuid(service.uuid));
   }
 
   const renderList = () => {

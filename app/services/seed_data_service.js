@@ -5,6 +5,7 @@ import VideoCategory from '../models/VideoCategory';
 import Video from '../models/Video';
 
 import categories from '../db/json/categories.json';
+import facilities from '../db/json/facilities.json';
 
 const seedDataService = (() => {
   return {
@@ -12,10 +13,6 @@ const seedDataService = (() => {
   }
 
   function seedToRealm() {
-    // Category.seedData();
-    new Category().seedData(categories);
-
-    Facility.seedData();
     Service.seedData();
     VideoCategory.seedData();
     Video.seedData();
