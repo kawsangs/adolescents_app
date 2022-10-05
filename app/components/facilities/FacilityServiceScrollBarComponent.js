@@ -5,6 +5,7 @@ import {Text} from 'react-native-paper';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
+import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 import Service from '../../models/Service';
 import Facility from '../../models/Facility';
 
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.whiteColor,
     borderRadius: 25,
-    height: componentUtil.pressableItemSize(),
+    height: isLowPixelDensityDevice() ? 40 : componentUtil.pressableItemSize(),
     justifyContent: 'center',
     marginRight: 12,
     minWidth: 60,

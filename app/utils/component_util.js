@@ -1,5 +1,6 @@
 import {Dimensions} from 'react-native';
 import {screenHorizontalPadding} from '../constants/component_constant';
+import {isLowPixelDensityDevice} from './responsive_util';
 
 const defaultItemSize = 48;
 
@@ -15,7 +16,7 @@ const componentUtil = (() => {
   }
 
   function mediumPressableItemSize() {
-    return pressableItemSize(8);
+    return isLowPixelDensityDevice() ? pressableItemSize() : pressableItemSize(8);
   }
 
   function getGridCardWidth() {

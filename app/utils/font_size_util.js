@@ -30,7 +30,7 @@ export const smallFontSize = () => {
 }
 
 export const mobileFontSize = (size) => {
-  const scale = Dimensions.get('window').width / 320;
+  const scale = (Dimensions.get('window').width / 320) + 1;
   if (isLowPixelDensityDevice())
     return size - scale;
 

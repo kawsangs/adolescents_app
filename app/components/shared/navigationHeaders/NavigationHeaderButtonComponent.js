@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-    width: componentUtil.pressableItemSize(12),
+    width: componentUtil.pressableItemSize(),
   }
 });
 
