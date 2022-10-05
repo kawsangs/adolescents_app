@@ -6,6 +6,7 @@ import Video from '../models/Video';
 
 import categories from '../db/json/categories.json';
 import facilities from '../db/json/facilities.json';
+import services from '../db/json/services.json';
 
 const seedDataService = (() => {
   return {

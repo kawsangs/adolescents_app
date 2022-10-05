@@ -1,32 +1,10 @@
-import realm from '../db/schema';
-import services from '../db/json/services.json';
+import BaseModel from './BaseModel';
 
 const MODEL = 'Service';
-
-const Service = (() => {
-  return {
-    seedData,
-    getAll,
-    findByUuid,
+class Service extends BaseModel {
+  constructor() {
+    super(MODEL);
   }
-
-  function seedData() {
-    realm.write(() => {
-      services.map((service) => {
-        if (!findByUuid(service.uuid)) {
-          realm.create(MODEL, service);
-        }
-      });
-    })
-  }
-
-  function getAll() {
-    return realm.objects(MODEL);
-  }
-
-  function findByUuid(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
-  }
-})();
+}
 
 export default Service;

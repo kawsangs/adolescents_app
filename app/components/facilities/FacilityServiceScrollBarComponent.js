@@ -23,8 +23,7 @@ const FacilityServiceScrollBarComponent = (props) => {
   }
 
   const renderList = () => {
-    const services = Service.getAll();
-    return services.map((service, index) => {
+    return new Service().getAll().map((service, index) => {
       return <TouchableOpacity key={index} style={[styles.item, selectedUuid == service.uuid && {backgroundColor: color.secondaryColor}]}
                 onPress={() => toggleFilter(service)}
              >
