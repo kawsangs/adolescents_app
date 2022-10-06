@@ -13,6 +13,7 @@ import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
@@ -59,7 +60,12 @@ const App: () => Node = () => {
 
   return (
     <React.Fragment>
-      <PaperProvider theme={theme}>
+      <PaperProvider
+        settings={{
+          icon: props => <FeatherIcon {...props} />
+        }}
+        theme={theme}
+      >
         <StatusBar barStyle={'light-content'} />
         <AppNavigator/>
       </PaperProvider>

@@ -3,20 +3,30 @@ import {StyleSheet} from 'react-native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
+import FacilitySearchHeaderComponent from '../../components/facilities/FacilitySearchHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
 import {scrollViewPaddingBottom} from '../../constants/component_constant';
 
 const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
+  const [isSearching, setIsSearching] = useState(false);
 
   const renderBody = () => {
     return isListView ? <FacilityListViewComponent/> : <FacilityListMapViewComponent/>;
   }
 
+  const renderHeader = () => {
+    if (isSearching)
+      return <FacilitySearchHeaderComponent/>
+
+    return <FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} isSearching={isSearching}
+            updateIsListView={(status) => setIsListView(status)} updateIsSearching={(status) => setIsSearching(status)} />
+  }
+
   return (
     <GradientScrollViewComponent
-      header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
+      header={renderHeader()}
       body={renderBody()}
       scrollViewStyle={isListView ? styles.listView : styles.mapView}
     />
