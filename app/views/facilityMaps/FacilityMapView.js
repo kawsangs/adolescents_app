@@ -3,7 +3,6 @@ import {View, StyleSheet} from 'react-native';
 
 import MapComponent from '../../components/shared/MapComponent';
 import NavigationHeaderBackButtonComponent from '../../components/shared/NavigationHeaderBackButtonComponent';
-import CurrentLocationButtonComponent from '../../components/shared/CurrentLocationButtonComponent';
 import color from '../../themes/color';
 import mapHelper from '../../helpers/map_helper';
 import componentUtil from '../../utils/component_util';
@@ -18,9 +17,6 @@ const FacilityMapView = (props) => {
   return (
     <View style={{flexGrow: 1}}>
       <NavigationHeaderBackButtonComponent iconColor={color.blackColor} buttonStyle={styles.backButton} iconStyle={{marginLeft: -4}} />
-      <CurrentLocationButtonComponent  updatePosition={(coords) =>setRegion({latitude: coords.latitude, longitude: coords.longitude})}
-        buttonStyle={{zIndex: 1, position: 'absolute', bottom: 46, right: 0}}
-      />
       <MapComponent initRegion={initRegion} currentRegion={region} markers={markers} autoShowMarkerTitle={true} />
     </View>
   )
