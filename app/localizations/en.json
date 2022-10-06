@@ -55,5 +55,6 @@
   "website": "Website",
   "facebook": "Facebook",
   "telegram": "Telegram",
-  "contactVia": "Contact via"
+  "contactVia": "Contact via",
+  "unableToViewTheRoute": "Unable to view the route"
 }

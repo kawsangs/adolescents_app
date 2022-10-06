@@ -6,13 +6,11 @@ import {useTranslation} from 'react-i18next';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
 import mapHelper from '../../helpers/map_helper';
-import Facility from '../../models/Facility';
 
 const FacilityViewRouteButtonComponent = (props) => {
   const {t} = useTranslation();
   const openMap = () => {
-    const facility = Facility.findByUuid(props.uuid);
-    mapHelper.viewRoute(facility.latitude, facility.longitude, facility.name);
+    mapHelper.viewRoute(props.latitude, props.longitude, t('unableToViewTheRoute'));
   }
 
   return <TouchableOpacity onPress={() => openMap()} style={props.buttonStyle}>

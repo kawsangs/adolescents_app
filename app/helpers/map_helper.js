@@ -1,4 +1,5 @@
-import {Linking, Platform} from 'react-native';
+import {Linking} from 'react-native';
+import toastMessageHelper from './toast_message_helper';
 
 const mapHelper = (() => {
   return {
@@ -15,18 +16,18 @@ const mapHelper = (() => {
     return markers;
   }
 
-  function viewRoute(latitude, longitude, name) {
+  function viewRoute(latitude, longitude, errorMessage) {
+    if (!latitude || !longitude) return;
+
     const url = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
     Linking.canOpenURL(url)
       .then((supported) => {
         if (supported)
           Linking.openURL(url);
         else
-          console.log('This URL is not support with this platform')
+          toastMessageHelper.showMessage(errorMessage);
       })
-      .catch(() => {
-        console.log('Unable to open this URL');
-      });
+      .catch(() => toastMessageHelper.showMessage(errorMessage));
   }
 })();
 
