@@ -5,12 +5,14 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {navigationRef} from '../../navigators/app_navigator';
+import mapHelper from '../../helpers/map_helper';
+import Facility from '../../models/Facility';
 
 const FacilityViewRouteButtonComponent = (props) => {
   const {t} = useTranslation();
   const openMap = () => {
-    navigationRef.current?.navigate("FacilityMapView", {uuid: props.uuid});
+    const facility = Facility.findByUuid(props.uuid);
+    mapHelper.viewRoute(facility.latitude, facility.longitude, facility.name);
   }
 
   return <TouchableOpacity onPress={() => openMap()} style={props.buttonStyle}>
