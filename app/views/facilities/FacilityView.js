@@ -6,6 +6,7 @@ import FacilityNavigationHeaderComponent from '../../components/facilities/Facil
 import FacilitySearchHeaderComponent from '../../components/facilities/FacilitySearchHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
+import FacilitySearchListComponent from '../../components/facilities/FacilitySearchListComponent';
 import {scrollViewPaddingBottom} from '../../constants/component_constant';
 
 const FacilityView = (props) => {
@@ -13,6 +14,8 @@ const FacilityView = (props) => {
   const [isSearching, setIsSearching] = useState(false);
 
   const renderBody = () => {
+    if (isSearching) return <FacilitySearchListComponent/>
+
     return isListView ? <FacilityListViewComponent/> : <FacilityListMapViewComponent/>;
   }
 
