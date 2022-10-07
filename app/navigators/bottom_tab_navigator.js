@@ -25,7 +25,7 @@ function BottomTabNavigator() {
         tabBarStyle: styles.tabBar,
         tabBarActiveTintColor: color.secondaryColor,
         tabBarInactiveTintColor: color.primaryColor,
-        tabBarShowLabel: false
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen

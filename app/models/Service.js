@@ -8,6 +8,7 @@ const Service = (() => {
     seedData,
     getAll,
     findByUuid,
+    findByName,
   }
 
   function seedData() {
@@ -26,6 +27,10 @@ const Service = (() => {
 
   function findByUuid(uuid) {
     return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+  }
+
+  function findByName(name) {
+    return realm.objects(MODEL).filtered(`name CONTAINS[c] '${name}'`);
   }
 })();
 

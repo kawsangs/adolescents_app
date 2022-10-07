@@ -1,17 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
-import {screenHorizontalPadding, cardBorderRadius} from '../../constants/component_constant';
+import {cardBorderRadius} from '../../constants/component_constant';
 import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
 
-const FacilitySearchListComponent = () => {
-
-  const renderListItems = (facilities, hasIcon) => {
-    return facilities.map((facility, index) => {
+const FacilitySearchHistoryListComponent = () => {
+  const renderListItems = (services, hasIcon) => {
+    return services.map((facility, index) => {
       return (
         <TouchableOpacity key={index} style={styles.item}>
           <Text style={{fontSize: largeFontSize(), flex: 1}}>{facility.name}</Text>
@@ -23,7 +22,7 @@ const FacilitySearchListComponent = () => {
   }
 
   const renderList = () => {
-    const defaultResults = {
+    const searchHistories = {
       previousSearch: {
         label: "ធ្លាប់រកពីមុនមក",
         values: [
@@ -45,27 +44,21 @@ const FacilitySearchListComponent = () => {
     }
 
     let doms = [];
-    for (let key in defaultResults) {
-      const facilities = defaultResults[key].values;
+    for (let key in searchHistories) {
+      const services = searchHistories[key].values;
       doms.push(
-        <React.Fragment>
+        <View key={key}>
           <View style={{backgroundColor: 'transparent', height: 33, justifyContent: 'center', paddingLeft: 12}}>
-            <Text style={{color: '#ebadd2', fontSize: largeFontSize()}}>{defaultResults[key].label}</Text>
+            <Text style={{color: '#ebadd2', fontSize: largeFontSize()}}>{searchHistories[key].label}</Text>
           </View>
-          {renderListItems(facilities, defaultResults[key].hasIcon)}
-        </React.Fragment>
+          {renderListItems(services, searchHistories[key].hasIcon)}
+        </View>
       );
     }
     return doms;
   }
 
-  return (
-    <View style={styles.container}>
-      <View>
-        {renderList()}
-      </View>
-    </View>
-  )
+  return <View style={styles.container}>{renderList()}</View>
 }
 
 const styles = StyleSheet.create({
@@ -73,7 +66,6 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     backgroundColor: '#f4f1f9',
     elevation: 2,
-    marginRight: screenHorizontalPadding,
     marginTop: 16,
     paddingBottom: 23
   },
@@ -88,4 +80,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FacilitySearchListComponent;
+export default FacilitySearchHistoryListComponent;
