@@ -28,7 +28,6 @@ const youtubeHelper = (() => {
 
     if (videoIdWithParams !== undefined) {
       const cleanVideoId = videoIdWithParams.split(/[^0-9a-z_-]/i)[0];
-
       return cleanVideoId;
     }
 

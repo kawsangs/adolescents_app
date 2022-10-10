@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import NetInfo from '@react-native-community/netinfo';
 
 import VideoItemListComponent from './VideoItemListComponent';
 import color from '../../themes/color';
@@ -8,10 +9,20 @@ import videoCategoryHelper from '../../helpers/video_category_helper';
 import {largeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
 
-const VideoTabBarComponent = () => {
+const VideoTabBarComponent = (props) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState(videoCategoryHelper.getCategoryRoutes())
   const [activeCategoryUuid, setActiveCategoryUuid] = useState(null);
+  const [hasInternet, setHasInternet] = useState(true);
+
+  useEffect(() => {
+    const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
+      if (hasInternet != state.isInternetReachable)
+        setHasInternet(state.isInternetReachable);
+    });
+
+    return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
+  }, []);
 
   const getTabs = () => {
     let tabs = {all: itemList};
@@ -23,7 +34,7 @@ const VideoTabBarComponent = () => {
   }
 
   const itemList = () => {
-    return <VideoItemListComponent categoryUuid={activeCategoryUuid}/>
+    return <VideoItemListComponent categoryUuid={activeCategoryUuid} hasInternet={hasInternet} />
   }
 
   const renderTabBar = (tabBarProps) => {

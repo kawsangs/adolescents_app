@@ -10,29 +10,26 @@ import {scrollViewPaddingBottom, screenHorizontalPadding} from '../../constants/
 import Video from '../../models/Video';
 import {xLargeFontSize} from '../../utils/font_size_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const VideoItemListComponent = (props) => {
   const video = new Video();
   const [videos, setVideos] = useState(video.getAll());
-  const [hasInternet, setHasInternet] = useState(true);
 
   useEffect(() => {
     setVideos(!!props.categoryUuid ? video.findByCategoryUuid(props.categoryUuid) : video.getAll());
-
-    const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
-      if (hasInternet != state.isInternetReachable)
-        setHasInternet(state.isInternetReachable);
-    });
-
-    return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, [props.categoryUuid]);
+
+  const viewDetail = (uuid) => {
+    navigationRef.current?.navigate("VideoDetailView", { uuid: uuid, hasInternet: props.hasInternet });
+  }
 
   const renderItem = (item) => {
     return (
-      <Card mode="elevated" elevation={cardElevation} onPress={() => console.log('View vid detail =====')}
+      <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(item.uuid)}
         style={{marginBottom: 13, borderRadius: cardBorderRadius}}
       >
-        <VideoThumbnailComponent url={item.url} hasInternet={hasInternet} />
+        <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item.uuid)} />
         <BoldLabelComponent label={item.name} numberOfLines={2} style={{fontSize: xLargeFontSize(), margin: 8, lineHeight: 28}} />
       </Card>
     )

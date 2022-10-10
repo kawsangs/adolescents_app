@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GradientViewComponent from '../../components/shared/GradientViewComponent';
@@ -11,14 +10,10 @@ import color from '../../themes/color';
 const VideoView = (props) => {
   const {t} = useTranslation();
   const renderHeader = () => {
-    return (
-      <View>
-        <NavigationHeaderComponent
-          leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
-          label={t('video')}
-        />
-      </View>
-    )
+    return <NavigationHeaderComponent
+              leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
+              label={t('video')}
+           />
   }
 
   const renderTabBar = () => {
