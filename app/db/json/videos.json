@@ -1,38 +1,38 @@
 [
   {
-    "code": "01",
-    "title": "ការពារខ្លួនពីជំងឺ",
+    "uuid": "01", 
+    "name": "ការពារខ្លួនពីជំងឺ",
     "url": "https://www.youtube.com/watch?v=ZsP4kYUpwaI",
     "display_order": 1,
     "category_id": "video_category_01"
   },
   {
-    "code": "02",
-    "title": "ព្យាបាលកាសេពគ្រឿងស្រវឹង",
+    "uuid": "02",
+    "name": "ព្យាបាលកាសេពគ្រឿងស្រវឹង",
     "url": "https://www.youtube.com/watch?v=69vG5JOMfrY",
     "category": "all"
   },
   {
-    "code": "03",
-    "title": "អារម្មណ៏នៅពេលពេញវ័យ",
+    "uuid": "03",
+    "name": "អារម្មណ៏នៅពេលពេញវ័យ",
     "url": "https://www.youtube.com/watch?v=kQ-83Nt3EvU&t=14s",
     "category": "male"
   },
   {
-    "code": "04",
-    "title": "សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
+    "uuid": "04",
+    "name": "សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
     "url": "https://www.youtube.com/watch?v=RgeKg5iGZKI&list=RDCMUCsMW60l4zLO11NB6ckap57g",
     "category": "male"
   },
   {
-    "code": "05",
-    "title": "ការយល់ដឹងក្នុងនាមជាស្រ្តី",
+    "uuid": "05",
+    "name": "ការយល់ដឹងក្នុងនាមជាស្រ្តី",
     "url": "https://www.youtube.com/watch?v=P7C7fBGmk_Q",
     "category": "female"
   },
   {
-    "code": "06",
-    "title": "មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
+    "uuid": "06",
+    "name": "មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
     "url": "https://www.youtube.com/watch?v=NnyEiC8MzQs",
     "category": "female"
   }
