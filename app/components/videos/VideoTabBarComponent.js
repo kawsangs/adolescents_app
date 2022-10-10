@@ -1,6 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
+
+import VideoItemListComponent from './VideoItemListComponent';
 
 const FirstRoute = () => (
   <View style={{ flex: 1, backgroundColor: '#ff4081' }} />
@@ -10,8 +12,13 @@ const SecondRoute = () => (
   <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
 );
 
+const itemList = () => {
+  return <VideoItemListComponent/>
+}
+
 const renderScene = SceneMap({
-  all: FirstRoute,
+  // all: <VideoItemListComponent/>,
+  all: itemList,
   male: SecondRoute,
   female: FirstRoute,
 });
@@ -31,7 +38,7 @@ export default function TabViewExample() {
       navigationState={{ index, routes }}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
+      initialLayout={{ width: '100%', flexGrow: 1}}
     />
   );
 }
