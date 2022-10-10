@@ -17,7 +17,7 @@ import {useTranslation} from 'react-i18next';
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
 import color from './app/themes/color';
-import {FontFamily} from './app/themes/font';
+import { FontFamily } from './app/themes/font';
 import { environment } from './app/config/environment';
 import appVisitService from './app/services/app_visit_service'
 import systemBackButtonHelper from './app/helpers/system_back_button_helper';

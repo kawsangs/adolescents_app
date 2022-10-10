@@ -8,14 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* YouthMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* YouthMobileTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-YouthMobile.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-YouthMobile-YouthMobileTests.a */; };
+		705416FA3AA24796CFFFBF2E /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
 		8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
+		90E06674566CB5F2AA9AABF5 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */; };
+		9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
+		EECC1EDA28F6B53D00AA3DD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */; };
+		EECC1EEC28F6B8AC00AA3DD9 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */; };
+		EECC1EED28F6B8AC00AA3DD9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */; };
+		EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */; };
+		EECC1EEF28F6B8AC00AA3DD9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */; };
+		EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */; };
+		EECC1EF128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */; };
+		EECC1EF228F6B8AC00AA3DD9 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */; };
+		EECC1EF328F6B8AC00AA3DD9 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */; };
+		EECC1EF428F6B8AC00AA3DD9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */; };
+		EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */; };
+		EECC1EF628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */; };
+		EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */; };
+		EECC1EF828F6B8AC00AA3DD9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */; };
+		EECC1EF928F6B8AC00AA3DD9 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */; };
+		EECC1EFA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */; };
+		EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,22 +49,39 @@
 		00E356EE1AD99517003FC87E /* YouthMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouthMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* YouthMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouthMobileTests.m; sourceTree = "<group>"; };
+		0288C3D794623096EA4D1649 /* Pods-YouthMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* YouthMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = YouthMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = YouthMobile/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = YouthMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = YouthMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YouthMobile/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-YouthMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-YouthMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-YouthMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.release.xcconfig"; sourceTree = "<group>"; };
+		64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-Regular.ttf"; path = "../app/assets/fonts/KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
+		6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YouthMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		B352772C7361D8DBED654811 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B86904CF930DD051270B4985 /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; name = "KantumruyPro-Regular.ttf"; path = "../app/assets/fonts/KantumruyPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "KantumruyPro-SemiBold.ttf"; path = "../app/assets/fonts/KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Users/Instedd/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-SemiBold.ttf"; path = "../app/assets/fonts/KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */,
+				90E06674566CB5F2AA9AABF5 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-YouthMobile.a in Frameworks */,
+				705416FA3AA24796CFFFBF2E /* libPods-YouthMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,12 +124,14 @@
 		13B07FAE1A68108700A75B9A /* YouthMobile */ = {
 			isa = PBXGroup;
 			children = (
+				EECC1EDB28F6B8AC00AA3DD9 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */,
 			);
 			name = YouthMobile;
 			sourceTree = "<group>";
@@ -104,8 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-YouthMobile.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-YouthMobile-YouthMobileTests.a */,
+				E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */,
+				6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,26 +178,48 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3B4392A12AC88292D35C810B /* Pods-YouthMobile.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-YouthMobile.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		A20447694FB147108C5F9CDC /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */,
 				F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0288C3D794623096EA4D1649 /* Pods-YouthMobile.debug.xcconfig */,
+				2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */,
+				B352772C7361D8DBED654811 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */,
+				B86904CF930DD051270B4985 /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EECC1EDB28F6B8AC00AA3DD9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */,
+				EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */,
+				EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */,
+				EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */,
+				EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */,
+				EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */,
+				EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */,
+				EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */,
+				EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */,
+				EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */,
+				EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */,
+				EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */,
+				EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */,
+				EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */,
+				EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */,
+				EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -170,12 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "YouthMobileTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				D2F020B9BCA3C85C6E24C055 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				A3CD1E20FA72A13E6E37BE63 /* [CP] Embed Pods Frameworks */,
+				9FB3D7AD8B7488C512F607CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,14 +249,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "YouthMobile" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				F655E4F9AACB327B8CBC3C2C /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				BD14A20FB7C342474A84C0E3 /* [CP] Embed Pods Frameworks */,
+				65493D262DCDA52EA95455E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,10 +315,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */,
+				EECC1EEC28F6B8AC00AA3DD9 /* Fontisto.ttf in Resources */,
+				EECC1EF628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf in Resources */,
+				EECC1EF128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf in Resources */,
+				EECC1EF828F6B8AC00AA3DD9 /* Zocial.ttf in Resources */,
+				EECC1EF928F6B8AC00AA3DD9 /* EvilIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EECC1EED28F6B8AC00AA3DD9 /* Octicons.ttf in Resources */,
+				EECC1EDA28F6B53D00AA3DD9 /* GoogleService-Info.plist in Resources */,
+				EECC1EF228F6B8AC00AA3DD9 /* AntDesign.ttf in Resources */,
 				9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */,
+				EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */,
+				EECC1EF328F6B8AC00AA3DD9 /* Foundation.ttf in Resources */,
+				EECC1EF428F6B8AC00AA3DD9 /* Ionicons.ttf in Resources */,
+				EECC1EEF28F6B8AC00AA3DD9 /* Entypo.ttf in Resources */,
 				8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */,
+				EECC1EFA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf in Resources */,
+				EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */,
+				EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */,
+				EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +358,58 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		65493D262DCDA52EA95455E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB3D7AD8B7488C512F607CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3CD1E20FA72A13E6E37BE63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD14A20FB7C342474A84C0E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,7 +426,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		D2F020B9BCA3C85C6E24C055 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,7 +448,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		F655E4F9AACB327B8CBC3C2C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,57 +468,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile/Pods-YouthMobile-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -447,7 +522,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */;
+			baseConfigurationReference = B352772C7361D8DBED654811 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -474,7 +549,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */;
+			baseConfigurationReference = B86904CF930DD051270B4985 /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -498,7 +573,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-YouthMobile.debug.xcconfig */;
+			baseConfigurationReference = 0288C3D794623096EA4D1649 /* Pods-YouthMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -524,7 +599,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-YouthMobile.release.xcconfig */;
+			baseConfigurationReference = 2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -613,6 +688,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -676,6 +752,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
