@@ -7,10 +7,6 @@ const VideoCategorySchema = {
     uuid: "string",
     id: "string?",
     name: "string",
-    description: "string",
-    url: "string",
-    display_order: "int",
-    video_category_id: "string?",
   }
 }
 

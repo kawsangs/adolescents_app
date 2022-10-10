@@ -4,6 +4,7 @@ import VisitSchema from '../db/migrations/v1/visit';
 import FacilitySchema from '../db/migrations/v1/facility';
 import ServiceSchema from '../db/migrations/v1/service';
 import VideoCategorySchema from '../db/migrations/v1/video_category';
+import VideoSchema from '../db/migrations/v1/video';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -23,6 +24,7 @@ const schemaHelper = (() => {
       FacilitySchema,
       ServiceSchema,
       VideoCategorySchema,
+      VideoSchema,
     ];
 
     changedSchemas.map((schema) => {

@@ -5,4 +5,5 @@ export const schemaNames = [
   'Facility',
   'Service',
   'VideoCategory',
+  'Video',
 ];
