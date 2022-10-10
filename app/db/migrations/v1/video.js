@@ -10,7 +10,7 @@ const VideoSchema = {
     description: "string",
     url: "string",
     display_order: "int",
-    video_category_id: "string?",
+    video_category_uuid: "string?",
   }
 }
 

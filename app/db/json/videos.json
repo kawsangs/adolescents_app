@@ -1,39 +1,80 @@
 [
   {
-    "uuid": "01", 
+    "uuid": "01",
+    "id": null,
     "name": "ការពារខ្លួនពីជំងឺ",
+    "description": "ការការពារខ្លួនពីជំងឺផ្រេងៗ",
     "url": "https://www.youtube.com/watch?v=ZsP4kYUpwaI",
     "display_order": 1,
-    "category_id": "video_category_01"
+    "video_category": null
   },
   {
     "uuid": "02",
+    "id": null,
     "name": "ព្យាបាលកាសេពគ្រឿងស្រវឹង",
+    "description": "ព្យាបាលកាសេពគ្រឿងស្រវឹង",
     "url": "https://www.youtube.com/watch?v=69vG5JOMfrY",
-    "category": "all"
+    "display_order": 2,
+    "video_category": null
   },
   {
     "uuid": "03",
+    "id": null,
     "name": "អារម្មណ៏នៅពេលពេញវ័យ",
+    "description": "អារម្មណ៏នៅពេលពេញវ័យ",
     "url": "https://www.youtube.com/watch?v=kQ-83Nt3EvU&t=14s",
-    "category": "male"
+    "display_order": 3,
+    "video_category": {
+      "id": "video_category_01",
+      "name": "បុរស",
+      "created_at":"2022-10-10T09:27:31.162+07:00",
+		  "updated_at":"2022-10-10T09:27:31.162+07:00"
+    },
+    "updated_at": "2022-10-10T09:27:31.179+07:00"
   },
   {
     "uuid": "04",
+    "id": null,
     "name": "សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
+    "description": "សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
     "url": "https://www.youtube.com/watch?v=RgeKg5iGZKI&list=RDCMUCsMW60l4zLO11NB6ckap57g",
-    "category": "male"
+    "display_order": 4,
+    "video_category": {
+      "id": "video_category_01",
+      "name": "បុរស",
+      "created_at":"2022-10-10T09:27:31.162+07:00",
+		  "updated_at":"2022-10-10T09:27:31.162+07:00"
+    },
+    "updated_at": "2022-10-10T09:27:31.179+07:00"
   },
   {
     "uuid": "05",
+    "id": null,
     "name": "ការយល់ដឹងក្នុងនាមជាស្រ្តី",
+    "description": "ការយល់ដឹងក្នុងនាមជាស្រ្តី",
     "url": "https://www.youtube.com/watch?v=P7C7fBGmk_Q",
-    "category": "female"
+    "display_order": 5,
+    "video_category": {
+      "id": "video_category_02",
+      "name": "ស្ត្រី",
+      "created_at":"2022-10-10T09:27:31.162+07:00",
+		  "updated_at":"2022-10-10T09:27:31.162+07:00"
+    },
+    "updated_at": "2022-10-10T09:27:31.179+07:00"
   },
   {
     "uuid": "06",
+    "id": null,
     "name": "មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
+    "description": "មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
     "url": "https://www.youtube.com/watch?v=NnyEiC8MzQs",
-    "category": "female"
+    "display_order": 6,
+    "video_category": {
+      "id": "video_category_02",
+      "name": "ស្ត្រី",
+      "created_at":"2022-10-10T09:27:31.162+07:00",
+		  "updated_at":"2022-10-10T09:27:31.162+07:00"
+    },
+    "updated_at": "2022-10-10T09:27:31.179+07:00"
   }
 ]

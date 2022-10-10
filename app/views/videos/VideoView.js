@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import {useTranslation} from 'react-i18next';
 
-import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import GradientViewComponent from '../../components/shared/GradientViewComponent';
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
@@ -35,11 +34,6 @@ const VideoView = (props) => {
         {renderTabBar()}
       </React.Fragment>
     </GradientViewComponent>
-    // <GradientScrollViewComponent
-    //   header={renderHeader()}
-    //   body={renderTabBar()}
-    //   scrollViewStyle={{paddingHorizontal: 0}}
-    // />
   )
 }
 

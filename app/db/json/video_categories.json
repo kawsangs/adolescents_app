@@ -1,14 +1,12 @@
 [
   {
-    "id": "video_category_01",
-    "name": "ទាំងអស់"
+    "uuid": "video_category_01",
+    "id": null,
+    "name": "បុរស"
   },
   {
-    "id": "video_category_02",
-    "name": "ប្រុស"
-  },
-  {
-    "id": "video_category_03",
-    "name": "ស្រី"
+    "uuid": "video_category_02",
+    "id": null,
+    "name": "ស្ត្រី"
   }
 ]

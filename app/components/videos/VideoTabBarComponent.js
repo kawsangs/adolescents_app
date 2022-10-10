@@ -1,44 +1,55 @@
-import React from 'react';
-import { View, useWindowDimensions } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import React, {useState} from 'react';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
 import VideoItemListComponent from './VideoItemListComponent';
+import color from '../../themes/color';
+import VideoCategory from '../../models/VideoCategory';
+import videoCategoryHelper from '../../helpers/video_category_helper';
+import {largeFontSize} from '../../utils/font_size_util';
+import {FontFamily} from '../../themes/font';
 
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: '#ff4081' }} />
-);
+const VideoTabBarComponent = () => {
+  const [index, setIndex] = useState(0);
+  const [routes] = useState(videoCategoryHelper.getCategoryRoutes())
+  const [activeCategoryUuid, setActiveCategoryUuid] = useState(null);
 
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
-);
+  const getTabs = () => {
+    let tabs = {all: itemList};
+    new VideoCategory().getAll().map(category => {
+      tabs[category.name] = itemList;
+    });
 
-const itemList = () => {
-  return <VideoItemListComponent/>
-}
+    return tabs;
+  }
 
-const renderScene = SceneMap({
-  // all: <VideoItemListComponent/>,
-  all: itemList,
-  male: SecondRoute,
-  female: FirstRoute,
-});
+  const itemList = () => {
+    return <VideoItemListComponent categoryUuid={activeCategoryUuid}/>
+  }
 
-export default function TabViewExample() {
-  const layout = useWindowDimensions();
-
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'all', title: 'ទាំងអស់' },
-    { key: 'male', title: 'ប្រុស' },
-    { key: 'female', title: 'ស្រី' },
-  ]);
+  const renderTabBar = (tabBarProps) => {
+    return (
+      <TabBar
+        {...tabBarProps}
+        getLabelText={({ route }) => route.title}
+        indicatorStyle={{backgroundColor: color.whiteColor}}
+        style={{ backgroundColor: color.primaryColor }}
+        activeColor={color.primary}
+        inactiveColor={color.whiteColor}
+        labelStyle={{ color: color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.bold }}
+        onTabPress={({ route, preventDefault }) => setActiveCategoryUuid(route.uuid)}
+      />
+    )
+  }
 
   return (
     <TabView
       navigationState={{ index, routes }}
-      renderScene={renderScene}
+      renderScene={SceneMap(getTabs())}
       onIndexChange={setIndex}
       initialLayout={{ width: '100%', flexGrow: 1}}
+      renderTabBar={renderTabBar}
     />
   );
 }
+
+export default VideoTabBarComponent;
