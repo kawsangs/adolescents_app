@@ -13,10 +13,9 @@ import User from '../../models/User';
 
 const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
-  const user = new User();
-  const loggedInUser = user.loggedInUser();
+  const loggedInUser = User.loggedInUser();
   const renderIcon = () => {
-    return User.isAnonymous() ? <AnonymousIconComponent size={29} color={color.whiteColor} containerStyle={{marginLeft: -4}}/>
+    return loggedInUser.anonymous ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
                              : <FeatherIcon name='user' color={color.whiteColor} size={29} />
   }
 
@@ -26,7 +25,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
         {renderIcon()}
       </GradientViewComponent>
 
-      { !user.isAnonymous() &&
+      { !loggedInUser.anonymous &&
         <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
           {t(loggedInUser.gender)} | {translationHelper.translateNumber(loggedInUser.age, i18n.language)} {t('year')}
         </Text>

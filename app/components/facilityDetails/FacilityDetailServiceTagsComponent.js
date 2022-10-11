@@ -12,7 +12,7 @@ const FacilityDetailServiceTagsComponent = (props) => {
     props.serviceUuids.map((serviceUuid, index) => {
       doms.push(
         <View key={index} style={styles.tag}>
-          <Text style={{color: color.blackColor, fontSize: largeFontSize()}}>{new Service().findByUuid(serviceUuid).name}</Text>
+          <Text style={{color: color.blackColor, fontSize: largeFontSize()}}>{Service.findByUuid(serviceUuid).name}</Text>
         </View>
       )
     });

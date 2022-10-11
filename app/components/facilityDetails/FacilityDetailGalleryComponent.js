@@ -8,7 +8,7 @@ import Facility from '../../models/Facility';
 
 const FacilityDetailGalleryComponent = (props) => {
   const renderImages = () => {
-    const galleries = new Facility().findByUuid(props.uuid).galleries;
+    const galleries = Facility.findByUuid(props.uuid).galleries;
     if (galleries.length == 0)
       return <EmptyMediaComponent isImage={true} iconSize={26}/>
 

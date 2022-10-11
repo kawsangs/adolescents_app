@@ -10,7 +10,7 @@ import Category from '../../models/Category';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const categories = new Category().getParentCategories();
+  const categories = Category.getParentCategories();
 
   useEffect(() => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection

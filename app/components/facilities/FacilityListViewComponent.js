@@ -8,7 +8,7 @@ import Facility from '../../models/Facility';
 
 const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const [facilities, setFacilities] = useState(new Facility().getAll());
+  const [facilities, setFacilities] = useState(Facility.getAll());
 
   const renderFacilities = () => {
     return facilities.map((facility, index) => {

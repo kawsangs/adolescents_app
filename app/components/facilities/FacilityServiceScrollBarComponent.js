@@ -12,18 +12,17 @@ import Facility from '../../models/Facility';
 const FacilityServiceScrollBarComponent = (props) => {
   const [selectedUuid, setSelectedUuid] = useState(null);
   const toggleFilter = (service) => {
-    const facility = new Facility();
     if (selectedUuid == service.uuid) {
       setSelectedUuid(null);
-      return props.updateFacilities(facility.getAll());
+      return props.updateFacilities(Facility.getAll());
     }
 
     setSelectedUuid(service.uuid);
-    props.updateFacilities(facility.findByServiceUuid(service.uuid));
+    props.updateFacilities(Facility.findByServiceUuid(service.uuid));
   }
 
   const renderList = () => {
-    return new Service().getAll().map((service, index) => {
+    return Service.getAll().map((service, index) => {
       return <TouchableOpacity key={index} style={[styles.item, selectedUuid == service.uuid && {backgroundColor: color.secondaryColor}]}
                 onPress={() => toggleFilter(service)}
              >

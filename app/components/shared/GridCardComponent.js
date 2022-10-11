@@ -20,7 +20,7 @@ const GridCardComponent = (props) => {
 
         <CardPointAndAudioFooterComponent
           uuid={props.item.uuid}
-          points={new Category().getSubCategories(props.item.uuid).length}
+          points={Category.getSubCategories(props.item.uuid).length}
           audio={props.item.audioSource}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}

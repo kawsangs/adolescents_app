@@ -30,7 +30,7 @@ const visitService = (() => {
   }
 
   function syncVisits() {
-    const syncedUsers = new User().syncedUsers();
+    const syncedUsers = User.syncedUsers();
     if (syncedUsers.length == 0) return;
 
     _syncVisitByUser(0, syncedUsers);
@@ -40,7 +40,7 @@ const visitService = (() => {
   function _syncVisitByUser(index, users) {
     if (index == users.length) return;
 
-    const unsyncedVisits = new Visit().findUnsyncedVisitsByUserUuid(users[index].uuid);
+    const unsyncedVisits = Visit.findUnsyncedVisitsByUserUuid(users[index].uuid);
     if (unsyncedVisits.length == 0) return;
 
     _sendUnsyncedVisit(0, unsyncedVisits, () => _syncVisitByUser(index + 1, users));
@@ -52,9 +52,8 @@ const visitService = (() => {
       return;
     }
 
-    const visit = new Visit();
     _sendCreateRequest(unsyncedVisits[index], () => {
-      visit.deleteByUuid(unsyncedVisits[index].uuid);  // when sync successful then remove synced visit from realm
+      Visit.deleteByUuid(unsyncedVisits[index].uuid);  // when sync successful then remove synced visit from realm
       _sendUnsyncedVisit(index + 1, unsyncedVisits, callback);
     }, () => {
       return;  // if get error then stop syncing
@@ -62,8 +61,7 @@ const visitService = (() => {
   }
 
   function _sendCreateRequest(visitItem, successCallback, failureCallback) {
-    const user = new User();
-    const userId = !!visitItem.user_uuid ? user.findByUuid(visitItem.user_uuid).id : user.loggedInUser().id;
+    const userId = !!visitItem.user_uuid ? User.findByUuid(visitItem.user_uuid).id : User.loggedInUser().id;
 
     const params = {
       visit: {
@@ -95,7 +93,7 @@ const visitService = (() => {
       parent_code: visitItem.parent_code,
     }
 
-    new Visit().createNew(data);
+    Visit.create(data);
   }
 })();
 

@@ -9,18 +9,15 @@ const navigationService = (() => {
   }
 
   function signOut() {
-    const user = new User();
-    const loggedInUser = user.loggedInUser();
-    user.update(loggedInUser.uuid, { logged_in: false });
+    User.update(User.loggedInUser().uuid, { logged_in: false });
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 
   function navigateCategory(categoryUuid) {
-    const category = new Category();
     let routeName = 'LeafCategoryDetailView';
-    if (category.isParentCategory(categoryUuid))
+    if (Category.isParentCategory(categoryUuid))
       routeName = 'SubCategoryView';
-    else if (category.isSubCategory(categoryUuid))
+    else if (Category.isSubCategory(categoryUuid))
       routeName = 'LeafCategoryView';
 
     navigationRef.current?.navigate(routeName, { uuid: categoryUuid });

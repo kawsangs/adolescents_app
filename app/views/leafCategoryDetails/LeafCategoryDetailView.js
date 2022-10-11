@@ -3,7 +3,7 @@ import ScrollViewWithAudioComponent from '../../components/shared/ScrollViewWith
 import Category from '../../models/Category';
 
 const LeafCategoryDetailView = ({route, navigation}) => {
-  const category = new Category().findByUuid(route.params.uuid)
+  const category = Category.findByUuid(route.params.uuid)
 
   return (
     <ScrollViewWithAudioComponent

@@ -1,28 +1,33 @@
 import BaseModel from './BaseModel';
 
-const MODEL = 'User';
-
 class User extends BaseModel {
-  constructor() {
-    super(MODEL);
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(User.name, uuid);
   }
 
-  loggedInUser = () => {
-    return this.findByAttr({logged_in: true})[0];
+  static create = (params) => {
+    BaseModel.create(User.name, params);
   }
 
-  unsyncedUsers = () => {
+  static update = (uuid, params) => {
+    BaseModel.update(User.name, uuid, params);
+  }
+
+  static loggedInUser = () => {
+    return this.findByAttr(User.name, {logged_in: true})[0];
+  }
+
+  static hasLoggedInUser = () => {
+    return !!this.loggedInUser();
+  }
+
+  static unsyncedUsers = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...this.findByAttr({synced: false}, '', {type: 'ASC', column: 'registered_at'})];
+    return [...this.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
   }
 
-  syncedUsers = () => {
-    return [...this.findByAttr({synced: true}, '', {type: 'ASC', column: 'registered_at'})];
-  }
-
-  isAnonymous = () => {
-    const user = this.loggedInUser();
-    return !!user ? user.age == -1 : false;
+  static syncedUsers = () => {
+    return [...this.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 }
 

@@ -18,9 +18,8 @@ const appVisitService = (() => {
   }
 
   function updateAppVisitsWithoutUser(userUuid) {
-    const visit = new Visit();
-    visit.getAppVisitsWithoutUser().map(appVisit => {
-      visit.update(appVisit.uuid, { user_uuid: userUuid });
+    Visit.getAppVisitsWithoutUser().map(appVisit => {
+      Visit.update(appVisit.uuid, { user_uuid: userUuid });
     });
   }
 })();

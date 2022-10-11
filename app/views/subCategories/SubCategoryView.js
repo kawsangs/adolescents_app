@@ -8,8 +8,8 @@ import Category from '../../models/Category';
 
 const SubCategoryView = ({route, navigation}) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const category = new Category().findByUuid(route.params.uuid);
-  const subCategories = new Category().getSubCategories(route.params.uuid);
+  const category = Category.findByUuid(route.params.uuid);
+  const subCategories = Category.getSubCategories(route.params.uuid);
 
   return (
     <GradientScrollViewComponent

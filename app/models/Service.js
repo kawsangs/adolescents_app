@@ -1,9 +1,17 @@
 import BaseModel from './BaseModel';
+import services from '../db/json/services.json';
 
-const MODEL = 'Service';
 class Service extends BaseModel {
-  constructor() {
-    super(MODEL);
+  static seedData = () => {
+    BaseModel.seedData(Service.name, services);
+  }
+
+  static getAll = () => {
+    return BaseModel.getAll(Service.name);
+  }
+
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Service.name, uuid);
   }
 }
 

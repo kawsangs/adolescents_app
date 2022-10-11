@@ -1,27 +1,34 @@
 import BaseModel from './BaseModel';
-
-const MODEL = 'Category';
+import categories from '../db/json/categories.json';
 
 class Category extends BaseModel {
-  constructor() {
-    super(MODEL);
+  static seedData = () => {
+    BaseModel.seedData(Category.name, categories);
   }
 
-  getParentCategories = () => {
-    return this.findByAttr({parent_code: null}, '', {type: 'ASC', column: 'order'});
+  static getAll = () => {
+    return BaseModel.getAll(Category.name);
   }
 
-  getSubCategories = (uuid) => {
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Category.name, uuid);
+  }
+
+  static getParentCategories = () => {
+    return this.findByAttr(Category.name, {parent_code: null}, '', {type: 'ASC', column: 'order'});
+  }
+
+  static getSubCategories = (uuid) => {
     const parentCategory = this.findByUuid(uuid);
-    return this.findByAttr({parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
+    return this.findByAttr(Category.name, {parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
   }
 
-  isParentCategory = (uuid) => {
+  static isParentCategory = (uuid) => {
     const category = this.findByUuid(uuid)
     return !!category && !category.parent_code;
   }
 
-  isSubCategory = (uuid) => {
+  static isSubCategory = (uuid) => {
     return this.getSubCategories(uuid).length > 0;
   }
 }

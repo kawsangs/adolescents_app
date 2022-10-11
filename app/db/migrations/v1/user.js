@@ -12,7 +12,8 @@ const UserSchema = {
     characteristics: {type:'string[]', default: [], optional: true },
     registered_at: 'date',
     synced: { type: 'bool', default: false },
-    logged_in: { type: 'bool', default: true }
+    logged_in: { type: 'bool', default: true },
+    anonymous: { type: 'bool', default: false },
   }
 }
 

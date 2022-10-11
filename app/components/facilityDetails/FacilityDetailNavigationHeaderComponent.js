@@ -29,7 +29,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
       <Appbar.Header style={[styles.header]}>
         <NavigationHeaderBackButtonComponent/>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
-          <NavigationHeaderTitleComponent label={new Facility().findByUuid(props.uuid).name} />
+          <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />
         </Animated.View>
       </Appbar.Header>
     </Animated.View>
