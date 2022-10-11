@@ -11,7 +11,7 @@ const toastMessageHelper = (() => {
       ToastAndroid.SHORT,
       ToastAndroid.BOTTOM,
       0,
-      200
+      90
     );
   }
 })();
