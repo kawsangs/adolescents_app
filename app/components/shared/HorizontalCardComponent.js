@@ -17,7 +17,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const HorizontalCardComponent = (props) => {
   const onPress = () => {
     props.updatePlayingUuid(null);
-    visitService.recordVisitedCategory(props.item)
+    visitService.recordVisitCategory(props.item)
     navigationService.navigateCategory(props.item.uuid)
   }
 

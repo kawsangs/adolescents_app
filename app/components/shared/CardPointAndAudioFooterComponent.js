@@ -23,7 +23,7 @@ const CardPointAndAudioFooterComponent = (props) => {
         isSpeakerIcon={true}
         containerStyle={{borderWidth: 0, zIndex: 10}}
         updatePlayingUuid={props.updatePlayingUuid}
-        btnStyle={{elevation: 0, height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize(), borderWidth: 1}}
+        btnStyle={{elevation: 0, height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}
       />
     )
   }

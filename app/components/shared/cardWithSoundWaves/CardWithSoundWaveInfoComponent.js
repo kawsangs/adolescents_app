@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     alignSelf: 'center',
-    marginTop: -(smallFontSize() / 2)     // use the font size of audio duration / 2 = the label height
+    marginTop: -((smallFontSize() / 2) + 5),     // use the font size of audio duration / 2 then + 5 = the label height
+    width: 24
   }
 });
 

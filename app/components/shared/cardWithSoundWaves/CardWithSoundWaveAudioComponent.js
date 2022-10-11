@@ -56,7 +56,6 @@ const CardWithSoundWaveAudioComponent = (props) => {
 
 const styles = StyleSheet.create({
   btn: {
-    borderWidth: 0,
     height: componentUtil.pressableItemSize(),
     width: componentUtil.pressableItemSize(),
     position: 'absolute',

@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: screenHorizontalPadding,
     marginBottom: 16,
-    height: componentUtil.pressableItemSize(8),
-    width: componentUtil.pressableItemSize(8),
+    height: componentUtil.mediumPressableItemSize(),
+    width: componentUtil.mediumPressableItemSize(),
   }
 });
 
