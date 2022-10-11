@@ -26,7 +26,7 @@ const VideoTabBarComponent = (props) => {
 
   const getTabs = () => {
     let tabs = {all: itemList};
-    new VideoCategory().getAll().map(category => {
+    VideoCategory.getAll().map(category => {
       tabs[category.name] = itemList;
     });
 

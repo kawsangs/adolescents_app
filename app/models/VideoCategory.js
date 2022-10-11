@@ -1,10 +1,13 @@
 import BaseModel from './BaseModel';
-
-const MODEL = "VideoCategory";
+import videoCategories from '../db/json/video_categories.json';
 
 class VideoCategory extends BaseModel {
-  constructor() {
-    super(MODEL);
+  static seedData = () => {
+    BaseModel.seedData(VideoCategory.name, videoCategories);
+  }
+
+  static getAll = () => {
+    return BaseModel.getAll(VideoCategory.name);
   }
 }
 

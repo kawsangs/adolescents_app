@@ -13,11 +13,10 @@ import {cardBorderRadius, cardElevation} from '../../constants/component_constan
 import {navigationRef} from '../../navigators/app_navigator';
 
 const VideoItemListComponent = (props) => {
-  const video = new Video();
-  const [videos, setVideos] = useState(video.getAll());
+  const [videos, setVideos] = useState(Video.getAll());
 
   useEffect(() => {
-    setVideos(!!props.categoryUuid ? video.findByCategoryUuid(props.categoryUuid) : video.getAll());
+    setVideos(!!props.categoryUuid ? Video.findByCategoryUuid(props.categoryUuid) : Video.getAll());
   }, [props.categoryUuid]);
 
   const viewDetail = (uuid) => {

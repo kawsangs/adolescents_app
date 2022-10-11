@@ -7,7 +7,7 @@ const videoCategoryHelper = (() => {
 
   function getCategoryRoutes() {
     let routes =[{key: 'all', title: 'ទាំងអស់', uuid: null}];
-    new VideoCategory().getAll().map(category => {
+    VideoCategory.getAll().map(category => {
       routes.push({ key: category.name, title: category.name, uuid: category.uuid });
     });
 

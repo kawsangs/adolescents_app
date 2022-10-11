@@ -12,7 +12,7 @@ import { descriptionLineHeight, screenHorizontalPadding, scrollViewPaddingBottom
 
 const imageHeight = Dimensions.get('window').height / 4;
 const VideoDetailView = (props) => {
-  const video = new Video().findByUuid(props.route.params.uuid);
+  const video = Video.findByUuid(props.route.params.uuid);
 
   return (
     <View style={{flex: 1}}>

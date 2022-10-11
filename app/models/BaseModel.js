@@ -1,29 +1,25 @@
 import realm from '../db/schema';
 
 class BaseModel {
-  constructor(model) {
-    this.model = model;
-  }
-
-  seedData = (items) => {
+  static seedData = (model, items) => {
     realm.write(() => {
       items.map(item => {
-        if (!this.findByUuid(item.uuid))
-          realm.create(this.model, item);
+        if (!this.findByUuid(model, item.uuid))
+          realm.create(model, item);
       });
     });
   }
 
-  getAll = () => {
-    return realm.objects(this.model);
+  static getAll = (model) => {
+    return realm.objects(model);
   }
 
-  findByUuid = (uuid) => {
-    return realm.objects(this.model).filtered(`uuid = '${uuid}'`)[0];
+  static findByUuid = (model, uuid) => {
+    return realm.objects(model).filtered(`uuid = '${uuid}'`)[0];
   }
 
-  // Params example: ({parent_code: null, display: `'row_card'`}, 'AND', {type: 'ASC', column: 'order'})
-  findByAttr = (attr, operator = '', sortAttr = {}) => {
+  // Params example: ('User', {parent_code: null, display: `'row_card'`}, 'AND', {type: 'ASC', column: 'order'})
+  static findByAttr = (model, attr, operator = '', sortAttr = {}) => {
     const columns = Object.keys(attr);
     let query = '';
     columns.map((column, index) => {
@@ -33,23 +29,23 @@ class BaseModel {
     if(!!sortAttr.type)
       query += `SORT(${sortAttr.column} ${sortAttr.type})`
 
-    return realm.objects(this.model).filtered(query);
+    return realm.objects(model).filtered(query);
   }
 
-  create = (data) => {
+  static create = (model, data) => {
     realm.write(() => {
-      realm.create(this.model, data);
+      realm.create(model, data);
     });
   }
 
-  update = (uuid, data) => {
+  static update = (model, uuid, data) => {
     realm.write(() => {
-      realm.create(this.model, Object.assign(data, { uuid: uuid }), 'modified');
+      realm.create(model, Object.assign(data, { uuid: uuid }), 'modified');
     });
   }
 
-  deleteByUuid = (uuid) => {
-    const item = this.findByUuid(uuid);
+  static deleteByUuid = (model, uuid) => {
+    const item = this.findByUuid(model, uuid);
     if (!!item) {
       realm.write(() => {
         realm.delete(item);
