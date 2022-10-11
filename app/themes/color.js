@@ -1,6 +1,6 @@
 const color = {
-  primaryColor: '#347cb6',
-  secondaryColor: '#ce3581',
+  primaryColor: '#1b91f7',
+  secondaryColor: '#fa60ad',
   tertiaryColor: '#FCF8E8',
   quaternaryColor: '#ECB390',
   blackColor: '#000000',
@@ -17,6 +17,11 @@ const color = {
   redColor: '#ff0000',
   disabledColor: '#b5b5b5',
   requiredColor: '#d50000',
+  bigButtonColor: '#ffffff',
+  facebookColor: '#4267b2',
+  telegramColor: '#0088cc',
 }
 
 export default color;
+
+export const backgroundColors = [color.secondaryColor, color.primaryColor];

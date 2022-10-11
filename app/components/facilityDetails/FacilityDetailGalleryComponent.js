@@ -3,6 +3,7 @@ import {View, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
 
 import EmptyImageComponent from '../shared/EmptyImageComponent';
+import color from '../../themes/color';
 import Facility from '../../models/Facility';
 
 const FacilityDetailGalleryComponent = (props) => {
@@ -18,8 +19,8 @@ const FacilityDetailGalleryComponent = (props) => {
 
   const renderImageSlider = () => {
     return <Swiper style={styles.wrapper} showsButtons={false}
-              dotStyle={{bottom: -20}}
-              activeDotStyle={{bottom: -20}}
+              dotStyle={{bottom: -20, backgroundColor: '#818181'}}
+              activeDotStyle={{bottom: -20, backgroundColor: color.secondaryColor}}
             >
               {renderImages()}
             </Swiper>

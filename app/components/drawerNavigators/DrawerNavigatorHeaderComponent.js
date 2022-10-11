@@ -15,13 +15,13 @@ const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
   const loggedInUser = User.loggedInUser();
   const renderIcon = () => {
-    return User.isAnonymous() ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
+    return User.isAnonymous() ? <AnonymousIconComponent size={29} color={color.whiteColor} containerStyle={{marginLeft: -4}}/>
                              : <FeatherIcon name='user' color={color.whiteColor} size={29} />
   }
 
   return (
     <View style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}>
-      <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 30, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
+      <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 64, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
         {renderIcon()}
       </GradientViewComponent>
 
