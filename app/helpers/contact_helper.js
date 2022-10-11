@@ -15,7 +15,7 @@ const contactHelper = (() => {
       case FACEBOOK:
         return value;
       case TELEGRAM:
-        return `t.me/${value}`;
+        return `https://t.me/${value}`
       default:
         return value.replace(/\s/g, '');
     }
