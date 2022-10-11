@@ -19,7 +19,7 @@ const FacilityDetailWorkingDaysComponent = (props) => {
       if (workingDays.length == 0) continue; 
 
       doms.push(
-        <View key={key} style={{marginTop: 16}}>
+        <View key={key} style={{marginTop: 16, marginLeft: -10}}>
           <Text style={{fontSize: largeFontSize()}}>
             {days[workingDays[0].day][i18n.language]}
             {workingDays.length > 1 && ` - ${days[workingDays[workingDays.length - 1].day][i18n.language]}`}

@@ -16,7 +16,7 @@ const FacilityDetailContactNumbersComponent = (props) => {
       return <TouchableOpacity key={index} style={{justifyContent: 'center', height: 30, marginTop: 12}}
                 onPress={() => contactHelper.openContactLink(PHONE, number)}
              >
-                <Text style={{fontSize: largeFontSize(), marginLeft: 8,  color: color.primaryColor}}>
+                <Text style={{fontSize: largeFontSize(), marginLeft: 8,  color: color.primaryColor, textAlign: 'center'}}>
                     {translationHelper.translateNumber(contactHelper.getFormattedPhoneNumber(number), i18n.language)}
                 </Text>
              </TouchableOpacity>
