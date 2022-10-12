@@ -6,7 +6,7 @@ import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
 import color from '../../themes/color';
 import { headerWithAudioMaxHeight, scrollViewPaddingBottom, descriptionLineHeight } from '../../constants/component_constant';
-import {xxLargeFontSize, largeFontSize} from '../../utils/font_size_util';
+import {xxLargeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 
 const ScrollViewWithAudioComponent = (props) => {
   const scrollY = new Animated.Value(0);
@@ -14,7 +14,7 @@ const ScrollViewWithAudioComponent = (props) => {
     return (
       <View style={styles.scrollViewContent}>
         <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: xxLargeFontSize(), marginTop: 14, lineHeight: 30}} />
-        <Text style={{fontSize: largeFontSize(), marginTop: 16, color: color.blackColor, lineHeight: descriptionLineHeight}}>
+        <Text style={{fontSize: descriptionFontSize(), marginTop: 16, color: color.blackColor, lineHeight: descriptionLineHeight}}>
           {props.description}
         </Text>
       </View>
