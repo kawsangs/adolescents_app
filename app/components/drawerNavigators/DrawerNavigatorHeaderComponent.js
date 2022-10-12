@@ -13,7 +13,7 @@ import User from '../../models/User';
 
 const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
-  const loggedInUser = User.loggedInUser();
+  const loggedInUser = User.currentLoggedIn();
   const renderIcon = () => {
     return loggedInUser.anonymous ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
                              : <FeatherIcon name='user' color={color.whiteColor} size={29} />

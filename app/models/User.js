@@ -13,21 +13,25 @@ class User extends BaseModel {
     BaseModel.update(User.name, uuid, params);
   }
 
-  static loggedInUser = () => {
+  static currentLoggedIn = () => {
     return this.findByAttr(User.name, {logged_in: true})[0];
   }
 
-  static hasLoggedInUser = () => {
-    return !!this.loggedInUser();
+  static hasCurrentLoggedIn = () => {
+    return !!this.currentLoggedIn();
   }
 
-  static unsyncedUsers = () => {
+  static unsynced = () => {
     // we use spread operator to prevent the live update of the realm object
     return [...this.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
   }
 
-  static syncedUsers = () => {
+  static synced = () => {
     return [...this.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
+  }
+
+  static logOut = () => {
+    this.update(this.currentLoggedIn().uuid, { logged_in: false });
   }
 }
 

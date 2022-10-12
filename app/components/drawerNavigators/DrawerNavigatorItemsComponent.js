@@ -42,7 +42,7 @@ const DrawerNavigatorItemsComponent = (props) => {
 
   const onPress = (routeName, type) => {
     if (type == SIGN_OUT)
-      return navigationService.signOut();
+      return navigationService.logOut();
 
     !!routeName && props.navigation.navigate(routeName);
   }

@@ -4,12 +4,12 @@ import {navigationRef} from '../navigators/app_navigator';
 
 const navigationService = (() => {
   return {
-    signOut,
+    logOut,
     navigateCategory,
   }
 
-  function signOut() {
-    User.update(User.loggedInUser().uuid, { logged_in: false });
+  function logOut() {
+    User.logOut();
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 

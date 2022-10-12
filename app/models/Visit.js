@@ -5,8 +5,8 @@ import User from './User';
 import {APP_VISIT} from '../constants/visit_constant';
 
 class Visit extends BaseModel {
-  static create = (data) => {
-    BaseModel.create(Visit.name, this.#buildData(data));
+  static create = (params) => {
+    BaseModel.create(Visit.name, this.#buildParams(params));
   }
 
   static update = (uuid, params) => {
@@ -26,11 +26,11 @@ class Visit extends BaseModel {
   }
 
   // private method
-  static #buildData = (data) => {
+  static #buildParams = (params) => {
     return {
-      ...data,
+      ...params,
       uuid: uuidv4(),
-      user_uuid: User.loggedInUser() ? User.loggedInUser().uuid : null,
+      user_uuid: User.currentLoggedIn() ? User.currentLoggedIn().uuid : null,
       visit_date: Moment().toDate(),
     }
   }

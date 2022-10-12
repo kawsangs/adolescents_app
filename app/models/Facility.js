@@ -4,7 +4,7 @@ import facilities from '../db/json/facilities.json';
 
 class Facility extends BaseModel {
   static seedData = () => {
-    BaseModel.seedData(Facility.name, this.#getFormattedFacilities(facilities));
+    BaseModel.seedData(Facility.name, this.#getFormattedFacilities());
   }
 
   static getAll = () => {
