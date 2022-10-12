@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
 import services from '../db/json/services.json';
 
-class Service extends BaseModel {
+class Service {
   static seedData = () => {
     BaseModel.seedData(Service.name, services);
   }

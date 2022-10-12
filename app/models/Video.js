@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
 import videos from '../db/json/videos.json';
 
-class Video extends BaseModel {
+class Video {
   static seedData = () => {
     BaseModel.seedData(Video.name, this.#getFormattedVideos());
   }
@@ -15,7 +15,7 @@ class Video extends BaseModel {
   }
 
   static findByCategoryUuid = (categoryUuid) => {
-    return this.findByAttr(Video.name, {video_category_uuid: `'${categoryUuid}'`}, '', {type: 'ASC', column: 'display_order'});
+    return BaseModel.findByAttr(Video.name, {video_category_uuid: `'${categoryUuid}'`}, '', {type: 'ASC', column: 'display_order'});
   }
 
   // private method

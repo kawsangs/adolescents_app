@@ -4,7 +4,7 @@ import uuidv4 from '../utils/uuidv4_util'
 import User from './User';
 import {APP_VISIT} from '../constants/visit_constant';
 
-class Visit extends BaseModel {
+class Visit {
   static create = (params) => {
     BaseModel.create(Visit.name, this.#buildParams(params));
   }
@@ -14,11 +14,11 @@ class Visit extends BaseModel {
   }
 
   static findUnsyncedVisitsByUserUuid = (userUuid) => {
-    return [...this.findByAttr(Visit.name, {user_uuid: `'${userUuid}'`}, '', {type:'ASC', column: 'visit_date'})];
+    return [...BaseModel.findByAttr(Visit.name, {user_uuid: `'${userUuid}'`}, '', {type:'ASC', column: 'visit_date'})];
   }
 
   static getAppVisitsWithoutUser = () => {
-    return this.findByAttr(Visit.name, {code: `'${APP_VISIT}'`, user_uuid: null}, 'AND');
+    return BaseModel.findByAttr(Visit.name, {code: `'${APP_VISIT}'`, user_uuid: null}, 'AND');
   }
 
   static deleteByUuid = (uuid) => {

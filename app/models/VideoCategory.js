@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
 import videoCategories from '../db/json/video_categories.json';
 
-class VideoCategory extends BaseModel {
+class VideoCategory {
   static seedData = () => {
     BaseModel.seedData(VideoCategory.name, videoCategories);
   }

@@ -8,7 +8,7 @@ import navigationService from '../../services/navigation_service';
 
 const SCREEN = 'sc';
 const SHARE = 'sh';
-const SIGN_OUT = 'so';
+const LOG_OUT = 'lo';
 
 const DrawerNavigatorItemsComponent = (props) => {
   const {t} = useTranslation();
@@ -21,7 +21,7 @@ const DrawerNavigatorItemsComponent = (props) => {
       ],
       second: [
         {label: t('share'), icon: 'share-2', route_name: '', type: SHARE},
-        {label: t('reset'), icon: 'rotate-ccw', route_name: '', type: SIGN_OUT},
+        {label: t('reset'), icon: 'rotate-ccw', route_name: '', type: LOG_OUT},
       ]
     }
     const mobileMarginTop = isLowPixelDensityDevice() ? 16 : 34;
@@ -41,7 +41,7 @@ const DrawerNavigatorItemsComponent = (props) => {
   }
 
   const onPress = (routeName, type) => {
-    if (type == SIGN_OUT)
+    if (type == LOG_OUT)
       return navigationService.logOut();
 
     !!routeName && props.navigation.navigate(routeName);

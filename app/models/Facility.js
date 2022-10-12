@@ -2,7 +2,7 @@ import BaseModel from './BaseModel';
 import realm from '../db/schema';
 import facilities from '../db/json/facilities.json';
 
-class Facility extends BaseModel {
+class Facility {
   static seedData = () => {
     BaseModel.seedData(Facility.name, this.#getFormattedFacilities());
   }
@@ -16,7 +16,7 @@ class Facility extends BaseModel {
   }
 
   static findByServiceUuid = (serviceUuid) => {
-    return realm.objects(Facility.name).filtered(`ANY service_uuids = '${serviceUuid}'`);
+    return BaseModel.findByAttr(Facility.name, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
   }
 
   // private method

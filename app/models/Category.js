@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
 import categories from '../db/json/categories.json';
 
-class Category extends BaseModel {
+class Category {
   static seedData = () => {
     BaseModel.seedData(Category.name, categories);
   }
@@ -15,12 +15,12 @@ class Category extends BaseModel {
   }
 
   static getParentCategories = () => {
-    return this.findByAttr(Category.name, {parent_code: null}, '', {type: 'ASC', column: 'order'});
+    return BaseModel.findByAttr(Category.name, {parent_code: null}, '', {type: 'ASC', column: 'order'});
   }
 
   static getSubCategories = (uuid) => {
     const parentCategory = this.findByUuid(uuid);
-    return this.findByAttr(Category.name, {parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
+    return BaseModel.findByAttr(Category.name, {parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
   }
 
   static isParentCategory = (uuid) => {

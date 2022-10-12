@@ -1,6 +1,6 @@
 import BaseModel from './BaseModel';
 
-class User extends BaseModel {
+class User {
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(User.name, uuid);
   }
@@ -14,7 +14,7 @@ class User extends BaseModel {
   }
 
   static currentLoggedIn = () => {
-    return this.findByAttr(User.name, {logged_in: true})[0];
+    return BaseModel.findByAttr(User.name, {logged_in: true})[0];
   }
 
   static hasCurrentLoggedIn = () => {
@@ -23,11 +23,11 @@ class User extends BaseModel {
 
   static unsynced = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...this.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
+    return [...BaseModel.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
   }
 
   static synced = () => {
-    return [...this.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
+    return [...BaseModel.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
   static logOut = () => {
