@@ -22,6 +22,7 @@ const FacilityCardItemComponent = (props) => {
 
   const renderInfo = () => {
     return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} description={props.facility.description} audio={props.facility.audioSource}
+              latitude={props.facility.latitude} longitude={props.facility.longitude}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />

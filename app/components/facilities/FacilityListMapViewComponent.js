@@ -3,7 +3,6 @@ import {View, ScrollView, Dimensions} from 'react-native';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
-import CurrentLocationButtonComponent from '../shared/CurrentLocationButtonComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
 import mapHelper from '../../helpers/map_helper';
@@ -57,7 +56,6 @@ const FacilityListMapViewComponent = () => {
       />
 
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <CurrentLocationButtonComponent  updatePosition={(coords) =>setMapRegion({latitude: coords.latitude - regionOffset, longitude: coords.longitude})}/>
         <ScrollView
           contentContainerStyle={{paddingBottom: 4, paddingLeft: 16, paddingRight: 8}}
           style={{flexGrow: 0, width: '100%'}}

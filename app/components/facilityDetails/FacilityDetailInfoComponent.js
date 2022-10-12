@@ -15,12 +15,19 @@ import Facility from '../../models/Facility';
 
 const FacilityDetailInfoComponent = (props) => {
   const facility = Facility.findByUuid(props.uuid);
+  const viewRouteStyle = () => {
+    if (!facility.latitude || !facility.longitude)
+      return { btn: {backgroundColor: color.disabledColor}, text: {color: color.mutedColor} }
+
+    return { btn: {backgroundColor: color.primaryColor}, text: {color: color.whiteColor} }
+  }
 
   return (
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
       <FacilityDetailTitleComponent name={facility.name} address={facility.address}/>
-      <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={20} iconColor={color.whiteColor}
-        buttonStyle={styles.viewRouteBtn} labelStyle={styles.viewRouteLabel}
+      <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={20} iconColor={viewRouteStyle().text.color}
+        latitude={facility.latitude} longitude={facility.longitude}
+        buttonStyle={[styles.viewRouteBtn, viewRouteStyle().btn]} labelStyle={[styles.viewRouteLabel, viewRouteStyle().text]}
       />
 
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
@@ -41,7 +48,6 @@ const styles = StyleSheet.create({
   viewRouteBtn: {
     alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: color.primaryColor,
     borderRadius: 56,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -50,7 +56,6 @@ const styles = StyleSheet.create({
     width: 200,
   },
   viewRouteLabel: {
-    color: color.whiteColor,
     fontSize: xLargeFontSize(),
     marginLeft: 8,
   }
