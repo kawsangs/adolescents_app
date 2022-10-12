@@ -29,6 +29,11 @@ export const smallFontSize = () => {
   return getStyleOfDevice(12, mobileFontSize(10));
 }
 
+export const descriptionFontSize = () => {
+  const mobileFontSize = isLowPixelDensityDevice() ? 15 : 18
+  return getStyleOfDevice(18, mobileFontSize);
+}
+
 export const mobileFontSize = (size) => {
   const scale = (Dimensions.get('window').width / 320) + 1;
   if (isLowPixelDensityDevice())

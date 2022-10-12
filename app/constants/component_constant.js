@@ -1,4 +1,4 @@
-import { getStyleOfDevice } from '../utils/responsive_util';
+import { getStyleOfDevice, isLowPixelDensityDevice } from '../utils/responsive_util';
 import {xLargeFontSize, largeFontSize} from '../utils/font_size_util';
 
 export const buttonBorderRadius = 10;
@@ -15,4 +15,4 @@ export const bottomTabBarHeight = 62;
 export const scrollViewPaddingBottom = bottomTabBarHeight + 16;
 export const cardTitleFontSize = xLargeFontSize();
 export const descriptionFontSize = largeFontSize();
-export const descriptionLineHeight = 28;
+export const descriptionLineHeight = isLowPixelDensityDevice() ? 28 : 36;

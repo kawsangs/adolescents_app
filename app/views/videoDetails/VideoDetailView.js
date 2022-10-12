@@ -7,7 +7,7 @@ import ImageComponent from '../../components/shared/ImageComponent';
 import color from '../../themes/color';
 import Video from '../../models/Video';
 import youtubeHelper from '../../helpers/youtube_helper';
-import { largeFontSize } from '../../utils/font_size_util';
+import {descriptionFontSize} from '../../utils/font_size_util';
 import { descriptionLineHeight, screenHorizontalPadding, scrollViewPaddingBottom } from '../../constants/component_constant';
 
 const imageHeight = Dimensions.get('window').height / 4;
@@ -21,8 +21,7 @@ const VideoDetailView = (props) => {
       <ScrollView contentContainerStyle={{paddingBottom: scrollViewPaddingBottom, backgroundColor: color.whiteColor}}>
         <ImageComponent source={{uri: youtubeHelper.getThumbnail(video.url)}} resizeMode="cover" imageStyle={{height: imageHeight}} emptyStyle={{height: imageHeight}} />
 
-        <Text style={{fontSize: largeFontSize(), lineHeight: descriptionLineHeight, margin: screenHorizontalPadding}}>
-          {video.description}
+        <Text style={{fontSize: descriptionFontSize(), lineHeight: descriptionLineHeight, margin: screenHorizontalPadding}}>
           {video.description}
         </Text>
       </ScrollView>
