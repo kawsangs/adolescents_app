@@ -11,7 +11,7 @@ const navigationUtil = (() => {
     if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
       return 'IntroductionView';
 
-    return !!User.loggedInUser() ? 'DrawerNavigator' : 'LoginSelectionView';
+    return User.hasCurrentLoggedIn() ? 'DrawerNavigator' : 'LoginSelectionView';
   }
 })();
 

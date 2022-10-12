@@ -17,7 +17,7 @@ const createAccountService = (() => {
   }
 
   function createUser(user, callback) {
-    if (!!User.loggedInUser())   // To prevent creating duplicate user when there is a logged in user
+    if (User.hasCurrentLoggedIn())   // To prevent creating duplicate user when there is a logged in user
       return callback();
 
     const params = _buildData(user);
@@ -38,7 +38,7 @@ const createAccountService = (() => {
   }
 
   function syncUsers(callback) {
-    const unsyncedUsers = User.unsyncedUsers();
+    const unsyncedUsers = User.unsynced();
     if (unsyncedUsers.length == 0) {
       callback();
       return;
@@ -80,6 +80,7 @@ const createAccountService = (() => {
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
+      anonymous: !user
     }
 
     return params;

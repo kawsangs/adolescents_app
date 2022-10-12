@@ -18,16 +18,10 @@ class BaseModel {
     return realm.objects(model).filtered(`uuid = '${uuid}'`)[0];
   }
 
-  // Params example: ('User', {parent_code: null, display: `'row_card'`}, 'AND', {type: 'ASC', column: 'order'})
-  static findByAttr = (model, attr, operator = '', sortAttr = {}) => {
-    const columns = Object.keys(attr);
-    let query = '';
-    columns.map((column, index) => {
-      query += `${column} = ${attr[column]} ${index < columns.length - 1 ? `${operator} ` : ''}`;
-    });
-
-    if(!!sortAttr.type)
-      query += `SORT(${sortAttr.column} ${sortAttr.type})`
+  // Params example: ('User', {parent_code: null, display: `'row_card'`}, 'AND', {type: 'ASC', column: 'order'}, 'ANY')
+  static findByAttr = (model, attr, operator = '', sortAttr = {}, property = undefined) => {
+    const query = !!property ? this.#findByAttrWithPropertyQuery(attr, operator, sortAttr, property)
+                             : this.#findByAttrQuery(attr, operator, sortAttr);
 
     return realm.objects(model).filtered(query);
   }
@@ -51,6 +45,24 @@ class BaseModel {
         realm.delete(item);
       });
     }
+  }
+
+  // private method
+  static #findByAttrQuery = (attr, operator = '', sortAttr = {}) => {
+    const columns = Object.keys(attr);
+    let query = '';
+    columns.map((column, index) => {
+      query += `${column} = ${attr[column]} ${index < columns.length - 1 ? `${operator} ` : ''}`;
+    });
+
+    if(!!sortAttr.type)
+      query += `SORT(${sortAttr.column} ${sortAttr.type})`
+
+    return query;
+  }
+
+  static #findByAttrWithPropertyQuery = (attr, operator = '', sortAttr = {}, property) => {
+    return `${property} ${this.#findByAttrQuery(attr, operator, sortAttr)}`;
   }
 }
 

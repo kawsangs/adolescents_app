@@ -10,6 +10,7 @@ const seedDataService = (() => {
   }
 
   function seedToRealm() {
+    Service.seedData();
     Category.seedData();
     Facility.seedData();
     Service.seedData();

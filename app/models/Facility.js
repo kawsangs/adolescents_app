@@ -1,37 +1,34 @@
+import BaseModel from './BaseModel';
 import realm from '../db/schema';
 import facilities from '../db/json/facilities.json';
 
-const MODEL = 'Facility';
-
-const Facility = (() => {
-  return {
-    seedData,
-    getAll,
-    findByUuid,
-    findByServiceUuid,
+class Facility {
+  static seedData = () => {
+    BaseModel.seedData(Facility.name, this.#getFormattedFacilities());
   }
 
-  function seedData() {
-    realm.write(() => {
-      facilities.map((facility) => {
-        if (!findByUuid(facility.uuid)) {
-          realm.create(MODEL, {...facility, working_days: JSON.stringify(facility.working_days)});
-        }
-      });
-    })
+  static getAll = () => {
+    return BaseModel.getAll(Facility.name);
   }
 
-  function getAll() {
-    return realm.objects(MODEL);
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Facility.name, uuid);
   }
 
-  function findByUuid(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+  static findByServiceUuid = (serviceUuid) => {
+    return BaseModel.findByAttr(Facility.name, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
   }
 
-  function findByServiceUuid(serviceUuid) {
-    return realm.objects(MODEL).filtered(`ANY service_uuids = '${serviceUuid}'`)
+  // private method
+  static #getFormattedFacilities = () => {
+    let formattedFacilities = [];
+
+    facilities.map(facility => {
+      formattedFacilities.push({...facility, working_days: JSON.stringify(facility.working_days)});
+    });
+
+    return formattedFacilities;
   }
-})();
+}
 
 export default Facility;

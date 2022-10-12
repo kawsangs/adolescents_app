@@ -1,51 +1,38 @@
-import realm from '../db/schema';
+import BaseModel from './BaseModel';
 
-const MODEL = 'User';
-
-const User = (() => {
-  return {
-    find,
-    create,
-    update,
-    loggedInUser,
-    unsyncedUsers,
-    syncedUsers,
-    isAnonymous,
-  };
-
-  function find(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+class User {
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(User.name, uuid);
   }
 
-  function create(data) {
-    realm.write(() => {
-      realm.create(MODEL, data);
-    });
+  static create = (params) => {
+    BaseModel.create(User.name, params);
   }
 
-  function update(uuid, data) {
-    realm.write(() => {
-      realm.create(MODEL, Object.assign(data, { uuid: uuid }), 'modified');
-    });
+  static update = (uuid, params) => {
+    BaseModel.update(User.name, uuid, params);
   }
 
-  function loggedInUser() {
-    return realm.objects(MODEL).filtered(`logged_in = true`)[0];
+  static currentLoggedIn = () => {
+    return BaseModel.findByAttr(User.name, {logged_in: true})[0];
   }
 
-  function unsyncedUsers() {
+  static hasCurrentLoggedIn = () => {
+    return !!this.currentLoggedIn();
+  }
+
+  static unsynced = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...realm.objects(MODEL).filtered(`synced = false SORT(registered_at ASC)`)];
+    return [...BaseModel.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
   }
 
-  function syncedUsers() {
-    return [...realm.objects(MODEL).filtered(`synced = true SORT(registered_at ASC)`)];
+  static synced = () => {
+    return [...BaseModel.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
-  function isAnonymous() {
-    const user = loggedInUser();
-    return !!user ? user.age == -1 : false;
+  static logOut = () => {
+    this.update(this.currentLoggedIn().uuid, { logged_in: false });
   }
-})();
+}
 
 export default User;

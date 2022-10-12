@@ -15,7 +15,8 @@ const FacilityListMapViewComponent = () => {
   const [mapRegion, setMapRegion] = useState({});
   const [markers, setMarkers] = useState([]);
   const regionOffset = 0.0016;
-  const firstFacility = Facility.getAll().length > 0 ? Facility.getAll()[0] : null;
+  // const firstFacility = Facility.getAll().length > 0 ? Facility.getAll()[0] : null;
+  const firstFacility = facilities.length > 0 ? facilities[0] : null;
   const initRegion = !!firstFacility ? {latitude: firstFacility.latitude - regionOffset, longitude: firstFacility.longitude} : null;
 
   useEffect(() => {

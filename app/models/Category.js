@@ -1,60 +1,36 @@
-import realm from '../db/schema';
-// import categories from '../db/json/categories';
+import BaseModel from './BaseModel';
 import categories from '../db/json/categories.json';
 
-const MODEL = 'Category';
-
-const Category = (() => {
-  return {
-    seedData,
-    findByDisplayType,
-    findByUuid,
-    getParentCategories,
-    getSubCategories,
-    isParentCategory,
-    isSubCategory,
-    isLeafCategory,
+class Category {
+  static seedData = () => {
+    BaseModel.seedData(Category.name, categories);
   }
 
-  function seedData() {
-    realm.write(() => {
-      categories.map((category) => {
-        if (!findByUuid(category.uuid)) {
-          realm.create(MODEL, category);
-        }
-      });
-    })
+  static getAll = () => {
+    return BaseModel.getAll(Category.name);
   }
 
-  function findByDisplayType(type) {
-    return realm.objects(MODEL).filtered(`display = ${type}`);
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Category.name, uuid);
   }
 
-  function findByUuid(uuid) {
-    return realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
+  static getParentCategories = () => {
+    return BaseModel.findByAttr(Category.name, {parent_code: null}, '', {type: 'ASC', column: 'order'});
   }
 
-  function getParentCategories() {
-    return realm.objects(MODEL).filtered(`parent_code = null || parent_code = '' SORT(order ASC)`);
+  static getSubCategories = (uuid) => {
+    const parentCategory = this.findByUuid(uuid);
+    return BaseModel.findByAttr(Category.name, {parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
   }
 
-  function getSubCategories(uuid) {
-    const category = findByUuid(uuid)
-    return realm.objects(MODEL).filtered(`parent_code = '${category.code}'`);
-  }
-
-  function isParentCategory(uuid) {
-    const category = findByUuid(uuid)
+  static isParentCategory = (uuid) => {
+    const category = this.findByUuid(uuid)
     return !!category && !category.parent_code;
   }
 
-  function isSubCategory(uuid) {
-    return getSubCategories(uuid).length > 0;
+  static isSubCategory = (uuid) => {
+    return this.getSubCategories(uuid).length > 0;
   }
-
-  function isLeafCategory(uuid) {
-    return getSubCategories(uuid).length == 0;
-  }
-})();
+}
 
 export default Category;

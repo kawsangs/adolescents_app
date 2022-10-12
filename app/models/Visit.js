@@ -1,57 +1,39 @@
 import Moment from 'moment';
-import realm from '../db/schema';
+import BaseModel from './BaseModel';
 import uuidv4 from '../utils/uuidv4_util'
 import User from './User';
 import {APP_VISIT} from '../constants/visit_constant';
 
-const MODEL = 'Visit';
-
-const Visit = (() => {
-  return {
-    create,
-    findUnsyncedVisitsByUserUuid,
-    deleteByUuid,
-    update,
-    getAppVisitsWithoutUser,
+class Visit {
+  static create = (params) => {
+    BaseModel.create(Visit.name, this.#buildParams(params));
   }
 
-  function create(data) {
-    realm.write(() => {
-      realm.create(MODEL, _buildData(data));
-    });
+  static update = (uuid, params) => {
+    BaseModel.update(Visit.name, uuid, params);
   }
 
-  function findUnsyncedVisitsByUserUuid(userUuid) {
-    return [...realm.objects(MODEL).filtered(`user_uuid = '${userUuid}' SORT(visit_date ASC)`)];
+  static findUnsyncedVisitsByUserUuid = (userUuid) => {
+    return [...BaseModel.findByAttr(Visit.name, {user_uuid: `'${userUuid}'`}, '', {type:'ASC', column: 'visit_date'})];
   }
 
-  function deleteByUuid(uuid) {
-    const visit = realm.objects(MODEL).filtered(`uuid = '${uuid}'`)[0];
-    if (!!visit) {
-      realm.write(() => {
-        realm.delete(visit);
-      });
-    }
+  static getAppVisitsWithoutUser = () => {
+    return BaseModel.findByAttr(Visit.name, {code: `'${APP_VISIT}'`, user_uuid: null}, 'AND');
   }
 
-  function update(uuid, data) {
-    realm.write(() => {
-      realm.create(MODEL, Object.assign(data, { uuid: uuid }), 'modified');
-    });
+  static deleteByUuid = (uuid) => {
+    BaseModel.deleteByUuid(Visit.name, uuid);
   }
 
-  function getAppVisitsWithoutUser() {
-    return realm.objects(MODEL).filtered(`code = '${APP_VISIT}' AND user_uuid = null`);
-  }
-
-  function _buildData(data) {
+  // private method
+  static #buildParams = (params) => {
     return {
-      ...data,
+      ...params,
       uuid: uuidv4(),
-      user_uuid: User.loggedInUser() ? User.loggedInUser().uuid : null,
+      user_uuid: User.currentLoggedIn() ? User.currentLoggedIn().uuid : null,
       visit_date: Moment().toDate(),
     }
   }
-})();
+}
 
 export default Visit;
