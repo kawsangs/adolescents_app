@@ -1,9 +1,11 @@
 import React from 'react';
 import { Animated, View, ScrollView, StyleSheet } from 'react-native';
 import {Text} from 'react-native-paper';
+import HTML from 'react-native-render-html';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
+import HtmlDescriptionComponent from './HtmlDescriptionComponent';
 import color from '../../themes/color';
 import { headerWithAudioMaxHeight, scrollViewPaddingBottom, descriptionLineHeight } from '../../constants/component_constant';
 import {xxLargeFontSize, descriptionFontSize} from '../../utils/font_size_util';
@@ -13,10 +15,14 @@ const ScrollViewWithAudioComponent = (props) => {
   const renderContent = () => {
     return (
       <View style={styles.scrollViewContent}>
-        <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: xxLargeFontSize(), marginTop: 14, lineHeight: 30}} />
-        <Text style={{fontSize: descriptionFontSize(), marginTop: 16, color: color.blackColor, lineHeight: descriptionLineHeight}}>
+        <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: xxLargeFontSize(), marginTop: 14, marginBottom: 16, lineHeight: 30}} />
+        {/* <Text style={{fontSize: descriptionFontSize(), marginTop: 16, color: color.blackColor, lineHeight: descriptionLineHeight}}>
           {props.description}
-        </Text>
+        </Text> */}
+
+        {/* <View style={{flexWrap: 'wrap'}}> */}
+          <HtmlDescriptionComponent source={props.description} />
+        {/* </View> */}
       </View>
     )
   }
@@ -35,7 +41,7 @@ const ScrollViewWithAudioComponent = (props) => {
 
 const styles = StyleSheet.create({
   scrollViewContent: {
-    backgroundColor: color.whiteSmokeColor,
+    backgroundColor: color.whiteColor,
     marginTop: headerWithAudioMaxHeight,
     paddingHorizontal: 24,
     paddingBottom: scrollViewPaddingBottom,
