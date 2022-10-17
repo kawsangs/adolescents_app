@@ -5,6 +5,8 @@ import {Card} from 'react-native-paper';
 import BoldLabelComponent from './BoldLabelComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
 import AudioWaveButtonComponent from './AudioWaveButtonComponent';
+import GridCardNoSubCategoryComponent from './gridCards/GridCardNoSubCategoryComponent';
+import GridCardWithSubCategoryComponent from './gridCards/GridCardWithSubCategoryComponent';
 import {cardBorderRadius, cardElevation, cardTitleFontSize} from '../../constants/component_constant';
 import Category from '../../models/Category';
 import visitService from '../../services/visit_service';
@@ -12,42 +14,32 @@ import componentUtil from '../../utils/component_util';
 
 const GridCardComponent = (props) => {
   const points = Category.getSubCategories(props.item.uuid).length;
-  const renderTitleAndAudio =  () => {
-    return <View style={styles.titleWithAudioContainer}>
-              <View style={{flex: 1, justifyContent: 'center'}}>
-                <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: 25}} />
-              </View>
-              <AudioWaveButtonComponent
-                itemUuid={props.uuid}
-                audio={props.audio}
-                playingUuid={props.playingUuid}
-                isSpeakerIcon={true}
-                containerStyle={{borderWidth: 0, zIndex: 10}}
-                updatePlayingUuid={props.updatePlayingUuid}
-                btnStyle={{elevation: 0, height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}
-              />
-           </View>
+  const renderInfoWithNoSubCategory = () => {
+    return <GridCardNoSubCategoryComponent
+              title={props.item.name}
+              uuid={props.item.uuid}
+              audio={props.item.audioSource}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
   }
 
-  const renderTitleWithSubCategory = () => {
-    return <View style={styles.titleWithSubCategoryContainer}>
-              <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
-              <CardPointAndAudioFooterComponent
-                uuid={props.item.uuid}
-                points={Category.getSubCategories(props.item.uuid).length}
-                audio={props.item.audioSource}
-                playingUuid={props.playingUuid}
-                updatePlayingUuid={props.updatePlayingUuid}
-              />
-           </View>
+  const renderInfoWithSubCategory = () => {
+    return <GridCardWithSubCategoryComponent
+              title={props.item.name}
+              uuid={props.item.uuid}
+              audio={props.item.audioSource}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
   }
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => visitService.recordVisitCategory(props.item)}
     >
-        <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
-      { points > 0 ? renderTitleWithSubCategory() : renderTitleAndAudio() }
+      <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
+      { points > 0 ? renderInfoWithSubCategory() : renderInfoWithNoSubCategory() }
     </Card>
   )
 }
@@ -61,25 +53,12 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     paddingBottom: 0
   },
-  titleWithSubCategoryContainer: {
-    marginTop: 8,
-    paddingHorizontal: 8,
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
   image: {
     borderTopLeftRadius: cardBorderRadius,
     borderTopRightRadius: cardBorderRadius,
     height: 98,
     width: '100%',
   },
-  titleWithAudioContainer: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginVertical: 8,
-    paddingHorizontal: 8,
-  }
 });
 
 export default GridCardComponent;
