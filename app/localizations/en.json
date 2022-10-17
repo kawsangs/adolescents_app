@@ -56,5 +56,7 @@
   "facebook": "Facebook",
   "telegram": "Telegram",
   "contactVia": "Contact via",
-  "unableToViewTheRoute": "Unable to view the route"
+  "unableToViewTheRoute": "Unable to view the route",
+  "comingSoon": "Coming soon",
+  "anonymous": "Anonymous"
 }

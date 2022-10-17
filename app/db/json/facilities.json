@@ -155,7 +155,7 @@
     "image_url": null,
     "audio_url": null,
     "audio": null,
-    "images": [],
+    "images": ["intro1", "intro3"],
     "service_uuids": ["service_05"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import NavigationHeaderComponent from './NavigationHeaderComponent';
 import AlertModalComponent from './AlertModalComponent';

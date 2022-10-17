@@ -15,6 +15,7 @@ const SubCategoryView = ({route, navigation}) => {
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label={category.name} />}
       body={<CardListComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
+      scrollViewStyle={subCategories.length == 0 ? {paddingHorizontal: 0, paddingBottom: 0} : {}}
     />
   )
 }
