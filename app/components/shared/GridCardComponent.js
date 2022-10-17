@@ -14,8 +14,8 @@ const GridCardComponent = (props) => {
   const points = Category.getSubCategories(props.item.uuid).length;
   const renderTitleAndAudio =  () => {
     return <View style={styles.titleWithAudioContainer}>
-              <View style={{flex: 1}}>
-                <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: 25}} />
               </View>
               <AudioWaveButtonComponent
                 itemUuid={props.uuid}
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     elevation: cardElevation,
     width: '48%',
-    paddingLeft: 0
+    paddingLeft: 0,
+    paddingBottom: 0
   },
   titleWithSubCategoryContainer: {
     marginTop: 8,
@@ -69,11 +70,11 @@ const styles = StyleSheet.create({
   image: {
     borderTopLeftRadius: cardBorderRadius,
     borderTopRightRadius: cardBorderRadius,
-    // height: 105,
-    height: 100,
+    height: 98,
     width: '100%',
   },
   titleWithAudioContainer: {
+    alignSelf: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginVertical: 8,

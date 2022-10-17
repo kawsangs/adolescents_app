@@ -18,8 +18,8 @@ const HomeHeaderTitleComponent = () => {
 
 const styles = StyleSheet.create({
   image: {
-    height: 36,
-    width: 32,
+    height: 30,
+    width: 24,
   },
   label: {
     color: color.whiteColor,
