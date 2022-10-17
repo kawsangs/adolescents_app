@@ -10,7 +10,7 @@ const TiltedCardImageComponent = (props) => {
 const styles = StyleSheet.create({
   image: {
     height: 115,
-    width: '90%',
+    width: '100%',
     top: -46,
     zIndex: 1,
     borderColor: 'black',

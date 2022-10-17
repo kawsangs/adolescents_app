@@ -148,7 +148,7 @@
     "image_url": "",
     "audio": "storyLong",
     "image": "sexual_desire",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 11,
     "display": "grid_card",
     "level": 2
@@ -162,7 +162,7 @@
     "image_url": "",
     "audio": "storyShort",
     "image": "sex_differences",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 12,
     "display": "grid_card",
     "level": 2
@@ -176,7 +176,7 @@
     "image_url": "",
     "audio": "storyShort",
     "image": "reproductive_right",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 13,
     "display": "grid_card",
     "level": 2
@@ -190,7 +190,7 @@
     "image_url": "",
     "audio": "storyShort",
     "image": "consensus_forced",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 14,
     "display": "grid_card",
     "level": 2
@@ -204,7 +204,7 @@
     "image_url": "",
     "audio": "storyShort",
     "image": "sti_virus",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 15,
     "display": "grid_card",
     "level": 2
@@ -218,7 +218,7 @@
     "image_url": "",
     "audio": "storyShort",
     "image": "hiv_virus",
-    "parent_code": "catg_lvl_1_mental_sexual_edu",
+    "parent_code": "catg_lvl_1_sexual_edu",
     "order": 16,
     "display": "grid_card",
     "level": 2

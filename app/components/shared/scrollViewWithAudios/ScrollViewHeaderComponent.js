@@ -31,7 +31,7 @@ const ScrollViewHeaderComponent = (props) => {
         <Animated.Image
           source={props.image}
           style={[styles.headerImage, {opacity: imageOpacity}]}
-          resizeMode="cover"
+          resizeMode="contain"
         />
         <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
         <HeaderAudioControlComponent scrollY={props.scrollY} />
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   headerImage: {
     height: getStyleOfDevice(110, 100),
     width: '100%',
-    position: 'absolute', top: 0,
+    position: 'absolute',
+    top: 0,
   }
 });
 

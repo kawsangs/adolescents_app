@@ -46,7 +46,7 @@ const GridCardComponent = (props) => {
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => visitService.recordVisitCategory(props.item)}
     >
-      <Image source={props.item.imageSource} resizeMode='contain' style={styles.image} />
+        <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
       { points > 0 ? renderTitleWithSubCategory() : renderTitleAndAudio() }
     </Card>
   )
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     elevation: cardElevation,
     width: '48%',
+    paddingLeft: 0
   },
   titleWithSubCategoryContainer: {
     marginTop: 8,
@@ -68,9 +69,9 @@ const styles = StyleSheet.create({
   image: {
     borderTopLeftRadius: cardBorderRadius,
     borderTopRightRadius: cardBorderRadius,
-    height: 90,
+    // height: 105,
+    height: 100,
     width: '100%',
-
   },
   titleWithAudioContainer: {
     alignItems: 'center',
