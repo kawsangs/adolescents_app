@@ -15,7 +15,7 @@ const BigButtonComponent = (props) => {
     if (props.disabled)
       return { bgColor: color.disabledColor, textColor: color.mutedColor };
 
-    return { bgColor: color.primaryColor, textColor: color.whiteColor };
+    return { bgColor: color.bigButtonColor, textColor: color.primaryColor };
   }
 
   const onPress = () => {
@@ -34,7 +34,7 @@ const BigButtonComponent = (props) => {
         iconSize={24}
         audio={props.audio}
         btnStyle={styles.audioBtn}
-        iconColor={color.whiteColor}
+        iconColor={color.primaryColor}
         itemUuid={props.uuid}
         playingUuid={props.playingUuid}
         isSpeakerIcon={true}

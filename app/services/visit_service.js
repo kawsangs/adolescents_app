@@ -8,12 +8,12 @@ import VisitApi from '../api/visitApi';
 
 const visitService = (() => {
   return {
-    recordVisitedCategory,
+    recordVisitCategory,
     recordVisitAction,
     syncVisits,
   }
 
-  function recordVisitedCategory(category) {
+  function recordVisitCategory(category) {
     recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
   }
 

@@ -5,8 +5,8 @@ import { Appbar } from 'react-native-paper';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
 import color from '../../themes/color';
-import {getStyleOfDevice} from '../../utils/responsive_util';
 import Facility from '../../models/Facility';
+import {navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 
 const scrollDistant = 100;
 
@@ -16,7 +16,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
     outputRange: [0, 1],
     extrapolate: "identity"
   });
-  
+
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, scrollDistant],
     outputRange: [0, 1],
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: "transparent",
-    paddingHorizontal: getStyleOfDevice(14, 0),
+    paddingHorizontal: navigationHeaderHorizontalPadding,
     elevation: 0
   },
   background: {

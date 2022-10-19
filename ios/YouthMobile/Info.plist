@@ -76,5 +76,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+      <string>vnd.youtube</string>
+  </array>
 </dict>
 </plist>

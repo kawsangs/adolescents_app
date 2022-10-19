@@ -12,9 +12,14 @@ import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
 
 const FacilityCardInfoComponent = (props) => {
+  const viewRouteColor = () => {
+    return !props.latitude || !props.longitude ? color.mutedColor : color.primaryColor;
+  }
+
   const renderViewMapBtn = () => {
-    return <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={18}
-              buttonStyle={styles.viewRouteBtn} labelStyle={styles.viewRouteLabel}
+    return <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={18} iconColor={viewRouteColor()}
+              latitude={props.latitude} longitude={props.longitude}
+              buttonStyle={styles.viewRouteBtn} labelStyle={[styles.viewRouteLabel, {color: viewRouteColor()}]}
            />
   }
 
@@ -51,7 +56,6 @@ const styles = StyleSheet.create({
     height: componentUtil.pressableItemSize(),
   },
   viewRouteLabel: {
-    color: color.primaryColor,
     fontSize: largeFontSize(),
     marginLeft: 12
   }

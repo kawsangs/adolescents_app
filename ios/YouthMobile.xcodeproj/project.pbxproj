@@ -11,11 +11,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		705416FA3AA24796CFFFBF2E /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */; };
+		45D218E3964874E8C8F02BF8 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABB86F7EBEED4603897162A /* libPods-YouthMobile-YouthMobileTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
-		90E06674566CB5F2AA9AABF5 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */; };
 		9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
+		A40DE70E4873AA2E72944BE8 /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF12CF719CFCE9E93FE51C5 /* libPods-YouthMobile.a */; };
 		EECC1EDA28F6B53D00AA3DD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */; };
 		EECC1EEC28F6B8AC00AA3DD9 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */; };
 		EECC1EED28F6B8AC00AA3DD9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */; };
@@ -58,11 +58,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YouthMobile/main.m; sourceTree = "<group>"; };
 		2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.release.xcconfig"; sourceTree = "<group>"; };
 		64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-Regular.ttf"; path = "../app/assets/fonts/KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
-		6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YouthMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8CF12CF719CFCE9E93FE51C5 /* libPods-YouthMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B352772C7361D8DBED654811 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B86904CF930DD051270B4985 /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Users/Instedd/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-SemiBold.ttf"; path = "../app/assets/fonts/KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		FABB86F7EBEED4603897162A /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90E06674566CB5F2AA9AABF5 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */,
+				45D218E3964874E8C8F02BF8 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				705416FA3AA24796CFFFBF2E /* libPods-YouthMobile.a in Frameworks */,
+				A40DE70E4873AA2E72944BE8 /* libPods-YouthMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E33DF2F99B6D052D57F13BDD /* libPods-YouthMobile.a */,
-				6906BAA4FFC29A63CBC8E60E /* libPods-YouthMobile-YouthMobileTests.a */,
+				8CF12CF719CFCE9E93FE51C5 /* libPods-YouthMobile.a */,
+				FABB86F7EBEED4603897162A /* libPods-YouthMobile-YouthMobileTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

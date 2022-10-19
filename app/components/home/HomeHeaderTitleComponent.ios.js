@@ -10,7 +10,7 @@ const HomeHeaderTitleComponent = () => {
   const {t} = useTranslation();
   return (
     <View style={{flexDirection: 'row', flex: 1, height: '100%', alignItems: 'center'}}>
-      <Image source={require('../../assets/images/header_icon.png')} style={styles.image} />
+      <Image source={require('../../assets/images/logo.png')} style={styles.image} />
       <BoldLabelComponent label={t('youthHealth')} style={styles.label} />
     </View>
   )
@@ -18,8 +18,8 @@ const HomeHeaderTitleComponent = () => {
 
 const styles = StyleSheet.create({
   image: {
-    height: 36,
-    width: 32,
+    height: 30,
+    width: 24,
   },
   label: {
     color: color.whiteColor,

@@ -15,7 +15,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const TiltedCardComponent = (props) => {
   const onPress = () => {
     props.updatePlayingUuid(null);
-    visitService.recordVisitedCategory(props.item)
+    visitService.recordVisitCategory(props.item)
   }
 
   return (

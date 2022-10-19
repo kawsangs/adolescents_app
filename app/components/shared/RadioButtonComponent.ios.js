@@ -6,7 +6,6 @@ import {useTranslation} from 'react-i18next';
 import TextComponent from './TextComponent';
 import RadioButtonItemComponent from './radioButtons/RadioButtonItemComponent';
 import color from '../../themes/color';
-import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import {largeFontSize} from '../../utils/font_size_util';
 
 const RadioButtonComponent = (props) => {
@@ -15,9 +14,9 @@ const RadioButtonComponent = (props) => {
 
   const renderTitle = () => {
     return <View style={{flexDirection: 'row'}}>
-            <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: largeFontSize()}} />
+            <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: largeFontSize()}} requiredColor={color.blackColor} />
             { requiredVisible &&
-              <TextComponent label={props.requiredMsg} style={{color: color.requiredColor, marginLeft: 6, fontSize: largeFontSize()}} />
+              <TextComponent label={props.requiredMsg} style={{color: color.blackColor, marginLeft: 6, fontSize: largeFontSize()}} />
             }
           </View>
   }
