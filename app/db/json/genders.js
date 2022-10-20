@@ -1,7 +1,3 @@
-import safetyPlan from '../../assets/audios/safety_plan.mp3';
-import yourStoryLong from '../../assets/audios/your_story_long.mp3';
-import yourStory from '../../assets/audios/your_story.mp3';
-
 export default [
   {
     uuid: 'gender-1',
@@ -9,7 +5,7 @@ export default [
     name_km: 'ប្រុស',
     name_en: 'male',
     value: 'male',
-    audio: safetyPlan,
+    audio: null,
     size: 34
   },
   {
@@ -18,7 +14,7 @@ export default [
     name_km: 'ស្រី',
     name_en: 'female',
     value: 'female',
-    audio: yourStoryLong,
+    audio: null,
     size: 36
   },
   {
@@ -27,7 +23,7 @@ export default [
     name_km: 'LGBT+',
     name_en: 'LGBT+',
     value: 'lgbt',
-    audio: yourStory,
+    audio: null,
     size: 28
   },
   {
@@ -36,7 +32,7 @@ export default [
     name_km: 'មិនដឹង',
     name_en: 'Unknown',
     value: 'unknown',
-    audio: yourStoryLong,
+    audio: null,
     size: 28
   },
 ]

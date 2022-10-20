@@ -10,10 +10,9 @@ import color from '../../themes/color';
 import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
-import yourStory from '../../assets/audios/your_story.mp3';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 
-const CreateAccountFormComponent = () => {
+const CreateAccountFormComponent = (props) => {
   const {t} = useTranslation();
   const [state, setState] = useState({
     gender: 'male',
@@ -29,6 +28,9 @@ const CreateAccountFormComponent = () => {
     setState({...newState});
     setIsValid(appUserService.isValidForm(state.age, state.province));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
+
+    if (fieldName == 'province')
+      props.pickerModalRef.current?.dismiss();
   }
 
   const renderSelectionComponents = () => {
@@ -36,6 +38,8 @@ const CreateAccountFormComponent = () => {
               province={state.province}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
+              pickerRef={props.pickerRef}
+              pickerModalRef={props.pickerModalRef}
            />
   }
 
@@ -43,7 +47,7 @@ const CreateAccountFormComponent = () => {
     const user = {
       gender: state.gender,
       age: parseInt(state.age),
-      province_id: state.province,
+      province_id: state.province.value,
       characteristics: state.characteristics
     }
 
@@ -53,7 +57,7 @@ const CreateAccountFormComponent = () => {
   const renderSaveButton = () => {
     return <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
               uuid='123'
-              audio={yourStory}
+              audio={null}
               playingUuid={null}
               updatePlayingUuid={() => console.log('update uuid')}
               disabled={!isValid}
@@ -63,7 +67,7 @@ const CreateAccountFormComponent = () => {
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
             <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
-            <NumericInputWithAudioComponent label={t('yourAge')} requiredMsg={t('pleaseInputYourAge')}
+            <NumericInputWithAudioComponent label={t('yourAge')}
               required={true}
               requiredColor={color.blackColor}
               value={state.age.toString()}

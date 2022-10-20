@@ -16,6 +16,7 @@ const color = {
   whiteSmokeColor: '#F5F5F5',
   redColor: '#ff0000',
   disabledColor: '#b5b5b5',
+  disabledCardColor: '#cdcccc',
   requiredColor: '#d50000',
   bigButtonColor: '#ffffff',
   facebookColor: '#4267b2',

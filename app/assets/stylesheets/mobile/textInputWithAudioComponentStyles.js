@@ -15,6 +15,7 @@ const textInputWithAudioComponentStyles = StyleSheet.create({
   input: {
     borderWidth: 0,
     borderRadius: cardBorderRadius,
+    color: color.blackColor,
     fontSize: largeFontSize(),
     height: componentUtil.mediumPressableItemSize(),
     paddingLeft: 16,
