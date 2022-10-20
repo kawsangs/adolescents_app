@@ -33,7 +33,7 @@ const ScrollViewHeaderComponent = (props) => {
           style={[styles.headerImage, {opacity: imageOpacity}]}
           resizeMode="contain"
         />
-        <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
+        <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} textSize={props.textSize} updateTextSize={props.updateTextSize} />
         <HeaderAudioControlComponent scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>

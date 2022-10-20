@@ -59,5 +59,7 @@
   "anonymous": "Anonymous",
   "selectYourProvince": "Select your province",
   "selectYourAge": "Select your age",
-  "yearOld": "year old"
+  "yearOld": "year old",
+  "textSize": "Text size",
+  "sampleTextSize": "ABCDE"
 }

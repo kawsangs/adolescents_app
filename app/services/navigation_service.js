@@ -1,6 +1,9 @@
 import User from '../models/User';
 import Category from '../models/Category';
 import {navigationRef} from '../navigators/app_navigator';
+import asyncStorageService from './async_storage_service';
+import {TEXT_SIZE} from '../constants/async_storage_constant';
+import {xLargeFontSize} from '../utils/font_size_util';
 
 const navigationService = (() => {
   return {
@@ -13,14 +16,15 @@ const navigationService = (() => {
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 
-  function navigateCategory(categoryUuid) {
+  async function navigateCategory(categoryUuid) {
+    const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
     let routeName = 'LeafCategoryDetailView';
     if (Category.isParentCategory(categoryUuid))
       routeName = 'SubCategoryView';
     else if (Category.isSubCategory(categoryUuid))
       routeName = 'LeafCategoryView';
 
-    navigationRef.current?.navigate(routeName, { uuid: categoryUuid });
+    navigationRef.current?.navigate(routeName, { uuid: categoryUuid, textSize: savedFontSize || xLargeFontSize() });
   }
 })();
 
