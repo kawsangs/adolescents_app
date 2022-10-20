@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import IntroNextButtonComponent from '../../components/introductions/IntroNextButtonComponent';
 import IntroPressableLabelComponent from '../../components/introductions/IntroPressableLabelComponent';
+import IntroDoneButtonComponent from '../../components/introductions/IntroDoneButtonComponent';
 import IntroItemComponent from '../../components/introductions/IntroItemComponent';
 import { slides } from '../../constants/intro_constant';
 import color from '../../themes/color';
@@ -43,7 +44,7 @@ const IntroductionView = (props) => {
             renderItem={renderItem} data={slides} onDone={onDone}
             showSkipButton={true}
             renderNextButton={() => <IntroNextButtonComponent label='Next' onPress={() => renderNextSlide()} />}
-            renderDoneButton={() => <IntroPressableLabelComponent label={ t('startUsingApp') } containerStyle={{ alignSelf: 'center', width: 'auto' }} />}
+            renderDoneButton={() => <IntroDoneButtonComponent/>}
             renderSkipButton={() => <IntroPressableLabelComponent label={ t('skip') } containerStyle={{marginLeft: 8}} />}
             activeDotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#ce3581'}}
             dotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#cbcbcb'}}
