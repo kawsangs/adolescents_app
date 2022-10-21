@@ -57,5 +57,7 @@
   "unableToViewTheRoute": "Unable to view the route",
   "comingSoon": "Coming soon",
   "anonymous": "Anonymous",
-  "selectYourProvince": "Select your province"
+  "selectYourProvince": "Select your province",
+  "selectYourAge": "Select your age",
+  "yearOld": "year old"
 }

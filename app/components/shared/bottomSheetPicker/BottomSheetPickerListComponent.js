@@ -15,7 +15,6 @@ class BottomSheetPickerListComponent extends React.Component {
     super(props);
     this.state = {
       selectedItem: this.props.selectedItem,
-      searchedItem: '',
       items: this.props.items,
       contentHeight: props.contentHeight,
     };
@@ -34,7 +33,7 @@ class BottomSheetPickerListComponent extends React.Component {
       return;
 
     this.setState({ selectedItem: item.value });
-    this.props.onSelectItem(item)
+    this.props.onSelectItem(item);
   }
 
   renderListItem() {
@@ -42,11 +41,11 @@ class BottomSheetPickerListComponent extends React.Component {
               items={this.state.items}
               selectedItem={this.state.selectedItem}
               onSelectItem={(item) => this.onSelectItem(item)}
-              showSubtitle={this.props.showSubtitle}
               showConfirmDelete={this.props.showConfirmDelete}
               isDeletable={this.props.isDeletable}
               defaultSelectedItem={this.props.selectedItem}
               customListItem={this.props.customListItem}
+              hideAudio={this.props.hideAudio}
            />
   }
 

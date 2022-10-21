@@ -2,56 +2,45 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import CheckboxComponent from '../shared/CheckboxComponent';
-import BottomSheetPickerComponent from '../shared/BottomSheetPickerComponent';
-import BottomSheetPickerListComponent from '../shared/bottomSheetPicker/BottomSheetPickerListComponent';
-
-import provinces from '../../db/json/provinces';
+import CreateAccountAgePickerComponent from './CreateAccountAgePickerComponent';
+import CreateAccountProvincePickerComponent from './CreateAccountProvincePickerComponent';
 import characteristics from '../../db/json/characteristics';
-import {provincePickerContentHeight} from '../../constants/modal_constant';
 
 const CreateAccountSelectionsComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const sectionMarginTop = 22
 
-  const showPicker = () => {
-    props.pickerRef.current?.setBodyContent(
-      <BottomSheetPickerListComponent
-        ref={props.pickerContentRef}
-        title={t('yourProvince')}
-        isRequire={true}
-        items={provinces}
-        selectedItem={props.province}
-        contentHeight={provincePickerContentHeight}
-        hasSearchBox={true}
-        onSearchBoxFocus={() => props.pickerModalRef.current?.expand()}
-        onSelectItem={(province) => props.updateState('province', province)}
-      />
-    );
-
-    props.pickerModalRef.current?.present();
+  const renderAgePicker = () => {
+    return <CreateAccountAgePickerComponent
+              pickerRef={props.pickerRef}
+              pickerModalRef={props.pickerModalRef}
+              age={props.age}
+              playingUuid={props.playingUuid}
+              updateSelectedItem={(age) => props.updateState('age', age)}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+           />
   }
 
-  const renderBottomSheetPicker = () => {
-    const label = !!props.province ? props.province[`name_${i18n.language}`] : t('selectYourProvince');
-
-    return <BottomSheetPickerComponent
-              title={t('yourProvince')}
-              label={label}
-              items={provinces}
-              selectedItem={props.province}
-              showSubtitle={false}
-              required={true}
-              customContainerStyle={{ marginTop: 19 }}
-              showPicker={() => showPicker()}
-            />
+  const renderProvincePicker = () => {
+    return <CreateAccountProvincePickerComponent
+              pickerRef={props.pickerRef}
+              pickerModalRef={props.pickerModalRef}
+              province={props.province}
+              playingUuid={props.playingUuid}
+              updateSelectedItem={(province) => props.updateState('province', province)}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+           />
   }
 
   return <React.Fragment>
-            { renderBottomSheetPicker() }
+            { renderAgePicker() }
+            { renderProvincePicker() }
             <CheckboxComponent items={characteristics} title={t('yourCharacteristic')}
               selectedItems={props.characteristics}
               style={{marginTop: sectionMarginTop}}
+              playingUuid={props.playingUuid}
               updateSelectedItems={(characteristics) => props.updateState('characteristics', characteristics)}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             />
         </React.Fragment>
 }

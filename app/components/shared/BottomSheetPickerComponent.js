@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import {Text} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/Feather';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
+import PlayAudioComponent from './PlayAudioComponent';
 import TextComponent from './TextComponent';
 import color from '../../themes/color';
 import { getStyleOfDevice } from '../../utils/responsive_util';
@@ -34,6 +36,20 @@ class BottomSheetPickerComponent extends React.Component {
     this.props.showPicker()
   }
 
+  renderAudioButton() {
+    return <PlayAudioComponent
+              iconSize={24}
+              audio={this.props.audio}
+              btnStyle={{borderWidth: 0, borderRadius: 0}}
+              itemUuid={this.props.uuid}
+              playingUuid={this.props.playingUuid}
+              isSpeakerIcon={true}
+              updatePlayingUuid={this.props.updatePlayingUuid}
+            >
+              <IonIcon/>
+            </PlayAudioComponent>
+  }
+
   render() {
     return (
       <View style={this.props.customContainerStyle}>
@@ -42,11 +58,11 @@ class BottomSheetPickerComponent extends React.Component {
         <View style={styles.mainContainer}>
           <TouchableOpacity onPress={() => this.showPicker()} style={{height: componentUtil.mediumPressableItemSize()}}>
             <View style={styles.textContainer}>
+              {this.renderAudioButton()}
               <View style={{flex: 1}}>
                 <Text style={styles.itemTitle}>{ this.getLabel() }</Text>
-                { this.props.showSubtitle && <Text style={styles.itemSubtitle}>{ this.props.selectedItem }</Text> }
               </View>
-              <Icon name="chevron-right" color={color.primaryColor} size={24} style={{marginRight: 10}} />
+              <FeatherIcon name="chevron-right" color={color.primaryColor} size={24} style={{marginRight: 10}} />
             </View>
           </TouchableOpacity>
         </View>
@@ -62,6 +78,5 @@ export default BottomSheetPickerComponent;
   title="Facilitator 1"
   label="Select facilitator"
   selectedItem={1}
-  showSubtitle={true|false}
   showPicker={() => {}}
 /> */}

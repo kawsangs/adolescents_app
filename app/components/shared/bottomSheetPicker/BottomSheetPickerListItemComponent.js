@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { withTranslation } from 'react-i18next';
-import hoistStatics from 'hoist-non-react-statics';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import PlayAudioComponent from '../PlayAudioComponent';
@@ -30,18 +28,18 @@ class BottomSheetPickerListItem extends React.Component {
   renderListItem() {
     return this.props.items.map((item, index) => {
       return (
-        <React.Fragment>
-          <TouchableOpacity key={index}
+        <React.Fragment key={index}>
+          <TouchableOpacity
             onPress={() => this.props.onSelectItem(item)}
             style={[styles.itemContainer]}
           >
             { this.props.customListItem ? this.props.customListItem(item)
               :
               <View style={{flex: 1}}>
-                <Text style={[styles.itemTitle, { color: this.itemColor(item, color.blackColor) }]}>{ item[`name_${this.props.i18n.language}`] }</Text>
+                <Text style={[styles.itemTitle, { color: this.itemColor(item, color.blackColor) }]}>{ item.label }</Text>
               </View>
             }
-            {this.renderAudioBtn()}
+            {!this.props.hideAudio && this.renderAudioBtn()}
           </TouchableOpacity>
           <View style={{ borderColor: color.lightGrayColor, borderBottomWidth: index == this.props.items.length - 1 ? 0 : 0.6 }} />
         </React.Fragment>
@@ -62,4 +60,4 @@ class BottomSheetPickerListItem extends React.Component {
   }
 }
 
-export default hoistStatics(withTranslation()(BottomSheetPickerListItem), BottomSheetPickerListItem);
+export default BottomSheetPickerListItem;

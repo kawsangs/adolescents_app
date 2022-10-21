@@ -30,6 +30,8 @@ const CheckboxComponent = (props) => {
             <CheckboxItemComponent key={index} label={item[`name_${i18n.language}`]} value={item.value}
               isSelected={isSelected(item.value)}
               onPress={(value) => onPress(value)}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             />
           ))
         }

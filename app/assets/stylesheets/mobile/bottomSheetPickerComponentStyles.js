@@ -19,15 +19,9 @@ const BottomSheetPickerComponentStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: '100%',
-    paddingLeft: 14
   },
   itemTitle: {
     fontSize: largeFontSize(),
-  },
-  itemSubtitle: {
-    fontSize: 13,
-    color: color.grayColor,
-    marginTop: -10
   },
   chooseLabel: {
     paddingRight: 12,
