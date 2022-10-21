@@ -20,7 +20,7 @@ const VideoItemListComponent = (props) => {
   }, [props.categoryUuid]);
 
   const playVideo = (uuid) => {
-    navigationRef.current?.navigate("PlayVideoView", { uuid: uuid, hasInternet: props.hasInternet });
+    navigationRef.current?.navigate("PlayVideoView", { uuid: uuid });
   }
 
   const renderItem = (item) => {
