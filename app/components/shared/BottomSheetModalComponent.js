@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -15,7 +15,6 @@ const BottomSheetModalComponent = (props, ref) => {
       {...props}
       disappearsOnIndex={-1}
       appearsOnIndex={0}
-      onPress={() => ref.current.dismiss()}
     />
   ), []);
 
@@ -29,13 +28,9 @@ const BottomSheetModalComponent = (props, ref) => {
         onDismiss={() => !!props.onDismiss && props.onDismiss()}
         onChange={(index) => !!props.onChange && props.onChange(index)}
       >
-        {/* <BottomSheetScrollView style={styles.contentContainer}> */}
-          {/* { props.content } */}
-        {/* </BottomSheetScrollView> */}
-
-        <ScrollView>
+        <BottomSheetScrollView style={styles.contentContainer}>
           { props.content }
-        </ScrollView>
+        </BottomSheetScrollView>
       </BottomSheetModal>
     </BottomSheetModalProvider>
   )

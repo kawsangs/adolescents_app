@@ -30,18 +30,21 @@ class BottomSheetPickerListItem extends React.Component {
   renderListItem() {
     return this.props.items.map((item, index) => {
       return (
-        <TouchableOpacity key={index}
-          onPress={() => this.props.onSelectItem(item)}
-          style={[styles.itemContainer, { borderBottomWidth: index == this.props.items.length - 1 ? 0 : 1 }]}
-        >
-          { this.props.customListItem ? this.props.customListItem(item)
-            :
-            <View style={{flex: 1}}>
-              <Text style={[styles.itemTitle, { color: this.itemColor(item, color.blackColor) }]}>{ item[`name_${this.props.i18n.language}`] }</Text>
-            </View>
-          }
-          {this.renderAudioBtn()}
-        </TouchableOpacity>
+        <React.Fragment>
+          <TouchableOpacity key={index}
+            onPress={() => this.props.onSelectItem(item)}
+            style={[styles.itemContainer]}
+          >
+            { this.props.customListItem ? this.props.customListItem(item)
+              :
+              <View style={{flex: 1}}>
+                <Text style={[styles.itemTitle, { color: this.itemColor(item, color.blackColor) }]}>{ item[`name_${this.props.i18n.language}`] }</Text>
+              </View>
+            }
+            {this.renderAudioBtn()}
+          </TouchableOpacity>
+          <View style={{ borderColor: color.lightGrayColor, borderBottomWidth: index == this.props.items.length - 1 ? 0 : 0.6 }} />
+        </React.Fragment>
       )
     })
   }

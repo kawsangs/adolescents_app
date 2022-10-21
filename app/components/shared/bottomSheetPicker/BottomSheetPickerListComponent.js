@@ -10,7 +10,7 @@ import DashedLineComponent from '../DashedLineComponent';
 import { screenHorizontalPadding } from '../../../constants/component_constant';
 import {xLargeFontSize} from '../../../utils/font_size_util';
 
-class BottomSheetPickerMainComponent extends React.Component {
+class BottomSheetPickerListComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default BottomSheetPickerMainComponent;
+export default BottomSheetPickerListComponent;

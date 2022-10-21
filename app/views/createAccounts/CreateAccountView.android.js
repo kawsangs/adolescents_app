@@ -4,12 +4,11 @@ import CreateAccountNavigationHeaderComponent from '../../components/createAccou
 import CreateAccountFormComponent from '../../components/createAccounts/CreateAccountFormComponent';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
-import {getStyleOfDevice} from '../../utils/responsive_util';
+import {provincePickerSnapPoints} from '../../constants/modal_constant';
 
 const CreateAccountView = () => {
   let pickerRef = React.createRef();
   let pickerModalRef = React.createRef();
-  const pickerSnapPoints = getStyleOfDevice(['60%', '100%'], ['65%', '100%'])
 
   return (
     <React.Fragment>
@@ -19,7 +18,7 @@ const CreateAccountView = () => {
         scrollViewStyle={{paddingBottom: 16}}
       />
 
-      <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={pickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
+      <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={provincePickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
     </React.Fragment>
   )
 }

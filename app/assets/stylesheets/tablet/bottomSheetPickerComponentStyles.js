@@ -36,7 +36,6 @@ const BottomSheetPickerComponentStyles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     height: componentUtil.mediumPressableItemSize(),
-    borderColor: color.lightGrayColor,
     alignItems: 'center',
   },
   deleteButton: {

@@ -46,7 +46,6 @@ class BottomSheetPickerComponent extends React.Component {
                 <Text style={styles.itemTitle}>{ this.getLabel() }</Text>
                 { this.props.showSubtitle && <Text style={styles.itemSubtitle}>{ this.props.selectedItem }</Text> }
               </View>
-
               <Icon name="chevron-right" color={color.primaryColor} size={24} style={{marginRight: 10}} />
             </View>
           </TouchableOpacity>

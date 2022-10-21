@@ -3,11 +3,11 @@ import {useTranslation} from 'react-i18next';
 
 import CheckboxComponent from '../shared/CheckboxComponent';
 import BottomSheetPickerComponent from '../shared/BottomSheetPickerComponent';
-import BottomSheetPickerMainComponent from '../shared/bottomSheetPicker/BottomSheetPickerMainComponent';
+import BottomSheetPickerListComponent from '../shared/bottomSheetPicker/BottomSheetPickerListComponent';
 
 import provinces from '../../db/json/provinces';
 import characteristics from '../../db/json/characteristics';
-import {getStyleOfDevice} from '../../utils/responsive_util';
+import {provincePickerContentHeight} from '../../constants/modal_constant';
 
 const CreateAccountSelectionsComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -15,13 +15,13 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const showPicker = () => {
     props.pickerRef.current?.setBodyContent(
-      <BottomSheetPickerMainComponent
+      <BottomSheetPickerListComponent
         ref={props.pickerContentRef}
         title={t('yourProvince')}
         isRequire={true}
         items={provinces}
         selectedItem={props.province}
-        contentHeight={getStyleOfDevice('58%', '63%')}
+        contentHeight={provincePickerContentHeight}
         hasSearchBox={true}
         onSearchBoxFocus={() => props.pickerModalRef.current?.expand()}
         onSelectItem={(province) => props.updateState('province', province)}
