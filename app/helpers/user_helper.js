@@ -1,11 +1,13 @@
 import {minimumAge, maximumAge} from '../constants/user_constant';
 import arrayUtil from '../utils/array_util';
-import provinces from '../db/json/provinces';
+import provinces from '../db/json/provinces.json';
+import characteristics from '../db/json/characteristics.json';
 
 const userHelper = (() => {
   return {
     getAgeDataset,
     getProvinceDataset,
+    getCharacteristicDataset,
   }
 
   function getAgeDataset(postfix) {
@@ -18,9 +20,18 @@ const userHelper = (() => {
   }
 
   function getProvinceDataset(language) {
+    return _getPickerDataset(provinces, language);
+  }
+
+  function getCharacteristicDataset(language) {
+    return _getPickerDataset(characteristics, language);
+  }
+
+  // private method
+  function _getPickerDataset(data, language) {
     const dataset = [];
-    provinces.map(province => {
-      dataset.push({ label: province[`name_${language}`], value: province.value });
+    data.map(item => {
+      dataset.push({ label: item[`name_${language}`], value: item.value, audio: item.audio });
     });
     return dataset;
   }

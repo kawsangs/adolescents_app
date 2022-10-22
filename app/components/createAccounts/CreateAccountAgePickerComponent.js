@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 
 import BottomSheetPickerComponent from '../shared/BottomSheetPickerComponent';
 import BottomSheetPickerListComponent from '../shared/bottomSheetPicker/BottomSheetPickerListComponent';
-import {agePickerContentHeight} from '../../constants/modal_constant';
+import {defaultPickerContentHeight} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
 
 const CreateAccountAgePickerComponent = (props) => {
@@ -21,7 +21,7 @@ const CreateAccountAgePickerComponent = (props) => {
         isRequire={true}
         items={userHelper.getAgeDataset(t('yearOld'))}
         selectedItem={props.age}
-        contentHeight={agePickerContentHeight}
+        contentHeight={defaultPickerContentHeight}
         hideAudio={true}
         onSelectItem={(age) => onSelectItem(age)}
       />
@@ -31,12 +31,14 @@ const CreateAccountAgePickerComponent = (props) => {
   }
 
   return <BottomSheetPickerComponent
+            uuid='age-picker'
             title={t('yourAge')}
             label={!!props.age ? props.age : t('selectYourAge')}
             items={userHelper.getAgeDataset(t('yearOld'))}
             selectedItem={props.age}
             required={true}
             customContainerStyle={{ marginTop: 19 }}
+            audio={null}
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
