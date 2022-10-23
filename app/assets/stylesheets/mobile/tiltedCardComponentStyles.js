@@ -20,8 +20,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
     height: 0,
     position: 'absolute',
     transform: [{ rotate: "180deg" }],
-    top: 1.2,
-    top: -28.8,
+    top: -28.2,
     width: 0,
     zIndex: -1
   },

@@ -16,7 +16,7 @@ const LoginSelectionView = (props) => {
   const renderBody = () => {
     return (
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <Image source={require('../../assets/images/app_logo.png')} resizeMode='contain' style={styles.logo} />
+        <Image source={require('../../assets/images/logo.png')} resizeMode='contain' style={styles.logo} />
         <BoldLabelComponent label={t('youthHealth')} style={styles.title} />
 
         <Text style={styles.label}>{t('youCanUseThisAppInFollowingChoices')}</Text>

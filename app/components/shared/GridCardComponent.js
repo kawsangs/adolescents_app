@@ -4,28 +4,42 @@ import {Card} from 'react-native-paper';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
+import AudioWaveButtonComponent from './AudioWaveButtonComponent';
+import GridCardNoSubCategoryComponent from './gridCards/GridCardNoSubCategoryComponent';
+import GridCardWithSubCategoryComponent from './gridCards/GridCardWithSubCategoryComponent';
 import {cardBorderRadius, cardElevation, cardTitleFontSize} from '../../constants/component_constant';
 import Category from '../../models/Category';
 import visitService from '../../services/visit_service';
+import componentUtil from '../../utils/component_util';
 
 const GridCardComponent = (props) => {
+  const points = Category.getSubCategories(props.item.uuid).length;
+  const renderInfoWithNoSubCategory = () => {
+    return <GridCardNoSubCategoryComponent
+              title={props.item.name}
+              uuid={props.item.uuid}
+              audio={props.item.audioSource}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
+  }
+
+  const renderInfoWithSubCategory = () => {
+    return <GridCardWithSubCategoryComponent
+              title={props.item.name}
+              uuid={props.item.uuid}
+              audio={props.item.audioSource}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+           />
+  }
+
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => visitService.recordVisitCategory(props.item)}
     >
-      <Image source={props.item.imageSource} resizeMode='contain' style={styles.image} />
-
-      <View style={styles.infoContainer}>
-        <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
-
-        <CardPointAndAudioFooterComponent
-          uuid={props.item.uuid}
-          points={Category.getSubCategories(props.item.uuid).length}
-          audio={props.item.audioSource}
-          playingUuid={props.playingUuid}
-          updatePlayingUuid={props.updatePlayingUuid}
-        />
-      </View>
+      <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
+      { points > 0 ? renderInfoWithSubCategory() : renderInfoWithNoSubCategory() }
     </Card>
   )
 }
@@ -36,20 +50,15 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     elevation: cardElevation,
     width: '48%',
-  },
-  infoContainer: {
-    marginTop: 8,
-    paddingHorizontal: 8,
-    flex: 1,
-    justifyContent: 'flex-end',
+    paddingLeft: 0,
+    paddingBottom: 0
   },
   image: {
     borderTopLeftRadius: cardBorderRadius,
     borderTopRightRadius: cardBorderRadius,
-    height: 90,
+    height: 98,
     width: '100%',
-
-  }
+  },
 });
 
 export default GridCardComponent;

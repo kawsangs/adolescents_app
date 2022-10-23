@@ -1,10 +1,11 @@
 import React from 'react';
-import {View} from 'react-native'
+import {View, Text} from 'react-native'
 
 import HorizontalCardComponent from './HorizontalCardComponent';
 import TiltedCardComponent from './TiltedCardComponent';
 import GridCardComponent from './GridCardComponent';
 import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
+import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 import {ROW_CARD, TILTED_CARD, GRID_CARD} from '../../constants/card_constant';
 
 const CardListComponent = (props) => {
@@ -43,6 +44,11 @@ const CardListComponent = (props) => {
               />
     }
   }
+
+  if (props.items.length == 0)
+    return <View style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
+              <ComingSoonMessageComponent/>
+           </View>
 
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   sliderContainer: {
     paddingHorizontal: screenHorizontalPadding,
     height: 13,
-    backgroundColor: color.whiteSmokeColor,
+    backgroundColor: color.whiteColor,
     marginTop: 16
   }
 });
