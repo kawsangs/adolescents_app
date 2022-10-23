@@ -1,4 +1,4 @@
-package com.youthmobile.newarchitecture;
+package kh.org.childhelpline.youthhealth.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.youthmobile.BuildConfig;
-import com.youthmobile.newarchitecture.components.MainComponentsRegistry;
-import com.youthmobile.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import kh.org.childhelpline.youthhealth.BuildConfig;
+import kh.org.childhelpline.youthhealth.newarchitecture.components.MainComponentsRegistry;
+import kh.org.childhelpline.youthhealth.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

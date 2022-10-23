@@ -1,4 +1,4 @@
-package com.youthmobile.newarchitecture.modules;
+package kh.org.childhelpline.youthhealth.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
