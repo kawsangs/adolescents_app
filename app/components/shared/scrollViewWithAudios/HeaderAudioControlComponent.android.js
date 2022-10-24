@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 import HeaderAudioControlButtonsComponent from './HeaderAudioControlButtonsComponent';
 import AudioDurationLabelComponent from './AudioDurationLabelComponent';
@@ -10,7 +11,19 @@ const HeaderAudioControlComponent = (props) => {
     playSeconds: 0,
     duration: 0,
     countInterval: null,
-  })
+  });
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        if (!!state.audioPlayer && !!state.countInterval) {
+          state.audioPlayer.release();
+          clearInterval(state.countInterval);
+          setState({ audioPlayer: null, playSeconds: 0, duration: 0, countInterval: null });
+        }
+      }
+    }, [state.audioPlayer])
+  );
 
   const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
     setState({ audioPlayer, playSeconds, duration, countInterval })
@@ -18,7 +31,7 @@ const HeaderAudioControlComponent = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderAudioControlButtonsComponent audio={props.audio} scrollY={props.scrollY}
+      <HeaderAudioControlButtonsComponent uuid={props.uuid} audio={props.audio} scrollY={props.scrollY}
         audioPlayer={state.audioPlayer} countInterval={state.countInterval}
         updateAudioPlayer={updateState}
       />

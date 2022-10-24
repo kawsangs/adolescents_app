@@ -6,7 +6,6 @@ import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../..
 import { FAST_FORWARD, REVERSE } from '../../../constants/audio_constant';
 import { getStyleOfDevice } from '../../../utils/responsive_util';
 import audioPlayerService from '../../../services/audio_player_service';
-import audioFile from '../../../assets/audios/safety_plan.mp3';
 
 const HeaderAudioControlButtonsComponent = (props) => {
   // Scale for making the audio controls smaller or bigger when scrolling
@@ -31,8 +30,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
       return;
     }
 
-    // The item id = 1 and playing id = null is for static displa only
-    audioPlayerService.play(props.audio, 1, null, (audioPlayer, playSeconds, duration, countInterval) => {
+    audioPlayerService.play(props.audio, props.uuid, null, (audioPlayer, playSeconds, duration, countInterval) => {
       props.updateAudioPlayer(audioPlayer, playSeconds, duration, countInterval);
     });
   }

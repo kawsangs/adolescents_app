@@ -34,9 +34,14 @@ const GridCardComponent = (props) => {
            />
   }
 
+  const onPress = () => {
+    props.updatePlayingUuid(null);
+    visitService.recordVisitCategory(props.item);
+  }
+
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => visitService.recordVisitCategory(props.item)}
+      onPress={() => onPress()}
     >
       <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
       { points > 0 ? renderInfoWithSubCategory() : renderInfoWithNoSubCategory() }

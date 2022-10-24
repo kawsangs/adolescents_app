@@ -26,9 +26,14 @@ const FacilityCardItemComponent = (props) => {
            />
   }
 
+  const viewDetail = () => {
+    props.updatePlayingUuid(null);
+    navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid});
+  }
+
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid})}
+      onPress={() => viewDetail()}
     >
       <View style={{flexDirection: 'row'}}>
         { renderImage() }
