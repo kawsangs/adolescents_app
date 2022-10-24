@@ -5,7 +5,6 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailWorkingDaysComponent from './FacilityDetailWorkingDaysComponent';
-import FacilityDetailContactNumbersComponent from './FacilityDetailContactNumbersComponent';
 import color from '../../themes/color';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 
@@ -19,15 +18,10 @@ const FacilityDetailWorkingHourAndContactComponent = (props) => {
   }
 
   return (
-    <View style={{flexDirection: 'row', marginTop: 17}}>
-      <View style={{borderRightWidth: 1, borderRightColor: color.grayColor, width: '52%', alignItems: 'center'}}>
-        {renderTitle("clock", t("workingHours"), {marginLeft: -16})}
-        <FacilityDetailWorkingDaysComponent workingDays={props.workingDays} />
-      </View>
-      <View style={{flex: 1, width: '48%', alignItems: 'center'}}>
-        {renderTitle("phone", t("phone"))}
-        <FacilityDetailContactNumbersComponent contactNumbers={props.contactNumbers} />
-      </View>
+    <View style={{marginTop: 33, alignItems: 'center'}}>
+      {renderTitle("clock", t("workingHours"), {marginLeft: -16})}
+
+      <FacilityDetailWorkingDaysComponent workingDays={props.workingDays} />
     </View>
   )
 }

@@ -33,6 +33,7 @@ const FacilityDetailInfoComponent = (props) => {
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
       <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids}/>
       <FacilityDetailContactPlatformsComponent
+        contactNumbers={facility.contactNumbers}
         websites={facility.websites}
         facebookPages={facility.facebook_pages}
         telegram={facility.telegram_username}

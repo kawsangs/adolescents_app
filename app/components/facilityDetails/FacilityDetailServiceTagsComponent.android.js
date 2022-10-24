@@ -1,18 +1,21 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
+import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {largeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize, xxLargeFontSize} from '../../utils/font_size_util';
 import Service from '../../models/Service';
 
 const FacilityDetailServiceTagsComponent = (props) => {
+  const {t} = useTranslation();
   const renderTags = () => {
     let doms = [];
     props.serviceUuids.map((serviceUuid, index) => {
       doms.push(
         <View key={index} style={styles.tag}>
-          <Text style={{color: color.blackColor, fontSize: largeFontSize()}}>{Service.findByUuid(serviceUuid).name}</Text>
+          <Text style={{color: color.blackColor, fontSize: xLargeFontSize()}}>{Service.findByUuid(serviceUuid).name}</Text>
         </View>
       )
     });
@@ -20,8 +23,11 @@ const FacilityDetailServiceTagsComponent = (props) => {
   }
 
   return (
-    <View style={{flexDirection: 'row', flexWrap: 'wrap', marginTop: 12}}>
-      {renderTags()}
+    <View style={{marginTop: 33}}>
+      <BoldLabelComponent label={t('providedServices')} style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
+      <View style={{flexDirection: 'row', flexWrap: 'wrap', marginTop: 12}}>
+        {renderTags()}
+      </View>
     </View>
   )
 }
