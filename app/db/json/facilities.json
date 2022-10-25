@@ -17,7 +17,7 @@
     "audio_url": null,
     "audio": "../../assets/audios/safety_plan.mp3",
     "images": ["intro4", "intro1", "intro2", "intro3"],
-    "service_uuids": ["service_01"],
+    "service_uuids": ["service_01", "service_02", "service_03", "service_04", "service_05"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
       {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -59,7 +59,7 @@
     "uuid": "facility_3",
     "id": "3",
     "name": "គ្លីនិកសុខភាពឯកទេសសម្ភព និងកុមារ",
-    "tels": ["098765432", "0836323562"],
+    "tels": ["070801395"],
     "address": "ផ្លូវ 224, ខណ្ឌទួលគោក រាជធានីភ្នំពេញ",
     "emails": ["clinic3@gmail.com"],
     "websites": [],
