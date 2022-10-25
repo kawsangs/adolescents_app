@@ -26,6 +26,8 @@ import appVisitService from './app/services/app_visit_service'
 import systemBackButtonHelper from './app/helpers/system_back_button_helper';
 import seedDataService from './app/services/seed_data_service';
 
+import MobileTokenService from './app/services/mobile_token_service';
+
 Sentry.init({
   dsn: environment.sentryDSN,
 });
@@ -53,6 +55,8 @@ const App: () => Node = () => {
 
   useEffect(() => {
     SplashScreen.hide();
+    MobileTokenService.handleSyncingToken();
+    MobileTokenService.onHavingNotification();
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
