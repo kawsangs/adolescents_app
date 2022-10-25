@@ -17,7 +17,7 @@
     "audio_url": null,
     "audio": "../../assets/audios/safety_plan.mp3",
     "images": ["intro4", "intro1", "intro2", "intro3"],
-    "service_uuids": ["service_01", "service_02", "service_03", "service_04", "service_05"],
+    "service_uuids": ["service_01", "service_05", "service_03", "service_04", "service_02"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
       {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -73,7 +73,7 @@
     "audio_url": null,
     "audio": "../../assets/audios/your_story.mp3",
     "images": ["intro3", "intro2", "intro1"],
-    "service_uuids": ["service_01", "service_03"],
+    "service_uuids": ["service_01", "service_02", "service_03"],
     "working_days": [
       {"day":"monday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
       {"day":"tuesday", "open":true, "working_hours": [{"open_at":8, "close_at":17}]},
@@ -146,7 +146,7 @@
     "address": "ផ្ទះលេខ 227B, ផ្លូវ​ 182, ខណ្ឌទួលគោក រាជធានីភ្នំពេញ",
     "emails": ["clinic6@gmail.com"],
     "websites": [],
-    "facebook_pages": [],
+    "facebook_pages": ["https://web.facebook.com/clinic6/"],
     "telegram_username": null,
     "description": "ឯកទេសផ្នែកជំងឺផ្លូវចិត្ត បញ្ហាផ្លូវភេទ និងសខុភាពបន្តរពូជប្រចាំអាសុី",
     "latitude": 13.362968,

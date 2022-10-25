@@ -12,7 +12,7 @@ import {PHONE} from '../../constants/contact_constant';
 import translationHelper from '../../helpers/translation_helper';
 import contactHelper from '../../helpers/contact_helper';
 
-const ContactNumberBottomSheetItemComponent = (props) => {
+const FacililityDetailContactNumberBottomSheetItemComponent = (props) => {
   const {i18n} = useTranslation();
   return (
     <React.Fragment>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ContactNumberBottomSheetItemComponent;
+export default FacililityDetailContactNumberBottomSheetItemComponent;

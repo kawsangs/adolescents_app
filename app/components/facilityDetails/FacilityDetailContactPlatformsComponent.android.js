@@ -6,21 +6,17 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
-import ContactNumberBottomSheetComponent from '../contactNumberBottomSheet/ContactNumberBottomSheetComponent';
-import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
+import FacilityDetailContactNumberBottomSheetComponent from './FacilityDetailContactNumberBottomSheetComponent';
 
 import color from '../../themes/color';
 import {xxLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import contactHelper from '../../helpers/contact_helper';
 import {FACEBOOK, TELEGRAM, WEBSITE, PHONE} from '../../constants/contact_constant';
-import {contactNumbersSnapPoints} from '../../constants/modal_constant';
+import { contactNumbersSnapPoints } from '../../constants/modal_constant';
 
 const FacilityDetailContactPlatformsComponent = (props) => {
   const {t} = useTranslation()
-  let bottomSheetRef = React.createRef();
-  let modalRef = React.createRef();
-
   const renderPlatformButtons = () => {
     const platforms = [
       {name: t("phone"), icon: "phone", size: 30, value: props.contactNumbers, type: PHONE, color: color.primaryColor},
@@ -39,10 +35,9 @@ const FacilityDetailContactPlatformsComponent = (props) => {
     }
 
     const showContactNumbers = () => {
-      bottomSheetRef.current?.setBodyContent(
-        <ContactNumberBottomSheetComponent numbers={props.contactNumbers} />
-      );
-      modalRef.current?.present();
+      props.bottomSheetRef.current?.setSnapPoints(contactNumbersSnapPoints);
+      props.bottomSheetRef.current?.setBodyContent(<FacilityDetailContactNumberBottomSheetComponent numbers={props.contactNumbers}/>);
+      props.modalRef.current?.present();
     }
 
     return platforms.map((platform, index) => {
@@ -62,12 +57,11 @@ const FacilityDetailContactPlatformsComponent = (props) => {
   }
 
   return (
-    <View style={{marginTop: 18}}>
+    <View style={{marginTop: 33}}>
       <BoldLabelComponent label={t("contactVia")} style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
-      <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 8}}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 8}}>
         {renderPlatformButtons()}
       </View>
-      <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={contactNumbersSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
     </View>
   )
 }

@@ -7,14 +7,19 @@ import FacilityDetailWorkingDayAndContactComponent from './FacilityDetailWorking
 import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsComponent';
 import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
 import FacilityViewRouteButtonComponent from '../shared/FacilityViewRouteButtonComponent';
+import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
 import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
+import {contactNumbersSnapPoints} from '../../constants/modal_constant';
 import {xLargeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import Facility from '../../models/Facility';
 
 const FacilityDetailInfoComponent = (props) => {
   const facility = Facility.findByUuid(props.uuid);
+  let bottomSheetRef = React.createRef();
+  let modalRef = React.createRef();
+
   const viewRouteStyle = () => {
     if (!facility.latitude || !facility.longitude)
       return { btn: {backgroundColor: color.disabledColor}, text: {color: color.mutedColor} }
@@ -31,16 +36,20 @@ const FacilityDetailInfoComponent = (props) => {
       />
 
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
-      <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids}/>
+      <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids} bottomSheetRef={bottomSheetRef} modalRef={modalRef}/>
       <FacilityDetailContactPlatformsComponent
         contactNumbers={facility.tels}
         websites={facility.websites}
         facebookPages={facility.facebook_pages}
         telegram={facility.telegram_username}
+        bottomSheetRef={bottomSheetRef}
+        modalRef={modalRef}
       />
-      <Text style={{fontSize: descriptionFontSize(), marginTop: 16, lineHeight: descriptionLineHeight}}>
+      <Text style={{fontSize: descriptionFontSize(), marginTop: 21, lineHeight: descriptionLineHeight}}>
         {facility.description}
       </Text>
+
+      <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={contactNumbersSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
     </View>
   )
 }
