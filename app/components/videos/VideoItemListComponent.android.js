@@ -12,7 +12,6 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
-import {pageable_types} from '../../constants/visit_constant';
 
 const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());

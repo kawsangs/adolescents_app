@@ -10,6 +10,7 @@ import {pageable_types} from '../constants/visit_constant';
 const visitService = (() => {
   return {
     recordVisitCategory,
+    recordVisitVideo,
     recordVisitAction,
     syncVisits,
   }
@@ -17,6 +18,13 @@ const visitService = (() => {
   function recordVisitCategory(category) {
     category.pageable_type = pageable_types.page;
     recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
+  }
+
+  function recordVisitVideo(video, callback) {
+    video.pageable_type = pageable_types.video;
+    video.code = "video_detail";
+    video.parent_code = "video";
+    recordVisitAction(video, () => callback());
   }
 
   function recordVisitAction(visitItem, callback) {
@@ -94,7 +102,7 @@ const visitService = (() => {
     const data = {
       name: visitItem.name,
       code: visitItem.code,
-      parent_code: visitItem.parent_code,
+      parent_code: visitItem.parent_code || null,
       pageable_id: visitItem.uuid || null,
       pageable_type: visitItem.pageable_type,
     }
