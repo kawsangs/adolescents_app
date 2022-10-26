@@ -4,61 +4,33 @@ import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import NotificationMessage from '../models/NotificationMessage';
 
 const TOKEN_KEY = 'registeredToken';
 
 const MobileTokenService = (() => {
+  const Api = new MobileTokenApi();
+
   return {
     handleSyncingToken: handleSyncingToken,
-    onHavingNotification: onHavingNotification
+    onNotificationOpenApp: onNotificationOpenApp
   }
 
-  function onHavingNotification() {
-    // messaging().onNotificationOpenedApp(remoteMessage => {
-    //   console.log(
-    //     'Notification caused app to open from background state:--------',
-    //     remoteMessage,
-    //   );
-    //   // remoteMessage
-    //   // {"collapseKey": "kh.org.childhelpline.youthhealth", "data": {}, "from": "405691551008", "messageId": "0:1666680844736051%083c30f7083c30f7", "notification": {"android": {}, "body": "asdf", "title": "tsets"}, "sentTime": 1666680844717, "ttl": 2419200}
-    // });
+  function onNotificationOpenApp(callback) {
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log('Notification caused app to open from background state:--------', remoteMessage);
 
-    // // Check whether an initial notification is available
-    // messaging()
-    //   .getInitialNotification()
-    //   .then(remoteMessage => {
-    //     if (remoteMessage) {
-    //       console.log(
-    //         'Notification caused app to open from quit state:=========',
-    //         remoteMessage.notification,
-    //       );
-    //     }
-    //   });
-
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!*********', remoteMessage);
-      _upsertToMessage(remoteMessage);
+      callback();
     });
 
-    messaging().onMessage(async remoteMessage => {
-      console.log('--===---A new FCM message arrived!', JSON.stringify(remoteMessage));
-      _upsertToMessage(remoteMessage);
-    });
-  }
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log('Notification caused app to open from quit state:=========', remoteMessage);
 
-  function _upsertToMessage(remoteMessage) {
-    message = NotificationMessage.findById(remoteMessage.messageId);
-
-    if(!!message) return;
-
-    params = {
-      id: remoteMessage.messageId,
-      title: remoteMessage.notification.title,
-      content: remoteMessage.notification.body
-    }
-
-    NotificationMessage.create(params);
+          callback();
+        }
+      });
   }
 
   async function requestUserPermission() {
@@ -80,7 +52,6 @@ const MobileTokenService = (() => {
   }
 
   function handleSyncingToken() {
-    // console.log("==================NotificationMessage.getAll, ", NotificationMessage.getAll().length)
     NetInfo.fetch().then(state => {
       if (state.isConnected)
         requestUserPermission();
@@ -107,8 +78,6 @@ const MobileTokenService = (() => {
         app_version: DeviceInfo.getVersion()
       }
     };
-
-    let Api = new MobileTokenApi();
 
     Api.post(Api.listingUrl(), data, function(res) {
       AsyncStorageService.setItem(TOKEN_KEY, res);
