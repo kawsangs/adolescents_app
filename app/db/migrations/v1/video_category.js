@@ -5,7 +5,6 @@ const VideoCategorySchema = {
   primaryKey: "uuid",
   properties: {
     uuid: "string",
-    id: "string?",
     name: "string",
   }
 }

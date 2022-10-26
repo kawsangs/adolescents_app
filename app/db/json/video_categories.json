@@ -1,12 +1,10 @@
 [
   {
-    "uuid": "video_category_01",
-    "id": null,
+    "id": "2dca4c1b-5912-4ce7-b6dc-994018876163",
     "name": "បុរស"
   },
   {
-    "uuid": "video_category_02",
-    "id": null,
+    "id": "a8deb429-97ec-464e-a73c-5937f24e81b9",
     "name": "ស្ត្រី"
   }
 ]

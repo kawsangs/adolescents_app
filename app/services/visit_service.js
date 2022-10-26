@@ -82,8 +82,6 @@ const visitService = (() => {
       }
     }
 
-    // console.log('visit params == ', params)
-
     const visitApi = new VisitApi();
     visitApi.post(visitApi.listingUrl(), params, (res) => {
       !!successCallback && successCallback();
