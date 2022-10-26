@@ -28,6 +28,10 @@ import seedDataService from './app/services/seed_data_service';
 
 import MobileTokenService from './app/services/mobile_token_service';
 
+import { store } from './app/store'
+import { Provider } from 'react-redux'
+import { navigationRef } from './app/navigators/app_navigator';
+
 Sentry.init({
   dsn: environment.sentryDSN,
 });
@@ -53,10 +57,14 @@ const App: () => Node = () => {
   const {t} = useTranslation();
   let backHandler = null;
 
+  const goToNotificationView = () => {
+    navigationRef.current?.navigate('NotificationView');
+  }
+
   useEffect(() => {
     SplashScreen.hide();
     MobileTokenService.handleSyncingToken();
-    MobileTokenService.onHavingNotification();
+    MobileTokenService.onNotificationOpenApp(goToNotificationView);
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
@@ -66,19 +74,21 @@ const App: () => Node = () => {
 
   return (
     <React.Fragment>
-      <PaperProvider
-        settings={{
-          icon: props => <FeatherIcon {...props} />
-        }}
-        theme={theme}
-      >
-        <GestureHandlerRootView style={{flex: 1}}>
-          <BottomSheetModalProvider>
-            <StatusBar barStyle={'light-content'} />
-            <AppNavigator/>
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider
+          settings={{
+            icon: props => <FeatherIcon {...props} />
+          }}
+          theme={theme}
+        >
+          <GestureHandlerRootView style={{flex: 1}}>
+            <BottomSheetModalProvider>
+              <StatusBar barStyle={'light-content'} />
+              <AppNavigator/>
+            </BottomSheetModalProvider>
+          </GestureHandlerRootView>
+        </PaperProvider>
+      </Provider>
     </React.Fragment>
   );
 };

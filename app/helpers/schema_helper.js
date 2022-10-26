@@ -8,7 +8,7 @@ import TopicSchema from '../db/migrations/v1/topic';
 import QuestionSchema from '../db/migrations/v1/question';
 import OptionSchema from '../db/migrations/v1/option';
 import SearchHistorySchema from '../db/migrations/v1/search_history';
-import NotificationMessage from '../db/migrations/v1/notification_message';
+import Notification from '../db/migrations/v1/notification';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -32,7 +32,7 @@ const schemaHelper = (() => {
       QuestionSchema,
       OptionSchema,
       SearchHistorySchema,
-      NotificationMessage,
+      Notification,
     ];
 
     changedSchemas.map((schema) => {
