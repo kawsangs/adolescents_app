@@ -5,6 +5,7 @@ import Visit from '../models/Visit';
 import User from '../models/User';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
+import {pageable_types} from '../constants/visit_constant';
 
 const visitService = (() => {
   return {
@@ -14,6 +15,7 @@ const visitService = (() => {
   }
 
   function recordVisitCategory(category) {
+    category.pageable_type = pageable_types.page;
     recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
   }
 
@@ -67,16 +69,20 @@ const visitService = (() => {
       visit: {
         app_user_id: userId,
         visit_date: Moment().toDate(),
+        pageable_id: visitItem.uuid,
+        pageable_type: visitItem.pageable_type,
         page_attributes: {
           code: visitItem.code,
           name: visitItem.name,
-          parent_code: visitItem.parent_code,
+          parent_code: visitItem.parent_code || null,
         },
         platform_attributes: {
           name: Platform.OS
         }
       }
     }
+
+    // console.log('visit params == ', params)
 
     const visitApi = new VisitApi();
     visitApi.post(visitApi.listingUrl(), params, (res) => {
@@ -91,8 +97,11 @@ const visitService = (() => {
       name: visitItem.name,
       code: visitItem.code,
       parent_code: visitItem.parent_code,
+      pageable_id: visitItem.uuid,
+      pageable_type: visitItem.pageable_type,
     }
 
+    console.log('save visit data == ', data)
     Visit.create(data);
   }
 })();

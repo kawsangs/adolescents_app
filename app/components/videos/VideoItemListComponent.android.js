@@ -11,6 +11,8 @@ import Video from '../../models/Video';
 import {xLargeFontSize} from '../../utils/font_size_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
+import visitService from '../../services/visit_service';
+import {pageable_types} from '../../constants/visit_constant';
 
 const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
@@ -19,16 +21,19 @@ const VideoItemListComponent = (props) => {
     setVideos(!!props.categoryUuid ? Video.findByCategoryUuid(props.categoryUuid) : Video.getAll());
   }, [props.categoryUuid]);
 
-  const playVideo = (uuid) => {
-    navigationRef.current?.navigate("PlayVideoView", { uuid: uuid });
+  const viewDetail = (video) => {
+    video.pageable_type = pageable_types.video;
+    visitService.recordVisitAction(video, () => {
+      navigationRef.current?.navigate("PlayVideoView", { uuid: video.uuid, hasInternet: props.hasInternet });
+    });
   }
 
   const renderItem = (item) => {
     return (
-      <Card mode="elevated" elevation={cardElevation} onPress={() => playVideo(item.uuid)}
+      <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(item)}
         style={{marginBottom: 13, borderRadius: cardBorderRadius}}
       >
-        <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item.uuid)} />
+        <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item)} />
         <BoldLabelComponent label={item.name} numberOfLines={2} style={{fontSize: xLargeFontSize(), margin: 8, lineHeight: 28}} />
       </Card>
     )
