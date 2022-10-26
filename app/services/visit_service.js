@@ -69,7 +69,7 @@ const visitService = (() => {
       visit: {
         app_user_id: userId,
         visit_date: Moment().toDate(),
-        pageable_id: visitItem.uuid,
+        pageable_id: visitItem.uuid || null,
         pageable_type: visitItem.pageable_type,
         page_attributes: {
           code: visitItem.code,
@@ -97,7 +97,7 @@ const visitService = (() => {
       name: visitItem.name,
       code: visitItem.code,
       parent_code: visitItem.parent_code,
-      pageable_id: visitItem.uuid,
+      pageable_id: visitItem.uuid || null,
       pageable_type: visitItem.pageable_type,
     }
 

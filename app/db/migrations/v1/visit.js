@@ -10,7 +10,7 @@ const VisitSchema = {
     name: 'string',
     code: 'string',
     parent_code: 'string?',
-    pageable_id: 'string',
+    pageable_id: 'string?',
     pageable_type: 'string'
   },
 };
