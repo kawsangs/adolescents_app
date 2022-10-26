@@ -6,14 +6,14 @@ import {useTranslation} from 'react-i18next';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailWorkingDaysComponent from './FacilityDetailWorkingDaysComponent';
 import color from '../../themes/color';
-import {xxLargeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize} from '../../utils/font_size_util';
 
 const FacilityDetailWorkingHourAndContactComponent = (props) => {
   const {t} = useTranslation();
   const renderTitle = (icon, label, style) => {
     return <View style={[{flexDirection: 'row', alignItems: 'center'}, style]}>
-              <FeatherIcon name={icon} size={20} color={color.secondaryColor} style={{borderWidth: 0}} />
-              <BoldLabelComponent label={label} style={{fontSize: xxLargeFontSize(), marginLeft: 12, marginTop: 2}} />
+              <FeatherIcon name={icon} size={18} color={color.secondaryColor} style={{borderWidth: 0}} />
+              <BoldLabelComponent label={label} style={{fontSize: xLargeFontSize(), marginLeft: 12, marginTop: 2}} />
            </View>
   }
 

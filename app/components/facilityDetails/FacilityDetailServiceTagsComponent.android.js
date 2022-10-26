@@ -8,7 +8,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailServiceBottomSheetComponent from './FacilityDetailServiceBottomSheetComponent';
 import FacilityDetailServiceTagItemComponent from './FacilityDetailServiceTagItemComponent';
 import color from '../../themes/color';
-import {xLargeFontSize, xxLargeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import Service from '../../models/Service';
 import { servicesSnapPoints } from '../../constants/modal_constant';
@@ -62,14 +62,14 @@ const FacilityDetailServiceTagsComponent = (props) => {
 
   return (
     <View style={{marginTop: 33}}>
-      <BoldLabelComponent label={t('providedServices')} style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
+      <BoldLabelComponent label={t('providedServices')} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
 
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
         <View style={{flex: 1, flexDirection: 'row', flexWrap: 'nowrap'}}
           onLayout={(event) => { setContainerWidth(event.nativeEvent.layout.width); }}
         >
           {renderTags()}
-          { isOverflowService && <Text style={{alignSelf: 'flex-end', fontSize: xLargeFontSize()}}>...</Text> }
+          { isOverflowService && <Text style={{alignSelf: 'flex-end', fontSize: largeFontSize()}}>...</Text> }
         </View>
         { isOverflowService && arrowButton() }
       </View>

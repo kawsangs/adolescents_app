@@ -8,7 +8,7 @@ const facilityServiceHelper = (() => {
 
   function filterOverflowServices(serviceUuids, containerWidth, serviceWidths) {
     let totalWidth = 0;
-    let maxWidth = containerWidth - (isLowPixelDensityDevice() ? 115 : 60)
+    let maxWidth = containerWidth - (isLowPixelDensityDevice() ? 120 : 90)
     for(let i = 0; i < serviceWidths.length; i++) {
       if ((totalWidth > 0 && containerWidth > 0) && totalWidth > maxWidth)
         return serviceUuids.slice(0, i);

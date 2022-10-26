@@ -9,7 +9,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailContactNumberBottomSheetComponent from './FacilityDetailContactNumberBottomSheetComponent';
 
 import color from '../../themes/color';
-import {xxLargeFontSize, largeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import contactHelper from '../../helpers/contact_helper';
 import {FACEBOOK, TELEGRAM, WEBSITE, PHONE} from '../../constants/contact_constant';
@@ -58,7 +58,7 @@ const FacilityDetailContactPlatformsComponent = (props) => {
 
   return (
     <View style={{marginTop: 33}}>
-      <BoldLabelComponent label={t("contactVia")} style={{fontSize: xxLargeFontSize(), textAlign: 'center'}} />
+      <BoldLabelComponent label={t("contactVia")} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 8}}>
         {renderPlatformButtons()}
       </View>

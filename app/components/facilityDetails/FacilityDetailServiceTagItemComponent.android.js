@@ -3,12 +3,12 @@ import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 
 import color from '../../themes/color';
-import {xLargeFontSize} from '../../utils/font_size_util';
+import {descriptionFontSize} from '../../constants/component_constant';
 
 const FacilityDetailServiceTagItemComponent = (props) => {
   return (
     <View {...props} style={[styles.tag, props.tagStyle]}>
-      <Text style={{color: color.blackColor, fontSize: xLargeFontSize()}}>{props.label}</Text>
+      <Text style={{color: color.blackColor, fontSize: descriptionFontSize}}>{props.label}</Text>
     </View>
   )
 }

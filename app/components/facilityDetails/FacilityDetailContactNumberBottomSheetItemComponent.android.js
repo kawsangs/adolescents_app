@@ -6,8 +6,7 @@ import {useTranslation} from 'react-i18next';
 
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import {xLargeFontSize} from '../../utils/font_size_util';
-import { screenHorizontalPadding } from '../../constants/component_constant';
+import { screenHorizontalPadding, descriptionFontSize } from '../../constants/component_constant';
 import {PHONE} from '../../constants/contact_constant';
 import translationHelper from '../../helpers/translation_helper';
 import contactHelper from '../../helpers/contact_helper';
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginLeft: 32,
-    fontSize: xLargeFontSize()
+    fontSize: descriptionFontSize
   }
 });
 

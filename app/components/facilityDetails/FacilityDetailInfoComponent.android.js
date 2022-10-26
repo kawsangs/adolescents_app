@@ -11,8 +11,8 @@ import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalCompone
 import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
 import {contactNumbersSnapPoints} from '../../constants/modal_constant';
-import {xLargeFontSize, descriptionFontSize} from '../../utils/font_size_util';
-import componentUtil from '../../utils/component_util';
+import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
+import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 import Facility from '../../models/Facility';
 
 const FacilityDetailInfoComponent = (props) => {
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 16,
-    height: componentUtil.mediumPressableItemSize(),
-    width: 200,
+    height: 48,
+    width: isLowPixelDensityDevice() ? 160 : 200,
   },
   viewRouteLabel: {
-    fontSize: xLargeFontSize(),
+    fontSize: largeFontSize(),
     marginLeft: 8,
   }
 });

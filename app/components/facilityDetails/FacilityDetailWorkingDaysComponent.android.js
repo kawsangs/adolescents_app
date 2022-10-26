@@ -3,10 +3,10 @@ import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
-import {xLargeFontSize} from '../../utils/font_size_util';
 import workingDayHelper from '../../helpers/working_day_helper';
 import dateTimeHelper from '../../helpers/date_time_helper';
 import {days} from '../../constants/date_time_constant';
+import {descriptionFontSize} from '../../constants/component_constant';
 
 const FacilityDetailWorkingDaysComponent = (props) => {
   const {i18n} = useTranslation();
@@ -20,7 +20,7 @@ const FacilityDetailWorkingDaysComponent = (props) => {
 
       doms.push(
         <View key={key} style={{marginTop: 10, alignItems: 'center'}}>
-          <Text style={{fontSize: xLargeFontSize()}}>
+          <Text style={{fontSize: descriptionFontSize}}>
             {days[workingDays[0].day][i18n.language]}
             {workingDays.length > 1 && ` - ${days[workingDays[workingDays.length - 1].day][i18n.language]}`}
           </Text>
@@ -33,7 +33,7 @@ const FacilityDetailWorkingDaysComponent = (props) => {
 
   const renderworkingHours = (workingHours) => {
     return workingHours.map((workingHour, index) => {
-      return <Text key={`hour-${index}`} style={{fontSize: xLargeFontSize()}}>
+      return <Text key={`hour-${index}`} style={{fontSize: descriptionFontSize}}>
                 {dateTimeHelper.getReadableTime(workingHour.open_at, i18n.language)} - {dateTimeHelper.getReadableTime(workingHour.close_at, i18n.language)}
              </Text>
     })
