@@ -2,16 +2,16 @@ import React from 'react';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
-import ConsultingListComponent from '../../components/shared/ConsultingListComponent';
+import ConsultingDetailMainComponent from '../../components/consultingDetails/ConsultingDetailMainComponent';
 
-const SubConsultingView = (props) => {
+const ConsultingDetailView = (props) => {
   return (
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label={props.route.params.name} />}
-      body={<ConsultingListComponent activeCategoryUuid={null} onPress={(name) => props.navigation.navigate('ConsultingDetailView', {name: name}) }/>}
-      scrollViewStyle={{paddingHorizontal: 0, paddingBottom: 0}}
+      body={<ConsultingDetailMainComponent/>}
+      scrollViewStyle={{paddingHorizontal: 0}}
     />
   )
 }
 
-export default SubConsultingView;
+export default ConsultingDetailView;
