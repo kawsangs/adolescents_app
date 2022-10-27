@@ -66,5 +66,6 @@
   "noVideoAvailable": "No video available",
   "providedServices": "Services",
   "contactNumber": "Contact number",
-  "healthServiceConsulting": "Health service consulting"
+  "healthServiceConsulting": "Health service consulting",
+  "recommendedServiceProvider": "Recommended service provider"
 }
