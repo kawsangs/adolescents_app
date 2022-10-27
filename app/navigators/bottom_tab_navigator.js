@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 import HomeStackNavigator from './home_stack_navigator';
 import VideoStackNavigator from './video_stack_navigator';
 import FacilityStackNavigator from './facility_stack_navigator';
-import VideoView from '../views/videos/VideoView';
+import ConsultingStackNavigator from './consulting_stack_navigator';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
 import {getStyleOfDevice} from '../utils/responsive_util';
@@ -65,12 +65,13 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Consult"
-        component={VideoView}
+        name="ConsultingViewStack"
+        component={ConsultingStackNavigator}
         options={{
           tabBarLabel: t('consult'),
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
-          tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
+          tabBarItemStyle: styles.tabBarItem,
+          headerShown: false,
         }}
         listeners={{
           tabPress: () => { visitService.recordVisitAction(tabVisitParams.consulting) }

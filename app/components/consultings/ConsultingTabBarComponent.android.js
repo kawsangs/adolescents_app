@@ -1,40 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-import NetInfo from '@react-native-community/netinfo';
 
-import VideoItemListComponent from './VideoItemListComponent';
+import ConsultingListComponent from './ConsultingListComponent';
 import color from '../../themes/color';
-import VideoCategory from '../../models/VideoCategory';
 import topTabHelper from '../../helpers/top_tab_helper';
 import {largeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
 
-const VideoTabBarComponent = (props) => {
+const ConsultingTabBarComponent = (props) => {
   const [index, setIndex] = useState(0);
-  const [routes] = useState(topTabHelper.getVideoCategoryRoutes())
+  const [routes] = useState(topTabHelper.getConsultingRoutes())
   const [activeCategoryUuid, setActiveCategoryUuid] = useState(null);
-  const [hasInternet, setHasInternet] = useState(true);
-
-  useEffect(() => {
-    const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
-      if (hasInternet != state.isInternetReachable)
-        setHasInternet(state.isInternetReachable);
-    });
-
-    return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
-  }, []);
 
   const getTabs = () => {
-    let tabs = {all: itemList};
-    VideoCategory.getAll().map(category => {
-      tabs[category.name] = itemList;
+    const consultingCategories = ['បន្តពូជ', 'ផ្លូវចិត្ត', 'មាតា និងទារក']
+    let tabs = {};
+    consultingCategories.map(category => {
+      tabs[category] = itemList;
     });
-
     return tabs;
   }
 
   const itemList = () => {
-    return <VideoItemListComponent categoryUuid={activeCategoryUuid} hasInternet={hasInternet} />
+    return <ConsultingListComponent activeCategoryUuid={activeCategoryUuid} />
   }
 
   const renderTabBar = (tabBarProps) => {
@@ -63,4 +51,4 @@ const VideoTabBarComponent = (props) => {
   );
 }
 
-export default VideoTabBarComponent;
+export default ConsultingTabBarComponent;
