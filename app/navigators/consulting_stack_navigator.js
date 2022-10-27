@@ -2,6 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import ConsultingView from '../views/consultings/ConsultingView';
+import SubConsultingView from '../views/subConsultings/SubConsultingView';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,13 @@ const ConsultingStackNavigator = () => {
         <Stack.Screen
           name="ConsultingView"
           component={ConsultingView}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="SubConsultingView"
+          component={SubConsultingView}
           options={{
             header: () => null,
           }}

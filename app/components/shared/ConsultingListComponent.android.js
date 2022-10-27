@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 
-import ConsultingCardItemComponent from './ConsultingCardItemComponent';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import ConsultingListCardComponent from './consultingLists/ConsultingListCardComponent';
+import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
 
 import safetyPlan from '../../assets/audios/safety_plan.mp3';
 import longStory from '../../assets/audios/your_story_long.mp3';
@@ -26,14 +26,15 @@ const ConsultingListComponent = (props) => {
 
   const renderList = () => {
     return consultings.map((item, index) => {
-      return <ConsultingCardItemComponent key={`const_${index}`} uuid={item.uuid} name={item.name} index={index} audio={item.audio}
-              playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
+      return <ConsultingListCardComponent key={`const_${index}`} uuid={item.uuid} name={item.name} index={index} audio={item.audio}
+              playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+              onPress={props.onPress} />
     })
   }
 
 
   return (
-    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: screenHorizontalPadding, paddingBottom: 130}}>
+    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
       {renderList()}
     </ScrollView>
   )

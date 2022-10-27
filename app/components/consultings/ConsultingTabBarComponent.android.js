@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-import ConsultingListComponent from './ConsultingListComponent';
+import ConsultingListComponent from '../shared/ConsultingListComponent';
 import color from '../../themes/color';
 import topTabHelper from '../../helpers/top_tab_helper';
 import {largeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const ConsultingTabBarComponent = (props) => {
   const [index, setIndex] = useState(0);
@@ -22,7 +23,7 @@ const ConsultingTabBarComponent = (props) => {
   }
 
   const itemList = () => {
-    return <ConsultingListComponent activeCategoryUuid={activeCategoryUuid} />
+    return <ConsultingListComponent activeCategoryUuid={activeCategoryUuid} onPress={(name) => navigationRef.current?.navigate('SubConsultingView', {name: name}) } />
   }
 
   const renderTabBar = (tabBarProps) => {

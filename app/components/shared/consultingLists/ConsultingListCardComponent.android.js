@@ -3,12 +3,12 @@ import { View, StyleSheet } from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
-import AudioWaveButtonComponent from '../shared/AudioWaveButtonComponent';
-import color from '../../themes/color';
-import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../constants/component_constant';
-import componentUtil from '../../utils/component_util';
+import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
+import color from '../../../themes/color';
+import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../../constants/component_constant';
+import componentUtil from '../../../utils/component_util';
 
-const ConsultingCardItemComponent = (props) => {
+const ConsultingListCardComponent = (props) => {
   const renderAudioButton = () => {
     return (
       <AudioWaveButtonComponent
@@ -24,7 +24,9 @@ const ConsultingCardItemComponent = (props) => {
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={{marginTop: props.index == 0 ? 26 : 36, borderRadius: cardBorderRadius, height: 84}}>
+    <Card mode="elevated" elevation={cardElevation} style={{marginTop: props.index == 0 ? 26 : 36, borderRadius: cardBorderRadius, height: 84}}
+      onPress={() => props.onPress(props.name)}
+    >
       <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 16}}>
         <View style={{flex: 1}}>
           <View style={{height: 20, borderWidth: 0}}>
@@ -50,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConsultingCardItemComponent;
+export default ConsultingListCardComponent;
