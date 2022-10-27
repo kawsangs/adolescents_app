@@ -1,7 +1,6 @@
 [
   {
     "id":"790e9547-2b9b-484b-b508-f2b5020c5b71",
-    "code": "video_protection_from_disease",
     "name":"ការពារខ្លួនពីជំងឺ",
     "description":"ការពារខ្លួនពីជំងឺ",
     "url":"https://www.youtube.com/watch?v=ZsP4kYUpwaI",
@@ -16,7 +15,6 @@
   },
   {
     "id":"d2b455dc-98eb-4bc1-900b-9bddceb9946d",
-    "code": "video_alcohol_treatment",
     "name":"ព្យាបាលកាសេពគ្រឿងស្រវឹង",
     "description":"ព្យាបាលកាសេពគ្រឿងស្រវឹង",
     "url":"https://www.youtube.com/watch?v=69vG5JOMfrY",
@@ -31,7 +29,6 @@
   },
   {
     "id":"1e23fc26-bdf4-44e7-b5ac-370601d381e4",
-    "code": "video_feelings_in_adulthood",
     "name":"អារម្មណ៏នៅពេលពេញវ័យ",
     "description":"អារម្មណ៏នៅពេលពេញវ័យ",
     "url":"https://www.youtube.com/watch?v=kQ-83Nt3EvU\u0026t=14s",
@@ -46,7 +43,6 @@
   },
   {
     "id":"9801f9b8-a7d7-4f80-9e51-b892c2def512",
-    "code": "video_right_and_freedom",
     "name":"សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
     "description":"សិទ្ធិសេរីភាព កាតព្វកិច្ច ទំនួលខុសត្រូវក្នុងគ្រួសារ និងក្នុងសង្កម សម្រាប់យុវជនសម័យថ្មី",
     "url":"https://www.youtube.com/watch?v=RgeKg5iGZKI\u0026list=RDCMUCsMW60l4zLO11NB6ckap57g",
@@ -61,7 +57,6 @@
   },
   {
     "id":"307658db-f265-408b-99df-38fd29fb0c5e",
-    "code": "video_women_awareness",
     "name":"ការយល់ដឹងក្នុងនាមជាស្រ្តី",
     "description":"ការយល់ដឹងក្នុងនាមជាស្រ្តី",
     "url":"https://www.youtube.com/watch?v=P7C7fBGmk_Q",
@@ -76,7 +71,6 @@
   },
   {
     "id":"49c51dd9-c34e-4fe2-ad89-b991f0ee1409",
-    "code": "video_unexpected_pregnancy",
     "name":"មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
     "description":"មានផ្ទៃពោះដោយមិនបានព្រាងទុក",
     "url":"https://www.youtube.com/watch?v=NnyEiC8MzQs",

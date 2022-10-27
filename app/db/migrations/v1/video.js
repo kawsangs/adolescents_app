@@ -5,7 +5,6 @@ const VideoSchema = {
   primaryKey: "uuid",
   properties: {
     uuid: "string",
-    code: "string",
     name: "string",
     url: "string",
     display_order: "int",

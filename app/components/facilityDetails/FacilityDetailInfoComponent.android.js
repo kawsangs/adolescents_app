@@ -29,7 +29,7 @@ const FacilityDetailInfoComponent = (props) => {
 
   return (
     <View style={{paddingHorizontal: screenHorizontalPadding, paddingTop: 16}}>
-      <FacilityDetailTitleComponent name={facility.name} address={facility.address}/>
+      <FacilityDetailTitleComponent name={facility.name} addresses={facility.addresses}/>
       <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={20} iconColor={viewRouteStyle().text.color}
         latitude={facility.latitude} longitude={facility.longitude}
         buttonStyle={[styles.viewRouteBtn, viewRouteStyle().btn]} labelStyle={[styles.viewRouteLabel, viewRouteStyle().text]}

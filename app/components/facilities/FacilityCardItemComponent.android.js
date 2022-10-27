@@ -7,6 +7,7 @@ import ImageComponent from '../shared/ImageComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import {isShortScreenDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
+import visitService from '../../services/visit_service';
 
 const FacilityCardItemComponent = (props) => {
 
@@ -28,13 +29,13 @@ const FacilityCardItemComponent = (props) => {
 
   const viewDetail = () => {
     props.updatePlayingUuid(null);
-    navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid});
+    visitService.recordVisitFacility(props.facility, () => {
+      navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid})
+    });
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => viewDetail()}
-    >
+    <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]} onPress={() => viewDetail()}>
       <View style={{flexDirection: 'row'}}>
         { renderImage() }
         { renderInfo() }

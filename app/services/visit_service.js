@@ -11,6 +11,7 @@ const visitService = (() => {
   return {
     recordVisitCategory,
     recordVisitVideo,
+    recordVisitFacility,
     recordVisitAction,
     syncVisits,
   }
@@ -21,10 +22,25 @@ const visitService = (() => {
   }
 
   function recordVisitVideo(video, callback) {
-    video.pageable_type = pageable_types.video;
-    video.code = "video_detail";
-    video.parent_code = "video";
-    recordVisitAction(video, () => callback());
+    const videoParams = {
+      uuid: video.uuid,
+      name: "video detail",
+      code: "video_detail",
+      parent_code: "video",
+      pageable_type: pageable_types.video
+    };
+    recordVisitAction(videoParams, () => callback());
+  }
+
+  function recordVisitFacility(facility, callback) {
+    const facilityParams = {
+      uuid: facility.uuid,
+      name: "facility detail",
+      code: "facility_detail",
+      parent_code: "facility",
+      pageable_type: pageable_types.facility
+    };
+    recordVisitAction(facilityParams, () => callback());
   }
 
   function recordVisitAction(visitItem, callback) {
@@ -71,13 +87,16 @@ const visitService = (() => {
   }
 
   function _sendCreateRequest(visitItem, successCallback, failureCallback) {
+    if (!visitItem.user_uuid && !User.currentLoggedIn())    // If there is no user login yet then save the visit data to realm
+      return !!failureCallback && failureCallback();
+
     const userId = !!visitItem.user_uuid ? User.findByUuid(visitItem.user_uuid).id : User.currentLoggedIn().id;
 
     const params = {
       visit: {
         app_user_id: userId,
         visit_date: Moment().toDate(),
-        pageable_id: visitItem.uuid || null,
+        pageable_id: visitItem.pageable_id || visitItem.uuid,
         pageable_type: visitItem.pageable_type,
         page_attributes: {
           code: visitItem.code,
@@ -107,7 +126,6 @@ const visitService = (() => {
       pageable_type: visitItem.pageable_type,
     }
 
-    console.log('save visit data == ', data)
     Visit.create(data);
   }
 })();
