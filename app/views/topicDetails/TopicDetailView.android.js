@@ -2,16 +2,16 @@ import React from 'react';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
-import ConsultingDetailMainComponent from '../../components/consultingDetails/ConsultingDetailMainComponent';
+import TopicDetailMainComponent from '../../components/topicDetails/TopicDetailMainComponent';
 
-const ConsultingDetailView = (props) => {
+const TopicDetailView = (props) => {
   return (
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label={props.route.params.name} />}
-      body={<ConsultingDetailMainComponent/>}
+      body={<TopicDetailMainComponent uuid={props.route.params.uuid} topicUuid={props.route.params.topic_uuid} type={props.route.params.type} />}
       scrollViewStyle={{paddingHorizontal: 0}}
     />
   )
 }
 
-export default ConsultingDetailView;
+export default TopicDetailView;

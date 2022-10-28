@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 import HomeStackNavigator from './home_stack_navigator';
 import VideoStackNavigator from './video_stack_navigator';
 import FacilityStackNavigator from './facility_stack_navigator';
-import ConsultingStackNavigator from './consulting_stack_navigator';
+import TopicStackNavigator from './topic_stack_navigator';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
 import {getStyleOfDevice} from '../utils/responsive_util';
@@ -65,12 +65,12 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="ConsultingViewStack"
-        component={ConsultingStackNavigator}
+        name="TopicViewStack"
+        component={TopicStackNavigator}
         options={{
           tabBarLabel: t('consult'),
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
-          tabBarItemStyle: styles.tabBarItem,
+          tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
           headerShown: false,
         }}
         listeners={{

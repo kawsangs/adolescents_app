@@ -8,7 +8,7 @@ import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
 
-const ConsultingListCardComponent = (props) => {
+const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
     return (
       <AudioWaveButtonComponent
@@ -25,7 +25,7 @@ const ConsultingListCardComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={{marginTop: props.index == 0 ? 26 : 36, borderRadius: cardBorderRadius, height: 84}}
-      onPress={() => props.onPress(props.name)}
+      onPress={() => props.onPress()}
     >
       <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 16}}>
         <View style={{flex: 1}}>
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConsultingListCardComponent;
+export default TopicListCardComponent;

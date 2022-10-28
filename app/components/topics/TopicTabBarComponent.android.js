@@ -1,29 +1,28 @@
 import React, {useState} from 'react';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-import ConsultingListComponent from '../shared/ConsultingListComponent';
+import TopicListComponent from '../shared/TopicListComponent';
 import color from '../../themes/color';
 import topTabHelper from '../../helpers/top_tab_helper';
 import {largeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
 import {navigationRef} from '../../navigators/app_navigator';
 
-const ConsultingTabBarComponent = (props) => {
+const TopicTabBarComponent = (props) => {
   const [index, setIndex] = useState(0);
-  const [routes] = useState(topTabHelper.getConsultingRoutes())
+  const [routes] = useState(topTabHelper.getTopicRoutes())
   const [activeCategoryUuid, setActiveCategoryUuid] = useState(null);
 
   const getTabs = () => {
-    const consultingCategories = ['បន្តពូជ', 'ផ្លូវចិត្ត', 'មាតា និងទារក']
     let tabs = {};
-    consultingCategories.map(category => {
-      tabs[category] = itemList;
+    topTabHelper.getTopicTabKeys().map(topic => {
+      tabs[topic] = itemList;
     });
     return tabs;
   }
 
   const itemList = () => {
-    return <ConsultingListComponent activeCategoryUuid={activeCategoryUuid} onPress={(name) => navigationRef.current?.navigate('SubConsultingView', {name: name}) } />
+    return <TopicListComponent activeCategoryUuid={activeCategoryUuid} onPress={(name) => navigationRef.current?.navigate('QuestionView', {name: name}) } />
   }
 
   const renderTabBar = (tabBarProps) => {
@@ -52,4 +51,4 @@ const ConsultingTabBarComponent = (props) => {
   );
 }
 
-export default ConsultingTabBarComponent;
+export default TopicTabBarComponent;

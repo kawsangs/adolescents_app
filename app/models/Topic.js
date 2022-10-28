@@ -1,10 +1,18 @@
 import BaseModel from './BaseModel';
 import topics from '../db/json/topics.json';
-import modelHelper from '../helpers/modelHelper';
+import modelHelper from '../helpers/model_helper';
 
 class Topic {
   static seedData = () => {
     BaseModel.seedData(Topic.name, this.#getFormattedTopics());
+  }
+
+  static getAll = () => {
+    return BaseModel.getAll(Topic.name);
+  }
+
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Topic.name, uuid);
   }
 
   //private method

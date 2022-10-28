@@ -6,6 +6,14 @@ class Option {
     BaseModel.seedData(Option.name, this.#getFormattedOptions());
   }
 
+  static findByQuestionUuid = (uuid) => {
+    return [...BaseModel.findByAttr(Option.name, { question_uuid: `'${uuid}'` })];
+  }
+
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(Option.name, uuid);
+  }
+
   //private method
   static #getFormattedOptions = () => {
     const formattedOptions = [];
@@ -16,6 +24,7 @@ class Option {
         })
       });
     });
+    return formattedOptions;
   }
 }
 

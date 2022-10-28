@@ -10,9 +10,11 @@ import {xxLargeFontSize} from '../../utils/font_size_util';
 const ComingSoonMessageComponent = () => {
   const {t} = useTranslation();
   return (
-    <View style={{alignItems: 'center'}}>
-      <Icon name="file-text" size={100} color={color.disabledColor}  />
-      <Text style={{color: color.grayColor, fontSize: xxLargeFontSize(), marginTop: 16,}}>{t("comingSoon")}</Text>
+    <View style={{ flex: 1, justifyContent: 'center', backgroundColor: color.whiteColor }}>
+      <View style={{alignItems: 'center', backgroundColor: color.whiteColor}}>
+        <Icon name="file-text" size={100} color={color.disabledColor}  />
+        <Text style={{color: color.grayColor, fontSize: xxLargeFontSize(), marginTop: 16,}}>{t("comingSoon")}</Text>
+      </View>
     </View>
   )
 }

@@ -21,9 +21,7 @@ const VideoView = (props) => {
   }
 
   return (
-    <GradientViewComponent colors={[color.primaryColor, 'rgba(170, 73, 133, 0.88)']}
-      style={{flexGrow: 1}}
-    >
+    <GradientViewComponent style={{flexGrow: 1}}>
       <React.Fragment>
         {renderHeader()}
         {renderTabBar()}

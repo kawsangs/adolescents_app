@@ -12,6 +12,7 @@ const QuestionSchema = {
     display_order: 'int',
     audio: 'string?',
     topic_uuid: 'string',
+    answer: 'string?',
     option_uuids: { type: 'string[]', default: [], optional: true }
   }
 }

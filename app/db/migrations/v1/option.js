@@ -6,7 +6,7 @@ const OptionSchema = {
   properties: {
     uuid: 'string',
     name: 'string',
-    message: 'string',
+    message: 'string?',
     move_next: { type: 'bool', default: true },
     question_uuid: 'string'
   }
