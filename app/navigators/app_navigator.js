@@ -11,6 +11,8 @@ import DrawerNavigator from './drawer_navigator';
 const Stack = createNativeStackNavigator();
 
 function AppNaviator() {
+
+
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
