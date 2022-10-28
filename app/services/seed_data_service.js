@@ -4,6 +4,7 @@ import Service from '../models/Service';
 import VideoCategory from '../models/VideoCategory';
 import Video from '../models/Video';
 import Topic from '../models/Topic';
+import Question from '../models/Question';
 
 const seedDataService = (() => {
   return {
@@ -18,6 +19,7 @@ const seedDataService = (() => {
     VideoCategory.seedData();
     Video.seedData();
     Topic.seedData();
+    Question.seedData();
   }
 })();
 

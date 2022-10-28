@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import topics from '../db/json/topics.json';
+import modelHelper from '../helpers/modelHelper';
 
 class Topic {
   static seedData = () => {
@@ -11,17 +12,9 @@ class Topic {
     let formattedTopics = [];
 
     topics.map(topic => {
-      formattedTopics.push({ ...topic, uuid: topic.id, service_uuids: topic.service_ids, question_uuids: this.#getQuestionUuids(topic.questions) });
+      formattedTopics.push({ ...topic, uuid: topic.id, service_uuids: topic.service_ids, question_uuids: modelHelper.getItemUuids(topic.questions) });
     });
     return formattedTopics;
-  }
-
-  static #getQuestionUuids = (questions) => {
-    const uuids = [];
-    questions.map(question => {
-      uuids.push(question.id)
-    });
-    return uuids;
   }
 }
 
