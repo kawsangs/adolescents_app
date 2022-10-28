@@ -13,7 +13,7 @@ class Question {
 
     topics.map(topic => {
       topic.questions.map(question => {
-        formattedQuestions.push({...question, uuid: question.id, option_uuids: modelHelper.getItemUuids(question.options)})
+        formattedQuestions.push({...question, uuid: question.id, topic_uuid: question.topic_id, option_uuids: modelHelper.getItemUuids(question.options)})
       });
     });
   }
