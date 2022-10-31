@@ -13,6 +13,7 @@ import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
@@ -60,8 +61,10 @@ const App: () => Node = () => {
   return (
     <React.Fragment>
       <PaperProvider theme={theme}>
-        <StatusBar barStyle={'light-content'} />
-        <AppNavigator/>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <StatusBar barStyle={'light-content'} />
+          <AppNavigator/>
+        </GestureHandlerRootView>
       </PaperProvider>
     </React.Fragment>
   );

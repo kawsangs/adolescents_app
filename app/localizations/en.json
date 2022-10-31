@@ -33,8 +33,6 @@
   "pleaseLoginWithYourAccount": "Please login with your account.",
   "somethingWentWrong": "Something went wrong.",
   "somethingWentWrongPleaseTryAgain": "Something went wrong. Please check your internet connection then try again.",
-  "pleaseInputYourAge": "(please input your age)",
-  "pleaseChooseYourProvince": "(please choose your province)",
   "continue": "Continue",
   "cancel": "Cancel",
   "doYouReallyWantToCancel": "Do you really want to cancel?",
@@ -58,5 +56,8 @@
   "contactVia": "Contact via",
   "unableToViewTheRoute": "Unable to view the route",
   "comingSoon": "Coming soon",
-  "anonymous": "Anonymous"
+  "anonymous": "Anonymous",
+  "selectYourProvince": "Select your province",
+  "selectYourAge": "Select your age",
+  "yearOld": "year old"
 }
