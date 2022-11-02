@@ -32,7 +32,6 @@ const QuestionMainComponent = (props) => {
     setPreviousType(QUESTION);
     // Redirect to detail screen if the selected question type is FAQ
     if (item.type == QUESTION_FAQ) {
-      showTopicAsTitle();
       setQuestionUuid(null);
       return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: QUESTION })
     }
@@ -55,7 +54,9 @@ const QuestionMainComponent = (props) => {
   }
   
   return (
-    <TopicListComponent items={items} type={props.type} onPress={(item, moveNext) => onPress(item, moveNext)} />
+    <TopicListComponent items={items} type={props.type} onPress={(item, moveNext) => onPress(item, moveNext)}
+      playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid}
+    />
   )
 }
 

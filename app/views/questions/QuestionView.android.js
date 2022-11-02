@@ -9,8 +9,10 @@ import {navigationRef} from '../../navigators/app_navigator';
 const QuestionView = (props) => {
   const [title, setTitle] = React.useState(props.route.params.name);
   const [type, setType] = React.useState(QUESTION);
+  const [playingUuid, setPlayingUuid] = React.useState(null);
 
   const onPress = () => {
+    setPlayingUuid(null);
     if (type == OPTION)
       return setType(QUESTION);
 
@@ -20,7 +22,7 @@ const QuestionView = (props) => {
   return (
     <GradientScrollViewComponent
       header={<QuestionNavigationHeaderComponent label={title} onPress={() => onPress()} />}
-      body={<QuestionMainComponent topicUuid={props.route.params.uuid} type={type} updateTitle={(name) => setTitle(name)} updateType={(type) => setType(type)} />}
+      body={<QuestionMainComponent topicUuid={props.route.params.uuid} type={type} updateTitle={(name) => setTitle(name)} updateType={(type) => setType(type)} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
       scrollViewStyle={{paddingHorizontal: 0, paddingBottom: 0}}
     />
   )

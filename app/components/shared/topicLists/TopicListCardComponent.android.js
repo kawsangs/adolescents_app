@@ -7,13 +7,14 @@ import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
 import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
+import audioUtil from '../../../utils/audio_util';
 
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
     return (
       <AudioWaveButtonComponent
         itemUuid={props.uuid}
-        audio={props.audio}
+        audio={audioUtil.getAudioSourceByFilePath(props.audio)}
         playingUuid={props.playingUuid}
         isSpeakerIcon={true}
         containerStyle={styles.btnContainer}

@@ -12,7 +12,7 @@ class Question {
   }
 
   static findByTopicUuid = (uuid) => {
-    return [...BaseModel.findByAttr(Question.name, { topic_uuid: `'${uuid}'`})];
+    return BaseModel.findByAttr(Question.name, { topic_uuid: `'${uuid}'`});
   }
 
   //private method
