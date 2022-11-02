@@ -6,7 +6,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 
 const TopicMainComponent = (props) => {
   return (
-    <TopicListComponent items={Topic.getAll()} onPress={(item, moveNext, index) => navigationRef.current?.navigate('QuestionView', {uuid: item.uuid, name: item.name})} />
+    <TopicListComponent items={Topic.getAll()} onPress={(item, moveNext) => navigationRef.current?.navigate('QuestionView', {uuid: item.uuid, name: item.name})} />
   )
 }
 

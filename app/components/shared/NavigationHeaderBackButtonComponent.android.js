@@ -7,7 +7,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 
 const NavigationHeaderBackButtonComponent = (props) => {
   return <NavigationHeaderButtonComponent
-            onPress={() => navigationRef.current?.goBack()}
+            onPress={() => !!props.onPress ? props.onPress() : navigationRef.current?.goBack()}
             icon={<Icon name="chevron-left" color={props.iconColor || color.whiteColor} size={30} style={props.iconStyle} />}
             buttonStyle={[{alignItems: 'flex-start', paddingLeft: 4}, props.buttonStyle]}
           />
