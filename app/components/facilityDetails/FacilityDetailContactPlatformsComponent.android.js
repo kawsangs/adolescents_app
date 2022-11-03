@@ -6,37 +6,37 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
-import FacilityDetailContactNumberBottomSheetComponent from './FacilityDetailContactNumberBottomSheetComponent';
+import FacilityDetailContactBottomSheetComponent from './FacilityDetailContactBottomSheetComponent';
 
 import color from '../../themes/color';
 import {xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import contactHelper from '../../helpers/contact_helper';
 import {FACEBOOK, TELEGRAM, WEBSITE, PHONE} from '../../constants/contact_constant';
-import { contactNumbersSnapPoints } from '../../constants/modal_constant';
+import { contactSnapPoints } from '../../constants/modal_constant';
 
 const FacilityDetailContactPlatformsComponent = (props) => {
   const {t} = useTranslation()
   const renderPlatformButtons = () => {
     const platforms = [
-      {name: t("phone"), icon: "phone", size: 30, value: props.contactNumbers, type: PHONE, color: color.primaryColor},
-      {name: t("website"), icon: "globe", size: 35, value: !!props.websites ? props.websites[0] : null, type: WEBSITE, color: color.primaryColor},
-      {name: t("facebook"), icon: "facebook-f", size: 30, value: !!props.facebookPages ? props.facebookPages[0] : null, type: FACEBOOK, color: color.primaryColor},
+      {name: t("phone"), icon: "phone", size: 30, value: props.contactNumbers.length > 0 ? props.contactNumbers : null, type: PHONE, color: color.primaryColor},
+      {name: t("website"), icon: "globe", size: 35, value: props.websites.length > 0 ? props.websites : null, type: WEBSITE, color: color.primaryColor},
+      {name: t("facebook"), icon: "facebook-f", size: 30, value: props.facebookPages.length > 0 ? props.facebookPages : null, type: FACEBOOK, color: color.primaryColor},
       {name: t("telegram"), icon: "paper-plane", size: 26, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: color.primaryColor},
     ]
 
     const openContactLink = (platform) => {
       if (!platform.value) return;
 
-      if (platform.type == PHONE && platform.value.length > 1)
-        return showContactNumbers();
+      if (platform.type != TELEGRAM && platform.value.length > 1)
+        return showModal(platform);
 
-      contactHelper.openContactLink(platform.type, platform.value);
+      contactHelper.openContactLink(platform.type, platform.type == TELEGRAM ? platform.value : platform.value[0]);
     }
 
-    const showContactNumbers = () => {
-      props.bottomSheetRef.current?.setSnapPoints(contactNumbersSnapPoints);
-      props.bottomSheetRef.current?.setBodyContent(<FacilityDetailContactNumberBottomSheetComponent numbers={props.contactNumbers}/>);
+    const showModal = (platform) => {
+      props.bottomSheetRef.current?.setSnapPoints(contactSnapPoints);
+      props.bottomSheetRef.current?.setBodyContent(<FacilityDetailContactBottomSheetComponent type={platform.type} items={platform.value} icon={platform.icon} />);
       props.modalRef.current?.present();
     }
 

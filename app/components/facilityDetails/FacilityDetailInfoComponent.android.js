@@ -10,7 +10,7 @@ import FacilityViewRouteButtonComponent from '../shared/FacilityViewRouteButtonC
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
 import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
-import {contactNumbersSnapPoints} from '../../constants/modal_constant';
+import {contactSnapPoints} from '../../constants/modal_constant';
 import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 import Facility from '../../models/Facility';
@@ -49,7 +49,7 @@ const FacilityDetailInfoComponent = (props) => {
         {facility.description}
       </Text>
 
-      <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={contactNumbersSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
+      <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={contactSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
     </View>
   )
 }
