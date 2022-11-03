@@ -12,28 +12,34 @@ import audioUtil from '../../../utils/audio_util';
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
     return (
-      <AudioWaveButtonComponent
-        itemUuid={props.uuid}
-        audio={audioUtil.getAudioSourceByFilePath(props.audio)}
-        playingUuid={props.playingUuid}
-        isSpeakerIcon={true}
-        containerStyle={styles.btnContainer}
-        updatePlayingUuid={props.updatePlayingUuid}
-        btnStyle={styles.btn}
-      />
+      <View style={{height: 20, borderWidth: 0}}>
+        <AudioWaveButtonComponent
+          itemUuid={props.uuid}
+          audio={audioUtil.getAudioSourceByFilePath(props.audio)}
+          playingUuid={props.playingUuid}
+          isSpeakerIcon={true}
+          containerStyle={styles.btnContainer}
+          updatePlayingUuid={props.updatePlayingUuid}
+          btnStyle={styles.btn}
+        />
+      </View>
     )
   }
 
+  const cardMarginTop = () => {
+    if (props.hideAudio) return 16;
+
+    return props.index == 0 ? 26 : 36
+  }
+
   return (
-    <Card mode="elevated" elevation={cardElevation} style={{marginTop: props.index == 0 ? 26 : 36, borderRadius: cardBorderRadius, height: 84}}
+    <Card mode="elevated" elevation={cardElevation} style={{marginTop: cardMarginTop(), borderRadius: cardBorderRadius, height: 84}}
       onPress={() => props.onPress()}
     >
       <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 16}}>
-        <View style={{flex: 1}}>
-          <View style={{height: 20, borderWidth: 0}}>
-            {renderAudioButton()}
-          </View>
-          <Text numberOfLines={2} style={{fontSize: descriptionFontSize, lineHeight: 26, paddingTop: 10}}>{props.name}</Text>
+        <View style={[{flex: 1}, props.hideAudio && { justifyContent: 'center' }]}>
+          { !props.hideAudio && renderAudioButton()}
+          <Text numberOfLines={2} style={{fontSize: descriptionFontSize, lineHeight: 26, paddingTop: props.hideAudio ? 0 : 10}}>{props.name}</Text>
         </View>
         <Icon name="chevron-right" color={color.primaryColor} size={32} style={{width: 25, alignSelf: 'center'}} />
       </View>

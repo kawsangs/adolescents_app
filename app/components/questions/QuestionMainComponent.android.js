@@ -56,6 +56,7 @@ const QuestionMainComponent = (props) => {
   return (
     <TopicListComponent items={items} type={props.type} onPress={(item, moveNext) => onPress(item, moveNext)}
       playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid}
+      hideAudio={props.type == OPTION}
     />
   )
 }

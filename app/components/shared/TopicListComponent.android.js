@@ -18,7 +18,7 @@ const TopicListComponent = (props) => {
   const renderList = () => {
     return props.items.map((item, index) => {
       return <TopicListCardComponent key={`const_${index}`} uuid={item.uuid} name={item.name} index={index} audio={item.audio}
-                playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+                playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} hideAudio={props.hideAudio}
                 onPress={() => onPress(item)} />
     })
   }
@@ -27,7 +27,7 @@ const TopicListComponent = (props) => {
     return <ComingSoonMessageComponent />
 
   return (
-    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
+    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: props.hideAudio ? 0 : 10, paddingBottom: scrollViewPaddingBottom}}>
       { renderList() }
     </ScrollView>
   )

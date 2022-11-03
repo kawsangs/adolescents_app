@@ -9,7 +9,7 @@ const TopicMainComponent = (props) => {
 
   return (
     <TopicListComponent items={Topic.getAll()} onPress={(item, moveNext) => navigationRef.current?.navigate('QuestionView', {uuid: item.uuid, name: item.name})}
-      playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+      playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} hideAudio={false}
     />
   )
 }
