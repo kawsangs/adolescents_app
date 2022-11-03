@@ -8,11 +8,7 @@ import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 const TopicListComponent = (props) => {
   const onPress = (item) => {
     props.updatePlayingUuid(null);
-    let moveNext = true;
-    if (item.move_next != null && item.move_next != undefined)
-      moveNext = item.move_next
-
-    props.onPress(item, moveNext);
+    props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true);
   }
 
   const renderList = () => {

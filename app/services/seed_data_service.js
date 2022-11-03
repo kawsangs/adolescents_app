@@ -3,9 +3,7 @@ import Facility from '../models/Facility';
 import Service from '../models/Service';
 import VideoCategory from '../models/VideoCategory';
 import Video from '../models/Video';
-import Topic from '../models/Topic';
-import Question from '../models/Question';
-import Option from '../models/Option';
+import topicSeedDataService from './topic_seed_data_service';
 
 const seedDataService = (() => {
   return {
@@ -19,9 +17,7 @@ const seedDataService = (() => {
     Service.seedData();
     VideoCategory.seedData();
     Video.seedData();
-    Topic.seedData();
-    Question.seedData();
-    Option.seedData();
+    topicSeedDataService.seedToRealm();
   }
 })();
 
