@@ -13,7 +13,8 @@ const LoginSelectionButtonsComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
 
   const anonymousUse = () => {
-    appUserService.createAnonymousUser(() => navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]}));
+    appUserService.createAnonymousUser();
+    navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
   }
 
   return (

@@ -16,25 +16,24 @@ const createAccountService = (() => {
     syncUsers,
   }
 
-  function createUser(user, callback) {
-    if (User.hasCurrentLoggedIn())   // To prevent creating duplicate user when there is a logged in user
-      return callback();
+  function createUser(user) {
+    if (User.hasCurrentLoggedIn()) return;  // To prevent creating duplicate user when there is a logged in user
 
     const params = _buildData(user);
     User.create(params);  // save the user to in local storage
     appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
-    _sendCreateRequest(params, callback);
+    _sendCreateRequest(params, null);
   }
 
   function isValidForm(age, province) {
     return age > 0 && !!province;
   }
 
-  function createAnonymousUser(callback) {
+  function createAnonymousUser() {
     const params = _buildData(null);
     User.create(params);
     appVisitService.updateAppVisitsWithoutUser(params.uuid);
-    _sendCreateRequest(params, callback);
+    _sendCreateRequest(params, null);
   }
 
   function syncUsers(callback) {
@@ -43,6 +42,7 @@ const createAccountService = (() => {
       callback();
       return;
     }
+
     sendUnsyncUsers(0, unsyncedUsers, callback);
   }
 

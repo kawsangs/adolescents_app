@@ -87,7 +87,7 @@ const visitService = (() => {
   }
 
   function _sendCreateRequest(visitItem, successCallback, failureCallback) {
-    if (!visitItem.user_uuid && !User.currentLoggedIn())    // If there is no user login yet then save the visit data to realm
+    if (!visitItem.user_uuid && !User.currentLoggedIn() || !User.currentLoggedIn().id)   // If there is no user login yet then save the visit data to realm
       return !!failureCallback && failureCallback();
 
     const userId = !!visitItem.user_uuid ? User.findByUuid(visitItem.user_uuid).id : User.currentLoggedIn().id;

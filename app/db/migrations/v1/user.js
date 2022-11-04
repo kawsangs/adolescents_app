@@ -5,7 +5,7 @@ const UserSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    id: 'string?',
+    id: 'string?',    // the user's id returned from the server
     gender: 'string?',
     age: 'int',
     province_id: 'string?',

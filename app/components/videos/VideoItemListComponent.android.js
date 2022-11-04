@@ -21,8 +21,7 @@ const VideoItemListComponent = (props) => {
   }, [props.categoryUuid]);
 
   const viewDetail = (video) => {
-    video.pageable_type = pageable_types.video;
-    visitService.recordVisitAction(video, () => {
+    visitService.recordVisitVideo(video, () => {
       navigationRef.current?.navigate("PlayVideoView", { uuid: video.uuid, hasInternet: props.hasInternet });
     });
   }
