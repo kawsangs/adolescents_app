@@ -7,6 +7,7 @@ import GridCardComponent from './GridCardComponent';
 import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
 import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 import {ROW_CARD, TILTED_CARD, GRID_CARD} from '../../constants/card_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CardListComponent = (props) => {
   const renderCard = (item, index) => {
@@ -22,7 +23,7 @@ const CardListComponent = (props) => {
       case TILTED_CARD:
         return <TiltedCardComponent key={index}
                   item={item}
-                  containerStyle={{marginTop: 54}}
+                  containerStyle={{marginTop: getStyleOfDevice(68, 46)}}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
               />

@@ -23,6 +23,7 @@ const TiltedCardComponent = (props) => {
       style={[styles.container, props.containerStyle]}
     >
       <View style={styles.tiltedView} />
+      <View style={styles.secondTiltedView} />
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
@@ -36,7 +37,7 @@ const TiltedCardComponent = (props) => {
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
-              containerStyle={{paddingLeft: 8}}
+              containerStyle={{paddingLeft: 8, paddingBottom: 1}}
             />
           </View>
         </View>
