@@ -19,17 +19,19 @@ const introItemComponentStyles = StyleSheet.create({
     color: color.lightBlackColor,
     fontSize: xxLargeFontSize(),
     textAlign: 'left',
+    lineHeight: 40
   },
   label: {
     color: color.blackColor,
     fontSize: xLargeFontSize(),
-    lineHeight: 28,
+    lineHeight: 30,
     marginTop: 8,
     textAlign: 'left',
   },
   image: {
-    flex: 3,
+    flex: 5,
     marginBottom: 24,
+    width: '100%'
   }
 });
 

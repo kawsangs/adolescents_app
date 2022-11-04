@@ -8,12 +8,10 @@ const navigationUtil = (() => {
   }
 
   async function getInitialRouteName() {
-    return 'IntroductionView';
+    if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
+      return 'IntroductionView';
 
-    // if (environment.showIntroSlider && await appStatusService.isFirstTimeLaunch())
-    //   return 'IntroductionView';
-
-    // return User.hasCurrentLoggedIn() ? 'DrawerNavigator' : 'LoginSelectionView';
+    return User.hasCurrentLoggedIn() ? 'DrawerNavigator' : 'LoginSelectionView';
   }
 })();
 
