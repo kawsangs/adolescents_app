@@ -47,6 +47,10 @@ class BaseModel {
     }
   }
 
+  static containsByAttr = (model, column, value) => {
+    return realm.objects(model).filtered(`${column} CONTAINS[c] ${value}`);
+  }
+
   // private method
   static #findByAttrQuery = (attr, operator = '', sortAttr = {}) => {
     const columns = Object.keys(attr);

@@ -15,6 +15,7 @@ const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
   const [playingUuid, setPlayingUuid] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -29,7 +30,7 @@ const FacilityView = (props) => {
 
   const renderHeader = () => {
     if (isSearching)
-      return <FacilitySearchHeaderComponent updateIsSearching={(status) => setIsSearching(status)} />
+      return <FacilitySearchHeaderComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)} />
 
     return <FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} isSearching={isSearching}
             updateIsListView={(status) => setIsListView(status)}
@@ -38,7 +39,7 @@ const FacilityView = (props) => {
   }
 
   const renderBody = () => {
-    if (isSearching) return <FacilitySearchListComponent/>
+    if (isSearching) return <FacilitySearchListComponent searchText={searchText}/>
 
     return isListView ? <FacilityListViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
            : <FacilityListMapViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />;
