@@ -15,6 +15,7 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import AppNavigator from './app/navigators/app_navigator';
 import i18nextInit from './app/localizations/i18next';
@@ -61,7 +62,12 @@ const App: () => Node = () => {
 
   return (
     <React.Fragment>
-      <PaperProvider theme={theme}>
+      <PaperProvider
+        settings={{
+          icon: props => <FeatherIcon {...props} />
+        }}
+        theme={theme}
+      >
         <GestureHandlerRootView style={{flex: 1}}>
           <BottomSheetModalProvider>
             <StatusBar barStyle={'light-content'} />

@@ -5,7 +5,7 @@ import {navigationHeaderHorizontalPadding} from '../../constants/component_const
 
 const NavigationHeaderComponent = (props) => {
   return (
-    <Appbar.Header style={[{elevation: 0, paddingHorizontal: navigationHeaderHorizontalPadding}, props.headerStyle]}>
+    <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding}, props.headerStyle]}>
       { props.leftButton }
       { !!props.customTitle ?
         props.customTitle
