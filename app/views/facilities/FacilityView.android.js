@@ -1,22 +1,42 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
 import {scrollViewPaddingBottom} from '../../constants/component_constant';
+import audioPlayerService from '../../services/audio_player_service';
 
 const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
+  const [playingUuid, setPlayingUuid] = useState(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setPlayingUuid(null);
+        setTimeout(() => {
+          audioPlayerService.clearAllAudio();
+        }, 100);
+      }
+    }, [])
+  );
 
   const renderBody = () => {
-    return isListView ? <FacilityListViewComponent/> : <FacilityListMapViewComponent/>;
+    return isListView ? <FacilityListViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
+           : <FacilityListMapViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />;
+  }
+
+  const updateViewType = (status) => {
+    setPlayingUuid(null);
+    setIsListView(status);
   }
 
   return (
     <GradientScrollViewComponent
-      header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
+      header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => updateViewType(status)} />}
       body={renderBody()}
       scrollViewStyle={isListView ? styles.listView : styles.mapView}
     />

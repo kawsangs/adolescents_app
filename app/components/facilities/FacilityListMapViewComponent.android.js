@@ -9,13 +9,11 @@ import mapHelper from '../../helpers/map_helper';
 
 const screenWidth = Dimensions.get('screen').width;
 
-const FacilityListMapViewComponent = () => {
-  const [playingUuid, setPlayingUuid] = useState(null);
+const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [mapRegion, setMapRegion] = useState({});
   const [markers, setMarkers] = useState([]);
   const regionOffset = 0.0016;
-  // const firstFacility = Facility.getAll().length > 0 ? Facility.getAll()[0] : null;
   const firstFacility = facilities.length > 0 ? facilities[0] : null;
   const initRegion = !!firstFacility ? {latitude: firstFacility.latitude - regionOffset, longitude: firstFacility.longitude} : null;
 
@@ -27,8 +25,8 @@ const FacilityListMapViewComponent = () => {
   const renderFacilities = () => {
     return facilities.map((facility, index) => {
       return <FacilityCardItemComponent key={index} facility={facility}
-                playingUuid={playingUuid}
-                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+                playingUuid={props.playingUuid}
+                updatePlayingUuid={props.updatePlayingUuid}
                 containerStyle={{width: screenWidth - 32, marginTop: 0, marginRight: 8}}
              />
     });

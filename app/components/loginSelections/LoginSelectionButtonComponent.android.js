@@ -40,6 +40,7 @@ const LoginSelectionButtonComponent = (props) => {
   }
 
   const onPress = () => {
+    props.updatePlayingUuid(null);
     setDisabled(true);
     !!props.onPress && props.onPress();
 

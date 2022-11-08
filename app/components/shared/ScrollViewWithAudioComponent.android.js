@@ -22,7 +22,7 @@ const ScrollViewWithAudioComponent = (props) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <ScrollViewHeaderComponent title={props.title} image={props.image} audio={props.audio} scrollY={scrollY} textSize={textSize} updateTextSize={(textSize) => setTextSize(textSize)} />
+      <ScrollViewHeaderComponent title={props.title} image={props.image} audio={props.audio} uuid={props.uuid} scrollY={scrollY} textSize={textSize} updateTextSize={(textSize) => setTextSize(textSize)} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}} scrollEventThrottle={16}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >

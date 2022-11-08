@@ -34,7 +34,7 @@ const ScrollViewHeaderComponent = (props) => {
           resizeMode="contain"
         />
         <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} textSize={props.textSize} updateTextSize={props.updateTextSize} />
-        <HeaderAudioControlComponent scrollY={props.scrollY} />
+        <HeaderAudioControlComponent uuid={props.uuid} audio={props.audio} scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>
   )

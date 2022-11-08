@@ -11,6 +11,7 @@ const audioPlayerService = (() => {
     stop,
     seekTo,
     fastForwardOrReverse,
+    clearAllAudio,
   }
 
   function play(filename, itemId, playingId, callback) {
@@ -60,6 +61,15 @@ const audioPlayerService = (() => {
       }
       audioPlayer.setCurrentTime(seekSeconds[type])
     })
+  }
+
+  function clearAllAudio() {
+    if (!!global.audioPlayer || !!global.countInterval) {
+      global.audioPlayer.release();
+      clearInterval(global.countInterval)
+      global.audioPlayer = null;
+      global.countInterval = null;
+    }
   }
 
   // private method
