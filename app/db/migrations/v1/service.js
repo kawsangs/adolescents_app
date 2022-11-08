@@ -5,7 +5,6 @@ const ServiceSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    id: 'string?',
     name: 'string',
   }
 }

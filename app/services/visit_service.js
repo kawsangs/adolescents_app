@@ -5,16 +5,42 @@ import Visit from '../models/Visit';
 import User from '../models/User';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
+import {pageable_types} from '../constants/visit_constant';
 
 const visitService = (() => {
   return {
     recordVisitCategory,
+    recordVisitVideo,
+    recordVisitFacility,
     recordVisitAction,
     syncVisits,
   }
 
   function recordVisitCategory(category) {
+    category.pageable_type = pageable_types.page;
     recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
+  }
+
+  function recordVisitVideo(video, callback) {
+    const videoParams = {
+      uuid: video.uuid,
+      name: "video detail",
+      code: "video_detail",
+      parent_code: "video",
+      pageable_type: pageable_types.video
+    };
+    recordVisitAction(videoParams, () => callback());
+  }
+
+  function recordVisitFacility(facility, callback) {
+    const facilityParams = {
+      uuid: facility.uuid,
+      name: "facility detail",
+      code: "facility_detail",
+      parent_code: "facility",
+      pageable_type: pageable_types.facility
+    };
+    recordVisitAction(facilityParams, () => callback());
   }
 
   function recordVisitAction(visitItem, callback) {
@@ -61,16 +87,21 @@ const visitService = (() => {
   }
 
   function _sendCreateRequest(visitItem, successCallback, failureCallback) {
+    if (!visitItem.user_uuid && !User.currentLoggedIn() || !User.currentLoggedIn().id)   // If there is no user login yet then save the visit data to realm
+      return !!failureCallback && failureCallback();
+
     const userId = !!visitItem.user_uuid ? User.findByUuid(visitItem.user_uuid).id : User.currentLoggedIn().id;
 
     const params = {
       visit: {
         app_user_id: userId,
         visit_date: Moment().toDate(),
+        pageable_id: visitItem.pageable_id || visitItem.uuid,
+        pageable_type: visitItem.pageable_type,
         page_attributes: {
           code: visitItem.code,
           name: visitItem.name,
-          parent_code: visitItem.parent_code,
+          parent_code: visitItem.parent_code || null,
         },
         platform_attributes: {
           name: Platform.OS
@@ -90,7 +121,9 @@ const visitService = (() => {
     const data = {
       name: visitItem.name,
       code: visitItem.code,
-      parent_code: visitItem.parent_code,
+      parent_code: visitItem.parent_code || null,
+      pageable_id: visitItem.uuid || null,
+      pageable_type: visitItem.pageable_type,
     }
 
     Visit.create(data);

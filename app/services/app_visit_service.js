@@ -1,6 +1,6 @@
 import Visit from '../models/Visit';
 import visitService from './visit_service';
-import {APP_VISIT} from '../constants/visit_constant';
+import {APP_VISIT, pageable_types} from '../constants/visit_constant';
 
 const appVisitService = (() => {
   return {
@@ -13,6 +13,7 @@ const appVisitService = (() => {
       code: APP_VISIT,
       name: "App visit",
       parent_code: null,
+      pageable_type: pageable_types.page
     }
     visitService.recordVisitAction(data);
   }

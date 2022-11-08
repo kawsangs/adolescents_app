@@ -1,27 +1,22 @@
 [
   {
-    "uuid": "service_01",
-    "id": null,
+    "uuid": "7228bbb6-79b9-4888-aa82-a4e50252a4f2",
     "name": "សុខភាពបន្តពូជ"
   },
   {
-    "uuid": "service_02",
-    "id": null,
-    "name": "រំលូត"
-  },
-  {
-    "uuid": "service_03",
-    "id": null,
+    "uuid": "dce6aab4-4428-48ae-9634-f19e1ff62fb2",
     "name": "សុខភាពផ្លូវចិត្ត"
   },
   {
-    "uuid": "service_04",
-    "id": null,
-    "name": "ជំងឺកាមរោគ"
+    "uuid": "905f376d-9211-461f-b87d-04ad2d0052ae",
+    "name": "រំលូត"
   },
   {
-    "uuid": "service_05",
-    "id": null,
+    "uuid": "d66122ee-5b03-43b2-999a-149fd665d4ae",
     "name": "គាំពាមាតានិងទារក"
   },
-];
+  {
+    "uuid": "cfd0e1a4-4bb5-47e1-b7bf-3446a7508b78",
+    "name": "កាមរោគ"
+  }
+]

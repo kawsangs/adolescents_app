@@ -11,6 +11,8 @@ import color from '../themes/color';
 import {getStyleOfDevice} from '../utils/responsive_util';
 import tabletStyles from '../assets/stylesheets/tablet/bottomTabNavigatorStyles';
 import mobileStyles from '../assets/stylesheets/mobile/bottomTabNavigatorStyles';
+import {tabVisitParams} from '../constants/bottom_tab_constant';
+import visitService from '../services/visit_service';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
@@ -34,7 +36,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
-          headerShown: false
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -44,6 +46,9 @@ function BottomTabNavigator() {
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
           tabBarItemStyle: styles.tabBarItem,
           headerShown: false,
+        }}
+        listeners={{
+          tabPress: () => { visitService.recordVisitAction(tabVisitParams.video) }
         }}
       />
       <Tab.Screen
@@ -55,6 +60,9 @@ function BottomTabNavigator() {
           tabBarItemStyle: styles.tabBarItem,
           headerShown: false,
         }}
+        listeners={{
+          tabPress: () => { visitService.recordVisitAction(tabVisitParams.service) }
+        }}
       />
       <Tab.Screen
         name="Consult"
@@ -63,6 +71,9 @@ function BottomTabNavigator() {
           tabBarLabel: t('consult'),
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
+        }}
+        listeners={{
+          tabPress: () => { visitService.recordVisitAction(tabVisitParams.consulting) }
         }}
       />
     </Tab.Navigator>

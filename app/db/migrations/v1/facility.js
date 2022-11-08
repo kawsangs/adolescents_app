@@ -28,24 +28,22 @@ Facility.schema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    id: 'string?',
     name: 'string',
-    description: 'string?',
+    addresses: 'string?',
     tels: {type: 'string[]', optional: true},
-    address: 'string?',
     emails: {type: 'string[]', optional: true},
     websites: {type: 'string[]', optional: true},
     facebook_pages: {type: 'string[]', optional: true},
     telegram_username: 'string?',
+    description: 'string?',
     latitude: 'float?',
     longitude: 'float?',
-    facility_batch_id: 'string?',
+    service_uuids: {type: 'string[]', optional: true},
+    working_days: 'string?',
     audio_url: 'string?',
     image_url: 'string?',
     audio: 'string?',
     images: {type: 'string[]', optional: true},
-    service_uuids: {type: 'string[]'},
-    working_days: 'string?'
   }
 }
 
