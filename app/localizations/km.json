@@ -63,5 +63,7 @@
   "textSize": "ទំហំអក្សរ",
   "sampleTextSize": "កខគឃង",
   "noInternetConnection": "មិនមានប្រព័ន្ធអ៊ីនធឺណិត",
-  "noVideoAvailable": "មិនមានវីដេអូ"
+  "noVideoAvailable": "មិនមានវីដេអូ",
+  "providedServices": "ផ្ដល់សេវា",
+  "contactNumber": "លេខទូរស័ព្ទទំនាក់ទំនង"
 }

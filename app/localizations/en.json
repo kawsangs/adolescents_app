@@ -63,5 +63,7 @@
   "textSize": "Text size",
   "sampleTextSize": "ABCDE",
   "noInternetConnection": "No internet connection",
-  "noVideoAvailable": "No video available"
+  "noVideoAvailable": "No video available",
+  "providedServices": "Services",
+  "contactNumber": "Contact number"
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Animated, View, Text, ScrollView} from 'react-native';
+import {Animated, View, ScrollView} from 'react-native';
 
 import FacilityDetailNavigationHeaderComponent from '../../components/facilityDetails/FacilityDetailNavigationHeaderComponent';
 import FacilityDetailGalleryComponent from '../../components/facilityDetails/FacilityDetailGalleryComponent';
@@ -18,7 +18,7 @@ const FacilityDetailView = (props) => {
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
       >
         <FacilityDetailGalleryComponent uuid={props.route.params.uuid}/>
-        <FacilityDetailInfoComponent uuid={props.route.params.uuid}/>
+        <FacilityDetailInfoComponent uuid={props.route.params.uuid} />
       </ScrollView>
     </View>
   )

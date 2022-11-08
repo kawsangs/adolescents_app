@@ -2,7 +2,7 @@
   {
     "uuid": "service_01",
     "id": null,
-    "name": "បន្តពូជ"
+    "name": "សុខភាពបន្តពូជ"
   },
   {
     "uuid": "service_02",
@@ -12,12 +12,12 @@
   {
     "uuid": "service_03",
     "id": null,
-    "name": "រលូត"
+    "name": "សុខភាពផ្លូវចិត្ត"
   },
   {
     "uuid": "service_04",
     "id": null,
-    "name": "កាមរោគ"
+    "name": "ជំងឺកាមរោគ"
   },
   {
     "uuid": "service_05",
