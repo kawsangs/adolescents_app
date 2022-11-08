@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import { getStyleOfDevice, isLowPixelDensityDevice } from '../utils/responsive_util';
 import {xLargeFontSize, largeFontSize} from '../utils/font_size_util';
 
@@ -10,6 +11,7 @@ export const headerWithAudioMinHeight = 170;
 export const headerWithAudioScrollDistance = (headerWithAudioMaxHeight - headerWithAudioMinHeight);
 export const navigationHeaderIconSize = 24;
 export const navigationHeaderHorizontalPadding = getStyleOfDevice(16, 6);
+export const navigationHeaderHeight = Platform.OS == 'ios' ? 56 : 56;
 export const screenHorizontalPadding = getStyleOfDevice(32, 16);
 export const bottomTabBarHeight = 62;
 export const scrollViewPaddingBottom = bottomTabBarHeight + 16;

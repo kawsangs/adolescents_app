@@ -46,7 +46,8 @@
     "react-native-swiper": "^1.6.0",
     "react-native-tab-view": "^3.2.1",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-video": "^6.0.0-alpha.3",
+    "react-native-webview": "^11.23.1",
+    "react-native-youtube-iframe": "^2.2.2",
     "realm": "^11.0.0"
   },
   "devDependencies": {

@@ -16,6 +16,7 @@ const systemBackButtonHelper = (() => {
 
     return BackHandler.addEventListener('hardwareBackPress', () => {
       const currentScreen = navigationRef.current?.getCurrentRoute().name.toLowerCase();
+
       if (currentScreen != HOME && currentScreen != LOGIN && currentScreen != INTRO)
         return false;
 

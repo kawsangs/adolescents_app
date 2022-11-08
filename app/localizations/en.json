@@ -61,5 +61,7 @@
   "selectYourAge": "Select your age",
   "yearOld": "year old",
   "textSize": "Text size",
-  "sampleTextSize": "ABCDE"
+  "sampleTextSize": "ABCDE",
+  "noInternetConnection": "No internet connection",
+  "noVideoAvailable": "No video available"
 }

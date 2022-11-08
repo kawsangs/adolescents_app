@@ -19,13 +19,13 @@ const VideoItemListComponent = (props) => {
     setVideos(!!props.categoryUuid ? Video.findByCategoryUuid(props.categoryUuid) : Video.getAll());
   }, [props.categoryUuid]);
 
-  const viewDetail = (uuid) => {
-    navigationRef.current?.navigate("VideoDetailView", { uuid: uuid, hasInternet: props.hasInternet });
+  const playVideo = (uuid) => {
+    navigationRef.current?.navigate("PlayVideoView", { uuid: uuid });
   }
 
   const renderItem = (item) => {
     return (
-      <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(item.uuid)}
+      <Card mode="elevated" elevation={cardElevation} onPress={() => playVideo(item.uuid)}
         style={{marginBottom: 13, borderRadius: cardBorderRadius}}
       >
         <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item.uuid)} />

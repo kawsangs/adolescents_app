@@ -4,6 +4,7 @@ const youtubeHelper = (() => {
   return {
     getThumbnail,
     openVideo,
+    getVideoId,
   }
 
   function getThumbnail(url) {
@@ -21,7 +22,6 @@ const youtubeHelper = (() => {
     });
   }
 
-  // private method
   function getVideoId(url) {
     const result = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
     const videoIdWithParams = result[2];

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import EmptyMediaComponent from '../shared/EmptyMediaComponent';
@@ -13,17 +13,17 @@ const HEIGHT = isLowPixelDensityDevice() ? 150 : 180;
 
 const VideoThumbnailComponent = (props) => {
   const renderPlayButton = () => {
-    return <TouchableOpacity onPress={() => youtubeHelper.openVideo(props.url)} style={styles.playBtn}>
+    return <View style={styles.playBtn}>
               <FeatherIcon name="play" size={24} color={color.primaryColor} style={{marginLeft: 2}} />
-           </TouchableOpacity>
+           </View>
   }
 
   const renderThumbnail = () => {
     return (
-      <TouchableOpacity onPress={() => props.viewDetail()} style={{justifyContent: 'center', height: HEIGHT}}>
+      <View style={{justifyContent: 'center', height: HEIGHT}}>
         {renderPlayButton()}
         <Image source={{ uri: youtubeHelper.getThumbnail(props.url) }} resizeMode='cover' style={styles.image} />
-      </TouchableOpacity>
+      </View>
     )
   }
 

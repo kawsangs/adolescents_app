@@ -61,5 +61,7 @@
   "selectYourAge": "ជ្រើសរើសអាយុរបស់អ្នក",
   "yearOld": "ឆ្នាំ",
   "textSize": "ទំហំអក្សរ",
-  "sampleTextSize": "កខគឃង"
+  "sampleTextSize": "កខគឃង",
+  "noInternetConnection": "មិនមានប្រព័ន្ធអ៊ីនធឺណិត",
+  "noVideoAvailable": "មិនមានវីដេអូ"
 }
