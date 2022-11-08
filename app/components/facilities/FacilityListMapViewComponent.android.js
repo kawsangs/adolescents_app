@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, Dimensions} from 'react-native';
+import {View} from 'react-native';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
-import FacilityCardItemComponent from './FacilityCardItemComponent';
+import FacilityHorizontalListComponent from '../shared/FacilityHorizontalListComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
 import mapHelper from '../../helpers/map_helper';
-
-const screenWidth = Dimensions.get('screen').width;
 
 const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -21,16 +19,6 @@ const FacilityListMapViewComponent = (props) => {
     setMapRegion({latitude: facilities[0].latitude - regionOffset, longitude: facilities[0].longitude});
     setMarkers(mapHelper.getMarkers(facilities));
   }, []);
-
-  const renderFacilities = () => {
-    return facilities.map((facility, index) => {
-      return <FacilityCardItemComponent key={index} facility={facility}
-                playingUuid={props.playingUuid}
-                updatePlayingUuid={props.updatePlayingUuid}
-                containerStyle={{width: screenWidth - 32, marginTop: 0, marginRight: 8}}
-             />
-    });
-  }
 
   const updateFacilities = (facilities) => {
     setFacilities(facilities);
@@ -55,13 +43,11 @@ const FacilityListMapViewComponent = (props) => {
       />
 
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <ScrollView
-          contentContainerStyle={{paddingBottom: 4, paddingLeft: 16, paddingRight: 8}}
-          style={{flexGrow: 0, width: '100%'}}
-          horizontal={true}
-        >
-          { renderFacilities() }
-        </ScrollView>
+        <FacilityHorizontalListComponent
+          facilities={facilities}
+          playingUuid={props.playingUuid}
+          updatePlayingUuid={props.updatePlayingUuid}
+        />
       </View>
     </View>
   )

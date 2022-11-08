@@ -46,16 +46,11 @@ const CardListComponent = (props) => {
   }
 
   if (props.items.length == 0)
-    return <View style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
-              <ComingSoonMessageComponent/>
-           </View>
+    return <ComingSoonMessageComponent/>
 
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-      { props.items.map((item, index) => {
-          return renderCard(item, index);
-        })
-      }
+      { props.items.map((item, index) => { return renderCard(item, index) }) }
     </View>
   )
 }

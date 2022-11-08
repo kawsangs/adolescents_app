@@ -6,4 +6,7 @@ export const schemaNames = [
   'Service',
   'VideoCategory',
   'Video',
+  'Topic',
+  'Question',
+  'Option',
 ];
