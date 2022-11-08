@@ -7,6 +7,7 @@ const horizontalCardComponentStyles = StyleSheet.create({
     height: 115,
     paddingLeft: 12,
     paddingRight: 4,
+    width: '100%'
   }
 });
 

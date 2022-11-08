@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import color from '../../../themes/color';
 import {cardTitleFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
+import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
@@ -9,29 +10,34 @@ const tiltedCardComponentStyles = StyleSheet.create({
     width: componentUtil.getGridCardWidth(),
   },
   tiltedView: {
-    backgroundColor: "transparent",
-    borderStyle: "solid",
-    borderRightWidth: componentUtil.getGridCardWidth(),
-    borderTopWidth: 30,
-    borderRadius: 14,
-    borderRightColor: "transparent",
-    borderTopColor: color.whiteColor,
-    borderTopLeftRadius: 0,
-    height: 0,
+    backgroundColor: color.whiteColor,
+    height: 40,
+    width: componentUtil.getGridCardWidth(),
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 11,
+    borderBottomRightRadius: 26,
+    transform: [{rotate: "-12deg"}],
     position: 'absolute',
-    transform: [{ rotate: "180deg" }],
-    top: -28.2,
-    width: 0,
-    zIndex: -1
+    right: -2.6,
+    top: isLowPixelDensityDevice() ? -5.5 : -8,
+  },
+  secondTiltedView: {
+    backgroundColor: color.whiteColor,
+    borderTopRightRadius: 5,
+    height: 40,
+    width: 40,
+    position: 'absolute',
+    right: 0,
+    top: -9,
   },
   backgroundContainer: {
-    backgroundColor: color.whiteColor,
-    borderRadius: 10,
-    borderTopRightRadius: 0,
     height: '100%',
     paddingTop: 10,
   },
   infoContainer: {
+    backgroundColor: color.whiteColor,
+    borderRadius: 10,
+    borderTopRightRadius: 0,
     flexDirection: 'column',
     flexGrow: 1,
   },
