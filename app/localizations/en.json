@@ -38,7 +38,7 @@
   "doYouReallyWantToCancel": "Do you really want to cancel?",
   "year": "year",
   "editProfile": "Edit profile",
-  "about": "about",
+  "about": "About",
   "privacyPolicy": "Privacy policy",
   "termsAndConditions": "Term and conditions",
   "share": "Share",
@@ -67,5 +67,9 @@
   "providedServices": "Services",
   "contactNumber": "Contact number",
   "healthServiceConsulting": "Health service consulting",
-  "recommendedServiceProvider": "Recommended service provider"
+  "recommendedServiceProvider": "Recommended service provider",
+  "initiatedBy": "Initiated by",
+  "fundedBy": "Funded by",
+  "implementedBy": "Implemented by",
+  "downloadMobileApp": "Download mobile app"
 }

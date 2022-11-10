@@ -67,5 +67,9 @@
   "providedServices": "ផ្ដល់សេវា",
   "contactNumber": "លេខទូរស័ព្ទទំនាក់ទំនង",
   "healthServiceConsulting": "ប្រឹក្សាសេវាសុខភាព",
-  "recommendedServiceProvider": "ណែនាំកន្លែងផ្ដល់សេវា"
+  "recommendedServiceProvider": "ណែនាំកន្លែងផ្ដល់សេវា",
+  "initiatedBy": "ផ្តួចផ្តើមកសាងឡើងដោយ",
+  "fundedBy": "គាំទ្រថវិកាដោយ",
+  "implementedBy": "សហការអនុវត្តដោយ",
+  "downloadMobileApp": "ទាញយកកម្មវិធីទូរស័ព្ទ"
 }
