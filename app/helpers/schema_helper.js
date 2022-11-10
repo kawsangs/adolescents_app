@@ -8,6 +8,7 @@ import VideoSchema from '../db/migrations/v1/video';
 import TopicSchema from '../db/migrations/v1/topic';
 import QuestionSchema from '../db/migrations/v1/question';
 import OptionSchema from '../db/migrations/v1/option';
+import SearchHistorySchema from '../db/migrations/v2/search_history';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -31,6 +32,7 @@ const schemaHelper = (() => {
       TopicSchema,
       QuestionSchema,
       OptionSchema,
+      SearchHistorySchema,
     ];
 
     changedSchemas.map((schema) => {

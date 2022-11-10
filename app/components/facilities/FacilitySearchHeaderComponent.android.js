@@ -6,11 +6,16 @@ import {useTranslation} from 'react-i18next';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import color from '../../themes/color';
 import {navigationHeaderIconSize, navigationHeaderHorizontalPadding} from '../../constants/component_constant';
+import SearchHistory from '../../models/SearchHistory';
 
 const FacilitySearchHeaderComponent = (props) => {
   const {t} = useTranslation();
   const renderIcon = (icon, iconSize, onPress) => {
     return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()} size={iconSize} color={color.primaryColor}/>
+  }
+
+  const saveSearchHistory = () => {
+    SearchHistory.create(props.searchText)
   }
 
   const renderSearchBox = () => {
@@ -25,14 +30,20 @@ const FacilitySearchHeaderComponent = (props) => {
           style={styles.searchBox}
           underlineColor="transparent"
           onChangeText={(value) => props.updateSearchText(value)}
+          onSubmitEditing={() => saveSearchHistory()}
         />
       </View>
     )
   }
 
+  const closeSearch = () => {
+    props.updateIsSearching(false);
+    props.updateSearchText('');
+  }
+
   return (
     <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding}, props.headerStyle]}>
-      <NavigationHeaderBackButtonComponent onPress={() => props.updateIsSearching(false)}/>
+      <NavigationHeaderBackButtonComponent onPress={() => closeSearch()}/>
       {renderSearchBox()}
     </Appbar.Header>
   )

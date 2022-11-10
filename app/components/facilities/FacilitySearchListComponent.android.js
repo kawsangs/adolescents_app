@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 import color from '../../themes/color';
 import {screenHorizontalPadding, cardBorderRadius} from '../../constants/component_constant';
@@ -9,10 +10,15 @@ import {largeFontSize} from '../../utils/font_size_util';
 import facilitySearchService from '../../services/facility_search_service';
 import visitService from '../../services/visit_service';
 import {navigationRef} from '../../navigators/app_navigator';
+import SearchHistory from '../../models/SearchHistory';
 
 const FacilitySearchListComponent = (props) => {
+  const {t} = useTranslation();
+  const [searchHistories, setSearchHistories] = useState([]);
   const [facilities, setFacilities] = useState([]);
+
   useEffect(() => {
+    setSearchHistories(props.searchText == '' ? SearchHistory.getAll() : []);
     setFacilities(props.searchText != '' ? facilitySearchService.findFacilityByNameOrService(props.searchText) : []);
 
   }, [props.searchText]);
@@ -28,29 +34,43 @@ const FacilitySearchListComponent = (props) => {
   }
 
   const renderListItems = () => {
-    return facilities.map((facility, index) => {
+    if (props.searchText != '')
+      return facilities.map((facility, index) => {
+        return (
+          <TouchableOpacity key={index} style={styles.item} onPress={() => viewDetail(facility)}>
+            <Text style={{fontSize: largeFontSize(), flex: 1}}>{facility.name}</Text>
+          </TouchableOpacity>
+        )
+      });
+
+    return renderSearchHistories();
+  }
+
+  const renderSearchHistories = () => {
+    return searchHistories.map((searchHistory, index) => {
       return (
-        <TouchableOpacity key={index} style={styles.item}
-          onPress={() => viewDetail(facility)}
-        >
-          <Text style={{fontSize: largeFontSize(), flex: 1}}>{facility.name}</Text>
+        <TouchableOpacity key={`history-${index}`} style={styles.item} onPress={() => props.updateSearchText(searchHistory.name)}>
+          <Text>{searchHistory.name}</Text>
         </TouchableOpacity>
       )
     });
   }
 
+  if (facilities.length == 0 && searchHistories.length == 0)
+    return <View/>
+
   const renderResult = () => {
     return (
       <React.Fragment>
         <View style={{height: 40, justifyContent: 'center'}}>
-          <Text style={{color: '#fa60ad', fontSize: largeFontSize(), marginLeft: 12}}>លទ្ធផលស្វែងរក</Text>
+          <Text style={{color: '#fa60ad', fontSize: largeFontSize(), marginLeft: 12}}>{props.searchText != '' ? t('searchResult') : t('previousSearch')}</Text>
         </View>
         { renderListItems() }
       </React.Fragment>
     )
   }
 
-  if (facilities.length == 0) return <View/>
+  // if (facilities.length == 0) return <View/>
 
   return (
     <View style={styles.container}>

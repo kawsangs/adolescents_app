@@ -73,5 +73,7 @@
   "implementedBy": "Implemented by",
   "downloadMobileApp": "Download mobile app",
   "author": "Author",
-  "whatServiceDoYouNeed": "What service do you need?"
+  "whatServiceDoYouNeed": "What service do you need?",
+  "searchResult": "Search result",
+  "previousSearch": "Previous search"
 }
