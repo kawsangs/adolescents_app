@@ -7,6 +7,8 @@ import {screenHorizontalPadding, cardBorderRadius} from '../../constants/compone
 import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
 import facilitySearchService from '../../services/facility_search_service';
+import visitService from '../../services/visit_service';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilitySearchListComponent = (props) => {
   const [facilities, setFacilities] = useState([]);
@@ -15,10 +17,22 @@ const FacilitySearchListComponent = (props) => {
 
   }, [props.searchText]);
 
+  const viewDetail = (facility) => {
+    visitService.recordVisitFacility(facility, () => {
+      navigationRef.current?.navigate('FacilityDetailView', {uuid: facility.uuid})
+      setTimeout(() => {
+        props.updateIsSearching(false);
+        props.updateSearchText("");
+      }, 100);
+    });
+  }
+
   const renderListItems = () => {
     return facilities.map((facility, index) => {
       return (
-        <TouchableOpacity key={index} style={styles.item}>
+        <TouchableOpacity key={index} style={styles.item}
+          onPress={() => viewDetail(facility)}
+        >
           <Text style={{fontSize: largeFontSize(), flex: 1}}>{facility.name}</Text>
         </TouchableOpacity>
       )

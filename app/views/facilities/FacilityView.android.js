@@ -39,7 +39,7 @@ const FacilityView = (props) => {
   }
 
   const renderBody = () => {
-    if (isSearching) return <FacilitySearchListComponent searchText={searchText}/>
+    if (isSearching) return <FacilitySearchListComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)}/>
 
     return isListView ? <FacilityListViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
            : <FacilityListMapViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />;
