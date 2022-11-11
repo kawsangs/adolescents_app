@@ -6,6 +6,7 @@ import User from '../models/User';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
 import {pageable_types} from '../constants/visit_constant';
+import {navigationRef} from '../navigators/app_navigator';
 
 const visitService = (() => {
   return {
@@ -18,7 +19,12 @@ const visitService = (() => {
 
   function recordVisitCategory(category) {
     category.pageable_type = pageable_types.page;
-    recordVisitAction(category, () => navigationService.navigateCategory(category.uuid));
+    recordVisitAction(category, () => {
+      if (category.code.includes("mental_support"))
+        return navigationRef.current?.navigate("MentalSupportView");
+
+      navigationService.navigateCategory(category.uuid)
+    });
   }
 
   function recordVisitVideo(video, callback) {
