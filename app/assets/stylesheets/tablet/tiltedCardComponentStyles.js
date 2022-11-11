@@ -7,6 +7,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
   container: {
     maxHeight: 188,
     width: componentUtil.getGridCardWidth(),
+    borderRadius: 70
   },
   tiltedView: {
     backgroundColor: color.whiteColor,

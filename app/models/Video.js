@@ -1,6 +1,5 @@
 import BaseModel from './BaseModel';
 import videos from '../db/json/videos.json';
-import uuidv4 from '../utils/uuidv4_util'
 
 class Video {
   static seedData = () => {
@@ -23,7 +22,7 @@ class Video {
   static #getFormattedVideos = () => {
     let formattedVideos = [];
     videos.map(video => {
-      formattedVideos.push({...video, uuid: uuidv4(), video_category_uuid: !!video.video_category ? video.video_category.id : null})
+      formattedVideos.push({...video, uuid: video.id, video_category_uuid: !!video.video_category ? video.video_category.id : null})
     });
     return formattedVideos;
   }

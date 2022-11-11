@@ -20,21 +20,10 @@ const VideoView = (props) => {
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, []);
 
-  const renderHeader = () => {
-    return <NavigationHeaderComponent
-              leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
-              label={t('video')}
-           />
-  }
-
-  const renderBody = () => {
-    return <VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} />
-  }
-
   return (
     <GradientScrollViewComponent
-      header={renderHeader()}
-      body={renderBody()}
+      header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
+      body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} />}
       scrollViewStyle={{marginTop: 16}}
     />
   )
