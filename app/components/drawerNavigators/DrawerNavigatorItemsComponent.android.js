@@ -15,7 +15,7 @@ const DrawerNavigatorItemsComponent = (props) => {
   const renderItems = () => {
     const items = {
       first: [
-        {label: t('about'), icon: 'info', route_name: '', type: SCREEN},
+        {label: t('about'), icon: 'info', route_name: 'AboutUsView', type: SCREEN},
         {label: t('privacyPolicy'), icon: 'shield', route_name: '', type: SCREEN},
         {label: t('termsAndConditions'), icon: 'file-text', route_name: '', type: SCREEN},
       ],
