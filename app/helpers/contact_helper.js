@@ -1,5 +1,5 @@
 import {Linking} from 'react-native';
-import { PHONE, FACEBOOK, TELEGRAM } from '../constants/contact_constant';
+import { PHONE, FACEBOOK, TELEGRAM, MESSENGER, SMS, WHATSAPP } from '../constants/contact_constant';
 
 const contactHelper = (() => {
   return {
@@ -9,16 +9,19 @@ const contactHelper = (() => {
   };
 
   function getContactLink(type, value) {
-    switch (type.toLowerCase()) {
-      case PHONE:
-        return `tel:${value}`;
-      case FACEBOOK:
-        return value;
-      case TELEGRAM:
-        return `https://t.me/${value}`
-      default:
-        return value.replace(/\s/g, '');
+    if (value.includes("http")) return value;
+
+    const contactLinks = {
+      phone: `tel:${value}`,
+      facebook: value,
+      telegram: `https://t.me/${value}`,
+      messenger: `http://m.me/${value}`,
+      whatsapp: `https://wa.me/${value}`,
+      sms: `sms:${value}`,
+      website: value.replace(/\s/g, ''),
     }
+
+    return !!contactLinks[type] ? contactLinks[type] : value;
   }
 
   function openContactLink(type, value) {

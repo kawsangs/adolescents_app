@@ -4,10 +4,10 @@ import NavigationHeaderWithBackButtonComponent from '../../components/shared/Nav
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import MentalSupportCardListComponent from '../../components/mentalSupports/MentalSupportCardListComponent';
 
-const MentalSupportView = () => {
+const MentalSupportView = (props) => {
   return (
     <GradientScrollViewComponent
-      header={<NavigationHeaderWithBackButtonComponent label={"សេវាគាំទ្រផ្លូចិត្ត"} />}
+      header={<NavigationHeaderWithBackButtonComponent label={props.route.params.name} />}
       body={<MentalSupportCardListComponent />}
     />
   )

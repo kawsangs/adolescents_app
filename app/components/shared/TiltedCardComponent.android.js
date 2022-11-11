@@ -10,6 +10,7 @@ import Video from '../../models/Video';
 import categoryVisitService from '../../services/category_visit_service';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import categoryHelper from '../../helpers/category_helper';
+import {mentalSupportContacts} from '../../constants/mental_support_constant';
 import tabletStyles from '../../assets/stylesheets/tablet/tiltedCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/tiltedCardComponentStyles';
 import { cardElevation } from '../../constants/component_constant';
@@ -26,7 +27,7 @@ const TiltedCardComponent = (props) => {
     if (categoryHelper.isVideo(props.item))
       return Video.getAll().length;
 
-    return Category.getSubCategories(props.item.uuid).length;
+    return categoryHelper.isMentalSupport(props.item) ? mentalSupportContacts.length : Category.getSubCategories(props.item.uuid).length;
   }
 
   return (
