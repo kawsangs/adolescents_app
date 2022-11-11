@@ -3,7 +3,7 @@ import services from '../db/json/services.json';
 
 class Service {
   static seedData = () => {
-    BaseModel.seedData(Service.name, services);
+    BaseModel.seedData(Service.name, this.#getFormattedServices());
   }
 
   static getAll = () => {
@@ -12,6 +12,17 @@ class Service {
 
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(Service.name, uuid);
+  }
+
+  // private method
+  static #getFormattedServices = () => {
+    let formattedServices = [];
+
+    services.map(service => {
+      formattedServices.push({...service, uuid: service.id});
+    });
+
+    return formattedServices;
   }
 }
 
