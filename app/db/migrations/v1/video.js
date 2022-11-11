@@ -7,8 +7,9 @@ const VideoSchema = {
     uuid: "string",
     name: "string",
     url: "string",
-    display_order: "int",
+    display_order: "int?",
     video_category_uuid: "string?",
+    author: 'string?'
   }
 }
 

@@ -6,10 +6,10 @@ import EmptyMediaComponent from '../shared/EmptyMediaComponent';
 import color from '../../themes/color';
 import youtubeHelper from '../../helpers/youtube_helper';
 import componentUtil from '../../utils/component_util';
-import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius} from '../../constants/component_constant';
 
-const HEIGHT = isLowPixelDensityDevice() ? 150 : 180;
+const HEIGHT = getStyleOfDevice(200, isLowPixelDensityDevice() ? 150 : 180);
 
 const VideoThumbnailComponent = (props) => {
   const renderPlayButton = () => {

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import NetInfo from '@react-native-community/netinfo';
 
-import GradientViewComponent from '../../components/shared/GradientViewComponent';
+import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
-import VideoTabBarComponent from '../../components/videos/VideoTabBarComponent';
-import color from '../../themes/color';
+import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
 
 const VideoView = (props) => {
   const {t} = useTranslation();
+  const [hasInternet, setHasInternet] = useState(true);
+
+  useEffect(() => {
+    const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
+      if (hasInternet != state.isInternetReachable)
+        setHasInternet(state.isInternetReachable);
+    });
+
+    return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
+  }, []);
+
   const renderHeader = () => {
     return <NavigationHeaderComponent
               leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
@@ -16,17 +27,16 @@ const VideoView = (props) => {
            />
   }
 
-  const renderTabBar = () => {
-    return <VideoTabBarComponent/>
+  const renderBody = () => {
+    return <VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} />
   }
 
   return (
-    <GradientViewComponent style={{flexGrow: 1}}>
-      <React.Fragment>
-        {renderHeader()}
-        {renderTabBar()}
-      </React.Fragment>
-    </GradientViewComponent>
+    <GradientScrollViewComponent
+      header={renderHeader()}
+      body={renderBody()}
+      scrollViewStyle={{marginTop: 16}}
+    />
   )
 }
 
