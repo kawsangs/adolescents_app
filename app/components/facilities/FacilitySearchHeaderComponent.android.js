@@ -14,10 +14,6 @@ const FacilitySearchHeaderComponent = (props) => {
     return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()} size={iconSize} color={color.primaryColor}/>
   }
 
-  const saveSearchHistory = () => {
-    SearchHistory.upsert(props.searchText)
-  }
-
   const renderSearchBox = () => {
     return (
       <View style={styles.container}>
@@ -30,7 +26,7 @@ const FacilitySearchHeaderComponent = (props) => {
           style={styles.searchBox}
           underlineColor="transparent"
           onChangeText={(value) => props.updateSearchText(value)}
-          onSubmitEditing={() => saveSearchHistory()}
+          onSubmitEditing={() => SearchHistory.upsert(props.searchText)}
         />
       </View>
     )

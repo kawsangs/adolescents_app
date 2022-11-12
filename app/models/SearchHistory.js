@@ -1,6 +1,7 @@
 import Moment from 'moment';
 import BaseModel from './BaseModel';
 import uuidv4 from '../utils/uuidv4_util'
+import stringUtil from '../utils/string_util';
 
 class SearchHistory {
   static getAll = () => {
@@ -8,6 +9,8 @@ class SearchHistory {
   }
 
   static upsert = (name) => {
+    if (stringUtil.isEmpty(name)) return;
+
     const searchHistory = this.findByName(name)[0];
     if (!!searchHistory)
       BaseModel.update(SearchHistory.name, searchHistory.uuid, { search_date: Moment().toDate() });
