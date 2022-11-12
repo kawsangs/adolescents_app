@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Linking} from 'react-native';
+import {View, Linking, Share} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import navigationService from '../../services/navigation_service';
+import {APP_DOWNLOAD_URL, PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
 
 const SCREEN = 'sc';
 const LINK = 'li';
@@ -17,8 +18,8 @@ const DrawerNavigatorItemsComponent = (props) => {
     const items = {
       first: [
         {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN},
-        {label: t('privacyPolicy'), icon: 'shield', url: 'http://youthhealth.childhelplinecambodia.org/privacy-policy', type: LINK},
-        {label: t('termsAndConditions'), icon: 'file-text', url: 'https://youthhealth.childhelplinecambodia.org/terms-and-conditions', type: LINK},
+        {label: t('privacyPolicy'), icon: 'shield', url: PRIVACY_POLICY_URL, type: LINK},
+        {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK},
       ],
       second: [
         {label: t('share'), icon: 'share-2', url: '', type: SHARE},
@@ -46,8 +47,21 @@ const DrawerNavigatorItemsComponent = (props) => {
       return navigationService.logOut();
     else if (type == LINK)
       return Linking.openURL(url)
+    else if (type == SHARE)
+      return shareApp();
 
     !!url && props.navigation.navigate(url);
+  }
+
+  const shareApp = () => {
+    try {
+      Share.share(({
+        message: APP_DOWNLOAD_URL,
+        url: APP_DOWNLOAD_URL,
+        title: 'កម្មវិធីអ៊ែប “សុខភាពយុវជន”'
+      }))
+    }
+    catch(error) {}
   }
 
   return (

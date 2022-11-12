@@ -8,6 +8,7 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import contactHelper from '../../helpers/contact_helper';
 import {WEBSITE} from '../../constants/contact_constant';
 import {initiators, funders, implementors} from '../../constants/partner_constant';
+import {APP_DOWNLOAD_URL} from '../../constants/main_constant';
 
 const AboutUsLogosComponent = () => {
   const {t} = useTranslation();
@@ -31,7 +32,7 @@ const AboutUsLogosComponent = () => {
     const logos = [
       {
         logo: require("../../assets/images/YouthHealth_App_qr_code.png"),
-        url: "https://play.google.com/store/apps/details?id=kh.org.childhelpline.youthhealth",
+        url: APP_DOWNLOAD_URL,
         style: {width: wp("36%"), height: wp("36%")}
       }
     ]
