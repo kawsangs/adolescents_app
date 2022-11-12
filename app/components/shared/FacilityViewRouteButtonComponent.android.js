@@ -13,9 +13,15 @@ const FacilityViewRouteButtonComponent = (props) => {
     mapHelper.viewRoute(props.latitude, props.longitude, t('unableToViewTheRoute'));
   }
 
-  return <TouchableOpacity onPress={() => openMap()} style={props.buttonStyle}>
-            <FontAwesome name='route' light size={props.iconSize} color={props.iconColor || color.primaryColor} />
-            <BoldLabelComponent label={t('viewRoute')} style={props.labelStyle} />
+  const colorSet = () => {
+    if (!props.latitude || !props.longitude)  return color.mutedColor;
+
+    return { icon: props.iconColor || color.primaryColor, text: props.textColor || color.whiteColor }
+  }
+
+  return <TouchableOpacity onPress={() => openMap()} style={props.buttonStyle} disabled={!props.latitude || !props.longitude}>
+            <FontAwesome name='route' light size={props.iconSize} color={colorSet().icon} />
+            <BoldLabelComponent label={t('viewRoute')} style={[props.labelStyle, { color: colorSet().text }]} />
           </TouchableOpacity>
 }
 

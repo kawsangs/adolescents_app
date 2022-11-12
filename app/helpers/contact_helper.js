@@ -25,6 +25,8 @@ const contactHelper = (() => {
   }
 
   function openContactLink(type, value) {
+    if (type == FACEBOOK && !value.includes("facebook")) return;
+
     if (!!value) Linking.openURL(getContactLink(type, value));
   }
 

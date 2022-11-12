@@ -23,11 +23,19 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
     extrapolate: "identity"
   });
 
+  let backBtnBackground = props.scrollY.interpolate({
+    inputRange: [0, scrollDistant],
+    outputRange: ['rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0)'],
+    extrapolate: "clamp"
+  });
+
   return (
     <Animated.View style={[styles.container, {elevation: headerElevation}]}>
       <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
       <Appbar.Header style={[styles.header]}>
-        <NavigationHeaderBackButtonComponent/>
+        <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}}/>
+        </Animated.View>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
           <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />
         </Animated.View>

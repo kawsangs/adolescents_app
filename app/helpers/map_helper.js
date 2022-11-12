@@ -5,12 +5,14 @@ const mapHelper = (() => {
   return {
     getMarkers,
     viewRoute,
+    getInitLatLng,
   }
 
   function getMarkers(locations) {
     const markers = [];
     locations.map(location => {
-      markers.push({latitude: location.latitude, longitude: location.longitude, title: location.name});
+      if (!!location.latitude && !!location.longitude)
+        markers.push({latitude: location.latitude, longitude: location.longitude, title: location.name});
     });
 
     return markers;
@@ -28,6 +30,15 @@ const mapHelper = (() => {
           toastMessageHelper.showMessage(errorMessage);
       })
       .catch(() => toastMessageHelper.showMessage(errorMessage));
+  }
+
+  function getInitLatLng(facilities, regionOffset) {
+    for (let i = 0; i < facilities.length; i++) {
+      if (facilities[i].latitude != null && facilities[i].longitude != null)
+        return {latitude: parseFloat(facilities[i].latitude) - regionOffset, longitude: parseFloat(facilities[i].longitude)}
+    }
+
+    return null;
   }
 })();
 

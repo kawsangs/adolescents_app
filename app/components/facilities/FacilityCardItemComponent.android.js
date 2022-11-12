@@ -5,6 +5,7 @@ import {Card} from 'react-native-paper';
 import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import ImageComponent from '../shared/ImageComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
+import { defaultImage } from '../../constants/facility_constant';
 import {isShortScreenDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
@@ -14,13 +15,14 @@ const FacilityCardItemComponent = (props) => {
   const renderImage = () => {
     return (
       <View style={{flex: 2}}>
-        <ImageComponent source={props.facility.galleries[0]} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
+        <ImageComponent source={props.facility.galleries[0] || defaultImage} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
       </View>
     )
   }
 
   const renderInfo = () => {
-    return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} description={props.facility.description} audio={props.facility.audioSource}
+    return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} audio={props.facility.audioSource}
+              services={props.facility.services}
               latitude={props.facility.latitude} longitude={props.facility.longitude}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
@@ -47,7 +49,7 @@ const FacilityCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: isShortScreenDevice() ? 160 : 180,
+    height: isShortScreenDevice() ? 150 : 150,
     marginTop: 11
   },
   image: {
