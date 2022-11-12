@@ -33,13 +33,15 @@ const TopicListCardComponent = (props) => {
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={{marginTop: cardMarginTop(), borderRadius: cardBorderRadius, height: 84}}
+    <Card mode="elevated" elevation={cardElevation} style={{marginTop: cardMarginTop(), borderRadius: cardBorderRadius, height: 94}}
       onPress={() => props.onPress()}
     >
       <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 16}}>
-        <View style={[{flex: 1}, props.hideAudio && { justifyContent: 'center' }]}>
+        <View style={{flex: 1}}>
           { !props.hideAudio && renderAudioButton()}
-          <Text numberOfLines={2} style={{fontSize: descriptionFontSize, lineHeight: 26, paddingTop: props.hideAudio ? 0 : 10}}>{props.name}</Text>
+          <View style={{height: '100%', position: 'absolute', width: '100%', zIndex: -1, justifyContent: 'center'}}>
+            <Text numberOfLines={2} style={{fontSize: descriptionFontSize, lineHeight: 26, paddingTop: props.hideAudio ? 0 : 10}}>{props.name}</Text>
+          </View>
         </View>
         <Icon name="chevron-right" color={color.primaryColor} size={32} style={{width: 25, alignSelf: 'center'}} />
       </View>
