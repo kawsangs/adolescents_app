@@ -71,5 +71,6 @@
   "initiatedBy": "Initiated by",
   "fundedBy": "Funded by",
   "implementedBy": "Implemented by",
-  "downloadMobileApp": "Download mobile app"
+  "downloadMobileApp": "Download mobile app",
+  "author": "Author"
 }
