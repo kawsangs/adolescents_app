@@ -22,9 +22,7 @@ const FacilityListMapViewComponent = () => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)}
-        containerStyle={{paddingRight: screenHorizontalPadding}}
-      />
+      <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
         { renderFacilities() }
       </ScrollView>

@@ -24,6 +24,8 @@ const FacilitySearchListComponent = (props) => {
   }, [props.searchText]);
 
   const viewDetail = (facility) => {
+    SearchHistory.upsert(facility.name)
+
     visitService.recordVisitFacility(facility, () => {
       navigationRef.current?.navigate('FacilityDetailView', {uuid: facility.uuid})
       setTimeout(() => {
@@ -69,8 +71,6 @@ const FacilitySearchListComponent = (props) => {
       </React.Fragment>
     )
   }
-
-  // if (facilities.length == 0) return <View/>
 
   return (
     <View style={styles.container}>

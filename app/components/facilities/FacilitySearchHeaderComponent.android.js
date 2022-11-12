@@ -15,7 +15,7 @@ const FacilitySearchHeaderComponent = (props) => {
   }
 
   const saveSearchHistory = () => {
-    SearchHistory.create(props.searchText)
+    SearchHistory.upsert(props.searchText)
   }
 
   const renderSearchBox = () => {
