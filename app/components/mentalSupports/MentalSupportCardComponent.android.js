@@ -7,13 +7,17 @@ import color from '../../themes/color';
 import ContactIconComponent from '../shared/ContactIconComponent';
 import { cardElevation, cardBorderRadius, descriptionFontSize } from '../../constants/component_constant';
 import contactHelper from '../../helpers/contact_helper';
-import {TELEGRAM} from '../../constants/contact_constant';
 
 const MentalSupportCardComponent = (props) => {
+
+  const renderIcon = () => {
+    return <ContactIconComponent type={props.channel} size={40} />
+  }
+
   return (
     <Card mode="elevated" elevation={cardElevation} style={styles.card} onPress={() => contactHelper.openContactLink(props.channel, props.intend)}>
       <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
-        <ContactIconComponent type={props.channel} color={color.primaryColor} size={props.channel == TELEGRAM ? 30 : 40} />
+        {renderIcon()}
         <View style={{paddingLeft: 16, flex: 1}}>
           <Text numberOfLines={2} style={{fontSize: descriptionFontSize}}>{props.name}</Text>
         </View>
@@ -29,7 +33,7 @@ const styles = StyleSheet.create({
     height: 80,
     marginTop: 11,
     paddingLeft: 16
-  }
+  },
 });
 
 export default MentalSupportCardComponent;
