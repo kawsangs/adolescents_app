@@ -1,23 +1,31 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Linking} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import ContactIconComponent from '../shared/ContactIconComponent';
 import { cardElevation, cardBorderRadius, descriptionFontSize } from '../../constants/component_constant';
-import contactHelper from '../../helpers/contact_helper';
+import { pageable_types } from '../../constants/visit_constant';
+import visitService from '../../services/visit_service';
 
 const MentalSupportCardComponent = (props) => {
+  const onPress = () => {
+    const visitParams = {
+      code: props.channel,
+      name: `${props.name} - ${props.channel}`,
+      parent_code: "mental_support",
+      pageable_type: pageable_types.page,
+    }
 
-  const renderIcon = () => {
-    return <ContactIconComponent type={props.channel} size={40} />
+    visitService.recordVisitAction(visitParams)
+    Linking.openURL(props.intend);
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={styles.card} onPress={() => contactHelper.openContactLink(props.channel, props.intend)}>
+    <Card mode="elevated" elevation={cardElevation} style={styles.card} onPress={() => onPress()}>
       <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
-        {renderIcon()}
+        <ContactIconComponent type={props.channel} size={40} />
         <View style={{paddingLeft: 16, flex: 1}}>
           <Text numberOfLines={2} style={{fontSize: descriptionFontSize}}>{props.name}</Text>
         </View>
