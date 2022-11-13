@@ -14,6 +14,10 @@ class Service {
     return BaseModel.findByUuid(Service.name, uuid);
   }
 
+  static containsByName(name) {
+    return BaseModel.containsByAttr(Service.name, 'name', `'${name}'`);
+  }
+
   // private method
   static #getFormattedServices = () => {
     let formattedServices = [];

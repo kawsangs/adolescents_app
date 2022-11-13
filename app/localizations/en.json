@@ -72,5 +72,8 @@
   "fundedBy": "Funded by",
   "implementedBy": "Implemented by",
   "downloadMobileApp": "Download mobile app",
-  "author": "Author"
+  "author": "Author",
+  "whatServiceDoYouNeed": "What service do you need?",
+  "searchResult": "Search result",
+  "previousSearch": "Previous search"
 }

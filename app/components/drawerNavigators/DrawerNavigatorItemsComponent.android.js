@@ -6,6 +6,7 @@ import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import navigationService from '../../services/navigation_service';
 import {APP_DOWNLOAD_URL, PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
+import SearchHistory from '../../models/SearchHistory';
 
 const SCREEN = 'sc';
 const LINK = 'li';
@@ -43,8 +44,10 @@ const DrawerNavigatorItemsComponent = (props) => {
   }
 
   const onPress = (url, type) => {
-    if (type == LOG_OUT)
+    if (type == LOG_OUT) {
+      SearchHistory.deleteAll();
       return navigationService.logOut();
+    }
     else if (type == LINK)
       return Linking.openURL(url)
     else if (type == SHARE)

@@ -1,5 +1,4 @@
 import BaseModel from './BaseModel';
-import realm from '../db/schema';
 import facilities from '../db/json/facilities.json';
 
 class Facility {
@@ -17,6 +16,10 @@ class Facility {
 
   static findByServiceUuid = (serviceUuid) => {
     return BaseModel.findByAttr(Facility.name, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
+  }
+
+  static containsByName(name) {
+    return BaseModel.containsByAttr(Facility.name, 'name', `'${name}'`);
   }
 
   // private method
