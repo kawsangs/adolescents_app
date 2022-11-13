@@ -24,7 +24,7 @@ class Facility {
     let formattedFacilities = [];
 
     facilities.map(facility => {
-      formattedFacilities.push({...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days)});
+      formattedFacilities.push({...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids});
     });
 
     return formattedFacilities;

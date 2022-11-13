@@ -3,14 +3,14 @@ import {View, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
 
 import color from '../../themes/color';
-import EmptyMediaComponent from '../shared/EmptyMediaComponent';
 import Facility from '../../models/Facility';
+import { defaultImage } from '../../constants/facility_constant';
 
 const FacilityDetailGalleryComponent = (props) => {
   const renderImages = () => {
     const galleries = Facility.findByUuid(props.uuid).galleries;
     if (galleries.length == 0)
-      return <EmptyMediaComponent isImage={true} iconSize={26}/>
+      return <Image source={defaultImage} resizeMode="cover" style={{width: '100%', height: '100%'}} />
 
     return galleries.map((gallery, index) => {
       return <Image key={index} source={gallery} style={{width: '100%', height: '100%'}} />

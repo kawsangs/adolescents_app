@@ -38,6 +38,7 @@ Facility.schema = {
     description: 'string?',
     latitude: 'float?',
     longitude: 'float?',
+    services: {type: 'string[]', optional: true},
     service_uuids: {type: 'string[]', optional: true},
     working_days: 'string?',
     audio_url: 'string?',

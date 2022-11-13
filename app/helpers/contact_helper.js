@@ -1,5 +1,5 @@
 import {Linking} from 'react-native';
-import { PHONE, FACEBOOK, TELEGRAM, MESSENGER, SMS, WHATSAPP } from '../constants/contact_constant';
+import urlUtil from '../utils/url_util';
 
 const contactHelper = (() => {
   return {
@@ -18,13 +18,15 @@ const contactHelper = (() => {
       messenger: `http://m.me/${value}`,
       whatsapp: `https://wa.me/${value}`,
       sms: `sms:${value}`,
-      website: value.replace(/\s/g, ''),
+      website: urlUtil.getWebsiteUrl(value),
     }
 
     return !!contactLinks[type] ? contactLinks[type] : value;
   }
 
   function openContactLink(type, value) {
+    if (type == FACEBOOK && !value.includes("facebook")) return;
+
     if (!!value) Linking.openURL(getContactLink(type, value));
   }
 

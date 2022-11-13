@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {View, ScrollView, Dimensions} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
-
-const screenWidth = Dimensions.get('screen').width;
 
 const FacilityListMapViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -17,7 +15,7 @@ const FacilityListMapViewComponent = () => {
       return <FacilityCardItemComponent key={index} facility={facility}
                 playingUuid={playingUuid}
                 updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                containerStyle={{width: screenWidth - 32}}
+                containerStyle={{width: '100%'}}
              />
     });
   }
@@ -27,7 +25,7 @@ const FacilityListMapViewComponent = () => {
       <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)}
         containerStyle={{paddingRight: screenHorizontalPadding}}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: 8}}>
+      <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
         { renderFacilities() }
       </ScrollView>
     </View>

@@ -4,6 +4,7 @@ const urlUtil = (() => {
   return {
     getRelativeUrl,
     getAbsoluteUrl,
+    getWebsiteUrl,
   }
 
   function getRelativeUrl(responsibleModel) {
@@ -16,6 +17,14 @@ const urlUtil = (() => {
     // const endpointUrl = environment.domain;
     // return endpointUrl + relativeUrl;
     return environment.domain + relativeUrl;
+  }
+
+  function getWebsiteUrl(url) {
+    const value = url.replace(/\s/g, '');
+    if (!value.includes("http"))
+      return `https://${value}`;
+
+    return value;
   }
 })();
 
