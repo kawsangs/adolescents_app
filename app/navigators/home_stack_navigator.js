@@ -6,6 +6,7 @@ import SubCategoryView from '../views/subCategories/SubCategoryView';
 import LeafCategoryView from '../views/leafCategories/LeafCategoryView';
 import LeafCategoryDetailView from '../views/leafCategoryDetails/LeafCategoryDetailView';
 import NotificationView from '../views/notifications/NotificationView';
+import MentalSupportView from '../views/mentalSupports/MentalSupportView';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,13 @@ const HomeStackNavigator = () => {
         <Stack.Screen
           name="NotificationView"
           component={NotificationView}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="MentalSupportView"
+          component={MentalSupportView}
           options={{
             header: () => null,
           }}

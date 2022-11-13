@@ -20,7 +20,8 @@ const color = {
   requiredColor: '#d50000',
   bigButtonColor: '#ffffff',
   facebookColor: '#4267b2',
-  telegramColor: '#0088cc',
+  telegramColor: '#229ED9',
+  whatsappColor: '#4FCE5D',
 }
 
 export default color;
