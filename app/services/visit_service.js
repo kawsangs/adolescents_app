@@ -12,6 +12,9 @@ const visitService = (() => {
     recordVisitCategory,
     recordVisitVideo,
     recordVisitFacility,
+    recordVisitTopic,
+    recordVisitQuestion,
+    recordVisitOption,
     recordVisitAction,
     syncVisits,
   }
@@ -43,6 +46,39 @@ const visitService = (() => {
       pageable_type: pageable_types.facility
     };
     recordVisitAction(facilityParams, () => callback());
+  }
+
+  function recordVisitTopic(topic, callback) {
+    const topicParams = {
+      uuid: topic.uuid,
+      name: "topic",
+      code: "topic",
+      parent_code: "consulting",
+      pageable_type: pageable_types.consulting
+    };
+    recordVisitAction(topicParams, callback);
+  }
+
+  function recordVisitQuestion(question) {
+    const questionParams = {
+      uuid: question.uuid,
+      name: "question",
+      code: "question",
+      parent_code: "topic",
+      pageable_type: pageable_types.consulting
+    }
+    recordVisitAction(questionParams);
+  }
+
+  function recordVisitOption(option) {
+    const optionParams = {
+      uuid: option.uuid,
+      name: "option",
+      code: "option",
+      parent_code: "question",
+      pageable_type: pageable_types.consulting
+    }
+    recordVisitAction(optionParams);
   }
 
   function recordVisitAction(visitItem, callback) {
