@@ -6,7 +6,7 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
 import {defaultPickerSnapPoints} from '../../constants/modal_constant';
 
-const CreateAccountView = () => {
+const CreateAccountView = (props) => {
   let pickerRef = React.createRef();
   let pickerModalRef = React.createRef();
 
@@ -14,7 +14,7 @@ const CreateAccountView = () => {
     <React.Fragment>
       <GradientScrollViewComponent
         header={<CreateAccountNavigationHeaderComponent/>}
-        body={<CreateAccountFormComponent pickerRef={pickerRef} pickerModalRef={pickerModalRef} />}
+        body={<CreateAccountFormComponent pickerRef={pickerRef} pickerModalRef={pickerModalRef} userUuid={props.route.params.user_uuid} />}
         scrollViewStyle={{paddingBottom: 16}}
       />
 

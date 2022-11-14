@@ -5,8 +5,12 @@ import {useTranslation} from 'react-i18next';
 import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import navigationService from '../../services/navigation_service';
+import asyncStorageService from '../../services/async_storage_service';
 import {APP_DOWNLOAD_URL, PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
+import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 import SearchHistory from '../../models/SearchHistory';
+import User from '../../models/User';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const SCREEN = 'sc';
 const LINK = 'li';
@@ -67,9 +71,16 @@ const DrawerNavigatorItemsComponent = (props) => {
     catch(error) {}
   }
 
+  const editProfile = () => {
+    asyncStorageService.removeItem(USER_INFO_CHANGED);
+    navigationRef.current?.navigate("CreateAccountView", {user_uuid: User.currentLoggedIn().uuid})
+  }
+
   return (
     <View style={{marginTop: 40}}>
-      <DrawerNavigatorItemComponent label="កែប្រែអត្តសញ្ញាណ" iconName="edit"/>
+      <DrawerNavigatorItemComponent label="កែប្រែអត្តសញ្ញាណ" iconName="edit"
+        onPress={() => editProfile()}
+      />
       {renderItems()}
     </View>
   )

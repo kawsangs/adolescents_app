@@ -14,6 +14,7 @@ const createAccountService = (() => {
     isValidForm,
     createAnonymousUser,
     syncUsers,
+    updateUser,
   }
 
   function createUser(user) {
@@ -44,6 +45,10 @@ const createAccountService = (() => {
     }
 
     sendUnsyncUsers(0, unsyncedUsers, callback);
+  }
+
+  function updateUser(userUuid, user) {
+    User.update(userUuid, { ...user, anonymous: false, synced: false })
   }
 
   // private method

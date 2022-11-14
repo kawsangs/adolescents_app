@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
@@ -9,6 +9,7 @@ import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
+import User from '../../models/User';
 
 const CreateAccountFormComponent = (props) => {
   const {t} = useTranslation();
@@ -20,6 +21,16 @@ const CreateAccountFormComponent = (props) => {
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
+
+  useEffect(() => {
+    if (!props.userUuid) return;
+
+    const user = User.findByUuid(props.userUuid);
+    if (user.age != -1) {
+      setState({ gender: user.gender, age: user.age, province: user.province_id, characteristics: user.characteristics })
+      setIsValid(true);
+    }
+  }, []);
 
   const updateState = (fieldName, value) => {
     const newState = state;
@@ -53,7 +64,7 @@ const CreateAccountFormComponent = (props) => {
       characteristics: state.characteristics
     }
 
-    appUserService.createUser(user);
+    !!props.userUuid ? appUserService.updateUser(props.userUuid, user) : appUserService.createUser(user);
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
   }
 

@@ -26,7 +26,7 @@ const LoginSelectionButtonsComponent = () => {
         isAnonymous={false}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-        onPress={() => navigationRef.current?.navigate('CreateAccountView')}
+        onPress={() => navigationRef.current?.navigate('CreateAccountView', {user_uuid: null})}
       />
       <LoginSelectionLineComponent/>
       <LoginSelectionButtonComponent
