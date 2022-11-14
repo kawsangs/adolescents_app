@@ -7,7 +7,6 @@ import Option from '../../models/Option';
 import {navigationRef} from '../../navigators/app_navigator';
 import {TOPIC, QUESTION, OPTION, QUESTION_FAQ} from '../../constants/faq_constant';
 import topicHelper from '../../helpers/topic_helper';
-import visitService from '../../services/visit_service';
 
 const QuestionMainComponent = (props) => {
   const [items, setItems] = useState([]);
@@ -30,7 +29,6 @@ const QuestionMainComponent = (props) => {
   }
 
   const onPressQuestion = (item) => {
-    visitService.recordVisitQuestion(item);
     setPreviousType(QUESTION);
     // Redirect to detail screen if the selected question type is FAQ
     if (item.type == QUESTION_FAQ) {
@@ -46,7 +44,6 @@ const QuestionMainComponent = (props) => {
   }
 
   const onPressOption = (item, moveNext) => {
-    visitService.recordVisitOption(item);
     if (!moveNext)    // Redirect to detail screen if the selected option move_next = false
       return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: OPTION });
 
