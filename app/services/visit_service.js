@@ -49,7 +49,7 @@ const visitService = (() => {
   function recordVisitTopic(topic, callback) {
     const topicParams = {
       uuid: topic.uuid,
-      name: "topic detail",
+      name: "ជំនួយ ប្រធានបទ",
       code: "topic_detail",
       parent_code: "topic",
       pageable_type: pageable_types.topic
@@ -70,10 +70,7 @@ const visitService = (() => {
   }
 
   function syncVisits() {
-    const syncedUsers = User.synced();
-    if (syncedUsers.length == 0) return;
-
-    _syncVisitByUser(0, syncedUsers);
+    _syncVisitByUser(0, User.getAll());
   }
 
   // private method
@@ -138,6 +135,7 @@ const visitService = (() => {
       parent_code: visitItem.parent_code || null,
       pageable_id: visitItem.uuid || null,
       pageable_type: visitItem.pageable_type,
+      user_uuid: User.currentLoggedIn().uuid,
     }
 
     Visit.create(data);
