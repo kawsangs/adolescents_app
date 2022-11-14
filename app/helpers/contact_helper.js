@@ -1,5 +1,6 @@
 import {Linking} from 'react-native';
 import urlUtil from '../utils/url_util';
+import {FACEBOOK} from '../constants/contact_constant';
 
 const contactHelper = (() => {
   return {
