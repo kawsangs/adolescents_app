@@ -1,6 +1,10 @@
 import BaseModel from './BaseModel';
 
 class User {
+  static getAll = () => {
+    return [...BaseModel.getAll(User.name)];
+  }
+
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(User.name, uuid);
   }

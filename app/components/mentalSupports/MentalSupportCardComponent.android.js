@@ -7,13 +7,14 @@ import color from '../../themes/color';
 import ContactIconComponent from '../shared/ContactIconComponent';
 import { cardElevation, cardBorderRadius, descriptionFontSize } from '../../constants/component_constant';
 import { pageable_types } from '../../constants/visit_constant';
+import { PHONE } from '../../constants/contact_constant';
 import visitService from '../../services/visit_service';
 
 const MentalSupportCardComponent = (props) => {
   const onPress = () => {
     const visitParams = {
       code: props.channel,
-      name: `${props.name} - ${props.channel}`,
+      name: `${props.name} - ${props.channel == PHONE ? 'call' : props.channel}`,
       parent_code: "mental_support",
       pageable_type: pageable_types.page,
     }
