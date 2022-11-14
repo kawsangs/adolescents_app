@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import YoutubePlayer from "react-native-youtube-iframe";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import PlayVideoHeaderComponent from '../../components/playVideos/PlayVideoHeaderComponent';
 import PlayVideoWarningMessageComponent from '../../components/playVideos/PlayVideoWarningMessageComponent';
@@ -26,7 +27,7 @@ const PlayVideoView = (props) => {
 
     return <View style={{flex: 1, justifyContent: 'center'}}>
               <YoutubePlayer
-                height={300}
+                height={hp("37%")}
                 play={true}
                 videoId={youtubeHelper.getVideoId(video.url)}
               />

@@ -5,8 +5,6 @@ import LoginSelectionButtonComponent from './LoginSelectionButtonComponent';
 import LoginSelectionLineComponent from './LoginSelectionLineComponent';
 import {navigationRef} from '../../navigators/app_navigator';
 import appUserService from '../../services/app_user_service';
-import safetyPlan from '../../assets/audios/safety_plan.mp3';
-import yourStory from '../../assets/audios/your_story.mp3';
 
 const LoginSelectionButtonsComponent = () => {
   const {t} = useTranslation();
@@ -24,7 +22,7 @@ const LoginSelectionButtonsComponent = () => {
         label={t('useWithPersonalInfo')}
         iconName="user"
         btnStyle={{marginTop: 18}}
-        audio={safetyPlan}
+        audio={null}
         isAnonymous={false}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
@@ -34,7 +32,7 @@ const LoginSelectionButtonsComponent = () => {
       <LoginSelectionButtonComponent
         uuid='2'
         label={t('useWithoutPersonalInfo')}
-        audio={yourStory}
+        audio={null}
         isAnonymous={true}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
