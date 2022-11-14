@@ -69,13 +69,13 @@ function BottomTabNavigator() {
         name="TopicViewStack"
         component={TopicStackNavigator}
         options={{
-          tabBarLabel: t('consult'),
-          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('consult')} />,
+          tabBarLabel: t('help'),
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='message-square' color={color} size={size} label={t('help')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
           headerShown: false,
         }}
         listeners={{
-          tabPress: () => { visitService.recordVisitAction(tabVisitParams.consulting) }
+          tabPress: () => { visitService.recordVisitAction(tabVisitParams.help) }
         }}
       />
     </Tab.Navigator>

@@ -3,5 +3,5 @@ export const pageable_types = {
   page: "Page",
   facility: "Facility",
   video: "Video",
-  consulting: "Consulting",
+  topic: "Topic",
 }

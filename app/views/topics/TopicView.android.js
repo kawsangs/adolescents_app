@@ -11,7 +11,7 @@ const TopicView = (props) => {
   const renderHeader = () => {
     return <NavigationHeaderComponent
               leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
-              label={t('healthServiceConsulting')}
+              label={t('healthServiceHelp')}
            />
   }
 
