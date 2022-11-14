@@ -1,5 +1,6 @@
 import {Linking} from 'react-native';
 import urlUtil from '../utils/url_util';
+import {FACEBOOK} from '../constants/contact_constant';
 
 const contactHelper = (() => {
   return {
@@ -13,7 +14,7 @@ const contactHelper = (() => {
 
     const contactLinks = {
       phone: `tel:${value}`,
-      facebook: value,
+      facebook: urlUtil.getWebsiteUrl(value),
       telegram: `https://t.me/${value}`,
       messenger: `http://m.me/${value}`,
       whatsapp: `https://wa.me/${value}`,

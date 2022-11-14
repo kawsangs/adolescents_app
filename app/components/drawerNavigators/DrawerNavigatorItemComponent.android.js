@@ -9,7 +9,7 @@ import {largeFontSize} from '../../utils/font_size_util';
 
 const DrawerNavigatorItemComponent = (props) => {
   return (
-    <TouchableOpacity onPress={() => props.onPress()}
+    <TouchableOpacity onPress={() => !!props.onPress && props.onPress()}
       style={[{flexDirection: 'row', alignItems: 'center', height: componentUtil.mediumPressableItemSize()}, props.style]}
     >
       <BoldLabelComponent label={props.label} style={{color: color.whiteColor, flex: 1, fontSize: largeFontSize()}} />

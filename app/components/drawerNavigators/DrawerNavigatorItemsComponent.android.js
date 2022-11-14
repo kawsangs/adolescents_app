@@ -69,7 +69,7 @@ const DrawerNavigatorItemsComponent = (props) => {
 
   return (
     <View style={{marginTop: 40}}>
-      <DrawerNavigatorItemComponent label="កែប្រែអត្តសញ្ញាណ" iconName="edit"/>
+      {/* <DrawerNavigatorItemComponent label="កែប្រែអត្តសញ្ញាណ" iconName="edit"/> */}
       {renderItems()}
     </View>
   )

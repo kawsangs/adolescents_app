@@ -24,13 +24,6 @@ const categoryHelper = (() => {
   }
 
   function getSubPoint(category) {
-    if (this.isVideo(category))
-      return Video.getAll().length;
-    else if (this.isClinicService(category))
-      return Facility.getAll().length;
-    else if (this.isMentalSupport(category))
-      return mentalSupportContacts.length;
-
     return Category.getSubCategories(category.uuid).length;
   }
 })()
