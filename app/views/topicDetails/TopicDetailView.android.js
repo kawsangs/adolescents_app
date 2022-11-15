@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Animated} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import TopicDetailMainComponent from '../../components/topicDetails/TopicDetailMainComponent';
 import TopicDetailNavigationHeaderComponent from '../../components/topicDetails/TopicDetailNavigationHeaderComponent';
+import audioPlayerService from '../../services/audio_player_service';
 
 const TopicDetailView = (props) => {
   const scrollY = new Animated.Value(0);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => audioPlayerService.clearAllAudio()
+    }, [])
+  );
 
   return (
     <GradientScrollViewComponent
