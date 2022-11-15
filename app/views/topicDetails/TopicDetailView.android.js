@@ -12,7 +12,7 @@ const TopicDetailView = (props) => {
 
   useFocusEffect(
     useCallback(() => {
-      return () => audioPlayerService.clearAllAudio();
+      return () => audioPlayerService.clearAllAudio()
     }, [])
   );
 
