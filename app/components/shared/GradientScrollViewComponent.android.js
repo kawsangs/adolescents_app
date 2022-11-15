@@ -16,6 +16,7 @@ const GradientScrollViewComponent = (props) => {
       <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
         nestedScrollEnabled={true}
         scrollEnabled={props.scrollable ?? true}
+        onScroll={(event) => !!props.onScroll && props.onScroll(event)}
       >
         {props.body}
       </ScrollView>

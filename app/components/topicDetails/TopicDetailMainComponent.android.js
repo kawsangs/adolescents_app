@@ -5,7 +5,6 @@ import {useTranslation} from 'react-i18next';
 
 import TopicDetailDescriptionComponent from './TopicDetailDescriptionComponent';
 import FacilityCardItemComponent from '../facilities/FacilityCardItemComponent';
-
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import topicHelper from '../../helpers/topic_helper';
 
