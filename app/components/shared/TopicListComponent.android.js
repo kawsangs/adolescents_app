@@ -6,16 +6,11 @@ import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/
 import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 
 const TopicListComponent = (props) => {
-  const onPress = (item) => {
-    props.updatePlayingUuid(null);
-    props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true);
-  }
-
   const renderList = () => {
     return props.items.map((item, index) => {
       return <TopicListCardComponent key={`const_${index}`} uuid={item.uuid} name={item.name} index={index} audio={item.audio}
                 playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} hideAudio={props.hideAudio}
-                onPress={() => onPress(item)} />
+                onPress={() => props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true)} />
     })
   }
 
