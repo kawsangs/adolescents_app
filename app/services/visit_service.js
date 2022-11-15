@@ -78,8 +78,6 @@ const visitService = (() => {
     if (index == users.length) return;
 
     const unsyncedVisits = Visit.findUnsyncedVisitsByUserUuid(users[index].uuid);
-    if (unsyncedVisits.length == 0) return;
-
     _sendUnsyncedVisit(0, unsyncedVisits, () => _syncVisitByUser(index + 1, users));
   }
 
