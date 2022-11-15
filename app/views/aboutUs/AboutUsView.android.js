@@ -14,16 +14,31 @@ import pkg from '../../../package';
 
 const AboutUsView = () => {
   const {t, i18n} = useTranslation();
+  const renderListItems = () => {
+    const items = [
+      '១- សេវាព័ត៌មាន និងសេវាសុខភាពបន្តពូជ (SRHR)',
+      '២- ការអប់រំសុខភាពផ្លូវភេទ (CSE)',
+      '៣- យេនឌ័រ សុខភាពផ្លូវចិត្ត និងជំនួយគាំទ្រសុខភាពផ្លូវចិត្ត (MHPSS)',
+      '៤- វីដេអូអប់រំកម្សាន្ត'
+    ]
+    return items.map((item, index) => <Text key={index} style={{fontSize: descriptionFontSize, lineHeight: 28, marginTop: 10}}>{item}</Text>)
+  }
+
+  const renderParagraph = (text) => {
+    return <Text style={{fontSize: descriptionFontSize, textAlign: 'center', lineHeight: 28, marginTop: 30}}>{text}</Text>
+  }
+
   return (
     <View style={{flex: 1, backgroundColor: color.whiteColor}}>
       <NavigationHeaderWithBackButtonComponent label={t('about')} />
       <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16, alignItems: 'center'}}>
         <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10}} />
-
-        <Text style={{fontSize: descriptionFontSize, textAlign: 'center', lineHeight: 28, marginTop: 30}}>
-          កម្មវិធីអ៊ែប “សុខភាពយុវជន” បាន​ផ្តួចផ្តើម​កសាង​ឡើង​ដោយ ក្រុម​ប្រឹក្សា​ជាតិ​អភិវឌ្ឍន៍​យុវជន​កម្ពុជា និងក្រសួងអប់រំ យុវជន និង កីឡា  ដែល​គម្រោង​នេះ​អនុវត្ត​ដោយ​បណ្តាញ​ទូរស័ព្ទ​ជំនួយ​កុមារ​កម្ពុជា (CHC) និង អ៊ែបវិស្វករ Kawsang Co., Ltd ដែល​ជា​ផលិតផល​ក្រោម​កម្មវិធី​ដែល​គាំទ្រ​ដោយ មូលនិធី​សហប្រជាជាតិ​សម្រាប់​ប្រជាជន (UNFPA) និងរាជរដ្ឋាភិបាល​ជប៉ុន (Japan Government)។ កម្មវិធីអ៊ែបនេះ គឺជា​ប្រភព​ព័ត៌មាន​ជា​សាធារណៈមួយ ដែល​បង្កើត​ឡើង​សម្រាប់​ប្រើប្រាស់​ដោយ​មិនមាន​ការ​គិតថ្លៃ និង មានបំណង​ឱ្យ​ប្រើប្រាស់​ស្រប​តាម​គោលបំណង​របស់អ៊ែប។
-        </Text>
-
+        {renderParagraph('កម្មវិធីអ៊ែប “សុខភាពយុវជន” ត្រូវបានបង្កើតឡើងសម្រាប់ការប្រើប្រាស់ដោយឥតគិតថ្លៃជាភាសាខ្មែរ ដែលផ្តល់ឱ្យកុមារ ក្មេង​ជំទង់ និងយុវជនកម្ពុជានូវព័ត៌មានជាក់លាក់ និងសេវាចាំបាច់នានាដែលអាចជឿទុកចិត្តបានដូចជា៖')}
+        <View style={{flex: 1, justifyContent: 'flex-start', marginTop: 10}}>
+          { renderListItems() }
+        </View>
+        {renderParagraph('កម្មវិធីអ៊ែបនេះត្រូវបានរចនាឡើងជាមួយរូបរាង និងខ្លឹមសារសម្រាប់អ្នកប្រើប្រាស់ថ្មីថ្មោង និងមានលក្ខណៈបរិយាបន្ន ដោយមានរួមបញ្ចូលនូវការប្រើប្រាស់ សំឡេង ចលនា វីដេអូ និងតួសម្តែង។ កម្មវិធីអ៊ែបនេះ ក៏មានផ្តល់តំណភ្ជាប់ទៅកាន់សេវាពិគ្រោះយោបល់ និងបណ្តាញទូរស័ព្ទជំនួយ និងពិគ្រោះយោបល់ដោយផ្ទាល់ និងឥតគិតថ្លៃផងដែរ។')}
+        {renderParagraph('កម្មវិធីអ៊ែប “សុខភាពយុវជន” ត្រូវបានផ្តួចផ្តើមឡើងដោយក្រុមប្រឹក្សាជាតិអភិវឌ្ឍន៍យុវជនកម្ពុជា និងក្រសួងអប់រំ យុវជន និងកីឡា ដែលគម្រោងនេះអនុវត្តដោយបណ្តាញទូរស័ព្ទជំនួយកុមារកម្ពុជា និងអ៊ែបវិស្វករ Kawsang Co., Ltd ដែលជាផលិតផលរួមគ្នាក្រោមកម្មវិធីដែលគាំទ្រដោយ មូលនិធិសហប្រជាជាតិសម្រាប់ប្រជាជន (UNFPA) និងរាជរដ្ឋាភិបាលជប៉ុន (Government of Japan)។')}
         <AboutUsLogosComponent/>
         <View style={{alignSelf: 'flex-end', justifyContent: 'flex-end', marginTop: 26}}>
           <Text style={{ fontSize: descriptionFontSize }}>{t('version')} {translationHelper.translateNumber(pkg.version, i18n.language)}</Text>
