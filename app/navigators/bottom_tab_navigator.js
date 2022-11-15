@@ -39,6 +39,12 @@ function BottomTabNavigator() {
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
           headerShown: false,
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (event) => {
+            event.preventDefault();
+            navigation.reset({ index: 0, routes: [{ name: "HomeViewStack" }]})
+          }
+        })}
       />
       <Tab.Screen
         name="VideoViewStack"
@@ -48,9 +54,13 @@ function BottomTabNavigator() {
           tabBarItemStyle: styles.tabBarItem,
           headerShown: false,
         }}
-        listeners={{
-          tabPress: () => { visitService.recordVisitAction(tabVisitParams.video) }
-        }}
+        listeners={({ navigation }) => ({
+          tabPress: (event) => {
+            event.preventDefault();
+            visitService.recordVisitAction(tabVisitParams.video)
+            navigation.reset({ index: 0, routes: [{ name: "VideoViewStack" }]})
+          }
+        })}
       />
       <Tab.Screen
         name="FacilityViewStack"
@@ -61,9 +71,13 @@ function BottomTabNavigator() {
           tabBarItemStyle: styles.tabBarItem,
           headerShown: false,
         }}
-        listeners={{
-          tabPress: () => { visitService.recordVisitAction(tabVisitParams.service) }
-        }}
+        listeners={({ navigation }) => ({
+          tabPress: (event) => {
+            event.preventDefault();
+            visitService.recordVisitAction(tabVisitParams.service)
+            navigation.reset({ index: 0, routes: [{ name: "FacilityViewStack" }]})
+          }
+        })}
       />
       <Tab.Screen
         name="TopicViewStack"
@@ -74,9 +88,13 @@ function BottomTabNavigator() {
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarRightItem],
           headerShown: false,
         }}
-        listeners={{
-          tabPress: () => { visitService.recordVisitAction(tabVisitParams.help) }
-        }}
+        listeners={({ navigation }) => ({
+          tabPress: (event) => {
+            event.preventDefault();
+            visitService.recordVisitAction(tabVisitParams.help)
+            navigation.reset({ index: 0, routes: [{ name: "TopicViewStack" }]})
+          }
+        })}
       />
     </Tab.Navigator>
   )
