@@ -133,7 +133,7 @@ const visitService = (() => {
       parent_code: visitItem.parent_code || null,
       pageable_id: visitItem.uuid || null,
       pageable_type: visitItem.pageable_type,
-      user_uuid: User.currentLoggedIn().uuid,
+      user_uuid: !!User.currentLoggedIn() ? User.currentLoggedIn().uuid : null,
     }
 
     Visit.create(data);
