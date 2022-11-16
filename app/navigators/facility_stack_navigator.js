@@ -6,7 +6,7 @@ import FacilityDetailView from '../views/facilityDetails/FacilityDetailView';
 
 const Stack = createNativeStackNavigator();
 
-const ClinicStackNavigator = () => {
+const FacilitycStackNavigator = () => {
   return (
      <Stack.Navigator
         initialRouteName='FacilityView'
@@ -29,4 +29,4 @@ const ClinicStackNavigator = () => {
   )
 }
 
-export default ClinicStackNavigator;
+export default FacilitycStackNavigator;
