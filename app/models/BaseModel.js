@@ -4,8 +4,7 @@ class BaseModel {
   static seedData = (model, items) => {
     realm.write(() => {
       items.map(item => {
-        if (!this.findByUuid(model, item.uuid))
-          realm.create(model, item);
+        realm.create(model, item, 'modified');
       });
     });
   }
