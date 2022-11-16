@@ -18,7 +18,7 @@ export const mentalSupportContacts = [
   },
   {
     name: "បណ្ដាញទូរស័ទ្ទជំនួយកុមារកម្ពុជា(1280)",
-    intend: "https://t.me/childhelplinecambodia",
+    intend: "https://t.me/chc1280",
     channel: TELEGRAM
   },
 ]
