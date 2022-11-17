@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: borderRadius,
     borderBottomRightRadius: borderRadius,
     flex: 1,
-    height: 40,
+    height: 44,
     marginLeft: 4,
     marginRight: navigationHeaderHorizontalPadding + 4,
     overflow: 'hidden',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     backgroundColor: color.whiteColor,
-    height: 44,
+    height: 48,
   }
 });
 
