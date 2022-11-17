@@ -1,1 +1,0 @@
-export const defaultImage = require("../assets/images/default_clinic.jpg")

@@ -47,7 +47,7 @@ const FacilityCardInfoComponent = (props) => {
         <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
           {renderServices()}
         </View>
-        <Icon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -6 }} />
+        <Icon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -10 }} />
       </View>
       { renderViewMapBtn() }
     </View>
