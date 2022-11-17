@@ -7,11 +7,12 @@ import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackB
 import color from '../../themes/color';
 import {navigationHeaderIconSize, navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 import SearchHistory from '../../models/SearchHistory';
+import componentUtil from '../../utils/component_util';
 
 const FacilitySearchHeaderComponent = (props) => {
   const {t} = useTranslation();
-  const renderIcon = (icon, iconSize, onPress) => {
-    return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()} size={iconSize} color={color.primaryColor}/>
+  const renderIcon = (icon, iconSize, onPress, buttonSize) => {
+    return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()} size={iconSize} color={color.primaryColor} style={{height: buttonSize, width: buttonSize}}/>
   }
 
   const renderSearchBox = () => {
@@ -21,8 +22,8 @@ const FacilitySearchHeaderComponent = (props) => {
           value={props.searchText}
           mode="flat"
           placeholder={t('whatServiceDoYouNeed')}
-          left={renderIcon("x", navigationHeaderIconSize, () => props.updateSearchText(''))}
-          right={renderIcon("search", navigationHeaderIconSize - 4)}
+          left={renderIcon("search", navigationHeaderIconSize - 4, null, 42)}
+          right={renderIcon("x", navigationHeaderIconSize, () => props.updateSearchText(''), componentUtil.pressableItemSize())}
           style={styles.searchBox}
           underlineColor="transparent"
           onChangeText={(value) => props.updateSearchText(value)}
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: borderRadius,
     borderBottomRightRadius: borderRadius,
     flex: 1,
-    height: 40,
+    height: 44,
     marginLeft: 4,
     marginRight: navigationHeaderHorizontalPadding + 4,
     overflow: 'hidden',
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     backgroundColor: color.whiteColor,
-    height: 44,
+    height: 48,
   }
 });
 
