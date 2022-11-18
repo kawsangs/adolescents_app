@@ -25,7 +25,7 @@ const FacilityCardAudioComponent = (props) => {
       >
         <IonIcon/>
       </PlayAudioComponent>
-      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -10 }} />
+      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -6 }} />
     </View>
   )
 }

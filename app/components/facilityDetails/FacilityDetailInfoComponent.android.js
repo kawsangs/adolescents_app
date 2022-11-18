@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 
 import FacilityDetailTitleComponent from './FacilityDetailTitleComponent';
@@ -8,11 +8,9 @@ import FacilityDetailServiceTagsComponent from './FacilityDetailServiceTagsCompo
 import FacilityDetailContactPlatformsComponent from './FacilityDetailContactPlatformsComponent';
 import FacilityViewRouteButtonComponent from '../shared/FacilityViewRouteButtonComponent';
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
-import color from '../../themes/color';
 import {screenHorizontalPadding, descriptionLineHeight} from '../../constants/component_constant';
 import {contactSnapPoints} from '../../constants/modal_constant';
-import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
-import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import {descriptionFontSize} from '../../utils/font_size_util';
 import Facility from '../../models/Facility';
 
 const GrayView = (props) => {
@@ -24,21 +22,11 @@ const FacilityDetailInfoComponent = (props) => {
   let bottomSheetRef = React.createRef();
   let modalRef = React.createRef();
 
-  const viewRouteStyle = () => {
-    if (!facility.latitude || !facility.longitude)
-      return { btn: {backgroundColor: color.disabledColor}, text: {color: color.mutedColor} }
-
-    return { btn: {backgroundColor: color.primaryColor}, text: {color: color.whiteColor} }
-  }
-
   return (
     <View>
       <GrayView>
         <FacilityDetailTitleComponent name={facility.name} addresses={facility.addresses}/>
-        <FacilityViewRouteButtonComponent uuid={props.uuid} iconSize={20} iconColor={viewRouteStyle().text.color}
-          latitude={facility.latitude} longitude={facility.longitude}
-          buttonStyle={[styles.viewRouteBtn, viewRouteStyle().btn]} labelStyle={[styles.viewRouteLabel, viewRouteStyle().text]}
-        />
+        <FacilityViewRouteButtonComponent latitude={facility.latitude} longitude={facility.longitude} />
       </GrayView>
 
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
@@ -63,22 +51,5 @@ const FacilityDetailInfoComponent = (props) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  viewRouteBtn: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    borderRadius: 56,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 16,
-    height: 48,
-    width: isLowPixelDensityDevice() ? 160 : 200,
-  },
-  viewRouteLabel: {
-    fontSize: largeFontSize(),
-    marginLeft: 8,
-  }
-});
 
 export default FacilityDetailInfoComponent;

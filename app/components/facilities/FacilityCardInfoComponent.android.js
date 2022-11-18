@@ -16,16 +16,16 @@ const FacilityCardInfoComponent = (props) => {
     props.services.map((service, index) => {
       label += `${service}${index < props.services.length - 1 ? ', ' : ''}`
     });
-    return <Text style={{color: '#b5b5b5', flex: 1, fontSize: mediumFontSize()}} numberOfLines={1}>{label}</Text>
+    return <Text style={{color: '#b5b5b5', flex: 1, fontSize: mediumFontSize(), marginTop: 2}} numberOfLines={1}>{label}</Text>
   }
 
   return (
     <View style={{flex: 4, flexDirection: 'row'}}>
-      <View style={{flex: 1, paddingTop: 8}}>
-        <View style={{flexDirection: 'row'}}>
+      <View style={{flex: 1, paddingTop: 8, flexDirection: 'column'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center', flex: 1.5}}>
           <BoldLabelComponent label={props.name} numberOfLines={2} style={styles.title} />
         </View>
-        <View style={{flexDirection: 'row', flex: 1, alignItems: 'center', paddingHorizontal: 8}}>
+        <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 8}}>
           {renderServices()}
         </View>
       </View>
