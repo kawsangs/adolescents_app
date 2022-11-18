@@ -58,7 +58,7 @@ const CreateAccountFormComponent = (props) => {
   }
 
   const renderSaveButton = () => {
-    return <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
+    return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: 16}}
               uuid='123'
               audio={null}
               playingUuid={playingUuid}

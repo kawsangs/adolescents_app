@@ -61,7 +61,7 @@ const FacilityDetailServiceTagsComponent = (props) => {
   }
 
   return (
-    <View style={{marginTop: 33}}>
+    <View>
       <BoldLabelComponent label={t('providedServices')} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
 
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>

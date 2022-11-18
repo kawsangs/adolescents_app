@@ -19,10 +19,10 @@ const FacilityDetailContactPlatformsComponent = (props) => {
   const {t} = useTranslation()
   const renderPlatformButtons = () => {
     const platforms = [
-      {name: t("phone"), icon: "phone", size: 30, value: props.contactNumbers.length > 0 ? props.contactNumbers : null, type: PHONE, color: color.primaryColor},
-      {name: t("website"), icon: "globe", size: 35, value: props.websites.length > 0 ? props.websites : null, type: WEBSITE, color: color.primaryColor},
-      {name: t("facebook"), icon: "facebook-f", size: 30, value: props.facebookPages.length > 0 ? props.facebookPages : null, type: FACEBOOK, color: color.primaryColor},
-      {name: t("telegram"), icon: "paper-plane", size: 26, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: color.primaryColor},
+      {name: t("phone"), icon: "phone", size: 26, value: props.contactNumbers.length > 0 ? props.contactNumbers : null, type: PHONE, color: color.primaryColor},
+      {name: t("website"), icon: "globe", size: 28, value: props.websites.length > 0 ? props.websites : null, type: WEBSITE, color: color.primaryColor},
+      {name: t("facebook"), icon: "facebook-f", size: 26, value: props.facebookPages.length > 0 ? props.facebookPages : null, type: FACEBOOK, color: color.primaryColor},
+      {name: t("telegram"), icon: "paper-plane", size: 22, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: color.primaryColor},
     ]
 
     const openContactLink = (platform) => {
@@ -44,9 +44,9 @@ const FacilityDetailContactPlatformsComponent = (props) => {
       if (platform.value)
         return (
           <View key={index} style={{alignItems: 'center'}}>
-            <TouchableOpacity onPress={() => openContactLink(platform)} style={[styles.btn, {backgroundColor: platform.color}]}>
-              {platform.type == WEBSITE ? <FeatherIcon name={platform.icon} size={platform.size} color={color.whiteColor} />
-               : <FontAwesome name={platform.icon} size={platform.size} color={color.whiteColor} />
+            <TouchableOpacity onPress={() => openContactLink(platform)} style={[styles.btn]}>
+              {platform.type == WEBSITE ? <FeatherIcon name={platform.icon} size={platform.size} color={color.primaryColor} />
+               : <FontAwesome name={platform.icon} size={platform.size} color={color.primaryColor} />
               }
             </TouchableOpacity>
 
@@ -57,7 +57,7 @@ const FacilityDetailContactPlatformsComponent = (props) => {
   }
 
   return (
-    <View style={{marginTop: 33}}>
+    <View style={{marginTop: 16}}>
       <BoldLabelComponent label={t("contactVia")} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 8}}>
         {renderPlatformButtons()}
@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
   btn: {
     alignItems: 'center',
     borderRadius: 56,
+    borderWidth: 1.5,
+    borderColor: color.primaryColor,
     justifyContent: 'center',
     height: componentUtil.mediumPressableItemSize(),
     width: componentUtil.mediumPressableItemSize(),
