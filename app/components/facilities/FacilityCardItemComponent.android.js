@@ -6,7 +6,7 @@ import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import ImageComponent from '../shared/ImageComponent';
 import EmptyImageComponent from '../shared/EmptyImageComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
-import {isShortScreenDevice, getStyleOfDevice} from '../../utils/responsive_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
 
@@ -27,7 +27,6 @@ const FacilityCardItemComponent = (props) => {
   const renderInfo = () => {
     return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} audio={props.facility.audioSource}
               services={props.facility.services}
-              latitude={props.facility.latitude} longitude={props.facility.longitude}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
            />
@@ -53,8 +52,8 @@ const FacilityCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 140,
-    marginTop: 11
+    height: 110,
+    marginTop: 11,
   },
   image: {
     borderTopLeftRadius: cardBorderRadius,

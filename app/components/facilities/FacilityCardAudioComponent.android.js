@@ -1,18 +1,16 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import BoldLabelComponent from '../shared/BoldLabelComponent';
 import PlayAudioComponent from '../shared/PlayAudioComponent';
-import { cardTitleFontSize } from '../../constants/component_constant';
+import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import {isShortScreenDevice} from '../../utils/responsive_util';
 
-const FacilityCardTitleComponent = (props) => {
+const FacilityCardAudioComponent = (props) => {
   return (
-    <View style={{flexDirection: 'row', marginTop: 4}}>
-      <BoldLabelComponent label={props.label} numberOfLines={2} style={styles.title} />
-
+    <View>
       <PlayAudioComponent
         playIcon='volume-high-outline'
         pauseIcon='pause'
@@ -27,17 +25,9 @@ const FacilityCardTitleComponent = (props) => {
       >
         <IonIcon/>
       </PlayAudioComponent>
+      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -10 }} />
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: cardTitleFontSize,
-    flex: 1,
-    paddingLeft: 8,
-    textAlignVertical: 'center'
-  },
-});
-
-export default FacilityCardTitleComponent;
+export default FacilityCardAudioComponent;
