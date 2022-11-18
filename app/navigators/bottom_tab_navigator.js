@@ -66,8 +66,8 @@ function BottomTabNavigator() {
         name="FacilityViewStack"
         component={FacilityStackNavigator}
         options={{
-          tabBarLabel: t('service'),
-          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map-pin' color={color} size={size} label={t('service')} />,
+          tabBarLabel: t('clinic'),
+          tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map-pin' color={color} size={size} label={t('clinic')} />,
           tabBarItemStyle: styles.tabBarItem,
           headerShown: false,
         }}
