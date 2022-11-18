@@ -18,7 +18,7 @@ const FacilityDetailWorkingHourAndContactComponent = (props) => {
   }
 
   return (
-    <View style={{marginTop: 33, alignItems: 'center'}}>
+    <View style={{paddingVertical: 16, alignItems: 'center'}}>
       {renderTitle("clock", t("workingHours"), {marginLeft: -16})}
 
       <FacilityDetailWorkingDaysComponent workingDays={props.workingDays} />
