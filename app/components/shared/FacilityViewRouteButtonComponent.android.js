@@ -24,7 +24,7 @@ const FacilityViewRouteButtonComponent = (props) => {
 
   return <TouchableOpacity onPress={() => openMap()} style={[styles.btn, {borderColor: btnColor()}]} disabled={!props.latitude || !props.longitude}>
             <FontAwesome name='route' light size={props.iconSize || 20} color={btnColor()} />
-            <BoldLabelComponent label={t('viewRoute')} style={{fontSize: largeFontSize(), marginLeft: 0, color: btnColor()}} />
+            <BoldLabelComponent label={t('viewRoute')} style={{fontSize: largeFontSize(), marginLeft: 8, color: btnColor()}} />
           </TouchableOpacity>
 }
 
