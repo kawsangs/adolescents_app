@@ -19,7 +19,7 @@ const LoginSelectionButtonsComponent = () => {
     <React.Fragment>
       <LoginSelectionButtonComponent
         uuid='1'
-        label={t('useWithPersonalInfo')}
+        label={t('register')}
         iconName="user"
         btnStyle={{marginTop: 18}}
         audio={null}
@@ -31,7 +31,7 @@ const LoginSelectionButtonsComponent = () => {
       <LoginSelectionLineComponent/>
       <LoginSelectionButtonComponent
         uuid='2'
-        label={t('useWithoutPersonalInfo')}
+        label={t('loginAsGuest')}
         audio={null}
         isAnonymous={true}
         playingUuid={playingUuid}
