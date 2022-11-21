@@ -16,22 +16,13 @@
 		8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
 		9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
 		A40DE70E4873AA2E72944BE8 /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF12CF719CFCE9E93FE51C5 /* libPods-YouthMobile.a */; };
-		EECC1EDA28F6B53D00AA3DD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */; };
-		EECC1EEC28F6B8AC00AA3DD9 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */; };
-		EECC1EED28F6B8AC00AA3DD9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */; };
 		EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */; };
-		EECC1EEF28F6B8AC00AA3DD9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */; };
 		EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */; };
 		EECC1EF128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */; };
-		EECC1EF228F6B8AC00AA3DD9 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */; };
-		EECC1EF328F6B8AC00AA3DD9 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */; };
 		EECC1EF428F6B8AC00AA3DD9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */; };
 		EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */; };
 		EECC1EF628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */; };
 		EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */; };
-		EECC1EF828F6B8AC00AA3DD9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */; };
-		EECC1EF928F6B8AC00AA3DD9 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */; };
-		EECC1EFA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */; };
 		EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -63,22 +54,13 @@
 		B352772C7361D8DBED654811 /* Pods-YouthMobile-YouthMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B86904CF930DD051270B4985 /* Pods-YouthMobile-YouthMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile-YouthMobileTests.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile-YouthMobileTests/Pods-YouthMobile-YouthMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Users/Instedd/Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
-		EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
-		EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
 		EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
-		EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
-		EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
 		EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
 		EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
 		EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
-		EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
-		EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
-		EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-SemiBold.ttf"; path = "../app/assets/fonts/KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		FABB86F7EBEED4603897162A /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +113,6 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				EECC1ED928F6B53D00AA3DD9 /* GoogleService-Info.plist */,
 			);
 			name = YouthMobile;
 			sourceTree = "<group>";
@@ -201,21 +182,13 @@
 		EECC1EDB28F6B8AC00AA3DD9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EECC1EDC28F6B8AC00AA3DD9 /* Fontisto.ttf */,
-				EECC1EDD28F6B8AC00AA3DD9 /* Octicons.ttf */,
 				EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */,
-				EECC1EDF28F6B8AC00AA3DD9 /* Entypo.ttf */,
 				EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */,
 				EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */,
-				EECC1EE228F6B8AC00AA3DD9 /* AntDesign.ttf */,
-				EECC1EE328F6B8AC00AA3DD9 /* Foundation.ttf */,
 				EECC1EE428F6B8AC00AA3DD9 /* Ionicons.ttf */,
 				EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */,
 				EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */,
 				EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */,
-				EECC1EE828F6B8AC00AA3DD9 /* Zocial.ttf */,
-				EECC1EE928F6B8AC00AA3DD9 /* EvilIcons.ttf */,
-				EECC1EEA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf */,
 				EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */,
 			);
 			path = Fonts;
@@ -316,23 +289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */,
-				EECC1EEC28F6B8AC00AA3DD9 /* Fontisto.ttf in Resources */,
 				EECC1EF628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf in Resources */,
 				EECC1EF128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf in Resources */,
-				EECC1EF828F6B8AC00AA3DD9 /* Zocial.ttf in Resources */,
-				EECC1EF928F6B8AC00AA3DD9 /* EvilIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				EECC1EED28F6B8AC00AA3DD9 /* Octicons.ttf in Resources */,
-				EECC1EDA28F6B53D00AA3DD9 /* GoogleService-Info.plist in Resources */,
-				EECC1EF228F6B8AC00AA3DD9 /* AntDesign.ttf in Resources */,
 				9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */,
 				EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */,
-				EECC1EF328F6B8AC00AA3DD9 /* Foundation.ttf in Resources */,
 				EECC1EF428F6B8AC00AA3DD9 /* Ionicons.ttf in Resources */,
-				EECC1EEF28F6B8AC00AA3DD9 /* Entypo.ttf in Resources */,
 				8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */,
-				EECC1EFA28F6B8AC00AA3DD9 /* SimpleLineIcons.ttf in Resources */,
 				EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */,
 				EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */,
 				EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */,
@@ -578,13 +542,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -605,12 +570,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

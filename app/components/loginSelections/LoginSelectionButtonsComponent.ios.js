@@ -5,8 +5,6 @@ import LoginSelectionButtonComponent from './LoginSelectionButtonComponent';
 import LoginSelectionLineComponent from './LoginSelectionLineComponent';
 import {navigationRef} from '../../navigators/app_navigator';
 import appUserService from '../../services/app_user_service';
-import safetyPlan from '../../assets/audios/safety_plan.mp3';
-import yourStory from '../../assets/audios/your_story.mp3';
 
 const LoginSelectionButtonsComponent = () => {
   const {t} = useTranslation();
@@ -21,10 +19,10 @@ const LoginSelectionButtonsComponent = () => {
     <React.Fragment>
       <LoginSelectionButtonComponent
         uuid='1'
-        label={t('useWithPersonalInfo')}
+        label={t('register')}
         iconName="user"
         btnStyle={{marginTop: 18}}
-        audio={safetyPlan}
+        audio={null}
         isAnonymous={false}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
@@ -33,8 +31,8 @@ const LoginSelectionButtonsComponent = () => {
       <LoginSelectionLineComponent/>
       <LoginSelectionButtonComponent
         uuid='2'
-        label={t('useWithoutPersonalInfo')}
-        audio={yourStory}
+        label={t('loginAsGuest')}
+        audio={null}
         isAnonymous={true}
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}

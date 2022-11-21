@@ -3,17 +3,14 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
-import NumericInputWithAudioComponent from '../shared/NumericInputWithAudioComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
-import color from '../../themes/color';
 import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
-import yourStory from '../../assets/audios/your_story.mp3';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 
-const CreateAccountFormComponent = () => {
+const CreateAccountFormComponent = (props) => {
   const {t} = useTranslation();
   const [state, setState] = useState({
     gender: 'male',
@@ -22,6 +19,7 @@ const CreateAccountFormComponent = () => {
     characteristics: []
   });
   const [isValid, setIsValid] = useState(false);
+  const [playingUuid, setPlayingUuid] = useState(null);
 
   const updateState = (fieldName, value) => {
     const newState = state;
@@ -29,13 +27,21 @@ const CreateAccountFormComponent = () => {
     setState({...newState});
     setIsValid(appUserService.isValidForm(state.age, state.province));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
+
+    if (fieldName == 'province')
+      props.pickerModalRef.current?.dismiss();
   }
 
   const renderSelectionComponents = () => {
     return <CreateAccountSelectionsComponent
+              age={state.age}
               province={state.province}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
+              pickerRef={props.pickerRef}
+              pickerModalRef={props.pickerModalRef}
+              playingUuid={playingUuid}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
            />
   }
 
@@ -43,7 +49,7 @@ const CreateAccountFormComponent = () => {
     const user = {
       gender: state.gender,
       age: parseInt(state.age),
-      province_id: state.province,
+      province_id: state.province.value,
       characteristics: state.characteristics
     }
 
@@ -52,25 +58,20 @@ const CreateAccountFormComponent = () => {
   }
 
   const renderSaveButton = () => {
-    return <BigButtonComponent label={t('saveThisIndentity')} style={{marginTop: 16}}
+    return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: 16}}
               uuid='123'
-              audio={yourStory}
-              playingUuid={null}
-              updatePlayingUuid={() => console.log('update uuid')}
+              audio={null}
+              playingUuid={playingUuid}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               disabled={!isValid}
               onPress={() => save()}
             />
   }
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>
-            <GenderSelectionComponent selectedValue={state.gender} updateValue={(gender) => updateState('gender', gender)} />
-            <NumericInputWithAudioComponent label={t('yourAge')} requiredMsg={t('pleaseInputYourAge')}
-              required={true}
-              requiredColor={color.blackColor}
-              value={state.age.toString()}
-              style={{marginTop: 22}}
-              requiredVisible={state.age <= 0}
-              updateValue={(age) => updateState('age', age)}
+            <GenderSelectionComponent selectedValue={state.gender} playingUuid={playingUuid}
+              updateValue={(gender) => updateState('gender', gender)}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
             />
             { renderSelectionComponents() }
             { renderSaveButton() }
