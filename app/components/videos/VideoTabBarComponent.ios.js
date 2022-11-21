@@ -5,13 +5,13 @@ import NetInfo from '@react-native-community/netinfo';
 import VideoItemListComponent from './VideoItemListComponent';
 import color from '../../themes/color';
 import VideoCategory from '../../models/VideoCategory';
-import videoCategoryHelper from '../../helpers/video_category_helper';
+import topTabHelper from '../../helpers/top_tab_helper';
 import {largeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
 
 const VideoTabBarComponent = (props) => {
   const [index, setIndex] = useState(0);
-  const [routes] = useState(videoCategoryHelper.getCategoryRoutes())
+  const [routes] = useState(topTabHelper.getVideoCategoryRoutes())
   const [activeCategoryUuid, setActiveCategoryUuid] = useState(null);
   const [hasInternet, setHasInternet] = useState(true);
 
