@@ -8,7 +8,7 @@ import NavigationHeaderButtonComponent from '../shared/navigationHeaders/Navigat
 const FacilityNavigationHeaderRightButtonsComponent = (props) => {
   return (
     <View style={{flexDirection: 'row', height: '100%'}}>
-      <NavigationHeaderButtonComponent
+      <NavigationHeaderButtonComponent onPress={() => props.updateIsSearching(true)}
         icon={<FeatherIcon name="search" size={20} color="white"/>}
       />
 

@@ -1,48 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, Dimensions} from 'react-native';
+import {View} from 'react-native';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
-import FacilityCardItemComponent from './FacilityCardItemComponent';
+import FacilityHorizontalListComponent from '../shared/FacilityHorizontalListComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
 import mapHelper from '../../helpers/map_helper';
 
-const screenWidth = Dimensions.get('screen').width;
-
-const FacilityListMapViewComponent = () => {
-  const [playingUuid, setPlayingUuid] = useState(null);
+const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [mapRegion, setMapRegion] = useState({});
   const [markers, setMarkers] = useState([]);
   const regionOffset = 0.0016;
-  // const firstFacility = Facility.getAll().length > 0 ? Facility.getAll()[0] : null;
-  const firstFacility = facilities.length > 0 ? facilities[0] : null;
-  const initRegion = !!firstFacility ? {latitude: firstFacility.latitude - regionOffset, longitude: firstFacility.longitude} : null;
+  const initLatLng = mapHelper.getInitLatLng(facilities, regionOffset);
+  const initRegion = !!initLatLng ? initLatLng : {"latitude": 11.569663313293457 - regionOffset, "longitude": 104.90775299072266};
 
   useEffect(() => {
-    setMapRegion({latitude: facilities[0].latitude - regionOffset, longitude: facilities[0].longitude});
+    setMapRegion(mapHelper.getInitLatLng(facilities, regionOffset));
     setMarkers(mapHelper.getMarkers(facilities));
   }, []);
 
-  const renderFacilities = () => {
-    return facilities.map((facility, index) => {
-      return <FacilityCardItemComponent key={index} facility={facility}
-                playingUuid={playingUuid}
-                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                containerStyle={{width: screenWidth - 32, marginTop: 0, marginRight: 8}}
-             />
-    });
-  }
+  const updateFacilities = (filteredFacilities) => {
+    setFacilities(filteredFacilities);
 
-  const updateFacilities = (facilities) => {
-    setFacilities(facilities);
-
-    if (facilities.length > 0) {
-      setMarkers([]); // Clear the marker in order to prevent the current marker from showing the previous marker's title
-      setMapRegion({latitude: facilities[0].latitude - regionOffset, longitude: facilities[0].longitude});
-      setTimeout(() => {
-        setMarkers(mapHelper.getMarkers(facilities));
-      }, 100);
+    if (filteredFacilities.length > 0) {
+      const mapRegion = mapHelper.getInitLatLng(filteredFacilities, regionOffset);
+      if (!!mapRegion)
+        setMapRegion(mapHelper.getInitLatLng(filteredFacilities, regionOffset));
     }
   }
 
@@ -57,13 +41,11 @@ const FacilityListMapViewComponent = () => {
       />
 
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <ScrollView
-          contentContainerStyle={{paddingBottom: 4, paddingLeft: 16, paddingRight: 8}}
-          style={{flexGrow: 0, width: '100%'}}
-          horizontal={true}
-        >
-          { renderFacilities() }
-        </ScrollView>
+        <FacilityHorizontalListComponent
+          facilities={facilities}
+          playingUuid={props.playingUuid}
+          updatePlayingUuid={props.updatePlayingUuid}
+        />
       </View>
     </View>
   )
