@@ -9,14 +9,16 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderTopWidth: 0,
     elevation: 0,
-    height: 62,
-    paddingBottom: 6,
     paddingHorizontal: screenHorizontalPadding,
     position: 'absolute',
     ...Platform.select({
       ios: {
         height: 72,
         paddingBottom: 18
+      },
+      android: {
+        height: 62,
+        paddingBottom: 6,
       }
     })
   },
