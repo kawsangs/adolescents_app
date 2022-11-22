@@ -2,21 +2,21 @@ import React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 
 import AudioControlButton from './AudioControlButton';
-import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
+import { iOSHeaderWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
 import { FAST_FORWARD, REVERSE } from '../../../constants/audio_constant';
-import { getStyleOfDevice } from '../../../utils/responsive_util';
+import { getStyleOfDevice, isLowPixelDensityDevice } from '../../../utils/responsive_util';
 import audioPlayerService from '../../../services/audio_player_service';
 
 const HeaderAudioControlButtonsComponent = (props) => {
   // Scale for making the audio controls smaller or bigger when scrolling
   const audioControlScale = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, iOSHeaderWithAudioScrollDistance],
     outputRange: [1, 0.75],
     extrapolate: 'clamp',
   });
 
   const audioControlPositionY = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, iOSHeaderWithAudioScrollDistance],
     outputRange: getStyleOfDevice([80, 15], [70, 20]),
     extrapolate: 'clamp'
   });
@@ -35,7 +35,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
     });
   }
 
-  const forwardBackwardSize = getStyleOfDevice(34, 32);
+  const forwardBackwardSize = getStyleOfDevice(34, isLowPixelDensityDevice() ? 30 : 32);
 
   return (
     <View style={{flex: 1, paddingHorizontal: screenHorizontalPadding}}>
@@ -45,7 +45,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
         <AudioControlButton iconName='play-back' size={forwardBackwardSize}
           onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, REVERSE)}
         />
-        <AudioControlButton iconName={!!props.countInterval ? 'pause' : 'play'} size={getStyleOfDevice(55, 50)} onPress={() => playAudio()} />
+        <AudioControlButton iconName={!!props.countInterval ? 'pause' : 'play'} size={getStyleOfDevice(55, isLowPixelDensityDevice() ? 45 : 50)} onPress={() => playAudio()} />
         <AudioControlButton iconName='play-forward' size={forwardBackwardSize}
           onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, FAST_FORWARD)}
         />
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   audioControl: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: getStyleOfDevice(14, 0)
   }
 });
 

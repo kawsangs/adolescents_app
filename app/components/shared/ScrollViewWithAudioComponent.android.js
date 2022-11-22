@@ -5,7 +5,7 @@ import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
 import HtmlDescriptionComponent from './HtmlDescriptionComponent';
 import color from '../../themes/color';
-import { headerWithAudioMaxHeight, scrollViewPaddingBottom, descriptionLineHeight } from '../../constants/component_constant';
+import { androidHeaderWithAudioMaxHeight, scrollViewPaddingBottom, descriptionLineHeight } from '../../constants/component_constant';
 
 const ScrollViewWithAudioComponent = (props) => {
   const scrollY = new Animated.Value(0);
@@ -14,7 +14,7 @@ const ScrollViewWithAudioComponent = (props) => {
   const renderContent = () => {
     return (
       <View style={styles.scrollViewContent}>
-        <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: parseFloat(textSize) + 2, marginTop: 14, lineHeight: 30}} />
+        <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: parseFloat(textSize) + 2, marginTop: 14, lineHeight: 30, marginBottom: 10}} />
         <HtmlDescriptionComponent source={props.description} textSize={textSize} />
       </View>
     )
@@ -35,7 +35,7 @@ const ScrollViewWithAudioComponent = (props) => {
 const styles = StyleSheet.create({
   scrollViewContent: {
     backgroundColor: color.whiteColor,
-    marginTop: headerWithAudioMaxHeight,
+    marginTop: androidHeaderWithAudioMaxHeight,
     paddingHorizontal: 24,
     paddingBottom: scrollViewPaddingBottom,
   }

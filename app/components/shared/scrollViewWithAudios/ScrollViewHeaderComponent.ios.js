@@ -1,22 +1,23 @@
 import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import DeviceInfo from 'react-native-device-info';
 
 import color, {backgroundColors} from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
-import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
+import { iOSHeaderWithAudioMaxHeight, iOSHeaderWithAudioMinHeight, iOSHeaderWithAudioScrollDistance } from '../../../constants/component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
+    inputRange: [0, iOSHeaderWithAudioScrollDistance],
+    outputRange: [iOSHeaderWithAudioMaxHeight, iOSHeaderWithAudioMinHeight],
     extrapolate: 'clamp',
   });
 
   const imageOpacity = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, iOSHeaderWithAudioScrollDistance],
     outputRange: [1, 0],
     extrapolate: 'extend'
   });
@@ -31,10 +32,10 @@ const ScrollViewHeaderComponent = (props) => {
         <Animated.Image
           source={props.image}
           style={[styles.headerImage, {opacity: imageOpacity}]}
-          resizeMode="cover"
+          resizeMode="contain"
         />
-        <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} />
-        <HeaderAudioControlComponent scrollY={props.scrollY} />
+        <ScrollViewHeaderNavigationComponent scrollY={props.scrollY} title={props.title} textSize={props.textSize} updateTextSize={props.updateTextSize} />
+        <HeaderAudioControlComponent uuid={props.uuid} audio={props.audio} scrollY={props.scrollY} />
       </LinearGradient>
     </Animated.View>
   )
@@ -51,9 +52,10 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
   headerImage: {
-    height: getStyleOfDevice(110, 100),
+    height: getStyleOfDevice(130, 100),
     width: '100%',
-    position: 'absolute', top: 0,
+    position: 'absolute',
+    top: DeviceInfo.hasNotch() ? 46 : 26,
   }
 });
 

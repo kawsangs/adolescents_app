@@ -5,18 +5,18 @@ import LinearGradient from 'react-native-linear-gradient';
 import color, {backgroundColors} from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
-import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/component_constant';
+import { androidHeaderWithAudioMaxHeight, androidHeaderWithAudioMinHeight, androidHeaderWithAudioScrollDistance } from '../../../constants/component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
+    inputRange: [0, androidHeaderWithAudioScrollDistance],
+    outputRange: [androidHeaderWithAudioMaxHeight, androidHeaderWithAudioMinHeight],
     extrapolate: 'clamp',
   });
 
   const imageOpacity = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, androidHeaderWithAudioScrollDistance],
     outputRange: [1, 0],
     extrapolate: 'extend'
   });

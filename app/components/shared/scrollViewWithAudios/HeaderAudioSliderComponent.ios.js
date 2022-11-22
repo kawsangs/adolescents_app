@@ -4,12 +4,12 @@ import {Slider} from '@miblanchard/react-native-slider';
 
 import color from '../../../themes/color';
 import componentUtil from '../../../utils/component_util';
-import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
+import { iOSHeaderWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
 import audioPlayerService from '../../../services/audio_player_service';
 
 const HeaderAudioSliderComponent = (props) => {
   const thumbSize = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, iOSHeaderWithAudioScrollDistance],
     outputRange: [20, 16],
     extrapolate: 'clamp',
   });
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   sliderContainer: {
     paddingHorizontal: screenHorizontalPadding,
     height: 13,
-    backgroundColor: color.whiteSmokeColor,
+    backgroundColor: color.whiteColor,
     marginTop: 16
   }
 });

@@ -4,12 +4,12 @@ import {Slider} from '@miblanchard/react-native-slider';
 
 import color from '../../../themes/color';
 import componentUtil from '../../../utils/component_util';
-import { headerWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
+import { androidHeaderWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
 import audioPlayerService from '../../../services/audio_player_service';
 
 const HeaderAudioSliderComponent = (props) => {
   const thumbSize = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, androidHeaderWithAudioScrollDistance],
     outputRange: [20, 16],
     extrapolate: 'clamp',
   });
