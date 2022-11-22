@@ -1,16 +1,17 @@
 import React from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import {Image} from 'react-native';
 import {Card} from 'react-native-paper';
 
-import BoldLabelComponent from './BoldLabelComponent';
-import CardPointAndAudioFooterComponent from './CardPointAndAudioFooterComponent';
-import AudioWaveButtonComponent from './AudioWaveButtonComponent';
 import GridCardNoSubCategoryComponent from './gridCards/GridCardNoSubCategoryComponent';
 import GridCardWithSubCategoryComponent from './gridCards/GridCardWithSubCategoryComponent';
-import {cardBorderRadius, cardElevation, cardTitleFontSize} from '../../constants/component_constant';
+import {cardElevation} from '../../constants/component_constant';
 import Category from '../../models/Category';
 import visitService from '../../services/visit_service';
-import componentUtil from '../../utils/component_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
+import tabletStyles from '../../assets/stylesheets/tablet/gridCardComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/gridCardComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GridCardComponent = (props) => {
   const points = Category.getSubCategories(props.item.uuid).length;
@@ -48,22 +49,5 @@ const GridCardComponent = (props) => {
     </Card>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    borderRadius: cardBorderRadius,
-    elevation: cardElevation,
-    width: '48%',
-    paddingLeft: 0,
-    paddingBottom: 0
-  },
-  image: {
-    borderTopLeftRadius: cardBorderRadius,
-    borderTopRightRadius: cardBorderRadius,
-    height: 98,
-    width: '100%',
-  },
-});
 
 export default GridCardComponent;
