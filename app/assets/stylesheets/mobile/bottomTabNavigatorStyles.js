@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import color from '../../../themes/color';
 import {screenHorizontalPadding} from '../../../constants/component_constant';
 import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
@@ -14,6 +15,12 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     paddingBottom: 2,
     paddingHorizontal: screenHorizontalPadding,
     position: 'absolute',
+    ...Platform.select({
+      ios: {
+        height: DeviceInfo.hasNotch() ? 66 : 50,
+        paddingBottom: DeviceInfo.hasNotch() ? 16 : 2,
+      }
+    })
   },
   tabBarItem: {
     backgroundColor: color.whiteColor,

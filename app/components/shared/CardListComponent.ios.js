@@ -5,7 +5,9 @@ import HorizontalCardComponent from './HorizontalCardComponent';
 import TiltedCardComponent from './TiltedCardComponent';
 import GridCardComponent from './GridCardComponent';
 import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
+import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 import {ROW_CARD, TILTED_CARD, GRID_CARD} from '../../constants/card_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CardListComponent = (props) => {
   const renderCard = (item, index) => {
@@ -13,7 +15,7 @@ const CardListComponent = (props) => {
       case ROW_CARD:
         return <HorizontalCardComponent key={index}
                   item={item}
-                  containerStyle={{marginTop: 32}}
+                  containerStyle={{marginTop: getStyleOfDevice(40, 32)}}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
                 />
@@ -21,7 +23,7 @@ const CardListComponent = (props) => {
       case TILTED_CARD:
         return <TiltedCardComponent key={index}
                   item={item}
-                  containerStyle={{marginTop: 54}}
+                  containerStyle={{marginTop: getStyleOfDevice(90, 46)}}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
               />
@@ -44,12 +46,12 @@ const CardListComponent = (props) => {
     }
   }
 
+  if (props.items.length == 0)
+    return <ComingSoonMessageComponent/>
+
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-      { props.items.map((item, index) => {
-          return renderCard(item, index);
-        })
-      }
+      { props.items.map((item, index) => { return renderCard(item, index) }) }
     </View>
   )
 }

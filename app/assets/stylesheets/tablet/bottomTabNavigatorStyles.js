@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
 import {screenHorizontalPadding} from '../../../constants/component_constant';
 
@@ -13,6 +13,12 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     paddingBottom: 6,
     paddingHorizontal: screenHorizontalPadding,
     position: 'absolute',
+    ...Platform.select({
+      ios: {
+        height: 72,
+        paddingBottom: 18
+      }
+    })
   },
   tabBarItem: {
     backgroundColor: color.whiteColor,

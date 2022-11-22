@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
+import {getStyleOfDevice} from '../../../utils/responsive_util';
 
 const TiltedCardImageComponent = (props) => {
   return <View style={{flex: 2}}>
@@ -9,12 +10,10 @@ const TiltedCardImageComponent = (props) => {
 
 const styles = StyleSheet.create({
   image: {
-    height: 115,
+    height: getStyleOfDevice(145, 115),
     width: '90%',
-    top: -46,
+    top: getStyleOfDevice(-75, -46),
     zIndex: 1,
-    borderColor: 'black',
-
   }
 });
 
