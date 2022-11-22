@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
 import {cardTitleFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
@@ -14,13 +14,21 @@ const tiltedCardComponentStyles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     height: 40,
     width: componentUtil.getGridCardWidth(),
-    borderTopRightRadius: 15,
     borderTopLeftRadius: 11,
-    borderBottomRightRadius: 26,
+    borderTopRightRadius: 15,
     transform: [{rotate: "-12deg"}],
     position: 'absolute',
     right: -2.6,
-    top: isLowPixelDensityDevice() ? -5.5 : -8,
+    ...Platform.select({
+      ios: {
+        borderBottomRightRadius: 40,
+        top: isLowPixelDensityDevice() ? -5.5 : -7,
+      },
+      android: {
+        borderBottomRightRadius: 26,
+        top: isLowPixelDensityDevice() ? -5.5 : -8,
+      }
+    })
   },
   secondTiltedView: {
     backgroundColor: color.whiteColor,

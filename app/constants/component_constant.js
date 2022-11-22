@@ -14,7 +14,7 @@ export const navigationHeaderHorizontalPadding = getStyleOfDevice(16, 6);
 export const navigationHeaderHeight = Platform.OS == 'ios' ? 56 : 56;
 export const screenHorizontalPadding = getStyleOfDevice(32, 16);
 export const bottomTabBarHeight = 62;
-export const scrollViewPaddingBottom = bottomTabBarHeight + 16;
+export const scrollViewPaddingBottom = bottomTabBarHeight + 18;
 export const cardTitleFontSize = xLargeFontSize();
 export const descriptionFontSize = largeFontSize();
 export const descriptionLineHeight = getStyleOfDevice(38, isLowPixelDensityDevice() ? 28 : 36);
