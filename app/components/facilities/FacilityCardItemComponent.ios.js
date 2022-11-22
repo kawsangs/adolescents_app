@@ -52,7 +52,7 @@ const FacilityCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 100,
+    height: 105,
     marginTop: 11,
   },
   image: {

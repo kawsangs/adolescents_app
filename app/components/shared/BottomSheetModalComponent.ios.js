@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   BottomSheetModal,
-  BottomSheetModalProvider,
   BottomSheetBackdrop,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
@@ -19,20 +18,18 @@ const BottomSheetModalComponent = (props, ref) => {
   ), []);
 
   return (
-    <BottomSheetModalProvider>
-      <BottomSheetModal
-        ref={ref}
-        enablePanDownToClose={true}
-        backdropComponent={renderBackdrop}
-        snapPoints={props.snapPoints}
-        onDismiss={() => !!props.onDismiss && props.onDismiss()}
-        onChange={(index) => !!props.onChange && props.onChange(index)}
-      >
-        <BottomSheetScrollView style={styles.contentContainer}>
-          { props.content }
-        </BottomSheetScrollView>
-      </BottomSheetModal>
-    </BottomSheetModalProvider>
+    <BottomSheetModal
+      ref={ref}
+      enablePanDownToClose={true}
+      backdropComponent={renderBackdrop}
+      snapPoints={props.snapPoints}
+      onDismiss={() => !!props.onDismiss && props.onDismiss()}
+      onChange={(index) => !!props.onChange && props.onChange(index)}
+    >
+      <BottomSheetScrollView style={styles.contentContainer}>
+        { props.content }
+      </BottomSheetScrollView>
+    </BottomSheetModal>
   )
 };
 
@@ -40,7 +37,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: color.whiteColor,
     width: '100%',
-    flexGrow: 1
+    flexGrow: 1.,
   },
 });
 
