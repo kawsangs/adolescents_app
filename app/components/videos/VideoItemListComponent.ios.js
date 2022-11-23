@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {View} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -7,9 +8,14 @@ import VideoThumbnailComponent from './VideoThumbnailComponent';
 import color from '../../themes/color';
 import Video from '../../models/Video';
 import {xLargeFontSize, mediumFontSize} from '../../utils/font_size_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
+import tabletStyles from '../../assets/stylesheets/tablet/videoItemListComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/videoItemListComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
@@ -31,8 +37,13 @@ const VideoItemListComponent = (props) => {
         style={{marginBottom: 13, borderRadius: cardBorderRadius}} key={`video-${index}`}
       >
         <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item)} />
-        <BoldLabelComponent label={item.name} numberOfLines={2} style={{fontSize: xLargeFontSize(), margin: 8, lineHeight: 28}} />
-        <Text style={{padding: 12, paddingTop: 0, fontSize: mediumFontSize(), color: color.grayColor}} numberOfLines={1}>{t('author')}: {item.author}</Text>
+        {/* <BoldLabelComponent label={item.name} numberOfLines={2} style={{fontSize: xLargeFontSize(), margin: 8, lineHeight: 28}} /> */}
+        {/* <Text style={{padding: 12, paddingTop: 0, fontSize: mediumFontSize(), color: color.grayColor}} numberOfLines={1}>{t('author')}: {item.author}</Text> */}
+
+        <View style={styles.labelContainer}>
+          <BoldLabelComponent label={item.name} numberOfLines={2} style={styles.title} />
+          <Text style={styles.author} numberOfLines={1}>{t('author')}: {item.author}</Text>
+        </View>
       </Card>
     )
   }
