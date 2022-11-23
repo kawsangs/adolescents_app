@@ -6,7 +6,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import PlayAudioComponent from '../shared/PlayAudioComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import {isShortScreenDevice, getStyleOfDevice} from '../../utils/responsive_util';
+import {isShortScreenDevice, getStyleOfDevice, isLowPixelDensityDevice} from '../../utils/responsive_util';
 
 const FacilityCardAudioComponent = (props) => {
   return (
@@ -25,7 +25,7 @@ const FacilityCardAudioComponent = (props) => {
       >
         <IonIcon/>
       </PlayAudioComponent>
-      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: getStyleOfDevice(-10, -6) }} />
+      <FeatherIcon name="chevron-right" color={color.primaryColor} size={getStyleOfDevice(32, 30)} style={{alignSelf: 'center', marginTop: getStyleOfDevice(-6, isLowPixelDensityDevice() ? -6 : -12) }} />
     </View>
   )
 }

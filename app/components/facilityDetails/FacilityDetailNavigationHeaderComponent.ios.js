@@ -1,6 +1,7 @@
 import React from 'react';
-import {Animated, StyleSheet} from 'react-native';
+import {Animated, StyleSheet, View} from 'react-native';
 import { Appbar } from 'react-native-paper';
+import DeviceInfo from 'react-native-device-info';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
@@ -11,42 +12,44 @@ import {navigationHeaderHorizontalPadding} from '../../constants/component_const
 const scrollDistant = 100;
 
 const FacilityDetailNavigationHeaderComponent = (props) => {
-  const headerElevation = props.scrollY.interpolate({
-    inputRange: [0, scrollDistant],
-    outputRange: [0, 1],
-    extrapolate: "identity"
-  });
-
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, scrollDistant],
     outputRange: [0, 1],
     extrapolate: "identity"
   });
 
+  let backBtnBackground = props.scrollY.interpolate({
+    inputRange: [0, scrollDistant],
+    outputRange: ['rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0)'],
+    extrapolate: "clamp"
+  });
+
   return (
-    <Animated.View style={[styles.container, {elevation: headerElevation}]}>
+    <View style={styles.container}>
       <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
       <Appbar.Header style={[styles.header]}>
-        <NavigationHeaderBackButtonComponent/>
+        <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}}/>
+        </Animated.View>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
           <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />
         </Animated.View>
       </Appbar.Header>
-    </Animated.View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
     position: "absolute",
     width: "100%",
-    zIndex: 1
+    zIndex: 1,
   },
   header: {
     backgroundColor: "transparent",
     paddingHorizontal: navigationHeaderHorizontalPadding,
-    elevation: 0
+    elevation: 1,
+    zIndex: 1,
   },
   background: {
     backgroundColor: color.primaryColor,

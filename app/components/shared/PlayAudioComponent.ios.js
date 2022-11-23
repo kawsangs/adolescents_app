@@ -7,7 +7,6 @@ import componentUtil from '../../utils/component_util';
 import { outlinedButtonBorderWidth } from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
-
 const PlayAudioComponent = (props) => {
   // we use useRef intead of useState because useState is asynchronous that will not update the value immediately
   // and will cause the audio to play incorrectly when switching between different audios
@@ -27,9 +26,13 @@ const PlayAudioComponent = (props) => {
     // Clear all the audio if the playingUuid is null (ex: exit the screen)
     if (!props.playingUuid && !!global.audioPlayer && !!localAudioPlayer.current) {
       clearLocalAudioPlayer();
-      clearGlobalAudioPlayer();
+      audioPlayerService.clearAllAudio();
     }
   }, [props.playingUuid])
+
+  useEffect(() => {
+    return () => { audioPlayerService.clearAllAudio(); }  // Clear all the audio when component is unmount
+  }, []);
 
   const clearLocalAudioPlayer = () => {
     localAudioPlayer.current = null;
@@ -59,9 +62,7 @@ const PlayAudioComponent = (props) => {
       return;
     }
 
-    // Clear all the playing audio when starting to play a new audio
-    if (!!global.audioPlayer || !!global.countInterval)
-      clearGlobalAudioPlayer()
+    audioPlayerService.clearAllAudio(); // Clear all the playing audio when starting to play a new audio if there is an existing audio is playing
 
     audioPlayerService.play(props.audio, props.itemUuid, props.playingUuid, (audioPlayer, playSeconds, duration, countInterval) => {
       global.audioPlayer = audioPlayer;
@@ -81,13 +82,6 @@ const PlayAudioComponent = (props) => {
       if (playSeconds == 0 && duration == 0)
         props.updatePlayingUuid(null);
     }
-  }
-
-  const clearGlobalAudioPlayer = () => {
-    global.audioPlayer.release();
-    clearInterval(global.countInterval)
-    global.audioPlayer = null;
-    global.countInterval = null;
   }
 
   const onPress = () => {

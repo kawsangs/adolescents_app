@@ -2,16 +2,14 @@ import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
 
+import EmptyImageComponent from '../shared/EmptyImageComponent';
 import color from '../../themes/color';
-import EmptyMediaComponent from '../shared/EmptyMediaComponent';
 import Facility from '../../models/Facility';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const FacilityDetailGalleryComponent = (props) => {
+  const [galleries] = React.useState(Facility.findByUuid(props.uuid).galleries);
   const renderImages = () => {
-    const galleries = Facility.findByUuid(props.uuid).galleries;
-    if (galleries.length == 0)
-      return <EmptyMediaComponent isImage={true} iconSize={26}/>
-
     return galleries.map((gallery, index) => {
       return <Image key={index} source={gallery} style={{width: '100%', height: '100%'}} />
     });
@@ -27,14 +25,15 @@ const FacilityDetailGalleryComponent = (props) => {
   }
 
   return (
-    <View style={{height: 216}}>
-      { renderImageSlider() }
+    <View style={{height: galleries.length > 0 ? getStyleOfDevice(260, 216) : getStyleOfDevice(260, 180)}}>
+      { galleries.length > 0 ? renderImageSlider()
+        : <EmptyImageComponent iconSize={getStyleOfDevice(32, 40)} labelStyle={{fontSize: 12}} iconContainerStyle={styles.emptyIconContainer} />
+      }
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  wrapper: {},
   slide1: {
     flex: 1,
     justifyContent: 'center',
@@ -57,6 +56,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  emptyIconContainer: {
+    paddingHorizontal: getStyleOfDevice(20, 18),
+    paddingVertical: getStyleOfDevice(28, 22)
   }
 })
 

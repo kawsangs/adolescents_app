@@ -1,22 +1,53 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
+import FacilitySearchHeaderComponent from '../../components/facilities/FacilitySearchHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
+import FacilitySearchListComponent from '../../components/facilities/FacilitySearchListComponent';
 import {scrollViewPaddingBottom} from '../../constants/component_constant';
+import audioPlayerService from '../../services/audio_player_service';
 
 const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
+  const [playingUuid, setPlayingUuid] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchText, setSearchText] = useState('');
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setPlayingUuid(null);
+        setTimeout(() => {
+          audioPlayerService.clearAllAudio();
+        }, 100);
+      }
+    }, [])
+  );
+
+  const renderHeader = () => {
+    if (isSearching)
+      return <FacilitySearchHeaderComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)} />
+
+    return <FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} isSearching={isSearching}
+            updateIsListView={(status) => setIsListView(status)}
+            updateIsSearching={(status) => setIsSearching(status)}
+           />
+  }
 
   const renderBody = () => {
-    return isListView ? <FacilityListViewComponent/> : <FacilityListMapViewComponent/>;
+    if (isSearching) return <FacilitySearchListComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)}/>
+
+    return isListView ? <FacilityListViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
+           : <FacilityListMapViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />;
   }
 
   return (
     <GradientScrollViewComponent
-      header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
+      header={renderHeader()}
       body={renderBody()}
       scrollViewStyle={isListView ? styles.listView : styles.mapView}
     />
