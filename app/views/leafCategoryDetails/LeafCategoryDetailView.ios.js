@@ -7,10 +7,12 @@ const LeafCategoryDetailView = ({route, navigation}) => {
 
   return (
     <ScrollViewWithAudioComponent
+      uuid={route.params.uuid}
       title={category.name}
       description={category.description}
       audio={category.audioSource}
       image={category.imageSource}
+      defaultTextSize={route.params.textSize}
     />
   )
 }

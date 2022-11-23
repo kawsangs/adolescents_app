@@ -7,12 +7,12 @@ import NavigationHeaderBackButtonComponent from '../NavigationHeaderBackButtonCo
 import NavigationHeaderButtonComponent from '../navigationHeaders/NavigationHeaderButtonComponent';
 import NavigationHeaderTitleComponent from '../navigationHeaders/NavigationHeaderTitleComponent';
 import FontSizeSettingModalComponent from '../FontSizeSettingModalComponent';
-import {headerWithAudioScrollDistance, navigationHeaderIconSize} from '../../../constants/component_constant';
+import {androidHeaderWithAudioScrollDistance, navigationHeaderIconSize} from '../../../constants/component_constant';
 
 const ScrollViewHeaderNavigationComponent = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const titleOpacity = props.scrollY.interpolate({
-    inputRange: [0, headerWithAudioScrollDistance],
+    inputRange: [0, androidHeaderWithAudioScrollDistance],
     outputRange: [0, 1],
     extrapolate: 'extend'
   });
