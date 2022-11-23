@@ -2,7 +2,8 @@ import React from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 
 import AudioControlButton from './AudioControlButton';
-import { iOSHeaderWithAudioScrollDistance, screenHorizontalPadding } from '../../../constants/component_constant';
+import { screenHorizontalPadding } from '../../../constants/component_constant';
+import { headerWithAudioScrollDistance } from '../../../constants/ios_component_constant';
 import { FAST_FORWARD, REVERSE } from '../../../constants/audio_constant';
 import { getStyleOfDevice, isLowPixelDensityDevice } from '../../../utils/responsive_util';
 import audioPlayerService from '../../../services/audio_player_service';
@@ -10,13 +11,13 @@ import audioPlayerService from '../../../services/audio_player_service';
 const HeaderAudioControlButtonsComponent = (props) => {
   // Scale for making the audio controls smaller or bigger when scrolling
   const audioControlScale = props.scrollY.interpolate({
-    inputRange: [0, iOSHeaderWithAudioScrollDistance],
+    inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [1, 0.75],
     extrapolate: 'clamp',
   });
 
   const audioControlPositionY = props.scrollY.interpolate({
-    inputRange: [0, iOSHeaderWithAudioScrollDistance],
+    inputRange: [0, headerWithAudioScrollDistance],
     outputRange: getStyleOfDevice([80, 15], [70, 20]),
     extrapolate: 'clamp'
   });
