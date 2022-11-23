@@ -1,13 +1,21 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 import {xLargeFontSize, mediumFontSize} from '../../../utils/font_size_util';
 import color from '../../../themes/color';
 
 const videoItemListComponentStyles = StyleSheet.create({
   labelContainer: {
-    paddingTop: isLowPixelDensityDevice() ? 4 : 8,
-    paddingBottom: 10,
-    paddingLeft: 8
+    paddingHorizontal: 8,
+    ...Platform.select({
+      ios: {
+        paddingBottom: 10,
+        paddingTop: isLowPixelDensityDevice() ? 4 : 8,
+      },
+      android: {
+        paddingBottom: isLowPixelDensityDevice() ? 8 : 10,
+        paddingTop: isLowPixelDensityDevice() ? 6 : 8,
+      }
+    })
   },
   title: {
     fontSize: xLargeFontSize(),

@@ -5,10 +5,8 @@ import {useTranslation} from 'react-i18next';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import VideoThumbnailComponent from './VideoThumbnailComponent';
-import color from '../../themes/color';
 import Video from '../../models/Video';
-import {xLargeFontSize, mediumFontSize} from '../../utils/font_size_util';
-import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
@@ -37,9 +35,6 @@ const VideoItemListComponent = (props) => {
         style={{marginBottom: 13, borderRadius: cardBorderRadius}} key={`video-${index}`}
       >
         <VideoThumbnailComponent url={item.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(item)} />
-        {/* <BoldLabelComponent label={item.name} numberOfLines={2} style={{fontSize: xLargeFontSize(), margin: 8, lineHeight: 28}} /> */}
-        {/* <Text style={{padding: 12, paddingTop: 0, fontSize: mediumFontSize(), color: color.grayColor}} numberOfLines={1}>{t('author')}: {item.author}</Text> */}
-
         <View style={styles.labelContainer}>
           <BoldLabelComponent label={item.name} numberOfLines={2} style={styles.title} />
           <Text style={styles.author} numberOfLines={1}>{t('author')}: {item.author}</Text>
