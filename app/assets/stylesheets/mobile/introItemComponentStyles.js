@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import color from '../../../themes/color';
 import {xxLargeFontSize, xLargeFontSize} from '../../../utils/font_size_util';
+import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 
 const introItemComponentStyles = StyleSheet.create({
   slide: {
@@ -28,9 +29,16 @@ const introItemComponentStyles = StyleSheet.create({
     textAlign: 'left',
   },
   image: {
-    flex: 3.5,
     marginBottom: 24,
-    width: '100%'
+    width: '100%',
+    ...Platform.select({
+      ios: {
+        flex: isLowPixelDensityDevice() ? 4.1 : 4,
+      },
+      android: {
+        flex: isLowPixelDensityDevice() ? 3.8 : 4
+      }
+    })
   }
 });
 
