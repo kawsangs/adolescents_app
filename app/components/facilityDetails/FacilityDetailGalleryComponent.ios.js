@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   emptyIconContainer: {
     paddingHorizontal: getStyleOfDevice(20, 18),
-    paddingVertical: getStyleOfDevice(26, 20)
+    paddingVertical: getStyleOfDevice(28, 22)
   }
 })
 

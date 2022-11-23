@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 import mapStyles from '../../themes/mapStyles';
@@ -17,15 +17,6 @@ const MapComponent = (props) => {
               />
     });
   }
-
-  useEffect(() => {
-    _map.current?.animateToRegion({
-      latitude: props.currentRegion.latitude,
-      longitude: props.currentRegion.longitude,
-      latitudeDelta: 0.015,
-      longitudeDelta: 0.0022,
-    }, 1000);
-  }, [props.currentRegion]);
 
   return (
     <MapView
