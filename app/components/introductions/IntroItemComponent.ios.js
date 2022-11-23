@@ -15,7 +15,7 @@ const IntroItemComponent = (props) => {
 
   return (
     <View style={styles.slide}>
-      <Image source={props.image} style={styles.image} resizeMode='contain' />
+      <Image source={props.image} style={styles.image} resizeMode='stretch' />
       <View style={styles.labelContainer}>
         <BoldLabelComponent label={t(props.title)} style={styles.title} />
         <Text style={styles.label}>{t(props.description)}</Text>

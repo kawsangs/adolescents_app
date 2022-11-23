@@ -5,11 +5,12 @@ import Icon from 'react-native-vector-icons/Feather';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 
 const iconSize = isLowPixelDensityDevice() ? 28 : 32;
 
 const IntroNextButtonComponent = (props) => {
-  return <TouchableOpacity onPress={() => props.onPress()} style={styles.btn}>
+  return <TouchableOpacity onPress={() => props.onPress()} style={[styles.btn, sharedStyles.boxShadow]}>
             <Icon name="chevron-right" color={color.primaryColor} size={iconSize} style={styles.icon} />
          </TouchableOpacity>
 }

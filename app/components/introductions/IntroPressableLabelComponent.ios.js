@@ -11,7 +11,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const IntroPressableLabelComponent = (props) => {
   return (
     <View style={[styles.container, props.containerStyle]}>
-      <BoldLabelComponent label={props.label} style={styles.label} />
+      <BoldLabelComponent label={props.label} style={[styles.label, props.labelStyle]} />
     </View>
   )
 }
