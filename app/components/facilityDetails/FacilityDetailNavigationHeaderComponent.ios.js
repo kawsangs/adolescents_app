@@ -1,7 +1,6 @@
 import React from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 import { Appbar } from 'react-native-paper';
-import DeviceInfo from 'react-native-device-info';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';

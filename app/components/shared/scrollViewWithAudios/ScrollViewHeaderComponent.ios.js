@@ -8,6 +8,7 @@ import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
 import { iOSHeaderWithAudioMaxHeight, iOSHeaderWithAudioMinHeight, iOSHeaderWithAudioScrollDistance } from '../../../constants/component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
+import {iPhoneStatusBarHeight, iPhoneNotchHeight} from '../../../constants/ios_component_constant';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     height: getStyleOfDevice(130, 100),
     width: '100%',
     position: 'absolute',
-    top: DeviceInfo.hasNotch() ? 46 : 26,
+    top: DeviceInfo.hasNotch() ? iPhoneNotchHeight : iPhoneStatusBarHeight,
   }
 });
 
