@@ -29,9 +29,9 @@ const introItemComponentStyles = StyleSheet.create({
     textAlign: 'left',
   },
   image: {
-    flex: 5,
+    flex: 5.5,
     marginBottom: 24,
-    width: '100%'
+    width: '100%',
   }
 });
 
