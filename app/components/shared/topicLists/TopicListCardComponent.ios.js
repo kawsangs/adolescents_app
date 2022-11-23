@@ -9,6 +9,7 @@ import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../../con
 import componentUtil from '../../../utils/component_util';
 import audioUtil from '../../../utils/audio_util';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../../utils/responsive_util';
+import sharedStyles from '../../../assets/stylesheets/shared/sharedStyles';
 
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
@@ -19,7 +20,7 @@ const TopicListCardComponent = (props) => {
           audio={audioUtil.getAudioSourceByFilePath(props.audio)}
           playingUuid={props.playingUuid}
           isSpeakerIcon={true}
-          containerStyle={styles.btnContainer}
+          containerStyle={[styles.btnContainer, sharedStyles.boxShadow]}
           updatePlayingUuid={props.updatePlayingUuid}
           btnStyle={styles.btn}
         />
