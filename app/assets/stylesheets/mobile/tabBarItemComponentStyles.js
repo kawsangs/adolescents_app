@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import {smallFontSize} from '../../../utils/font_size_util';
 
 const TabBarItemComponentStyles = StyleSheet.create({
@@ -20,7 +21,14 @@ const TabBarItemComponentStyles = StyleSheet.create({
     alignSelf: 'stretch',
     borderRadius: 6,
     height: 2.1,
-    marginBottom: 0.6
+    ...Platform.select({
+      ios: {
+        marginBottom:  DeviceInfo.hasNotch() ? 20 : 3,
+      },
+      android: {
+        marginBottom: 0.6,
+      }
+    })
   }
 });
 

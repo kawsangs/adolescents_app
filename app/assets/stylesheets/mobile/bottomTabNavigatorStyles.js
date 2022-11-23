@@ -11,14 +11,16 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderTopWidth: 0,
     elevation: 0,
-    height: isLowPixelDensityDevice() ? 50 : 56,
-    paddingBottom: 2,
     paddingHorizontal: screenHorizontalPadding,
     position: 'absolute',
     ...Platform.select({
       ios: {
-        height: DeviceInfo.hasNotch() ? 66 : 50,
-        paddingBottom: DeviceInfo.hasNotch() ? 16 : 2,
+        height: DeviceInfo.hasNotch() ? 74 : 50,
+        paddingBottom: 0,
+      },
+      android: {
+        height: isLowPixelDensityDevice() ? 50 : 56,
+        paddingBottom: 2,
       }
     })
   },

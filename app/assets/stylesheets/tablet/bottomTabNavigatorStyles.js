@@ -13,8 +13,8 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     position: 'absolute',
     ...Platform.select({
       ios: {
-        height: 72,
-        paddingBottom: 18
+        height: 74,
+        paddingBottom: 0
       },
       android: {
         height: 62,

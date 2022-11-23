@@ -6,6 +6,7 @@ import User from '../models/User';
 import networkService from './network_service';
 import VisitApi from '../api/visitApi';
 import {pageable_types} from '../constants/visit_constant';
+import {tabVisitParams} from '../constants/bottom_tab_constant';
 
 const visitService = (() => {
   return {
@@ -29,7 +30,7 @@ const visitService = (() => {
       uuid: video.uuid,
       name: "video detail",
       code: "video_detail",
-      parent_code: "video",
+      parent_code: tabVisitParams.video.code,
       pageable_type: pageable_types.video
     };
     recordVisitAction(videoParams, () => callback());
@@ -40,7 +41,7 @@ const visitService = (() => {
       uuid: facility.uuid,
       name: "facility detail",
       code: "facility_detail",
-      parent_code: "facility",
+      parent_code: tabVisitParams.service.code,
       pageable_type: pageable_types.facility
     };
     recordVisitAction(facilityParams, () => callback());
@@ -51,7 +52,7 @@ const visitService = (() => {
       uuid: topic.uuid,
       name: "ជំនួយ ប្រធានបទ",
       code: "topic_detail",
-      parent_code: "topic",
+      parent_code: tabVisitParams.help.code,
       pageable_type: pageable_types.topic
     };
     recordVisitAction(topicParams, callback);
