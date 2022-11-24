@@ -9,6 +9,7 @@ import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionButtonComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonComponentStyles';
 
@@ -50,7 +51,7 @@ const LoginSelectionButtonComponent = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[styles.container, props.btnStyle]}
+    <TouchableOpacity onPress={() => onPress()} style={[styles.container, sharedStyles.boxShadow, props.btnStyle]}
       disabled={disabled}
     >
       { renderGradientIcon() }

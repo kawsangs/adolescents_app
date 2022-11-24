@@ -1,4 +1,6 @@
 const audioSources = {
+  "0.1.mp3": require("../assets/audios/20221124_0.1.mp3"),
+  "0.2.mp3": require("../assets/audios/20221124_0.2.mp3"),
   "20221116_1.1.mp3": require("../assets/audios/20221116_1.1.mp3"),
   "20221116_1.2.mp3": require("../assets/audios/20221116_1.2.mp3"),
   "20221116_1.3.mp3": require("../assets/audios/20221116_1.3.mp3"),
