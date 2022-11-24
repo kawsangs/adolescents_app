@@ -24,6 +24,8 @@ const CreateAccountSelectionsComponent = (props) => {
         selectedItem={props.province}
         contentHeight={defaultPickerContentHeight}
         onSelectItem={(province) => onSelectItem(province)}
+        playingUuid={props.playingUuid}
+        updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
       />
     );
 
