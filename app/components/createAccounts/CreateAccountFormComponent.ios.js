@@ -53,7 +53,6 @@ const CreateAccountFormComponent = (props) => {
       province_id: state.province.value,
       characteristics: state.characteristics
     }
-    console.log('user params = ', user)
 
     appUserService.createUser(user);
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
