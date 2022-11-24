@@ -11,12 +11,12 @@ import BottomSheetPickerMobileStyles from '../../../assets/stylesheets/mobile/bo
 const styles = getStyleOfDevice(BottomSheetPickerTabletStyles, BottomSheetPickerMobileStyles);
 
 class BottomSheetPickerListItem extends React.Component {
-  renderAudioBtn(audio) {
+  renderAudioBtn(audio, uuid) {
     return <PlayAudioComponent
               iconSize={24}
               audio={audio}
               btnStyle={{borderWidth: 0, borderRadius: 0}}
-              itemUuid={this.props.uuid}
+              itemUuid={uuid}
               playingUuid={this.props.playingUuid}
               isSpeakerIcon={true}
               updatePlayingUuid={this.props.updatePlayingUuid}
@@ -39,7 +39,7 @@ class BottomSheetPickerListItem extends React.Component {
                 <Text style={[styles.itemTitle, { color: this.itemColor(item, color.blackColor) }]}>{ item.label }</Text>
               </View>
             }
-            {!this.props.hideAudio && this.renderAudioBtn(item.audio)}
+            {!this.props.hideAudio && this.renderAudioBtn(item.audio, item.uuid)}
           </TouchableOpacity>
           <View style={{ borderColor: color.lightGrayColor, borderBottomWidth: index == this.props.items.length - 1 ? 0 : 0.6 }} />
         </React.Fragment>

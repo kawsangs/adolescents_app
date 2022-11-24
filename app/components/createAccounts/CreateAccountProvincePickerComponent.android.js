@@ -5,6 +5,7 @@ import BottomSheetPickerComponent from '../shared/BottomSheetPickerComponent';
 import BottomSheetPickerListComponent from '../shared/bottomSheetPicker/BottomSheetPickerListComponent';
 import {defaultPickerContentHeight} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
+import audioSources from '../../constants/audio_source_constant';
 
 const CreateAccountSelectionsComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -37,7 +38,7 @@ const CreateAccountSelectionsComponent = (props) => {
             selectedItem={props.province}
             required={true}
             customContainerStyle={{ marginTop: 19 }}
-            audio={null}
+            audio={audioSources["0.8.mp3"]}
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}

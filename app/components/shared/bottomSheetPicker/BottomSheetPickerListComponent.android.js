@@ -46,6 +46,8 @@ class BottomSheetPickerListComponent extends React.Component {
               defaultSelectedItem={this.props.selectedItem}
               customListItem={this.props.customListItem}
               hideAudio={this.props.hideAudio}
+              playingUuid={this.props.playingUuid}
+              updatePlayingUuid={this.props.updatePlayingUuid}
            />
   }
 

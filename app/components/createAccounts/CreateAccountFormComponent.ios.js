@@ -9,6 +9,7 @@ import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
+import audioSources from '../../constants/audio_source_constant';
 
 const CreateAccountFormComponent = (props) => {
   const {t} = useTranslation();
@@ -52,6 +53,7 @@ const CreateAccountFormComponent = (props) => {
       province_id: state.province.value,
       characteristics: state.characteristics
     }
+    console.log('user params = ', user)
 
     appUserService.createUser(user);
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
@@ -60,7 +62,7 @@ const CreateAccountFormComponent = (props) => {
   const renderSaveButton = () => {
     return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: 16}}
               uuid='123'
-              audio={null}
+              audio={audioSources["0.13.mp3"]}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               disabled={!isValid}
