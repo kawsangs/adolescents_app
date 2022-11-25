@@ -11,10 +11,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
+		2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
+		28CCCA46292F7B9200AFBCCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		45D218E3964874E8C8F02BF8 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FABB86F7EBEED4603897162A /* libPods-YouthMobile-YouthMobileTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
-		9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
 		A40DE70E4873AA2E72944BE8 /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF12CF719CFCE9E93FE51C5 /* libPods-YouthMobile.a */; };
 		EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */; };
 		EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */; };
@@ -47,6 +48,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = YouthMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = YouthMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YouthMobile/main.m; sourceTree = "<group>"; };
+		2890FE6D292FD551008BBF78 /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		2890FE6F292FD957008BBF78 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
 		2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.release.xcconfig"; sourceTree = "<group>"; };
 		64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-Regular.ttf"; path = "../app/assets/fonts/KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YouthMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 		EECC1EDB28F6B8AC00AA3DD9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				2890FE6F292FD957008BBF78 /* KantumruyPro-Regular.ttf */,
+				2890FE6D292FD551008BBF78 /* KantumruyPro-SemiBold.ttf */,
 				EECC1EDE28F6B8AC00AA3DD9 /* Feather.ttf */,
 				EECC1EE028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf */,
 				EECC1EE128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf */,
@@ -281,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CCCA46292F7B9200AFBCCF /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,15 +294,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */,
+				2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */,
 				EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */,
 				EECC1EF628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf in Resources */,
 				EECC1EF128F6B8AC00AA3DD9 /* MaterialCommunityIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				9D63E439626B46C8978A3E77 /* KantumruyPro-Regular.ttf in Resources */,
 				EECC1EEE28F6B8AC00AA3DD9 /* Feather.ttf in Resources */,
 				EECC1EF428F6B8AC00AA3DD9 /* Ionicons.ttf in Resources */,
-				8F22D14F5D1A4270AFFC0693 /* KantumruyPro-SemiBold.ttf in Resources */,
 				EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */,
 				EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */,
 				EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */,
@@ -545,6 +551,7 @@
 				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "សុខភាពយុវជន";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,6 +584,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "សុខភាពយុវជន";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
