@@ -15,7 +15,7 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     position: 'absolute',
     ...Platform.select({
       ios: {
-        height: DeviceInfo.hasNotch() ? 74 : 50,
+        height: DeviceInfo.hasNotch() ? 74 : 56,
         paddingBottom: 0,
       },
       android: {

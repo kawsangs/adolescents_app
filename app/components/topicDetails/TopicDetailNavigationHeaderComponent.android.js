@@ -6,10 +6,10 @@ import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackB
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
 import TopicDetailFullTitleComponent from './TopicDetailFullTitleComponent';
 import color from '../../themes/color';
-import {navigationHeaderHorizontalPadding, cardBorderRadius} from '../../constants/component_constant';
+import {navigationHeaderHorizontalPadding, cardBorderRadius, navHeaderHeight} from '../../constants/component_constant';
 
 const TopicDetailNavigationHeaderComponent = (props) => {
-  const [headerHeight, setHeaderHeight] = useState(56);
+  const [headerHeight, setHeaderHeight] = useState(navHeaderHeight);
 
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, headerHeight],
@@ -19,7 +19,7 @@ const TopicDetailNavigationHeaderComponent = (props) => {
 
   const containerHeight = props.scrollY.interpolate({
     inputRange: [0, headerHeight],
-    outputRange: [headerHeight, 56],
+    outputRange: [headerHeight, navHeaderHeight],
     extrapolate: "clamp"
   });
 
@@ -47,7 +47,7 @@ const TopicDetailNavigationHeaderComponent = (props) => {
       </Appbar.Header>
 
       <TopicDetailFullTitleComponent label={props.label} scrollY={props.scrollY} headerHeight={headerHeight}
-        updateHeaderHeight={(height) => setHeaderHeight(height + 56)}
+        updateHeaderHeight={(height) => setHeaderHeight(height + navHeaderHeight)}
       />
     </Animated.View>
   )

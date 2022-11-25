@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import { Appbar } from 'react-native-paper';
+import DeviceInfo from 'react-native-device-info';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
 import TopicDetailFullTitleComponent from './TopicDetailFullTitleComponent';
 import color from '../../themes/color';
-import {navigationHeaderHorizontalPadding, cardBorderRadius} from '../../constants/component_constant';
+import {navigationHeaderHorizontalPadding, cardBorderRadius, navHeaderHeight} from '../../constants/component_constant';
+import {iPhoneStatusBarHeight, iPhoneNotchHeight} from '../../constants/ios_component_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const TopicDetailNavigationHeaderComponent = (props) => {
-  const [headerHeight, setHeaderHeight] = useState(56);
+  const [headerHeight, setHeaderHeight] = useState(navHeaderHeight);
 
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, headerHeight],
@@ -19,7 +22,7 @@ const TopicDetailNavigationHeaderComponent = (props) => {
 
   const containerHeight = props.scrollY.interpolate({
     inputRange: [0, headerHeight],
-    outputRange: [headerHeight, 56],
+    outputRange: [headerHeight, getStyleOfDevice(80, DeviceInfo.hasNotch() ? iPhoneNotchHeight + navHeaderHeight : 76)],
     extrapolate: "clamp"
   });
 
@@ -35,8 +38,14 @@ const TopicDetailNavigationHeaderComponent = (props) => {
     extrapolate: "clamp"
   })
 
+  const headerMarginTop = props.scrollY.interpolate({
+    inputRange: [0, headerHeight],
+    outputRange: [DeviceInfo.hasNotch() ? iPhoneNotchHeight : iPhoneStatusBarHeight, 0],
+    extrapolate: "clamp"
+  })
+
   return (
-    <Animated.View style={[styles.container, {marginHorizontal: headerMargin, marginTop: headerMargin, height: containerHeight}]}>
+    <Animated.View style={[styles.container, {marginHorizontal: headerMargin, marginTop: headerMarginTop, height: containerHeight}]}>
       <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
 
       <Appbar.Header style={[styles.header]}>
@@ -47,7 +56,7 @@ const TopicDetailNavigationHeaderComponent = (props) => {
       </Appbar.Header>
 
       <TopicDetailFullTitleComponent label={props.label} scrollY={props.scrollY} headerHeight={headerHeight}
-        updateHeaderHeight={(height) => setHeaderHeight(height + 56)}
+        updateHeaderHeight={(height) => setHeaderHeight(height + navHeaderHeight)}
       />
     </Animated.View>
   )
@@ -56,14 +65,14 @@ const TopicDetailNavigationHeaderComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     zIndex: 1,
-    backgroundColor: 'white',
+    backgroundColor: color.whiteColor,
     marginHorizontal: 16,
-    marginTop: 16,
-    borderRadius: cardBorderRadius
+    borderRadius: cardBorderRadius,
   },
   header: {
     backgroundColor: "transparent",
     paddingHorizontal: navigationHeaderHorizontalPadding,
+    zIndex: 1
   },
   background: {
     backgroundColor: color.primaryColor,

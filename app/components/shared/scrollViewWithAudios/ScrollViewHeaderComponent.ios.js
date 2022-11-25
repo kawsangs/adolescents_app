@@ -6,18 +6,19 @@ import DeviceInfo from 'react-native-device-info';
 import color, {backgroundColors} from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
 import ScrollViewHeaderNavigationComponent from './ScrollViewHeaderNavigationComponent';
-import { iOSHeaderWithAudioMaxHeight, iOSHeaderWithAudioMinHeight, iOSHeaderWithAudioScrollDistance } from '../../../constants/component_constant';
+import { headerWithAudioMaxHeight, headerWithAudioMinHeight, headerWithAudioScrollDistance } from '../../../constants/ios_component_constant';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
+import {iPhoneStatusBarHeight, iPhoneNotchHeight} from '../../../constants/ios_component_constant';
 
 const ScrollViewHeaderComponent = (props) => {
   const headerHeight = props.scrollY.interpolate({
-    inputRange: [0, iOSHeaderWithAudioScrollDistance],
-    outputRange: [iOSHeaderWithAudioMaxHeight, iOSHeaderWithAudioMinHeight],
+    inputRange: [0, headerWithAudioScrollDistance],
+    outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
     extrapolate: 'clamp',
   });
 
   const imageOpacity = props.scrollY.interpolate({
-    inputRange: [0, iOSHeaderWithAudioScrollDistance],
+    inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [1, 0],
     extrapolate: 'extend'
   });
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     height: getStyleOfDevice(130, 100),
     width: '100%',
     position: 'absolute',
-    top: DeviceInfo.hasNotch() ? 46 : 26,
+    top: DeviceInfo.hasNotch() ? iPhoneNotchHeight : iPhoneStatusBarHeight,
   }
 });
 

@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 
 import TopicDetailDescriptionComponent from './TopicDetailDescriptionComponent';
 import FacilityCardItemComponent from '../facilities/FacilityCardItemComponent';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
 import topicHelper from '../../helpers/topic_helper';
 
 const TopicDetailMainComponent = (props) => {
@@ -25,7 +25,7 @@ const TopicDetailMainComponent = (props) => {
 
   return (
     <React.Fragment>
-      <View style={{paddingTop: 16, paddingHorizontal: screenHorizontalPadding}}>
+      <View style={{paddingTop: 16, paddingHorizontal: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
         <TopicDetailDescriptionComponent uuid={props.uuid} type={props.type} />
         { facilities.length > 0 && <Text style={{marginTop: 20, marginBottom: 0, color: 'white', fontSize: 16}}>{t('recommendedServiceProvider')}</Text>}
         { renderFacilities() }

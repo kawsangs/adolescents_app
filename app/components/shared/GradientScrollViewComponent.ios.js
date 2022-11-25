@@ -9,13 +9,15 @@ const GradientScrollViewComponent = (props) => {
     <LinearGradient
       colors={backgroundColors}
       start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
-      style={{flex: 1, width: '100%'}}
+      style={{flexGrow: 1, width: '100%'}}
     >
       {props.header}
 
       <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
         nestedScrollEnabled={true}
         scrollEnabled={props.scrollable ?? true}
+        scrollEventThrottle={16}
+        onScroll={(event) => !!props.onScroll && props.onScroll(event)}
       >
         {props.body}
       </ScrollView>

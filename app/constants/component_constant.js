@@ -1,5 +1,4 @@
 import {Platform} from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 import { getStyleOfDevice, isLowPixelDensityDevice } from '../utils/responsive_util';
 import {xLargeFontSize, largeFontSize} from '../utils/font_size_util';
 
@@ -7,14 +6,6 @@ export const buttonBorderRadius = 10;
 export const cardElevation = 2;
 export const cardBorderRadius = 10;
 export const outlinedButtonBorderWidth = 2.2;
-export const androidHeaderWithAudioMaxHeight = getStyleOfDevice(265, 230);
-export const androidHeaderWithAudioMinHeight = 170;
-export const androidHeaderWithAudioScrollDistance = (androidHeaderWithAudioMaxHeight - androidHeaderWithAudioMinHeight);
-const iOSMobileMaxHeight = DeviceInfo.hasNotch() ? 270 : 250;
-const iOSMobileMinHeight = DeviceInfo.hasNotch() ? 200 : 180;
-export const iOSHeaderWithAudioMaxHeight = getStyleOfDevice(285, iOSMobileMaxHeight);
-export const iOSHeaderWithAudioMinHeight = getStyleOfDevice(220, iOSMobileMinHeight);
-export const iOSHeaderWithAudioScrollDistance = (iOSHeaderWithAudioMaxHeight - iOSHeaderWithAudioMinHeight);
 export const navigationHeaderIconSize = 24;
 export const navigationHeaderHorizontalPadding = getStyleOfDevice(16, 6);
 export const navigationHeaderHeight = Platform.OS == 'ios' ? 56 : 56;
@@ -24,3 +15,4 @@ export const scrollViewPaddingBottom = bottomTabBarHeight + 18;
 export const cardTitleFontSize = xLargeFontSize();
 export const descriptionFontSize = largeFontSize();
 export const descriptionLineHeight = getStyleOfDevice(38, isLowPixelDensityDevice() ? 28 : 36);
+export const navHeaderHeight = 56;

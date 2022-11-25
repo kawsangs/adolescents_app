@@ -6,12 +6,13 @@ import color from '../../../themes/color';
 import audioUtil from '../../../utils/audio_util';
 import {mediumFontSize} from '../../../utils/font_size_util';
 import translationHelper from '../../../helpers/translation_helper';
-import { screenHorizontalPadding, androidHeaderWithAudioScrollDistance } from '../../../constants/component_constant';
+import { screenHorizontalPadding } from '../../../constants/component_constant';
+import { headerWithAudioScrollDistance } from '../../../constants/android_component_constant';
 
 const AudioDurationLabelComponent = (props) => {
   const {i18n} = useTranslation();
   const labelPositionY = props.scrollY.interpolate({
-    inputRange: [0, androidHeaderWithAudioScrollDistance],
+    inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [0, 6],
     extrapolate: 'clamp'
   });
