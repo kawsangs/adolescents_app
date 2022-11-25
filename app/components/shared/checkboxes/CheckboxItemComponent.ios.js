@@ -31,6 +31,7 @@ const CheckboxItemComponent = (props) => {
           labelStyle={styles.label}
           position='leading'
           onPress={() => props.onPress(props.value)}
+          mode="android"
         />
       </View>
 

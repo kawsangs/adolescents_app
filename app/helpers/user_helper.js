@@ -1,7 +1,7 @@
 import {minimumAge, maximumAge} from '../constants/user_constant';
 import arrayUtil from '../utils/array_util';
-import provinces from '../db/json/provinces.json';
-import characteristics from '../db/json/characteristics.json';
+import provinces from '../db/json/provinces';
+import characteristics from '../db/json/characteristics';
 
 const userHelper = (() => {
   return {
@@ -31,7 +31,7 @@ const userHelper = (() => {
   function _getPickerDataset(data, language) {
     const dataset = [];
     data.map(item => {
-      dataset.push({ label: item[`name_${language}`], value: item.value, audio: item.audio });
+      dataset.push({ label: item[`name_${language}`], value: item.value, audio: item.audio, uuid: item.uuid });
     });
     return dataset;
   }

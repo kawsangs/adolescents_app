@@ -5,11 +5,12 @@ import BottomSheetPickerComponent from '../shared/BottomSheetPickerComponent';
 import BottomSheetPickerListComponent from '../shared/bottomSheetPicker/BottomSheetPickerListComponent';
 import {defaultPickerContentHeight} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
+import audioSources from '../../constants/audio_source_constant';
 
-const CreateAccountAgePickerComponent = (props) => {
-  const {t} = useTranslation();
-  const onSelectItem = (age) => {
-    props.updateSelectedItem(age.value);
+const CreateAccountSelectionsComponent = (props) => {
+  const {t, i18n} = useTranslation();
+  const onSelectItem = (province) => {
+    props.updateSelectedItem(province);
     props.pickerModalRef.current?.dismiss();
   }
 
@@ -17,13 +18,14 @@ const CreateAccountAgePickerComponent = (props) => {
     props.pickerRef.current?.setBodyContent(
       <BottomSheetPickerListComponent
         ref={props.pickerContentRef}
-        title={t('yourAge')}
+        title={t('yourProvince')}
         isRequire={true}
-        items={userHelper.getAgeDataset(t('yearOld'))}
-        selectedItem={props.age}
+        items={userHelper.getProvinceDataset(i18n.language)}
+        selectedItem={props.province}
         contentHeight={defaultPickerContentHeight}
-        hideAudio={true}
-        onSelectItem={(age) => onSelectItem(age)}
+        onSelectItem={(province) => onSelectItem(province)}
+        playingUuid={props.playingUuid}
+        updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
       />
     );
 
@@ -31,18 +33,18 @@ const CreateAccountAgePickerComponent = (props) => {
   }
 
   return <BottomSheetPickerComponent
-            uuid='age-picker'
-            title={t('yourAge')}
-            label={!!props.age ? props.age : t('selectYourAge')}
-            items={userHelper.getAgeDataset(t('yearOld'))}
-            selectedItem={props.age}
+            uuid='province-picker'
+            title={t('yourProvince')}
+            label={!!props.province ? props.province.label : t('selectYourProvince')}
+            items={userHelper.getProvinceDataset(i18n.language)}
+            selectedItem={props.province}
             required={true}
             customContainerStyle={{ marginTop: 19 }}
-            audio={null}
+            audio={audioSources["0.8.mp3"]}
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
           />
 }
 
-export default CreateAccountAgePickerComponent;
+export default CreateAccountSelectionsComponent;

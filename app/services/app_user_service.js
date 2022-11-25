@@ -22,7 +22,6 @@ const createAccountService = (() => {
     const params = _buildData(user);
     User.create(params);  // save the user to in local storage
     appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
-    _sendCreateRequest(params, null);
   }
 
   function isValidForm(age, province) {

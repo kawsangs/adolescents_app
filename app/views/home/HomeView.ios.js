@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import NetInfo from '@react-native-community/netinfo';
+import { useFocusEffect } from '@react-navigation/native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
@@ -7,6 +8,7 @@ import CardListComponent from '../../components/shared/CardListComponent';
 
 import syncService from '../../services/sync_service';
 import Category from '../../models/Category';
+import audioPlayerService from '../../services/audio_player_service';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -23,6 +25,17 @@ const HomeView = (props) => {
 
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setPlayingUuid(null);
+        setTimeout(() => {
+          audioPlayerService.clearAllAudio();
+        }, 100);
+      }
+    }, [])
+  );
 
   const renderBody = () => {
     return <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
