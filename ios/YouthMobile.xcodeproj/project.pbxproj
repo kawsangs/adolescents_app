@@ -551,6 +551,7 @@
 				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "សុខភាពយុវជន";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -583,6 +584,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4URY5LV8B8;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "សុខភាពយុវជន";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
