@@ -5,6 +5,7 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import TopicMainComponent from '../../components/topics/TopicMainComponent';
+import {scrollViewPaddingBottom} from '../../constants/ios_component_constant';
 
 const TopicView = (props) => {
   const {t} = useTranslation();
@@ -19,7 +20,7 @@ const TopicView = (props) => {
     <GradientScrollViewComponent
       header={renderHeader()}
       body={<TopicMainComponent/>}
-      scrollViewStyle={{paddingHorizontal: 0, paddingBottom: 0}}
+      scrollViewStyle={{paddingHorizontal: 0, paddingBottom: scrollViewPaddingBottom}}
     />
   )
 }

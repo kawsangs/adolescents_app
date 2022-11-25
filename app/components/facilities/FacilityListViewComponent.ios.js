@@ -5,6 +5,7 @@ import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarCompone
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {scrollViewPaddingBottom} from '../../constants/ios_component_constant';
 
 const FacilityListMapViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -23,7 +24,7 @@ const FacilityListMapViewComponent = () => {
   return (
     <View style={{flexGrow: 1}}>
       <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
+      <ScrollView contentContainerStyle={{paddingBottom: scrollViewPaddingBottom, paddingRight: screenHorizontalPadding}}>
         { renderFacilities() }
       </ScrollView>
     </View>

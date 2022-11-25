@@ -9,3 +9,5 @@ const mobileMinHeight = DeviceInfo.hasNotch() ? 200 : 180;
 export const headerWithAudioMaxHeight = getStyleOfDevice(285, mobileMaxHeight);
 export const headerWithAudioMinHeight = getStyleOfDevice(220, mobileMinHeight);
 export const headerWithAudioScrollDistance = (headerWithAudioMaxHeight - headerWithAudioMinHeight);
+export const gradientScrollViewPaddingBottom = 150;
+export const scrollViewPaddingBottom = 74;
