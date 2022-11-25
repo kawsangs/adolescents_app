@@ -5,7 +5,6 @@ import { useFocusEffect } from '@react-navigation/native';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
-
 import syncService from '../../services/sync_service';
 import Category from '../../models/Category';
 import audioPlayerService from '../../services/audio_player_service';
