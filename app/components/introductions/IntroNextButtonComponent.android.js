@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: componentUtil.mediumPressableItemSize(),
     justifyContent: 'center',
     marginRight: 10,
-    marginTop: -6,
+    marginTop: isLowPixelDensityDevice() ? 0 : -4,
     width: componentUtil.mediumPressableItemSize(),
   },
   icon: {

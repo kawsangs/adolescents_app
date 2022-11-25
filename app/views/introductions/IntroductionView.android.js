@@ -45,7 +45,7 @@ const IntroductionView = (props) => {
             showSkipButton={true}
             renderNextButton={() => <IntroNextButtonComponent label='Next' onPress={() => renderNextSlide()} />}
             renderDoneButton={() => <IntroDoneButtonComponent/>}
-            renderSkipButton={() => <IntroPressableLabelComponent label={ t('skip') } containerStyle={{marginLeft: 8}} />}
+            renderSkipButton={() => <IntroPressableLabelComponent label={ t('skip') } />}
             activeDotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#ce3581'}}
             dotStyle={{backgroundColor: state.isLastIndex ? color.whiteColor : '#cbcbcb'}}
             bottomButton={state.isLastIndex}
