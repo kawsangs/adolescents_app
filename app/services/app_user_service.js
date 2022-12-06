@@ -32,7 +32,6 @@ const createAccountService = (() => {
     const params = _buildData(null);
     User.create(params);
     appVisitService.updateAppVisitsWithoutUser(params.uuid);
-    _sendCreateRequest(params, null);
   }
 
   function syncUsers(callback) {

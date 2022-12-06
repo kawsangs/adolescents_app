@@ -4,7 +4,6 @@ export const schemaNames = [
   'Visit',
   'Facility',
   'Service',
-  // 'VideoCategory',
   'Video',
   'Topic',
   'Question',
