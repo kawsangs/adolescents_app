@@ -1,21 +1,23 @@
 import BaseModel from './BaseModel';
 import services from '../db/json/services.json';
 
+const MODEL = "Service"
+
 class Service {
   static seedData = () => {
-    BaseModel.seedData(Service.name, this.#getFormattedServices());
+    BaseModel.seedData(MODEL, this.#getFormattedServices());
   }
 
   static getAll = () => {
-    return BaseModel.getAll(Service.name);
+    return BaseModel.getAll(MODEL);
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(Service.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 
   static containsByName(name) {
-    return BaseModel.containsByAttr(Service.name, 'name', `'${name}'`);
+    return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }
 
   // private method

@@ -1,25 +1,27 @@
-import BaseModel from './BaseModel';
-import videoCategories from '../db/json/video_categories.json';
+// import BaseModel from './BaseModel';
+// import videoCategories from '../db/json/video_categories.json';
 
-class VideoCategory {
-  static seedData = () => {
-    BaseModel.seedData(VideoCategory.name, this.#getFormattedVideoCategories());
-  }
+// const MODEL = "VideoCategory"
 
-  static getAll = () => {
-    return BaseModel.getAll(VideoCategory.name);
-  }
+// class VideoCategory {
+//   static seedData = () => {
+//     BaseModel.seedData(MODEL, this.#getFormattedVideoCategories());
+//   }
 
-  // private method
-  static #getFormattedVideoCategories = () => {
-    let formattedVideoCategories = [];
+//   static getAll = () => {
+//     return BaseModel.getAll(MODEL);
+//   }
 
-    videoCategories.map(videoCategory => {
-      formattedVideoCategories.push({...videoCategory, uuid: videoCategory.id});
-    });
+//   // private method
+//   static #getFormattedVideoCategories = () => {
+//     let formattedVideoCategories = [];
 
-    return formattedVideoCategories;
-  }
-}
+//     videoCategories.map(videoCategory => {
+//       formattedVideoCategories.push({...videoCategory, uuid: videoCategory.id});
+//     });
 
-export default VideoCategory;
+//     return formattedVideoCategories;
+//   }
+// }
+
+// export default VideoCategory;

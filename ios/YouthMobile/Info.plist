@@ -44,7 +44,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>កម្មវិធីសុខភាពយុវជនត្រូវការទីតាំងរបស់អ្នកដើម្បីបង្ហាញផ្លូវទៅកាន់គ្លីនិកដែលអ្នកស្វែងរក។</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>KantumruyPro-Regular.ttf</string>
@@ -75,6 +75,13 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

@@ -1,16 +1,18 @@
 import BaseModel from './BaseModel';
 
+const MODEL = "Question"
+
 class Question {
   static seedData = (data) => {
-    BaseModel.seedData(Question.name, data);
+    BaseModel.seedData(MODEL, data);
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(Question.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 
   static findByTopicUuid = (uuid) => {
-    return BaseModel.findByAttr(Question.name, { topic_uuid: `'${uuid}'`});
+    return BaseModel.findByAttr(MODEL, { topic_uuid: `'${uuid}'`});
   }
 }
 

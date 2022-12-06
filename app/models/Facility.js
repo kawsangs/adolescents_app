@@ -1,25 +1,27 @@
 import BaseModel from './BaseModel';
 import facilities from '../db/json/facilities.json';
 
+const MODEL = "Facility"
+
 class Facility {
   static seedData = () => {
-    BaseModel.seedData(Facility.name, this.#getFormattedFacilities());
+    BaseModel.seedData(MODEL, this.#getFormattedFacilities());
   }
 
   static getAll = () => {
-    return BaseModel.getAll(Facility.name);
+    return BaseModel.getAll(MODEL);
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(Facility.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 
   static findByServiceUuid = (serviceUuid) => {
-    return BaseModel.findByAttr(Facility.name, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
+    return BaseModel.findByAttr(MODEL, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
   }
 
   static containsByName(name) {
-    return BaseModel.containsByAttr(Facility.name, 'name', `'${name}'`);
+    return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }
 
   // private method
