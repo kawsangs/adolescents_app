@@ -8,6 +8,7 @@ import CardListComponent from '../../components/shared/CardListComponent';
 import syncService from '../../services/sync_service';
 import Category from '../../models/Category';
 import audioPlayerService from '../../services/audio_player_service';
+import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -44,6 +45,7 @@ const HomeView = (props) => {
     <GradientScrollViewComponent
       header={<HomeNavigationHeaderComponent navigation={props.navigation}/>}
       body={renderBody()}
+      scrollViewStyle={{paddingBottom: gradientScrollViewBigPaddingBottom}}
     />
   )
 }
