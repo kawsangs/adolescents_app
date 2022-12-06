@@ -6,9 +6,9 @@
  * @flow strict-local
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar, Text, AppState, Alert } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -31,6 +31,8 @@ import MobileTokenService from './app/services/mobile_token_service';
 import { store } from './app/store'
 import { Provider } from 'react-redux'
 import { navigationRef } from './app/navigators/app_navigator';
+
+import NotifService from './app/services/NotifService';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -57,19 +59,33 @@ const App: () => Node = () => {
   const {t} = useTranslation();
   let backHandler = null;
 
-  const goToNotificationView = () => {
-    navigationRef.current?.navigate('NotificationView');
-  }
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+  const notif = new NotifService((token) => {}, (notif) => {});
 
   useEffect(() => {
     SplashScreen.hide();
     MobileTokenService.handleSyncingToken();
-    MobileTokenService.onNotificationOpenApp(goToNotificationView);
+    MobileTokenService.onNotificationOpenApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
 
-    return () => backHandler.remove();
+    const subscription = AppState.addEventListener("change", nextAppState => {
+      if (
+        appState.current.match(/inactive|background/) && nextAppState === "active"
+      ) {
+        notif.cancelAll();
+      }
+
+      appState.current = nextAppState;
+      setAppStateVisible(appState.current);
+    });
+
+    return () => {
+      backHandler.remove();
+      subscription.remove();
+    };
   }, []);
 
   return (

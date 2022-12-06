@@ -4,6 +4,7 @@ import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Notification from '../models/Notification';
 
 const TOKEN_KEY = 'registeredToken';
 
@@ -12,7 +13,38 @@ const MobileTokenService = (() => {
 
   return {
     handleSyncingToken: handleSyncingToken,
-    onNotificationOpenApp: onNotificationOpenApp
+    onNotificationOpenApp: onNotificationOpenApp,
+    onNotificationArrived: onNotificationArrived
+  }
+
+  function onNotificationArrived(callback) {
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background!*********', remoteMessage);
+      _upsertToMessage(remoteMessage);
+
+      !!callback && callback();
+    });
+
+    messaging().onMessage(async remoteMessage => {
+      console.log('A new FCM message arrived!*********', remoteMessage);
+      _upsertToMessage(remoteMessage);
+
+      !!callback && callback();
+    });
+  }
+
+  function _upsertToMessage(remoteMessage) {
+    message = Notification.findById(remoteMessage.messageId);
+
+    if(!!message) return;
+
+    params = {
+      id: remoteMessage.messageId,
+      title: remoteMessage.notification.title,
+      content: remoteMessage.notification.body
+    }
+
+    Notification.create(params)
   }
 
   function onNotificationOpenApp(callback) {
