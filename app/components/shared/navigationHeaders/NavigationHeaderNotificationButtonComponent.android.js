@@ -8,7 +8,7 @@ import { navigationRef } from '../../../navigators/app_navigator';
 import { useSelector } from 'react-redux';
 
 const HomeHeaderNotificationButtonComponent = (props) => {
-  const unreadNotifications = useSelector((state) => state.unreadNotifications.value)
+  const unreadNotificationsCount = useSelector((state) => state.unreadNotifications.value)
 
   const renderDotIcon = () => {
     return <View style={{position: 'absolute', right: 0, top: 0, zIndex:1, width: 8, height: 8, borderRadius: 4, backgroundColor: '#fff'}}></View>;
@@ -17,7 +17,7 @@ const HomeHeaderNotificationButtonComponent = (props) => {
   const renderIcon = () => {
     return (
       <View>
-        { !!unreadNotifications.length && renderDotIcon() }
+        { !!unreadNotificationsCount && renderDotIcon() }
 
         <IonIcon name="notifications-outline" size={navigationHeaderIconSize} color="white"/>
       </View>
