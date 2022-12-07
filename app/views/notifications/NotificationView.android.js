@@ -3,7 +3,6 @@ import {useTranslation} from 'react-i18next';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
-import CardListComponent from '../../components/shared/CardListComponent';
 
 import Notification from '../../models/Notification';
 

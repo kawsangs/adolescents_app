@@ -164,6 +164,10 @@ export default class NotifService {
     PushNotification.cancelAllLocalNotifications();
   }
 
+  removeAll() {
+    PushNotification.removeAllDeliveredNotifications();
+  }
+
   abandonPermissions() {
     PushNotification.abandonPermissions();
   }

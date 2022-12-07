@@ -8,7 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
-import { StatusBar, Text, AppState, Alert } from 'react-native';
+import { StatusBar, Text, AppState, Alert, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
