@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 
 import HomeStackNavigator from './home_stack_navigator';
-import VideoStackNavigator from './video_stack_navigator';
+import VideoView from '../views/videos/VideoView';
 import FacilityStackNavigator from './facility_stack_navigator';
 import TopicStackNavigator from './topic_stack_navigator';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
@@ -47,8 +47,8 @@ function BottomTabNavigator() {
         })}
       />
       <Tab.Screen
-        name="VideoViewStack"
-        component={VideoStackNavigator}
+        name="VideoView"
+        component={VideoView}
         options={{
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='youtube' color={color} size={size} label={t('video')} />,
           tabBarItemStyle: styles.tabBarItem,
@@ -58,7 +58,7 @@ function BottomTabNavigator() {
           tabPress: (event) => {
             event.preventDefault();
             visitService.recordVisitAction(tabVisitParams.video)
-            navigation.reset({ index: 0, routes: [{ name: "VideoViewStack" }]})
+            navigation.reset({ index: 0, routes: [{ name: "VideoView" }]})
           }
         })}
       />

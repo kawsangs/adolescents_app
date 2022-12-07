@@ -7,10 +7,10 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
-import PlayVideoModalComponent from '../../components/playVideos/PlayVideoModalComponent';
+import PlayVideoModalComponent from '../../components/playVideoModals/PlayVideoModalComponent';
 
 import Video from '../../models/Video';
-import youtubeHelper from '../../helpers/youtube_helper';
+import networkService from '../../services/network_service';
 
 const VideoView = (props) => {
   const {t} = useTranslation();
@@ -28,6 +28,7 @@ const VideoView = (props) => {
   }, []);
 
   const playVideo = (videoUuid) => {
+    networkService.checkConnection(() => setHasInternet(true), () => setHasInternet(false));
     setPlayingVideo(Video.findByUuid(videoUuid));
     setModalVisible(true);
   }
@@ -40,9 +41,11 @@ const VideoView = (props) => {
         scrollViewStyle={{marginTop: 16}}
       />
 
-      <PlayVideoModalComponent video={playingVideo} modalVisible={modalVisible} setModalVisible={(status) => setModalVisible(status)}/>
+      <PlayVideoModalComponent modalVisible={modalVisible} setModalVisible={(status) => setModalVisible(status)}
+        video={playingVideo} hasInternet={hasInternet}
+      />
     </View>
   )
 }
 
-export default VideoView
+export default VideoView;
