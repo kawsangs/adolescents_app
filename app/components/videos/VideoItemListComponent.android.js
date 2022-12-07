@@ -26,7 +26,9 @@ const VideoItemListComponent = (props) => {
 
   const viewDetail = (video) => {
     visitService.recordVisitVideo(video, () => {
-      navigationRef.current?.navigate("PlayVideoView", { uuid: video.uuid, hasInternet: props.hasInternet });
+      props.playVideo(video.uuid)
+
+      // navigationRef.current?.navigate("PlayVideoView", { uuid: video.uuid, hasInternet: props.hasInternet });
     });
   }
 

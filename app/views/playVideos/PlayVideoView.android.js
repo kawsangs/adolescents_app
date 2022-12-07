@@ -6,6 +6,7 @@ import  {PanGestureHandler} from 'react-native-gesture-handler'
 
 import PlayVideoHeaderComponent from '../../components/playVideos/PlayVideoHeaderComponent';
 import PlayVideoWarningMessageComponent from '../../components/playVideos/PlayVideoWarningMessageComponent';
+
 import color from '../../themes/color';
 import Video from '../../models/Video';
 import youtubeHelper from '../../helpers/youtube_helper';
