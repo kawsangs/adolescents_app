@@ -3,6 +3,7 @@ import {View, ActivityIndicator} from 'react-native';
 import Modal from 'react-native-modal';
 import YoutubePlayer from "react-native-youtube-iframe";
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import DeviceInfo from 'react-native-device-info';
 
 import PlayVideoWarningMessageComponent from './PlayVideoWarningMessageComponent';
 import color from '../../themes/color';
@@ -24,7 +25,7 @@ const PlayVideoModalComponent = (props) => {
             videoId={youtubeHelper.getVideoId(props.video.url)}
             onReady={() => setIsLoading(false)}
             webViewProps={{
-              containerStyle: {paddingTop: hp('34%')}
+              containerStyle: {paddingTop: hp(DeviceInfo.hasNotch() ? '34%' : '30%')}
             }}
           />
         </View>

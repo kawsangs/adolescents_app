@@ -7,7 +7,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import {xLargeFontSize} from '../../utils/font_size_util';
-import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import componentUtil from '../../utils/component_util';
 import {navigationHeaderIconSize} from '../../constants/component_constant';
 
@@ -18,7 +18,7 @@ const PlayVideoWarningMessageComponent = (props) => {
 
   const closeButton = () => {
     return <TouchableOpacity onPress={() => props.closeModal()}
-              style={{width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize(), justifyContent: 'center', alignItems: 'center', marginTop: 3}}
+              style={{width: componentUtil.pressableItemSize(), height: componentUtil.pressableItemSize(), justifyContent: 'center', alignItems: 'center', marginTop: 3, marginLeft: getStyleOfDevice(16, 0)}}
            >
               <FeatherIcon name="x" color={color.whiteColor} size={navigationHeaderIconSize} />
            </TouchableOpacity>

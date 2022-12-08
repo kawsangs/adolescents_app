@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import NetInfo from '@react-native-community/netinfo';
 
@@ -8,7 +8,6 @@ import NavigationHeaderComponent from '../../components/shared/NavigationHeaderC
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
 import PlayVideoModalComponent from '../../components/playVideoModals/PlayVideoModalComponent';
-
 import Video from '../../models/Video';
 import networkService from '../../services/network_service';
 
