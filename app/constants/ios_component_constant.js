@@ -2,7 +2,7 @@ import DeviceInfo from 'react-native-device-info';
 import { getStyleOfDevice } from '../utils/responsive_util';
 
 export const iPhoneStatusBarHeight = 26;
-export const iPhoneNotchHeight = 46;
+export const iPhoneNotchHeight = DeviceInfo.hasDynamicIsland() ? 59 : 46;
 
 const mobileMaxHeight = DeviceInfo.hasNotch() ? 270 : 250;
 const mobileMinHeight = DeviceInfo.hasNotch() ? 200 : 180;
