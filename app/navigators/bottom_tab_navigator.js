@@ -4,8 +4,8 @@ import {useTranslation} from 'react-i18next';
 
 import HomeStackNavigator from './home_stack_navigator';
 import VideoView from '../views/videos/VideoView';
-import FacilityStackNavigator from './facility_stack_navigator';
 import TopicStackNavigator from './topic_stack_navigator';
+import FacilityView from '../views/facilities/FacilityView';
 import TabBarItemComponent from '../components/bottomTabNavigator/TabBarItemComponent';
 import color from '../themes/color';
 import {getStyleOfDevice} from '../utils/responsive_util';
@@ -63,8 +63,8 @@ function BottomTabNavigator() {
         })}
       />
       <Tab.Screen
-        name="FacilityViewStack"
-        component={FacilityStackNavigator}
+        name="FacilityView"
+        component={FacilityView}
         options={{
           tabBarLabel: t('clinic'),
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='map-pin' color={color} size={size} label={t('clinic')} />,
@@ -75,7 +75,7 @@ function BottomTabNavigator() {
           tabPress: (event) => {
             event.preventDefault();
             visitService.recordVisitAction(tabVisitParams.service)
-            navigation.reset({ index: 0, routes: [{ name: "FacilityViewStack" }]})
+            navigation.reset({ index: 0, routes: [{ name: "FacilityView" }]})
           }
         })}
       />

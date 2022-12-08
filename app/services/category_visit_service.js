@@ -16,7 +16,7 @@ const categoryVisitService = (() => {
     }
     else if (categoryHelper.isClinicService(category)) {
       visitService.recordVisitAction(tabVisitParams.service);
-      return navigationRef.current?.navigate("FacilityViewStack")
+      return navigationRef.current?.navigate("FacilityView")
     }
     else if (categoryHelper.isMentalSupport(category)) {
       visitService.recordVisitAction({code: "mental_support", name: "សេវាគាំទ្រផ្លូវចិត្ត", parent_code: null, pageable_id: null, pageable_type: pageable_types.page})
