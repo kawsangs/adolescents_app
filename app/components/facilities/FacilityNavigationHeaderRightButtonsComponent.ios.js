@@ -4,11 +4,12 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityNavigationHeaderRightButtonsComponent = (props) => {
   return (
     <View style={{flexDirection: 'row', height: '100%'}}>
-      <NavigationHeaderButtonComponent onPress={() => props.updateIsSearching(true)}
+      <NavigationHeaderButtonComponent onPress={() => navigationRef.current?.navigate("FacilitySearchView")}
         icon={<FeatherIcon name="search" size={20} color="white"/>}
       />
 

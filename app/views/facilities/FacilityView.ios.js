@@ -4,18 +4,14 @@ import { useFocusEffect } from '@react-navigation/native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
-import FacilitySearchHeaderComponent from '../../components/facilities/FacilitySearchHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
-import FacilitySearchListComponent from '../../components/facilities/FacilitySearchListComponent';
 import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
 const FacilityView = (props) => {
   const [isListView, setIsListView] = useState(true);
   const [playingUuid, setPlayingUuid] = useState(null);
-  const [isSearching, setIsSearching] = useState(false);
-  const [searchText, setSearchText] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -28,26 +24,14 @@ const FacilityView = (props) => {
     }, [])
   );
 
-  const renderHeader = () => {
-    if (isSearching)
-      return <FacilitySearchHeaderComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)} />
-
-    return <FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} isSearching={isSearching}
-            updateIsListView={(status) => setIsListView(status)}
-            updateIsSearching={(status) => setIsSearching(status)}
-           />
-  }
-
   const renderBody = () => {
-    if (isSearching) return <FacilitySearchListComponent searchText={searchText} updateIsSearching={(status) => setIsSearching(status)} updateSearchText={text => setSearchText(text)}/>
-
     return isListView ? <FacilityListViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
            : <FacilityListMapViewComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />;
   }
 
   return (
     <GradientScrollViewComponent
-      header={renderHeader()}
+      header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
       body={renderBody()}
       scrollViewStyle={isListView ? styles.listView : styles.mapView}
     />

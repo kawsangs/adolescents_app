@@ -25,24 +25,24 @@ const FacilitySearchListComponent = (props) => {
 
   const viewDetail = (facility) => {
     SearchHistory.upsert(facility.name)
-
     visitService.recordVisitFacility(facility, () => {
       navigationRef.current?.navigate('FacilityDetailView', {uuid: facility.uuid})
       setTimeout(() => {
-        props.updateIsSearching(false);
         props.updateSearchText("");
       }, 100);
     });
   }
 
+  const listItem = (key, label, onPress) => {
+    return <TouchableOpacity key={key} style={styles.item} onPress={() => onPress()}>
+              <Text style={{fontSize: largeFontSize(), flex: 1}}>{label}</Text>
+           </TouchableOpacity>
+  }
+
   const renderListItems = () => {
     if (props.searchText != '')
       return facilities.map((facility, index) => {
-        return (
-          <TouchableOpacity key={index} style={styles.item} onPress={() => viewDetail(facility)}>
-            <Text style={{fontSize: largeFontSize(), flex: 1}}>{facility.name}</Text>
-          </TouchableOpacity>
-        )
+        return listItem(index, facility.name, () => viewDetail(facility))
       });
 
     return renderSearchHistories();
@@ -50,11 +50,7 @@ const FacilitySearchListComponent = (props) => {
 
   const renderSearchHistories = () => {
     return searchHistories.map((searchHistory, index) => {
-      return (
-        <TouchableOpacity key={`history-${index}`} style={styles.item} onPress={() => props.updateSearchText(searchHistory.name)}>
-          <Text>{searchHistory.name}</Text>
-        </TouchableOpacity>
-      )
+      return listItem(`history-${index}`, searchHistory.name, () => props.updateSearchText(searchHistory.name))
     });
   }
 

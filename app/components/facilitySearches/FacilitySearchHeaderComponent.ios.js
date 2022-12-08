@@ -8,6 +8,7 @@ import color from '../../themes/color';
 import {navigationHeaderIconSize, navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 import SearchHistory from '../../models/SearchHistory';
 import componentUtil from '../../utils/component_util';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilitySearchHeaderComponent = (props) => {
   const {t} = useTranslation();
@@ -34,7 +35,7 @@ const FacilitySearchHeaderComponent = (props) => {
   }
 
   const closeSearch = () => {
-    props.updateIsSearching(false);
+    navigationRef.current?.goBack();
     props.updateSearchText('');
   }
 
