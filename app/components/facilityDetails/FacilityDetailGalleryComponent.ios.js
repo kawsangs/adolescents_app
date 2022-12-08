@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 import Swiper from 'react-native-swiper'
+import DeviceInfo from 'react-native-device-info';
 
 import EmptyImageComponent from '../shared/EmptyImageComponent';
 import color from '../../themes/color';
@@ -25,7 +26,7 @@ const FacilityDetailGalleryComponent = (props) => {
   }
 
   return (
-    <View style={{height: galleries.length > 0 ? getStyleOfDevice(260, 216) : getStyleOfDevice(260, 180)}}>
+    <View style={{height: galleries.length > 0 ? getStyleOfDevice(260, DeviceInfo.hasDynamicIsland() ? 256 : 216) : getStyleOfDevice(260, DeviceInfo.hasDynamicIsland() ? 220 : 180)}}>
       { galleries.length > 0 ? renderImageSlider()
         : <EmptyImageComponent iconSize={getStyleOfDevice(32, 40)} labelStyle={{fontSize: 12}} iconContainerStyle={styles.emptyIconContainer} />
       }
