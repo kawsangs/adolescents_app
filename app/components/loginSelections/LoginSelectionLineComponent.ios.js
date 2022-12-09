@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import color from '../../themes/color';
 import {mediumFontSize} from '../../utils/font_size_util';

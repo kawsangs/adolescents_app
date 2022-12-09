@@ -6,6 +6,7 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
+import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
 
 const VideoView = (props) => {
   const {t} = useTranslation();
@@ -24,7 +25,7 @@ const VideoView = (props) => {
     <GradientScrollViewComponent
       header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
       body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} />}
-      scrollViewStyle={{marginTop: 16}}
+      scrollViewStyle={{marginTop: 16, paddingBottom: gradientScrollViewBigPaddingBottom}}
     />
   )
 }

@@ -32,6 +32,7 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     flex: 1,
     fontSize: xxLargeFontSize(),
     paddingLeft: 24,
+    lineHeight: 40
   },
   audioBtn: {
     borderWidth: 0,

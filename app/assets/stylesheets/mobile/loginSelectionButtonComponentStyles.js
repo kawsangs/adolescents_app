@@ -33,6 +33,7 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     fontFamily: FontFamily.bold,
     fontSize: xxLargeFontSize(),
     paddingLeft: 24,
+    lineHeight: 40
   },
   audioBtn: {
     borderWidth: 0,

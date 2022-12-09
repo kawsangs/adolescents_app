@@ -1,6 +1,7 @@
 import {StyleSheet, Platform} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import {smallFontSize} from '../../../utils/font_size_util';
+import {smallFontSize, mediumFontSize} from '../../../utils/font_size_util';
+import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 
 const TabBarItemComponentStyles = StyleSheet.create({
   container: {
@@ -14,7 +15,7 @@ const TabBarItemComponentStyles = StyleSheet.create({
     paddingTop: 8
   },
   label: {
-    fontSize: smallFontSize(),
+    fontSize: isLowPixelDensityDevice() ? mediumFontSize() - 1 : smallFontSize() + 1,
     marginTop: 2
   },
   focusedLine: {
