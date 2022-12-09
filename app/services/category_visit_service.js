@@ -12,7 +12,7 @@ const categoryVisitService = (() => {
   function recordVisit(category) {
     if (categoryHelper.isVideo(category)) {
       visitService.recordVisitAction(tabVisitParams.video);
-      return navigationRef.current?.navigate("VideoViewStack")
+      return navigationRef.current?.navigate("VideoView")
     }
     else if (categoryHelper.isClinicService(category)) {
       visitService.recordVisitAction(tabVisitParams.service);

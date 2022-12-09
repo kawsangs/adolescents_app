@@ -9,7 +9,6 @@ import Video from '../../models/Video';
 
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
-import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
 import tabletStyles from '../../assets/stylesheets/tablet/videoItemListComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/videoItemListComponentStyles';
@@ -26,7 +25,7 @@ const VideoItemListComponent = (props) => {
 
   const viewDetail = (video) => {
     visitService.recordVisitVideo(video, () => {
-      navigationRef.current?.navigate("PlayVideoView", { uuid: video.uuid, hasInternet: props.hasInternet });
+      props.playVideo(video.uuid)
     });
   }
 

@@ -9,7 +9,7 @@ const GradientScrollViewComponent = (props) => {
     <LinearGradient
       colors={backgroundColors}
       start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
-      style={{flex: 1, width: '100%'}}
+      style={{flexGrow: 1, width: '100%'}}
     >
       {props.header}
 
