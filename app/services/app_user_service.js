@@ -1,4 +1,5 @@
 import Moment from 'moment';
+import {Platform} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
 import AppUserApi from '../api/appUserApi';
@@ -96,6 +97,7 @@ const createAccountService = (() => {
       province_id: user.province_id,
       gender: user.gender,
       age: user.age,
+      platform: Platform.OS
     }
 
     return params;

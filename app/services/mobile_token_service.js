@@ -1,5 +1,6 @@
 import messaging from '@react-native-firebase/messaging';
 import NetInfo from '@react-native-community/netinfo';
+import {Platform} from 'react-native';
 import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
@@ -77,6 +78,7 @@ const MobileTokenService = (() => {
         .getToken()
         .then(token => {
           console.log('== firebase token == ', token)
+          AsyncStorageService.setItem('FCM_TOKEN', token);
 
           _handleToken(token);
         });
@@ -106,8 +108,9 @@ const MobileTokenService = (() => {
       mobile_token: {
         token: token,
         device_id: DeviceInfo.getDeviceId(),
-        device_type: DeviceInfo.getDeviceType(),
-        app_version: DeviceInfo.getVersion()
+        device_type: DeviceInfo.isTablet() ? 'tablet' : 'mobile',
+        app_version: DeviceInfo.getVersion(),
+        platform: Platform.OS,
       }
     };
 

@@ -1,4 +1,3 @@
-import {Platform} from 'react-native';
 import Moment from 'moment';
 import navigationService from '../services/navigation_service';
 import Visit from '../models/Visit';
@@ -113,9 +112,6 @@ const visitService = (() => {
           name: visitItem.name,
           parent_code: visitItem.parent_code || null,
         },
-        platform_attributes: {
-          name: Platform.OS
-        }
       }
     }
 
