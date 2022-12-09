@@ -1,16 +1,18 @@
 import BaseModel from './BaseModel';
 
+const MODEL = "Topic"
+
 class Topic {
   static seedData = (data) => {
-    BaseModel.seedData(Topic.name, data);
+    BaseModel.seedData(MODEL, data);
   }
 
   static getAll = () => {
-    return BaseModel.getAll(Topic.name);
+    return BaseModel.getAll(MODEL);
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(Topic.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 }
 

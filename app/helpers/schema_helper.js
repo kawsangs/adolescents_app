@@ -3,7 +3,6 @@ import CategorySchema from '../db/migrations/v1/category';
 import VisitSchema from '../db/migrations/v1/visit';
 import FacilitySchema from '../db/migrations/v1/facility';
 import ServiceSchema from '../db/migrations/v1/service';
-import VideoCategorySchema from '../db/migrations/v1/video_category';
 import VideoSchema from '../db/migrations/v1/video';
 import TopicSchema from '../db/migrations/v1/topic';
 import QuestionSchema from '../db/migrations/v1/question';
@@ -27,7 +26,6 @@ const schemaHelper = (() => {
       VisitSchema,
       FacilitySchema,
       ServiceSchema,
-      VideoCategorySchema,
       VideoSchema,
       TopicSchema,
       QuestionSchema,

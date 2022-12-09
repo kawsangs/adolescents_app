@@ -1,21 +1,23 @@
 import BaseModel from './BaseModel';
 import videos from '../db/json/videos.json';
 
+const MODEL = "Video"
+
 class Video {
   static seedData = () => {
-    BaseModel.seedData(Video.name, this.#getFormattedVideos());
+    BaseModel.seedData(MODEL, this.#getFormattedVideos());
   }
 
   static getAll = () => {
-    return BaseModel.getAll(Video.name);
+    return BaseModel.getAll(MODEL);
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(Video.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 
   static findByCategoryUuid = (categoryUuid) => {
-    return BaseModel.findByAttr(Video.name, {video_category_uuid: `'${categoryUuid}'`}, '', {type: 'ASC', column: 'display_order'});
+    return BaseModel.findByAttr(MODEL, {video_category_uuid: `'${categoryUuid}'`}, '', {type: 'ASC', column: 'display_order'});
   }
 
   // private method

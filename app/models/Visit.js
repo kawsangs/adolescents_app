@@ -4,25 +4,27 @@ import uuidv4 from '../utils/uuidv4_util'
 import User from './User';
 import {APP_VISIT} from '../constants/visit_constant';
 
+const MODEL = "Visit"
+
 class Visit {
   static create = (params) => {
-    BaseModel.create(Visit.name, this.#buildParams(params));
+    BaseModel.create(MODEL, this.#buildParams(params));
   }
 
   static update = (uuid, params) => {
-    BaseModel.update(Visit.name, uuid, params);
+    BaseModel.update(MODEL, uuid, params);
   }
 
   static findUnsyncedVisitsByUserUuid = (userUuid) => {
-    return [...BaseModel.findByAttr(Visit.name, {user_uuid: `'${userUuid}'`}, '', {type:'ASC', column: 'visit_date'})];
+    return [...BaseModel.findByAttr(MODEL, {user_uuid: `'${userUuid}'`}, '', {type:'ASC', column: 'visit_date'})];
   }
 
   static getAppVisitsWithoutUser = () => {
-    return BaseModel.findByAttr(Visit.name, {code: `'${APP_VISIT}'`, user_uuid: null}, 'AND');
+    return BaseModel.findByAttr(MODEL, {code: `'${APP_VISIT}'`, user_uuid: null}, 'AND');
   }
 
   static deleteByUuid = (uuid) => {
-    BaseModel.deleteByUuid(Visit.name, uuid);
+    BaseModel.deleteByUuid(MODEL, uuid);
   }
 
   // private method

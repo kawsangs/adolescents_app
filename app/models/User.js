@@ -1,24 +1,26 @@
 import BaseModel from './BaseModel';
 
+const MODEL = "User"
+
 class User {
   static getAll = () => {
-    return [...BaseModel.getAll(User.name)];
+    return [...BaseModel.getAll(MODEL)];
   }
 
   static findByUuid = (uuid) => {
-    return BaseModel.findByUuid(User.name, uuid);
+    return BaseModel.findByUuid(MODEL, uuid);
   }
 
   static create = (params) => {
-    BaseModel.create(User.name, params);
+    BaseModel.create(MODEL, params);
   }
 
   static update = (uuid, params) => {
-    BaseModel.update(User.name, uuid, params);
+    BaseModel.update(MODEL, uuid, params);
   }
 
   static currentLoggedIn = () => {
-    return BaseModel.findByAttr(User.name, {logged_in: true})[0];
+    return BaseModel.findByAttr(MODEL, {logged_in: true})[0];
   }
 
   static hasCurrentLoggedIn = () => {
@@ -27,11 +29,11 @@ class User {
 
   static unsynced = () => {
     // we use spread operator to prevent the live update of the realm object
-    return [...BaseModel.findByAttr(User.name, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
+    return [...BaseModel.findByAttr(MODEL, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
   }
 
   static synced = () => {
-    return [...BaseModel.findByAttr(User.name, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
+    return [...BaseModel.findByAttr(MODEL, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
   static logOut = () => {
