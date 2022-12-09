@@ -1,21 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import {FlatList} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import Notification from '../../models/Notification';
 
+import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NotificationCardItemComponent from '../../components/notifications/NotificationCardItemComponent';
-import {View, Text, Image} from 'react-native';
-import { xxLargeFontSize } from '../../utils/font_size_util';
 import { useDispatch } from 'react-redux';
 import { resetNotification } from '../../features/notifications/unreadNotificationsSlice';
-
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
 import ComingSoonMessageComponent from '../../components/shared/ComingSoonMessageComponent';
+import {screenHorizontalPadding} from '../../constants/component_constant';
+import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
+
+const STEP = 20
 
 const NavigationView = (props) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const notifications = Notification.getAll().slice(0, 20);
+  const [currentIndex, setCurrentIndex] = useState(STEP);
+  const firstRecord = Notification.firstRecord();
+  const [notifications, setNotifications] = useState(Notification.getAll().slice(0, currentIndex));
 
   useEffect(() => {
     Notification.setAllAsRead();
@@ -29,22 +34,39 @@ const NavigationView = (props) => {
     )
   }
 
+  const onEndReached = () => {
+    if (notifications[notifications.length - 1].uuid == firstRecord.uuid)
+      return;
+
+    const nextNotifications = Notification.getAll().slice(currentIndex + 1, currentIndex + STEP)
+    setNotifications([...notifications, ...nextNotifications]);
+    setCurrentIndex(currentIndex + STEP)
+  }
+
   const renderBody = () => {
     if (notifications.length) {
-      return notifications.map((notification, index) => {
-        return <NotificationCardItemComponent key={index} notification={notification}/>
-      });
+      return (
+        <FlatList
+          data={notifications}
+          renderItem={({item}) => <NotificationCardItemComponent notification={item}/>}
+          keyExtractor={item => item.uuid}
+          contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom}}
+          onEndReached={() => onEndReached()}
+          onEndReachedThreshold={0.3}
+          ListFooterComponentStyle={{paddingBottom: 300}}
+        />
+      )
     }
 
     return renderEmptyContent();
   }
 
   return (
-    <React.Fragment>
-      <NavigationHeaderWithBackButtonComponent label={"ការជូនដំណឹង"} />
-      {renderBody()}
-
-    </React.Fragment>
+    <GradientScrollViewComponent
+      header={<NavigationHeaderWithBackButtonComponent label={t('notification')} />}
+      body={renderBody()}
+      isNotScrollView={true}
+    />
   )
 }
 

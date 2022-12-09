@@ -20,7 +20,7 @@ const MobileTokenService = (() => {
 
   function onNotificationArrived(callback) {
     messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!*********', remoteMessage);
+      console.log('++++ Message handled in the background!*********', remoteMessage);
       _upsertToMessage(remoteMessage);
 
       !!callback && callback();

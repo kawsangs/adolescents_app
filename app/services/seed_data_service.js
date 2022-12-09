@@ -4,6 +4,8 @@ import Service from '../models/Service';
 import Video from '../models/Video';
 import topicSeedDataService from './topic_seed_data_service';
 
+import Notification from '../models/Notification';
+
 const seedDataService = (() => {
   return {
     seedToRealm,
@@ -15,6 +17,8 @@ const seedDataService = (() => {
     Facility.seedData();
     Video.seedData();
     topicSeedDataService.seedToRealm();
+
+    Notification.seedData();
   }
 })();
 
