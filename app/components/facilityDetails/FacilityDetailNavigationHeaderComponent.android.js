@@ -7,6 +7,7 @@ import NavigationHeaderTitleComponent from '../shared/navigationHeaders/Navigati
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
 import {navigationHeaderHorizontalPadding} from '../../constants/component_constant';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const scrollDistant = 100;
 
@@ -34,7 +35,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
       <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
       <Appbar.Header style={[styles.header]}>
         <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
-          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}}/>
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}} onPress={() => navigationRef.current?.navigate('FacilityView')}/>
         </Animated.View>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
           <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />

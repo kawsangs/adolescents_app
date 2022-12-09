@@ -11,7 +11,7 @@ const FacilityNavigationHeaderComponent = (props) => {
     <NavigationHeaderComponent
       leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
       label={t('clinic')}
-      rightButton={<FacilityNavigationHeaderRightButtonsComponent isListView={props.isListView} updateIsListView={props.updateIsListView} updateIsSearching={props.updateIsSearching} />}
+      rightButton={<FacilityNavigationHeaderRightButtonsComponent isListView={props.isListView} updateIsListView={props.updateIsListView} />}
     />
   )
 }
