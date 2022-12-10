@@ -14,7 +14,7 @@ import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_
 import dateTimeHelper from '../../helpers/date_time_helper';
 
 const NotificationCardItemComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {i18n, t} = useTranslation();
   let itemRef = null;
 
   const renderInfo = () => {
@@ -34,7 +34,7 @@ const NotificationCardItemComponent = (props) => {
   const renderDeleteAction = () => {
     return (
       <RectButton onPress={() => props.openConfirmModal(props.notification)} style={{backgroundColor: color.redColor, width: '30%', marginTop: 16, justifyContent: 'center', alignItems: 'center', marginLeft: -20}}>
-        <Text style={[{color: color.whiteColor, fontSize: largeFontSize(),  marginLeft: 20}]}>លុប</Text>
+        <Text style={[{color: color.whiteColor, fontSize: xLargeFontSize(),  marginLeft: 20}]}>{t('delete')}</Text>
       </RectButton>
     )
   }

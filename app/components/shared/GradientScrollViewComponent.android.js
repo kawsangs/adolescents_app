@@ -3,6 +3,7 @@ import {ScrollView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
+import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
 
 const GradientScrollViewComponent = (props) => {
   return (
@@ -13,13 +14,18 @@ const GradientScrollViewComponent = (props) => {
     >
       {props.header}
 
-      <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
-        nestedScrollEnabled={true}
-        scrollEnabled={props.scrollable ?? true}
-        onScroll={(event) => !!props.onScroll && props.onScroll(event)}
-      >
-        {props.body}
-      </ScrollView>
+      { props.isNotScrollView ? 
+          props.body
+        :
+        <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
+          nestedScrollEnabled={true}
+          scrollEnabled={props.scrollable ?? true}
+          scrollEventThrottle={16}
+          onScroll={(event) => !!props.onScroll && props.onScroll(event)}
+        >
+          {props.body}
+        </ScrollView>
+      }
     </LinearGradient>
   )
 }
@@ -28,7 +34,8 @@ const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
     paddingHorizontal: screenHorizontalPadding,
-    paddingBottom: scrollViewPaddingBottom
+    // paddingBottom: scrollViewPaddingBottom
+    paddingBottom: gradientScrollViewBigPaddingBottom
   }
 });
 
