@@ -75,5 +75,8 @@
   "previousSearch": "ធ្លាប់រកពីមុនមក",
   "help": "ជំនួយ",
   "clinic": "គ្លីនិក",
-  "notification": "ការជូនដំណឹង"
+  "notification": "ការជូនដំណឹង",
+  "ok": "យល់ព្រម",
+  "close": "បោះបង់",
+  "doYouWantToDeleteThisNotification": "តើអ្នកពិតជាចង់លុបការជូនដំណឹងនេះឬ?"
 }

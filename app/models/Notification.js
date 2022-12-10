@@ -98,8 +98,6 @@ const notifications = [
     read: false
   },
 ]
-
-
 class Notification {
   static seedData = () => {
     BaseModel.seedData(MODEL, notifications)
@@ -115,7 +113,9 @@ class Notification {
   }
 
   static findById = (id) => {
-    return realm.objects(MODEL).filtered(`id = '${id}'`)[0];
+    return BaseModel.findByAttr(MODEL, {id: `'${id}'`}, '', {})[0];
+
+    // return realm.objects(MODEL).filtered(`id = '${id}'`)[0];
   }
 
   static create = (params) => {
@@ -123,9 +123,7 @@ class Notification {
   }
 
   static deleteAll = () => {
-    realm.write(() => {
-      realm.delete(Notification.getAll());
-    });
+    BaseModel.deleteAll(MODEL);
   }
 
   static setAllAsRead = () => {
@@ -141,6 +139,10 @@ class Notification {
   static firstRecord = () => {
     const notifications = this.getAll();
     return notifications.length > 0 ? notifications[notifications.length - 1] : null;
+  }
+
+  static deleteByUuid = (uuid) => {
+    BaseModel.deleteByUuid(MODEL, uuid)
   }
 }
 

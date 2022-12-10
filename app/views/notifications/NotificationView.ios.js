@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import {FlatList} from 'react-native';
+import {View} from 'react-native';
+import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-
-import Notification from '../../models/Notification';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { useDispatch } from 'react-redux';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
-import NotificationCardItemComponent from '../../components/notifications/NotificationCardItemComponent';
-import { useDispatch } from 'react-redux';
-import { resetNotification } from '../../features/notifications/unreadNotificationsSlice';
+import AlertModalComponent from '../../components/shared/AlertModalComponent';
+import NotificationMainComponent from '../../components/notifications/NotificationMainComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
-import ComingSoonMessageComponent from '../../components/shared/ComingSoonMessageComponent';
-import {screenHorizontalPadding} from '../../constants/component_constant';
-import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
+import { resetNotification } from '../../features/notifications/unreadNotificationsSlice';
+import color from '../../themes/color';
+import Notification from '../../models/Notification';
+import {largeFontSize} from '../../utils/font_size_util';
 
 const STEP = 20
 
-const NavigationView = (props) => {
+const NotificationView = (props) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState(STEP);
   const firstRecord = Notification.firstRecord();
   const [notifications, setNotifications] = useState(Notification.getAll().slice(0, currentIndex));
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedNotification, setSelectedNotification] = useState(null);
 
   useEffect(() => {
     Notification.setAllAsRead();
     dispatch(resetNotification());
   }, []);
-
-
-  const renderEmptyContent = () => {
-    return (
-      <ComingSoonMessageComponent/>
-    )
-  }
 
   const onEndReached = () => {
     if (notifications[notifications.length - 1].uuid == firstRecord.uuid)
@@ -43,31 +39,52 @@ const NavigationView = (props) => {
     setCurrentIndex(currentIndex + STEP)
   }
 
-  const renderBody = () => {
-    if (notifications.length) {
-      return (
-        <FlatList
-          data={notifications}
-          renderItem={({item}) => <NotificationCardItemComponent notification={item}/>}
-          keyExtractor={item => item.uuid}
-          contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom}}
-          onEndReached={() => onEndReached()}
-          onEndReachedThreshold={0.3}
-          ListFooterComponentStyle={{paddingBottom: 300}}
-        />
-      )
-    }
+  const openConfirmModal = (notification) => {
+    setSelectedNotification(notification);
+    setModalVisible(true);
+  }
 
-    return renderEmptyContent();
+  const renderBody = () => {
+    return <NotificationMainComponent
+              notifications={notifications}
+              updateNotifications={(notifications) => setNotifications(notifications)}
+              setSelectedNotification={(notification) => setSelectedNotification(notification)}
+              onEndReached={() => onEndReached()}
+              openConfirmModal={(notification) => openConfirmModal(notification)}
+           />
+  }
+
+  const confirmMessage = () => {
+    return <View style={{flexDirection: "row"}}>
+              <Icon name="exclamation" size={22} color={color.secondaryColor} />
+              <Text style={{fontSize: largeFontSize(), marginLeft: 16}}>{t('doYouWantToDeleteThisNotification')}</Text>
+           </View>
+  }
+
+  const deleteNotification = () => {
+    setNotifications(notifications.filter(notification => notification.uuid != selectedNotification.uuid))
+    Notification.deleteByUuid(selectedNotification.uuid);
+    setSelectedNotification(null);
+    setModalVisible(false);
   }
 
   return (
-    <GradientScrollViewComponent
-      header={<NavigationHeaderWithBackButtonComponent label={t('notification')} />}
-      body={renderBody()}
-      isNotScrollView={true}
-    />
+    <React.Fragment>
+      <GradientScrollViewComponent
+        header={<NavigationHeaderWithBackButtonComponent label={t('notification')} />}
+        body={renderBody()}
+        isNotScrollView={true}
+      />
+      <AlertModalComponent
+        visible={modalVisible}
+        message={confirmMessage}
+        onDismiss={() => {setModalVisible(false); setSelectedNotification(null)}}
+        onConfirm={() => deleteNotification()}
+        leftButtonLabel={t('close')}
+        rightButtonLabel={t('ok')}
+      />
+    </React.Fragment>
   )
 }
 
-export default NavigationView;
+export default NotificationView;

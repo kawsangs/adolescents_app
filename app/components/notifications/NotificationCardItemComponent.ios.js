@@ -1,6 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Text} from 'react-native-paper';
 import {Card} from 'react-native-paper';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { RectButton } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 
 import color from '../../themes/color';
@@ -12,6 +15,7 @@ import dateTimeHelper from '../../helpers/date_time_helper';
 
 const NotificationCardItemComponent = (props) => {
   const {i18n} = useTranslation();
+  let itemRef = null;
 
   const renderInfo = () => {
     return (
@@ -27,11 +31,28 @@ const NotificationCardItemComponent = (props) => {
     )
   }
 
+  const renderDeleteAction = () => {
+    return (
+      <RectButton onPress={() => props.openConfirmModal(props.notification)} style={{backgroundColor: color.redColor, width: '30%', marginTop: 16, justifyContent: 'center', alignItems: 'center', marginLeft: -20}}>
+        <Text style={[{color: color.whiteColor, fontSize: largeFontSize(),  marginLeft: 20}]}>លុប</Text>
+      </RectButton>
+    )
+  }
+
   return (
-    <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={()=>{}}>
-      { renderInfo() }
-    </Card>
+    <Swipeable
+      ref={ref => { itemRef = ref }}
+      // enabled={this.state.isDeletable}
+      renderRightActions={renderDeleteAction}
+      // onSwipeableOpen={() => this.isResumable = false }
+      // onSwipeableClose={() => this.isResumable = true }
+    >
+      <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
+        onPress={()=>{}}
+      >
+        { renderInfo() }
+      </Card>
+    </Swipeable>
   )
 }
 
