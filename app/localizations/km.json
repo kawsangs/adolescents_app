@@ -78,5 +78,6 @@
   "notification": "ការជូនដំណឹង",
   "ok": "យល់ព្រម",
   "close": "បោះបង់",
-  "doYouWantToDeleteThisNotification": "តើអ្នកពិតជាចង់លុបការជូនដំណឹងនេះឬ?"
+  "doYouWantToDeleteThisNotification": "តើអ្នកពិតជាចង់លុបការជូនដំណឹងនេះឬ?",
+  "noNotification": "មិនមានដំណឹងថ្មី"
 }
