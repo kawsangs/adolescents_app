@@ -1,7 +1,7 @@
 import { KM } from '../constants/main_constant';
 
 export const environment = {
-  domain: 'http://192.168.0.107:3000',
+  domain: 'http://192.168.1.139:3000',
   type: 'development',
   showIntroSlider: true,
   defaultLanguage: KM,

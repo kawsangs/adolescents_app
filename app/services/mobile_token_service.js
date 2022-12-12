@@ -20,14 +20,12 @@ const MobileTokenService = (() => {
 
   function onNotificationArrived(callback) {
     messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('++++ Message handled in the background!*********', remoteMessage);
       _upsertToMessage(remoteMessage);
 
       !!callback && callback();
     });
 
     messaging().onMessage(async remoteMessage => {
-      console.log('A new FCM message arrived!*********', remoteMessage);
       _upsertToMessage(remoteMessage);
 
       !!callback && callback();
@@ -50,19 +48,14 @@ const MobileTokenService = (() => {
 
   function onNotificationOpenApp(callback) {
     messaging().onNotificationOpenedApp(remoteMessage => {
-      console.log('Notification caused app to open from background state:--------', remoteMessage);
-
       callback();
     });
 
     messaging()
       .getInitialNotification()
       .then(remoteMessage => {
-        if (remoteMessage) {
-          console.log('Notification caused app to open from quit state:=========', remoteMessage);
-
+        if (remoteMessage)
           callback();
-        }
       });
   }
 
@@ -73,11 +66,9 @@ const MobileTokenService = (() => {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      // console.log('Authorization status____________:', authStatus);
       messaging()
         .getToken()
         .then(token => {
-          console.log('== firebase token == ', token)
           AsyncStorageService.setItem('FCM_TOKEN', token);
 
           _handleToken(token);

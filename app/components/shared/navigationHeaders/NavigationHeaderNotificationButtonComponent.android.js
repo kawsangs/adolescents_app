@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import NavigationHeaderButtonComponent from './NavigationHeaderButtonComponent';
@@ -10,14 +10,10 @@ import { useSelector } from 'react-redux';
 const HomeHeaderNotificationButtonComponent = (props) => {
   const unreadNotificationsCount = useSelector((state) => state.unreadNotifications.value)
 
-  const renderDotIcon = () => {
-    return <View style={{position: 'absolute', right: 0, top: 0, zIndex:1, width: 8, height: 8, borderRadius: 4, backgroundColor: '#fff'}}></View>;
-  }
-
   const renderIcon = () => {
     return (
       <View>
-        { !!unreadNotificationsCount && renderDotIcon() }
+        { !!unreadNotificationsCount && <View style={{position: 'absolute', right: 0, top: 0, zIndex: 1, width: 8, height: 8, borderRadius: 4, backgroundColor: '#fff'}}/> }
 
         <IonIcon name="notifications-outline" size={navigationHeaderIconSize} color="white"/>
       </View>

@@ -23,9 +23,9 @@ const NotificationCardItemComponent = (props) => {
         <ImageComponent source={require('../../assets/images/logo_color.png')} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
 
         <View style={{flex: 1}}>
-          <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize()}} />
-          <Text style={{fontSize: largeFontSize(), marginTop: 8}}>{props.notification.content}</Text>
-          <Text style={{fontSize: mediumFontSize(), textAlign: 'right', color: color.grayColor}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, i18n.language)}</Text>
+          <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
+          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 24}}>{props.notification.content}</Text>
+          <Text style={{fontSize: mediumFontSize(), textAlign: 'right', color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, i18n.language)}</Text>
         </View>
       </View>
     )

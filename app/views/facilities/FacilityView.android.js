@@ -6,7 +6,7 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import FacilityNavigationHeaderComponent from '../../components/facilities/FacilityNavigationHeaderComponent';
 import FacilityListViewComponent from '../../components/facilities/FacilityListViewComponent';
 import FacilityListMapViewComponent from '../../components/facilities/FacilityListMapViewComponent';
-import {scrollViewPaddingBottom} from '../../constants/component_constant';
+import {gradientScrollViewBigPaddingBottom} from '../../constants/component_constant';
 import audioPlayerService from '../../services/audio_player_service';
 
 const FacilityView = (props) => {
@@ -41,7 +41,7 @@ const FacilityView = (props) => {
 const styles = StyleSheet.create({
   listView: {
     paddingRight: 0,
-    paddingBottom: scrollViewPaddingBottom - 8
+    paddingBottom: gradientScrollViewBigPaddingBottom
   },
   mapView: {
     paddingHorizontal: 0,

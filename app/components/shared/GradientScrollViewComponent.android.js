@@ -2,8 +2,7 @@ import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {backgroundColors} from '../../themes/color';
-import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
-import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
+import {screenHorizontalPadding, gradientScrollViewBigPaddingBottom} from '../../constants/component_constant';
 
 const GradientScrollViewComponent = (props) => {
   return (
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
     paddingHorizontal: screenHorizontalPadding,
-    // paddingBottom: scrollViewPaddingBottom
     paddingBottom: gradientScrollViewBigPaddingBottom
   }
 });
