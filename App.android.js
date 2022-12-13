@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
 import { StatusBar, Text, AppState, Alert, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
@@ -54,6 +55,8 @@ const theme = {
 
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
+
+MobileTokenService.onNotificationArrived();
 
 const App: () => Node = () => {
   const {t} = useTranslation();

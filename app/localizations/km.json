@@ -80,5 +80,7 @@
   "close": "បោះបង់",
   "doYouWantToDeleteThisNotification": "តើអ្នកពិតជាចង់លុបការជូនដំណឹងនេះឬ?",
   "noNotification": "មិនមានដំណឹងថ្មី",
-  "delete": "លុប"
+  "delete": "លុប",
+  "viewMore": "មើលបន្ថែម",
+  "viewLess": "បង្រួមវិញ"
 }

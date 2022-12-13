@@ -48,15 +48,20 @@ const MobileTokenService = (() => {
 
   function onNotificationOpenApp(callback) {
     messaging().onNotificationOpenedApp(remoteMessage => {
+      if (remoteMessage)
+        _upsertToMessage(remoteMessage);
+
       callback();
     });
 
     messaging()
       .getInitialNotification()
-      .then(remoteMessage => {
-        if (remoteMessage)
+      .then(async remoteMessage => {
+        if (remoteMessage) {
+          _upsertToMessage(remoteMessage);
           callback();
-      });
+        }
+      })
   }
 
   async function requestUserPermission() {

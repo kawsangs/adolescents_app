@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import {Card} from 'react-native-paper';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
+import Icon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
@@ -14,8 +15,18 @@ import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_
 import dateTimeHelper from '../../helpers/date_time_helper';
 
 const NotificationCardItemComponent = (props) => {
-  const {i18n} = useTranslation();
-  let itemRef = null;
+  const {i18n, t} = useTranslation();
+  const [numberOfLines, setNumberOfLines] = React.useState(null)
+  const [contentLines, setContentLines] = React.useState(null);
+
+  const renderToggleViewButton = () => {
+    return <TouchableOpacity style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48}} onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}>
+              <Text style={{color: color.primaryColor, fontSize: largeFontSize()}}>
+                { !numberOfLines ? t('viewLess') : t('viewMore')}
+              </Text>
+              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: color.primaryColor}} />
+            </TouchableOpacity>
+  }
 
   const renderInfo = () => {
     return (
@@ -24,8 +35,20 @@ const NotificationCardItemComponent = (props) => {
 
         <View style={{flex: 1}}>
           <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
-          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 24}}>{props.notification.content}</Text>
-          <Text style={{fontSize: mediumFontSize(), textAlign: 'right', color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, i18n.language)}</Text>
+          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 24}} numberOfLines={numberOfLines}
+            onTextLayout={(event) => {
+              if (!!contentLines) return
+              setContentLines(event.nativeEvent.lines.length);
+              setNumberOfLines(2);
+            }}
+          >
+            {props.notification.content}
+          </Text>
+
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <Text style={{fontSize: mediumFontSize(), color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, i18n.language)}</Text>
+            { contentLines > 2 && renderToggleViewButton()}
+          </View>
         </View>
       </View>
     )
@@ -34,18 +57,15 @@ const NotificationCardItemComponent = (props) => {
   const renderDeleteAction = () => {
     return (
       <RectButton onPress={() => props.openConfirmModal(props.notification)} style={{backgroundColor: color.redColor, width: '30%', marginTop: 16, justifyContent: 'center', alignItems: 'center', marginLeft: -20}}>
-        <Text style={[{color: color.whiteColor, fontSize: largeFontSize(),  marginLeft: 20}]}>លុប</Text>
+        <Text style={[{color: color.whiteColor, fontSize: xLargeFontSize(),  marginLeft: 20}]}>{t('delete')}</Text>
       </RectButton>
     )
   }
 
   return (
-    <Swipeable
-      ref={ref => { itemRef = ref }}
-      renderRightActions={renderDeleteAction}
-    >
+    <Swipeable renderRightActions={renderDeleteAction}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        onPress={()=>{}}
+        onPress={()=> {}}
       >
         { renderInfo() }
       </Card>
@@ -58,7 +78,6 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     marginTop: 16,
     padding: 16,
-    paddingBottom: 12
   },
   image: {
     borderTopLeftRadius: cardBorderRadius,

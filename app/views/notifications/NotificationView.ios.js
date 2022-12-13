@@ -48,7 +48,6 @@ const NotificationView = (props) => {
     return <NotificationMainComponent
               notifications={notifications}
               updateNotifications={(notifications) => setNotifications(notifications)}
-              setSelectedNotification={(notification) => setSelectedNotification(notification)}
               onEndReached={() => onEndReached()}
               openConfirmModal={(notification) => openConfirmModal(notification)}
            />
