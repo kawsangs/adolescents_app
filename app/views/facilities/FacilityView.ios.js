@@ -34,6 +34,7 @@ const FacilityView = (props) => {
       header={<FacilityNavigationHeaderComponent navigation={props.navigation} isListView={isListView} updateIsListView={(status) => setIsListView(status)} />}
       body={renderBody()}
       scrollViewStyle={isListView ? styles.listView : styles.mapView}
+      scrollable={isListView}
     />
   )
 }

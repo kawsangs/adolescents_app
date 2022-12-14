@@ -11,6 +11,7 @@ import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_
 import PlayVideoModalComponent from '../../components/playVideoModals/PlayVideoModalComponent';
 import Video from '../../models/Video';
 import networkService from '../../services/network_service';
+import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 
 const VideoView = (props) => {
   const {t} = useTranslation();
@@ -38,7 +39,7 @@ const VideoView = (props) => {
       <GradientScrollViewComponent
         header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
         body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
-        scrollViewStyle={{marginTop: 16, paddingBottom: gradientScrollViewBigPaddingBottom}}
+        scrollViewStyle={{marginTop: 16, paddingBottom: isLowPixelDensityDevice() ? 225 : gradientScrollViewBigPaddingBottom}}
       />
 
       <PlayVideoModalComponent modalVisible={modalVisible} setModalVisible={(status) => setModalVisible(status)}
