@@ -19,7 +19,7 @@ const bottomTabNavigatorStyles = StyleSheet.create({
         paddingBottom: 0,
       },
       android: {
-        height: isLowPixelDensityDevice() ? 50 : 56,
+        height: isLowPixelDensityDevice() ? 54 : 56,
         paddingBottom: 2,
       }
     })
