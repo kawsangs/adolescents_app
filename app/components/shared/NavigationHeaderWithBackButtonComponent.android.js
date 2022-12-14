@@ -8,6 +8,7 @@ const NavigationHeaderWithBackButtonComponent = (props) => {
       <NavigationHeaderComponent
         leftButton={<NavigationHeaderBackButtonComponent/>}
         label={props.label}
+        customTitle={props.customTitle}
         headerStyle={props.headerStyle}
       />
     )
