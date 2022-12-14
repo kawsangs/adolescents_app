@@ -28,9 +28,9 @@ const AboutUsLogosComponent = () => {
 
   return (
     <React.Fragment>
-      {renderTitleAndLogos(initiators, t("initiatedBy"))}
-      {renderTitleAndLogos(funders, t("fundedBy"))}
-      {renderTitleAndLogos(implementors, t("implementedBy"))}
+      {renderTitleAndLogos(initiators, "ផ្តួចផ្តើមដោយ / Initiated by")}
+      {renderTitleAndLogos(funders, "គាំទ្រថវិកាដោយ / Funded by")}
+      {renderTitleAndLogos(implementors, "សហការអនុវត្តដោយ / Implemented by")}
     </React.Fragment>
   )
 }

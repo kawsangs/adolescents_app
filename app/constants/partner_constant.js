@@ -17,7 +17,7 @@ export const funders = [
   {
     logo: require("../assets/images/UNFPA_logo.png"),
     url: "https://cambodia.unfpa.org/en",
-    style: { width: wp("30%"), height: wp("30%"), marginRight: 30, marginTop: -20 }
+    style: { width: wp("34%"), height: wp("30%"), marginRight: 30, marginTop: -20 }
   },
   {
     logo: require("../assets/images/Japanese_logo.jpg"),
