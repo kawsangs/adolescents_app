@@ -2,15 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import NetInfo from '@react-native-community/netinfo';
+import DeviceInfo from 'react-native-device-info';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
-import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
 import PlayVideoModalComponent from '../../components/playVideoModals/PlayVideoModalComponent';
 import Video from '../../models/Video';
 import networkService from '../../services/network_service';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const VideoView = (props) => {
   const {t} = useTranslation();
@@ -38,7 +39,7 @@ const VideoView = (props) => {
       <GradientScrollViewComponent
         header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
         body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
-        scrollViewStyle={{marginTop: 16, paddingBottom: gradientScrollViewBigPaddingBottom}}
+        scrollViewStyle={{marginTop: 16, paddingBottom: getStyleOfDevice(250, DeviceInfo.hasNotch() ? 300 : 225)}}
       />
 
       <PlayVideoModalComponent modalVisible={modalVisible} setModalVisible={(status) => setModalVisible(status)}
