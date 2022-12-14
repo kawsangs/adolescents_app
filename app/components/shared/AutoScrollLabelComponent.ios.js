@@ -9,7 +9,7 @@ const AutoScrollLabelComponent = (props) => {
             style={{color: color.whiteColor, fontSize: xxLargeFontSize(), fontFamily: FontFamily.bold}}
             loop
             bounce={false}
-            repeatSpacer={50}
+            repeatSpacer={60}
             marqueeDelay={2000}
             scrollSpeed={20}
             shouldAnimateTreshold={16}
