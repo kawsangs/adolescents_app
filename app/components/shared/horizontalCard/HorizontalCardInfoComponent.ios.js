@@ -16,7 +16,7 @@ const HorizontalCardInfoComponent = (props) => {
         <BoldLabelComponent label={props.title} numberOfLines={2} style={styles.title} />
       </View>
 
-      <CardPointAndAudioFooterComponent uuid={props.uuid} points={props.points} audio={props.audio} playingUuid={props.playingUuid}
+      <CardPointAndAudioFooterComponent uuid={props.uuid} index={props.index} points={props.points} audio={props.audio} playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
       />
     </View>

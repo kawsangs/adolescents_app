@@ -23,6 +23,7 @@ const AudioWaveButtonComponent = (props) => {
         toggleIsPlaying={(isPlaying) => setIsPlaying(isPlaying)}
         updatePlaySeconds={props.updatePlaySeconds}
         updatePlayingUuid={props.updatePlayingUuid}
+        accessibilityLabel={props.accessibilityLabel}
       />
     </View>
   )
