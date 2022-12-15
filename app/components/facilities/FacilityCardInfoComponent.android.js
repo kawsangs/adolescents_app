@@ -29,7 +29,7 @@ const FacilityCardInfoComponent = (props) => {
           {renderServices()}
         </View>
       </View>
-      <FacilityCardAudioComponent audio={props.audio} playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid} />
+      <FacilityCardAudioComponent audio={props.audio} playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid} accessibilityLabel={props.accessibilityLabel} />
     </View>
   )
 }

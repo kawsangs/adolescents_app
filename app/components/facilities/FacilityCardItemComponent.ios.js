@@ -29,6 +29,7 @@ const FacilityCardItemComponent = (props) => {
               services={props.facility.services}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
+              accessibilityLabel={props.accessibilityLabel}
            />
   }
 

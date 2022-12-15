@@ -96,7 +96,6 @@ const PlayAudioComponent = (props) => {
       <PlayAudioIconComponent isPlaying={isPlaying} audio={props.audio} isSpeakerIcon={props.isSpeakerIcon}
         iconStyle={props.iconStyle} iconSize={props.iconSize} iconColor={props.iconColor}
       />
-      {/* <Text>{props.accessibilityLabel}</Text> */}
     </TouchableOpacity>
   )
 }

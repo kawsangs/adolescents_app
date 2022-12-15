@@ -17,6 +17,7 @@ const FacilityListMapViewComponent = () => {
                 playingUuid={playingUuid}
                 updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
                 containerStyle={{width: '100%'}}
+                accessibilityLabel={`គ្លីនិកទី${index + 1}`}
              />
     });
   }
