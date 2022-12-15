@@ -25,7 +25,6 @@ const CreateAccountAgePickerComponent = (props) => {
         contentHeight={defaultPickerContentHeight}
         hideAudio={true}
         onSelectItem={(age) => onSelectItem(age)}
-        accessibilityLabel="ប្រអប់ជ្រើរើសអាយុ"
       />
     );
 
@@ -44,6 +43,7 @@ const CreateAccountAgePickerComponent = (props) => {
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+            accessibilityLabel="ប្រអប់ជ្រើសរើសអាយុ"
           />
 }
 

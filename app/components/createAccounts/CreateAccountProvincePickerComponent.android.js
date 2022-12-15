@@ -44,7 +44,7 @@ const CreateAccountProvincePickerComponent = (props) => {
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-            accessibilityLabel="ប្រអប់ជ្រើរើសទីតាំង"
+            accessibilityLabel="ប្រអប់ជ្រើសរើសទីតាំង"
           />
 }
 

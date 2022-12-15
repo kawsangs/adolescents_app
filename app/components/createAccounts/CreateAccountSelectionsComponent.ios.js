@@ -29,7 +29,6 @@ const CreateAccountSelectionsComponent = (props) => {
               playingUuid={props.playingUuid}
               updateSelectedItem={(province) => props.updateState('province', province)}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-              accessibilityLabel='សា្ថនភាពរស់នៅទី'
            />
   }
 
@@ -42,6 +41,7 @@ const CreateAccountSelectionsComponent = (props) => {
               playingUuid={props.playingUuid}
               updateSelectedItems={(characteristics) => props.updateState('characteristics', characteristics)}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              accessibilityLabel='ស្ថានភាពរស់នៅទី'
             />
         </React.Fragment>
 }
