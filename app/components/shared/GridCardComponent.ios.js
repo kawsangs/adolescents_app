@@ -19,6 +19,7 @@ const GridCardComponent = (props) => {
     return <GridCardNoSubCategoryComponent
               title={props.item.name}
               uuid={props.item.uuid}
+              order={props.index + 1}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
@@ -29,6 +30,7 @@ const GridCardComponent = (props) => {
     return <GridCardWithSubCategoryComponent
               title={props.item.name}
               uuid={props.item.uuid}
+              order={props.index + 1}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}

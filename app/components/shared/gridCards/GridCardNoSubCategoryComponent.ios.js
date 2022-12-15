@@ -19,6 +19,7 @@ const GridCardNoSubCategoryComponent = (props) => {
                 containerStyle={{borderWidth: 0, zIndex: 10}}
                 updatePlayingUuid={props.updatePlayingUuid}
                 btnStyle={{elevation: 0, height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}
+                accessibilityLabel={`កាតទី${props.order}`}
               />
            </View>
 }

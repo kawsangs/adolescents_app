@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import PlayAudioIconComponent from './playAudios/PlayAudioIconComponent';
 import color from '../../themes/color';
