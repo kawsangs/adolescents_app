@@ -34,6 +34,7 @@ const CheckboxComponent = (props) => {
               onPress={(value) => onPress(value)}
               playingUuid={props.playingUuid}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              accessibilityLabel={`${props.accessibilityLabel}${index + 1}`}
             />
           ))
         }

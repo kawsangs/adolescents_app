@@ -7,7 +7,7 @@ import {defaultPickerContentHeight} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
 import audioSources from '../../constants/audio_source_constant';
 
-const CreateAccountSelectionsComponent = (props) => {
+const CreateAccountProvincePickerComponent = (props) => {
   const {t, i18n} = useTranslation();
   const onSelectItem = (province) => {
     props.updateSelectedItem(province);
@@ -44,7 +44,8 @@ const CreateAccountSelectionsComponent = (props) => {
             playingUuid={props.playingUuid}
             showPicker={() => showPicker()}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+            accessibilityLabel="ប្រអប់ជ្រើរើសទីតាំង"
           />
 }
 
-export default CreateAccountSelectionsComponent;
+export default CreateAccountProvincePickerComponent;

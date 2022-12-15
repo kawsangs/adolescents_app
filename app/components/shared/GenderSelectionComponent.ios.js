@@ -22,6 +22,7 @@ const GenderSelectionComponent = (props) => {
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 updateValue={props.updateValue}
+                accessibilityLabel={gender.accessibility_label}
              />
     });
   }
