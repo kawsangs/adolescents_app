@@ -2,6 +2,7 @@ import { StyleSheet, Platform } from 'react-native';
 import color from '../../../themes/color';
 import { smallFontSize } from '../../../utils/font_size_util';
 import {cardTitleFontSize} from '../../../constants/component_constant';
+import {getAndroidTabletStyle} from '../../../utils/responsive_util';
 
 const horizontalCardInfoComponentStyles = StyleSheet.create({
   container: {
@@ -13,7 +14,7 @@ const horizontalCardInfoComponentStyles = StyleSheet.create({
         paddingTop: 16
       },
       android: {
-        paddingTop: 8
+        paddingTop: getAndroidTabletStyle(8, 16)
       }
     })
   },
