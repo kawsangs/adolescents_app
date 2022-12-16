@@ -8,6 +8,7 @@ import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import componentUtil from '../../utils/component_util';
 import {xLargeFontSize} from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const BigButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: color.primaryColor,
     borderRadius: BORDER_RADIUS,
     elevation: 4,
-    height: componentUtil.mediumPressableItemSize(),
+    height: getStyleOfDevice(componentUtil.tabletPressableItemSize(), componentUtil.mediumPressableItemSize()),
     justifyContent: 'center'
   },
   audioBtn: {

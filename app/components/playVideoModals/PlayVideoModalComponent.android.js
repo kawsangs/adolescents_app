@@ -47,6 +47,7 @@ const PlayVideoModalComponent = (props) => {
       style={{width: '100%', margin: 0}}
       backdropColor='black'
       backdropOpacity={0.8}
+      animationOut="zoomOut"
     >
       { !!props.video && renderContent()}
     </Modal>

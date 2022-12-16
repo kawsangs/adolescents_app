@@ -8,7 +8,6 @@ import PlayAudioComponent from './PlayAudioComponent';
 import TextComponent from './TextComponent';
 import color from '../../themes/color';
 import { getStyleOfDevice } from '../../utils/responsive_util';
-import componentUtil from '../../utils/component_util';
 import BottomSheetPickerTabletStyles from '../../assets/stylesheets/tablet/bottomSheetPickerComponentStyles';
 import BottomSheetPickerMobileStyles from '../../assets/stylesheets/mobile/bottomSheetPickerComponentStyles';
 
@@ -57,7 +56,7 @@ class BottomSheetPickerComponent extends React.Component {
         <TextComponent label={this.props.title} required={this.props.required} requiredColor={color.blackColor} style={styles.titleLabel} />
 
         <View style={styles.mainContainer}>
-          <TouchableOpacity onPress={() => this.showPicker()} style={{height: componentUtil.mediumPressableItemSize()}}>
+          <TouchableOpacity onPress={() => this.showPicker()} style={{height: '100%'}}>
             <View style={styles.textContainer}>
               {this.renderAudioButton()}
               <View style={{flex: 1}}>

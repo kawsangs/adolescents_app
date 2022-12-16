@@ -2,7 +2,7 @@ import { Dimensions, PixelRatio } from 'react-native';
 import DeviceInfo from 'react-native-device-info'
 
 import { smallMobileHeight, mediumMobileHeight, smallWidthMobile, XHDPIRatio } from '../constants/screen_size_constant';
-import {iPadPro11Width, iPadPro12Width} from '../constants/ios_device_constant';
+import {iPadPro11InchesWidth, iPadPro12InchesWidth} from '../constants/ios_device_constant';
 import {androidBigTabletWidth} from '../constants/component_constant';
 
 const screenHeight = Dimensions.get('screen').height;
@@ -34,10 +34,10 @@ export const mobileIconSize = (size) => {
 }
 
 export const getiPadStyle = (smallStyle, mediumStyle, largeStyle) => {
-  if (Dimensions.get('window').width >= iPadPro12Width)
+  if (Dimensions.get('window').width >= iPadPro12InchesWidth)
     return largeStyle;
 
-  return Dimensions.get('window').width >= iPadPro11Width ? mediumStyle : smallStyle;
+  return Dimensions.get('window').width >= iPadPro11InchesWidth ? mediumStyle : smallStyle;
 }
 
 export const getAndroidTabletStyle = (smallStyle, mediumStyle) => {

@@ -5,7 +5,7 @@ import componentUtil from '../../../utils/component_util';
 
 const selectionItemComponentStyles = StyleSheet.create({
   selectionItem: {
-    height: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.tabletPressableItemSize(),
     paddingLeft: 8
   },
   label: {

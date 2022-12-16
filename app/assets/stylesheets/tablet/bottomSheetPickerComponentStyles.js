@@ -9,7 +9,7 @@ const BottomSheetPickerComponentStyles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: cardBorderRadius,
     marginTop: 5,
-    height: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.tabletPressableItemSize(),
   },
   titleLabel: {
     color: color.whiteColor,
