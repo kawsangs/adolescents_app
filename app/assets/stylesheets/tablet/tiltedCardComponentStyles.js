@@ -2,6 +2,9 @@ import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
 import {cardTitleFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
+import {getiPadStyle} from '../../../utils/responsive_util';
+
+const iOSRotate = getiPadStyle("-8deg", "-7deg", "-5.5deg");
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
@@ -20,7 +23,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     height: 60,
     width: componentUtil.getGridCardWidth() + 2,
-    borderTopRightRadius: 20,
+    borderTopRightRadius: getiPadStyle(20, 20, 12),
     borderTopLeftRadius: 14,
     position: 'absolute',
     borderColor: 'transparent',
@@ -29,7 +32,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
         borderBottomRightRadius: 65.8,
         right: -3,
         top: -23,
-        transform: [{rotate: "-8deg"}],
+        transform: [{rotate: iOSRotate}],
       },
       android: {
         borderBottomRightRadius: 42,
@@ -47,7 +50,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         right: 0,
-        top: -26,
+        top: getiPadStyle(-26, -26, -29)
       },
       android: {
         right: 0.4,
