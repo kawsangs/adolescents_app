@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import color from '../../../themes/color';
 import { smallFontSize } from '../../../utils/font_size_util';
 import {cardTitleFontSize} from '../../../constants/component_constant';
@@ -8,7 +8,14 @@ const horizontalCardInfoComponentStyles = StyleSheet.create({
     flex: 2,
     flexDirection: 'column',
     paddingLeft: 8,
-    paddingTop: 8,
+    ...Platform.select({
+      ios: {
+        paddingTop: 16
+      },
+      android: {
+        paddingTop: 8
+      }
+    })
   },
   titleContainer: {
     flex: 1,
