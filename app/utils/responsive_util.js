@@ -3,6 +3,7 @@ import DeviceInfo from 'react-native-device-info'
 
 import { smallMobileHeight, mediumMobileHeight, smallWidthMobile, XHDPIRatio } from '../constants/screen_size_constant';
 import {iPadPro11Width, iPadPro12Width} from '../constants/ios_device_constant';
+import {androidBigTabletWidth} from '../constants/component_constant';
 
 const screenHeight = Dimensions.get('screen').height;
 const screenWidth = Dimensions.get('screen').width;
@@ -37,6 +38,10 @@ export const getiPadStyle = (smallStyle, mediumStyle, largeStyle) => {
     return largeStyle;
 
   return Dimensions.get('window').width >= iPadPro11Width ? mediumStyle : smallStyle;
+}
+
+export const getAndroidTabletStyle = (smallStyle, mediumStyle) => {
+  return Dimensions.get('window').width >= androidBigTabletWidth ? mediumStyle : smallStyle;
 }
 
 export const isLowPixelDensityDevice = () => {

@@ -1,10 +1,8 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 import color from '../../../themes/color';
 import {cardTitleFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
-import {getiPadStyle} from '../../../utils/responsive_util';
-
-const iOSRotate = getiPadStyle("-8deg", "-7deg", "-5.5deg");
+import {getiPadStyle, getAndroidTabletStyle} from '../../../utils/responsive_util';
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
@@ -32,13 +30,13 @@ const tiltedCardComponentStyles = StyleSheet.create({
         borderBottomRightRadius: 65.8,
         right: -3,
         top: -23,
-        transform: [{rotate: iOSRotate}],
+        transform: [{rotate: getiPadStyle("-8deg", "-7deg", "-5.5deg")}],
       },
       android: {
         borderBottomRightRadius: 42,
-        right: -3.5,
+        right: getAndroidTabletStyle(-3.5, -2.5),
         top: -24,
-        transform: [{rotate: "-11deg"}],
+        transform: [{rotate: getAndroidTabletStyle("-11deg", "-8deg")}],
       }
     })
   },
@@ -53,7 +51,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
         top: getiPadStyle(-26, -26, -29)
       },
       android: {
-        right: 0.4,
+        right: getAndroidTabletStyle(0.4, 0),
         top: -24,
       }
     })

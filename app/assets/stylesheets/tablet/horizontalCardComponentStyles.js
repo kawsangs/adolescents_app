@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 import { cardBorderRadius } from '../../../constants/component_constant';
-import {getiPadStyle} from '../../../utils/responsive_util';
+import {getiPadStyle, getAndroidTabletStyle} from '../../../utils/responsive_util';
 
 const horizontalCardComponentStyles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const horizontalCardComponentStyles = StyleSheet.create({
         height: getiPadStyle(140, 140, 160),
       },
       android: {
-        height: 115,
+        height: getAndroidTabletStyle(115, 130),
       }
     })
   }
