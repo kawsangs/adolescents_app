@@ -14,8 +14,8 @@ const AudioControlButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    minWidth: componentUtil.pressableItemSize(),
-    minHeight: componentUtil.pressableItemSize(),
+    minWidth: componentUtil.largePressableItemSize(),
+    minHeight: componentUtil.largePressableItemSize(),
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: componentUtil.pressableItemSize() - getStyleOfDevice(15, 20),

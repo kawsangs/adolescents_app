@@ -12,7 +12,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
   // Scale for making the audio controls smaller or bigger when scrolling
   const audioControlScale = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: [1, 0.75],
+    outputRange: [1, 0.80],
     extrapolate: 'clamp',
   });
 

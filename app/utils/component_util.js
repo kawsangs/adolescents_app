@@ -8,6 +8,7 @@ const componentUtil = (() => {
   return {
     pressableItemSize,
     mediumPressableItemSize,
+    largePressableItemSize,
     getGridCardWidth,
   }
 
@@ -17,6 +18,10 @@ const componentUtil = (() => {
 
   function mediumPressableItemSize() {
     return isLowPixelDensityDevice() ? pressableItemSize() : pressableItemSize(8);
+  }
+
+  function largePressableItemSize() {
+    return 60;
   }
 
   function getGridCardWidth() {
