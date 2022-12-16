@@ -2,6 +2,7 @@ import { Dimensions, PixelRatio } from 'react-native';
 import DeviceInfo from 'react-native-device-info'
 
 import { smallMobileHeight, mediumMobileHeight, smallWidthMobile, XHDPIRatio } from '../constants/screen_size_constant';
+import {iPadPro11Width, iPadPro12Width} from '../constants/ios_device_constant';
 
 const screenHeight = Dimensions.get('screen').height;
 const screenWidth = Dimensions.get('screen').width;
@@ -29,6 +30,13 @@ export const mobileIconSize = (size) => {
   }
 
   return size;
+}
+
+export const getiPadStyle = (smallStyle, mediumStyle, largeStyle) => {
+  if (Dimensions.get('window').width >= iPadPro12Width)
+    return largeStyle;
+
+  return Dimensions.get('window').width >= iPadPro11Width ? mediumStyle : smallStyle;
 }
 
 export const isLowPixelDensityDevice = () => {
