@@ -74,5 +74,13 @@
   "searchResult": "លទ្ធផលស្វែងរក",
   "previousSearch": "ធ្លាប់រកពីមុនមក",
   "help": "ជំនួយ",
-  "clinic": "គ្លីនិក"
+  "clinic": "គ្លីនិក",
+  "notification": "ការជូនដំណឹង",
+  "ok": "យល់ព្រម",
+  "close": "បោះបង់",
+  "doYouWantToDeleteThisNotification": "តើអ្នកពិតជាចង់លុបការជូនដំណឹងនេះឬ?",
+  "noNotification": "មិនមានដំណឹងថ្មី",
+  "delete": "លុប",
+  "viewMore": "មើលបន្ថែម",
+  "viewLess": "បង្រួមវិញ"
 }

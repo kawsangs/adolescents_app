@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 
 import TopicListCardComponent from './topicLists/TopicListCardComponent';
-import {screenHorizontalPadding, scrollViewPaddingBottom} from '../../constants/component_constant';
+import {screenHorizontalPadding} from '../../constants/component_constant';
 import ComingSoonMessageComponent from './ComingSoonMessageComponent';
 
 const TopicListComponent = (props) => {
@@ -20,7 +20,7 @@ const TopicListComponent = (props) => {
     return <ComingSoonMessageComponent />
 
   return (
-    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: props.hideAudio ? 0 : 10, paddingBottom: scrollViewPaddingBottom}}>
+    <ScrollView contentContainerStyle={{flexGrow: 1, paddingHorizontal: screenHorizontalPadding, paddingTop: props.hideAudio ? 0 : 10}}>
       { renderList() }
     </ScrollView>
   )

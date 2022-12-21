@@ -19,7 +19,7 @@ const TopicView = (props) => {
     <GradientScrollViewComponent
       header={renderHeader()}
       body={<TopicMainComponent/>}
-      scrollViewStyle={{paddingHorizontal: 0, paddingBottom: 0}}
+      scrollViewStyle={{paddingHorizontal: 0}}
     />
   )
 }

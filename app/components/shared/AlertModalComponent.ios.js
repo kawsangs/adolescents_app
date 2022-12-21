@@ -15,8 +15,10 @@ const AlertModalComponent = (props) => {
       >
         {props.message()}
         <AlertModalConfirmationButtonsComponent
-          onConfirm={() => props.onConfirm()}
           onCancel={() => props.onDismiss()}
+          onConfirm={() => props.onConfirm()}
+          leftButtonLabel={props.leftButtonLabel}
+          rightButtonLabel={props.rightButtonLabel}
         />
       </Modal>
     </Portal>

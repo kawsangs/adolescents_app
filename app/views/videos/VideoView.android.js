@@ -37,7 +37,7 @@ const VideoView = (props) => {
       <GradientScrollViewComponent
         header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
         body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
-        scrollViewStyle={{marginTop: 16}}
+        scrollViewStyle={{marginTop: 16, paddingBottom: 185}}
       />
 
       <PlayVideoModalComponent modalVisible={modalVisible} setModalVisible={(status) => setModalVisible(status)}
