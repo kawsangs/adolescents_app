@@ -11,6 +11,7 @@ const GridCardWithSubCategoryComponent = (props) => {
             <BoldLabelComponent label={props.title} numberOfLines={2} style={{fontSize: cardTitleFontSize}} />
             <CardPointAndAudioFooterComponent
               uuid={props.uuid}
+              index={props.index}
               points={Category.getSubCategories(props.uuid).length}
               audio={props.audio}
               playingUuid={props.playingUuid}

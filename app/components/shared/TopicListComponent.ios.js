@@ -10,7 +10,9 @@ const TopicListComponent = (props) => {
     return props.items.map((item, index) => {
       return <TopicListCardComponent key={`const_${index}`} uuid={item.uuid} name={item.name} index={index} audio={item.audio}
                 playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} hideAudio={props.hideAudio}
-                onPress={() => props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true)} />
+                onPress={() => props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true)}
+                accessibilityLabel={`ជំនួយទី${index + 1}`}
+             />
     })
   }
 

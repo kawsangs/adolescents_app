@@ -45,6 +45,7 @@ class BottomSheetPickerComponent extends React.Component {
               playingUuid={this.props.playingUuid}
               isSpeakerIcon={true}
               updatePlayingUuid={this.props.updatePlayingUuid}
+              accessibilityLabel={this.props.accessibilityLabel}
             >
               <IonIcon/>
             </PlayAudioComponent>

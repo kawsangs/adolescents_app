@@ -27,6 +27,7 @@ const LoginSelectionButtonComponent = (props) => {
         playingUuid={props.playingUuid}
         isSpeakerIcon={true}
         updatePlayingUuid={props.updatePlayingUuid}
+        accessibilityLabel={props.accessibilityLabel}
       />
     )
   }

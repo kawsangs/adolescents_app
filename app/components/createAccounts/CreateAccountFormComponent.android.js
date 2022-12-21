@@ -66,6 +66,7 @@ const CreateAccountFormComponent = (props) => {
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               disabled={!isValid}
               onPress={() => save()}
+              accessibilityLabel='ប៊ូតុងក្រោមគេ'
             />
   }
 

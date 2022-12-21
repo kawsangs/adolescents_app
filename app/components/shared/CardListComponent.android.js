@@ -14,6 +14,7 @@ const CardListComponent = (props) => {
     switch (item.display) {
       case ROW_CARD:
         return <HorizontalCardComponent key={index}
+                  index={index}
                   item={item}
                   containerStyle={{marginTop: 32}}
                   playingUuid={props.playingUuid}
@@ -22,6 +23,7 @@ const CardListComponent = (props) => {
         break;
       case TILTED_CARD:
         return <TiltedCardComponent key={index}
+                  index={index}
                   item={item}
                   containerStyle={{marginTop: getStyleOfDevice(68, 46)}}
                   playingUuid={props.playingUuid}
@@ -30,6 +32,7 @@ const CardListComponent = (props) => {
         break;
       case GRID_CARD:
         return <GridCardComponent key={index}
+                  index={index}
                   item={item}
                   containerStyle={{marginTop: 14}}
                   playingUuid={props.playingUuid}

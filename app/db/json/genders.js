@@ -8,7 +8,8 @@ export default [
     name_en: 'male',
     value: 'male',
     audio: audioSources["0.3.mp3"],
-    size: 34
+    size: 34,
+    accessibility_label: 'ភេទទីតាំងទី1'
   },
   {
     uuid: 'gender-2',
@@ -17,7 +18,8 @@ export default [
     name_en: 'female',
     value: 'female',
     audio: audioSources["0.4.mp3"],
-    size: 36
+    size: 36,
+    accessibility_label: 'ភេទទីតាំងទី2'
   },
   {
     uuid: 'gender-3',
@@ -26,7 +28,8 @@ export default [
     name_en: 'LGBT+',
     value: 'lgbt',
     audio: audioSources["0.5.mp3"],
-    size: 28
+    size: 28,
+    accessibility_label: 'ភេទទីតាំងទី3'
   },
   {
     uuid: 'gender-4',
@@ -35,6 +38,7 @@ export default [
     name_en: 'Unknown',
     value: 'unknown',
     audio: audioSources["0.6.mp3"],
-    size: 28
+    size: 28,
+    accessibility_label: 'ភេទទីតាំងទី4'
   },
 ]

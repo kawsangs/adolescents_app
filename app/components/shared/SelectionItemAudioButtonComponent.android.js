@@ -16,6 +16,7 @@ const SelectionItemAudioButtonComponent = (props) => {
             playingUuid={props.playingUuid}
             isSpeakerIcon={true}
             updatePlayingUuid={props.updatePlayingUuid}
+            accessibilityLabel={props.accessibilityLabel}
           >
             <IonIcon/>
           </PlayAudioComponent>

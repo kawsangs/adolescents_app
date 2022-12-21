@@ -28,6 +28,7 @@ const LoginSelectionButtonsComponent = () => {
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
         onPress={() => navigationRef.current?.navigate('CreateAccountView')}
+        accessibilityLabel='ប៊ូតុងទី1'
       />
       <LoginSelectionLineComponent/>
       <LoginSelectionButtonComponent
@@ -38,6 +39,7 @@ const LoginSelectionButtonsComponent = () => {
         playingUuid={playingUuid}
         updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
         onPress={() => anonymousUse()}
+        accessibilityLabel='ប៊ូតុងទី2'
       />
     </React.Fragment>
   )

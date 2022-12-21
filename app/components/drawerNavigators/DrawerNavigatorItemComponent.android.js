@@ -11,6 +11,7 @@ const DrawerNavigatorItemComponent = (props) => {
   return (
     <TouchableOpacity onPress={() => !!props.onPress && props.onPress()}
       style={[{flexDirection: 'row', alignItems: 'center', height: componentUtil.mediumPressableItemSize()}, props.style]}
+      accessibilityLabel={props.accessibilityLabel}
     >
       <BoldLabelComponent label={props.label} style={{color: color.whiteColor, flex: 1, fontSize: largeFontSize()}} />
       <FeatherIcon name={props.iconName} color={color.whiteColor} size={20} style={{marginTop: -2}} />

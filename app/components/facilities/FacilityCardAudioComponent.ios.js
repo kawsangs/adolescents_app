@@ -22,6 +22,7 @@ const FacilityCardAudioComponent = (props) => {
         itemUuid={props.uuid}
         playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
+        accessibilityLabel={props.accessibilityLabel}
       >
         <IonIcon/>
       </PlayAudioComponent>

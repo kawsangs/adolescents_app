@@ -6,7 +6,7 @@ import FacilityCardItemComponent from './FacilityCardItemComponent';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 
-const FacilityListMapViewComponent = () => {
+const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
 
@@ -16,6 +16,7 @@ const FacilityListMapViewComponent = () => {
                 playingUuid={playingUuid}
                 updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
                 containerStyle={{width: '100%'}}
+                accessibilityLabel={`គ្លីនិកទី${index + 1}`}
              />
     });
   }
@@ -30,4 +31,4 @@ const FacilityListMapViewComponent = () => {
   )
 }
 
-export default FacilityListMapViewComponent;
+export default FacilityListViewComponent;

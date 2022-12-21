@@ -26,6 +26,7 @@ const TopicListCardComponent = (props) => {
           containerStyle={[styles.btnContainer, sharedStyles.boxShadow]}
           updatePlayingUuid={props.updatePlayingUuid}
           btnStyle={styles.btn}
+          accessibilityLabel={props.accessibilityLabel}
         />
       </View>
     )

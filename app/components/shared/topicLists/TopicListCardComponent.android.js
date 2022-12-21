@@ -22,6 +22,7 @@ const TopicListCardComponent = (props) => {
           containerStyle={styles.btnContainer}
           updatePlayingUuid={props.updatePlayingUuid}
           btnStyle={styles.btn}
+          accessibilityLabel={props.accessibilityLabel}
         />
       </View>
     )

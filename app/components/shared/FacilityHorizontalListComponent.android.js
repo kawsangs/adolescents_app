@@ -11,6 +11,7 @@ const FacilityHorizontalListComponent = (props) => {
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 containerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
+                accessibilityLabel={`គ្លីនិកទី${index + 1}`}
              />
     });
   }

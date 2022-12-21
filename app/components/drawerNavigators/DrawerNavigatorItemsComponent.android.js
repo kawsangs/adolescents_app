@@ -18,13 +18,13 @@ const DrawerNavigatorItemsComponent = (props) => {
   const renderItems = () => {
     const items = {
       first: [
-        {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN},
-        {label: t('privacyPolicy'), icon: 'shield', url: PRIVACY_POLICY_URL, type: LINK},
-        {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK},
+        {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN, accessibility_label: 'ប៊ូតុងអំពីកម្មវិធី'},
+        {label: t('privacyPolicy'), icon: 'shield', url: PRIVACY_POLICY_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ឯកជនភាព'},
+        {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ និងលក្ខខណ្ឌ'},
       ],
       second: [
-        {label: t('share'), icon: 'share-2', url: '', type: SHARE},
-        {label: t('reset'), icon: 'rotate-ccw', url: '', type: LOG_OUT},
+        {label: t('share'), icon: 'share-2', url: '', type: SHARE, accessibility_label: 'ប៊ូតុងចែករំលែកកម្មវិធី'},
+        {label: t('reset'), icon: 'rotate-ccw', url: '', type: LOG_OUT, accessibility_label: 'ប៊ូតុងចាប់ផ្ដើមសាជាថ្មី'},
       ]
     }
     const mobileMarginTop = isLowPixelDensityDevice() ? 16 : 34;
@@ -33,7 +33,7 @@ const DrawerNavigatorItemsComponent = (props) => {
       listItems.push(
         <View key={`container-${key}`} style={{marginTop: getStyleOfDevice(40, mobileMarginTop)}}>
           { items[key].map((item, index) => {
-              return <DrawerNavigatorItemComponent key={`item-${index}`} label={item.label} iconName={item.icon} onPress={() => onPress(item.url, item.type)}/>
+              return <DrawerNavigatorItemComponent key={`item-${index}`} label={item.label} iconName={item.icon} accessibilityLabel={item.accessibility_label} onPress={() => onPress(item.url, item.type)}/>
             })
           }
         </View>

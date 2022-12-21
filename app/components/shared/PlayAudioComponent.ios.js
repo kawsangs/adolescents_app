@@ -92,7 +92,7 @@ const PlayAudioComponent = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio}>
+    <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.btnStyle]} disabled={!props.audio} accessibilityLabel={`ចាក់សម្លេងរបស់${props.accessibilityLabel}`}>
       <PlayAudioIconComponent isPlaying={isPlaying} audio={props.audio} isSpeakerIcon={props.isSpeakerIcon}
         iconStyle={props.iconStyle} iconSize={props.iconSize} iconColor={props.iconColor}
       />
