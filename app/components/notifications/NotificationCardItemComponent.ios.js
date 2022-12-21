@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import color from '../../themes/color';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
-import ImageComponent from '../shared/ImageComponent';
 import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
 import dateTimeHelper from '../../helpers/date_time_helper';
 
@@ -31,8 +30,6 @@ const NotificationCardItemComponent = (props) => {
   const renderInfo = () => {
     return (
       <View style={{flexDirection: 'row'}}>
-        <ImageComponent source={require('../../assets/images/logo_color.png')} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
-
         <View style={{flex: 1}}>
           <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
           <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 24}} numberOfLines={numberOfLines}
@@ -57,7 +54,8 @@ const NotificationCardItemComponent = (props) => {
   const renderDeleteAction = () => {
     return (
       <RectButton onPress={() => props.openConfirmModal(props.notification)} style={{backgroundColor: color.redColor, width: '30%', marginTop: 16, justifyContent: 'center', alignItems: 'center', marginLeft: -20}}>
-        <Text style={[{color: color.whiteColor, fontSize: xLargeFontSize(),  marginLeft: 20}]}>{t('delete')}</Text>
+        <Icon name="trash" size={22} style={{color: color.whiteColor, marginLeft: 20}} />
+        <Text style={[{color: color.whiteColor, fontSize: largeFontSize(),  marginLeft: 20}]}>{t('delete')}</Text>
       </RectButton>
     )
   }
