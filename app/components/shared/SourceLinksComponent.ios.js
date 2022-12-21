@@ -15,7 +15,7 @@ const SourceLinksComponent = (props) => {
     return props.sources.map((source, index) => {
       return (
         <TouchableOpacity key={index} style={styles.btn} onPress={() => contactHelper.openContactLink(WEBSITE, JSON.parse(source).url)}>
-          <Text style={{color: color.primaryColor, fontSize: parseFloat(props.textSize)}}>{JSON.parse(source).name}</Text>
+          <Text style={{color: color.primaryColor, fontSize: parseFloat(props.textSize), lineHeight: 30}}>{JSON.parse(source).name}</Text>
         </TouchableOpacity>
       )
     })
@@ -23,26 +23,23 @@ const SourceLinksComponent = (props) => {
 
   return (
     <View style={{flexDirection: 'row', marginTop: 16}}>
-      <View style={{height: componentUtil.pressableItemSize(), marginTop: 5, justifyContent: 'center'}}>
-        <Text style={[styles.label, {fontSize: parseFloat(props.textSize)}]}>{t('sources')}៖​</Text>
-      </View>
-      <View>{ renderSources() }</View>
+      <View><Text style={[styles.label, {fontSize: parseFloat(props.textSize)}]}>{t('sources')}៖​</Text></View>
+      <View style={{flex: 1, flexWrap: 'wrap'}}>{ renderSources() }</View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   label: {
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
     color: color.blackColor,
+    lineHeight: 30,
     marginRight: 8,
   },
   btn: {
-    height: componentUtil.pressableItemSize(),
+    minHeight: componentUtil.pressableItemSize(),
     minWidth: componentUtil.pressableItemSize(),
-    marginLeft: 5,
-    marginTop: 5,
-    justifyContent: 'center'
+    paddingBottom: 12
   }
 });
 
