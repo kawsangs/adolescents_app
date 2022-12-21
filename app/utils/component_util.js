@@ -10,6 +10,7 @@ const componentUtil = (() => {
     mediumPressableItemSize,
     largePressableItemSize,
     getGridCardWidth,
+    tabletPressableItemSize
   }
 
   function pressableItemSize(padding = 0) {
@@ -22,6 +23,10 @@ const componentUtil = (() => {
 
   function largePressableItemSize() {
     return 60;
+  }
+
+  function tabletPressableItemSize() {
+    return 56;
   }
 
   function getGridCardWidth() {

@@ -10,6 +10,7 @@ import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 import audioSources from '../../constants/audio_source_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CreateAccountFormComponent = (props) => {
   const {t} = useTranslation();
@@ -59,7 +60,7 @@ const CreateAccountFormComponent = (props) => {
   }
 
   const renderSaveButton = () => {
-    return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: 16}}
+    return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: getStyleOfDevice(32, 16)}}
               uuid='123'
               audio={audioSources["0.13.mp3"]}
               playingUuid={playingUuid}

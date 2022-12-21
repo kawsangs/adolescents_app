@@ -12,7 +12,7 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     backgroundColor: color.whiteColor,
     borderRadius: borderRadius,
     flexDirection: 'row',
-    height: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.tabletPressableItemSize(),
     width: '100%'
   },
   leftIconContainer: {

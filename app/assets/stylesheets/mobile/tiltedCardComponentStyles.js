@@ -23,6 +23,7 @@ const tiltedCardComponentStyles = StyleSheet.create({
       ios: {
         borderBottomRightRadius: 40,
         top: isLowPixelDensityDevice() ? -5.5 : -7,
+        right: -2.9
       },
       android: {
         borderBottomRightRadius: 26,

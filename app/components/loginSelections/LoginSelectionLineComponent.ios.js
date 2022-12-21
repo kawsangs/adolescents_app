@@ -3,7 +3,8 @@ import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import color from '../../themes/color';
-import {mediumFontSize} from '../../utils/font_size_util';
+import {mediumFontSize, xxLargeFontSize} from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const LoginSelectionLineComponent = () => {
   const {t} = useTranslation();
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     marginVertical: 12,
-    height: 24,
+    height: getStyleOfDevice(40, 24),
     width: 138,
   },
   line: {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: mediumFontSize(),
+    fontSize: getStyleOfDevice(xxLargeFontSize(), mediumFontSize()),
     marginHorizontal: 13,
     textAlign: 'center',
   }
