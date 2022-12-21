@@ -11,7 +11,8 @@
     "parent_code": null,
     "order": 1,
     "display": "row_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_01",
@@ -25,7 +26,8 @@
     "parent_code": null,
     "order": 2,
     "display": "row_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_02",
@@ -39,7 +41,8 @@
     "parent_code": null,
     "order": 3,
     "display": "tilted_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_04",
@@ -53,7 +56,8 @@
     "parent_code": null,
     "order": 4,
     "display": "tilted_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_05",
@@ -67,7 +71,8 @@
     "parent_code": null,
     "order": 5,
     "display": "tilted_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_06",
@@ -81,7 +86,8 @@
     "parent_code": null,
     "order": 6,
     "display": "tilted_card",
-    "level": 1
+    "level": 1,
+    "sources": []
   },
   {
     "uuid": "category_07",
@@ -95,7 +101,8 @@
     "parent_code": "catg_lvl_1_reprod_health",
     "order": 7,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_08",
@@ -109,7 +116,8 @@
     "parent_code": "catg_lvl_1_reprod_health",
     "order": 8,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_09",
@@ -123,7 +131,8 @@
     "parent_code": "catg_lvl_1_reprod_health",
     "order": 9,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_10",
@@ -137,7 +146,8 @@
     "parent_code": "catg_lvl_1_reprod_health",
     "order": 10,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_11",
@@ -151,7 +161,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 11,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_12",
@@ -165,7 +176,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 12,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_13",
@@ -179,7 +191,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 13,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_14",
@@ -193,7 +206,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 14,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_15",
@@ -207,7 +221,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 15,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_16",
@@ -221,7 +236,8 @@
     "parent_code": "catg_lvl_1_sexual_edu",
     "order": 16,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_17",
@@ -235,7 +251,8 @@
     "parent_code": "catg_lvl_1_understanding_gender",
     "order": 17,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_18",
@@ -249,7 +266,8 @@
     "parent_code": "catg_lvl_1_understanding_gender",
     "order": 18,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_19",
@@ -263,7 +281,8 @@
     "parent_code": "catg_lvl_1_understanding_gender",
     "order": 19,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   },
   {
     "uuid": "category_20",
@@ -277,6 +296,7 @@
     "parent_code": "catg_lvl_1_understanding_gender",
     "order": 20,
     "display": "grid_card",
-    "level": 2
+    "level": 2,
+    "sources": []
   }
 ]

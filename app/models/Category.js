@@ -5,7 +5,7 @@ const MODEL = "Category";
 
 class Category {
   static seedData = () => {
-    BaseModel.seedData(MODEL, categories);
+    BaseModel.seedData(MODEL, this.#getFormattedCategories());
   }
 
   static getAll = () => {
@@ -32,6 +32,19 @@ class Category {
 
   static isSubCategory = (uuid) => {
     return this.getSubCategories(uuid).length > 0;
+  }
+
+  // private method
+  static #getFormattedCategories = () => {
+    let formattedCategires = [];
+    categories.map(category => {
+      let sources = [];
+      category.sources.map(source => {
+        sources.push(JSON.stringify(source));
+      });
+      formattedCategires.push({...category, sources: sources})
+    });
+    return formattedCategires;
   }
 }
 
