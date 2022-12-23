@@ -102,7 +102,7 @@
     "order": 7,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/1"}]
   },
   {
     "uuid": "category_08",
@@ -117,7 +117,7 @@
     "order": 8,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/2"}]
   },
   {
     "uuid": "category_09",
@@ -132,7 +132,7 @@
     "order": 9,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/3"}]
   },
   {
     "uuid": "category_10",
@@ -147,7 +147,7 @@
     "order": 10,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/4"}]
   },
   {
     "uuid": "category_11",
@@ -162,7 +162,7 @@
     "order": 11,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/5"}]
   },
   {
     "uuid": "category_12",
@@ -177,7 +177,7 @@
     "order": 12,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/6"}]
   },
   {
     "uuid": "category_13",
@@ -192,7 +192,7 @@
     "order": 13,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/7"}]
   },
   {
     "uuid": "category_14",
@@ -207,7 +207,7 @@
     "order": 14,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/8"}]
   },
   {
     "uuid": "category_15",
@@ -222,7 +222,7 @@
     "order": 15,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/9"}]
   },
   {
     "uuid": "category_16",
@@ -237,12 +237,12 @@
     "order": 16,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/10"}]
   },
   {
     "uuid": "category_17",
     "code": "catg_lvl_2_HIV",
-    "name": "សុខភាព​ផ្លូវភេទ​សង្គម និងយេនឌ័រ",
+    "name": "សុខភាព​ផ្លូវភេទ​ សង្គម និងយេនឌ័រ",
     "description": "<div style='display: flex; flex-direction: row; flex-wrap: wrap;'><p style='marginTop: 0px; marginBottom: 0px;'>ថ្ងៃនេះ វត្តី និងបូរ៉ា មិត្តភក្តិ​របស់​នាង​ជជែក​គ្នា​អំពី​សុខភាព​ផ្លូវភេទ សង្គម និងយេនឌ័រ។</p></div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>ធីតា! តើ​ការ​កំណត់​ភេទ​មាន​ន័យ​យ៉ាងណា?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>នែ៎! វត្តី​ការ​កំណត់​ភេទប្រុស ឬភេទស្រី​ផ្អែក​តាម​លក្ខណៈ​ជីវសាស្រ្ត​ដែល​មាន​ពី​កំណើត​ហើយ​មិន​អាច​ផ្លាស់​ប្តូរ​បាន​ទ្បើយ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>បូរ៉ា! ហើយ​ចុះ​យេនឌ័រ​គឺជាអ្វី?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>យេនឌ័រ​គឺ​ជា​ការ​កំណត់​អំពី​សិទ្ធ តួនាទី ការ​ទទួល​ខុសត្រូវ និងការ​សម្រេច​ចិត្ត​របស់​មនុស្សប្រុស និងមនុស្សស្រី​ដោយ​សង្គម​សាសនា និងវប្បធម៌​ហើយ​អាច​ផ្លាស់​ប្តូរ​ទៅ​តាម​កាលៈទេសៈ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎រ! ចឹងទេ​ចុះ​នៅ​ពេល​ពេញវ័យ ក្មេង​ប្រុស​ត្រូវ​ទទួល​ការ​ដាក់​សម្ពាធ​អ្វីខ្លះ​ពី​មិត្តភក្តិ?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>នៅ​ពេល​ពេញវ័យ ក្មេង​ប្រុស​មួយ​ចំនួន​ត្រូវ​បាន​ជំរុញ​លើក​ទឹកចិត្ត ឬការ​ដាក់​សម្ពាធ​ពី​មិត្តភក្ដិ​ឱ្យ​រួមភេទ​ដើម្បី​បញ្ជាក់​ពី​ភាព​ជា​បុរស​ពេញ​លក្ខណៈ​តាមរយៈ​ការ​រួមភេទ​ជា​មួយ​ភេទ​ផ្ទុយគ្នា។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អូ៎រ! ចឹង​ផង គ្នា​អត់​ដែល​ដឹងសោះ!</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>នែ៎! វត្តី​មិន​តែ​ប៉ុណ្ណោះ​ ការ​យល់​ឃើញ​បែបនេះ​ជា​ការ​ប្រថុយ​គ្រោះថ្នាក់​រាប់​បញ្ចូល​ទាំងគ្រោះថ្នាក់​ក្នុង​ការ​រួមភេទ​ផង។ ជាទូទៅ​សង្គម​មិន​អនុញ្ញាត ឬដាក់​ទណ្ឌកម្ម​ដល់​ក្មេងស្រី​ បើ​សិន​ជា​មាន​ទំនាក់​ទំនង​ស្នេហា ឬរួម​ភេទ​មុន​រៀបការ។ ជាញឹកញាប់​ក្មេង​ស្រី​ត្រូវ​បាន​កំណត់​ដោយ​សង្គម​ថា ត្រូវ​ចេះ​ស្តាប់​បង្គាប់​មិត្តប្រុស ស្វាមី និងបុរស​ទូទៅ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎រ! ចឹង​នៅ​ក្នុង​សង្គម​ក្មេងស្រី​ត្រូវ​បាន​កំណត់ថា ត្រូវ​ចេះ​ស្តាប់​បង្គាប់​ផង ឬបូរ៉ា។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>វត្តី! ការ​យល់​ឃើញ​បែបនេះ បញ្ជាក់​ពី​គម្លាត​យេនឌ័រ​ក្នុង​សង្គម​រវាង​បុរស និងនារី​ដែល​កូន​ស្រី​គួរ​ត្រូវ​បាន​លើក​ទឹកចិត្ត​ឱ្យ​ចេះ​បញ្ចេញ​ទស្សនៈ​ធ្វើ​ការ​សម្រេចចិត្ត ការ​គ្រប់គ្រង​ខ្លួនឯង និងដឹកនាំ​ខ្លួនឯង។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>បូរ៉ា! ហេតុអ្វី​បាន​សង្គម​វប្បធម៌​មួយ​ចំនួន​បាន​ដាក់​សម្ពាធ​ឱ្យ​យុវវ័យ​ម្លេះ?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>សង្គម​វប្បធម៌​មួយ​ចំនួន បាន​ដាក់​សម្ពាធ​ឱ្យ​យុវវ័យ​ប្រុស ស្រី ធ្វើ​ការ​សម្រេច​ចិត្ដ​កែប្រែ​រូបរាង​កាយ​របស់​ខ្លួន​ដើម្បី​ឱ្យ​ស្រប​តាម​ឧត្តមគតិ​ខាង​វប្បធម៌​ចំពោះ​ភាព​ទាក់ទាញ​ខាង​ផ្លូវភេទ។ ក្មេងស្រី​ត្រូវ​ប្រឈមមុខ​ចំពោះ​សម្ពាធ​ទាំងនេះ​ខ្លាំង​ជាង​ក្មេងប្រុស។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><p style='marginTop: 0px; marginBottom: 0px;'>ចំណុច​គួរ​ចងចាំ</p>  </div><div style='display: flex; flex-direction: row;'><p style='marginTop: 0px; marginBottom: 0px;'>សុខភាព​ផ្លូវភេទ​ពឹង​ផ្អែក​ទៅ​លើ​កត្តា​ជីវសាស្ត្រ ចិត្តសាស្ត្រ សីលធម៌ វប្បធម៌ ទំនៀមទម្លាប់ ច្បាប់ សាសនា ទំនាក់ទំនង​សង្គម និងតួនាទី​ភេទ។ មនុស្ស​គ្រប់​រូប​គួរ​រីករាយ​ជីវិត​ផ្លូវភេទ​ប្រកប​ដោយ​សុវត្ថិភាព​ក្នុង​លក្ខខ័ណ្ឌ​រក្សា​នូវ​សេចក្ដី​ថ្លៃថ្នូរ សមភាព​ការ​ទទួល​ខុស​ត្រូវ និងការ​គោរពគ្នា។</p></div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>ហើយ​ចុះ​បូរ៉ា​គ្នា​ឆ្ងល់ថា! តួនាទី​យេនឌ័រ​ក្នុង​សង្គម​វិញចុះ!</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>តួនាទី​យេនឌ័រ​ក្នុង​សង្គម តួនាទី​យេនឌ័រ​ជា​ឥរិយាបថ​ និងការ​ទទួល​ខុស​ត្រូវ​ដែល​កំណត់​ដោយ​សង្គម ឬសហគមន៍​សម្រាប់​ស្រ្តី និងបុរស​ដោយ​មិនឆ្លុះបញ្ចាំង​ពី​សមត្ថភាព ទេពកោសល្យ គុណសម្បត្តិ​ផ្ទាល់ខ្លួន ការចូលចិត្ត ឬមិន​ចូលចិត្ត​របស់​បុគ្គល​ឡើយ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎រ ចឹង! ចុះ​ទម្រង់​នៃ​អំពើ​ហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ និងផ្លូវភេទ​វិញហ៎!</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>ការ​ប្រព្រឹត្ត​អំពើហិង្សា​មាន​ច្រើន​ប្រភេទ​រាប់បញ្ចូល​ទាំង​ការ​បង្ខំ​លើ​រូបរាង​កាយ ការគំរាមកំហែង ការបំភិត​បំភ័យ​ខាង​ផ្លូវចិត្ត ផ្លូវភេទ និងខាង​ផ្នែក​សេដ្ឋកិច្ច។ អំពើហិង្សា​ផ្អែក​លើ​យេនឌ័រ​មាន​៤ប្រភេទ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អូ៎! អំពើហិង្សា​ផ្អែក​លើ​យេនឌ័រ​មាន​៤ផង តើ​មាន​អីខ្លះ​ទៅបូរ៉ា ជួយ​ប្រាប់​គ្នា​បន្តិច​បានទេ?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>មិន​អី​ទេ​ចាំ​គ្នា​ប្រាប់​ឯង មួយ​អំពើ​ហិង្សា​លើ​រាងកាយ: រាល់​ទង្វើ​ទាំងឡាយ​ណា​ដែល​ធ្វើ​ឱ្យ​រាងកាយ​មាន​របួស​ដូចជា ការវាយដំ កាប់ចាក់ ទាត់ ធាក់​ទះតប់ ច្របាច់ក ខ្ទប់ដង្ហើម បោចសក់ ក្រញាំ ខាំ ធ្វើ​ឱ្យ​របួសដុត ចំពោះ​នរណា​ម្នាក់​ដោយ​ហេតុផល​ផ្សេងៗ​ពាក់ព័ន្ធ​នឹង​យេនឌ័រ​របស់​ខ្លួន​ការ​បង្ខំ​ឱ្យ​ស្ត្រី​រំលូតកូន។ល។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎រ! អាហ្នឹង អំពើ​ហិង្សា​លើ​រាងកាយ​ហើយ​ចុះ​អាទី​ពីរ​វិញបូរ៉ា។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>ពីរ​អំពើ​ហិង្សា​ផ្លូវភេទ: រាល់​ទង្វើ​ទាំងឡាយ​ណា​ដែល​ធ្វើ​ឱ្យ​មាន​រំញោច​ផ្លូវភេទ​រួមមាន អំពើ​អាសអាភាស ការ​រំលោភ​សេពសន្ថវៈ ការ​ប៉ះពាល់​បំពាន​ផ្លូវភេទ(នៅ​កន្លែង​ធ្វើការ ឬនៅ​សាលារៀន ឬទី​សាធារណៈ) ការ​រំលោភ​ផ្លូវភេទ ការ​បង្ខំ​ឱ្យ​ធ្វើ​ការងារ​ផ្លូវភេទ និងការ​កេងប្រវ័ញ្ច​ផ្លូវភេទ​ជាដើម។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អឹ! ហើយចុះទីបី។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>បី​អំពើ​ហិង្សា​ផ្លូវចិត្ត: ជា​ទង្វើ​ដែល​ធ្វើ​ឱ្យ​មាន​ប៉ះ​ទង្គិច​ដល់​ផ្លូវចិត្ត​ដូចជា ការរំលោភបំពាន ដោយ​ពាក្យ​សម្តី ការរិះគន់ ការ​ស្រែកខ្លាំងៗ ប្រមាថ​មាក់ងាយ ការ​ស្តីបន្ទោស ការចោទប្រកាន់ ការធ្វើ​ឱ្យ​ខ្មាសគេ ការឃុំឃាំង ការដក​ហូត​សេរីភាព ការ​គំរាម​កំហែង ការរើសអើង ការស្តីបន្ទោស​ដោយ​សារ​ភាគី​ប្រពន្ធ​គ្មាន​កូន ឬមាន​កូន​ស្រី​ច្រើន ការចិញ្ចឹម​កូន​មិន​បាន​ត្រឹមត្រូវ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎! អំពើ​ហិង្សា​ផ្លូវចិត្ត​នេះ​វា​អាច​បង្ក ជា​ទង្វើ​ដែល​ធ្វើ​ឱ្យ​ប៉ះ​ទង្គិច​ដល់​ផ្លូវចិត្ត​ដល់​ម្លឹងផង!</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>មែន​ហើយ​វត្តី ឥឡូវ​យើង​ចូល​ដល់​ទី​បួន​វិញម្តង</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>តោះ បូរ៉ា!</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>បួន​អំពើ​ហិង្សា​ខាង​សេដ្ឋកិច្ច: ការ​គ្រប់គ្រង​ចំពោះ​ធនធាន​គ្រួសារ​ទាំងអស់ បំផ្លាញ​ទ្រព្យសម្បត្តិ បំបិទ​សិទ្ធិ​ក្នុង​ការ​ចូលរួម​ចាត់ចែង​ទ្រព្យ​សម្បត្តិ បំបិទ​សិទ្ធិ​ក្នុង​ការ​រក​ទ្រព្យ​សម្បត្តិ(ថវិកា ពេលវេលា ការដឹក​ជញ្ចូន​ម្ហូបអាហារ សម្លៀកបំពាក់ ជម្រក) មិន​ទទួល​ឱ្យ​ធ្វើការ បង្ខំ​ឱ្យ​ធ្វើការ​លើសម៉ោង យក​កម្រៃ​របស់គេ ឬបង្ខំ​ឱ្យ​ធ្វើការ​ដែល​គេ​មិនចង់។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>ចុះបូរ៉ា តើ​យើង​អាច​មាន​វិធី​ទប់ស្កាត់​អំពើ​ហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ​ និងផ្លូវភេទ​បានទេ?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>មានវត្តី ដកឃ្លា​វិធី​ទប់ស្កាត់​អំពើ​ហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ និងផ្លូវភេទ គឺត្រូវ​បញ្ឈប់​អំពើ​ហិង្សា​ចំពោះ​ដៃគូ ឬចាកចេញ​ពី​ដៃគូ​ដែល​ប្រើ​អំពើហិង្សា ត្រូវ​ស្វែងយល់​ពី​សិទ្ធិ​មនុស្ស ត្រូវ​ពង្រឹង​សេចក្តី​តាំងចិត្ត និងជំនាញ​របស់​ខ្លួន​ដើម្បី​ប្រាស្រ័យ​ទាក់ទង​ដោះស្រាយ​ជាមួយ​មិត្តភក្តិ​សមាជិក​គ្រួសារ អាជ្ញាធរ​មូលដ្ឋាន នរគបាល​ជាដើម។ ហើយ​វិធី​ទប់ស្កាត់​អំពើហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ និងផ្លូវភេទ​នោះ​មានបី។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>តើ​មាន​អីខ្លះ​ទៅ​បូរ៉ា?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>១- ត្រូវ​បញ្ឈប់​អំពើហិង្សា​ចំពោះ​ដៃគូ ឬចាកចេញ​ពី​ដៃគូ​ដែល​ប្រើ​អំពើហិង្សា។</div><div style='display: flex; flex-direction: row;'><p>២- ត្រូវ​ស្វែងយល់​ពី​សិទ្ធិ​មនុស្ស ជាពិសេស​ត្រូវ​ដឹងថា​មនុស្ស​ម្នាក់​មាន​សិទ្ធិ​រស់នៅ​ដោយ​សេរី​ចាកផុត​ពី​អំពើហិង្សា​នានា​រាប់បញ្ចូល​ទាំង​ការ​បង្ខំ​រួមភេទ​ផងដែរ។</p></div><div style='display: flex; flex-direction: row;'><p>៣- ត្រូវ​ពង្រឹង​សេចក្តី​តាំងចិត្ត និងជំនាញ​របស់​ខ្លួន​ដើម្បី​ប្រាស្រ័យ​ទាក់ទង​ជាមួយ​មិត្តភក្តិ​ សមាជិកគ្រួសារ អាជ្ញាធរ​មូលដ្ឋាន នគរបាល ស្តីពី​បញ្ហា​នានា​ដែល​ទាក់ទង​នឹង​អំពើហិង្សា​យេនឌ័រ​រាប់បញ្ចូល​ទាំង​ការ​បង្ខំ​រួមភេទ​ផងដែរ។</p></div><div style='display: flex; flex-direction: row; marginTop: 10px;'><strong>វត្តី: </strong>តើ​ទម្រង់​នៃ​អំពើហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ និងផ្លូវភេទ​មាន​រាប់បញ្ចូល​អ្វីខ្លះ​ទៅបូរ៉ា?</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>ទម្រង់​នៃ​អំពើហិង្សា​ទាក់ទង​នឹង​យេនឌ័រ និងផ្លូវភេទ​មាន​ច្រើន​ប្រភេទ​រាប់បញ្ចូល​ទាំងការ​បង្ខំ​លើ​រូបរាងកាយ ការគំរាម​កំហែង ការបំភិតបំភ័យ​ខាង​ផ្លូវចិត្ត ផ្លូវភេទ។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>វត្តី: </strong>អ៎រគ្នា​យល់​ហើយ​ចឹង! អរគុណ​ឯង​ណាស់​បូរ៉ា​ដែល​បាន​ជួយ​ស្រាយ​ចម្ងល់​គ្នា​រហូតមក។</div><div style='display: flex; flex-direction: row; marginTop: 20px;'><strong>បូរ៉ា: </strong>អើ! មិន​អី​ទេវត្តី។</div>",
     "audio_url": "",
     "image_url": "",
@@ -252,7 +252,7 @@
     "order": 17,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/11"}]
   },
   {
     "uuid": "category_18",
@@ -267,7 +267,7 @@
     "order": 18,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/12"}]
   },
   {
     "uuid": "category_19",
@@ -282,7 +282,7 @@
     "order": 19,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/13"}]
   },
   {
     "uuid": "category_20",
@@ -297,6 +297,6 @@
     "order": 20,
     "display": "grid_card",
     "level": 2,
-    "sources": []
+    "sources": [{"name": "Child Helpline Cambodia", "url": "https://childhelplinecambodia.org/health/14"}]
   }
 ]
