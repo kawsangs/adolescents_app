@@ -1,10 +1,12 @@
 import React from 'react';
 import {Dimensions} from 'react-native';
-import RenderHtml from 'react-native-render-html';
+import RenderHtml, { defaultSystemFonts } from 'react-native-render-html';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
 import {descriptionLineHeight} from '../../constants/component_constant';
+
+const systemFonts = [...defaultSystemFonts, FontFamily.regular, FontFamily.bold];
 
 const HtmlRendererComponent = (props) => {
   const tagsStyles = {
@@ -47,6 +49,7 @@ const HtmlRendererComponent = (props) => {
       source={{ html: props.source }}
       contentWidth={Dimensions.get('screen').width}
       tagsStyles={tagsStyles}
+      systemFonts={systemFonts}
     />
   )
 }

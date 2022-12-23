@@ -2,9 +2,11 @@
 
 import Realm from 'realm';
 import schemaV1 from './schemas/schemaV1';
+import schemaV2 from './schemas/schemaV2';
 
 const schemas = [
   schemaV1,
+  schemaV2,
 ];
 
 let nextSchemaIndex = Realm.schemaVersion(Realm.defaultPath);
