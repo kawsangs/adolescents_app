@@ -19,9 +19,8 @@ const visitService = (() => {
 
   function recordVisitCategory(category) {
     category.pageable_type = pageable_types.page;
-    recordVisitAction(category, () => {
-      navigationService.navigateCategory(category.uuid)
-    });
+    navigationService.navigateCategory(category.uuid)
+    recordVisitAction(category, null)
   }
 
   function recordVisitVideo(video, callback) {
@@ -84,6 +83,12 @@ const visitService = (() => {
   function _sendUnsyncedVisit(index, unsyncedVisits, callback) {
     if (index == unsyncedVisits.length) {
       callback();
+      return;
+    }
+
+    // Skip to next visit if the current visit is not exist in realm
+    if (!Visit.findByUuid(unsyncedVisits[index].uuid)) {
+      _sendUnsyncedVisit(index + 1, unsyncedVisits, callback);
       return;
     }
 
