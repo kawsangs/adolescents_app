@@ -7,6 +7,10 @@ import {APP_VISIT} from '../constants/visit_constant';
 const MODEL = "Visit"
 
 class Visit {
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(MODEL, uuid);
+  }
+
   static create = (params) => {
     BaseModel.create(MODEL, this.#buildParams(params));
   }
