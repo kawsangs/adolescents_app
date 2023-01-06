@@ -83,5 +83,7 @@
   "delete": "Delete",
   "viewMore": "View more",
   "viewLess": "View less",
-  "sources": "Sources"
+  "sources": "Sources",
+  "enterProvinceNameYourWantToSearch": "Enter province name you want to search",
+  "selectClinicLocation": "Select clinic location"
 }

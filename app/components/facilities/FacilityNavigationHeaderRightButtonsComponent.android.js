@@ -4,6 +4,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
+import FacilityFilterButtonComponent from './FacilityFilterButtonComponent';
 import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityNavigationHeaderRightButtonsComponent = (props) => {
@@ -22,6 +23,8 @@ const FacilityNavigationHeaderRightButtonsComponent = (props) => {
           icon={<IonIcon name="list-sharp" size={20} color="white"/>}
         />
       }
+
+      <FacilityFilterButtonComponent/>
     </View>
   )
 }
