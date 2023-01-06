@@ -33,6 +33,8 @@ const HeaderWidthDiscardAlertComponent = (props) => {
         message={props.message}
         onDismiss={() => setModalVisible(false)}
         onConfirm={() => goBack()}
+        leftButtonLabel={t('continue')}
+        rightButtonLabel={t('cancel')}
       />
     </React.Fragment>
   )
