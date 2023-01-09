@@ -20,6 +20,10 @@ class Facility {
     return BaseModel.findByAttr(MODEL, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
   }
 
+  static findByProvinceId = (provinceId) => {
+    return BaseModel.findByAttr(MODEL, { province_id: `'${provinceId}'` }, {});
+  }
+
   static containsByName(name) {
     return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }

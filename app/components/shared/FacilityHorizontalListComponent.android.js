@@ -17,7 +17,8 @@ const FacilityHorizontalListComponent = (props) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
+    <ScrollView ref={ref => props.setScrollViewRef(ref)}
+      contentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
       style={{flexGrow: 0, width: '100%'}} horizontal={true}
     >
       { renderFacilities() }

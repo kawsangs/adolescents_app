@@ -6,18 +6,17 @@ import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarCompone
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import facilityHelper from '../../helpers/facility_helper';
 
 const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const [facilities, setFacilities] = useState(Facility.getAll());
+  const allFacilities = Facility.getAll();
+  const [facilities, setFacilities] = useState(allFacilities);
+  const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
-  let prevFilter = '';
 
   useEffect(() => {
-    if (filteredProvince != prevFilter)
-      console.log('===== start filter =====')
-
-    prevFilter = filteredProvince;
+    updateFacilityList(selectedServiceUuid);
   }, [filteredProvince]);
 
   const renderFacilities = () => {
@@ -31,9 +30,14 @@ const FacilityListViewComponent = () => {
     });
   }
 
+  const updateFacilityList = (serviceUuid) => {
+    setFacilities(facilityHelper.getFacilities(filteredProvince, serviceUuid));
+    if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
+  }
+
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityServiceScrollBarComponent updateFacilities={(facilities) => setFacilities(facilities)} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+      <FacilityServiceScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
         { renderFacilities() }
       </ScrollView>
