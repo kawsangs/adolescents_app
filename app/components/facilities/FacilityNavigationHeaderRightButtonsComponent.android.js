@@ -23,7 +23,6 @@ const FacilityNavigationHeaderRightButtonsComponent = (props) => {
           icon={<IonIcon name="list-sharp" size={20} color="white"/>}
         />
       }
-
       <FacilityFilterButtonComponent/>
     </View>
   )

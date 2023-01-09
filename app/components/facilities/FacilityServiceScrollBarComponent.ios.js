@@ -7,18 +7,13 @@ import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 import Service from '../../models/Service';
-import Facility from '../../models/Facility';
 
 const FacilityServiceScrollBarComponent = (props) => {
   const [selectedUuid, setSelectedUuid] = useState(null);
   const toggleFilter = (service) => {
-    if (selectedUuid == service.uuid) {
-      setSelectedUuid(null);
-      return props.updateFacilities(Facility.getAll());
-    }
-
-    setSelectedUuid(service.uuid);
-    props.updateFacilities(Facility.findByServiceUuid(service.uuid));
+    const serviceUuid = selectedUuid == service.uuid ? null : service.uuid;
+    props.updateFacilityList(serviceUuid);
+    setSelectedUuid(serviceUuid);
   }
 
   const renderList = () => {

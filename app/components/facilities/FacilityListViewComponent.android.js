@@ -10,8 +10,7 @@ import facilityHelper from '../../helpers/facility_helper';
 
 const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const allFacilities = Facility.getAll();
-  const [facilities, setFacilities] = useState(allFacilities);
+  const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
 
