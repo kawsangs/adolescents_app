@@ -8,6 +8,7 @@ import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalCompone
 import NotifyBadgeComponent from '../shared/NotifyBadgeComponent';
 import FacilityFilterLocationBottomSheetComponent from './FacilityFilterLocationBottomSheetComponent';
 import {defaultPickerSnapPoints} from '../../constants/modal_constant';
+import {navigationHeaderIconSize} from '../../constants/component_constant';
 
 const FacilityFilterButtonComponent = (props) => {
   let bottomSheetRef = React.createRef();
@@ -23,7 +24,7 @@ const FacilityFilterButtonComponent = (props) => {
     <React.Fragment>
       <View style={{position: 'relative'}}>
         <NavigationHeaderButtonComponent onPress={() => showFilter()}
-          icon={<IonIcon name="options-outline" size={20} color="white"/>}
+          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color="white"/>}
         />
 
         {!!selectedProvince && <NotifyBadgeComponent right={10} top={15} />}

@@ -11,7 +11,7 @@ import provinces from '../../db/json/provinces';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import { largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
-import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import {defaultPickerContentHeight} from '../../constants/modal_constant';
 import { screenHorizontalPadding } from '../../constants/component_constant';
 
@@ -25,20 +25,20 @@ const FacilityFilterLocationBottomSheetComponent = (props) => {
 
   const onSelectProvince = (province) => {
     if (!!filteredProvince && filteredProvince == province.value) return;
-    props.modalRef.current?.dismiss();
     dispatch(storeSelectedLocation(province.value))
+    props.modalRef.current?.dismiss();
   }
 
   const resetFilter = () => {
-    props.modalRef.current?.dismiss();
     dispatch(resetSelectedLocation()); 
+    props.modalRef.current?.dismiss();
   }
 
   const renderResetBtn = () => {
-    return <View style={{flexDirection: 'row', paddingHorizontal: screenHorizontalPadding, height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, marginBottom: 16, alignItems: 'center'}}>
+    return <View style={{flexDirection: 'row', paddingHorizontal: screenHorizontalPadding, height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, marginBottom: getStyleOfDevice(20, 16), alignItems: 'center'}}>
               <BoldLabelComponent label={t('selectClinicLocation')} style={{fontSize: xLargeFontSize(), flex: 1}} />
               <Button icon="refresh-cw" mode="outlined" onPress={() => resetFilter()}
-                style={{borderColor: color.primaryColor, borderWidth: 1.5}}
+                style={{borderColor: color.primaryColor, borderWidth: 1.5, height: componentUtil.pressableItemSize()}}
                 labelStyle={{fontSize: largeFontSize()}}
               >
                 {t('filterReset')}
@@ -62,7 +62,7 @@ const FacilityFilterLocationBottomSheetComponent = (props) => {
     <BottomSheetModalMainComponent
       customTitle={renderResetBtn()}
       containerStyle={{height: hp(defaultPickerContentHeight)}}
-      scrollViewStyle={{paddingHorizontal: 16}}
+      scrollViewStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: 26}}
     >
       {renderListItem()}
     </BottomSheetModalMainComponent>
