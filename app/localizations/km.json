@@ -85,5 +85,6 @@
   "viewLess": "បង្រួមវិញ",
   "sources": "ប្រភព",
   "enterProvinceNameYourWantToSearch": "បញ្ចូលឈ្មោះខេត្តដែលអ្នកចង់ស្វែងរក",
-  "selectClinicLocation": "ជ្រើសរើសទីតាំងរបស់គ្លីនិក"
+  "selectClinicLocation": "ជ្រើសរើសទីតាំងរបស់គ្លីនិក",
+  "filterReset": "សារឡើងវិញ"
 }

@@ -85,5 +85,6 @@
   "viewLess": "View less",
   "sources": "Sources",
   "enterProvinceNameYourWantToSearch": "Enter province name you want to search",
-  "selectClinicLocation": "Select clinic location"
+  "selectClinicLocation": "Select clinic location",
+  "filterReset": "Reset"
 }
