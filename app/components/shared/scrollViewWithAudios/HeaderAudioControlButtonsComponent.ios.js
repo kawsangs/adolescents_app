@@ -41,7 +41,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
   return (
     <View style={{flex: 1, paddingHorizontal: screenHorizontalPadding}}>
       <Animated.View style={[styles.audioControl,
-        {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]}]}
+        !props.hideAnimation ? {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]} : {}]}
       >
         <AudioControlButton iconName='play-back' size={forwardBackwardSize}
           onPress={() => audioPlayerService.fastForwardOrReverse(props.audioPlayer, REVERSE)}

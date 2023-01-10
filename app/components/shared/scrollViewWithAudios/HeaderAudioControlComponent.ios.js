@@ -31,7 +31,7 @@ const HeaderAudioControlComponent = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderAudioControlButtonsComponent uuid={props.uuid} audio={props.audio} scrollY={props.scrollY}
+      <HeaderAudioControlButtonsComponent uuid={props.uuid} audio={props.audio} scrollY={props.scrollY} hideAnimation={props.hideAnimation}
         audioPlayer={state.audioPlayer} countInterval={state.countInterval}
         updateAudioPlayer={updateState}
       />
@@ -40,6 +40,7 @@ const HeaderAudioControlComponent = (props) => {
         audioPlayer={state.audioPlayer} duration={state.duration} playSeconds={state.playSeconds}
         countInterval={state.countInterval}
         updateAudioPlayer={updateState}
+        sliderContainerStyle={props.sliderContainerStyle}
       />
     </React.Fragment>
   )

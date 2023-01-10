@@ -7,7 +7,7 @@ import NavigationHeaderBackButtonComponent from '../NavigationHeaderBackButtonCo
 import NavigationHeaderButtonComponent from '../navigationHeaders/NavigationHeaderButtonComponent';
 import NavigationHeaderTitleComponent from '../navigationHeaders/NavigationHeaderTitleComponent';
 import FontSizeSettingModalComponent from '../FontSizeSettingModalComponent';
-import {navigationHeaderIconSize} from '../../../constants/component_constant';
+import {navigationHeaderIconSize, navigationHeaderHorizontalPadding} from '../../../constants/component_constant';
 import {headerWithAudioScrollDistance} from '../../../constants/ios_component_constant';
 
 const ScrollViewHeaderNavigationComponent = (props) => {
@@ -25,11 +25,13 @@ const ScrollViewHeaderNavigationComponent = (props) => {
   }
 
   return (
-    <Appbar.Header style={styles.container}>
+    <Appbar.Header style={[styles.container, props.containerStyle]}>
       <NavigationHeaderBackButtonComponent/>
-      <Animated.View style={{flex: 1, paddingLeft: 8, opacity: titleOpacity}}>
-        <NavigationHeaderTitleComponent label={props.title} />
-      </Animated.View>
+      { !!props.customTitle ? props.customTitle
+        : <Animated.View style={{flex: 1, paddingLeft: 8, opacity: titleOpacity}}>
+            <NavigationHeaderTitleComponent label={props.title} />
+          </Animated.View>
+      }
       {renderFontSettingButton()}
 
       <FontSizeSettingModalComponent visible={isModalVisible} onDismiss={() => setIsModalVisible(false)} textSize={props.textSize} updateTextSize={props.updateTextSize} />
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     elevation: 0,
+    paddingHorizontal: navigationHeaderHorizontalPadding
   },
 });
 

@@ -34,7 +34,7 @@ const HeaderAudioSliderComponent = (props) => {
   }
 
   return (
-    <View style={styles.sliderContainer}>
+    <View style={[styles.sliderContainer, props.sliderContainerStyle]}>
       <Slider
         value={props.playSeconds}
         disabled={props.playSeconds == props.duration}
