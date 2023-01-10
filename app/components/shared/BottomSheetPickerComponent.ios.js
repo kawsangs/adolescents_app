@@ -53,12 +53,12 @@ class BottomSheetPickerComponent extends React.Component {
   render() {
     return (
       <View style={this.props.customContainerStyle}>
-        <TextComponent label={this.props.title} required={this.props.required} requiredColor={color.blackColor} style={styles.titleLabel} />
+        {!!this.props.title && <TextComponent label={this.props.title} required={this.props.required} requiredColor={color.blackColor} style={styles.titleLabel} /> }
 
         <View style={styles.mainContainer}>
           <TouchableOpacity onPress={() => this.showPicker()} style={{height: '100%'}}>
-            <View style={styles.textContainer}>
-              {this.renderAudioButton()}
+            <View style={[styles.textContainer, this.props.placeholderContainerStyle]}>
+              {!!this.props.audio && this.renderAudioButton()}
               <View style={{flex: 1}}>
                 <Text style={styles.itemTitle}>{ this.getLabel() }</Text>
               </View>

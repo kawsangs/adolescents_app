@@ -9,6 +9,7 @@ import CreateAccountView from '../views/createAccounts/CreateAccountView';
 import LeafCategoryDetailView from '../views/leafCategoryDetails/LeafCategoryDetailView';
 import FacilitySearchView from '../views/facilitySearches/FacilitySearchView';
 import FacilityDetailView from '../views/facilityDetails/FacilityDetailView';
+import FacilityFilterView from '../views/facilityFilters/FacilityFilterView';
 import DrawerNavigator from './drawer_navigator';
 
 const Stack = createNativeStackNavigator();
@@ -73,6 +74,13 @@ function AppNaviator() {
         <Stack.Screen
           name="FacilityDetailView"
           component={FacilityDetailView}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="FacilityFilterView"
+          component={FacilityFilterView}
           options={{
             header: () => null,
           }}
