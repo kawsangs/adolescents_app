@@ -86,5 +86,9 @@
   "sources": "ប្រភព",
   "enterProvinceNameYourWantToSearch": "បញ្ចូលឈ្មោះខេត្តដែលអ្នកចង់ស្វែងរក",
   "selectClinicLocation": "ជ្រើសរើសទីតាំងរបស់គ្លីនិក",
-  "filterReset": "សារឡើងវិញ"
+  "filterReset": "សារឡើងវិញ",
+  "provinceOfTheClinic": "ខេត្តដែលគ្លីនិកស្ថិតនៅ",
+  "selectProvinceOfTheClinic": "ជ្រើសរើសខេត្តរបស់គ្លីនិក",
+  "districtOfTheClinic": "ខណ្ឌ ឬស្រុកដែលគ្លីនិកស្ថិតនៅ",
+  "selectDistrictOfTheClinic": "ជ្រើសរើសខណ្ឌ​ ឬស្រុករបស់គ្លីនិក"
 }

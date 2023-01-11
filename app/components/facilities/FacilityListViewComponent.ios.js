@@ -31,8 +31,6 @@ const FacilityListMapViewComponent = () => {
   }
 
   const updateFacilityList = (serviceUuid) => {
-    console.log('=== filtered location == ', filteredLocation)
-
     setFacilities(facilityHelper.getFacilities(filteredLocation, serviceUuid));
     if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
   }
