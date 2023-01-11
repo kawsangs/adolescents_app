@@ -90,5 +90,8 @@
   "provinceOfTheClinic": "Province of the clinic",
   "selectProvinceOfTheClinic": "Select the province of the clinic",
   "districtOfTheClinic": "District of the clinic",
-  "selectDistrictOfTheClinic": "Select district of the clinic"
+  "selectDistrictOfTheClinic": "Select district of the clinic",
+  "noResult": "No result",
+  "filterClinic": "Filter Clinic",
+  "search": "Search"
 }

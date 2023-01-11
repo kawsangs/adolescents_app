@@ -90,7 +90,7 @@ const FacilityFilterFormComponent = (props) => {
   }
 
   const renderSaveBtn = () => {
-    return <BigButtonComponent label={'ដាក់ប្រើ'}
+    return <BigButtonComponent label={t('search')}
               uuid='filter-btn'
               audio={null}
               playingUuid={playingUuid}

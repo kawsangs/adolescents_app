@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View, ScrollView} from 'react-native';
+import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
+import {useTranslation} from 'react-i18next';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
@@ -10,6 +12,7 @@ import {scrollViewPaddingBottom} from '../../constants/ios_component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 
 const FacilityListMapViewComponent = () => {
+  const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
@@ -35,12 +38,22 @@ const FacilityListMapViewComponent = () => {
     if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
   }
 
+  const renderEmptyMessage = () => {
+    return <View style={{flexGrow: 1, marginRight: screenHorizontalPadding, justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{fontSize: xxLargeFontSize(), color: 'white'}}>{t('noResult')}</Text>
+           </View>
+  }
+
   return (
     <View style={{flexGrow: 1}}>
       <FacilityServiceScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      <ScrollView contentContainerStyle={{paddingBottom: scrollViewPaddingBottom, paddingRight: screenHorizontalPadding}}>
-        { renderFacilities() }
-      </ScrollView>
+      {
+        facilities.length > 0 ?
+          <ScrollView contentContainerStyle={{paddingBottom: scrollViewPaddingBottom, paddingRight: screenHorizontalPadding}}>
+            { renderFacilities() }
+          </ScrollView>
+        : renderEmptyMessage()
+      }
     </View>
   )
 }

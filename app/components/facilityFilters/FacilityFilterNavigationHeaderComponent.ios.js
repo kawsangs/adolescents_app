@@ -21,7 +21,7 @@ const FacilityFilterNavigationHeaderComponent = (props) => {
   return (
     <NavigationHeaderComponent
       leftButton={<NavigationHeaderBackButtonComponent/>}
-      label={'Filter Clinic'}
+      label={t('filterClinic')}
       rightButton={renderResetBtn()}
       headerStyle={{paddingRight: screenHorizontalPadding}}
     />
