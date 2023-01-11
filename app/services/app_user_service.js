@@ -59,7 +59,7 @@ const createAccountService = (() => {
 
   function _sendCreateRequest(params, callback) {
     networkService.checkConnection(async () => {
-      const response = await new AppUserApi().post(_userApiParams(params));
+      const response = await new AppUserApi().post(await _userApiParams(params));
       apiService.handleApiResponse(response, (res) => {
         User.update(params.uuid, { id: res.id, synced: true });
         !!callback && callback();
@@ -85,13 +85,14 @@ const createAccountService = (() => {
     return params;
   }
 
-  function _userApiParams(user) {
+  async function _userApiParams(user) {
     const characteristicAttrs = [];
     user.characteristics.map(characteristic => {
       characteristicAttrs.push({ characteristic_attributes: { code: characteristic } });
     });
-    const params = {
-      device_id: DeviceInfo.getDeviceId(),
+
+    let params = {
+      device_id: await DeviceInfo.getUniqueId(),
       app_user_characteristics_attributes: characteristicAttrs,
       registered_at: user.registered_at,
       province_id: user.province_id,
@@ -99,7 +100,6 @@ const createAccountService = (() => {
       age: user.age,
       platform: Platform.OS
     }
-
     return params;
   }
 })();
