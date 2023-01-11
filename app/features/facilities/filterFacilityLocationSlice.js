@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { value: {} };
+const initialState = { value: { province: null, district: null } };
 
 const filterFacilityLocationSlice = createSlice({
   name: 'filterFacilityLocation',

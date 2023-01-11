@@ -2,21 +2,18 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import { useDispatch } from 'react-redux';
 
 import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 
 import color from '../../themes/color';
 import {xLargeFontSize} from '../../utils/font_size_util';
-import { resetSelectedLocation } from '../../features/facilities/filterFacilityLocationSlice';
+import {screenHorizontalPadding} from '../../constants/component_constant';
 
-const FacilityFilterNavigationHeaderComponent = () => {
+const FacilityFilterNavigationHeaderComponent = (props) => {
   const {t} = useTranslation();
-  const dispatch = useDispatch();
-
   const renderResetBtn = () => {
-    return <TouchableOpacity onPress={() => dispatch(resetSelectedLocation())}>
+    return <TouchableOpacity onPress={() => props.markAsReset()}>
               <Text style={{color: color.whiteColor, fontSize: xLargeFontSize()}}>{t('filterReset')}</Text>
            </TouchableOpacity>
   }
@@ -26,6 +23,7 @@ const FacilityFilterNavigationHeaderComponent = () => {
       leftButton={<NavigationHeaderBackButtonComponent/>}
       label={'Filter Clinic'}
       rightButton={renderResetBtn()}
+      headerStyle={{paddingRight: screenHorizontalPadding}}
     />
   )
 }
