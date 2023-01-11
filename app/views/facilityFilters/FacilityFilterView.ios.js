@@ -9,7 +9,7 @@ const FacilityFilterView = () => {
     <GradientScrollViewComponent
       header={<FacilityFilterNavigationHeaderComponent />}
       body={<FacilityFilterFormComponent />}
-      // scrollViewStyle={{paddingTop: 16}}
+      scrollViewStyle={{paddingBottom: 0}}
     />
   )
 }

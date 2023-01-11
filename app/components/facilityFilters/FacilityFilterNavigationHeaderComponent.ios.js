@@ -11,13 +11,19 @@ import color from '../../themes/color';
 import {xLargeFontSize} from '../../utils/font_size_util';
 import { resetSelectedLocation } from '../../features/facilities/filterFacilityLocationSlice';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityFilterNavigationHeaderComponent = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
+  const resetFilter = () => {
+    dispatch(resetSelectedLocation());
+    navigationRef.current?.goBack();
+  }
+
   const renderResetBtn = () => {
-    return <TouchableOpacity onPress={() => dispatch(resetSelectedLocation())}>
+    return <TouchableOpacity onPress={() => resetFilter()}>
               <Text style={{color: color.whiteColor, fontSize: xLargeFontSize()}}>{t('filterReset')}</Text>
            </TouchableOpacity>
   }

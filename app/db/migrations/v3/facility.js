@@ -45,7 +45,8 @@ Facility.schema = {
     image_url: 'string?',
     audio: 'string?',
     images: {type: 'string[]', optional: true},
-    province_id: 'string?'
+    province_id: 'string?',
+    district_id: 'string?'
   }
 }
 

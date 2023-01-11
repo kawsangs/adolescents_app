@@ -6,7 +6,7 @@ import TextComponent from './TextComponent';
 import GenderSelectionButtonComponent from './genderSelections/GenderSelectionButtonComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
-import genders from '../../db/json/genders';
+import genders from '../../db/data/genders';
 
 const GenderSelectionComponent = (props) => {
   const {t, i18n} = useTranslation();

@@ -4,16 +4,29 @@ import {useTranslation} from 'react-i18next';
 
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
 import PickerComponent from '../shared/PickerComponent';
+import BigButtonComponent from '../shared/BigButtonComponent';
 import {defaultPickerSnapPoints} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
+import locationHelper from '../../helpers/location_helper';
+import {navigationRef} from '../../navigators/app_navigator';
+
+import {useDispatch} from 'react-redux';
+import {storeSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
 
 const FacilityFilterFormComponent = () => {
   const {i18n} = useTranslation();
+  const dispatch = useDispatch();
   let pickerRef = React.createRef();
   let pickerModalRef = React.createRef();
   const [province, setProvince] = useState(null);
+  const [district, setDistrict] = useState(null);
   const [playingUuid, setPlayingUuid] = useState(null);
   
+  const onSelectProvince = (province) => {
+    setProvince(province);
+    setDistrict(null);
+  }
+
   const renderProvincePicker = () => {
     return <PickerComponent
               uuid="clinic-province-picker"
@@ -26,7 +39,7 @@ const FacilityFilterFormComponent = () => {
               items={userHelper.getProvinceDataset(i18n.language)}
               selectedItem={province}
               playingUuid={playingUuid}
-              updateSelectedItem={(province) => setProvince(province)}
+              updateSelectedItem={(province) => onSelectProvince(province)}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               placeholderContainerStyle={{paddingLeft: 16}}
            />
@@ -41,19 +54,41 @@ const FacilityFilterFormComponent = () => {
               required={false}
               pickerRef={pickerRef}
               pickerModalRef={pickerModalRef}
-              items={userHelper.getProvinceDataset(i18n.language)}
-              selectedItem={province}
+              items={locationHelper.getDistrictsByProvince(province.value)}
+              selectedItem={district}
               playingUuid={playingUuid}
-              updateSelectedItem={(province) => setProvince(province)}
+              updateSelectedItem={(district) => setDistrict(district)}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               placeholderContainerStyle={{paddingLeft: 16}}
            />
   }
 
+  const applyFilter = () => {
+    dispatch(storeSelectedLocation({
+      province: !!province ? province.value : null,
+      district: !!district  ? district.value: null
+    }));
+    navigationRef.current?.goBack();
+  }
+
+  const renderSaveBtn = () => {
+    return <BigButtonComponent label={'ដាក់ប្រើ'}
+              uuid='filter-btn'
+              audio={null}
+              playingUuid={playingUuid}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+              disabled={!province && !district}
+              onPress={() => applyFilter()}
+              accessibilityLabel='ប៊ូតុងដាក់ប្រើ'
+              style={{position: 'absolute', bottom: 16, width: '100%'}}
+            />
+  }
+
   return (
-    <View>
+    <View style={{flexGrow: 1}}>
       { renderProvincePicker() }
-      {/* { renderDistrictPicker() } */}
+      { !!province && renderDistrictPicker() }
+      { renderSaveBtn() }
       <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={defaultPickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
     </View>
   )

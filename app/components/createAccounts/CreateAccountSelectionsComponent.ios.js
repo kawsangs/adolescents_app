@@ -4,7 +4,7 @@ import {useTranslation} from 'react-i18next';
 import CheckboxComponent from '../shared/CheckboxComponent';
 import PickerComponent from '../shared/PickerComponent';
 import CreateAccountAgePickerComponent from './CreateAccountAgePickerComponent';
-import characteristics from '../../db/json/characteristics';
+import characteristics from '../../db/data/characteristics';
 import userHelper from '../../helpers/user_helper';
 import audioSources from '../../constants/audio_source_constant';
 

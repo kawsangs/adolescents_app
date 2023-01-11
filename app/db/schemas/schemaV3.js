@@ -18,6 +18,7 @@ const schemaV2 = {
 
       for (let i = 0; i < oldObjects.length; i++) {
         newObjects[i].province_id = !oldObjects[i].province_id ? '' : oldObjects[i].province_id;
+        newObjects[i].district_id = !oldObjects[i].district_id ? '' : oldObjects[i].district_id;
       }
     }
   },

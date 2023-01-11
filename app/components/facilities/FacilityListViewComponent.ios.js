@@ -13,11 +13,11 @@ const FacilityListMapViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
-  const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
+  const filteredLocation = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
     updateFacilityList(selectedServiceUuid);
-  }, [filteredProvince]);
+  }, [filteredLocation]);
 
   const renderFacilities = () => {
     return facilities.map((facility, index) => {
@@ -31,7 +31,9 @@ const FacilityListMapViewComponent = () => {
   }
 
   const updateFacilityList = (serviceUuid) => {
-    setFacilities(facilityHelper.getFacilities(filteredProvince, serviceUuid));
+    console.log('=== filtered location == ', filteredLocation)
+
+    setFacilities(facilityHelper.getFacilities(filteredLocation, serviceUuid));
     if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
   }
 
