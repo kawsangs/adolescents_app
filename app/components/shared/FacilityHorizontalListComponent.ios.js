@@ -3,6 +3,7 @@ import {Dimensions, ScrollView} from 'react-native';
 
 import FacilityCardItemComponent from '../facilities/FacilityCardItemComponent';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const FacilityHorizontalListComponent = (props) => {
   const renderFacilities = () => {
@@ -18,7 +19,7 @@ const FacilityHorizontalListComponent = (props) => {
 
   return (
     <ScrollView ref={ref => props.setScrollViewRef(ref)}
-      contentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
+      contentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8, paddingBottom: getStyleOfDevice(20, 0)}}
       style={{flexGrow: 0, width: '100%'}} horizontal={true}
     >
       { renderFacilities() }

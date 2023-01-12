@@ -3,15 +3,19 @@ import {View, ScrollView} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
+import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
+import color from '../../themes/color';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import {scrollViewPaddingBottom} from '../../constants/ios_component_constant';
 import facilityHelper from '../../helpers/facility_helper';
+import {xxLargeFontSize} from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
-const FacilityListMapViewComponent = () => {
+const FacilityListViewComponent = () => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -40,7 +44,8 @@ const FacilityListMapViewComponent = () => {
 
   const renderEmptyMessage = () => {
     return <View style={{flexGrow: 1, marginRight: screenHorizontalPadding, justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{fontSize: xxLargeFontSize(), color: 'white'}}>{t('noResult')}</Text>
+              <Icon name="file-text" size={getStyleOfDevice(110, 90)} color={color.whiteSmokeColor} />
+              <Text style={{fontSize: xxLargeFontSize(), color: color.whiteColor, marginTop: 10}}>{t('noResult')}</Text>
            </View>
   }
 
@@ -58,4 +63,4 @@ const FacilityListMapViewComponent = () => {
   )
 }
 
-export default FacilityListMapViewComponent;
+export default FacilityListViewComponent;

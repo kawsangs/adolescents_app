@@ -66,6 +66,7 @@ const FacilityFilterFormComponent = (props) => {
               placeholder={t('selectDistrictOfTheClinic')}
               bottomSheetTitle={t('selectDistrictOfTheClinic')}
               required={false}
+              disabled={!province}
               pickerRef={pickerRef}
               pickerModalRef={pickerModalRef}
               items={locationHelper.getDistrictsByProvince(province)}
@@ -104,7 +105,7 @@ const FacilityFilterFormComponent = (props) => {
   return (
     <View style={{flexGrow: 1}}>
       { renderProvincePicker() }
-      { !!province && renderDistrictPicker() }
+      { renderDistrictPicker() }
       { renderSaveBtn() }
       <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={defaultPickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
     </View>

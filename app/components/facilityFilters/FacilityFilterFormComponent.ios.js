@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import DeviceInfo from 'react-native-device-info';
 
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
 import PickerComponent from '../shared/PickerComponent';
@@ -9,6 +10,7 @@ import {defaultPickerSnapPoints} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
 import locationHelper from '../../helpers/location_helper';
 import {navigationRef} from '../../navigators/app_navigator';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {storeSelectedLocation, resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
@@ -66,6 +68,7 @@ const FacilityFilterFormComponent = (props) => {
               placeholder={t('selectDistrictOfTheClinic')}
               bottomSheetTitle={t('selectDistrictOfTheClinic')}
               required={false}
+              disabled={!province}
               pickerRef={pickerRef}
               pickerModalRef={pickerModalRef}
               items={locationHelper.getDistrictsByProvince(province)}
@@ -97,14 +100,14 @@ const FacilityFilterFormComponent = (props) => {
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               onPress={() => applyFilter()}
               accessibilityLabel='ប៊ូតុងដាក់ប្រើ'
-              style={{position: 'absolute', bottom: 16, width: '100%'}}
+              style={{position: 'absolute', bottom: getStyleOfDevice(36, DeviceInfo.hasNotch() ? 36 : 16), width: '100%'}}
             />
   }
 
   return (
     <View style={{flexGrow: 1}}>
       { renderProvincePicker() }
-      { !!province && renderDistrictPicker() }
+      { renderDistrictPicker() }
       { renderSaveBtn() }
       <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={defaultPickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
     </View>

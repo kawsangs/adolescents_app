@@ -50,19 +50,28 @@ class BottomSheetPickerComponent extends React.Component {
             </PlayAudioComponent>
   }
 
+  colorSet(type) {
+    const colors = {
+      container: this.props.disabled ? {backgroundColor: color.disabledCardColor} : {},
+      text: { color: this.props.disabled ? color.grayColor : color.blackColor },
+      icon: this.props.disabled ? color.grayColor : color.primaryColor,
+    }
+    return colors[type];
+  }
+
   render() {
     return (
       <View style={this.props.customContainerStyle}>
         {!!this.props.title && <TextComponent label={this.props.title} required={this.props.required} requiredColor={color.blackColor} style={styles.titleLabel} /> }
 
-        <View style={styles.mainContainer}>
+        <View style={[styles.mainContainer, this.colorSet('container')]}>
           <TouchableOpacity onPress={() => this.showPicker()} style={{height: '100%'}}>
             <View style={[styles.textContainer, this.props.placeholderContainerStyle]}>
               {!!this.props.audio && this.renderAudioButton()}
               <View style={{flex: 1}}>
-                <Text style={styles.itemTitle}>{ this.getLabel() }</Text>
+                <Text style={[styles.itemTitle, this.colorSet('text')]}>{ this.getLabel() }</Text>
               </View>
-              <FeatherIcon name="chevron-right" color={color.primaryColor} size={24} style={{marginRight: 10}} />
+              <FeatherIcon name="chevron-right" color={this.colorSet('icon')} size={24} style={{marginRight: 10}} />
             </View>
           </TouchableOpacity>
         </View>

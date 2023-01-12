@@ -12,6 +12,7 @@ const FacilityFilterView = () => {
       header={<FacilityFilterNavigationHeaderComponent markAsReset={() => setIsReset(true)} />}
       body={<FacilityFilterFormComponent isReset={isReset} updateIsReset={(status) => setIsReset(status)} />}
       scrollViewStyle={{paddingBottom: 0}}
+      scrollable={false}
     />
   )
 }

@@ -29,7 +29,7 @@ const BottomSheetPickerComponentStyles = StyleSheet.create({
   },
   itemContainer: {
     flexDirection: 'row',
-    height: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.tabletPressableItemSize(),
     alignItems: 'center',
   },
   deleteButton: {

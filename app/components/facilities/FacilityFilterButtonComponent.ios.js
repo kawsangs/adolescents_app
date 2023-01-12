@@ -9,7 +9,7 @@ import {navigationHeaderIconSize} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityFilterButtonComponent = () => {
-  const selectedProvince = useSelector(state => state.filterFacilityLocation.value);
+  const selectedProvince = useSelector(state => state.filterFacilityLocation.value.province);
 
   return (
     <React.Fragment>

@@ -35,6 +35,7 @@ const PickerComponent = (props) => {
             items={props.items}
             selectedItem={props.selectedItem}
             required={props.required}
+            disabled={props.disabled}
             customContainerStyle={{ marginTop: 19 }}
             audio={props.audio}
             playingUuid={props.playingUuid}
