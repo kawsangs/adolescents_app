@@ -99,11 +99,11 @@ const MobileTokenService = (() => {
     })
   }
 
-  function _sendToken(token, id=null) {
+  async function _sendToken(token, id=null) {
     let data =  {
       mobile_token: {
         token: token,
-        device_id: DeviceInfo.getDeviceId(),
+        device_id: await DeviceInfo.getUniqueId(),
         device_type: DeviceInfo.isTablet() ? 'tablet' : 'mobile',
         app_version: DeviceInfo.getVersion(),
         platform: Platform.OS,
