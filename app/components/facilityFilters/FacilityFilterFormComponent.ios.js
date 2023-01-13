@@ -41,9 +41,9 @@ const FacilityFilterFormComponent = (props) => {
 
   const renderProvincePicker = () => {
     return <CustomBottomSheetPickerComponent
-              title={t('provinceOfTheClinic')}
-              placeholder={t('selectProvinceOfTheClinic')}
-              bottomSheetTitle={t('selectProvinceOfTheClinic')}
+              title={t('province')}
+              placeholder={t('selectProvince')}
+              bottomSheetTitle={t('selectProvince')}
               items={userHelper.getProvinceDataset(i18n.language)}
               selectedItem={province}
               onSelectItem={(item) => onSelectProvince(item)}
@@ -57,9 +57,9 @@ const FacilityFilterFormComponent = (props) => {
 
   const renderDistrictPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title={t('districtOfTheClinic')}
-              placeholder={t('selectDistrictOfTheClinic')}
-              bottomSheetTitle={t('selectDistrictOfTheClinic')}
+              title={t('district')}
+              placeholder={t('selectDistrict')}
+              bottomSheetTitle={t('selectDistrict')}
               items={locationHelper.getDistrictsByProvince(province)}
               selectedItem={district}
               onSelectItem={(item) => setDistrict(item)}
