@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
-import PickerComponent from '../shared/PickerComponent';
+import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import {defaultPickerSnapPoints} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
@@ -42,39 +42,36 @@ const FacilityFilterFormComponent = (props) => {
   }
 
   const renderProvincePicker = () => {
-    return <PickerComponent
-              uuid="clinic-province-picker"
+    return <CustomBottomSheetPickerComponent
               title={t('provinceOfTheClinic')}
               placeholder={t('selectProvinceOfTheClinic')}
               bottomSheetTitle={t('selectProvinceOfTheClinic')}
-              required={false}
-              pickerRef={pickerRef}
-              pickerModalRef={pickerModalRef}
               items={userHelper.getProvinceDataset(i18n.language)}
               selectedItem={province}
-              playingUuid={playingUuid}
-              updateSelectedItem={(province) => onSelectProvince(province)}
+              onSelectItem={(item) => onSelectProvince(item)}
+              pickerUuid='clinic-province-picker'
+              playingUuid={props.playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-              placeholderContainerStyle={{paddingLeft: 16}}
+              containerStyle={{marginTop: 16}}
+              placeholderStyle={{paddingLeft: 16}}
            />
   }
 
   const renderDistrictPicker = () => {
-    return <PickerComponent
-              uuid="clinic-province-picker"
+    return <CustomBottomSheetPickerComponent
               title={t('districtOfTheClinic')}
               placeholder={t('selectDistrictOfTheClinic')}
               bottomSheetTitle={t('selectDistrictOfTheClinic')}
-              required={false}
-              disabled={!province}
-              pickerRef={pickerRef}
-              pickerModalRef={pickerModalRef}
               items={locationHelper.getDistrictsByProvince(province)}
               selectedItem={district}
-              playingUuid={playingUuid}
-              updateSelectedItem={(district) => setDistrict(district.value)}
+              onSelectItem={(item) => setDistrict(item)}
+              pickerUuid='clinic-district-picker'
+              playingUuid={props.playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-              placeholderContainerStyle={{paddingLeft: 16}}
+              containerStyle={{marginTop: 22}}
+              placeholderStyle={{paddingLeft: 16}}
+              hideListItemAudio={true}
+              disabled={!province}
            />
   }
 
