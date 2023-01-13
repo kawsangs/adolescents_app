@@ -3,10 +3,8 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import DeviceInfo from 'react-native-device-info';
 
-import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
 import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
-import {defaultPickerSnapPoints} from '../../constants/modal_constant';
 import userHelper from '../../helpers/user_helper';
 import locationHelper from '../../helpers/location_helper';
 import {navigationRef} from '../../navigators/app_navigator';
@@ -18,8 +16,6 @@ import {storeSelectedLocation, resetSelectedLocation} from '../../features/facil
 const FacilityFilterFormComponent = (props) => {
   const {t, i18n} = useTranslation();
   const dispatch = useDispatch();
-  let pickerRef = React.createRef();
-  let pickerModalRef = React.createRef();
   const [province, setProvince] = useState(null);
   const [district, setDistrict] = useState(null);
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -106,7 +102,6 @@ const FacilityFilterFormComponent = (props) => {
       { renderProvincePicker() }
       { renderDistrictPicker() }
       { renderSaveBtn() }
-      <FormBottomSheetModalComponent ref={pickerRef} formModalRef={pickerModalRef} snapPoints={defaultPickerSnapPoints} onDismissModal={() => pickerRef.current?.setBodyContent(null)} />
     </View>
   )
 }
