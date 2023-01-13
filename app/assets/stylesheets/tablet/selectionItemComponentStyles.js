@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {FontFamily} from '../../../themes/font';
-import {largeFontSize, xLargeFontSize} from '../../../utils/font_size_util';
+import {xLargeFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 const selectionItemComponentStyles = StyleSheet.create({
@@ -9,7 +9,6 @@ const selectionItemComponentStyles = StyleSheet.create({
     paddingLeft: 8
   },
   label: {
-    // fontSize: largeFontSize(),
     fontSize: xLargeFontSize(),
     fontFamily: FontFamily.regular,
     letterSpacing: -1,
