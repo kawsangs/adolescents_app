@@ -26,7 +26,7 @@ const TopicDetailMainComponent = (props) => {
   return (
     <React.Fragment>
       <View style={{paddingTop: 16, paddingHorizontal: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}>
-        <TopicDetailDescriptionComponent uuid={props.uuid} type={props.type} />
+        <TopicDetailDescriptionComponent uuid={props.uuid} type={props.type} textSize={props.textSize} />
         { facilities.length > 0 && <Text style={{marginTop: 20, marginBottom: 0, color: 'white', fontSize: 16}}>{t('recommendedServiceProvider')}</Text>}
         { renderFacilities() }
       </View>

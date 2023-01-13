@@ -7,6 +7,9 @@ import Option from '../../models/Option';
 import {navigationRef} from '../../navigators/app_navigator';
 import {TOPIC, QUESTION, OPTION, QUESTION_FAQ} from '../../constants/faq_constant';
 import topicHelper from '../../helpers/topic_helper';
+import {xLargeFontSize} from '../../utils/font_size_util';
+import {TEXT_SIZE} from '../../constants/async_storage_constant';
+import asyncStorageService from '../../services/async_storage_service';
 
 const QuestionMainComponent = (props) => {
   const [items, setItems] = useState([]);
@@ -28,12 +31,13 @@ const QuestionMainComponent = (props) => {
     props.type == QUESTION ? onPressQuestion(item) : onPressOption(item, moveNext);
   }
 
-  const onPressQuestion = (item) => {
+  const onPressQuestion = async (item) => {
     setPreviousType(QUESTION);
     // Redirect to detail screen if the selected question type is FAQ
     if (item.type == QUESTION_FAQ) {
+      const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
       setQuestionUuid(null);
-      return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: QUESTION })
+      return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: QUESTION, textSize: savedFontSize || xLargeFontSize() })
     }
 
     // If the selected question type is not FAQ then show the options of this question
@@ -43,9 +47,11 @@ const QuestionMainComponent = (props) => {
     props.updateType(OPTION);
   }
 
-  const onPressOption = (item, moveNext) => {
-    if (!moveNext)    // Redirect to detail screen if the selected option move_next = false
-      return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: OPTION });
+  const onPressOption = async (item, moveNext) => {
+    if (!moveNext) {   // Redirect to detail screen if the selected option move_next = false
+      const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
+      return navigationRef.current?.navigate("TopicDetailView", { uuid: item.uuid , name: item.name, topic_uuid: props.topicUuid, type: OPTION, textSize: savedFontSize || xLargeFontSize() });
+    }
 
     // If the selected option move_next = true then show the next question
     setPreviousType(OPTION);
