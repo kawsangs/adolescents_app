@@ -37,7 +37,7 @@ const FacilityFilterFormComponent = (props) => {
   
   const onSelectProvince = (province) => {
     props.updateIsReset(false);
-    setProvince(province.value);
+    setProvince(province);
     setDistrict(null);
   }
 

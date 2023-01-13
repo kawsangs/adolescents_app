@@ -1,5 +1,5 @@
-import {xLargeFontSize, largeFontSize} from '../utils/font_size_util';
+import {xLargeFontSize, xxLargeFontSize} from '../utils/font_size_util';
 
-export const titleFontSize = largeFontSize();
-export const bottomSheetTitleFontSize = xLargeFontSize();
-export const itemFontSize = largeFontSize();
+export const titleFontSize = xLargeFontSize();
+export const bottomSheetTitleFontSize = xxLargeFontSize();
+export const itemFontSize = xLargeFontSize();

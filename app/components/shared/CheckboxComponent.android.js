@@ -6,7 +6,7 @@ import TextComponent from './TextComponent';
 import CheckboxItemComponent from './checkboxes/CheckboxItemComponent';
 import color from '../../themes/color';
 import {cardBorderRadius} from '../../constants/component_constant';
-import {largeFontSize} from '../../utils/font_size_util';
+import {xLargeFontSize} from '../../utils/font_size_util';
 
 const CheckboxComponent = (props) => {
   const {i18n} = useTranslation();
@@ -23,7 +23,7 @@ const CheckboxComponent = (props) => {
 
   return (
     <View style={props.style}>
-      <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: largeFontSize()}} />
+      <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: xLargeFontSize()}} />
 
       <View style={styles.checkboxContainer}>
         { props.items.map((item, index) => (
