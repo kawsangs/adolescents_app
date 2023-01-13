@@ -5,9 +5,6 @@ import CreateAccountFormComponent from '../../components/createAccounts/CreateAc
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 
 const CreateAccountView = () => {
-  let pickerRef = React.createRef();
-  let pickerModalRef = React.createRef();
-
   return (
     <React.Fragment>
       <GradientScrollViewComponent

@@ -29,9 +29,6 @@ const CreateAccountFormComponent = (props) => {
     setState({...newState});
     setIsValid(appUserService.isValidForm(state.age, state.province));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
-
-    if (fieldName == 'province')
-      props.pickerModalRef.current?.dismiss();
   }
 
   const renderSelectionComponents = () => {
@@ -40,8 +37,6 @@ const CreateAccountFormComponent = (props) => {
               province={state.province}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
-              pickerRef={props.pickerRef}
-              pickerModalRef={props.pickerModalRef}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
            />
@@ -51,7 +46,7 @@ const CreateAccountFormComponent = (props) => {
     const user = {
       gender: state.gender,
       age: parseInt(state.age),
-      province_id: state.province.value,
+      province_id: state.province,
       characteristics: state.characteristics
     }
 
