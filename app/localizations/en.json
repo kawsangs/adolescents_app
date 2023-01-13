@@ -83,5 +83,15 @@
   "delete": "Delete",
   "viewMore": "View more",
   "viewLess": "View less",
-  "sources": "Sources"
+  "sources": "Sources",
+  "enterProvinceNameYourWantToSearch": "Enter province name you want to search",
+  "selectClinicLocation": "Select clinic location",
+  "filterReset": "Reset",
+  "province": "Province",
+  "selectProvince": "Select province",
+  "district": "District",
+  "selectDistrict": "Select district",
+  "noResult": "No result",
+  "filterClinic": "Filter Clinic",
+  "search": "Search"
 }

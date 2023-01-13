@@ -1,4 +1,4 @@
-import {numbers} from '../db/json/number';
+import {numbers} from '../db/data/number';
 
 const translationHelper = (() => {
   return {

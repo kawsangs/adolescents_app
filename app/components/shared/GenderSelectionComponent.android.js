@@ -5,8 +5,8 @@ import {useTranslation} from 'react-i18next';
 import TextComponent from './TextComponent';
 import GenderSelectionButtonComponent from './genderSelections/GenderSelectionButtonComponent';
 import color from '../../themes/color';
-import {largeFontSize} from '../../utils/font_size_util';
-import genders from '../../db/json/genders';
+import {xLargeFontSize} from '../../utils/font_size_util';
+import genders from '../../db/data/genders';
 
 const GenderSelectionComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -29,7 +29,7 @@ const GenderSelectionComponent = (props) => {
 
   return (
     <View>
-      <TextComponent label={t('genderIdentity')} required={true} requiredColor={color.blackColor} style={{color: color.whiteColor, fontSize: largeFontSize()}} />
+      <TextComponent label={t('genderIdentity')} required={true} requiredColor={color.blackColor} style={{color: color.whiteColor, fontSize: xLargeFontSize()}} />
       <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'space-between'}}>
         { renderGenders() }
       </View>

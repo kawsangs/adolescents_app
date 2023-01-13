@@ -1,7 +1,7 @@
 import {minimumAge, maximumAge} from '../constants/user_constant';
 import arrayUtil from '../utils/array_util';
-import provinces from '../db/json/provinces';
-import characteristics from '../db/json/characteristics';
+import provinces from '../db/data/provinces';
+import characteristics from '../db/data/characteristics';
 
 const userHelper = (() => {
   return {

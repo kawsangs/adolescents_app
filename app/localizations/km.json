@@ -83,5 +83,15 @@
   "delete": "លុប",
   "viewMore": "មើលបន្ថែម",
   "viewLess": "បង្រួមវិញ",
-  "sources": "ប្រភព"
+  "sources": "ប្រភព",
+  "enterProvinceNameYourWantToSearch": "បញ្ចូលឈ្មោះខេត្តដែលអ្នកចង់ស្វែងរក",
+  "selectClinicLocation": "ជ្រើសរើសទីតាំងរបស់គ្លីនិក",
+  "filterReset": "សារឡើងវិញ",
+  "province": "ខេត្ត",
+  "selectProvince": "ជ្រើសរើសខេត្ត",
+  "district": "ខណ្ឌ ឬស្រុក",
+  "selectDistrict": "ជ្រើសរើសខណ្ឌ​ ឬស្រុក",
+  "noResult": "មិនមានលទ្ធផល",
+  "filterClinic": "ស្វែងរកគ្លីនិក",
+  "search": "ស្វែងរក"
 }

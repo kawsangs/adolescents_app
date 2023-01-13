@@ -1,19 +1,12 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 import color from '../../themes/color';
 
 const DashedLine = (props) => {
-  const screenWidth = parseInt(Dimensions.get('screen').width);
-  let dashedLine = [];
-    for(let i = 0; i < screenWidth; i++) {
-      dashedLine.push(<View key={i} style={{backgroundColor: color.lightGrayColor, width: 7, height: 1.5, marginRight: 3}} />);
-    }
-
-  return (
-    <View style={[{flex: 1, flexDirection: 'row'}, props.containerStyle]}>
-      { dashedLine }
-    </View>
-  )
+  return <View style={[{position: 'relative'}, props.containerStyle]}>
+            <View style={{flex: 1, borderColor: color.lightGrayColor, borderWidth: 2, borderStyle: 'dashed', borderRadius: 1}}/>
+            <View style={{position: 'absolute', width: '100%', backgroundColor: color.whiteColor, height: 4, bottom: -1.2}}/>
+         </View>
 }
 
 export default DashedLine;

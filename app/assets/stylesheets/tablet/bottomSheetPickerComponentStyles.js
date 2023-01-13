@@ -23,21 +23,11 @@ const BottomSheetPickerComponentStyles = StyleSheet.create({
   itemTitle: {
     fontSize: largeFontSize(),
   },
-  chooseLabel: {
-    paddingRight: 20,
-    textTransform: 'uppercase',
-  },
   itemContainer: {
     flexDirection: 'row',
-    height: componentUtil.mediumPressableItemSize(),
+    height: componentUtil.tabletPressableItemSize(),
     alignItems: 'center',
   },
-  deleteButton: {
-    width: componentUtil.mediumPressableItemSize(), 
-    height: componentUtil.mediumPressableItemSize(),
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
 });
 
 export default BottomSheetPickerComponentStyles;

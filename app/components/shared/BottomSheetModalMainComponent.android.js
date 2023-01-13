@@ -12,12 +12,16 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 
 const BottomSheetModalMainComponent = (props) => {
+  const renderHeader = () => {
+    return <View style={{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6}}>
+              <BoldLabelComponent label={props.title} style={styles.modalTitle} />
+           </View>
+  }
+
   return (
     <View style={[styles.container, props.containerStyle]}>
       <View>
-        <View style={{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6}}>
-          <BoldLabelComponent label={props.title} style={styles.modalTitle} />
-        </View>
+        { props.customTitle ? props.customTitle : renderHeader()}
         <DashedLineComponent/>
       </View>
       <ScrollView contentContainerStyle={[styles.scrollViewContainer, props.scrollViewStyle]}>
