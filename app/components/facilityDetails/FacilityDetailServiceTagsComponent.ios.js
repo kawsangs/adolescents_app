@@ -10,14 +10,13 @@ import FacilityDetailServiceTagItemComponent from './FacilityDetailServiceTagIte
 import color from '../../themes/color';
 import {xLargeFontSize, largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
-import Service from '../../models/Service';
 import { servicesSnapPoints } from '../../constants/modal_constant';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityServiceHelper from '../../helpers/facility_service_helper';
 
 const FacilityDetailServiceTagsComponent = (props) => {
   const {t} = useTranslation();
-  const [serviceUuids, setServiceUuids] = useState(props.serviceUuids);
+  const [services, setServices] = useState(props.services);
   const [isOverflowService, setIsOverflowService] = useState(false);
   const [totalServiceWidth, setTotalServiceWidth] = useState(0);
   const [serviceWidths, setServiceWidths] = useState([]);
@@ -25,7 +24,7 @@ const FacilityDetailServiceTagsComponent = (props) => {
 
   useEffect(() => {
     if (isOverflowService)
-      setServiceUuids(facilityServiceHelper.filterOverflowServices(props.serviceUuids, containerWidth, serviceWidths));
+      setServices(facilityServiceHelper.filterOverflowServices(props.services, containerWidth, serviceWidths));
   }, [containerWidth]);
 
   const calculateTotalServiceWidth = (width) => {
@@ -39,18 +38,17 @@ const FacilityDetailServiceTagsComponent = (props) => {
 
   const renderTags = () => {
     let doms = [];
-    serviceUuids.map((serviceUuid, index) => {
-      doms.push(<FacilityDetailServiceTagItemComponent key={index} label={Service.findByUuid(serviceUuid).name} tagStyle={{marginTop: 0}}
+    services.map((service, index) => {
+      doms.push(<FacilityDetailServiceTagItemComponent key={index} label={service} tagStyle={{marginTop: 0}}
                   onLayout={(event) => calculateTotalServiceWidth(event.nativeEvent.layout.width) } />
                )
     });
-
     return doms;
   }
 
   const showMore = () => {
     props.bottomSheetRef.current?.setSnapPoints(servicesSnapPoints);
-    props.bottomSheetRef.current?.setBodyContent(<FacilityDetailServiceBottomSheetComponent serviceUuids={props.serviceUuids} />);
+    props.bottomSheetRef.current?.setBodyContent(<FacilityDetailServiceBottomSheetComponent services={props.services} />);
     props.modalRef.current?.present();
   }
 

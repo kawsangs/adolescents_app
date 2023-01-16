@@ -1,4 +1,3 @@
-import {Dimensions} from 'react-native';
 import {isLowPixelDensityDevice} from '../utils/responsive_util';
 
 const facilityServiceHelper = (() => {
@@ -6,17 +5,17 @@ const facilityServiceHelper = (() => {
     filterOverflowServices,
   }
 
-  function filterOverflowServices(serviceUuids, containerWidth, serviceWidths) {
+  function filterOverflowServices(services, containerWidth, serviceWidths) {
     let totalWidth = 0;
     let maxWidth = containerWidth - (isLowPixelDensityDevice() ? 120 : 90)
     for(let i = 0; i < serviceWidths.length; i++) {
       if ((totalWidth > 0 && containerWidth > 0) && totalWidth > maxWidth)
-        return serviceUuids.slice(0, i);
+        return services.slice(0, i);
 
       totalWidth += serviceWidths[i];
     }
 
-    return serviceUuids;
+    return services;
   }
 })();
 

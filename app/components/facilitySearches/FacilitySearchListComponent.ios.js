@@ -41,9 +41,7 @@ const FacilitySearchListComponent = (props) => {
     const dom = [];
     services.map((service, index) => {
       dom.push(<View key={`search-result-${index}`} style={styles.serviceBadge}>
-                <Text key={`service-${index}`} style={styles.serviceLabel} numberOfLines={1}>
-                  {service}
-                </Text>
+                <Text key={`service-${index}`} style={styles.serviceLabel} numberOfLines={1}>{service}</Text>
               </View>)
     });
     return <View style={{flexDirection: 'row', overflow: 'hidden'}}>{dom}</View>

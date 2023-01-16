@@ -11,7 +11,6 @@ import facilitySearchService from '../../services/facility_search_service';
 import visitService from '../../services/visit_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import SearchHistory from '../../models/SearchHistory';
-import Service from '../../models/Service';
 
 import tabletStyles from '../../assets/stylesheets/tablet/facilitySearchListComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/facilitySearchListComponentStyles';
@@ -42,9 +41,7 @@ const FacilitySearchListComponent = (props) => {
     const dom = [];
     services.map((service, index) => {
       dom.push(<View key={`search-result-${index}`} style={styles.serviceBadge}>
-                <Text key={`service-${index}`} style={styles.serviceLabel} numberOfLines={1}>
-                  {service}
-                </Text>
+                <Text key={`service-${index}`} style={styles.serviceLabel} numberOfLines={1}>{service}</Text>
               </View>)
     });
     return <View style={{flexDirection: 'row', overflow: 'hidden'}}>{dom}</View>
@@ -53,7 +50,7 @@ const FacilitySearchListComponent = (props) => {
   const listItem = (key, label, services, onPress) => {
     return <TouchableOpacity key={key} style={[styles.item, !services ? {minHeight: componentUtil.mediumPressableItemSize(), paddingVertical: 0} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
               <Text style={styles.clinicName} numberOfLines={2}>{label}</Text>
-              {services.length < 0 && renderServices(services)}
+              {services.length > 0 && renderServices(services)}
            </TouchableOpacity>
   }
 
