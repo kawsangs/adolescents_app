@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
+import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityHorizontalListComponent from '../shared/FacilityHorizontalListComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
@@ -48,7 +48,7 @@ const FacilityListMapViewComponent = (props) => {
         currentRegion={mapRegion} markers={markers}
       />
 
-      <FacilityServiceScrollBarComponent updateFacilityList={(serviceUuid) => updateFacilityList(serviceUuid)}
+      <FacilityTagScrollBarComponent updateFacilityList={(serviceUuid) => updateFacilityList(serviceUuid)}
         containerStyle={{paddingHorizontal: 16}}
       />
 

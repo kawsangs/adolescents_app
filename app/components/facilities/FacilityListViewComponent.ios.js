@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
 
-import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
+import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
@@ -51,7 +51,7 @@ const FacilityListViewComponent = () => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityServiceScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+      <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       {
         facilities.length > 0 ?
           <ScrollView contentContainerStyle={{paddingBottom: scrollViewPaddingBottom, paddingRight: screenHorizontalPadding}}>

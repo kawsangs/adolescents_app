@@ -9,4 +9,5 @@ export const schemaNames = [
   'Question',
   'Option',
   'SearchHistory',
+  'Tag',
 ];
