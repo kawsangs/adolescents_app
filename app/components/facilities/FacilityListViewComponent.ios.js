@@ -19,11 +19,11 @@ const FacilityListViewComponent = () => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
-  const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
+  const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredLocation = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
-    updateFacilityList(selectedServiceUuid);
+    updateFacilityList(selectedTagUuid);
   }, [filteredLocation]);
 
   const renderFacilities = () => {
@@ -37,9 +37,9 @@ const FacilityListViewComponent = () => {
     });
   }
 
-  const updateFacilityList = (serviceUuid) => {
-    setFacilities(facilityHelper.getFacilities(filteredLocation, serviceUuid));
-    if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
+  const updateFacilityList = (tagUuid) => {
+    setFacilities(facilityHelper.getFacilities(filteredLocation, tagUuid));
+    if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
   }
 
   const renderEmptyMessage = () => {

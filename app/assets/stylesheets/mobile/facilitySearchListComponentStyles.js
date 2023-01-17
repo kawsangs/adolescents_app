@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {screenHorizontalPadding, cardBorderRadius} from '../../../constants/component_constant';
 import color from '../../../themes/color';
-import {largeFontSize, mobileFontSize} from '../../../utils/font_size_util';
+import {largeFontSize, mediumFontSize} from '../../../utils/font_size_util';
 
 const backgroundColor = '#f4f1f9';
 
@@ -15,29 +15,27 @@ const facilitySearchListComponentStyles = StyleSheet.create({
   },
   item: {
     backgroundColor: color.whiteColor,
-    minHeight: 68,
     paddingHorizontal: 12,
-    paddingVertical: 6,
     borderBottomWidth: 1,
     borderBottomColor: backgroundColor,
     justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        minHeight: 68,
+        paddingBottom: 4
+      },
+      android: {
+        minHeight: 64,
+      }
+    })
   },
   clinicName: {
     fontSize: largeFontSize(),
-    lineHeight: 21
-  },
-  serviceBadge: {
-    backgroundColor: color.lightGrayColor,
-    borderRadius: 6,
-    height: 22,
-    justifyContent: 'center',
-    marginRight: 4,
-    marginTop: 4,
-    paddingHorizontal: 6,
+    lineHeight: Platform.OS == 'ios' ? 30 : 25
   },
   serviceLabel: {
-    color: '#6b6b6b',
-    fontSize: mobileFontSize(13)
+    color: '#b5b5b5',
+    fontSize: mediumFontSize(),
   },
   listHeader: {
     backgroundColor: backgroundColor,

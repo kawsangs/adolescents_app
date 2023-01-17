@@ -12,6 +12,10 @@ class Tag {
     return BaseModel.getAll(MODEL);
   }
 
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(MODEL, uuid);
+  }
+
   // private method
   static #getFormattedTags = () => {
     let formattedTags = [];

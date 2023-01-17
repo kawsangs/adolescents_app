@@ -13,7 +13,7 @@ const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [mapRegion, setMapRegion] = useState({});
   const [markers, setMarkers] = useState([]);
-  const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
+  const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const regionOffset = 0.0016;
   const initLatLng = mapHelper.getInitLatLng(facilities, regionOffset);
   const initRegion = !!initLatLng ? initLatLng : {"latitude": 11.569663313293457 - regionOffset, "longitude": 104.90775299072266};
@@ -26,12 +26,12 @@ const FacilityListMapViewComponent = (props) => {
   }, []);
 
   useEffect(() => {
-    updateFacilityList(selectedServiceUuid);
+    updateFacilityList(selectedTagUuid);
   }, [filteredProvince]);
 
-  const updateFacilityList = (serviceUuid) => {
-    const filteredFacilities = facilityHelper.getFacilities(filteredProvince, serviceUuid)
-    if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
+  const updateFacilityList = (tagUuid) => {
+    const filteredFacilities = facilityHelper.getFacilities(filteredProvince, tagUuid)
+    if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
     setFacilities(filteredFacilities);
     !!scrollViewRef.scrollTo && scrollViewRef.scrollTo({x: 0, animated: true})
 
@@ -48,7 +48,7 @@ const FacilityListMapViewComponent = (props) => {
         currentRegion={mapRegion} markers={markers}
       />
 
-      <FacilityTagScrollBarComponent updateFacilityList={(serviceUuid) => updateFacilityList(serviceUuid)}
+      <FacilityTagScrollBarComponent updateFacilityList={(tagUuid) => updateFacilityList(tagUuid)}
         containerStyle={{paddingHorizontal: 16}}
       />
 

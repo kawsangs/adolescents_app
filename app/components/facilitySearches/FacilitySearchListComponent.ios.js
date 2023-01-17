@@ -38,17 +38,17 @@ const FacilitySearchListComponent = (props) => {
   }
 
   const renderServices = (services) => {
-    const dom = [];
+    if (services.length == 0) return;
+
+    let label = ""
     services.map((service, index) => {
-      dom.push(<View key={`search-result-${index}`} style={styles.serviceBadge}>
-                <Text key={`service-${index}`} style={styles.serviceLabel} numberOfLines={1}>{service}</Text>
-              </View>)
+      label += `${service}${index < services.length - 1 ? ', ' : ''}`
     });
-    return <View style={{flexDirection: 'row', overflow: 'hidden'}}>{dom}</View>
+    return <Text style={styles.serviceLabel} numberOfLines={1}>{label}</Text>
   }
 
   const listItem = (key, label, services, onPress) => {
-    return <TouchableOpacity key={key} style={[styles.item, !services ? {minHeight: componentUtil.mediumPressableItemSize(), paddingVertical: 0} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
+    return <TouchableOpacity key={key} style={[styles.item, services.length == 0 ? {minHeight: componentUtil.mediumPressableItemSize(), paddingVertical: 0} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
               <Text style={styles.clinicName} numberOfLines={2}>{label}</Text>
               {services.length > 0 && renderServices(services)}
            </TouchableOpacity>

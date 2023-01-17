@@ -1,5 +1,4 @@
 import Facility from '../models/Facility';
-import Service from '../models/Service';
 
 const facilitySearchService = (() => {
   return {
@@ -9,11 +8,7 @@ const facilitySearchService = (() => {
   function findFacilityByNameOrService(text) {
     const facilitiesByName = Facility.containsByName(text);
     let facilitiesByService = [];
-
-    Service.containsByName(text).map(service => {
-      facilitiesByService.push(...Facility.findByServiceUuid(service.uuid));
-    });
-
+    facilitiesByService.push(...Facility.findByService(text));
     const result = [...facilitiesByName, ...facilitiesByService];
     let uniq = {};
     const filteredResult = result.filter(obj => !uniq[obj.uuid] && (uniq[obj.uuid] = true));
