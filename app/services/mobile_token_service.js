@@ -64,7 +64,7 @@ const MobileTokenService = (() => {
       })
   }
 
-  async function requestUserPermission() {
+  async function requestUserPermission(retryCount = 1) {
     const authStatus = await messaging().requestPermission();
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -77,13 +77,24 @@ const MobileTokenService = (() => {
           AsyncStorageService.setItem('FCM_TOKEN', token);
 
           _handleToken(token);
+        })
+        .catch(error => {
+          // if it reaches the max retry attempt or the error is not SERVICE_NOT_AVAILABLE then exit
+          if (retryCount === 0 || !error.toString().includes("SERVICE_NOT_AVAILABLE"))
+            return;
+
+          if (error.toString().includes("SERVICE_NOT_AVAILABLE")) {
+            setTimeout(() => {
+              requestUserPermission(retryCount - 1);
+            }, 5000);
+          }
         });
     }
   }
 
   function handleSyncingToken() {
     NetInfo.fetch().then(state => {
-      if (state.isConnected)
+      if (state.isConnected && state.isInternetReachable)
         requestUserPermission();
     });
   }
