@@ -19,6 +19,9 @@ const schemaV4 = {
       for (let i = 0; i < oldObjects.length; i++) {
         newObjects[i].tags = !oldObjects[i].tags ? [] : oldObjects[i].tags;
       }
+
+      // Delete service model
+      newRealm.deleteModel('Service');
     }
   },
 };

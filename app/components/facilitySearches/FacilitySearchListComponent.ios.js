@@ -48,7 +48,7 @@ const FacilitySearchListComponent = (props) => {
   }
 
   const listItem = (key, label, services, onPress) => {
-    return <TouchableOpacity key={key} style={[styles.item, services.length == 0 ? {minHeight: componentUtil.mediumPressableItemSize(), paddingVertical: 0} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
+    return <TouchableOpacity key={key} style={[styles.item, services.length == 0 ? {minHeight: componentUtil.mediumPressableItemSize(), paddingTop: 2} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
               <Text style={styles.clinicName} numberOfLines={2}>{label}</Text>
               {services.length > 0 && renderServices(services)}
            </TouchableOpacity>
