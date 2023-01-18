@@ -94,7 +94,7 @@ const MobileTokenService = (() => {
 
   function handleSyncingToken() {
     NetInfo.fetch().then(state => {
-      if (state.isConnected && state.isInternetReachable)
+      if (state.isConnected)
         requestUserPermission();
     });
   }
