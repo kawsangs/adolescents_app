@@ -6,22 +6,22 @@ import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
-import Service from '../../models/Service';
+import Tag from '../../models/Tag';
 
-const FacilityServiceScrollBarComponent = (props) => {
+const FacilityTagScrollBarComponent = (props) => {
   const [selectedUuid, setSelectedUuid] = useState(null);
-  const toggleFilter = (service) => {
-    const serviceUuid = selectedUuid == service.uuid ? null : service.uuid;
-    props.updateFacilityList(serviceUuid);
-    setSelectedUuid(serviceUuid);
+  const toggleFilter = (tag) => {
+    const tagUuid = selectedUuid == tag.uuid ? null : tag.uuid;
+    props.updateFacilityList(tagUuid);
+    setSelectedUuid(tagUuid);
   }
 
   const renderList = () => {
-    return Service.getAll().map((service, index) => {
-      return <TouchableOpacity key={index} style={[styles.item, selectedUuid == service.uuid && {backgroundColor: color.secondaryColor}]}
-                onPress={() => toggleFilter(service)}
+    return Tag.getAll().map((tag, index) => {
+      return <TouchableOpacity key={`filter-tag-${index}`} style={[styles.item, selectedUuid == tag.uuid && {backgroundColor: color.secondaryColor}]}
+                onPress={() => toggleFilter(tag)}
              >
-                <Text style={[styles.label, selectedUuid == service.uuid && {color: color.whiteColor}]}>{service.name}</Text>
+                <Text style={[styles.label, selectedUuid == tag.uuid && {color: color.whiteColor}]}>{tag.name}</Text>
              </TouchableOpacity>
     });
   }
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FacilityServiceScrollBarComponent;
+export default FacilityTagScrollBarComponent;

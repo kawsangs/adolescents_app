@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import Tag from './Tag';
 import facilities from '../db/json/facilities.json';
 
 const MODEL = "Facility"
@@ -18,6 +19,14 @@ class Facility {
 
   static findByServiceUuid = (serviceUuid) => {
     return BaseModel.findByAttr(MODEL, { service_uuids: `'${serviceUuid}'` }, '', {}, 'ANY');
+  }
+
+  static findByService = (service) => {
+    return BaseModel.containsByAttr(MODEL, 'services', `'${service}'`);
+  }
+
+  static findByTagUuid = (tagUuid) => {
+    return BaseModel.findByAttr(MODEL, { tags: `'${Tag.findByUuid(tagUuid).name}'` }, '', {}, 'ANY');
   }
 
   static containsByName(name) {

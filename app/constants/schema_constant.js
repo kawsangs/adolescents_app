@@ -3,10 +3,10 @@ export const schemaNames = [
   'Category',
   'Visit',
   'Facility',
-  'Service',
   'Video',
   'Topic',
   'Question',
   'Option',
   'SearchHistory',
+  'Tag',
 ];

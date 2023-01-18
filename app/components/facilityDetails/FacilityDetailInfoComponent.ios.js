@@ -31,7 +31,7 @@ const FacilityDetailInfoComponent = (props) => {
 
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
       <GrayView>
-        <FacilityDetailServiceTagsComponent serviceUuids={facility.service_uuids} bottomSheetRef={bottomSheetRef} modalRef={modalRef}/>
+        <FacilityDetailServiceTagsComponent services={facility.services} bottomSheetRef={bottomSheetRef} modalRef={modalRef}/>
         <FacilityDetailContactPlatformsComponent
           contactNumbers={facility.tels}
           websites={facility.websites}

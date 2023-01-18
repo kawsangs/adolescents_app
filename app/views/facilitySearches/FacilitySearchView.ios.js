@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import FacilitySearchHeaderComponent from '../../components/facilitySearches/FacilitySearchHeaderComponent';
 import FacilitySearchListComponent from '../../components/facilitySearches/FacilitySearchListComponent';
-import {scrollViewPaddingBottom} from '../../constants/component_constant';
+import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
 
 const FacilitySearchView = () => {
   const [searchText, setSearchText] = useState('');
@@ -21,7 +21,7 @@ const FacilitySearchView = () => {
 const styles = StyleSheet.create({
   listView: {
     paddingRight: 0,
-    paddingBottom: scrollViewPaddingBottom - 8
+    paddingBottom: gradientScrollViewPaddingBottom + 16
   },
 });
 export default FacilitySearchView;

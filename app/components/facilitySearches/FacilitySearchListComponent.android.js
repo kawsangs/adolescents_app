@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
 import color from '../../themes/color';
-import {screenHorizontalPadding, cardBorderRadius} from '../../constants/component_constant';
 import componentUtil from '../../utils/component_util';
 import {largeFontSize} from '../../utils/font_size_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 import facilitySearchService from '../../services/facility_search_service';
 import visitService from '../../services/visit_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import SearchHistory from '../../models/SearchHistory';
+
+import tabletStyles from '../../assets/stylesheets/tablet/facilitySearchListComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/facilitySearchListComponentStyles';
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const FacilitySearchListComponent = (props) => {
   const {t} = useTranslation();
@@ -33,66 +37,54 @@ const FacilitySearchListComponent = (props) => {
     });
   }
 
-  const listItem = (key, label, onPress) => {
-    return <TouchableOpacity key={key} style={styles.item} onPress={() => onPress()}>
-              <Text style={{fontSize: largeFontSize(), flex: 1}}>{label}</Text>
+  const renderServices = (services) => {
+    let label = ""
+    services.map((service, index) => {
+      label += `${service}${index < services.length - 1 ? ', ' : ''}`
+    });
+    return <Text style={styles.serviceLabel} numberOfLines={1}>{label}</Text>
+  }
+
+  const listItem = (key, label, services, onPress) => {
+    return <TouchableOpacity key={key} style={[styles.item, services.length == 0 ? {minHeight: componentUtil.mediumPressableItemSize(), paddingTop: 2} : {}]} onPress={() => onPress()} activeOpacity={0.5}>
+              <Text style={styles.clinicName} numberOfLines={2}>{label}</Text>
+              {services.length > 0 && renderServices(services)}
            </TouchableOpacity>
   }
 
-  const renderListItems = () => {
-    if (props.searchText != '')
-      return facilities.map((facility, index) => {
-        return listItem(index, facility.name, () => viewDetail(facility))
-      });
+  const renderNoResultMessage = () => {
+    return <View style={{backgroundColor: color.whiteColor, height: componentUtil.mediumPressableItemSize(), justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{fontSize: largeFontSize(), color: '#a5a5a5'}}>{t('noResult')}</Text>
+           </View>
+  }
 
-    return renderSearchHistories();
+  const renderListItems = () => {
+    if (facilities.length == 0)
+      return renderNoResultMessage()
+
+    return facilities.map((facility, index) => {
+      return listItem(index, facility.name, facility.services, () => viewDetail(facility))
+    });
   }
 
   const renderSearchHistories = () => {
     return searchHistories.map((searchHistory, index) => {
-      return listItem(`history-${index}`, searchHistory.name, () => props.updateSearchText(searchHistory.name))
+      return listItem(`history-${index}`, searchHistory.name, [], () => props.updateSearchText(searchHistory.name))
     });
   }
 
-  if (facilities.length == 0 && searchHistories.length == 0)
+  if (props.searchText == '' && searchHistories.length == 0)
     return <View/>
-
-  const renderResult = () => {
-    return (
-      <React.Fragment>
-        <View style={{height: 40, justifyContent: 'center'}}>
-          <Text style={{color: '#fa60ad', fontSize: largeFontSize(), marginLeft: 12}}>{props.searchText != '' ? t('searchResult') : t('previousSearch')}</Text>
-        </View>
-        { renderListItems() }
-      </React.Fragment>
-    )
-  }
 
   return (
     <View style={styles.container}>
-      { renderResult() }
+      <View style={styles.listHeader}>
+        <Text style={{color: '#fa60ad', fontSize: largeFontSize(), marginLeft: 12}}>{props.searchText != '' ? t('searchResult') : t('previousSearch')}</Text>
+      </View>
+      { props.searchText != '' ? renderListItems() : renderSearchHistories() }
+      <View style={styles.listFooter} />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    borderRadius: cardBorderRadius,
-    backgroundColor: '#f4f1f9',
-    elevation: 2,
-    marginRight: screenHorizontalPadding,
-    marginTop: 16,
-    paddingBottom: 23,
-  },
-  item: {
-    alignItems: 'center',
-    backgroundColor: color.whiteColor,
-    flexDirection: 'row',
-    height: componentUtil.mediumPressableItemSize(),
-    paddingHorizontal: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f4f1f9'
-  }
-});
 
 export default FacilitySearchListComponent;

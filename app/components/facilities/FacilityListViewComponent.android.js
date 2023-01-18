@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
 
-import FacilityServiceScrollBarComponent from './FacilityServiceScrollBarComponent';
+import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
@@ -18,11 +18,11 @@ const FacilityListViewComponent = () => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
-  const [selectedServiceUuid, setSelectedServiceUuid] = useState(null);
+  const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
-    updateFacilityList(selectedServiceUuid);
+    updateFacilityList(selectedTagUuid);
   }, [filteredProvince]);
 
   const renderFacilities = () => {
@@ -36,9 +36,9 @@ const FacilityListViewComponent = () => {
     });
   }
 
-  const updateFacilityList = (serviceUuid) => {
-    setFacilities(facilityHelper.getFacilities(filteredProvince, serviceUuid));
-    if (selectedServiceUuid != serviceUuid) setSelectedServiceUuid(serviceUuid);
+  const updateFacilityList = (tagUuid) => {
+    setFacilities(facilityHelper.getFacilities(filteredProvince, tagUuid));
+    if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
   }
 
   const renderEmptyMessage = () => {
@@ -50,7 +50,7 @@ const FacilityListViewComponent = () => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <FacilityServiceScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+      <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       {
         facilities.length > 0 ?
           <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
