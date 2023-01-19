@@ -93,6 +93,17 @@ const MobileTokenService = (() => {
   }
 
   function handleSyncingToken() {
+    if (Platform.OS == 'ios') {
+      // iOS the isInternetReachable will return as null on app launches, using event listener in order to get the true/false value.
+      const unsubscribe = NetInfo.addEventListener(state => {
+        if (state.isConnected && state.isInternetReachable) {
+          unsubscribe();
+          requestUserPermission();
+        }
+      });
+      return;
+    }
+
     NetInfo.fetch().then(state => {
       if (state.isConnected && state.isInternetReachable)
         requestUserPermission();
