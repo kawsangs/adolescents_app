@@ -93,5 +93,6 @@
   "selectDistrict": "Select district",
   "noResult": "No result",
   "filterClinic": "Filter Clinic",
-  "search": "Search"
+  "search": "Search",
+  "hour": "h"
 }
