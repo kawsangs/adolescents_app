@@ -6,10 +6,7 @@ const facilitySearchService = (() => {
   }
 
   function findFacilityByNameOrService(text) {
-    const facilitiesByName = Facility.containsByName(text);
-    let facilitiesByService = [];
-    facilitiesByService.push(...Facility.findByService(text));
-    const result = [...facilitiesByName, ...facilitiesByService];
+    const result = [...Facility.containsByName(text), ...Facility.findByService(text), ...Facility.findByTag(text)];
     let uniq = {};
     const filteredResult = result.filter(obj => !uniq[obj.uuid] && (uniq[obj.uuid] = true));
     return filteredResult;

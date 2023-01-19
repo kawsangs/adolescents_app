@@ -19,7 +19,7 @@ const videoItemListComponentStyles = StyleSheet.create({
   },
   title: {
     fontSize: xLargeFontSize(),
-    lineHeight: 24,
+    lineHeight: Platform.OS == 'ios' ? 28 : 24,
     marginBottom: 4,
   },
   author: {

@@ -5,6 +5,7 @@ const MODEL = "Tag";
 
 class Tag {
   static seedData = () => {
+    BaseModel.deleteAll(MODEL);
     BaseModel.seedData(MODEL, this.#getFormattedTags());
   }
 

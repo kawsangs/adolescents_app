@@ -29,6 +29,10 @@ class Facility {
     return BaseModel.findByAttr(MODEL, { tags: `'${Tag.findByUuid(tagUuid).name}'` }, '', {}, 'ANY');
   }
 
+  static findByTag = (tag) => {
+    return BaseModel.containsByAttr(MODEL, 'tags', `'${tag}'`);
+  }
+
   static containsByName(name) {
     return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }
