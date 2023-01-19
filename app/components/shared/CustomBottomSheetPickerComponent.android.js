@@ -4,6 +4,7 @@ import {BottomSheetPicker} from 'react-native-bottom-sheet-picker';
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
 import {titleFontSize, bottomSheetTitleFontSize, itemFontSize} from '../../constants/bottom_sheet_picker_constant';
+import {defaultPickerContentHeight} from '../../constants/modal_constant';
 
 const CustomBottomSheetPickerComponent = (props) => {
   const colorSet = (type) => {
@@ -25,6 +26,7 @@ const CustomBottomSheetPickerComponent = (props) => {
             bottomSheetTitleStyle={{fontSize: bottomSheetTitleFontSize, fontFamily: FontFamily.bold}}
             placeholderStyle={[{fontSize: itemFontSize, fontFamily: FontFamily.regular, alignSelf: 'center', color: colorSet('text')}, props.placeholderStyle]}
             itemTextStyle={{fontSize: itemFontSize, fontFaimly: FontFamily.regular}}
+            pickerContentHeight={defaultPickerContentHeight}
           />
 }
 
