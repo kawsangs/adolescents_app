@@ -9,7 +9,7 @@ import {days} from '../../constants/date_time_constant';
 import {descriptionFontSize} from '../../constants/component_constant';
 
 const FacilityDetailWorkingDaysComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {i18n, t} = useTranslation();
   const renderWorkingDays = () => {
     const groupedWorkingDays = workingDayHelper.getGroupedWorkingDays(JSON.parse(props.workingDays));
     let doms = [];
@@ -34,7 +34,9 @@ const FacilityDetailWorkingDaysComponent = (props) => {
   const renderworkingHours = (workingHours) => {
     return workingHours.map((workingHour, index) => {
       return <Text key={`hour-${index}`} style={{fontSize: descriptionFontSize}}>
-                {dateTimeHelper.getReadableTime(workingHour.open_at, i18n.language)} - {dateTimeHelper.getReadableTime(workingHour.close_at, i18n.language)}
+                { !workingHour.close_at && workingHour.open_at == 24 ? `24${t('hour')}`
+                  : `${dateTimeHelper.getReadableTime(workingHour.open_at, i18n.language)} - ${dateTimeHelper.getReadableTime(workingHour.close_at, i18n.language)}`
+                }
              </Text>
     })
   }
