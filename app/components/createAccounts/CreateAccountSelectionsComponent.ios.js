@@ -7,7 +7,6 @@ import characteristics from '../../db/data/characteristics';
 import userHelper from '../../helpers/user_helper';
 import audioSources from '../../constants/audio_source_constant';
 import color from '../../themes/color';
-import {defaultPickerContentHeight} from '../../constants/modal_constant';
 
 const CreateAccountSelectionsComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -29,7 +28,6 @@ const CreateAccountSelectionsComponent = (props) => {
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{marginTop: sectionMarginTop}}
               hideListItemAudio={true}
-              pickerContentHeight={defaultPickerContentHeight}
            />
   }
 
@@ -48,7 +46,6 @@ const CreateAccountSelectionsComponent = (props) => {
               playingUuid={props.playingUuid}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{marginTop: sectionMarginTop}}
-              pickerContentHeight={defaultPickerContentHeight}
            />
   }
 
