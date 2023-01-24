@@ -15,6 +15,7 @@ const createAccountService = (() => {
     isValidForm,
     createAnonymousUser,
     syncUsers,
+    updateSyncedUserDeviceId,
   }
 
   function createUser(user) {
@@ -45,6 +46,13 @@ const createAccountService = (() => {
     sendUnsyncUsers(0, unsyncedUsers, callback);
   }
 
+  function updateSyncedUserDeviceId() {
+    const syncedUsers = User.unsyncedDeviceId();
+    if (syncedUsers.length == 0) return;
+
+    _sendUpdateUsers(0, syncedUsers)
+  }
+
   // private method
   function sendUnsyncUsers(index, users, callback) {
     if (index == users.length) {
@@ -61,7 +69,7 @@ const createAccountService = (() => {
     networkService.checkConnection(async () => {
       const response = await new AppUserApi().post(await _userApiParams(params));
       apiService.handleApiResponse(response, (res) => {
-        User.update(params.uuid, { id: res.id, synced: true });
+        User.update(params.uuid, { id: res.id, synced: true, device_id_synced: true });
         !!callback && callback();
       }, (error) => {
         !!callback && callback();
@@ -98,9 +106,29 @@ const createAccountService = (() => {
       province_id: user.province_id,
       gender: user.gender,
       age: user.age,
-      platform: Platform.OS
+      platform: Platform.OS,
     }
     return params;
+  }
+
+  function _sendUpdateUsers(index, users) {
+    if (index == users.length) return;
+
+    _sendUpdateRequest(users[index], () => {
+      _sendUpdateUsers(index + 1, users)
+    });
+  }
+  
+  function _sendUpdateRequest(params, callback) {
+    networkService.checkConnection(async () => {
+      const response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId() });
+      apiService.handleApiResponse(response, (res) => {
+        User.update(params.uuid, { device_id_synced: true });
+        !!callback && callback();
+      }, (error) => {
+        !!callback && callback();
+      });
+    }, callback);
   }
 })();
 

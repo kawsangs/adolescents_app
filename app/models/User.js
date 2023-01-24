@@ -36,6 +36,10 @@ class User {
     return [...BaseModel.findByAttr(MODEL, {synced: true}, '', {type: 'ASC', column: 'registered_at'})];
   }
 
+  static unsyncedDeviceId = () => {
+    return [...BaseModel.findByAttr(MODEL, {device_id_synced: false, synced: true}, 'AND', {type: 'ASC', column: 'registered_at'})];
+  }
+
   static logOut = () => {
     this.update(this.currentLoggedIn().uuid, { logged_in: false });
   }
