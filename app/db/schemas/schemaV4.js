@@ -20,6 +20,11 @@ const schemaV4 = {
         newObjects[i].tags = !oldObjects[i].tags ? [] : oldObjects[i].tags;
       }
 
+      const newUsers = newRealm.objects('User');
+      newUsers.map(user => {
+        user.synced = false;
+      })
+
       // Delete service model
       newRealm.deleteModel('Service');
     }

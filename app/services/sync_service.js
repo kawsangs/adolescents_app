@@ -7,7 +7,6 @@ const syncService = (() => {
   }
 
   function syncUsersAndVisits() {
-    appUserService.updateSyncedUserDeviceId();
     appUserService.syncUsers(() => visitService.syncVisits());
   }
 })();
