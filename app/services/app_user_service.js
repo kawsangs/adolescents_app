@@ -37,14 +37,10 @@ const createAccountService = (() => {
 
   function syncUsers(callback) {
     const unsyncedUsers = User.unsynced();
-    console.log('unsynced user == ', unsyncedUsers)
-
     if (unsyncedUsers.length == 0) {
       callback();
       return;
     }
-
-    // sendUnsyncUsers(0, unsyncedUsers, callback);
     _sendUnsyncUsers(0, unsyncedUsers, callback);
   }
 
@@ -59,21 +55,6 @@ const createAccountService = (() => {
       _sendUnsyncUsers(index + 1, users, callback);
     })
   }
-
-  // function sendUnsyncUsers(index, users, callback) {
-  //   if (index == users.length) {
-  //     callback();
-  //     return;
-  //   }
-
-  //   // _sendCreateRequest(users[index], () => {
-  //   //   sendUnsyncUsers(index + 1, users, callback);
-  //   // });
-
-  //   _sendRequestToApi(users[index], () => {
-  //     sendUnsyncUsers(index + 1, users, callback);
-  //   })
-  // }
 
   function _sendRequestToApi(params, callback) {
     networkService.checkConnection(async () => {
@@ -91,18 +72,6 @@ const createAccountService = (() => {
       });
     }, callback)
   }
-
-  // function _sendCreateRequest(params, callback) {
-  //   networkService.checkConnection(async () => {
-  //     const response = await new AppUserApi().post(await _userApiParams(params));
-  //     apiService.handleApiResponse(response, (res) => {
-  //       User.update(params.uuid, { id: res.id, synced: true });
-  //       !!callback && callback();
-  //     }, (error) => {
-  //       !!callback && callback();
-  //     });
-  //   }, callback);
-  // }
 
   function _buildData(user) {
     const params = {
@@ -133,7 +102,7 @@ const createAccountService = (() => {
       province_id: user.province_id,
       gender: user.gender,
       age: user.age,
-      platform: Platform.OS,
+      platform: Platform.OS
     }
     return params;
   }
