@@ -12,6 +12,16 @@ class AppUserApi {
     const url = urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('app_users'));
     return httpRequest.send(url, options, environment.apiKey, 'json');
   }
+
+  put = (userId, params) => {
+    const options = {
+      method: 'PUT',
+      params: { app_user: params }
+    }
+
+    const url = `${urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('app_users'))}/${userId}`;
+    return httpRequest.send(url, options, environment.apiKey, 'json');
+  }
 }
 
 export default AppUserApi;

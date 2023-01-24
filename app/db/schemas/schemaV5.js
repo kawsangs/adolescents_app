@@ -8,22 +8,17 @@ const changedSchemas = [
   { label: schemaNames[3], data: Facility }
 ];
 
-const schemaV4 = {
+const schemaV5 = {
   schema: schemaHelper.getSchemas(changedSchemas),
-  schemaVersion: 4,
+  schemaVersion: 5,
   onMigration: (oldRealm, newRealm) => {
-    if (oldRealm.schemaVersion < 4) {
-      const oldObjects = oldRealm.objects('Facility');
-      const newObjects = newRealm.objects('Facility');
-
-      for (let i = 0; i < oldObjects.length; i++) {
-        newObjects[i].tags = !oldObjects[i].tags ? [] : oldObjects[i].tags;
+    if (oldRealm.schemaVersion < 5) {
+      const newObjects = newRealm.objects('User');
+      for (const index in newObjects) {
+        newObjects[index].synced = false;
       }
-
-      // Delete service model
-      newRealm.deleteModel('Service');
     }
   },
 };
 
-export default schemaV4;
+export default schemaV5;

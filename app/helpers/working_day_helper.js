@@ -19,8 +19,7 @@ const workingDayHelper = (() => {
     let order = 1;
     let previousWorkingHours = [];
 
-    // sort the working days start from Monday to Sunday
-    [...workingDays.slice(1), ...workingDays.slice(0, 1)].map((workingDay, index) => {
+    workingDays.map((workingDay, index) => {
       if (workingDay.open) {
         if (index > 0 && _hasDifferentWorkingHours(previousWorkingHours, workingDay.working_hours))
           order += 1;
