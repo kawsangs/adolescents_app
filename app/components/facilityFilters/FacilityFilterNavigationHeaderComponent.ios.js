@@ -8,12 +8,13 @@ import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackB
 
 import color from '../../themes/color';
 import {xLargeFontSize} from '../../utils/font_size_util';
+import componentUtil from '../../utils/component_util';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 
 const FacilityFilterNavigationHeaderComponent = (props) => {
   const {t} = useTranslation();
   const renderResetBtn = () => {
-    return <TouchableOpacity onPress={() => props.markAsReset()}>
+    return <TouchableOpacity onPress={() => props.markAsReset()} style={{height: componentUtil.pressableItemSize(), justifyContent: 'center'}}>
               <Text style={{color: color.whiteColor, fontSize: xLargeFontSize()}}>{t('filterReset')}</Text>
            </TouchableOpacity>
   }
