@@ -15,7 +15,6 @@ const createAccountService = (() => {
     isValidForm,
     createAnonymousUser,
     syncUsers,
-    updateSyncedUserDeviceId,
   }
 
   function createUser(user) {
@@ -38,6 +37,8 @@ const createAccountService = (() => {
 
   function syncUsers(callback) {
     const unsyncedUsers = User.unsynced();
+    console.log('unsynced user == ', unsyncedUsers)
+
     if (unsyncedUsers.length == 0) {
       callback();
       return;
