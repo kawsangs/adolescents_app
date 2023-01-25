@@ -16,7 +16,7 @@ const AboutUsLogosComponent = () => {
         <Text style={{fontSize: xxLargeFontSize(), marginBottom: 16}}>{title}</Text>
         <View style={{flexDirection: 'row'}}>
           { items.map((item, index) => (
-              <TouchableOpacity key={index} onPress={() => contactHelper.openContactLink(WEBSITE, item.url)}>
+              <TouchableOpacity key={index} onPress={() => contactHelper.openContactLink(WEBSITE, item.url)} accessibilityLabel={item.accessibility_label}>
                 <Image source={item.logo} style={item.style} resizeMode='contain' />
               </TouchableOpacity>
             ))
