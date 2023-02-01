@@ -33,6 +33,7 @@
     "react-i18next": "^11.18.3",
     "react-native": "0.70.3",
     "react-native-app-intro-slider": "^4.0.4",
+    "react-native-audio-player-button": "github:limkimsan/react-native-audio-player-button",
     "react-native-bottom-sheet-picker": "^1.1.3",
     "react-native-device-info": "^10.3.0",
     "react-native-encrypted-storage": "^4.0.2",
