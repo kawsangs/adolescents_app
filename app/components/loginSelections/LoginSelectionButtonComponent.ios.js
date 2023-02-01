@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import AudioPlayerButton from 'react-native-audio-player-button';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import AnonymousIconComponent from '../shared/AnonymousIconComponent';
+import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
@@ -18,16 +18,13 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const LoginSelectionButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
   const renderAudioButton = () => {
-    return <AudioPlayerButton
+    return <CustomAudioPlayerButtonComponent
               audio={props.audio}
               buttonStyle={styles.audioBtn}
               itemUuid={props.uuid}
               playingUuid={props.playingUuid}
-              isSpeakerIcon={true}
               updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={props.accessibilityLabel}
-              iconPrimaryColor={color.primaryColor}
-              iconSecondaryColor={color.secondaryColor}
               buttonColor="transparent"
            />
   }
