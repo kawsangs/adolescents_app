@@ -41,11 +41,9 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
     maxHeight: componentUtil.pressableItemSize(),
   },
   audioBtn: {
-    borderWidth: 0,
     borderRadius: 0,
     borderBottomRightRadius: cardBorderRadius,
     borderBottomLeftRadius: cardBorderRadius,
-    width: '100%',
   }
 });
 
