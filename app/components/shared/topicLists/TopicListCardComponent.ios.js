@@ -3,11 +3,12 @@ import { View } from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
-import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
+import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
 import {cardElevation} from '../../../constants/component_constant';
 import audioUtil from '../../../utils/audio_util';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
+import componentUtil from '../../../utils/component_util';
 import sharedStyles from '../../../assets/stylesheets/shared/sharedStyles';
 import tabletStyles from '../../../assets/stylesheets/tablet/topicListCardComponentStyles';
 import mobileStyles from '../../../assets/stylesheets/mobile/topicListCardComponentStyles';
@@ -16,17 +17,21 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
+    const btnSize = componentUtil.pressableItemSize();
     return (
       <View style={{height: 20, borderWidth: 0}}>
-        <AudioWaveButtonComponent
+        <CustomAudioPlayerButtonComponent
           itemUuid={props.uuid}
           audio={audioUtil.getAudioSourceByFilePath(props.audio)}
           playingUuid={props.playingUuid}
-          isSpeakerIcon={true}
-          containerStyle={[styles.btnContainer, sharedStyles.boxShadow]}
           updatePlayingUuid={props.updatePlayingUuid}
-          btnStyle={styles.btn}
           accessibilityLabel={props.accessibilityLabel}
+          buttonHeight={btnSize}
+          buttonWidth={btnSize}
+          rippled={true}
+          rippleHeight={btnSize}
+          rippleWidth={btnSize}
+          containerStyle={[styles.btnContainer, sharedStyles.boxShadow]}
         />
       </View>
     )

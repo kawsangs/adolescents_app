@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 
-import AudioWaveButtonComponent from '../AudioWaveButtonComponent';
+import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
 import {cardBorderRadius, cardElevation, descriptionFontSize} from '../../../constants/component_constant';
 import componentUtil from '../../../utils/component_util';
@@ -12,17 +12,22 @@ import {isLowPixelDensityDevice, getStyleOfDevice} from '../../../utils/responsi
 
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
+    const btnSize = componentUtil.pressableItemSize();
     return (
       <View style={{height: 20, borderWidth: 0}}>
-        <AudioWaveButtonComponent
+        <CustomAudioPlayerButtonComponent
           itemUuid={props.uuid}
           audio={audioUtil.getAudioSourceByFilePath(props.audio)}
           playingUuid={props.playingUuid}
-          isSpeakerIcon={true}
-          containerStyle={styles.btnContainer}
           updatePlayingUuid={props.updatePlayingUuid}
-          btnStyle={styles.btn}
           accessibilityLabel={props.accessibilityLabel}
+          buttonHeight={btnSize}
+          buttonWidth={btnSize}
+          rippled={true}
+          rippleHeight={btnSize}
+          rippleWidth={btnSize}
+          hasShadow={true}
+          containerStyle={styles.btnContainer}
         />
       </View>
     )
