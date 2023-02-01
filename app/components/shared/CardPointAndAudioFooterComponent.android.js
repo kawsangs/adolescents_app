@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import AudioWaveButtonComponent from './AudioWaveButtonComponent';
+import CustomAudioPlayerButtonComponent from './CustomAudioPlayerButtonComponent';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import componentUtil from '../../utils/component_util';
 import translationHelper from '../../helpers/translation_helper';
@@ -15,18 +15,19 @@ const CardPointAndAudioFooterComponent = (props) => {
   const {t, i18n} = useTranslation();
 
   const renderAudioBtn = () => {
-    return (
-      <AudioWaveButtonComponent
-        itemUuid={props.uuid}
-        audio={props.audio}
-        playingUuid={props.playingUuid}
-        isSpeakerIcon={true}
-        containerStyle={{borderWidth: 0, zIndex: 10}}
-        updatePlayingUuid={props.updatePlayingUuid}
-        btnStyle={{elevation: 0, height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}
-        accessibilityLabel={`កាតទី${props.index + 1}`}
-      />
-    )
+    const btnSize = componentUtil.pressableItemSize()
+    return <CustomAudioPlayerButtonComponent
+              audio={props.audio}
+              itemUuid={props.uuid}
+              buttonHeight={btnSize}
+              buttonWidth={btnSize}
+              rippled={true}
+              rippleHeight={btnSize}
+              rippleWidth={btnSize}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+              accessibilityLabel={`កាតទី${props.index + 1}`}
+           />
   }
 
   return (
