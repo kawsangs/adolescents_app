@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Checkbox} from 'react-native-paper';
+import AudioPlayerButton from 'react-native-audio-player-button';
 
-import SelectionItemAudioButtonComponent from '../SelectionItemAudioButtonComponent';
 import color from '../../../themes/color';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 import tabletStyles from '../../../assets/stylesheets/tablet/selectionItemComponentStyles';
@@ -12,11 +12,17 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CheckboxItemComponent = (props) => {
   const renderAudioBtn = () => {
-    return <SelectionItemAudioButtonComponent
+    return <AudioPlayerButton
               audio={props.audio}
               itemUuid={props.uuid}
+              isSpeakerIcon={true}
+              iconSize={24}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
+              buttonColor="transparent"
+              buttonStyle={{borderRadius: 0}}
+              iconPrimaryColor={color.primaryColor}
+              iconSecondaryColor={color.secondaryColor}
               accessibilityLabel={props.accessibilityLabel}
            />
   }

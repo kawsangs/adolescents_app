@@ -15,12 +15,6 @@ const selectionItemComponentStyles = StyleSheet.create({
     paddingLeft: 16,
     textAlign: 'left',
   },
-  audioBtn: {
-    borderWidth: 0,
-    borderRadius: 0,
-    height: componentUtil.mediumPressableItemSize(),
-    width: componentUtil.mediumPressableItemSize()
-  }
 });
 
 export default selectionItemComponentStyles;
