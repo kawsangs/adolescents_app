@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
-import IonIcon from 'react-native-vector-icons/Ionicons';
+import AudioPlayerButton from 'react-native-audio-player-button';
 
 import BoldLabelComponent from './BoldLabelComponent';
-import PlayAudioComponent from './PlayAudioComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import componentUtil from '../../utils/component_util';
@@ -19,6 +18,23 @@ const BigButtonComponent = (props) => {
     return { bgColor: color.bigButtonColor, textColor: color.primaryColor };
   }
 
+  const renderAudioBtn = () => {
+    return <AudioPlayerButton
+              audio={props.audio}
+              itemUuid={props.uuid}
+              isSpeakerIcon={true}
+              iconSize={24}
+              iconPrimaryColor={color.primaryColor}
+              iconSecondaryColor={color.secondaryColor}
+              buttonColor="transparent"
+              containerStyle={{position: 'absolute', right: 0}}
+              buttonStyle={styles.audioBtn}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={props.updatePlayingUuid}
+              accessibilityLabel={props.accessibilityLabel}
+           />
+  }
+
   const onPress = () => {
     setDisabled(true);
     !!props.onPress && props.onPress();
@@ -30,20 +46,7 @@ const BigButtonComponent = (props) => {
       disabled={props.disabled || disabled}
     >
       <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor }} />
-
-      <PlayAudioComponent
-        iconSize={24}
-        audio={props.audio}
-        btnStyle={styles.audioBtn}
-        iconColor={color.primaryColor}
-        itemUuid={props.uuid}
-        playingUuid={props.playingUuid}
-        isSpeakerIcon={true}
-        updatePlayingUuid={props.updatePlayingUuid}
-        accessibilityLabel={props.accessibilityLabel}
-      >
-        <IonIcon/>
-      </PlayAudioComponent>
+      {renderAudioBtn()}
     </TouchableOpacity>
   )
 }
@@ -56,16 +59,12 @@ const styles = StyleSheet.create({
     borderRadius: BORDER_RADIUS,
     elevation: 4,
     height: getStyleOfDevice(componentUtil.tabletPressableItemSize(), componentUtil.mediumPressableItemSize()),
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   audioBtn: {
     borderRadius: 0,
-    borderColor: 'white',
     borderTopRightRadius: BORDER_RADIUS,
     borderBottomRightRadius: BORDER_RADIUS,
-    borderWidth: 0,
-    position: 'absolute',
-    right: 0,
   }
 });
 
