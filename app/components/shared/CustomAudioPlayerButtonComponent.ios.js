@@ -9,6 +9,7 @@ const CustomAudioPlayerButtonComponent = (props) => {
             iconSize={24}
             iconPrimaryColor={color.primaryColor}
             iconSecondaryColor={color.secondaryColor}
+            allowPause={true}
          />
 }
 

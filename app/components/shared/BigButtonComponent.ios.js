@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
-import AudioPlayerButton from 'react-native-audio-player-button';
 
 import BoldLabelComponent from './BoldLabelComponent';
+import CustomAudioPlayerButtonComponent from './CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {BUTTON_DELAY_DURATION} from '../../constants/main_constant';
 import componentUtil from '../../utils/component_util';
@@ -19,19 +19,15 @@ const BigButtonComponent = (props) => {
   }
 
   const renderAudioBtn = () => {
-    return <AudioPlayerButton
-              audio={props.audio}
-              itemUuid={props.uuid}
-              isSpeakerIcon={true}
-              iconSize={24}
-              iconPrimaryColor={color.primaryColor}
-              iconSecondaryColor={color.secondaryColor}
-              buttonColor="transparent"
-              containerStyle={{position: 'absolute', right: 0}}
-              buttonStyle={styles.audioBtn}
-              playingUuid={props.playingUuid}
-              updatePlayingUuid={props.updatePlayingUuid}
-              accessibilityLabel={props.accessibilityLabel}
+    return <CustomAudioPlayerButtonComponent
+            audio={props.audio}
+            itemUuid={props.uuid}
+            buttonColor="transparent"
+            containerStyle={{position: 'absolute', right: 0}}
+            buttonStyle={styles.audioBtn}
+            playingUuid={props.playingUuid}
+            updatePlayingUuid={props.updatePlayingUuid}
+            accessibilityLabel={props.accessibilityLabel}
            />
   }
 

@@ -21,6 +21,8 @@ const GenderSelectionButtonComponent = (props) => {
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={props.updatePlayingUuid}
                 accessibilityLabel={props.accessibilityLabel}
+                containerStyle={{width: '100%'}}
+                buttonStyle={styles.audioBtn}
               />
             </View>
   }

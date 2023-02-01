@@ -48,6 +48,7 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
     borderRadius: 0,
     borderBottomRightRadius: cardBorderRadius,
     borderBottomLeftRadius: cardBorderRadius,
+    width: '100%'
   }
 });
 
