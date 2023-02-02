@@ -8,7 +8,6 @@ import color from '../../../themes/color';
 import {cardElevation} from '../../../constants/component_constant';
 import audioUtil from '../../../utils/audio_util';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
-import componentUtil from '../../../utils/component_util';
 import sharedStyles from '../../../assets/stylesheets/shared/sharedStyles';
 import tabletStyles from '../../../assets/stylesheets/tablet/topicListCardComponentStyles';
 import mobileStyles from '../../../assets/stylesheets/mobile/topicListCardComponentStyles';
@@ -17,7 +16,6 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TopicListCardComponent = (props) => {
   const renderAudioButton = () => {
-    const btnSize = componentUtil.pressableItemSize();
     return (
       <View style={{height: 20, borderWidth: 0}}>
         <CustomAudioPlayerButtonComponent
@@ -26,11 +24,7 @@ const TopicListCardComponent = (props) => {
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
           accessibilityLabel={props.accessibilityLabel}
-          buttonHeight={btnSize}
-          buttonWidth={btnSize}
           rippled={true}
-          rippleHeight={btnSize}
-          rippleWidth={btnSize}
           containerStyle={[styles.btnContainer, sharedStyles.boxShadow]}
         />
       </View>

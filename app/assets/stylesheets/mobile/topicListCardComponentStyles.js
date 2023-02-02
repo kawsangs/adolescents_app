@@ -1,6 +1,5 @@
 import {StyleSheet, Platform} from 'react-native';
 import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
-import componentUtil from '../../../utils/component_util';
 import {cardBorderRadius, descriptionFontSize} from '../../../constants/component_constant';
 
 const topicListCardComponentStyles = StyleSheet.create({
@@ -32,10 +31,6 @@ const topicListCardComponentStyles = StyleSheet.create({
     position: 'absolute',
     top: -25,
     zIndex: 10,
-  },
-  btn: {
-    height: componentUtil.pressableItemSize(),
-    width: componentUtil.pressableItemSize(),
   },
 });
 

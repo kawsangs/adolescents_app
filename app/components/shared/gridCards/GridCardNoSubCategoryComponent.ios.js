@@ -4,19 +4,13 @@ import {View, StyleSheet} from 'react-native';
 import BoldLabelComponent from '../BoldLabelComponent';
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import {cardTitleFontSize} from '../../../constants/component_constant';
-import componentUtil from '../../../utils/component_util';
 
 const GridCardNoSubCategoryComponent = (props) => {
   const renderAudioBtn = () => {
-    const btnSize = componentUtil.pressableItemSize();
     return <CustomAudioPlayerButtonComponent
               audio={props.audio}
               itemUuid={props.uuid}
-              buttonHeight={btnSize}
-              buttonWidth={btnSize}
               rippled={true}
-              rippleHeight={btnSize}
-              rippleWidth={btnSize}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={`កាតទី${props.order}`}
