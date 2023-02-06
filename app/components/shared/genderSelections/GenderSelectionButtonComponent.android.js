@@ -1,10 +1,9 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import TextComponent from '../TextComponent';
-import PlayAudioComponent from '../PlayAudioComponent';
+import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 import tabletStyles from '../../../assets/stylesheets/tablet/genderSelectionButtonComponentStyles';
@@ -15,18 +14,16 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const GenderSelectionButtonComponent = (props) => {
   const renderAudioButton = () => {
     return <View style={styles.audioContainer}>
-            <PlayAudioComponent
-              iconSize={24}
+            <CustomAudioPlayerButtonComponent
               audio={props.audio}
-              btnStyle={styles.audioBtn}
               itemUuid={props.uuid}
+              buttonHeight={48}
               playingUuid={props.playingUuid}
-              isSpeakerIcon={true}
               updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={props.accessibilityLabel}
-            >
-              <IonIcon/>
-            </PlayAudioComponent>
+              containerStyle={{width: '100%'}}
+              buttonStyle={styles.audioBtn}
+            />
           </View>
   }
 

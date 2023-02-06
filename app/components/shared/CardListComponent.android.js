@@ -4,9 +4,8 @@ import {View} from 'react-native'
 import HorizontalCardComponent from './HorizontalCardComponent';
 import TiltedCardComponent from './TiltedCardComponent';
 import GridCardComponent from './GridCardComponent';
-import CardWithSoundWaveComponent from './CardWithSoundWaveComponent';
 import ComingSoonMessageComponent from './ComingSoonMessageComponent';
-import {ROW_CARD, TILTED_CARD, GRID_CARD} from '../../constants/card_constant';
+import {ROW_CARD, TILTED_CARD} from '../../constants/card_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CardListComponent = (props) => {
@@ -30,21 +29,13 @@ const CardListComponent = (props) => {
                   updatePlayingUuid={props.updatePlayingUuid}
               />
         break;
-      case GRID_CARD:
+      default:
         return <GridCardComponent key={index}
                   index={index}
                   item={item}
                   containerStyle={{marginTop: 14}}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
-              />
-        break;
-      default:
-        return <CardWithSoundWaveComponent
-                key={index}
-                item={item}
-                playingUuid={props.playingUuid}
-                updatePlayingUuid={props.updatePlayingUuid}
               />
     }
   }
