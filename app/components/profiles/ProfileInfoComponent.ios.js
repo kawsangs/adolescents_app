@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {Text, Card} from 'react-native-paper';
+import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import ProfileCharacteristicsComponent from './ProfileCharacteristicsComponent';
-import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
-import {descriptionFontSize} from '../../constants/component_constant';
+import ProfileInfoListItemComponent from './ProfileInfoListItemComponent';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
+import {anonymousInfo} from '../../constants/user_constant';
 import User from '../../models/User';
 import translationHelper from '../../helpers/translation_helper';
 import profileHelper from '../../helpers/profile_helper';
@@ -17,7 +15,8 @@ const ProfileInfoComponent = () => {
   const {t, i18n} = useTranslation();
   const loggedInUser = User.currentLoggedIn();
 
-  const renderInfo = () => {
+
+  renderInfo = () => {
     const gender = profileHelper.getGender(loggedInUser.gender);
     const province = profileHelper.getProvince(loggedInUser.province_id)
     const infos = [
@@ -41,30 +40,24 @@ const ProfileInfoComponent = () => {
       }
     ]
     return infos.map((info, index) => {
-      return <View style={{flexDirection: 'row', paddingVertical: 6, alignItems: 'center'}} key={info.uuid}>
-                <Text style={{flex: 6, fontSize: descriptionFontSize}}>{info.label}</Text>
-                <View style={{flex: 4, justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                  {index == 0 && <Icon name={gender.icon} size={30} style={{marginRight: 8}} />}
-                  <Text style={{fontSize: descriptionFontSize, fontWeight: 'bold'}}>{info.value}</Text>
-                </View>
-                <View style={{flex: 2, alignItems: 'center'}}>
-                  { !!info.audio &&
-                    <CustomAudioPlayerButtonComponent
-                      audio={info.audio}
-                      itemUuid={info.uuid}
-                      playingUuid={playingUuid}
-                      updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                      buttonStyle={{borderRadius: 0}}
-                    />
-                  }
-                </View>
-             </View>
+     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={playingUuid} hasIcon={index == 0}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+            />
+    })
+  }
+
+  renderAnonymousInfo = () => {
+    return anonymousInfo.map((info, index) => {
+      return <ProfileInfoListItemComponent key={index} info={info} gender={null} playingUuid={playingUuid} hasIcon={false}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+              containerStyle={{paddingVertical: 16, paddingBottom: 10}}
+            />
     })
   }
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={{borderRadius: cardBorderRadius, marginTop: 16, paddingLeft: 16, paddingBottom: 10}}>
-      { loggedInUser.age != -1 && renderInfo()}
+      { !loggedInUser.anonymous ? renderInfo() : renderAnonymousInfo()}
       { loggedInUser.characteristics.length > 0 &&
         <ProfileCharacteristicsComponent
           playingUuid={playingUuid}

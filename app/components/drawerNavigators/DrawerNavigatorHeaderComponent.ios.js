@@ -28,11 +28,12 @@ const DrawerNavigatorHeaderComponent = (props) => {
         {renderIcon()}
       </GradientViewComponent>
 
-      { !loggedInUser.anonymous &&
-        <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
-          {t(loggedInUser.gender)} | {translationHelper.translateNumber(loggedInUser.age, i18n.language)} {t('year')}
-        </Text>
-      }
+      <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
+        {!loggedInUser.anonymous ?
+          `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('year')}`
+          : t('anonymous')
+        }
+      </Text>
 
       <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10}} />
     </TouchableOpacity>
