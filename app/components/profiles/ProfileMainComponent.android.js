@@ -1,14 +1,12 @@
 import React from 'react';
 import {View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import DeviceInfo from 'react-native-device-info';
 
 import ProfileInfoComponent from './ProfileInfoComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import color from '../../themes/color';
 import SearchHistory from '../../models/SearchHistory';
 import navigationService from '../../services/navigation_service';
-import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const ProfileMainComponent = () => {
   onPress = () => {
@@ -24,8 +22,8 @@ const ProfileMainComponent = () => {
         <BigButtonComponent
           label='ចាប់ផ្ដើមសាជាថ្មី'
           hideAudio={true}
-          style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16), flexDirection: 'row', width: 'auto', alignSelf: 'center', paddingHorizontal: 20}}
-          icon={<FeatherIcon name='rotate-ccw' color={color.primaryColor} size={17} style={{marginLeft: 14}} />}
+          style={{marginBottom: 16, flexDirection: 'row', width: 'auto', alignSelf: 'center', paddingHorizontal: 20}}
+          icon={<FeatherIcon name='rotate-ccw' color={color.primaryColor} size={20} style={{marginLeft: 14}} />}
           onPress={() => onPress()}
         />
       </View>

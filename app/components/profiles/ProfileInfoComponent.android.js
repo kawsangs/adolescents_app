@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {View} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -14,7 +15,6 @@ const ProfileInfoComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const {t, i18n} = useTranslation();
   const loggedInUser = User.currentLoggedIn();
-
 
   renderInfo = () => {
     const gender = profileHelper.getGender(loggedInUser.gender);

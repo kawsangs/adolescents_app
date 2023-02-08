@@ -18,7 +18,6 @@ const DrawerNavigatorItemsComponent = (props) => {
     const items = {
       first: [
         {label: t('share'), icon: 'share-2', url: '', type: SHARE, accessibility_label: 'ប៊ូតុងចែករំលែកកម្មវិធី'},
-        {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN, accessibility_label: 'ប៊ូតុងអំពីកម្មវិធី'},
         {label: t('privacyPolicy'), icon: 'shield', url: PRIVACY_POLICY_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ឯកជនភាព'},
         {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ និងលក្ខខណ្ឌ'},
       ],

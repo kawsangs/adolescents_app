@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
@@ -10,6 +10,7 @@ import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import translationHelper from '../../helpers/translation_helper';
 import User from '../../models/User';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -20,7 +21,9 @@ const DrawerNavigatorHeaderComponent = (props) => {
   }
 
   return (
-    <View style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}>
+    <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileView')}
+      style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}
+    >
       <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 64, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
         {renderIcon()}
       </GradientViewComponent>
@@ -31,7 +34,8 @@ const DrawerNavigatorHeaderComponent = (props) => {
           : t('anonymous')
         }
       </Text>
-    </View>
+      <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10, marginTop: -2}} />
+    </TouchableOpacity>
   )
 }
 

@@ -34,8 +34,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
           : t('anonymous')
         }
       </Text>
-
-      <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10}} />
+      <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10, marginTop: 2}} />
     </TouchableOpacity>
   )
 }

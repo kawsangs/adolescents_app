@@ -43,7 +43,8 @@ const BigButtonComponent = (props) => {
       disabled={props.disabled || disabled}
     >
       <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 2) }} />
-      {renderAudioBtn()}
+      {!!props.icon && props.icon}
+      {!props.hideAudio && renderAudioBtn()}
     </TouchableOpacity>
   )
 }
