@@ -9,6 +9,7 @@ import {anonymousInfo} from '../../constants/user_constant';
 import User from '../../models/User';
 import translationHelper from '../../helpers/translation_helper';
 import profileHelper from '../../helpers/profile_helper';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const ProfileInfoComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -55,7 +56,7 @@ const ProfileInfoComponent = () => {
     })
   }
 
-  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? 8 : 0;
+  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? getStyleOfDevice(10, 8) : 0;
   return (
     <Card mode="elevated" elevation={cardElevation}
       style={{borderRadius: cardBorderRadius, marginTop: 16, paddingLeft: 16, paddingBottom: paddingBottom}}
