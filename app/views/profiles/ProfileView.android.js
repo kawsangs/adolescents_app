@@ -10,6 +10,7 @@ const ProfileView = () => {
       header={<NavigationHeaderWithBackButtonComponent label='ព័ត៌មានរបស់អ្នក'/>}
       body={<ProfileMainComponent/>}
       scrollViewStyle={{paddingBottom: 0}}
+      scrollable={false}
     />
   )
 }

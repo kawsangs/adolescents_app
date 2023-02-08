@@ -13,29 +13,30 @@ import mobileStyles from '../../assets/stylesheets/mobile/profileInfoListItemCom
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const ProfileCharacteristicsComponent = (props) => {
-  let characteristics = [];
-    User.currentLoggedIn().characteristics.map((characteristic, index) => {
-      const charac = profileHelper.getCharacteristic(characteristic)
-      characteristics.push(<View key={charac.value} style={{flexDirection: 'row', alignItems: 'center', marginVertical: 2}}>
-                              <View style={styles.infoWrapper}>
-                                <Text style={[{marginLeft: 20}, styles.valueLabel]}>{charac.name_km}</Text>
-                              </View>
-                              <View style={styles.audioWrapper}>
-                                <CustomAudioPlayerButtonComponent
-                                  audio={charac.audio}
-                                  itemUuid={charac.value}
-                                  playingUuid={props.playingUuid}
-                                  updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-                                />
-                              </View>
-                           </View>
-                          )
+  renderItems = () => {
+    return User.currentLoggedIn().characteristics.map(characteristic => {
+      const characObj = profileHelper.getCharacteristic(characteristic)
+      return (<View key={characObj.uuid} style={{flexDirection: 'row', alignItems: 'center', marginVertical: 2}}>
+                <View style={styles.infoWrapper}>
+                  <Text style={[{marginLeft: 20}, styles.valueLabel]}>{characObj.name_km}</Text>
+                </View>
+                <View style={styles.audioWrapper}>
+                  <CustomAudioPlayerButtonComponent
+                    audio={characObj.audio}
+                    itemUuid={characObj.uuid}
+                    playingUuid={props.playingUuid}
+                    updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+                  />
+                </View>
+              </View>
+            )
     })
+  }
 
-    return <React.Fragment>
-              <Text style={{fontSize: descriptionFontSize, marginBottom: 6}}>ស្ថានភាពរស់នៅ</Text>
-              {characteristics}
-           </React.Fragment>
+  return <React.Fragment>
+            <Text style={{fontSize: descriptionFontSize, marginBottom: 6, marginTop: 6}}>ស្ថានភាពរស់នៅ</Text>
+            {renderItems()}
+          </React.Fragment>
 }
 
 export default ProfileCharacteristicsComponent;

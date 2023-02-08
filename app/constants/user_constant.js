@@ -6,19 +6,25 @@ export const anonymousInfo = [
   {
     uuid: 'user-gender',
     label: 'អត្តសញ្ញាណយែនឌ័រ',
-    value: 'មិនមាន',
+    value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-age',
     label: 'អាយុ',
-    value: 'មិនមាន',
+    value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-province',
     label: 'ទីតាំង',
-    value: 'មិនមាន',
+    value: 'អនាមិក',
+    audio: null,
+  },
+  {
+    uuid: 'user-characteristic',
+    label: 'ស្ថានភាពរស់នៅ',
+    value: 'អនាមិក',
     audio: null,
   }
 ]
