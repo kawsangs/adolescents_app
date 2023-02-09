@@ -1,12 +1,14 @@
 import React from 'react';
 import {View, Linking, Share} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {useDispatch} from 'react-redux';
 
 import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import navigationService from '../../services/navigation_service';
 import {APP_DOWNLOAD_URL, PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
 import SearchHistory from '../../models/SearchHistory';
+import {setIsGridView} from '../../features/subCategories/subCategoryDisplayModeSlice';
 
 const SCREEN = 'sc';
 const LINK = 'li';
@@ -15,6 +17,7 @@ const LOG_OUT = 'lo';
 
 const DrawerNavigatorItemsComponent = (props) => {
   const {t} = useTranslation();
+  const dispatch = useDispatch();
   const renderItems = () => {
     const items = {
       first: [
@@ -45,6 +48,7 @@ const DrawerNavigatorItemsComponent = (props) => {
 
   const onPress = (url, type) => {
     if (type == LOG_OUT) {
+      dispatch(setIsGridView(true))
       SearchHistory.deleteAll();
       return navigationService.logOut();
     }

@@ -21,8 +21,8 @@ const navigationService = (() => {
     let routeName = 'LeafCategoryDetailView';
     if (Category.isParentCategory(categoryUuid))
       routeName = 'SubCategoryView';
-    else if (Category.isSubCategory(categoryUuid))
-      routeName = 'LeafCategoryView';
+    // else if (Category.isSubCategory(categoryUuid))
+    //   routeName = 'LeafCategoryView';
 
     navigationRef.current?.navigate(routeName, { uuid: categoryUuid, textSize: savedFontSize || xLargeFontSize() });
   }
