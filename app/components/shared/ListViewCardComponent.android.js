@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Image} from 'react-native';
-import {Card, Text} from 'react-native-paper';
+import {Card} from 'react-native-paper';
 
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
-import {cardTitleFontSize} from '../../constants/component_constant';
+import {cardTitleFontSize, cardTitleLineHeight} from '../../constants/component_constant';
 import visitService from '../../services/visit_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
@@ -33,7 +33,7 @@ const ListViewCardComponent = (props) => {
         />
       </View>
       <View style={{paddingHorizontal: 8, paddingVertical: 10}}>
-        <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: 25}} />
+        <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: cardTitleLineHeight}} />
       </View>
     </Card>
   )

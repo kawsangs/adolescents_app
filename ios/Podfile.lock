@@ -539,7 +539,7 @@ PODS:
     - React-jsi (= 0.70.3)
     - React-logger (= 0.70.3)
     - React-perflogger (= 0.70.3)
-  - RealmJS (11.4.0):
+  - RealmJS (11.3.1):
     - React
   - RNCAsyncStorage (1.17.10):
     - React-Core
@@ -911,7 +911,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: b9a58ffdd18446f43d493a4b0ecd603ee86be847
   React-runtimeexecutor: e9b1f9310158a1e265bcdfdfd8c62d6174b947a2
   ReactCommon: 01064177e66d652192c661de899b1076da962fd9
-  RealmJS: fc807dff0d416153bcfcae0df613b2e93fb14af4
+  RealmJS: 43fc7bfb83229c8a2755cb34f71f769c97b7b581
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
   RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
