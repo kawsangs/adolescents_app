@@ -19,7 +19,7 @@ const SubCategoryView = ({route, navigation}) => {
 
   return (
     <GradientScrollViewComponent
-      header={<SubCategoryNavigationHeaderComponent label={category.name} onPress={() => onBackPress()} />}
+      header={<SubCategoryNavigationHeaderComponent label={category.name} onPress={() => onBackPress()} clearAudio={() => setPlayingUuid(null)} />}
       body={<SubCategoryItemsComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
       scrollViewStyle={subCategories.length == 0 ? {paddingHorizontal: 0, paddingBottom: 0} : {}}
     />
