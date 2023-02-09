@@ -18,12 +18,7 @@ const navigationService = (() => {
 
   async function navigateCategory(categoryUuid) {
     const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
-    let routeName = 'LeafCategoryDetailView';
-    if (Category.isParentCategory(categoryUuid))
-      routeName = 'SubCategoryView';
-    // else if (Category.isSubCategory(categoryUuid))
-    //   routeName = 'LeafCategoryView';
-
+    let routeName = Category.isParentCategory(categoryUuid) ? 'SubCategoryView' : 'LeafCategoryDetailView';
     navigationRef.current?.navigate(routeName, { uuid: categoryUuid, textSize: savedFontSize || xLargeFontSize() });
   }
 })();
