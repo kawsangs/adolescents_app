@@ -64,7 +64,7 @@ const PolicyConfirmationModalComponent = (props) => {
       title='លក្ខខណ្ឌចុះឈ្មោះប្រើប្រាស់'
       titleIcon={renderIcon()}
       titleStyle={{fontSize: bottomSheetTitleFontSize, marginTop: getStyleOfDevice(0, 1)}}
-      titleContainerStyle={{marginBottom: getStyleOfDevice(8, 2)}}
+      titleContainerStyle={{marginBottom: getStyleOfDevice(8, 0)}}
       containerStyle={{height: hp(signUpConfirmationContentHeight)}}
       scrollViewStyle={{paddingVertical: 0}}
     >

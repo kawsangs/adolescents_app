@@ -13,7 +13,7 @@ import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 
 const BottomSheetModalMainComponent = (props) => {
   const renderHeader = () => {
-    return <View style={{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, flexDirection: 'row', paddingHorizontal: screenHorizontalPadding,}}>
+    return <View style={[{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, flexDirection: 'row', paddingHorizontal: screenHorizontalPadding}, props.titleContainerStyle]}>
               {!!props.titleIcon && props.titleIcon}
               <BoldLabelComponent label={props.title} style={[styles.modalTitle, props.titleStyle]} />
            </View>
