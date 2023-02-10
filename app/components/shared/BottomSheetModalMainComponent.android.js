@@ -13,8 +13,9 @@ import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 
 const BottomSheetModalMainComponent = (props) => {
   const renderHeader = () => {
-    return <View style={{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6}}>
-              <BoldLabelComponent label={props.title} style={styles.modalTitle} />
+    return <View style={{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, flexDirection: 'row', paddingHorizontal: screenHorizontalPadding,}}>
+              {!!props.titleIcon && props.titleIcon}
+              <BoldLabelComponent label={props.title} style={[styles.modalTitle, props.titleStyle]} />
            </View>
   }
 
@@ -37,8 +38,7 @@ const styles = StyleSheet.create({
     height: hp(defaultPickerContentHeight),
   },
   modalTitle: {
-    fontSize: xLargeFontSize(),
-    paddingHorizontal: screenHorizontalPadding,
+    fontSize: xLargeFontSize()
   },
   scrollViewContainer: {
     flexGrow: 1,
