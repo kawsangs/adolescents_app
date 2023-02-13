@@ -27,9 +27,8 @@ const GridCardNoSubCategoryComponent = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'center',
-    alignItems: 'center',
     flexDirection: 'row',
+    flexGrow: 1,
     marginVertical: 8,
     paddingHorizontal: 8,
   }
