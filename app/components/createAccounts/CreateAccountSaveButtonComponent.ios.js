@@ -7,14 +7,19 @@ import PolicyConfirmationModalComponent from '../shared/PolicyConfirmationModalC
 import {signUpConfirmationSnapPoints} from '../../constants/modal_constant';
 import audioSources from '../../constants/audio_source_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import {environment} from '../../config/environment';
 
 const CreateAccountSaveButtonComponent = (props) => {
   const {t} = useTranslation();
   let bottomSheetRef = React.createRef();
   let modalRef = React.createRef();
-  const showConfirmModal = () => {
-    bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={props.saveUser}/>)
-    modalRef.current?.present()
+  const onPress = () => {
+    if (environment.hasPrivacyConfirmation) {
+      bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={props.saveUser}/>)
+      modalRef.current?.present()
+      return
+    }
+    props.saveUser()
   }
 
   return (
@@ -25,7 +30,7 @@ const CreateAccountSaveButtonComponent = (props) => {
         playingUuid={props.playingUuid}
         updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
         disabled={!props.isValid}
-        onPress={() => showConfirmModal()}
+        onPress={() => onPress()}
         accessibilityLabel='ប៊ូតុងក្រោមគេ'
       />
       <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={signUpConfirmationSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />

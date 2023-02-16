@@ -8,6 +8,7 @@ import {signUpConfirmationSnapPoints} from '../../constants/modal_constant';
 import audioSources from '../../constants/audio_source_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import appUserService from '../../services/app_user_service';
+import {environment} from '../../config/environment';
 
 const LoginSelectionAnonymousButtonComponent = (props) => {
   const {t} = useTranslation();
@@ -18,10 +19,14 @@ const LoginSelectionAnonymousButtonComponent = (props) => {
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
   }
 
-  const showConfirmModal = () => {
-    props.updatePlayingUuid(null)
-    bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={() => saveUser()} />)
-    modalRef.current?.present()
+  const onPress = () => {
+    if (environment.hasPrivacyConfirmation) {
+      props.updatePlayingUuid(null)
+      bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={() => saveUser()} />)
+      modalRef.current?.present()
+      return
+    }
+    saveUser()
   }
 
   return (
@@ -33,7 +38,7 @@ const LoginSelectionAnonymousButtonComponent = (props) => {
         isAnonymous={true}
         playingUuid={props.playingUuid}
         updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-        onPress={() => showConfirmModal()}
+        onPress={() => onPress()}
         accessibilityLabel='ប៊ូតុងទី2'
       />
 

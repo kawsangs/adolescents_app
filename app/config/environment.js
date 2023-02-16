@@ -11,4 +11,5 @@ export const environment = {
   isUserBasedAuth: false,
   apiVersion: 'v1',
   isUserBasedApi: false,
+  hasPrivacyConfirmation: true
 };
