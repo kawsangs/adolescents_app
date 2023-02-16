@@ -21,8 +21,8 @@ const FacilityCardInfoComponent = (props) => {
   }
 
   return (
-    <View style={{flex: 4, flexDirection: 'row'}}>
-      <View style={{flex: 1, paddingTop: 8, flexDirection: 'column'}}>
+    <View style={{flex: 4, flexDirection: 'row', paddingRight: 4}}>
+      <View style={{flex: 1, paddingTop: 2, flexDirection: 'column'}}>
         <View style={{flexDirection: 'row', alignItems: 'center', flex: 1.5}}>
           <BoldLabelComponent label={props.name} numberOfLines={2} style={styles.title} />
         </View>

@@ -6,23 +6,18 @@ import FacilityCardInfoComponent from './FacilityCardInfoComponent';
 import ImageComponent from '../shared/ImageComponent';
 import EmptyImageComponent from '../shared/EmptyImageComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
+import imageSources from '../../constants/image_source_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
 
 const FacilityCardItemComponent = (props) => {
-
   const renderImage = () => {
     return (
-      <View style={{flex: props.facility.galleries[0] ? 2 : getStyleOfDevice(0.8, 1.2), paddingLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
-        {/* { props.facility.galleries[0] ? 
-          <ImageComponent source={props.facility.galleries[0]} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
-          :
-          <EmptyImageComponent/>
-        } */}
-
-        {/* <ImageComponent source={require('../../assets/images/rhac_logo.jpeg')} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} /> */}
-        <ImageComponent source={require('../../assets/images/marie_stopes_logo.png')} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
+      <View style={{flex: getStyleOfDevice(0.8, 1.2), paddingLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
+        { props.facility.logo ? <ImageComponent source={imageSources[props.facility.logo]} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
+          : <EmptyImageComponent/>
+        }
       </View>
     )
   }
@@ -56,16 +51,13 @@ const FacilityCardItemComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: cardBorderRadius,
-    height: 100,
+    height: 90,
     marginTop: 11,
   },
   image: {
-    borderTopLeftRadius: cardBorderRadius,
-    borderBottomLeftRadius: cardBorderRadius,
-    // width: '100%',
-    // height: '100%',
-    width: '80%',
-    height: '80%'
+    marginTop: -2,
+    width: '70%',
+    height: '70%'
   },
   emptyView: {
     borderTopLeftRadius: cardBorderRadius,
