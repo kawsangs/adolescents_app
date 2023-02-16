@@ -1,6 +1,7 @@
 import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
 import {itemFontSize, bottomSheetTitleFontSize} from '../../../constants/bottom_sheet_picker_constant';
+import {largeFontSize} from '../../../utils/font_size_util';
 
 const policyConfirmationModalComponentStyles = StyleSheet.create({
   infoIcon: {
@@ -17,17 +18,8 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
     fontSize: itemFontSize,
     lineHeight: 34
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginVertical: 10
-  },
-  checkboxLabel: {
-    flex: 1,
-    flexWrap: 'wrap',
-    fontSize: itemFontSize,
-    lineHeight: 30,
-    marginTop: Platform.OS == 'ios' ? 8 : 11
+  titleContainer: {
+    marginBottom: 12
   },
   title: {
     fontSize: bottomSheetTitleFontSize,
@@ -38,6 +30,14 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
   titleAudioBtn: {
     height: 48,
     marginTop: -2
+  },
+  redNotice: {
+    color: color.requiredColor,
+    fontSize: Platform.OS == 'ios' ? largeFontSize() : largeFontSize() + 0.5,
+    lineHeight: 22,
+    marginTop: 16,
+    marginBottom: -8,
+    textAlign: "center"
   }
 })
 

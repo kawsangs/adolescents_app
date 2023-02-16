@@ -10,12 +10,11 @@ const PolicyConfirmationButtonComponent = (props) => {
             audio={null}
             playingUuid={props.playingUuid}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-            disabled={!props.checked}
             onPress={() => props.saveUser()}
             accessibilityLabel='ប៊ូតុងយល់ព្រម'
             buttonColor={color.primaryColor}
             textColor={color.whiteColor}
-            iconPrimaryColor={props.checked ? color.whiteColor : color.primaryColor}
+            iconPrimaryColor={color.whiteColor}
          />
 }
 

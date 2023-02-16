@@ -1,6 +1,8 @@
 import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
 import {itemFontSize, bottomSheetTitleFontSize} from '../../../constants/bottom_sheet_picker_constant';
+import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
+import {largeFontSize} from '../../../utils/font_size_util';
 
 const policyConfirmationModalComponentStyles = StyleSheet.create({
   infoIcon: {
@@ -18,36 +20,26 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
     fontSize: itemFontSize,
     lineHeight: 30
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    ...Platform.select({
-      ios: {
-        marginTop: 8,
-        marginBottom: 4
-      },
-      andriod: {
-        marginVertical: 4,
-      }
-    })
-  },
-  checkboxLabel: {
-    flex: 1,
-    flexWrap: 'wrap',
-    fontSize: itemFontSize,
-    lineHeight: 30,
-    marginTop: Platform.OS == 'ios' ? 8 : 10
+  titleContainer: {
+    marginBottom: isLowPixelDensityDevice() ? 8 : 2
   },
   title: {
     fontSize: bottomSheetTitleFontSize,
     flex: 1,
     marginBottom: 8,
-    marginTop: 6
+    marginTop: isLowPixelDensityDevice() ? 4 : 6
   },
   titleAudioBtn: {
     height: 48,
-    marginTop: -6,
-    marginRight: -6
+    marginTop: -6
+  },
+  redNotice: {
+    color: color.requiredColor,
+    fontSize: Platform.OS == 'ios' ? largeFontSize() : largeFontSize() + 0.5,
+    lineHeight: 22,
+    marginTop: 16,
+    marginBottom: -8,
+    textAlign: "center"
   }
 })
 
