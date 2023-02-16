@@ -1,14 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import ProfileInfoComponent from './ProfileInfoComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
-import color from '../../themes/color';
 import SearchHistory from '../../models/SearchHistory';
 import navigationService from '../../services/navigation_service';
+import audioSources from '../../constants/audio_source_constant';
 
-const ProfileMainComponent = () => {
+const ProfileMainComponent = (props) => {
   onPress = () => {
     SearchHistory.deleteAll();
     navigationService.logOut();
@@ -16,14 +15,16 @@ const ProfileMainComponent = () => {
 
   return (
     <View style={{flexGrow: 1, flexDirection: 'column'}}>
-      <ProfileInfoComponent/>
+      <ProfileInfoComponent playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}/>
       <View style={{flex: 1}} />
       <View>
         <BigButtonComponent
           label='ចាប់ផ្ដើមសាជាថ្មី'
-          hideAudio={true}
-          style={{marginBottom: 16, flexDirection: 'row', width: 'auto', alignSelf: 'center', paddingHorizontal: 20}}
-          icon={<FeatherIcon name='rotate-ccw' color={color.primaryColor} size={20} style={{marginLeft: 14}} />}
+          uuid='reset-button'
+          style={{marginBottom: 16}}
+          audio={null}
+          playingUuid={props.playingUuid}
+          updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
           onPress={() => onPress()}
         />
       </View>

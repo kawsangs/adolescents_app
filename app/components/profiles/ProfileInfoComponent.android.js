@@ -11,8 +11,7 @@ import User from '../../models/User';
 import translationHelper from '../../helpers/translation_helper';
 import profileHelper from '../../helpers/profile_helper';
 
-const ProfileInfoComponent = () => {
-  const [playingUuid, setPlayingUuid] = useState(null);
+const ProfileInfoComponent = (props) => {
   const {t, i18n} = useTranslation();
   const loggedInUser = User.currentLoggedIn();
 
@@ -40,16 +39,16 @@ const ProfileInfoComponent = () => {
       }
     ]
     return infos.map((info, index) => {
-     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={playingUuid} hasIcon={index == 0}
-              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 0}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             />
     })
   }
 
   renderAnonymousInfo = () => {
     return anonymousInfo.map((info, index) => {
-      return <ProfileInfoListItemComponent key={index} info={info} gender={null} playingUuid={playingUuid} hasIcon={false}
-              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+      return <ProfileInfoListItemComponent key={index} info={info} gender={null} playingUuid={props.playingUuid} hasIcon={false}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{paddingVertical: 16, paddingBottom: 10}}
             />
     })
@@ -63,8 +62,8 @@ const ProfileInfoComponent = () => {
       { !loggedInUser.anonymous ? renderInfo() : renderAnonymousInfo()}
       { loggedInUser.characteristics.length > 0 &&
         <ProfileCharacteristicsComponent
-          playingUuid={playingUuid}
-          updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+          playingUuid={props.playingUuid}
+          updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
         />
       }
     </Card>
