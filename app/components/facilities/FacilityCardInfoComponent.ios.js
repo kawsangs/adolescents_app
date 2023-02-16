@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import FacilityCardAudioComponent from './FacilityCardAudioComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
+import color from '../../themes/color';
 import {cardTitleFontSize, descriptionFontSize} from '../../constants/component_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {largeFontSize, mediumFontSize} from '../../utils/font_size_util';
@@ -29,7 +30,7 @@ const FacilityCardInfoComponent = (props) => {
           {renderServices()}
         </View>
       </View>
-      <FacilityCardAudioComponent audio={props.audio} playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid} accessibilityLabel={props.accessibilityLabel} />
+      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center'}} />
     </View>
   )
 }

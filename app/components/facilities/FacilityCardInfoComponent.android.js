@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import FacilityCardAudioComponent from './FacilityCardAudioComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
+import color from '../../themes/color';
 import {cardTitleFontSize, descriptionFontSize} from '../../constants/component_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {largeFontSize, mediumFontSize} from '../../utils/font_size_util';
@@ -20,8 +21,8 @@ const FacilityCardInfoComponent = (props) => {
   }
 
   return (
-    <View style={{flex: 4, flexDirection: 'row'}}>
-      <View style={{flex: 1, paddingTop: 8, flexDirection: 'column'}}>
+    <View style={{flex: 4, flexDirection: 'row', paddingRight: 4}}>
+      <View style={{flex: 1, paddingTop: 2, flexDirection: 'column'}}>
         <View style={{flexDirection: 'row', alignItems: 'center', flex: 1.5}}>
           <BoldLabelComponent label={props.name} numberOfLines={2} style={styles.title} />
         </View>
@@ -29,7 +30,7 @@ const FacilityCardInfoComponent = (props) => {
           {renderServices()}
         </View>
       </View>
-      <FacilityCardAudioComponent audio={props.audio} playingUuid={props.playingUuid} updatePlayingUuid={props.updatePlayingUuid} accessibilityLabel={props.accessibilityLabel} />
+      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center', marginTop: -2}} />
     </View>
   )
 }

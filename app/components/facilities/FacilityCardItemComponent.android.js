@@ -14,12 +14,15 @@ const FacilityCardItemComponent = (props) => {
 
   const renderImage = () => {
     return (
-      <View style={{flex: props.facility.galleries[0] ? 2 : getStyleOfDevice(0.8, 1.2), paddingLeft: 8}}>
-        { props.facility.galleries[0] ? 
+      <View style={{flex: props.facility.galleries[0] ? 2 : getStyleOfDevice(0.8, 1.2), paddingLeft: 8, justifyContent: 'center', alignItems: 'center'}}>
+        {/* { props.facility.galleries[0] ? 
           <ImageComponent source={props.facility.galleries[0]} resizeMode="cover" imageStyle={styles.image} emptyStyle={styles.emptyView} />
           :
           <EmptyImageComponent/>
-        }
+        } */}
+
+        {/* <ImageComponent source={require('../../assets/images/rhac_logo.jpeg')} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} /> */}
+        <ImageComponent source={require('../../assets/images/marie_stopes_logo.png')} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
       </View>
     )
   }
@@ -42,7 +45,7 @@ const FacilityCardItemComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]} onPress={() => viewDetail()}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', flexGrow: 1}}>
         { renderImage() }
         { renderInfo() }
       </View>
@@ -59,8 +62,10 @@ const styles = StyleSheet.create({
   image: {
     borderTopLeftRadius: cardBorderRadius,
     borderBottomLeftRadius: cardBorderRadius,
-    width: '100%',
-    height: '100%',
+    // width: '100%',
+    // height: '100%',
+    width: '80%',
+    height: '80%'
   },
   emptyView: {
     borderTopLeftRadius: cardBorderRadius,
