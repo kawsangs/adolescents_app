@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import BoldLabelComponent from '../BoldLabelComponent';
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
-import {cardTitleFontSize} from '../../../constants/component_constant';
+import {cardTitleFontSize, cardTitleLineHeight} from '../../../constants/component_constant';
 
 const GridCardNoSubCategoryComponent = (props) => {
   const renderAudioBtn = () => {
@@ -19,7 +19,7 @@ const GridCardNoSubCategoryComponent = (props) => {
 
   return <View style={styles.container}>
               <View style={{flex: 1, justifyContent: 'center'}}>
-                <BoldLabelComponent label={props.title} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: 25}} />
+                <BoldLabelComponent label={props.title} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: cardTitleLineHeight}} />
               </View>
               {renderAudioBtn()}
            </View>
@@ -27,9 +27,8 @@ const GridCardNoSubCategoryComponent = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'center',
-    alignItems: 'center',
     flexDirection: 'row',
+    flexGrow: 1,
     marginVertical: 8,
     paddingHorizontal: 8,
   }

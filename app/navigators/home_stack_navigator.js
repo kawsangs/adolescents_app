@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeView from '../views/home/HomeView';
 import SubCategoryView from '../views/subCategories/SubCategoryView';
-import LeafCategoryView from '../views/leafCategories/LeafCategoryView';
 import NotificationView from '../views/notifications/NotificationView';
 import MentalSupportView from '../views/mentalSupports/MentalSupportView';
 
@@ -24,13 +23,6 @@ const HomeStackNavigator = () => {
         <Stack.Screen
           name="SubCategoryView"
           component={SubCategoryView}
-          options={{
-            header: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="LeafCategoryView"
-          component={LeafCategoryView}
           options={{
             header: () => null,
           }}
