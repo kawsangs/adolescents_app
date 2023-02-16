@@ -6,6 +6,7 @@ const MODEL = "Facility"
 
 class Facility {
   static seedData = () => {
+    BaseModel.deleteAll(MODEL);
     BaseModel.seedData(MODEL, this.#getFormattedFacilities());
   }
 
