@@ -17,7 +17,7 @@ const CustomAudioPlayerButtonComponent = (props) => {
             {...rippleProps}
             isSpeakerIcon={true}
             iconSize={24}
-            iconPrimaryColor={color.primaryColor}
+            iconPrimaryColor={props.iconPrimaryColor || color.primaryColor}
             iconSecondaryColor={color.secondaryColor}
             allowPause={true}
          />

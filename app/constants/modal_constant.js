@@ -12,6 +12,6 @@ export const servicesContentHeight = '33%';
 
 
 const confirmationiOSMobie = DeviceInfo.hasNotch() ? {snapPoints: ['52%'], height: '47%'} : {snapPoints: ['56%'], height: '51%'}
-const confirmationAndroidMobile = isLowPixelDensityDevice() ? {snapPoints: ['59%'], height: '53%'} : {snapPoints: ['55%'], height: '49%'}
-export const signUpConfirmationSnapPoints = Platform.OS == 'ios' ? getStyleOfDevice(['35%'], confirmationiOSMobie.snapPoints) : getStyleOfDevice(['42%'], confirmationAndroidMobile.snapPoints);
-export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('30%', confirmationiOSMobie.height) : getStyleOfDevice('37%', confirmationAndroidMobile.height);
+const confirmationAndroidMobile = isLowPixelDensityDevice() ? {snapPoints: ['59%'], height: '53%'} : {snapPoints: ['55.5%'], height: '49.5%'}
+export const signUpConfirmationSnapPoints = Platform.OS == 'ios' ? getStyleOfDevice(['35%'], confirmationiOSMobie.snapPoints) : getStyleOfDevice(['44%'], confirmationAndroidMobile.snapPoints);
+export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('30%', confirmationiOSMobie.height) : getStyleOfDevice('39%', confirmationAndroidMobile.height);

@@ -1,6 +1,6 @@
 import {StyleSheet, Platform} from 'react-native';
 import color from '../../../themes/color';
-import {itemFontSize} from '../../../constants/bottom_sheet_picker_constant';
+import {itemFontSize, bottomSheetTitleFontSize} from '../../../constants/bottom_sheet_picker_constant';
 
 const policyConfirmationModalComponentStyles = StyleSheet.create({
   infoIcon: {
@@ -9,7 +9,6 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
     borderColor: color.secondaryColor,
     borderRadius: 40,
     justifyContent: 'center',
-    marginTop: -6,
     marginRight: 16,
     height: 38,
     width: 38
@@ -29,6 +28,16 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
     fontSize: itemFontSize,
     lineHeight: 30,
     marginTop: Platform.OS == 'ios' ? 8 : 11
+  },
+  title: {
+    fontSize: bottomSheetTitleFontSize,
+    flex: 1,
+    marginBottom: 8,
+    marginTop: 6
+  },
+  titleAudioBtn: {
+    height: 48,
+    marginTop: -2
   }
 })
 

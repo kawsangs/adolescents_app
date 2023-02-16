@@ -1,31 +1,22 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
 
-import BoldLabelComponent from '../BoldLabelComponent';
+import BigButtonComponent from '../BigButtonComponent';
 import color from '../../../themes/color';
-import componentUtil from '../../../utils/component_util';
-import {xLargeFontSize} from '../../../utils/font_size_util';
-import {getStyleOfDevice} from '../../../utils/responsive_util';
+import audioSources from '../../../constants/audio_source_constant';
 
 const PolicyConfirmationButtonComponent = (props) => {
-  const colorSet = () => {
-    return props.checked ? { btnColor: color.primaryColor, textColor: color.whiteColor }
-                         : { btnColor: color.disabledColor, textColor: color.mutedColor }
-  }
-
-  return <TouchableOpacity onPress={() => props.saveUser()} disabled={!props.checked} style={[styles.btn, { backgroundColor: colorSet().btnColor }]} accessibilityLabel='ប៊ូតុងយល់ព្រម'>
-            <BoldLabelComponent label="យល់ព្រម" style={{fontSize: xLargeFontSize(), color: colorSet().textColor}} />
-         </TouchableOpacity>
-}
-
-const styles = {
-  btn: {
-    alignItems: 'center',
-    borderRadius: 40,
-    height: getStyleOfDevice(componentUtil.tabletPressableItemSize(), componentUtil.mediumPressableItemSize()),
-    justifyContent: 'center',
-    marginTop: 16,
-  }
+  return <BigButtonComponent label='យល់ព្រម' style={{marginTop: 16}}
+            uuid='confirm-button'
+            audio={null}
+            playingUuid={props.playingUuid}
+            updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+            disabled={!props.checked}
+            onPress={() => props.saveUser()}
+            accessibilityLabel='ប៊ូតុងយល់ព្រម'
+            buttonColor={color.primaryColor}
+            textColor={color.whiteColor}
+            iconPrimaryColor={props.checked ? color.whiteColor : color.primaryColor}
+         />
 }
 
 export default PolicyConfirmationButtonComponent;

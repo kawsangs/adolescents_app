@@ -19,7 +19,8 @@ const LoginSelectionAnonymousButtonComponent = (props) => {
   }
 
   const showConfirmModal = () => {
-    bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={() => saveUser()}/>)
+    props.updatePlayingUuid(null)
+    bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={() => saveUser()} />)
     modalRef.current?.present()
   }
 

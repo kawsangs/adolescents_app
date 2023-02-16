@@ -16,6 +16,7 @@ const BottomSheetModalMainComponent = (props) => {
     return <View style={[{height: isLowPixelDensityDevice() ? 48 : 56, paddingTop: 6, flexDirection: 'row', paddingHorizontal: screenHorizontalPadding}, props.titleContainerStyle]}>
               {!!props.titleIcon && props.titleIcon}
               <BoldLabelComponent label={props.title} style={[styles.modalTitle, props.titleStyle]} />
+              {!!props.audioButton && props.audioButton}
            </View>
   }
 
