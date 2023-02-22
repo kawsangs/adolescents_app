@@ -7097,15 +7097,6 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native-video@^6.0.0-alpha.3":
-  "integrity" "sha512-wLWNVBcpOwU3Urtgjdau5xrXwiMv28zrtyZH9AQL38Q9Lz7T/F3BGU57HSPOT+l1hsW+KO9W8ettt5fnNoGMFg=="
-  "resolved" "https://registry.npmjs.org/react-native-video/-/react-native-video-6.0.0-alpha.3.tgz"
-  "version" "6.0.0-alpha.3"
-  dependencies:
-    "deprecated-react-native-prop-types" "^2.2.0"
-    "keymirror" "^0.1.1"
-    "prop-types" "^15.7.2"
-
 "react-native-webview@^11.23.1":
   "integrity" "sha512-bmqsdg4RYOUYD37R9XTrQALm7eD62KbLNPRfgvpLGd1SjaurvAjjsLrLN4mt6yOtKOMKeZvlcAl3x6De6cCQsA=="
   "resolved" "https://registry.npmjs.org/react-native-webview/-/react-native-webview-11.23.1.tgz"
