@@ -6,7 +6,7 @@ import NavigationHeaderBackButtonComponent from './NavigationHeaderBackButtonCom
 const NavigationHeaderWithBackButtonComponent = (props) => {
   return (
       <NavigationHeaderComponent
-        leftButton={<NavigationHeaderBackButtonComponent/>}
+        leftButton={<NavigationHeaderBackButtonComponent onPress={props.onPress}/>}
         customTitle={props.customTitle}
         label={props.label}
         headerStyle={props.headerStyle}

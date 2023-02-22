@@ -5,15 +5,11 @@ import {useDispatch} from 'react-redux';
 
 import DrawerNavigatorItemComponent from './DrawerNavigatorItemComponent';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
-import navigationService from '../../services/navigation_service';
 import {APP_DOWNLOAD_URL, PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
-import SearchHistory from '../../models/SearchHistory';
-import {setIsGridView} from '../../features/subCategories/subCategoryDisplayModeSlice';
 
 const SCREEN = 'sc';
 const LINK = 'li';
 const SHARE = 'sh';
-const LOG_OUT = 'lo';
 
 const DrawerNavigatorItemsComponent = (props) => {
   const {t} = useTranslation();
@@ -21,13 +17,12 @@ const DrawerNavigatorItemsComponent = (props) => {
   const renderItems = () => {
     const items = {
       first: [
-        {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN, accessibility_label: 'ប៊ូតុងអំពីកម្មវិធី'},
+        {label: t('share'), icon: 'share-2', url: '', type: SHARE, accessibility_label: 'ប៊ូតុងចែករំលែកកម្មវិធី'},
         {label: t('privacyPolicy'), icon: 'shield', url: PRIVACY_POLICY_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ឯកជនភាព'},
         {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ និងលក្ខខណ្ឌ'},
       ],
       second: [
-        {label: t('share'), icon: 'share-2', url: '', type: SHARE, accessibility_label: 'ប៊ូតុងចែករំលែកកម្មវិធី'},
-        {label: t('reset'), icon: 'rotate-ccw', url: '', type: LOG_OUT, accessibility_label: 'ប៊ូតុងចាប់ផ្ដើមសាជាថ្មី'},
+        {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN, accessibility_label: 'ប៊ូតុងអំពីកម្មវិធី'},
       ]
     }
     const mobileMarginTop = isLowPixelDensityDevice() ? 16 : 34;
@@ -47,12 +42,7 @@ const DrawerNavigatorItemsComponent = (props) => {
   }
 
   const onPress = (url, type) => {
-    if (type == LOG_OUT) {
-      dispatch(setIsGridView(true))
-      SearchHistory.deleteAll();
-      return navigationService.logOut();
-    }
-    else if (type == LINK)
+    if (type == LINK)
       return Linking.openURL(url)
     else if (type == SHARE)
       return shareApp();
@@ -73,7 +63,6 @@ const DrawerNavigatorItemsComponent = (props) => {
 
   return (
     <View style={{marginTop: 40}}>
-      {/* <DrawerNavigatorItemComponent label="កែប្រែអត្តសញ្ញាណ" iconName="edit"/> */}
       {renderItems()}
     </View>
   )
