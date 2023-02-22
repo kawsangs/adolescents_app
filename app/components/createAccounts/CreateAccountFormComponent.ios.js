@@ -3,17 +3,14 @@ import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
-import BigButtonComponent from '../shared/BigButtonComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
+import CreateAccountSaveButtonComponent from './CreateAccountSaveButtonComponent';
 import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
-import audioSources from '../../constants/audio_source_constant';
-import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CreateAccountFormComponent = (props) => {
-  const {t} = useTranslation();
   const [state, setState] = useState({
     gender: 'male',
     age: 0,
@@ -42,7 +39,7 @@ const CreateAccountFormComponent = (props) => {
            />
   }
 
-  const save = () => {
+  const saveUser = () => {
     const user = {
       gender: state.gender,
       age: parseInt(state.age),
@@ -55,15 +52,12 @@ const CreateAccountFormComponent = (props) => {
   }
 
   const renderSaveButton = () => {
-    return <BigButtonComponent label={t('saveAndLogin')} style={{marginTop: getStyleOfDevice(32, 16)}}
-              uuid='123'
-              audio={audioSources["0.13.mp3"]}
+    return <CreateAccountSaveButtonComponent
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-              disabled={!isValid}
-              onPress={() => save()}
-              accessibilityLabel='ប៊ូតុងក្រោមគេ'
-            />
+              isValid={isValid}
+              saveUser={() => saveUser()}
+           />
   }
 
   return <View style={{paddingHorizontal: 16, marginTop: 16}}>

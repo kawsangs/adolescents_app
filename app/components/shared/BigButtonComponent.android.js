@@ -15,7 +15,7 @@ const BigButtonComponent = (props) => {
     if (props.disabled)
       return { bgColor: color.disabledColor, textColor: color.mutedColor };
 
-    return { bgColor: color.bigButtonColor, textColor: color.primaryColor };
+    return { bgColor: props.buttonColor || color.bigButtonColor, textColor: props.textColor || color.primaryColor };
   }
 
   const renderAudioBtn = () => {
@@ -28,6 +28,7 @@ const BigButtonComponent = (props) => {
             playingUuid={props.playingUuid}
             updatePlayingUuid={props.updatePlayingUuid}
             accessibilityLabel={props.accessibilityLabel}
+            iconPrimaryColor={props.iconPrimaryColor}
            />
   }
 

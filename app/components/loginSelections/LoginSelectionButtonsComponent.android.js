@@ -3,23 +3,18 @@ import {useTranslation} from 'react-i18next';
 
 import LoginSelectionButtonComponent from './LoginSelectionButtonComponent';
 import LoginSelectionLineComponent from './LoginSelectionLineComponent';
+import LoginSelectionAnonymousButtonComponent from './LoginSelectionAnonymousButtonComponent';
 import {navigationRef} from '../../navigators/app_navigator';
-import appUserService from '../../services/app_user_service';
 import audioSources from '../../constants/audio_source_constant';
 
 const LoginSelectionButtonsComponent = () => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
 
-  const anonymousUse = () => {
-    appUserService.createAnonymousUser();
-    navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
-  }
-
   return (
     <React.Fragment>
       <LoginSelectionButtonComponent
-        uuid='1'
+        uuid='register-button'
         label={t('register')}
         iconName="user"
         btnStyle={{marginTop: 18}}
@@ -31,16 +26,7 @@ const LoginSelectionButtonsComponent = () => {
         accessibilityLabel='ប៊ូតុងទី1'
       />
       <LoginSelectionLineComponent/>
-      <LoginSelectionButtonComponent
-        uuid='2'
-        label={t('loginAsGuest')}
-        audio={audioSources["0.2.mp3"]}
-        isAnonymous={true}
-        playingUuid={playingUuid}
-        updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-        onPress={() => anonymousUse()}
-        accessibilityLabel='ប៊ូតុងទី2'
-      />
+      <LoginSelectionAnonymousButtonComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
     </React.Fragment>
   )
 }
