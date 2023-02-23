@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
@@ -9,7 +9,7 @@ import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
@@ -19,22 +19,12 @@ const FacilityListViewComponent = () => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
     updateFacilityList(selectedTagUuid);
   }, [filteredProvince]);
-
-  const renderFacilities = () => {
-    return facilities.map((facility, index) => {
-      return <FacilityCardItemComponent key={index} facility={facility}
-                playingUuid={playingUuid}
-                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                containerStyle={{width: '100%'}}
-                accessibilityLabel={`គ្លីនិកទី${index + 1}`}
-             />
-    });
-  }
 
   const updateFacilityList = (tagUuid) => {
     setFacilities(facilityHelper.getFacilities(filteredProvince, tagUuid));
@@ -48,16 +38,37 @@ const FacilityListViewComponent = () => {
            </View>
   }
 
+  const renderFacilityItem = (facility) => {
+    return <FacilityCardItemComponent key={facility.id} facility={facility}
+              playingUuid={playingUuid}
+              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+              containerStyle={{width: '100%'}}
+              accessibilityLabel={facility.name}
+            />
+  }
+
+  const renderList = () => {
+    return <FlatList
+              data={facilities}
+              renderItem={({item}) => renderFacilityItem(item)}
+              keyExtractor={item => item.id}
+              contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom}}
+              refreshing={refreshing}
+              onRefresh={() => {
+                setRefreshing(true)
+                setTimeout(() => setRefreshing(false), 3000)
+              }}
+              onEndReachedThreshold={0.3}
+              onEndReached={() => console.log('=== on end reach ===')}
+           />
+  }
+
   return (
-    <View style={{flexGrow: 1}}>
-      <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      {
-        facilities.length > 0 ?
-          <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
-            { renderFacilities() }
-          </ScrollView>
-        : renderEmptyMessage()
-      }
+    <View style={{flex: 1, flexDirection: 'column'}}>
+      <View style={{paddingLeft: screenHorizontalPadding}}>
+        <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+      </View>
+      {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
   )
 }
