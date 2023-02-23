@@ -33,7 +33,7 @@ const FacilityListMapViewComponent = (props) => {
     const filteredFacilities = facilityHelper.getFacilities(filteredProvince, tagUuid)
     if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
     setFacilities(filteredFacilities);
-    !!scrollViewRef.scrollTo && scrollViewRef.scrollTo({x: 0, animated: true})
+    !!scrollViewRef.scrollToEnd && scrollViewRef.scrollToIndex({index: 0, animated: true})
 
     if (filteredFacilities.length > 0) {
       const mapRegion = mapHelper.getInitLatLng(filteredFacilities, regionOffset);

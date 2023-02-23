@@ -39,7 +39,8 @@ const FacilityListViewComponent = () => {
   }
 
   const renderFacilityItem = (facility) => {
-    return <FacilityCardItemComponent key={facility.id} facility={facility}
+    // return <FacilityCardItemComponent key={facility.id} facility={facility}
+    return <FacilityCardItemComponent facility={facility}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               containerStyle={{width: '100%'}}
@@ -51,7 +52,7 @@ const FacilityListViewComponent = () => {
     return <FlatList
               data={facilities}
               renderItem={({item}) => renderFacilityItem(item)}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.uuid}
               contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom}}
               refreshing={refreshing}
               onRefresh={() => {
