@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, FlatList, RefreshControl, ActivityIndicator} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
@@ -7,9 +7,10 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
+import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
-import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
+import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
@@ -26,8 +27,6 @@ const FacilityListViewComponent = (props) => {
 
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
-  const [refreshing, setRefreshing] = useState(false);
-  const [paginateLoading, setPaginateLoading] = useState(false);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
   let page = 0
 
@@ -55,8 +54,6 @@ const FacilityListViewComponent = (props) => {
   }
 
   const onEndReached = () => {
-    if (!props.hasInternet) return
-
     console.log('=== on end reached === ', page)
     page += 1
     // setRefreshing(true)
@@ -64,9 +61,6 @@ const FacilityListViewComponent = (props) => {
     //   setFacilities(newFacilities)
     //   // setRefreshing(false)
     // }, () => setRefreshing(false))
-
-    setPaginateLoading(true)
-    setTimeout(() => setPaginateLoading(false), 3000)
 
     // if (facilities.length >= allFacilities.length) return
 
@@ -77,31 +71,22 @@ const FacilityListViewComponent = (props) => {
   }
 
   const onRefresh = () => {
-    if (!props.hasInternet) return
-
     console.log('== refresh with internet ==')
-    setRefreshing(true)
     // facilityListingService.syncFacility(0, (newFacilities) => {
     //   setFacilities(newFacilities)
     //   setRefreshing(false)
     // }, () => setRefreshing(false))
-    setTimeout(() => setRefreshing(false), 3000)
-  }
-
-  const renderListFooter = () => {
-    return !paginateLoading ? <View/> : <ActivityIndicator size="large" color={color.whiteColor} style={{marginTop: 10}} />
+    // setTimeout(() => setRefreshing(false), 3000)
   }
 
   const renderList = () => {
-    return <FlatList
+    return <CustomFlatListComponent
               data={facilities}
               renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
               keyExtractor={item => item.uuid}
-              contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 10}}
-              onEndReachedThreshold={0.3}
-              onEndReached={() => onEndReached()}
-              ListFooterComponent={renderListFooter()}
-              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
+              hasInternet={props.hasInternet}
+              endReachedAction={() => onEndReached()}
+              refreshingAction={() => onRefresh()}
            />
   }
 

@@ -19,7 +19,7 @@ const FacilityHorizontalListComponent = (props) => {
   }
 
   return <CustomFlatListComponent
-            ref={ref => props.setScrollViewRef(ref)}
+            setFlatListRef={props.setFlatListRef}
             data={props.facilities}
             renderItem={({item}) => renderFacilityItem(item)}
             keyExtractor={item => item.uuid}
