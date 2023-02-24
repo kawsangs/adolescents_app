@@ -55,9 +55,8 @@ const FacilityListMapViewComponent = (props) => {
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
         <FacilityHorizontalListComponent
           setScrollViewRef={(ref) => setScrollViewRef(ref)}
+          hasInternet={props.hasInternet}
           facilities={facilities}
-          playingUuid={props.playingUuid}
-          updatePlayingUuid={props.updatePlayingUuid}
         />
       </View>
     </View>

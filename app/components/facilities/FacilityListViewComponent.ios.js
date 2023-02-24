@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, FlatList} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
@@ -7,20 +7,18 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityCardItemComponent from './FacilityCardItemComponent';
+import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
 import {screenHorizontalPadding} from '../../constants/component_constant';
-import {scrollViewPaddingBottom} from '../../constants/ios_component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
-const FacilityListViewComponent = () => {
+const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
-  const [playingUuid, setPlayingUuid] = useState(null);
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
-  const [refreshing, setRefreshing] = useState(false);
   const filteredLocation = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
@@ -39,28 +37,24 @@ const FacilityListViewComponent = () => {
            </View>
   }
 
-  const renderFacilityItem = (facility) => {
-    return <FacilityCardItemComponent facility={facility}
-              playingUuid={playingUuid}
-              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-              containerStyle={{width: '100%'}}
-              accessibilityLabel={facility.name}
-            />
+  const onEndReached = () => {
+    console.on('======== on end reached =====')
+    // Todo: sync the facility data from n page
+  }
+
+  const onRefresh = () => {
+    console.log('======== on refresh ====')
+    // Todo: sync the facility data (page 1)
   }
 
   const renderList = () => {
-    return <FlatList
+    return <CustomFlatListComponent
               data={facilities}
-              renderItem={({item}) => renderFacilityItem(item)}
+              renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
               keyExtractor={item => item.uuid}
-              contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: scrollViewPaddingBottom}}
-              refreshing={refreshing}
-              onRefresh={() => {
-                setRefreshing(true)
-                setTimeout(() => setRefreshing(false), 3000)
-              }}
-              onEndReachedThreshold={0.3}
-              onEndReached={() => console.log('=== on end reach ===')}
+              hasInternet={props.hasInternet}
+              endReachedAction={() => onEndReached()}
+              refreshingAction={() => onRefresh()}
            />
   }
 
