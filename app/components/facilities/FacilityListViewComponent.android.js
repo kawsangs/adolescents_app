@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {View, FlatList} from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import {View, FlatList, RefreshControl, ActivityIndicator} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
@@ -13,14 +13,30 @@ import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../co
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import facilityListingService from '../../services/facility_listing_service';
 
-const FacilityListViewComponent = () => {
+// let startIndex = 0;
+// let endIndex = 10;
+
+const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
-  const [playingUuid, setPlayingUuid] = useState(null);
+  // const allFacilities = Facility.getAll()
+  // const [facilities, setFacilities] = useState(facilityListingService.getFacilities(startIndex, endIndex, allFacilities))
+  // const [facilities, setFacilities] = useState([])
+
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [paginateLoading, setPaginateLoading] = useState(false);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
+  let page = 0
+
+  // useEffect(() => {
+  //   console.log('==== Facility did mount ===')
+  //   startIndex = 0
+  //   endIndex = 10
+  //   setFacilities(facilityService.getFacilities(startIndex, endIndex, allFacilities))
+  // }, [])
 
   useEffect(() => {
     updateFacilityList(selectedTagUuid);
@@ -38,29 +54,54 @@ const FacilityListViewComponent = () => {
            </View>
   }
 
-  const renderFacilityItem = (facility) => {
-    // return <FacilityCardItemComponent key={facility.id} facility={facility}
-    return <FacilityCardItemComponent facility={facility}
-              playingUuid={playingUuid}
-              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-              containerStyle={{width: '100%'}}
-              accessibilityLabel={facility.name}
-            />
+  const onEndReached = () => {
+    if (!props.hasInternet) return
+
+    console.log('=== on end reached === ', page)
+    page += 1
+    // setRefreshing(true)
+    // facilityListingService.syncFacility(page, (newFacilities) => {
+    //   setFacilities(newFacilities)
+    //   // setRefreshing(false)
+    // }, () => setRefreshing(false))
+
+    setPaginateLoading(true)
+    setTimeout(() => setPaginateLoading(false), 3000)
+
+    // if (facilities.length >= allFacilities.length) return
+
+    // startIndex = endIndex + 1;
+    // endIndex = endIndex + 7
+    // const newFacilities = [...facilities, ...facilityService.getFacilities(startIndex, endIndex, allFacilities)]
+    // setFacilities(newFacilities)
+  }
+
+  const onRefresh = () => {
+    if (!props.hasInternet) return
+
+    console.log('== refresh with internet ==')
+    setRefreshing(true)
+    // facilityListingService.syncFacility(0, (newFacilities) => {
+    //   setFacilities(newFacilities)
+    //   setRefreshing(false)
+    // }, () => setRefreshing(false))
+    setTimeout(() => setRefreshing(false), 3000)
+  }
+
+  const renderListFooter = () => {
+    return !paginateLoading ? <View/> : <ActivityIndicator size="large" color={color.whiteColor} style={{marginTop: 10}} />
   }
 
   const renderList = () => {
     return <FlatList
               data={facilities}
-              renderItem={({item}) => renderFacilityItem(item)}
+              renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
               keyExtractor={item => item.uuid}
-              contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom}}
-              refreshing={refreshing}
-              onRefresh={() => {
-                setRefreshing(true)
-                setTimeout(() => setRefreshing(false), 3000)
-              }}
+              contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 10}}
               onEndReachedThreshold={0.3}
-              onEndReached={() => console.log('=== on end reach ===')}
+              onEndReached={() => onEndReached()}
+              ListFooterComponent={renderListFooter()}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
            />
   }
 

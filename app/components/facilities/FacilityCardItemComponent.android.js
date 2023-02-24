@@ -25,14 +25,11 @@ const FacilityCardItemComponent = (props) => {
   const renderInfo = () => {
     return <FacilityCardInfoComponent uuid={props.facility.uuid} name={props.facility.name} audio={props.facility.audioSource}
               services={props.facility.services}
-              playingUuid={props.playingUuid}
-              updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={props.accessibilityLabel}
            />
   }
 
   const viewDetail = () => {
-    props.updatePlayingUuid(null);
     visitService.recordVisitFacility(props.facility, () => {
       navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid})
     });

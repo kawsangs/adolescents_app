@@ -38,6 +38,14 @@ class Facility {
     return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }
 
+  static create(data) {
+    BaseModel.create(MODEL, data)
+  }
+
+  static update(uuid, data) {
+    BaseModel.update(MODEL, uuid, data)
+  }
+
   // private method
   static #getFormattedFacilities = () => {
     let formattedFacilities = [];
