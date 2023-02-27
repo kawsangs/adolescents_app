@@ -46,14 +46,19 @@ class Facility {
     BaseModel.update(MODEL, uuid, data)
   }
 
+  static getFormattedData = (facility) => {
+    if (!!facility.id)
+      return {...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids}
+
+    return {...facility, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids}
+  }
+
   // private method
   static #getFormattedFacilities = () => {
     let formattedFacilities = [];
-
     facilities.map(facility => {
-      formattedFacilities.push({...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids});
+      formattedFacilities.push(this.getFormattedData(facility));
     });
-
     return formattedFacilities;
   }
 }

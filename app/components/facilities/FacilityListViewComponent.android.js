@@ -23,7 +23,6 @@ const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
   // const allFacilities = Facility.getAll()
   // const [facilities, setFacilities] = useState(facilityListingService.getFacilities(startIndex, endIndex, allFacilities))
-  // const [facilities, setFacilities] = useState([])
 
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
@@ -56,13 +55,9 @@ const FacilityListViewComponent = (props) => {
   const onEndReached = () => {
     console.log('=== on end reached === ', page)
     page += 1
-    // setRefreshing(true)
-    // facilityListingService.syncFacility(page, (newFacilities) => {
-    //   setFacilities(newFacilities)
-    //   // setRefreshing(false)
-    // }, () => setRefreshing(false))
-
-    // if (facilities.length >= allFacilities.length) return
+    facilityListingService.syncFacility(page, (newFacilities) => {
+      setFacilities(newFacilities)
+    }, () => console.log('==== fetch facility error ===='))
 
     // startIndex = endIndex + 1;
     // endIndex = endIndex + 7
@@ -71,12 +66,9 @@ const FacilityListViewComponent = (props) => {
   }
 
   const onRefresh = () => {
-    console.log('== refresh with internet ==')
-    // facilityListingService.syncFacility(0, (newFacilities) => {
-    //   setFacilities(newFacilities)
-    //   setRefreshing(false)
-    // }, () => setRefreshing(false))
-    // setTimeout(() => setRefreshing(false), 3000)
+    facilityListingService.syncFacility(0, (newFacilities) => {
+      setFacilities(newFacilities)
+    }, () => console.log('==== fetch facility error ===='))
   }
 
   const renderList = () => {
