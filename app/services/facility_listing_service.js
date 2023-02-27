@@ -2,25 +2,22 @@ import FacilityApi from '../api/facilityApi'
 import apiService from './api_service';
 import Facility from '../models/Facility';
 
-const facilityService = (() => {
+const facilityListingService = (() => {
   return {
     getFacilities,
-    syncFacility,
+    syncData,
   }
 
   function getFacilities(startIndex, endIndex, facilities) {
     return facilities.slice(startIndex, endIndex)
   }
 
-  async function syncFacility(page, successCallback, failureCallback) {
+  async function syncData(page, successCallback) {
     const response = await new FacilityApi().load()
     apiService.handleApiResponse(response, (res) => {
       console.log('== sync facility success = ', res.length)
       _handleSaveFacility(res, successCallback)
-    }, (error) => {
-      console.log('== sync facility error = ', error)
-      !!failureCallback && failureCallback();
-    })
+    }, (error) => console.log('== sync facility error = ', error))
   }
 
   // private method
@@ -38,4 +35,4 @@ const facilityService = (() => {
   }
 })()
 
-export default facilityService
+export default facilityListingService

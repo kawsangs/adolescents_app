@@ -17,11 +17,23 @@ class Tag {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
+  static create = (data) => {
+    BaseModel.create(MODEL, this.#getFormattedData(data))
+  }
+
+  static update = (uuid, data) => {
+    BaseModel.update(MODEL, uuid, data)
+  }
+
   // private method
+  static #getFormattedData = (tag) => {
+    return {...tag, uuid: tag.id}
+  }
+
   static #getFormattedTags = () => {
     let formattedTags = [];
     tags.map(tag => {
-      formattedTags.push({...tag, uuid: tag.id});
+      formattedTags.push(this.#getFormattedData(tag));
     })
     return formattedTags;
   }

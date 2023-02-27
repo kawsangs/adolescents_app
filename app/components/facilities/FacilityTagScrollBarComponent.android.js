@@ -6,7 +6,7 @@ import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
-import Tag from '../../models/Tag';
+// import Tag from '../../models/Tag';
 
 const FacilityTagScrollBarComponent = (props) => {
   const [selectedUuid, setSelectedUuid] = useState(null);
@@ -17,7 +17,8 @@ const FacilityTagScrollBarComponent = (props) => {
   }
 
   const renderList = () => {
-    return Tag.getAll().map((tag, index) => {
+    // return Tag.getAll().map((tag, index) => {
+    return props.tags.map((tag, index) => {
       return <TouchableOpacity key={`filter-tag-${index}`} style={[styles.item, selectedUuid == tag.uuid && {backgroundColor: color.secondaryColor}]}
                 onPress={() => toggleFilter(tag)}
              >

@@ -10,11 +10,13 @@ import FacilityCardItemComponent from './FacilityCardItemComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
+import Tag from '../../models/Tag';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import facilityListingService from '../../services/facility_listing_service';
+import tagSyncService from '../../services/tag_sync_service';
 
 // let startIndex = 0;
 // let endIndex = 10;
@@ -24,10 +26,11 @@ const FacilityListViewComponent = (props) => {
   // const allFacilities = Facility.getAll()
   // const [facilities, setFacilities] = useState(facilityListingService.getFacilities(startIndex, endIndex, allFacilities))
 
+  const [tags, setTags] = useState(Tag.getAll());
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
-  let page = 0
+  let page = 1
 
   // useEffect(() => {
   //   console.log('==== Facility did mount ===')
@@ -55,9 +58,7 @@ const FacilityListViewComponent = (props) => {
   const onEndReached = () => {
     console.log('=== on end reached === ', page)
     page += 1
-    facilityListingService.syncFacility(page, (newFacilities) => {
-      setFacilities(newFacilities)
-    }, () => console.log('==== fetch facility error ===='))
+    facilityListingService.syncData(page, (newFacilities) => setFacilities(newFacilities))
 
     // startIndex = endIndex + 1;
     // endIndex = endIndex + 7
@@ -66,9 +67,8 @@ const FacilityListViewComponent = (props) => {
   }
 
   const onRefresh = () => {
-    facilityListingService.syncFacility(0, (newFacilities) => {
-      setFacilities(newFacilities)
-    }, () => console.log('==== fetch facility error ===='))
+    facilityListingService.syncData(1, (newFacilities) => setFacilities(newFacilities))
+    tagSyncService.syncData((newTags) => setTags(newTags))
   }
 
   const renderList = () => {
@@ -85,7 +85,7 @@ const FacilityListViewComponent = (props) => {
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
       <View style={{paddingLeft: screenHorizontalPadding}}>
-        <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+        <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       </View>
       {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
