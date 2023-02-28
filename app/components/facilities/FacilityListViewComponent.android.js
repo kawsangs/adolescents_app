@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
@@ -12,32 +12,24 @@ import color from '../../themes/color';
 import Facility from '../../models/Facility';
 import Tag from '../../models/Tag';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {itemsPerPage} from '../../constants/sync_data_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
-import facilityListingService from '../../services/facility_listing_service';
+import facilitySyncService from '../../services/facility_sync_service';
 import tagSyncService from '../../services/tag_sync_service';
 
-// let startIndex = 0;
-// let endIndex = 10;
+let totalFacilities = 0
+let page = facilityHelper.getStartingPage()
 
 const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
-  // const allFacilities = Facility.getAll()
-  // const [facilities, setFacilities] = useState(facilityListingService.getFacilities(startIndex, endIndex, allFacilities))
-
+  totalFacilities = Facility.getAll().length
+  const [facilities, setFacilities] = useState(Facility.getAll())
   const [tags, setTags] = useState(Tag.getAll());
-  const [facilities, setFacilities] = useState(Facility.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
-  let page = 1
-
-  // useEffect(() => {
-  //   console.log('==== Facility did mount ===')
-  //   startIndex = 0
-  //   endIndex = 10
-  //   setFacilities(facilityService.getFacilities(startIndex, endIndex, allFacilities))
-  // }, [])
+  const listRef = useRef();
 
   useEffect(() => {
     updateFacilityList(selectedTagUuid);
@@ -56,25 +48,27 @@ const FacilityListViewComponent = (props) => {
   }
 
   const onEndReached = () => {
-    console.log('=== on end reached === ', page)
-    page += 1
-    facilityListingService.syncData(page, (newFacilities) => setFacilities(newFacilities))
+    if (page > 1 && (page * itemsPerPage >= totalFacilities))
+      return listRef.current?.stopPaginateLoading()
 
-    // startIndex = endIndex + 1;
-    // endIndex = endIndex + 7
-    // const newFacilities = [...facilities, ...facilityService.getFacilities(startIndex, endIndex, allFacilities)]
-    // setFacilities(newFacilities)
+    page = totalFacilities < itemsPerPage ? 1 : page + 1
+    facilitySyncService.syncData(page, (count) => {
+      totalFacilities = count;
+      listRef.current?.stopPaginateLoading()
+    }, () => listRef.current?.stopPaginateLoading())
   }
 
   const onRefresh = () => {
-    facilityListingService.syncData(1, (newFacilities) => setFacilities(newFacilities))
-    tagSyncService.syncData((newTags) => setTags(newTags))
+    facilitySyncService.syncData(1)
+    tagSyncService.syncAllData((newTags) => setTags(newTags))
+    listRef.current?.stopRefreshLoading()
   }
 
   const renderList = () => {
     return <CustomFlatListComponent
+              ref={listRef}
               data={facilities}
-              renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
+              renderItem={({item, index}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
               keyExtractor={item => item.uuid}
               hasInternet={props.hasInternet}
               endReachedAction={() => onEndReached()}
@@ -84,9 +78,7 @@ const FacilityListViewComponent = (props) => {
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <View style={{paddingLeft: screenHorizontalPadding}}>
-        <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      </View>
+      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} containerStyle={{paddingRight: screenHorizontalPadding}}/>
       {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
   )

@@ -3,12 +3,12 @@ import urlUtil from '../utils/url_util';
 import { environment } from '../config/environment';
 
 class FacilityApi {
-  load = () => {
+  load = (page) => {
     const url = urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('facilities'))
     const options = {
       method: 'GET',
       params: {
-        page: 1
+        page: page
       }
     }
     return httpRequest.send(url, options, environment.apiKey, 'json')

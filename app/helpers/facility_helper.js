@@ -1,8 +1,10 @@
 import Facility from '../models/Facility';
+import {itemsPerPage} from '../constants/sync_data_constant';
 
 const facilityHelper = (() => {
   return {
     getFacilities,
+    getStartingPage,
   }
 
   function getFacilities(location, tagUuid) {
@@ -15,6 +17,11 @@ const facilityHelper = (() => {
       return filteredFacilities.filter(facility => facility.district_id == location.district);
 
     return filteredFacilities.filter(facility => facility.province_id == location.province);
+  }
+
+  function getStartingPage() {
+    const numOfLocalFacility = Facility.getAll().length
+    return numOfLocalFacility == 0 ? 1 : Math.ceil(numOfLocalFacility/itemsPerPage)
   }
 })()
 

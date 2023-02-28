@@ -6,6 +6,7 @@ import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityHorizontalListComponent from '../shared/FacilityHorizontalListComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
+import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
 
@@ -47,11 +48,7 @@ const FacilityListMapViewComponent = (props) => {
       <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
         currentRegion={mapRegion} markers={markers}
       />
-
-      <FacilityTagScrollBarComponent updateFacilityList={(tagUuid) => updateFacilityList(tagUuid)}
-        containerStyle={{paddingHorizontal: 16}}
-      />
-
+      <FacilityTagScrollBarComponent tags={Tag.getAll()} updateFacilityList={(tagUuid) => updateFacilityList(tagUuid)} hasInternet={props.hasInternet}/>
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
         <FacilityHorizontalListComponent
           setFlatListRef={(ref) => setFlatListRef(ref)}

@@ -1,21 +1,33 @@
 import TagApi from '../api/tagApi';
 import apiService from './api_service';
 import Tag from '../models/Tag';
+import {itemsPerPage} from '../constants/sync_data_constant';
 
 const tagSyncService = (() => {
   return {
-    syncData
+    syncAllData
   }
 
-  async function syncData(successCallback) {
-    const response = await new TagApi().load()
-    apiService.handleApiResponse(response, (res) => {
-      console.log('== sync tag success = ', res)
-      _handleSaveTag(res, successCallback)
-    }, (error) => console.log('== sync tag error = ', error))
+  function syncAllData(successCallback, failureCallback) {
+    _syncByPage(1, 1, successCallback, failureCallback)
   }
 
   // private method
+  async function _syncByPage(page, totalPage, successCallback, failureCallback) {
+    if (page > totalPage) {
+      !!successCallback && successCallback(Tag.getAll())
+      return
+    }
+
+    const response = await new TagApi().load(page)
+    apiService.handleApiResponse(response, (res) => {
+      const allPage = Math.ceil(res.pagy.count / itemsPerPage)
+      _handleSaveTag(res.tags, () => {
+        _syncByPage(page+1, allPage, successCallback)
+      })
+    }, (error) => !!failureCallback && failureCallback())
+  }
+
   function _handleSaveTag(tags, callback) {
     tags.map(tag => {
       if (!!Tag.findByUuid(tag.id)) {
@@ -25,7 +37,7 @@ const tagSyncService = (() => {
       else
         Tag.create(tag)
     })
-    !!callback && callback(Tag.getAll())
+    !!callback && callback()
   }
 })()
 

@@ -3,9 +3,15 @@ import urlUtil from '../utils/url_util';
 import { environment } from '../config/environment';
 
 class TagApi {
-  load = () => {
+  load = (page) => {
     const url = urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('tags'))
-    return httpRequest.send(url, {method: 'GET'}, environment.apiKey, 'json')
+    const options = {
+      method: 'GET',
+      params: {
+        page: page
+      }
+    }
+    return httpRequest.send(url, options, environment.apiKey, 'json')
   }
 }
 

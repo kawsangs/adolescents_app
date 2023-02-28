@@ -4,16 +4,31 @@ import {View, FlatList, RefreshControl, ActivityIndicator} from 'react-native';
 import color from '../../themes/color';
 import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
 
-const CustomFlatListComponent = (props) => {
+const {useImperativeHandle} = React
+
+const CustomFlatListComponent = React.forwardRef((props, ref) => {
   const [refreshing, setRefreshing] = useState(false);
   const [paginateLoading, setPaginateLoading] = useState(false);
   const onEndReachedCalledDuringMomentum = useRef(false)
+
+  const stopPaginateLoading = () => {
+    setPaginateLoading(false)
+  }
+
+  const stopRefreshLoading = () => {
+    setRefreshing(false)
+  }
+
+  // To enable the parent component to call below functions from Ref
+  useImperativeHandle(ref, () => ({
+    stopPaginateLoading,
+    stopRefreshLoading
+  }))
 
   const onEndReached = () => {
     if (!props.hasInternet || onEndReachedCalledDuringMomentum.current) return
 
     setPaginateLoading(true)
-    setTimeout(() => setPaginateLoading(false), 3000)
     onEndReachedCalledDuringMomentum.current = true
     !!props.endReachedAction && props.endReachedAction()
   }
@@ -22,7 +37,6 @@ const CustomFlatListComponent = (props) => {
     if (!props.hasInternet) return
 
     setRefreshing(true)
-    setTimeout(() => setRefreshing(false), 3000)
     !!props.refreshingAction && props.refreshingAction()
   }
 
@@ -35,16 +49,18 @@ const CustomFlatListComponent = (props) => {
               </View>
   }
 
-  return <FlatList
-            {...props}
-            ref={ref => !!props.setFlatListRef && props.setFlatListRef(ref)}
-            onEndReachedThreshold={0.3}
-            onEndReached={() => onEndReached()}
-            contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 10}}
-            ListFooterComponent={renderListFooter()}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
-            onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}
-          />
-}
+  return <View ref={ref}>
+            <FlatList
+              {...props}
+              ref={ref => !!props.setFlatListRef && props.setFlatListRef(ref)}
+              onEndReachedThreshold={0.3}
+              onEndReached={() => onEndReached()}
+              contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 50}}
+              ListFooterComponent={renderListFooter()}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
+              onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}
+            />
+        </View>
+})
 
 export default CustomFlatListComponent

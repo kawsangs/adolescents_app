@@ -4,8 +4,7 @@ import tags from '../db/json/tags.json';
 const MODEL = "Tag";
 
 class Tag {
-  static seedData = () => {
-    BaseModel.deleteAll(MODEL);
+  static seedData = async () => {
     BaseModel.seedData(MODEL, this.#getFormattedTags());
   }
 
