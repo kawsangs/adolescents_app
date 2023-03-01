@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {View, Dimensions} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
-import FacilityHorizontalListComponent from '../shared/FacilityHorizontalListComponent';
+import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import MapComponent from '../shared/MapComponent';
 import Facility from '../../models/Facility';
 import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
+
+import {screenHorizontalPadding} from '../../constants/component_constant';
 
 const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -50,10 +52,10 @@ const FacilityListMapViewComponent = (props) => {
       />
       <FacilityTagScrollBarComponent tags={Tag.getAll()} updateFacilityList={(tagUuid) => updateFacilityList(tagUuid)} hasInternet={props.hasInternet}/>
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <FacilityHorizontalListComponent
+        <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}
-          hasInternet={props.hasInternet}
-          facilities={facilities}
+          itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
+          customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
         />
       </View>
     </View>

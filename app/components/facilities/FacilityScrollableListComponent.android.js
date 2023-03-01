@@ -1,25 +1,19 @@
 import React, {useRef} from 'react';
-import {Dimensions} from 'react-native';
 
+import FacilityCardItemComponent from './FacilityCardItemComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
-import FacilityCardItemComponent from '../facilities/FacilityCardItemComponent';
-import {screenHorizontalPadding} from '../../constants/component_constant';
 import {itemsPerPage} from '../../constants/sync_data_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import facilitySyncService from '../../services/facility_sync_service';
+import tagSyncService from '../../services/tag_sync_service';
+import Facility from '../../models/Facility';
 
 let totalFacilities = 0
 let page = facilityHelper.getStartingPage()
 
-const FacilityHorizontalListComponent = (props) => {
+const FacilityScollableListComponent = (props) => {
+  totalFacilities = Facility.getAll().length
   const listRef = useRef();
-  const renderFacilityItem = (facility) => {
-    return <FacilityCardItemComponent facility={facility}
-              containerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
-              accessibilityLabel={facility.name}
-            />
-  }
-
   const onEndReached = () => {
     if (page > 1 && (page * itemsPerPage >= totalFacilities))
       return listRef.current?.stopPaginateLoading()
@@ -31,17 +25,24 @@ const FacilityHorizontalListComponent = (props) => {
     }, () => listRef.current?.stopPaginateLoading())
   }
 
+  const onRefresh = () => {
+    facilitySyncService.syncData(1)
+    tagSyncService.syncAllData()
+    listRef.current?.stopRefreshLoading()
+  }
+
   return <CustomFlatListComponent
-            ref={listRef}
             setFlatListRef={props.setFlatListRef}
+            ref={listRef}
             data={props.facilities}
-            renderItem={({item}) => renderFacilityItem(item)}
+            renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={[{width: '100%'}, props.itemContainerStyle]} accessibilityLabel={item.name} />}
             keyExtractor={item => item.uuid}
-            horizontal={true}
             hasInternet={props.hasInternet}
-            customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
+            horizontal={props.horizontal}
             endReachedAction={() => onEndReached()}
+            refreshingAction={() => !props.horizontal && onRefresh()}
+            customContentContainerStyle={props.customContentContainerStyle}
           />
 }
 
-export default FacilityHorizontalListComponent;
+export default FacilityScollableListComponent;
