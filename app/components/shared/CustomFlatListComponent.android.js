@@ -43,9 +43,9 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
   const renderListFooter = () => {
     if (!paginateLoading) return <View/>
 
-    return !props.horizontal ? <ActivityIndicator size="large" color={color.whiteColor} style={{marginTop: 10}} />
+    return !props.horizontal ? <ActivityIndicator size={props.isSmallLoading ? 'small' : 'large'} color={color.whiteColor} style={{marginTop: 10}} />
             : <View style={{height: '100%', justifyContent: 'center'}}>
-                <ActivityIndicator size="large" color={color.whiteColor} />
+                <ActivityIndicator size={props.isSmallLoading ? 'small' : 'large'} color={color.whiteColor} />
               </View>
   }
 

@@ -9,7 +9,6 @@ import Facility from '../../models/Facility';
 import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
-
 import {screenHorizontalPadding} from '../../constants/component_constant';
 
 const FacilityListMapViewComponent = (props) => {
@@ -35,8 +34,8 @@ const FacilityListMapViewComponent = (props) => {
   const updateFacilityList = (tagUuid) => {
     const filteredFacilities = facilityHelper.getFacilities(filteredProvince, tagUuid)
     if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
+    (!!flatListRef.scrollToEnd && filteredFacilities.length > 0 && facilities.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
     setFacilities(filteredFacilities);
-    !!flatListRef.scrollToEnd && flatListRef.scrollToIndex({index: 0, animated: true})
 
     if (filteredFacilities.length > 0) {
       const mapRegion = mapHelper.getInitLatLng(filteredFacilities, regionOffset);

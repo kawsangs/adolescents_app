@@ -13,12 +13,8 @@ const schemaV6 = {
   schemaVersion: 6,
   onMigration: (oldRealm, newRealm) => {
     if (oldRealm.schemaVersion < 6) {
-      const oldObjects = oldRealm.objects('Facility');
-      const newObjects = newRealm.objects('Facility');
-
-      for (const index in oldObjects) {
-        newObjects[index].logo = !oldObjects[index].logo ? '' : oldObjects[index].logo;
-      }
+      newRealm.deleteModel('Facility');
+      newRealm.deleteModal('Tag');
     }
   },
 }

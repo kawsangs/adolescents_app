@@ -39,7 +39,7 @@ const FacilityTagScrollBarComponent = (props) => {
     }, () => listRef.current?.stopPaginateLoading())
   }
 
-  return <View style={{paddingLeft: screenHorizontalPadding, height: isLowPixelDensityDevice() ? 54 : 68}}>
+  return <View style={[{paddingLeft: screenHorizontalPadding, justifyContent: 'center', height: isLowPixelDensityDevice() ? 54 : 68}, props.containerStyle]}>
             <CustomFlatListComponent
               ref={listRef}
               data={props.tags}
@@ -48,7 +48,8 @@ const FacilityTagScrollBarComponent = (props) => {
               horizontal={true}
               hasInternet={props.hasInternet}
               showsHorizontalScrollIndicator={false}
-              customContentContainerStyle={[{flexDirection: 'row', marginTop: 8, paddingRight: 4, marginBottom: 5, borderWidth: 1, borderColor: 'black'}, props.containerStyle]}
+              isSmallLoading={true}
+              customContentContainerStyle={[{flexDirection: 'row', paddingRight: 4, alignItems: 'center'}, props.contentContainerStyle]}
               endReachedAction={() => onEndReached()}
             />
          </View>

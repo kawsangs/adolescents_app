@@ -6,10 +6,10 @@ import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
-import FacilityCardItemComponent from './FacilityCardItemComponent';
-import CustomFlatListComponent from '../shared/CustomFlatListComponent';
+import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
+import Tag from '../../models/Tag';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
@@ -18,6 +18,7 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
   const [facilities, setFacilities] = useState(Facility.getAll());
+  const [tags] = useState(Tag.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredLocation = useSelector(state => state.filterFacilityLocation.value);
 
@@ -37,32 +38,13 @@ const FacilityListViewComponent = (props) => {
            </View>
   }
 
-  const onEndReached = () => {
-    console.on('======== on end reached =====')
-    // Todo: sync the facility data from n page
-  }
-
-  const onRefresh = () => {
-    console.log('======== on refresh ====')
-    // Todo: sync the facility data (page 1)
-  }
-
   const renderList = () => {
-    return <CustomFlatListComponent
-              data={facilities}
-              renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={{width: '100%'}} accessibilityLabel={item.name} />}
-              keyExtractor={item => item.uuid}
-              hasInternet={props.hasInternet}
-              endReachedAction={() => onEndReached()}
-              refreshingAction={() => onRefresh()}
-           />
+    return <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet}/>
   }
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <View style={{paddingLeft: screenHorizontalPadding}}>
-        <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      </View>
+      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} contentContainerStyle={{paddingRight: screenHorizontalPadding}}/>
       {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
   )

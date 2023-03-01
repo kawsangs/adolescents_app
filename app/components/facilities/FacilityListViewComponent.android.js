@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
-
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
 import Tag from '../../models/Tag';
@@ -40,16 +39,12 @@ const FacilityListViewComponent = (props) => {
   }
 
   const renderList = () => {
-    return <FacilityScrollableListComponent
-              setFlatListRef={props.setFlatListRef}
-              facilities={facilities}
-              hasInternet={props.hasInternet}
-           />
+    return <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet}/>
   }
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} containerStyle={{paddingRight: screenHorizontalPadding}}/>
+      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} contentContainerStyle={{paddingRight: screenHorizontalPadding}}/>
       {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
   )
