@@ -9,4 +9,5 @@ export const schemaNames = [
   'Option',
   'SearchHistory',
   'Tag',
+  'FacilityImage'
 ];
