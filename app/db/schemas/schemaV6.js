@@ -7,7 +7,7 @@ import {schemaNames} from '../../constants/schema_constant';
 const changedSchemas = [
   { label: schemaNames[1], data: Category },
   { label: schemaNames[3], data: Facility },
-  { label: schemaNames[9], data: Tag }
+  { label: schemaNames[10], data: Tag }
 ];
 
 const schemaV6 = {

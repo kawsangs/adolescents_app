@@ -1,6 +1,8 @@
 import FacilityApi from '../api/facilityApi'
 import apiService from './api_service';
+import fileDownloadService from './file_download_service';
 import Facility from '../models/Facility';
+import FacilityImage from '../models/FacilityImage';
 
 const facilityListingService = (() => {
   return {
@@ -11,18 +13,35 @@ const facilityListingService = (() => {
     const response = await new FacilityApi().load(page)
     apiService.handleApiResponse(response, (res) => {
       _handleSaveFacility(res.facilities)
-      !!successCallback && successCallback(res.pagy.count)
+      _handleDownloadLogo(0, res.facilities, () => {
+        !!successCallback && successCallback(res.pagy.count)
+      })
     }, (error) => !!failureCallback && failureCallback())
   }
 
   // private method
   function _handleSaveFacility(facilities) {
-    facilities.map(facility => {
-      if (!!Facility.findByUuid(facility.id))
-        Facility.update(facility.id, facility)
-      else
-        Facility.create(facility)
+    facilities.map((facility, index) => {
+      !!Facility.findByUuid(facility.id) ? Facility.update(facility.id, facility) : Facility.create(facility)
     });
+  }
+
+  function _handleDownloadLogo(index, facilities, callback) {
+    if (index >= facilities.length)
+      return !!callback && callback();
+
+    const facility = facilities[index]
+    if (!!facility.logo && !FacilityImage.isFileNameExisted(facility.logo)) {
+      fileDownloadService.download(facility.logo, (filename, filePath, isNewFile) => {
+        Facility.update(facility.id, {local_logo: filePath})
+        !!isNewFile && FacilityImage.create({name: filename, path: filePath})
+        _handleDownloadLogo(index + 1, facilities, callback)
+      })
+    }
+    else {
+      Facility.update(facility.id, {local_logo: FacilityImage.getImagePath(facility.logo)})
+      _handleDownloadLogo(index + 1, facilities, callback)
+    }
   }
 })()
 

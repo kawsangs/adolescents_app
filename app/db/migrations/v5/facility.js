@@ -25,7 +25,8 @@ const FacilitySchema = {
     province_id: 'string?',
     district_id: 'string?',
     tags: {type: 'string[]', optional: true},
-    logo: 'string?'
+    logo: 'string?',
+    local_logo: 'string?'
   }
 }
 

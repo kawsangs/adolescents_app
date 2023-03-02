@@ -22,13 +22,16 @@ const FacilityScollableListComponent = (props) => {
     facilitySyncService.syncData(page, (count) => {
       totalFacilities = count;
       listRef.current?.stopPaginateLoading()
+      props.reloadFacilityImages()
     }, () => listRef.current?.stopPaginateLoading())
   }
 
   const onRefresh = () => {
-    facilitySyncService.syncData(1)
     tagSyncService.syncAllData()
-    listRef.current?.stopRefreshLoading()
+    facilitySyncService.syncData(1, () => {
+      listRef.current?.stopRefreshLoading()
+      props.reloadFacilityImages()
+    })
   }
 
   return <CustomFlatListComponent

@@ -22,20 +22,22 @@ const FacilityScollableListComponent = (props) => {
     facilitySyncService.syncData(page, (count) => {
       totalFacilities = count;
       listRef.current?.stopPaginateLoading()
-    }, () => listRef.current?.stopPaginateLoading())
+    }, () => props.reloadFacilityImages(), () => listRef.current?.stopPaginateLoading())
   }
 
   const onRefresh = () => {
-    facilitySyncService.syncData(1)
     tagSyncService.syncAllData()
-    listRef.current?.stopRefreshLoading()
+    facilitySyncService.syncData(1, () => {
+      listRef.current?.stopRefreshLoading()
+      props.reloadFacilityImages()
+    })
   }
 
   return <CustomFlatListComponent
             setFlatListRef={props.setFlatListRef}
             ref={listRef}
             data={props.facilities}
-            renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={[{width: '100%'}, props.itemContainerStyle]} accessibilityLabel={item.name} />}
+            renderItem={({item}) => <FacilityCardItemComponent facility={item} facilityImages={props.facilityImages} containerStyle={[{width: '100%'}, props.itemContainerStyle]} accessibilityLabel={item.name} />}
             keyExtractor={item => item.uuid}
             hasInternet={props.hasInternet}
             horizontal={props.horizontal}
