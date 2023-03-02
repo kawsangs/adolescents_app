@@ -9,14 +9,16 @@ import { cardElevation, cardBorderRadius } from '../../constants/component_const
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
+import FacilityImage from '../../models/FacilityImage';
 
 const FacilityCardItemComponent = (props) => {
   const renderImage = () => {
+    const logoPath =  FacilityImage.getImagePath(props.facility.logo)
     return (
       <View style={{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}}>
-        {/* { !!props.facility.local_logo ? <ImageComponent source={{uri: props.facility.local_logo}} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
+        { !!logoPath ? <ImageComponent source={{uri: logoPath}} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
           : <EmptyImageComponent/>
-        } */}
+        }
       </View>
     )
   }

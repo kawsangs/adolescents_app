@@ -10,9 +10,9 @@ const seedDataService = (() => {
   }
 
   function seedToRealm() {
-    // Tag.getAll().length == 0 && Tag.seedData();
+    Tag.getAll().length == 0 && Tag.seedData();
     Category.seedData();
-    Facility.seedData();
+    Facility.getAll().length == 0 && Facility.seedData();
     Video.seedData();
     topicSeedDataService.seedToRealm();
   }

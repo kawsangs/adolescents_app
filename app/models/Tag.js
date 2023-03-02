@@ -9,8 +9,7 @@ class Tag {
   }
 
   static getAll = () => {
-    // return BaseModel.getAll(MODEL).sorted('display_order', false);
-    return BaseModel.getAll(MODEL);
+    return BaseModel.getAll(MODEL).sorted('display_order', false);
   }
 
   static findByUuid = (uuid) => {

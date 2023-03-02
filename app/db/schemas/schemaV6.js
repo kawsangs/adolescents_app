@@ -15,8 +15,10 @@ const schemaV6 = {
   schemaVersion: 6,
   onMigration: (oldRealm, newRealm) => {
     if (oldRealm.schemaVersion < 6) {
-      newRealm.deleteModel('Facility');
-      newRealm.deleteModal('Tag');
+      const facilities = newRealm.objects('Facility')
+      const tags = newRealm.objects('Tag')
+      newRealm.delete(facilities)
+      newRealm.delete(tags)
     }
   },
 }
