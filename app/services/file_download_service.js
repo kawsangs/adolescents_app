@@ -4,22 +4,24 @@ import fileUtil from '../utils/file_util';
 
 const fileDownloadService = (() => {
   return {
-    download
+    download,
   }
 
   async function download(filePath, successCallback, failureCallback = null) {
     const filename = fileUtil.getFilenameFromUrl(filePath)
     const options = {
       fromUrl: urlUtil.getAbsoluteUrl(filePath),
-      toFile: `${RNFS.DocumentDirectoryPath}/${filename}`
+      toFile: `${RNFS.DocumentDirectoryPath}/${filename}`,
+      fileCache: true
     }
 
     if (await RNFS.exists(options.toFile))
-      return !!successCallback && successCallback(filename, `file://${options.toFile}`, false);   // return (filename, filePath, isNewFile)
+      return !!successCallback && successCallback(filename, false);   // return (filename, isNewFile)
 
     await RNFS.downloadFile(options).promise.then(res => {
-      !!successCallback && successCallback(filename, `file://${options.toFile}`, true)
+      !!successCallback && successCallback(filename, true)
     }).catch(err => {
+      console.log('download file error = ', err)
       !!failureCallback && failureCallback()
     })
   }

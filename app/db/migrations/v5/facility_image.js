@@ -5,8 +5,7 @@ const FacilityImageSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    name: 'string',
-    path: 'string'
+    name: 'string'
   }
 }
 

@@ -1,3 +1,4 @@
+import RNFS from 'react-native-fs';
 import BaseModel from './BaseModel';
 import fileUtil from '../utils/file_util';
 import uuidv4 from '../utils/uuidv4_util';
@@ -24,8 +25,8 @@ class FacilityImage {
   static getImagePath(fileUrl) {
     if (!fileUrl) return null;
 
-    const image = this.findByName(fileUtil.getFilenameFromUrl(fileUrl))
-    return !!image ? image.path : null
+    const facilityImage = this.findByName(fileUtil.getFilenameFromUrl(fileUrl))
+    return !!facilityImage ? `file://${RNFS.DocumentDirectoryPath}/${facilityImage.name}` : null
   }
 }
 

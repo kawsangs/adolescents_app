@@ -32,8 +32,8 @@ const facilityListingService = (() => {
 
     const facility = facilities[index]
     if (!!facility.logo && !FacilityImage.isFileNameExisted(facility.logo)) {
-      fileDownloadService.download(facility.logo, (filename, filePath, isNewFile) => {
-        !!isNewFile && FacilityImage.create({name: filename, path: filePath})
+      fileDownloadService.download(facility.logo, (filename, isNewFile) => {
+        !!isNewFile && FacilityImage.create({name: filename})
         _handleDownloadLogo(index + 1, facilities, callback)
       })
     }
