@@ -22,7 +22,7 @@ const ProfileMainComponent = (props) => {
           label='ចាប់ផ្ដើមសាជាថ្មី'
           uuid='reset-button'
           style={{marginBottom: 16}}
-          audio={null}
+          audio={audioSources['0.43.mp3']}
           playingUuid={props.playingUuid}
           updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
           onPress={() => onPress()}
