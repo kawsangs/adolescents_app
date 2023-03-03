@@ -24,7 +24,7 @@ const imageSources = {
   sti_virus: require("../assets/images/categories/sti_virus.png"),
   understanding_gender: require("../assets/images/categories/understanding_gender.png"),
   violence_emotional_control: require("../assets/images/categories/violence_and_emotional_control.png"),
-  rhac: require("../assets/images/rhac_logo.jpeg"),
+  rhac: require("../assets/images/rhac_logo.png"),
   marie_stopes: require("../assets/images/marie_stopes_logo.png"),
   chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg") 
 }
