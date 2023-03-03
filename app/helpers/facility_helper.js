@@ -21,7 +21,7 @@ const facilityHelper = (() => {
 
   function getStartingPage() {
     const numOfLocalFacility = Facility.getAll().length
-    return numOfLocalFacility == 0 ? 1 : Math.ceil(numOfLocalFacility/itemsPerPage)
+    return numOfLocalFacility == 0 ? 1 : Math.floor(numOfLocalFacility/itemsPerPage)
   }
 })()
 

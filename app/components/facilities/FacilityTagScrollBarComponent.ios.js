@@ -22,9 +22,7 @@ const FacilityTagScrollBarComponent = (props) => {
   }
 
   const renderItem = (tag) => {
-    return <TouchableOpacity style={[styles.item, selectedUuid == tag.uuid && {backgroundColor: color.secondaryColor}]}
-              onPress={() => toggleFilter(tag)}
-           >
+    return <TouchableOpacity style={[styles.item, selectedUuid == tag.uuid && {backgroundColor: color.secondaryColor}]} onPress={() => toggleFilter(tag)}>
               <Text style={[styles.label, selectedUuid == tag.uuid && {color: color.whiteColor}]}>{tag.name}</Text>
            </TouchableOpacity>
   }

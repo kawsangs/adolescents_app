@@ -26,7 +26,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
   }))
 
   const onEndReached = () => {
-    if (!props.hasInternet || onEndReachedCalledDuringMomentum.current) return
+    if (!props.hasInternet || onEndReachedCalledDuringMomentum.current || paginateLoading) return
 
     setPaginateLoading(true)
     onEndReachedCalledDuringMomentum.current = true
