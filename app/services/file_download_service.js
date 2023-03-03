@@ -21,7 +21,6 @@ const fileDownloadService = (() => {
     await RNFS.downloadFile(options).promise.then(res => {
       !!successCallback && successCallback(filename, true)
     }).catch(err => {
-      console.log('download file error = ', err)
       !!failureCallback && failureCallback()
     })
   }

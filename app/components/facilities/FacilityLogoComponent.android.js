@@ -16,12 +16,12 @@ const FacilityLogoComponent = (props) => {
       if (props.facility.name.includes(defaultFacility.name))
         logo = defaultFacility.logo
     })
-    return !!logo ? <ImageComponent source={logo} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} /> : <EmptyImageComponent/>
+    return !!logo ? <ImageComponent source={logo} resizeMode="contain" imageStyle={[styles.image, props.customImageStyle]} emptyStyle={styles.emptyView} /> : <EmptyImageComponent iconContainerStyle={props.emptyIconContainerStyle}/>
   }
 
   return (
       <View style={{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}}>
-        { !!logoPath ? <ImageComponent source={{uri: logoPath}} resizeMode="contain" imageStyle={styles.image} emptyStyle={styles.emptyView} />
+        { !!logoPath ? <ImageComponent source={{uri: logoPath}} resizeMode="contain" imageStyle={[styles.image, props.customImageStyle]} emptyStyle={styles.emptyView} />
           : renderDefaultImage()
         }
       </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   image: {
     marginTop: -2,
     width: '70%',
-    height: '70%'
+    height: '70%',
   },
   emptyView: {
     borderTopLeftRadius: cardBorderRadius,
