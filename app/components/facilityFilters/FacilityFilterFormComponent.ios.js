@@ -9,6 +9,7 @@ import userHelper from '../../helpers/user_helper';
 import locationHelper from '../../helpers/location_helper';
 import {navigationRef} from '../../navigators/app_navigator';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import audioSources from '../../constants/audio_source_constant';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {storeSelectedLocation, resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
@@ -48,7 +49,8 @@ const FacilityFilterFormComponent = (props) => {
               selectedItem={province}
               onSelectItem={(item) => onSelectProvince(item)}
               pickerUuid='clinic-province-picker'
-              playingUuid={props.playingUuid}
+              placeholderAudio={audioSources['0.8.mp3']}
+              playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               containerStyle={{marginTop: 16}}
               placeholderStyle={{paddingLeft: 16}}
@@ -64,7 +66,7 @@ const FacilityFilterFormComponent = (props) => {
               selectedItem={district}
               onSelectItem={(item) => setDistrict(item)}
               pickerUuid='clinic-district-picker'
-              playingUuid={props.playingUuid}
+              playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               containerStyle={{marginTop: 22}}
               placeholderStyle={{paddingLeft: 16}}
@@ -88,7 +90,7 @@ const FacilityFilterFormComponent = (props) => {
   const renderSaveBtn = () => {
     return <BigButtonComponent label={t('search')}
               uuid='filter-btn'
-              audio={null}
+              audio={audioSources['0.41.mp3']}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               onPress={() => applyFilter()}

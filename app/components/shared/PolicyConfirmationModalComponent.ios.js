@@ -48,7 +48,7 @@ const PolicyConfirmationModalComponent = (props) => {
 
   const renderAudioBtn = () => {
     return <CustomAudioPlayerButtonComponent
-              audio={null}
+              audio={audioSources['0.39.mp3']}
               itemUuid='privacy-policy-terms'
               buttonColor="transparent"
               containerStyle={styles.titleAudioBtn}
