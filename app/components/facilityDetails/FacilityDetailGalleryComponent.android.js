@@ -1,5 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import FacilityLogoComponent from '../facilities/FacilityLogoComponent';
 import Facility from '../../models/Facility';
