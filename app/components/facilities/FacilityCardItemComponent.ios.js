@@ -7,6 +7,7 @@ import FacilityLogoComponent from './FacilityLogoComponent';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const FacilityCardItemComponent = (props) => {
   const renderInfo = () => {
@@ -24,7 +25,7 @@ const FacilityCardItemComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail()}
-      style={[{borderRadius: cardBorderRadius, height: 90, marginTop: 11}, props.containerStyle]}
+      style={[{borderRadius: cardBorderRadius, height: getStyleOfDevice(100, 90), marginTop: 11}, props.containerStyle]}
     >
       <View style={{flexDirection: 'row', flexGrow: 1}}>
         <FacilityLogoComponent facility={props.facility} />

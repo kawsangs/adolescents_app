@@ -5,11 +5,12 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
-import {cardTitleFontSize, descriptionFontSize} from '../../constants/component_constant';
+import {cardTitleFontSize} from '../../constants/component_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {largeFontSize, mediumFontSize} from '../../utils/font_size_util';
 
 const FacilityCardInfoComponent = (props) => {
+  const [titleLine, setTitleLine] = React.useState(0);
   const renderServices = () => {
     if (props.services.length == 0) return;
 
@@ -20,13 +21,17 @@ const FacilityCardInfoComponent = (props) => {
     return <Text style={{color: '#b5b5b5', flex: 1, fontSize: mediumFontSize(), marginTop: 2}} numberOfLines={1}>{label}</Text>
   }
 
+  const onTextLayout = React.useCallback(e => {
+    setTitleLine(e.nativeEvent.lines.length)
+  }, []);
+
   return (
     <View style={{flex: 4, flexDirection: 'row', paddingRight: 4}}>
-      <View style={{flex: 1, paddingTop: 2, flexDirection: 'column'}}>
-        <View style={{flexDirection: 'row', alignItems: 'center', flex: 1.5}}>
-          <BoldLabelComponent label={props.name} numberOfLines={2} style={styles.title} />
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={{flexDirection: 'row'}}>
+          <BoldLabelComponent label={props.name} numberOfLines={2} style={[styles.title, titleLine > 1 && {lineHeight: getStyleOfDevice(29, 23)}]} onTextLayout={onTextLayout} />
         </View>
-        <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 8}}>
+        <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
           {renderServices()}
         </View>
       </View>
@@ -36,12 +41,6 @@ const FacilityCardInfoComponent = (props) => {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontSize: descriptionFontSize,
-    flex: 1,
-    lineHeight: getStyleOfDevice(27, 25),
-    marginRight: 8,
-  },
   viewRouteLabel: {
     fontSize: largeFontSize(),
     marginLeft: 12

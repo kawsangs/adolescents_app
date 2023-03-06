@@ -31,8 +31,8 @@ const FacilityLogoComponent = (props) => {
 const styles = StyleSheet.create({
   image: {
     marginTop: -2,
-    width: '65%',
-    height: '65%',
+    width: getStyleOfDevice('75%', '65%'),
+    height: getStyleOfDevice('75%', '65%'),
   },
   emptyView: {
     borderTopLeftRadius: cardBorderRadius,
