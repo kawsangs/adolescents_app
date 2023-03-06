@@ -2372,6 +2372,11 @@
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   "version" "1.0.2"
 
+"base-64@^0.1.0":
+  "integrity" "sha512-Y5gU45svrR5tI2Vt/X9GPd3L0HNIKzGu202EjxrXMpuc2V2CiKgemAbUUsqYmZJvPtCXoUKjNZwBJzsNScUbXA=="
+  "resolved" "https://registry.npmjs.org/base-64/-/base-64-0.1.0.tgz"
+  "version" "0.1.0"
+
 "base@^0.11.1":
   "integrity" "sha512-5T6P4xPgpp0YDFvSWwEZ4NoE3aM4QBQXDzmVbraCkFj8zHM+mba8SyqB5DbZWyR7mYHo6Y7BdQo3MoA4m0TeQg=="
   "resolved" "https://registry.npmjs.org/base/-/base-0.11.2.tgz"
@@ -6774,7 +6779,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.5.10", "prop-types@^15.5.7", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
+"prop-types@^15.5.7", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -6947,6 +6952,14 @@
   "resolved" "https://registry.npmjs.org/react-native-encrypted-storage/-/react-native-encrypted-storage-4.0.2.tgz"
   "version" "4.0.2"
 
+"react-native-fs@^2.20.0":
+  "integrity" "sha512-VkTBzs7fIDUiy/XajOSNk0XazFE9l+QlMAce7lGuebZcag5CnjszB+u4BdqzwaQOdcYb5wsJIsqq4kxInIRpJQ=="
+  "resolved" "https://registry.npmjs.org/react-native-fs/-/react-native-fs-2.20.0.tgz"
+  "version" "2.20.0"
+  dependencies:
+    "base-64" "^0.1.0"
+    "utf8" "^3.0.0"
+
 "react-native-gesture-handler@^2.6.0":
   "integrity" "sha512-poOSfz/w0IyD6Qwq7aaIRRfEaVTl1ecQFoyiIbpOpfNTjm2B1niY2FLrdVQIOtIOe+K9nH55Qal04nr4jGkHdQ=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.8.0.tgz"
@@ -7062,13 +7075,6 @@
   "integrity" "sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA=="
   "resolved" "https://registry.npmjs.org/react-native-splash-screen/-/react-native-splash-screen-3.3.0.tgz"
   "version" "3.3.0"
-
-"react-native-swiper@^1.6.0":
-  "integrity" "sha512-OnkTTZi+9uZUgy0uz1I9oYDhCU3z36lZn+LFsk9FXPRelxb/KeABzvPs3r3SrHWy1aA67KGtSFj0xNK2QD0NJQ=="
-  "resolved" "https://registry.npmjs.org/react-native-swiper/-/react-native-swiper-1.6.0.tgz"
-  "version" "1.6.0"
-  dependencies:
-    "prop-types" "^15.5.10"
 
 "react-native-tab-view@^3.2.1":
   "integrity" "sha512-xjAQe657Gp/de2QHb7ptksTg8Jcb+j3fLAdcYryzfavt/pe+HtKLpkCtQsxyIJpRrAO7YPxFsymi2N4MnNfePA=="
@@ -8639,6 +8645,11 @@
   "integrity" "sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ=="
   "resolved" "https://registry.npmjs.org/use/-/use-3.1.1.tgz"
   "version" "3.1.1"
+
+"utf8@^3.0.0":
+  "integrity" "sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ=="
+  "resolved" "https://registry.npmjs.org/utf8/-/utf8-3.0.0.tgz"
+  "version" "3.0.0"
 
 "util-deprecate@^1.0.1", "util-deprecate@~1.0.1":
   "integrity" "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="

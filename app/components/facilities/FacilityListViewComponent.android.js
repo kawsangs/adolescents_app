@@ -1,40 +1,32 @@
 import React, {useState, useEffect} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
-import FacilityCardItemComponent from './FacilityCardItemComponent';
+import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import color from '../../themes/color';
 import Facility from '../../models/Facility';
+import FacilityImage from '../../models/FacilityImage';
+import Tag from '../../models/Tag';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
-const FacilityListViewComponent = () => {
+const FacilityListViewComponent = (props) => {
   const {t} = useTranslation();
-  const [playingUuid, setPlayingUuid] = useState(null);
-  const [facilities, setFacilities] = useState(Facility.getAll());
+  const [facilities, setFacilities] = useState(Facility.getAll())
+  const [facilityImages, setFacilityImages] = useState(FacilityImage.getAll())
+  const [tags] = useState(Tag.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
 
   useEffect(() => {
     updateFacilityList(selectedTagUuid);
   }, [filteredProvince]);
-
-  const renderFacilities = () => {
-    return facilities.map((facility, index) => {
-      return <FacilityCardItemComponent key={index} facility={facility}
-                playingUuid={playingUuid}
-                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                containerStyle={{width: '100%'}}
-                accessibilityLabel={`គ្លីនិកទី${index + 1}`}
-             />
-    });
-  }
 
   const updateFacilityList = (tagUuid) => {
     setFacilities(facilityHelper.getFacilities(filteredProvince, tagUuid));
@@ -48,16 +40,16 @@ const FacilityListViewComponent = () => {
            </View>
   }
 
+  const renderList = () => {
+    return <FacilityScrollableListComponent facilities={facilities} facilityImages={facilityImages} hasInternet={props.hasInternet}
+              reloadFacilityImages={() => setFacilityImages(FacilityImage.getAll())}
+           />
+  }
+
   return (
-    <View style={{flexGrow: 1}}>
-      <FacilityTagScrollBarComponent updateFacilityList={updateFacilityList} containerStyle={{paddingRight: screenHorizontalPadding}}/>
-      {
-        facilities.length > 0 ?
-          <ScrollView contentContainerStyle={{paddingBottom: 4, paddingRight: screenHorizontalPadding}}>
-            { renderFacilities() }
-          </ScrollView>
-        : renderEmptyMessage()
-      }
+    <View style={{flex: 1, flexDirection: 'column'}}>
+      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} contentContainerStyle={{paddingRight: screenHorizontalPadding}}/>
+      {facilities.length > 0 ? renderList() : renderEmptyMessage()}
     </View>
   )
 }

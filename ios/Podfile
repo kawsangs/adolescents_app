@@ -18,6 +18,7 @@ target 'YouthMobile' do
   pod 'FirebaseCore', :modular_headers => true          # here for Firebase
   pod 'FirebaseCoreInternal', :modular_headers => true  # here for Firebase
   pod 'GoogleUtilities', :modular_headers => true       # here for Firebase
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
 
   # Flags change depending on the env values.
   flags = get_default_flags()

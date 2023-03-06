@@ -5,7 +5,7 @@ import facilities from '../db/json/facilities.json';
 const MODEL = "Facility"
 
 class Facility {
-  static seedData = () => {
+  static seedData = async () => {
     BaseModel.seedData(MODEL, this.#getFormattedFacilities());
   }
 
@@ -37,14 +37,31 @@ class Facility {
     return BaseModel.containsByAttr(MODEL, 'name', `'${name}'`);
   }
 
+  static create(data) {
+    BaseModel.create(MODEL, this.#getFormattedData(data, true))
+  }
+
+  static update(uuid, data) {
+    BaseModel.update(MODEL, uuid, this.#getFormattedData(data, false))
+  }
+
+  static deleteAll() {
+    BaseModel.deleteAll(MODEL)
+  }
+
   // private method
+  static #getFormattedData = (facility, isCreate) => {
+    if (isCreate)
+      return {...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids}
+
+    return {...facility, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids}
+  }
+
   static #getFormattedFacilities = () => {
     let formattedFacilities = [];
-
     facilities.map(facility => {
-      formattedFacilities.push({...facility, uuid: facility.id, working_days: JSON.stringify(facility.working_days), service_uuids: facility.service_ids});
+      formattedFacilities.push(this.#getFormattedData(facility, true));
     });
-
     return formattedFacilities;
   }
 }

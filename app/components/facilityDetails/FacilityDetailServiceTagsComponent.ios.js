@@ -63,7 +63,7 @@ const FacilityDetailServiceTagsComponent = (props) => {
       <BoldLabelComponent label={t('providedServices')} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
 
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-        <View style={{flex: 1, flexDirection: 'row', flexWrap: 'nowrap'}}
+        <View style={[{flex: 1, flexDirection: 'row', flexWrap: 'nowrap'}, !isOverflowService && {justifyContent: 'center'}]}
           onLayout={(event) => { setContainerWidth(event.nativeEvent.layout.width); }}
         >
           {renderTags()}
