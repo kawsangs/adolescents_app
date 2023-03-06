@@ -36,10 +36,16 @@ const VideoView = (props) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <GradientScrollViewComponent
+      {/* <GradientScrollViewComponent
         header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
         body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
         scrollViewStyle={{marginTop: 16, paddingBottom: 185}}
+      /> */}
+
+      <GradientScrollViewComponent
+        header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
+        body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
+        isNotScrollView={true}
       />
 
       <YoutubePopupPlayer
