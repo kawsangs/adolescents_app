@@ -6,9 +6,8 @@ import YoutubePopupPlayer from 'react-native-youtube-popup-player';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
-import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
-import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import VideoItemListComponent from '../../components/videos/VideoItemListComponent';
+import VideoNavHeaderComponent from '../../components/videos/VideoNavHeaderComponent';
 import Video from '../../models/Video';
 import networkService from '../../services/network_service';
 import {xLargeFontSize} from '../../utils/font_size_util';
@@ -36,14 +35,8 @@ const VideoView = (props) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      {/* <GradientScrollViewComponent
-        header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
-        body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
-        scrollViewStyle={{marginTop: 16, paddingBottom: 185}}
-      /> */}
-
       <GradientScrollViewComponent
-        header={<NavigationHeaderComponent leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>} label={t('video')} />}
+        header={<VideoNavHeaderComponent navigation={props.navigation}/>}
         body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
         isNotScrollView={true}
       />
