@@ -10,6 +10,7 @@ import SearchHistorySchema from '../db/migrations/v1/search_history';
 import Notification from '../db/migrations/v1/notification';
 import Tag from '../db/migrations/v4/tag';
 import FacilityImage from '../db/migrations/v5/facility_image';
+import VideoAuthor from '../db/migrations/v5/video_author';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -35,6 +36,7 @@ const schemaHelper = (() => {
       Notification,
       Tag,
       FacilityImage,
+      VideoAuthor,
     ];
 
     changedSchemas.map((schema) => {
