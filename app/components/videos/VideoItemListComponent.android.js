@@ -13,6 +13,7 @@ import {cardBorderRadius, cardElevation} from '../../constants/component_constan
 import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
 import visitService from '../../services/visit_service';
 import videoSyncService from '../../services/video_sync_service';
+import videoAuthorSyncService from '../../services/video_author_sync_service';
 import tabletStyles from '../../assets/stylesheets/tablet/videoItemListComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/videoItemListComponentStyles';
 
@@ -56,7 +57,7 @@ const VideoItemListComponent = (props) => {
 
   const onRefresh = () => {
     videoSyncService.syncData(1, () => {
-      listRef.current?.stopRefreshLoading()
+      videoAuthorSyncService.syncAllData(() => listRef.current?.stopRefreshLoading())
     }, () => listRef.current?.stopRefreshLoading())
   }
 

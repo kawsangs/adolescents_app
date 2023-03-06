@@ -5,7 +5,7 @@ const MODEL = "VideoAuthor";
 
 class VideoAuthor {
   static seedData = async () => {
-    BaseModel.seedData(MODEL, this.#getFormattedVideoAuthors());
+    BaseModel.seedData(MODEL, this.#getFormattedVideoAuthors()).sorted('display_order', false);
   }
 
   static getAll = () => {
@@ -21,8 +21,7 @@ class VideoAuthor {
   }
 
   static update = (uuid, data) => {
-    const {id, ...cleanedData} = data
-    BaseModel.update(MODEL, uuid, cleanedData)
+    BaseModel.update(MODEL, uuid, data)
   }
 
   // private method

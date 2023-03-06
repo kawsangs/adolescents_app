@@ -20,11 +20,7 @@ const videoSyncService = (() => {
 
   // private method
   function _handleSaveVideo(videos) {
-    console.log('handle save videos = ', videos.length)
     videos.map(video => {
-      console.log('== each video = ', video)
-      console.log('===================================')
-
       !!Video.findByUuid(video.id) ? Video.update(video.id, video) : Video.create(video)
     })
   }
