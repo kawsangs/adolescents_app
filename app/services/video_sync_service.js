@@ -12,10 +12,7 @@ const videoSyncService = (() => {
     apiService.handleApiResponse(response, (res) => {
       _handleSaveVideo(res.videos)
       !!successCallback && successCallback()
-    }, (error) => {
-      console.log('sync video error = ', error)
-      !!failureCallback && failureCallback()
-    })
+    }, (error) => !!failureCallback && failureCallback())
   }
 
   // private method
