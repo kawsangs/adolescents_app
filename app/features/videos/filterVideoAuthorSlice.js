@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { name: null };
+const initialState = { uuid: null };
 
 const filterVideoAuthorSlice = createSlice({
-  name: 'filterFacilityLocation',
+  name: 'filterVideoAuthor',
   initialState,
   reducers: {
-    storeSelectedAuthor: (state = initialState, action) => {
-      state.name = action.payload.name;
+    storeSelectedVidAuthor: (state = initialState, action) => {
+      state.uuid = action.payload.uuid;
     },
-    resetSelectedAuthor: (state) => {
-      state.name = null;
+    resetSelectedVidAuthor: (state) => {
+      state.uuid = null;
     }
   }
 });
 
-export const { storeSelectedAuthor, resetSelectedAuthor } = filterVideoAuthorSlice.actions;
+export const { storeSelectedVidAuthor, resetSelectedVidAuthor } = filterVideoAuthorSlice.actions;
 export default filterVideoAuthorSlice.reducer;

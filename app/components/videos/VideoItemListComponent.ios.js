@@ -7,8 +7,10 @@ import DeviceInfo from 'react-native-device-info';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
+import NoResultMessageComponent from '../shared/NoResultMessageComponent';
 import VideoThumbnailComponent from './VideoThumbnailComponent';
 import Video from '../../models/Video';
+import VideoAuthor from '../../models/VideoAuthor';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {screenHorizontalPadding} from '../../constants/component_constant';
@@ -24,11 +26,11 @@ const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
   const {t} = useTranslation();
   const listRef = useRef();
-  const selectedAuthor = useSelector(state => state.filterVideoAuthor);
+  const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
 
   useEffect(() => {
-    setVideos(!!selectedAuthor.name ? Video.findByAuthor(selectedAuthor.name) : Video.getAll())
-  }, [selectedAuthor])
+    setVideos(!!selectedVidAuthor.uuid ? Video.findByAuthor(selectedVidAuthor.uuid) : Video.getAll())
+  }, [selectedVidAuthor])
 
   const viewDetail = (video) => {
     visitService.recordVisitVideo(video, () => {
@@ -44,17 +46,16 @@ const VideoItemListComponent = (props) => {
         <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(video)} />
         <View style={styles.labelContainer}>
           <BoldLabelComponent label={video.name} numberOfLines={2} style={styles.title} />
-          <Text style={styles.author} numberOfLines={1}>{t('author')}: {video.author}</Text>
+          <Text style={styles.author} numberOfLines={1}>{t('author')}: {VideoAuthor.getName(video.author_uuid)}</Text>
         </View>
       </Card>
     )
   }
 
   const onEndReached = () => {
-    if (!!selectedAuthor.name)
+    if (!!selectedVidAuthor.uuid)
       return listRef.current?.stopPaginateLoading()
 
-    // console.log('+ starting page = ', Video.getStartingPage() + 1)
     videoSyncService.syncData(Video.getStartingPage() + 1, () => {
       listRef.current?.stopPaginateLoading()
     }, () => listRef.current?.stopPaginateLoading())
@@ -65,6 +66,9 @@ const VideoItemListComponent = (props) => {
       videoAuthorSyncService.syncAllData(() => listRef.current?.stopRefreshLoading())
     }, () => listRef.current?.stopRefreshLoading())
   }
+
+  if (videos.length == 0)
+    return <NoResultMessageComponent/>
 
   return <CustomFlatListComponent
             ref={listRef}

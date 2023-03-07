@@ -24,15 +24,20 @@ class VideoAuthor {
     BaseModel.update(MODEL, uuid, data)
   }
 
+  static getName = (uuid) => {
+    const author = this.findByUuid(uuid)
+    return !!author ? author.name : ''
+  }
+
   // private method
-  static #getFormattedData = (tag) => {
-    return {...tag, uuid: tag.id}
+  static #getFormattedData = (vidAuthor) => {
+    return {...vidAuthor, uuid: vidAuthor.id}
   }
 
   static #getFormattedVideoAuthors = () => {
     let formattedData = [];
-    videoAuthors.map(tag => {
-      formattedData.push(this.#getFormattedData(tag));
+    videoAuthors.map(vidAuthor => {
+      formattedData.push(this.#getFormattedData(vidAuthor));
     })
     return formattedData;
   }

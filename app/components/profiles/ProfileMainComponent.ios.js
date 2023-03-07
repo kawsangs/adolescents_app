@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
+import {useDispatch} from 'react-redux';
 
 import ProfileInfoComponent from './ProfileInfoComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
@@ -8,10 +9,15 @@ import SearchHistory from '../../models/SearchHistory';
 import navigationService from '../../services/navigation_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import audioSources from '../../constants/audio_source_constant';
+import {resetSelectedVidAuthor} from '../../features/videos/filterVideoAuthorSlice';
+import {resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
 
 const ProfileMainComponent = (props) => {
+  const dispatch = useDispatch();
   onPress = () => {
     SearchHistory.deleteAll();
+    dispatch(resetSelectedVidAuthor())
+    dispatch(resetSelectedLocation())
     navigationService.logOut();
   }
 

@@ -13,17 +13,17 @@ import {videoFilterContentHeight} from '../../constants/modal_constant';
 import VideoAuthor from '../../models/VideoAuthor';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {storeSelectedAuthor, resetSelectedAuthor} from '../../features/videos/filterVideoAuthorSlice';
+import {storeSelectedVidAuthor, resetSelectedVidAuthor} from '../../features/videos/filterVideoAuthorSlice';
 
 const VideoFilterBottomSheetComponent = (props) => {
   const dispatch = useDispatch();
-  const selectedAuthor = useSelector(state => state.filterVideoAuthor);
+  const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
   const onSelect = (author) => {
     props.closeBottomSheet()
-    if (selectedAuthor.name == author.name)
-      return dispatch(resetSelectedAuthor())
+    if (selectedVidAuthor.uuid == author.uuid)
+      return dispatch(resetSelectedVidAuthor())
 
-    dispatch(storeSelectedAuthor({name: author.name}))
+    dispatch(storeSelectedVidAuthor({uuid: author.uuid}))
   }
 
   const renderListItem = () => {
@@ -33,7 +33,7 @@ const VideoFilterBottomSheetComponent = (props) => {
         <View key={author.uuid}>
           <TouchableOpacity style={styles.container} onPress={() => onSelect(author)}>
             <Text style={styles.label} numberOfLines={2}>{author.name}</Text>
-            {(selectedAuthor.name == author.name) && <Icon name='check' size={24} color={color.successColor} />}
+            {(selectedVidAuthor.uuid == author.uuid) && <Icon name='check' size={24} color={color.successColor} />}
           </TouchableOpacity>
           {index < authors.length - 1 && <Divider style={{backgroundColor: color.lightGrayColor}}/> }
         </View>
