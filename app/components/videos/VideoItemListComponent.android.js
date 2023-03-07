@@ -2,12 +2,12 @@ import React, {useEffect, useState, useRef} from 'react';
 import {View} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import VideoThumbnailComponent from './VideoThumbnailComponent';
 import Video from '../../models/Video';
-
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
@@ -23,10 +23,11 @@ const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
   const {t} = useTranslation();
   const listRef = useRef();
+  const selectedAuthor = useSelector(state => state.filterVideoAuthor);
 
   useEffect(() => {
-    setVideos(!!props.categoryUuid ? Video.findByCategoryUuid(props.categoryUuid) : Video.getAll());
-  }, [props.categoryUuid]);
+    setVideos(!!selectedAuthor.name ? Video.findByAuthor(selectedAuthor.name) : Video.getAll())
+  }, [selectedAuthor])
 
   const viewDetail = (video) => {
     visitService.recordVisitVideo(video, () => {
@@ -49,7 +50,9 @@ const VideoItemListComponent = (props) => {
   }
 
   const onEndReached = () => {
-    console.log('+ starting page = ', Video.getStartingPage() + 1)
+    if (!!selectedAuthor.name)
+      return listRef.current?.stopPaginateLoading()
+
     videoSyncService.syncData(Video.getStartingPage() + 1, () => {
       listRef.current?.stopPaginateLoading()
     }, () => listRef.current?.stopPaginateLoading())

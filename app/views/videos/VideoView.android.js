@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import {useTranslation} from 'react-i18next';
 import NetInfo from '@react-native-community/netinfo';
 import YoutubePopupPlayer from 'react-native-youtube-popup-player';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -13,7 +12,6 @@ import networkService from '../../services/network_service';
 import {xLargeFontSize} from '../../utils/font_size_util';
 
 const VideoView = (props) => {
-  const {t} = useTranslation();
   const [hasInternet, setHasInternet] = useState(true);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,7 +35,7 @@ const VideoView = (props) => {
     <View style={{flexGrow: 1}}>
       <GradientScrollViewComponent
         header={<VideoNavHeaderComponent navigation={props.navigation}/>}
-        body={<VideoItemListComponent categoryUuid={null} hasInternet={hasInternet} playVideo={playVideo} />}
+        body={<VideoItemListComponent hasInternet={hasInternet} playVideo={playVideo} />}
         isNotScrollView={true}
       />
 

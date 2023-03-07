@@ -23,6 +23,10 @@ class Video {
     return BaseModel.findByAttr(MODEL, {video_category_uuid: `'${categoryUuid}'`}, '', {type: 'ASC', column: 'display_order'});
   }
 
+  static findByAuthor = (authorName) => {
+    return BaseModel.findByAttr(MODEL, { author: `"${authorName}"` })
+  }
+
   static create = (data) => {
     BaseModel.create(MODEL, this.#getFormattedData(data, true))
   }

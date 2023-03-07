@@ -9,7 +9,7 @@ import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
 import {xLargeFontSize, mediumFontSize} from '../../utils/font_size_util';
 import { descriptionFontSize, screenHorizontalPadding } from '../../constants/component_constant';
-import { videoFilterContentHeight } from '../../constants/modal_constant';
+import {videoFilterContentHeight} from '../../constants/modal_constant';
 import VideoAuthor from '../../models/VideoAuthor';
 
 import {useDispatch, useSelector} from 'react-redux';
