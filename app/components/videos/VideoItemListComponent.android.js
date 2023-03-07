@@ -25,13 +25,11 @@ const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
   const {t} = useTranslation();
   const listRef = useRef();
+  const [flatListRef, setFlatListRef] = useState(React.createRef());
   const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
 
   useEffect(() => {
-    if(selectedVidAuthor.uuid == '045f6859-1cb8-4ec0-8604-82472e4ddf2f') {
-      return setVideos([])
-    }
-
+    (!!flatListRef.scrollToEnd && videos.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
     setVideos(!!selectedVidAuthor.uuid ? Video.findByAuthor(selectedVidAuthor.uuid) : Video.getAll())
   }, [selectedVidAuthor])
 
@@ -74,6 +72,7 @@ const VideoItemListComponent = (props) => {
     return <NoResultMessageComponent/>
 
   return <CustomFlatListComponent
+            setFlatListRef={(ref) => setFlatListRef(ref)}
             ref={listRef}
             data={videos}
             renderItem={({item}) => renderItem(item)}

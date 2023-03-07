@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import {useTranslation} from 'react-i18next';
 import NetInfo from '@react-native-community/netinfo';
 import DeviceInfo from 'react-native-device-info';
 import YoutubePopupPlayer from 'react-native-youtube-popup-player';
@@ -14,7 +13,6 @@ import networkService from '../../services/network_service';
 import {xLargeFontSize} from '../../utils/font_size_util';
 
 const VideoView = (props) => {
-  const {t} = useTranslation();
   const [hasInternet, setHasInternet] = useState(true);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
