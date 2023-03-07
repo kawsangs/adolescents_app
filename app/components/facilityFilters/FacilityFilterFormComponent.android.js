@@ -47,7 +47,7 @@ const FacilityFilterFormComponent = (props) => {
               selectedItem={province}
               onSelectItem={(item) => onSelectProvince(item)}
               pickerUuid='clinic-province-picker'
-              placeholderAudio={audioSources['0.8.mp3']}
+              placeholderAudio={audioSources['0.44.mp3']}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               containerStyle={{marginTop: 16}}
@@ -64,6 +64,7 @@ const FacilityFilterFormComponent = (props) => {
               selectedItem={district}
               onSelectItem={(item) => setDistrict(item)}
               pickerUuid='clinic-district-picker'
+              placeholderAudio={audioSources['0.42.mp3']}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
               containerStyle={{marginTop: 22}}
