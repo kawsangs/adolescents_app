@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 
 import color from '../../themes/color';
 import {descriptionLineHeight, cardBorderRadius, cardElevation} from '../../constants/component_constant';

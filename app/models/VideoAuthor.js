@@ -5,7 +5,7 @@ const MODEL = "VideoAuthor";
 
 class VideoAuthor {
   static seedData = async () => {
-    BaseModel.seedData(MODEL, this.#getFormattedVideoAuthors()).sorted('display_order', false);
+    BaseModel.seedData(MODEL, this.#getFormattedVideoAuthors());
   }
 
   static getAll = () => {

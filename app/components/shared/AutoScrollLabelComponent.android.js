@@ -6,7 +6,7 @@ import color from '../../themes/color';
 
 const AutoScrollLabelComponent = (props) => {
   return <TextTicker
-            style={{color: color.whiteColor, fontSize: xxLargeFontSize(), fontFamily: FontFamily.bold}}
+            style={{color: color.whiteColor, fontSize: xxLargeFontSize(), fontFamily: FontFamily.bold, lineHeight: 30, marginTop: 4}}
             loop
             bounce={false}
             repeatSpacer={60}
