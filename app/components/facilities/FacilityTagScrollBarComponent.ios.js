@@ -6,7 +6,7 @@ import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import componentUtil from '../../utils/component_util';
-import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
 import tagSyncService from '../../services/tag_sync_service';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 
@@ -37,7 +37,7 @@ const FacilityTagScrollBarComponent = (props) => {
     }, () => listRef.current?.stopPaginateLoading())
   }
 
-  return <View style={[{paddingLeft: screenHorizontalPadding, justifyContent: 'center', height: isLowPixelDensityDevice() ? 54 : 68}, props.containerStyle]}>
+  return <View style={[{paddingLeft: screenHorizontalPadding, justifyContent: 'center', height: getStyleOfDevice(78, isLowPixelDensityDevice() ? 54 : 68)}, props.containerStyle]}>
             <CustomFlatListComponent
               ref={listRef}
               data={props.tags}
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
   item: {
     alignItems: 'center',
     backgroundColor: color.whiteColor,
-    borderRadius: 25,
-    height: isLowPixelDensityDevice() ? 40 : componentUtil.pressableItemSize(),
+    borderRadius: getStyleOfDevice(35, 25),
+    height: getStyleOfDevice(componentUtil.tabletPressableItemSize(), isLowPixelDensityDevice() ? 40 : componentUtil.pressableItemSize()),
     justifyContent: 'center',
     marginRight: 12,
     minWidth: 60,
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.primaryColor,
-    fontSize: largeFontSize()
+    fontSize: largeFontSize(),
+    lineHeight: getStyleOfDevice(28, 24)
   }
 });
 
