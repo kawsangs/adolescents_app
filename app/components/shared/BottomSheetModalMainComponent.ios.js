@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import DashedLineComponent from './DashedLineComponent';
@@ -36,7 +35,7 @@ const BottomSheetModalMainComponent = (props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: color.whiteColor,
-    height: hp(defaultPickerContentHeight),
+    height: defaultPickerContentHeight,
   },
   modalTitle: {
     fontSize: xLargeFontSize()

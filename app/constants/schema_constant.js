@@ -10,5 +10,6 @@ export const schemaNames = [
   'SearchHistory',
   'Notification',
   'Tag',
-  'FacilityImage'
+  'FacilityImage',
+  'VideoAuthor',
 ];

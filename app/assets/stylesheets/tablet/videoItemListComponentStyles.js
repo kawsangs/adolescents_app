@@ -17,8 +17,16 @@ const videoItemListComponentStyles = StyleSheet.create({
   },
   title: {
     fontSize: xLargeFontSize(),
-    lineHeight: 28,
-    marginBottom: Platform.OS == 'ios' ? 6 : 4,
+    ...Platform.select({
+      ios: {
+        lineHeight: 32,
+        marginBottom: 6,
+      },
+      android: {
+        lineHeight: 28,
+        marginBottom: 4,
+      }
+    })
   },
   author: {
     color: color.grayColor,

@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import {useSelector} from 'react-redux';
 
 import FacilityCardItemComponent from './FacilityCardItemComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
@@ -8,7 +9,11 @@ import tagSyncService from '../../services/tag_sync_service';
 
 const FacilityScrollableListComponent = (props) => {
   const listRef = useRef();
+  const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
   const onEndReached = () => {
+    if (!!filteredProvince)
+      return listRef.current?.stopPaginateLoading()
+
     facilitySyncService.syncData(facilityHelper.getStartingPage() + 1, (count) => {
       listRef.current?.stopPaginateLoading()
       props.reloadFacilityImages()
