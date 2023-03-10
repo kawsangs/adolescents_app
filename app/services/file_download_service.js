@@ -10,7 +10,7 @@ const fileDownloadService = (() => {
   async function download(filePath, successCallback, failureCallback = null) {
     const filename = fileUtil.getFilenameFromUrl(filePath)
     const options = {
-      fromUrl: urlUtil.getAbsoluteUrl(filePath),
+      fromUrl: urlUtil.isUrlWithHostname(filePath) ? filePath : urlUtil.getAbsoluteUrl(filePath),
       toFile: `${RNFS.DocumentDirectoryPath}/${filename}`,
       fileCache: true
     }

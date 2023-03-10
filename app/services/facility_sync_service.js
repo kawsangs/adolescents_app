@@ -35,7 +35,7 @@ const facilityListingService = (() => {
       fileDownloadService.download(facility.logo, (filename, isNewFile) => {
         !!isNewFile && FacilityImage.create({name: filename})
         _handleDownloadLogo(index + 1, facilities, callback)
-      })
+      }, () => _handleDownloadLogo(index + 1, facilities, callback))
     }
     else _handleDownloadLogo(index + 1, facilities, callback)
   }
