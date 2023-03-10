@@ -7,6 +7,7 @@ import schemaV3 from './schemas/schemaV3';
 import schemaV4 from './schemas/schemaV4';
 import schemaV5 from './schemas/schemaV5';
 import schemaV6 from './schemas/schemaV6';
+import schemaV7 from './schemas/schemaV7';
 
 const schemas = [
   schemaV1,
@@ -15,6 +16,7 @@ const schemas = [
   schemaV4,
   schemaV5,
   schemaV6,
+  schemaV7,
 ];
 
 let nextSchemaIndex = Realm.schemaVersion(Realm.defaultPath);
