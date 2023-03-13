@@ -4,8 +4,9 @@ const fileUtil = (() => {
   }
 
   function getFilenameFromUrl(url) {
-    const splitPaths = url.split('/');
-    return splitPaths[splitPaths.length - 1]
+    const urlWithoutQueryString = url.split('?')[0];
+    const splitedPaths = urlWithoutQueryString.split('/');
+    return splitedPaths[splitedPaths.length - 1];
   }
 })()
 
