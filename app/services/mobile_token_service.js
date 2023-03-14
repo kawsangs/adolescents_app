@@ -129,14 +129,22 @@ const MobileTokenService = (() => {
         device_type: DeviceInfo.isTablet() ? 'tablet' : 'mobile',
         app_version: DeviceInfo.getVersion(),
         platform: Platform.OS,
+        device_os: `${DeviceInfo.getSystemName()}_${DeviceInfo.getSystemVersion()}`
       }
     };
 
-    Api.post(Api.listingUrl(), data, function(res) {
-      AsyncStorageService.setItem(TOKEN_KEY, res);
-    });
+    DeviceInfo.getManufacturer().then((manufacturer) => {
+      data['mobile_token']['device_os'] = `${manufacturer}_${DeviceInfo.getSystemName()}_${DeviceInfo.getSystemVersion()}`
+      Api.post(Api.listingUrl(), data, function(res) {
+        AsyncStorageService.setItem(TOKEN_KEY, res);
+      });
+    })
+    .catch((error) => {
+      Api.post(Api.listingUrl(), data, function(res) {
+        AsyncStorageService.setItem(TOKEN_KEY, res);
+      });
+    })
   }
-
 })();
 
 export default MobileTokenService;
