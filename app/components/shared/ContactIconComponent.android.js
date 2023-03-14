@@ -1,12 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import color from '../../themes/color';
 import {contactIcons, WHATSAPP} from '../../constants/contact_constant';
-import {FEATHER, MATERIAL_COMMUNNITY} from '../../constants/icon_constant';
+import {FEATHER, MATERIAL_COMMUNNITY, FONTAWESOME_5} from '../../constants/icon_constant';
 
 const ContactIconComponent = (props) => {
   if (props.type == WHATSAPP)
@@ -17,6 +18,8 @@ const ContactIconComponent = (props) => {
     return <FeatherIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
   else if (contactIcons[props.type].type == MATERIAL_COMMUNNITY)
     return <MaterialCommunityIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} brand />
+  else if (contactIcons[props.type].type == FONTAWESOME_5)
+    return <FontAwesome5 name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
 
   return <FontAwesome name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
 }
