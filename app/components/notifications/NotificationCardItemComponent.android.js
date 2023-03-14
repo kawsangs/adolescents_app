@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import {Card} from 'react-native-paper';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
@@ -19,12 +19,12 @@ const NotificationCardItemComponent = (props) => {
   const [contentLines, setContentLines] = React.useState(null);
 
   const renderToggleViewButton = () => {
-    return <TouchableOpacity style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48}} onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}>
+    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48}}>
               <Text style={{color: color.primaryColor, fontSize: largeFontSize()}}>
                 { !numberOfLines ? t('viewLess') : t('viewMore')}
               </Text>
               <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: color.primaryColor}} />
-            </TouchableOpacity>
+           </View>
   }
 
   const renderInfo = () => {
@@ -63,7 +63,7 @@ const NotificationCardItemComponent = (props) => {
   return (
     <Swipeable renderRightActions={renderDeleteAction}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        onPress={()=> {}}
+        onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}
       >
         { renderInfo() }
       </Card>
