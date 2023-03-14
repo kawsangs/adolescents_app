@@ -25,7 +25,7 @@ const CustomBottomSheetPickerComponent = (props) => {
             pickerBoxStyle={{paddingRight: 4}}
             bottomSheetTitleStyle={{fontSize: bottomSheetTitleFontSize, fontFamily: FontFamily.bold}}
             placeholderStyle={[{fontSize: itemFontSize, fontFamily: FontFamily.regular, alignSelf: 'center', color: colorSet('text')}, props.placeholderStyle]}
-            itemTextStyle={{fontSize: itemFontSize, fontFaimly: FontFamily.regular}}
+            itemTextStyle={{fontSize: itemFontSize, fontFamily: FontFamily.regular}}
             pickerContentHeight={defaultPickerContentHeight}
           />
 }

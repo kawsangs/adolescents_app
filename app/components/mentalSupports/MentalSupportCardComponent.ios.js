@@ -26,8 +26,10 @@ const MentalSupportCardComponent = (props) => {
   return (
     <Card mode="elevated" elevation={cardElevation} style={styles.card} onPress={() => onPress()}>
       <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
-        <ContactIconComponent type={props.channel} size={40} />
-        <View style={{paddingLeft: 16, flex: 1}}>
+        <View style={{width: 45}}>
+          <ContactIconComponent type={props.channel} size={40} />
+        </View>
+        <View style={{paddingLeft: 12, flex: 1}}>
           <Text numberOfLines={2} style={{fontSize: descriptionFontSize}}>{props.name}</Text>
         </View>
         <Icon name="chevron-right" color={color.primaryColor} size={32} style={{paddingRight: 8}} />
