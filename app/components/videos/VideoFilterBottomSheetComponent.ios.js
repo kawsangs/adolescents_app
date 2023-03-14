@@ -7,8 +7,9 @@ import BottomSheetModalMainComponent from '../shared/BottomSheetModalMainCompone
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
 import componentUtil from '../../utils/component_util';
-import {xLargeFontSize, mediumFontSize} from '../../utils/font_size_util';
-import { descriptionFontSize, screenHorizontalPadding } from '../../constants/component_constant';
+import {mediumFontSize} from '../../utils/font_size_util';
+import {screenHorizontalPadding} from '../../constants/component_constant';
+import {bottomSheetTitleFontSize, itemFontSize} from '../../constants/bottom_sheet_picker_constant';
 import {videoFilterContentHeight} from '../../constants/modal_constant';
 import VideoAuthor from '../../models/VideoAuthor';
 
@@ -33,7 +34,7 @@ const VideoFilterBottomSheetComponent = (props) => {
         <View key={author.uuid}>
           <TouchableOpacity style={styles.container} onPress={() => onSelect(author)}>
             <Text style={styles.label} numberOfLines={2}>{author.name}</Text>
-            {(selectedVidAuthor.uuid == author.uuid) && <Icon name='check' size={24} color={color.successColor} />}
+            {(selectedVidAuthor.uuid == author.uuid) && <Icon name='check' size={24} color={color.secondaryColor} />}
           </TouchableOpacity>
           {index < authors.length - 1 && <Divider style={{backgroundColor: color.lightGrayColor}}/> }
         </View>
@@ -43,7 +44,7 @@ const VideoFilterBottomSheetComponent = (props) => {
 
   const bottomSheetTitle = () => {
     return <View style={{paddingHorizontal: screenHorizontalPadding, paddingBottom: 16}}>
-              <BoldLabelComponent label='ស្វែងរកវីដេអូ' style={{fontSize: xLargeFontSize()}} />
+              <BoldLabelComponent label='ស្វែងរកវីដេអូ' style={{fontSize: bottomSheetTitleFontSize}} />
               <Text style={{fontSize: mediumFontSize(), color: color.grayColor}}>ច្រោះតាមរយៈអ្នកផលិត</Text>
            </View>
   }
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     height: componentUtil.tabletPressableItemSize(),
   },
   label: {
-    fontSize: descriptionFontSize,
+    fontSize: itemFontSize,
     flex: 1
   }
 });

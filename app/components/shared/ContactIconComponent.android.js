@@ -10,18 +10,24 @@ import {contactIcons, WHATSAPP} from '../../constants/contact_constant';
 import {FEATHER, MATERIAL_COMMUNNITY, FONTAWESOME_5} from '../../constants/icon_constant';
 
 const ContactIconComponent = (props) => {
-  if (props.type == WHATSAPP)
-    return <View style={{width: 43, height: 43, backgroundColor: color.whatsappColor, borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
-              <FontAwesome name={contactIcons[props.type].name} size={33} color={color.whiteColor} />
-           </View>
-  else if (contactIcons[props.type].type == FEATHER)
-    return <FeatherIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
-  else if (contactIcons[props.type].type == MATERIAL_COMMUNNITY)
-    return <MaterialCommunityIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} brand />
-  else if (contactIcons[props.type].type == FONTAWESOME_5)
-    return <FontAwesome5 name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
-
-  return <FontAwesome name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
+  switch (contactIcons[props.type].type) {
+    case FEATHER:
+      return <FeatherIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
+      break;
+    case MATERIAL_COMMUNNITY:
+      return <MaterialCommunityIcon name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} brand />
+      break;
+    case FONTAWESOME_5:
+      return <FontAwesome5 name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
+      break;
+    case WHATSAPP:
+      return <View style={{width: 43, height: 43, backgroundColor: color.whatsappColor, borderRadius: 50, justifyContent: 'center', alignItems: 'center'}}>
+                <FontAwesome name={contactIcons[props.type].name} size={33} color={color.whiteColor} />
+             </View>
+      break;
+    default:
+      return <FontAwesome name={contactIcons[props.type].name} size={props.size || 24} color={props.color || contactIcons[props.type].color} />
+  }
 }
 
 export default ContactIconComponent;
