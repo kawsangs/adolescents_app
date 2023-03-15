@@ -1,13 +1,11 @@
 import messaging from '@react-native-firebase/messaging';
-import NetInfo from '@react-native-community/netinfo';
 import {Platform} from 'react-native';
 import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Notification from '../models/Notification';
-
-const TOKEN_KEY = 'registeredToken';
+import {REGISTERED_TOKEN, TOKEN_SYNCED} from '../constants/async_storage_constant';
 
 const MobileTokenService = (() => {
   const Api = new MobileTokenApi();
@@ -70,53 +68,40 @@ const MobileTokenService = (() => {
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-    if (enabled) {
-      messaging()
-        .getToken()
-        .then(token => {
-          AsyncStorageService.setItem('FCM_TOKEN', token);
+    AsyncStorage.getItem(TOKEN_SYNCED, (error, synced) => {
+      if (enabled) {
+        messaging()
+          .getToken()
+          .then(token => {
+            AsyncStorageService.setItem('FCM_TOKEN', token);
+            _handleToken(token, synced);
+          })
+          .catch(error => {
+            // if it reaches the max retry attempt or the error is not SERVICE_NOT_AVAILABLE then exit
+            if (retryCount === 0 || !error.toString().includes("SERVICE_NOT_AVAILABLE"))
+              return;
 
-          _handleToken(token);
-        })
-        .catch(error => {
-          // if it reaches the max retry attempt or the error is not SERVICE_NOT_AVAILABLE then exit
-          if (retryCount === 0 || !error.toString().includes("SERVICE_NOT_AVAILABLE"))
-            return;
-
-          if (error.toString().includes("SERVICE_NOT_AVAILABLE")) {
-            setTimeout(() => {
-              requestUserPermission(retryCount - 1);
-            }, 5000);
-          }
-        });
-    }
+            if (error.toString().includes("SERVICE_NOT_AVAILABLE")) {
+              setTimeout(() => {
+                requestUserPermission(retryCount - 1);
+              }, 5000);
+            }
+          });
+      }
+    })
   }
 
   function handleSyncingToken() {
-    if (Platform.OS == 'ios') {
-      // iOS the isInternetReachable will return as null on app launches, using event listener in order to get the true/false value.
-      const unsubscribe = NetInfo.addEventListener(state => {
-        if (state.isConnected && state.isInternetReachable) {
-          unsubscribe();
-          requestUserPermission();
-        }
-      });
-      return;
-    }
-
-    NetInfo.fetch().then(state => {
-      if (state.isConnected && state.isInternetReachable)
-        requestUserPermission();
-    });
+    requestUserPermission();
   }
 
-  async function _handleToken(token) {
-    AsyncStorage.getItem(TOKEN_KEY, (error, storageToken) => {
-      if(!storageToken) { return _sendToken(token); }
+  async function _handleToken(firebaseToken, synced) {
+    AsyncStorage.getItem(REGISTERED_TOKEN, (error, storageTokenValue) => {
+      if(!storageTokenValue) { return _sendToken(firebaseToken); }
 
-      let jsonValue = JSON.parse(storageToken) || {};
-      if(jsonValue.token != token || jsonValue.app_version != DeviceInfo.getVersion()) {
-        _sendToken(token, jsonValue.id);
+      let storageToken = JSON.parse(storageTokenValue) || {};
+      if(!synced || storageToken.token != firebaseToken || storageToken.app_version != DeviceInfo.getVersion()) {
+        _sendToken(firebaseToken, storageToken.id);
       }
     })
   }
@@ -136,12 +121,14 @@ const MobileTokenService = (() => {
     DeviceInfo.getManufacturer().then((manufacturer) => {
       data['mobile_token']['device_os'] = `${manufacturer}_${DeviceInfo.getSystemName()}_${DeviceInfo.getSystemVersion()}`
       Api.post(Api.listingUrl(), data, function(res) {
-        AsyncStorageService.setItem(TOKEN_KEY, res);
+        AsyncStorageService.setItem(REGISTERED_TOKEN, res);
+        AsyncStorageService.setItem(TOKEN_SYNCED, 'true');
       });
     })
     .catch((error) => {
       Api.post(Api.listingUrl(), data, function(res) {
-        AsyncStorageService.setItem(TOKEN_KEY, res);
+        AsyncStorageService.setItem(REGISTERED_TOKEN, res);
+        AsyncStorageService.setItem(TOKEN_SYNCED, 'true');
       });
     })
   }

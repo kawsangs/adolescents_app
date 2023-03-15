@@ -65,7 +65,6 @@ const App: () => Node = () => {
 
   useEffect(() => {
     SplashScreen.hide();
-    MobileTokenService.handleSyncingToken();
     MobileTokenService.onNotificationOpenApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
     appVisitService.recordVisit();

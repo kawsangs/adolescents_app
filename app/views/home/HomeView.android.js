@@ -9,6 +9,7 @@ import CardListComponent from '../../components/shared/CardListComponent';
 import syncService from '../../services/sync_service';
 import Category from '../../models/Category';
 import audioPlayerService from '../../services/audio_player_service';
+import MobileTokenService from '../../services/mobile_token_service';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -17,8 +18,10 @@ const HomeView = (props) => {
   useEffect(() => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
-      if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable)
+      if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable) {
         syncService.syncUsersAndVisits();
+        MobileTokenService.handleSyncingToken();
+      }
 
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;
     });
