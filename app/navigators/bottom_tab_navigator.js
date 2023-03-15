@@ -38,6 +38,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({focused, color, size}) => <TabBarItemComponent focused={focused} icon='home' color={color} size={size} label={t('home')} />,
           tabBarItemStyle: [styles.tabBarItem, styles.tabBarLeftItem],
           headerShown: false,
+          tabBarStyle: {display: 'none'}
         }}
         listeners={({ navigation }) => ({
           tabPress: (event) => {

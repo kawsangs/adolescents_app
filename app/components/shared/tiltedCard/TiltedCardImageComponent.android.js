@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 const TiltedCardImageComponent = (props) => {
-  return <View style={{flex: 2}}>
+  return <View style={{flex: 1.5}}>
             <Image source={props.image} style={styles.image} resizeMode='contain' />
          </View>
 }

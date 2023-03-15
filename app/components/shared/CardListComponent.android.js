@@ -15,7 +15,8 @@ const CardListComponent = (props) => {
         return <HorizontalCardComponent key={index}
                   index={index}
                   item={item}
-                  containerStyle={{marginTop: 32}}
+                  // containerStyle={{marginTop: 32}}
+                  containerStyle={{marginTop: 16}}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
                 />

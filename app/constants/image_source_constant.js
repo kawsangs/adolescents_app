@@ -26,7 +26,13 @@ const imageSources = {
   violence_emotional_control: require("../assets/images/categories/violence_and_emotional_control.png"),
   rhac: require("../assets/images/rhac_logo.png"),
   marie_stopes: require("../assets/images/marie_stopes_logo.png"),
-  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg") 
+  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg"),
+  job_institution: require("../assets/images/categories/job_institution.png"),
+  job_type: require("../assets/images/categories/job_type.png"),
+  job_validation: require("../assets/images/categories/job_validation.jpeg"),
+  job_video: require("../assets/images/categories/job_video.png"),
+  school: require("../assets/images/categories/school.png"),
+  understand_characteristic: require("../assets/images/categories/understand_characteristic.jpeg")
 }
 
 export default imageSources;

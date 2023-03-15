@@ -10,16 +10,20 @@ const HomeHeaderTitleComponent = () => {
   const {t} = useTranslation();
   return (
     <View style={{flexDirection: 'row', flex: 1, height: '100%', alignItems: 'center'}}>
-      <Image source={require('../../assets/images/logo.png')} style={styles.image} />
-      <BoldLabelComponent label={t('youthHealth')} style={styles.label} />
+      <Image source={require('../../assets/images/treyvisay_logo.png')} style={styles.image} />
+      {/* <BoldLabelComponent label={t('youthHealth')} style={styles.label} /> */}
+      <BoldLabelComponent label='ត្រីវិស័យ' style={styles.label} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   image: {
-    height: 30,
-    width: 24,
+    // height: 30,
+    // width: 24,
+
+    height: 32,
+    width: 28,
   },
   label: {
     color: color.whiteColor,

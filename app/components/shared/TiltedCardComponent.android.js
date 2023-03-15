@@ -1,6 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Card} from 'react-native-paper';
+import {View, TouchableOpacity} from 'react-native';
+import {Card, Text} from 'react-native-paper';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import TiltedCardImageComponent from './tiltedCard/TiltedCardImageComponent';
@@ -33,7 +33,15 @@ const TiltedCardComponent = (props) => {
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />
-            <CardPointAndAudioFooterComponent
+
+            <View style={{paddingHorizontal: 8, paddingTop: 6}}>
+              <Text style={{lineHeight: 21, color: '#333333'}}>{props.item.description}</Text>
+            </View>
+            <View style={{flexGrow: 1}}/>
+            <TouchableOpacity style={{backgroundColor: '#1b91f7', width: 64, justifyContent: 'center', alignItems: 'center', paddingVertical: 6, borderRadius: 6, alignSelf: 'flex-end', marginBottom: 10, marginRight: 8}}>
+              <Text style={{color: 'white'}}>ពិស្ដារ</Text>
+            </TouchableOpacity>
+            {/* <CardPointAndAudioFooterComponent
               uuid={props.item.uuid}
               index={props.index}
               points={categoryHelper.getSubPoint(props.item)}
@@ -41,7 +49,7 @@ const TiltedCardComponent = (props) => {
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               containerStyle={{paddingLeft: 8, paddingBottom: 1}}
-            />
+            /> */}
           </View>
         </View>
       </View>

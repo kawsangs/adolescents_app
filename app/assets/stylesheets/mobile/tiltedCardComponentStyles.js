@@ -6,7 +6,8 @@ import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 
 const tiltedCardComponentStyles = StyleSheet.create({
   container: {
-    maxHeight: 188,
+    // maxHeight: 188,
+    maxHeight: 246,
     width: componentUtil.getGridCardWidth(),
     borderRadius: 70
   },
@@ -53,12 +54,12 @@ const tiltedCardComponentStyles = StyleSheet.create({
   },
   title: {
     fontSize: cardTitleFontSize,
-    flex: 1,
+    // flex: 1,
     paddingHorizontal: 8,
   },
   footer: {
     flex: 3,
-    paddingTop: 8
+    // paddingTop: 8
   }
 });
 

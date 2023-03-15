@@ -10,7 +10,7 @@ const HomeNavigationHeader = (props) => {
     <NavigationHeaderComponent
       leftButton={<NavigationHeaderMenuButtonComponent navigation={props.navigation}/>}
       customTitle={<HomeHeaderTitleComponent/>}
-      rightButton={<NavigationHeaderNotificationButtonComponent/>}
+      // rightButton={<NavigationHeaderNotificationButtonComponent/>}
     />
   )
 }

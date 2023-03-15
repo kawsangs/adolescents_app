@@ -28,6 +28,7 @@ const HorizontalCardComponent = (props) => {
         <HorizontalCardInfoComponent
           uuid={props.item.uuid}
           title={props.item.name}
+          description={props.item.description}
           index={props.index}
           points={Category.getSubCategories(props.item.uuid).length}
           audio={props.item.audioSource}

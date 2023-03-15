@@ -5,9 +5,9 @@ import {cardTitleFontSize} from '../../../constants/component_constant';
 
 const horizontalCardInfoComponentStyles = StyleSheet.create({
   container: {
-    flex: 3,
+    flex: 4,
     flexDirection: 'column',
-    paddingLeft: 8,
+    paddingLeft: 16,
     paddingTop: 8,
   },
   titleContainer: {
