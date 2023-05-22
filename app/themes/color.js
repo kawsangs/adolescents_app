@@ -22,6 +22,7 @@ const color = {
   facebookColor: '#4267b2',
   telegramColor: '#229ED9',
   whatsappColor: '#4FCE5D',
+  notificationBadgeColor: '#E1341E'
 }
 
 export default color;

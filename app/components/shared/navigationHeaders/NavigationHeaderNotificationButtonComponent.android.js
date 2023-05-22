@@ -3,18 +3,18 @@ import {View} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import NavigationHeaderButtonComponent from './NavigationHeaderButtonComponent';
-import NotifyBadgeComponent from '../NotifyBadgeComponent';
+import NotificationBadgeComponent from '../NotificationBadgeComponent';
 import {navigationHeaderIconSize} from '../../../constants/component_constant';
 import { navigationRef } from '../../../navigators/app_navigator';
 import { useSelector } from 'react-redux';
 
-const HomeHeaderNotificationButtonComponent = (props) => {
+const NavigationHeaderNotificationButtonComponent = (props) => {
   const unreadNotificationsCount = useSelector((state) => state.unreadNotifications.value)
 
   const renderIcon = () => {
     return (
       <View>
-        { !!unreadNotificationsCount && <NotifyBadgeComponent/> }
+        { !!unreadNotificationsCount && <NotificationBadgeComponent notificationCount={unreadNotificationsCount}/> }
 
         <IonIcon name="notifications-outline" size={navigationHeaderIconSize} color="white"/>
       </View>
@@ -27,4 +27,4 @@ const HomeHeaderNotificationButtonComponent = (props) => {
           />
 }
 
-export default HomeHeaderNotificationButtonComponent;
+export default NavigationHeaderNotificationButtonComponent;
