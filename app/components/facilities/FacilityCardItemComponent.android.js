@@ -19,7 +19,8 @@ const FacilityCardItemComponent = (props) => {
 
   const viewDetail = () => {
     visitService.recordVisitFacility(props.facility, () => {
-      navigationRef.current?.navigate('FacilityDetailView', {uuid: props.facility.uuid})
+      const facilityUuid = !!props.facility.uuid ? props.facility.uuid : props.facility.id
+      navigationRef.current?.navigate('FacilityDetailView', {uuid: facilityUuid})
     });
   }
 
