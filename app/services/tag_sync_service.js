@@ -21,6 +21,9 @@ const tagSyncService = (() => {
 
     const response = await new TagApi().load(page)
     apiService.handleApiResponse(response, (res) => {
+      if (page == 1)
+        Tag.deleteAll()
+
       const allPage = Math.ceil(res.pagy.count / itemsPerPage)
       _handleSaveTag(res.tags, () => {
         _syncByPage(page+1, allPage, successCallback)

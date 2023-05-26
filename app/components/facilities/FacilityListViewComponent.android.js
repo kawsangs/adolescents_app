@@ -28,7 +28,7 @@ const FacilityListViewComponent = (props) => {
   }
 
   const renderList = () => {
-    return <FacilityScrollableListComponent facilities={facilities} facilityImages={facilityImages} hasInternet={props.hasInternet}
+    return <FacilityScrollableListComponent facilityImages={facilityImages} hasInternet={props.hasInternet} selectedTagUuid={selectedTagUuid}
               reloadFacilityImages={() => setFacilityImages(FacilityImage.getAll())}
            />
   }

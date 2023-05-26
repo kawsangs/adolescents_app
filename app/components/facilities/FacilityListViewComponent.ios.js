@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {useTranslation} from 'react-i18next';
 
 import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
@@ -13,7 +12,6 @@ import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 
 const FacilityListViewComponent = (props) => {
-  const {t} = useTranslation();
   const [facilities, setFacilities] = useState(Facility.getAll());
   const [facilityImages, setFacilityImages] = useState(FacilityImage.getAll())
   const [tags] = useState(Tag.getAll());
@@ -30,7 +28,7 @@ const FacilityListViewComponent = (props) => {
   }
 
   const renderList = () => {
-    return <FacilityScrollableListComponent facilities={facilities} facilityImages={facilityImages} hasInternet={props.hasInternet}
+    return <FacilityScrollableListComponent facilityImages={facilityImages} hasInternet={props.hasInternet} selectedTagUuid={selectedTagUuid}
               reloadFacilityImages={() => setFacilityImages(FacilityImage.getAll())}
            />
   }

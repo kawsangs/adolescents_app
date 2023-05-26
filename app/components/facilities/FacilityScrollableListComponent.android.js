@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useSelector} from 'react-redux';
 
 import FacilityCardItemComponent from './FacilityCardItemComponent';
@@ -6,23 +6,35 @@ import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import facilityHelper from '../../helpers/facility_helper';
 import facilitySyncService from '../../services/facility_sync_service';
 import tagSyncService from '../../services/tag_sync_service';
+import uuidv4 from '../../utils/uuidv4_util';
+import Facility from '../../models/Facility';
 
 const FacilityScrollableListComponent = (props) => {
   const listRef = useRef();
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
+  const [facilities, setFacilities] = React.useState(Facility.getAll())
+
+  useEffect(() => {
+    setFacilities(facilityHelper.getFacilities(filteredProvince, props.selectedTagUuid));
+  }, [filteredProvince, props.selectedTagUuid]);
+
   const onEndReached = () => {
-    if (!!filteredProvince)
+    if (!!filteredProvince.province)
       return listRef.current?.stopPaginateLoading()
 
     facilitySyncService.syncData(facilityHelper.getStartingPage() + 1, (count) => {
       listRef.current?.stopPaginateLoading()
-      props.reloadFacilityImages()
+      !!props.reloadFacilityImages && props.reloadFacilityImages()
     }, () => listRef.current?.stopPaginateLoading())
   }
 
   const onRefresh = () => {
+    if (!!filteredProvince.province || !!props.selectedTagUuid)
+      return listRef.current?.stopRefreshLoading()
+
     tagSyncService.syncAllData()
-    facilitySyncService.syncData(1, () => {
+    facilitySyncService.syncAllData((newFacilities) => {
+      setFacilities(newFacilities)
       listRef.current?.stopRefreshLoading()
       props.reloadFacilityImages()
     }, () => listRef.current?.stopRefreshLoading())
@@ -31,9 +43,9 @@ const FacilityScrollableListComponent = (props) => {
   return <CustomFlatListComponent
             setFlatListRef={props.setFlatListRef}
             ref={listRef}
-            data={props.facilities}
+            data={facilities}
             renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={props.itemContainerStyle} accessibilityLabel={item.name} />}
-            keyExtractor={item => item.uuid}
+            keyExtractor={item => uuidv4()}
             hasInternet={props.hasInternet}
             horizontal={props.horizontal}
             endReachedAction={() => onEndReached()}

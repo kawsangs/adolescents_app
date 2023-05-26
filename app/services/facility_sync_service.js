@@ -3,20 +3,26 @@ import apiService from './api_service';
 import fileDownloadService from './file_download_service';
 import Facility from '../models/Facility';
 import FacilityImage from '../models/FacilityImage';
+import {itemsPerPage} from '../constants/sync_data_constant';
 
-const facilityListingService = (() => {
+const facilitySyncService = (() => {
   return {
     syncData,
+    syncAllData
   }
 
   async function syncData(page, successCallback, failureCallback) {
     const response = await new FacilityApi().load(page)
     apiService.handleApiResponse(response, (res) => {
-      _handleSaveFacility(res.facilities)
+      _handleSaveFacility(res.facilities, page)
       _handleDownloadLogo(0, res.facilities, () => {
         !!successCallback && successCallback(res.pagy.count)
       })
     }, (error) => !!failureCallback && failureCallback())
+  }
+
+  function syncAllData(successCallback, failureCallback) {
+    _syncAndRemoveByPage(1, 1, successCallback, failureCallback)
   }
 
   // private method
@@ -24,6 +30,22 @@ const facilityListingService = (() => {
     facilities.map((facility, index) => {
       !!Facility.findByUuid(facility.id) ? Facility.update(facility.id, facility) : Facility.create(facility)
     });
+  }
+
+  async function _syncAndRemoveByPage(page, totalPage, successCallback, failureCallback, prevFacilities = []) {
+    if (page > totalPage) {
+      Facility.deleteAll()
+      _handleSaveFacility(prevFacilities)
+      return successCallback(prevFacilities)
+    }
+
+    const response = await new FacilityApi().load(page)
+    apiService.handleApiResponse(response, (res) => {
+      _handleDownloadLogo(0, res.facilities, () => {
+        const allPage = Math.ceil(res.pagy.count / itemsPerPage)
+        _syncAndRemoveByPage(page+1, allPage, successCallback, failureCallback, [...prevFacilities, ...res.facilities])
+      })
+    }, (error) => !!failureCallback && failureCallback())
   }
 
   function _handleDownloadLogo(index, facilities, callback) {
@@ -41,4 +63,4 @@ const facilityListingService = (() => {
   }
 })()
 
-export default facilityListingService
+export default facilitySyncService

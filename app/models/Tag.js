@@ -24,6 +24,10 @@ class Tag {
     BaseModel.update(MODEL, uuid, data)
   }
 
+  static deleteAll() {
+    BaseModel.deleteAll(MODEL)
+  }
+
   // private method
   static #getFormattedData = (tag) => {
     return {...tag, uuid: tag.id}

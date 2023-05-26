@@ -10,7 +10,7 @@ class Facility {
   }
 
   static getAll = () => {
-    return BaseModel.getAll(MODEL);
+    return [...BaseModel.getAll(MODEL)];
   }
 
   static findByUuid = (uuid) => {
