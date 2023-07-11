@@ -20,7 +20,7 @@ const CustomBottomSheetPickerComponent = (props) => {
             {...props}
             primaryColor={colorSet('primary')}
             secondaryColor={color.secondaryColor}
-            titleStyle={[{marginBottom: 0, fontSize: titleFontSize, fontFamily: FontFamily.regular}, props.titleStyle]}
+            titleStyle={[{marginBottom: 5, fontSize: titleFontSize, fontFamily: FontFamily.regular}, props.titleStyle]}
             pickerStyle={{backgroundColor: colorSet('background')}}
             pickerBoxStyle={{paddingRight: 4}}
             bottomSheetTitleStyle={{fontSize: bottomSheetTitleFontSize, fontFamily: FontFamily.bold}}
