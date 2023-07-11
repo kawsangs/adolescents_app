@@ -80,6 +80,7 @@ const createAccountService = (() => {
       gender: user ? user.gender : null,
       age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
+      occupation: user ? user.occupation : null,
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
@@ -100,6 +101,7 @@ const createAccountService = (() => {
       app_user_characteristics_attributes: characteristicAttrs,
       registered_at: user.registered_at,
       province_id: user.province_id,
+      occupation: user.occupation,
       gender: user.gender,
       age: user.age,
       platform: Platform.OS
