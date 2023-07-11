@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -18,6 +17,7 @@ const ProfileInfoComponent = (props) => {
   renderInfo = () => {
     const gender = profileHelper.getGender(loggedInUser.gender);
     const province = profileHelper.getProvince(loggedInUser.province_id)
+    const occupation = profileHelper.getOccupation(loggedInUser.occupation);
     const infos = [
       {
         uuid: 'user-gender',
@@ -36,6 +36,12 @@ const ProfileInfoComponent = (props) => {
         label: 'ទីតាំង',
         value: province.name_km,
         audio: province.audio,
+      },
+      {
+        uuid: 'user-occupation',
+        label: 'មុខរបរ',
+        value: occupation ? occupation.name_km : 'មិនមាន',
+        audio: occupation ? occupation.audio : null,
       }
     ]
     return infos.map((info, index) => {

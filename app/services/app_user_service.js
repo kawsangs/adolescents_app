@@ -37,6 +37,8 @@ const createAccountService = (() => {
 
   function syncUsers(callback) {
     const unsyncedUsers = User.unsynced();
+    console.log('=== unsynced user = ', unsyncedUsers.length)
+
     if (unsyncedUsers.length == 0) {
       callback();
       return;
