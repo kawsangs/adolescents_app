@@ -13,7 +13,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GenderSelectionButtonComponent = (props) => {
   const renderAudioButton = () => {
-    return <View style={styles.audioContainer}>
+    return <View style={[styles.audioContainer, {height: 38}]}>
               <CustomAudioPlayerButtonComponent
                 audio={props.audio}
                 itemUuid={props.uuid}
@@ -22,7 +22,7 @@ const GenderSelectionButtonComponent = (props) => {
                 updatePlayingUuid={props.updatePlayingUuid}
                 accessibilityLabel={props.accessibilityLabel}
                 containerStyle={{width: '100%'}}
-                buttonStyle={styles.audioBtn}
+                buttonStyle={[styles.audioBtn, {height: '100%'}]}
               />
             </View>
   }
@@ -31,13 +31,13 @@ const GenderSelectionButtonComponent = (props) => {
     const bgColor = (props.selectedValue == props.value) ? color.secondaryColor : '#ebedf1';
     const labelColor = (props.selectedValue == props.value) ? color.whiteColor : color.primaryColor;
 
-    return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }]}
+    return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor, paddingTop: 0, paddingBottom: 0 }]}
               onPress={() => props.updateValue(props.value)}
             >
-            <View style={{flex: 2, justifyContent: 'flex-end'}}>
+            <View style={{justifyContent: 'flex-end', marginTop: -4}}>
               <Icon name={props.icon} size={props.size} color={labelColor}/>
             </View>
-            <View style={{flex: 1, justifyContent: 'flex-end'}}>
+            <View style={{justifyContent: 'flex-end'}}>
               <TextComponent label={props.label} style={[styles.label, { color: labelColor }]} />
             </View>
           </TouchableOpacity>

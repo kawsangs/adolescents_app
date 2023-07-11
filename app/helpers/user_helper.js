@@ -2,12 +2,14 @@ import {minimumAge, maximumAge} from '../constants/user_constant';
 import arrayUtil from '../utils/array_util';
 import provinces from '../db/data/provinces';
 import characteristics from '../db/data/characteristics';
+import occupations from '../db/data/occupations';
 
 const userHelper = (() => {
   return {
     getAgeDataset,
     getProvinceDataset,
     getCharacteristicDataset,
+    getOccupationDataset,
   }
 
   function getAgeDataset(postfix) {
@@ -25,6 +27,10 @@ const userHelper = (() => {
 
   function getCharacteristicDataset(language) {
     return _getPickerDataset(characteristics, language);
+  }
+
+  function getOccupationDataset(language) {
+    return _getPickerDataset(occupations, language);
   }
 
   // private method

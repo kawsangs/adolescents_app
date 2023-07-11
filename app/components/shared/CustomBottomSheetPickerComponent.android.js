@@ -20,13 +20,14 @@ const CustomBottomSheetPickerComponent = (props) => {
             {...props}
             primaryColor={colorSet('primary')}
             secondaryColor={color.secondaryColor}
-            titleStyle={[{marginBottom: 5, fontSize: titleFontSize, fontFamily: FontFamily.regular}, props.titleStyle]}
+            titleStyle={[{marginBottom: 0, fontSize: titleFontSize, fontFamily: FontFamily.regular}, props.titleStyle]}
             pickerStyle={{backgroundColor: colorSet('background')}}
             pickerBoxStyle={{paddingRight: 4}}
             bottomSheetTitleStyle={{fontSize: bottomSheetTitleFontSize, fontFamily: FontFamily.bold}}
             placeholderStyle={[{fontSize: itemFontSize, fontFamily: FontFamily.regular, alignSelf: 'center', color: colorSet('text')}, props.placeholderStyle]}
             itemTextStyle={{fontSize: itemFontSize, fontFamily: FontFamily.regular}}
-            pickerContentHeight={defaultPickerContentHeight}
+            pickerContentHeight={props.pickerContentHeight || defaultPickerContentHeight}
+            showLeftCheckIcon={true}
           />
 }
 

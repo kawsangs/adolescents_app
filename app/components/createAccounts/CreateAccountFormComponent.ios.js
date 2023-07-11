@@ -15,7 +15,8 @@ const CreateAccountFormComponent = (props) => {
     gender: 'male',
     age: 0,
     province: null,
-    characteristics: []
+    characteristics: [],
+    occupation: null,
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -32,6 +33,7 @@ const CreateAccountFormComponent = (props) => {
     return <CreateAccountSelectionsComponent
               age={state.age}
               province={state.province}
+              occupation={state.occupation}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
               playingUuid={playingUuid}
