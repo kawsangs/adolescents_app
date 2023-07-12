@@ -8,30 +8,30 @@ export default [
   },
   {
     "uuid":"occupation_2",
-    "value": "dropout",
+    "value": "dropout_student",
     "name_km": "បោះបង់ការសិក្សា (ឈប់រៀន)",
-    "name_en": "Dropout",
+    "name_en": "Dropout student",
     "audio": null
   },
   {
     "uuid":"occupation_3",
-    "value": "entertainment_employee",
+    "value": "entertainment_worker",
     "name_km": "បុគ្គលិកសេវាកំសាន្ត",
-    "name_en": "Entertainment employee",
+    "name_en": "Entertainment worker",
     "audio": null
   },
   {
     "uuid":"occupation_4",
-    "value": "factory_employee",
+    "value": "factory_worker",
     "name_km": "បុគ្គលិករោងចក្រ",
-    "name_en": "Factory employee",
+    "name_en": "Factory worker",
     "audio": null
   },
   {
     "uuid":"occupation_5",
-    "value": "migration_worker",
+    "value": "migrant_worker",
     "name_km": "កម្មករចំណាកស្រុក",
-    "name_en": "Migration worker",
+    "name_en": "Migrant worker",
     "audio": null
   },
   {

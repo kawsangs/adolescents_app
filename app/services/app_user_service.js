@@ -82,7 +82,7 @@ const createAccountService = (() => {
       gender: user ? user.gender : null,
       age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
-      occupation: user ? user.occupation : null,
+      occupation: user ? user.occupation : 'other',
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
