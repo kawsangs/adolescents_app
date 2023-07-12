@@ -24,7 +24,7 @@ const schemaV8 = {
       const oldObjects = oldRealm.objects('User');
       const newObjects = newRealm.objects('User');
       for (let i = 0; i < oldObjects.length; i++) {
-        newObjects[i].occupation = !oldObjects[i].occupation ? 'other' : oldObjects[i].occupation;
+        newObjects[i].occupation = !oldObjects[i].occupation ? 'n_a' : oldObjects[i].occupation;
       }
     }
   },

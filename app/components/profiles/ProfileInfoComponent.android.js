@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
 import ProfileCharacteristicsComponent from './ProfileCharacteristicsComponent';
 import ProfileInfoListItemComponent from './ProfileInfoListItemComponent';
+import ProfileInfoOccupationItemComponent from './ProfileInfoOccupationItemComponent';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {anonymousInfo} from '../../constants/user_constant';
 import User from '../../models/User';
@@ -17,7 +18,6 @@ const ProfileInfoComponent = (props) => {
   renderInfo = () => {
     const gender = profileHelper.getGender(loggedInUser.gender);
     const province = profileHelper.getProvince(loggedInUser.province_id)
-    const occupation = profileHelper.getOccupation(loggedInUser.occupation);
     const infos = [
       {
         uuid: 'user-gender',
@@ -36,19 +36,25 @@ const ProfileInfoComponent = (props) => {
         label: 'ទីតាំង',
         value: province.name_km,
         audio: province.audio,
-      },
-      {
-        uuid: 'user-occupation',
-        label: 'មុខរបរ',
-        value: occupation ? occupation.name_km : 'មិនមាន',
-        audio: occupation ? occupation.audio : null,
       }
     ]
     return infos.map((info, index) => {
-     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 0}
-              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-            />
+      return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 0} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} />
     })
+  }
+
+  renderOccupation = () => {
+    const info = {
+      uuid: 'user-occupation',
+      label: 'មុខរបរ',
+      value: props.selectedOccupation != 'n_a' ? profileHelper.getOccupation(props.selectedOccupation).name_km : null,
+      audio: props.selectedOccupation != 'n_a' ? profileHelper.getOccupation(props.selectedOccupation).audio : null,
+    }
+    return <ProfileInfoOccupationItemComponent key='user-occupation' info={info} playingUuid={props.playingUuid}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              updateOccupation={(value) => props.updateSelectedOccupation(value)}
+              loggedInUser={loggedInUser}
+            />
   }
 
   renderAnonymousInfo = () => {
@@ -66,6 +72,7 @@ const ProfileInfoComponent = (props) => {
       style={{borderRadius: cardBorderRadius, marginTop: 16, paddingLeft: 16, paddingBottom: paddingBottom}}
     >
       { !loggedInUser.anonymous ? renderInfo() : renderAnonymousInfo()}
+      { renderOccupation() }
       { loggedInUser.characteristics.length > 0 &&
         <ProfileCharacteristicsComponent
           playingUuid={props.playingUuid}

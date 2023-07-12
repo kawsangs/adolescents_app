@@ -27,6 +27,10 @@ class User {
     return !!this.currentLoggedIn();
   }
 
+  static currentUserHasOccupation = () => {
+    return this.currentLoggedIn().occupation != 'n_a';
+  }
+
   static unsynced = () => {
     // we use spread operator to prevent the live update of the realm object
     return [...BaseModel.findByAttr(MODEL, {synced: false}, '', {type: 'ASC', column: 'registered_at'})]
