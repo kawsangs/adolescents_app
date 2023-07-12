@@ -73,7 +73,6 @@ const FacilityFilterFormComponent = (props) => {
               placeholderStyle={{paddingLeft: 16}}
               hideListItemAudio={true}
               disabled={!province}
-              showCheckIcon={true}
            />
   }
 
