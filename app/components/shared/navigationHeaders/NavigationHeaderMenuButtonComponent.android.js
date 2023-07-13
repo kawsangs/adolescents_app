@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';

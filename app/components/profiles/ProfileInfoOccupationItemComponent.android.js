@@ -8,7 +8,8 @@ import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonC
 import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerComponent';
 import color from '../../themes/color';
 import userHelper from '../../helpers/user_helper';
-import {getStyleOfDevice, isShortScreenDevice} from '../../utils/responsive_util';
+import { androidOccupationContentHeight, androidOccupationSnapPoints } from '../../constants/modal_constant';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/profileInfoListItemComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/profileInfoListItemComponentStyles';
 
@@ -37,17 +38,21 @@ const ProfileInfoOccupationItemComponent = (props) => {
               placeholderAudio={null}
               playingUuid={playingUuid}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-              containerStyle={[styles.valueWrapper, {flex: 10}]}
-              snapPoints={isShortScreenDevice() ? ['66%'] : ['58%']}
-              pickerContentHeight={isShortScreenDevice() ? 408 : 410}
+              containerStyle={[styles.valueWrapper, {flex: 8}]}
+              snapPoints={androidOccupationSnapPoints}
+              pickerContentHeight={androidOccupationContentHeight}
               customPicker={renderCustomPicker()}
+              showSubtitle={true}
+              subtitleStyle={{marginTop: 0}}
+              itemTextStyle={{marginTop: -2}}
+              listItemStyle={{paddingTop: 0}}
            />
   }
 
   const renderOccupation = () => {
     return <React.Fragment>
               <View style={styles.infoWrapper}>
-                <Text style={styles.label}>{info.label}</Text>
+                <Text style={[styles.label, {flex: 3}]}>មុខរបរ</Text>
                 {renderOccupationPicker()}
               </View>
             </React.Fragment>
@@ -59,8 +64,8 @@ const ProfileInfoOccupationItemComponent = (props) => {
 
     return <React.Fragment>
             <View style={styles.infoWrapper}>
-              <Text style={styles.label}>{info.label}</Text>
-              <View style={styles.valueWrapper}>
+              <Text style={[styles.label, {flex: 3}]}>មុខរបរ</Text>
+              <View style={[styles.valueWrapper, {flex: 8}]}>
                 {props.hasIcon && <Icon name={gender.icon} size={30} style={{marginRight: 8}} color={color.lightBlackColor} />}
                 <Text style={styles.valueLabel}>{info.value}</Text>
               </View>
@@ -69,7 +74,7 @@ const ProfileInfoOccupationItemComponent = (props) => {
               { !!info.audio &&
                 <CustomAudioPlayerButtonComponent
                   audio={info.audio}
-                  itemUuid={info.uuid}
+                  itemUuid='user-occupation'
                   playingUuid={playingUuid}
                   updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 />

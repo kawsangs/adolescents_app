@@ -48,8 +48,6 @@ const ProfileInfoComponent = (props) => {
 
   renderOccupation = () => {
     const info = {
-      uuid: 'user-occupation',
-      label: 'មុខរបរ',
       value: props.selectedOccupation != 'n_a' ? profileHelper.getOccupation(props.selectedOccupation).name_km : null,
       audio: props.selectedOccupation != 'n_a' ? profileHelper.getOccupation(props.selectedOccupation).audio : null,
     }

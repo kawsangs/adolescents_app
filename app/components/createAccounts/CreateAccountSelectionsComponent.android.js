@@ -6,6 +6,7 @@ import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerC
 import characteristics from '../../db/data/characteristics';
 import userHelper from '../../helpers/user_helper';
 import audioSources from '../../constants/audio_source_constant';
+import { androidOccupationContentHeight, androidOccupationSnapPoints } from '../../constants/modal_constant';
 import color from '../../themes/color';
 import {isShortScreenDevice} from '../../utils/responsive_util';
 
@@ -65,8 +66,12 @@ const CreateAccountSelectionsComponent = (props) => {
               playingUuid={props.playingUuid}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{marginTop: sectionMarginTop}}
-              snapPoints={isShortScreenDevice() ? ['66%'] : ['58%']}
-              pickerContentHeight={isShortScreenDevice() ? 408 : 410}
+              snapPoints={androidOccupationSnapPoints}
+              pickerContentHeight={androidOccupationContentHeight}
+              showSubtitle={true}
+              subtitleStyle={{marginTop: 0}}
+              itemTextStyle={{marginTop: -2}}
+              listItemStyle={{paddingTop: 0}}
            />
   }
 
