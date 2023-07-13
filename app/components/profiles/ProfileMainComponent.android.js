@@ -12,6 +12,7 @@ import navigationService from '../../services/navigation_service';
 import audioSources from '../../constants/audio_source_constant';
 import {resetSelectedVidAuthor} from '../../features/videos/filterVideoAuthorSlice';
 import {resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
+import { setCurrentUser } from '../../features/users/currentLoginUserSlice';
 
 const ProfileMainComponent = (props) => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const ProfileMainComponent = (props) => {
   updateProfile = () => {
     User.update(loggedInUser.uuid, { occupation: selectedOccupation });
     setLoggedInUser(User.findByUuid(loggedInUser.uuid))
+    dispatch(setCurrentUser(User.currentLoggedIn()));
   }
 
   renderSaveBtn = () => {

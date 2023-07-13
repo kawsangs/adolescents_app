@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
@@ -8,6 +9,8 @@ import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
+import { setCurrentUser } from '../../features/users/currentLoginUserSlice';
+import User from '../../models/User';
 
 const CreateAccountFormComponent = (props) => {
   const [state, setState] = useState({
@@ -19,6 +22,7 @@ const CreateAccountFormComponent = (props) => {
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
+  const dispatch = useDispatch();
 
   const updateState = (fieldName, value) => {
     const newState = state;
@@ -50,6 +54,7 @@ const CreateAccountFormComponent = (props) => {
     }
 
     appUserService.createUser(user);
+    dispatch(setCurrentUser(User.currentLoggedIn()));
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
   }
 

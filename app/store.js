@@ -3,6 +3,7 @@ import unreadNotificationsReducer from './features/notifications/unreadNotificat
 import filterFacilityLocationReducer from './features/facilities/filterFacilityLocationSlice';
 import subCategoryDisplayModeReducer from './features/subCategories/subCategoryDisplayModeSlice';
 import filterVideoAuthorReducer from './features/videos/filterVideoAuthorSlice';
+import currentLoginUserReducer from './features/users/currentLoginUserSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     filterFacilityLocation: filterFacilityLocationReducer,
     subCategoryDisplayMode: subCategoryDisplayModeReducer,
     filterVideoAuthor: filterVideoAuthorReducer,
+    currentLoginUser: currentLoginUserReducer,
   }
 })
