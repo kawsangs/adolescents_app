@@ -25,8 +25,8 @@ const createAccountService = (() => {
     appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
   }
 
-  function isValidForm(age, province) {
-    return age > 0 && !!province;
+  function isValidForm(age, province, occupation) {
+    return age > 0 && !!province && !!occupation;
   }
 
   function createAnonymousUser() {
@@ -60,7 +60,7 @@ const createAccountService = (() => {
     networkService.checkConnection(async () => {
       let response = null;
       if (!!params.id)
-        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId() });
+        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation });
       else
         response = await new AppUserApi().post(await _userApiParams(params));
 
@@ -80,8 +80,7 @@ const createAccountService = (() => {
       gender: user ? user.gender : null,
       age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
-      // occupation: user ? user.occupation : 'other',
-      occupation: 'n_a',
+      occupation: user ? user.occupation : null,
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,

@@ -34,7 +34,7 @@ const ProfileMainComponent = (props) => {
   }
 
   updateProfile = () => {
-    User.update(loggedInUser.uuid, { occupation: selectedOccupation });
+    User.update(loggedInUser.uuid, { occupation: selectedOccupation, synced: false });
     setLoggedInUser(User.findByUuid(loggedInUser.uuid))
     dispatch(setCurrentUser(User.currentLoggedIn()));
   }

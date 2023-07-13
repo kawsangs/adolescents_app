@@ -28,7 +28,7 @@ const CreateAccountFormComponent = (props) => {
     const newState = state;
     newState[fieldName] = value;
     setState({...newState});
-    setIsValid(appUserService.isValidForm(state.age, state.province));
+    setIsValid(appUserService.isValidForm(state.age, state.province, state.occupation));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
   }
 
