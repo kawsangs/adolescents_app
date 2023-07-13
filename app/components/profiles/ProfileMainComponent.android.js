@@ -12,7 +12,7 @@ import navigationService from '../../services/navigation_service';
 import audioSources from '../../constants/audio_source_constant';
 import {resetSelectedVidAuthor} from '../../features/videos/filterVideoAuthorSlice';
 import {resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
-import { setCurrentUser } from '../../features/users/currentLoginUserSlice';
+import { setLoginUserOccupation } from '../../features/users/loginUserOccupationSlice';
 
 const ProfileMainComponent = (props) => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const ProfileMainComponent = (props) => {
   updateProfile = () => {
     User.update(loggedInUser.uuid, { occupation: selectedOccupation, synced: false });
     setLoggedInUser(User.findByUuid(loggedInUser.uuid))
-    dispatch(setCurrentUser(User.currentLoggedIn()));
+    dispatch(setLoginUserOccupation(selectedOccupation))
   }
 
   renderSaveBtn = () => {
@@ -46,7 +46,7 @@ const ProfileMainComponent = (props) => {
                 label='រក្សាទុក'
                 uuid='save-button'
                 style={{marginBottom: 16}}
-                audio={audioSources['0.43.mp3']}
+                audio={null}
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 onPress={() => updateProfile()}
@@ -54,7 +54,6 @@ const ProfileMainComponent = (props) => {
               />
            </React.Fragment>
   }
-
 
   return (
     <View style={{flexGrow: 1, flexDirection: 'column'}}>

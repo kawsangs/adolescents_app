@@ -9,8 +9,7 @@ import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
-import { setCurrentUser } from '../../features/users/currentLoginUserSlice';
-import User from '../../models/User';
+import { setLoginUserOccupation } from '../../features/users/loginUserOccupationSlice';
 
 const CreateAccountFormComponent = (props) => {
   const [state, setState] = useState({
@@ -54,7 +53,7 @@ const CreateAccountFormComponent = (props) => {
     }
 
     appUserService.createUser(user);
-    dispatch(setCurrentUser(User.currentLoggedIn()));
+    dispatch(setLoginUserOccupation(state.occupation));
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
   }
 
