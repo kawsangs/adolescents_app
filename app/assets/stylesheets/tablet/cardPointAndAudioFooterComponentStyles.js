@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import color from '../../../themes/color';
+import {FontFamily} from '../../../themes/font';
 import {descriptionFontSize} from '../../../constants/component_constant';
 
 const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
@@ -13,6 +14,7 @@ const cardPointAndAudioFooterComponentStyles = StyleSheet.create({
     color: color.blackColor,
     flex: 1,
     fontSize: descriptionFontSize,
+    fontFamily: FontFamily.regular,
   },
 });
 
