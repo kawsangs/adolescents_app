@@ -16,8 +16,8 @@ const ProfileView = () => {
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label='ព័ត៌មានរបស់អ្នក' onPress={() => onBackPress()}/>}
       body={<ProfileMainComponent playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}/>}
-      scrollViewStyle={{paddingBottom: 0}}
-      scrollable={false}
+      scrollViewStyle={{paddingBottom: 86}}
+      scrollable={true}
     />
   )
 }

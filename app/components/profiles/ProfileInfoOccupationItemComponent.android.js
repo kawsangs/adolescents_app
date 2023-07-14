@@ -20,7 +20,7 @@ const ProfileInfoOccupationItemComponent = (props) => {
   const {info, gender, playingUuid} = props;
 
   const renderCustomPicker = () => {
-    return <View style={{flexDirection: 'row', alignItems: 'center', height: 48}}>
+    return <View style={{flexDirection: 'row', alignItems: 'center', height: '100%', marginTop: -3}}>
               <Text style={[styles.valueLabel, {color: color.primaryColor, marginRight: 4}]}>
                 { !info.value ? 'ជ្រើសរើសមុខរបររបស់អ្នក' : info.value }
               </Text>

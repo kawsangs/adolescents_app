@@ -41,20 +41,37 @@ const ProfileMainComponent = (props) => {
     dispatch(setLoginUserOccupation(selectedOccupation))
   }
 
-  renderSaveBtn = () => {
+  const renderSaveBtn = () => {
     return <React.Fragment>
-              <Text style={{color: 'white', textAlign: 'center', marginBottom: 8, lineHeight: 24}}>ដើម្បីផ្លាស់ប្ដូរមុខរបរ សូមចុច "រក្សាទុក"</Text>
+              <Text style={{color: 'white', textAlign: 'center', marginBottom: 8, lineHeight: 24}}>
+                { selectedOccupation != 'n_a' ? `ដើម្បីផ្លាស់ប្ដូរមុខរបរ សូមចុច "រក្សាទុក"` : ''}
+              </Text>
               <BigButtonComponent
                 label='រក្សាទុក'
                 uuid='save-button'
-                style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16)}}
                 audio={null}
+                style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16)}}
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 onPress={() => updateProfile()}
-                disabled={!selectedOccupation}
+                disabled={selectedOccupation == 'n_a'}
               />
            </React.Fragment>
+  }
+
+  const renderButton = () => {
+    if (currentOccupation == 'n_a')
+      return renderSaveBtn()
+
+    return <BigButtonComponent
+              label='ចាប់ផ្ដើមសាជាថ្មី'
+              uuid='reset-button'
+              style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16), marginTop: 12}}
+              audio={audioSources['0.43.mp3']}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              onPress={() => onPress()}
+           />
   }
 
   return (
@@ -62,22 +79,7 @@ const ProfileMainComponent = (props) => {
       <ProfileInfoComponent playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} selectedOccupation={selectedOccupation}
         updateSelectedOccupation={(occupation) => setSelectedOccupation(occupation)}
       />
-      <View style={{flex: 1}} />
-      <View>
-        { currentOccupation != selectedOccupation ?
-          renderSaveBtn()
-          :
-          <BigButtonComponent
-            label='ចាប់ផ្ដើមសាជាថ្មី'
-            uuid='reset-button'
-            style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16)}}
-            audio={audioSources['0.43.mp3']}
-            playingUuid={props.playingUuid}
-            updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-            onPress={() => onPress()}
-          />
-        }
-      </View>
+      {renderButton()}
     </View>
   )
 }
