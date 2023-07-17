@@ -17,7 +17,7 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
     width: 38
   },
   instruction: {
-    fontSize: itemFontSize,
+    fontSize: Platform.OS == 'ios' ? largeFontSize() : largeFontSize() + 0.5,
     lineHeight: 30
   },
   titleContainer: {
