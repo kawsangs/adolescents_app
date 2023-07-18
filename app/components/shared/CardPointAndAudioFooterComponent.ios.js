@@ -26,7 +26,7 @@ const CardPointAndAudioFooterComponent = (props) => {
 
   return (
     <View style={[styles.container, props.containerStyle]}>
-      <Text style={styles.label}>{translationHelper.translateNumber(props.points, i18n.language)} {t('point')}</Text>
+      <Text style={styles.label}>{translationHelper.translateNumber(props.points, i18n.language)} { props.pointPostfix || t('point') }</Text>
       { renderAudioBtn() }
     </View>
   )

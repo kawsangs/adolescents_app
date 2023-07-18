@@ -11,10 +11,20 @@ import categoryHelper from '../../helpers/category_helper';
 import tabletStyles from '../../assets/stylesheets/tablet/tiltedCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/tiltedCardComponentStyles';
 import { cardElevation } from '../../constants/component_constant';
+import {mentalSupportContacts} from '../../constants/mental_support_constant';
+import Facility from '../../models/Facility';
+import Video from '../../models/Video';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TiltedCardComponent = (props) => {
+  const subitem = {
+    'catg_lvl_1_clinic_and_examination_service': { points: Facility.getAll().length, label: 'គ្លីនិក' },
+    'catg_lvl_1_mental_support': { points: mentalSupportContacts.length, label: 'សេវា' },
+    'catg_lvl_1_entertainment': { points: Video.getAll().length, label: 'វីដេអូ' },
+    'default': { points: categoryHelper.getSubPoint(props.item), label: 'ចំនុច' }
+  }
+
   const onPress = () => {
     props.updatePlayingUuid(null);
     categoryVisitService.recordVisit(props.item);
@@ -36,7 +46,8 @@ const TiltedCardComponent = (props) => {
             <CardPointAndAudioFooterComponent
               uuid={props.item.uuid}
               index={props.index}
-              points={categoryHelper.getSubPoint(props.item)}
+              points={!!subitem[props.item.code] ? subitem[props.item.code].points : subitem.default.points}
+              pointPostfix={!!subitem[props.item.code] ? subitem[props.item.code].label : subitem.default.label}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
