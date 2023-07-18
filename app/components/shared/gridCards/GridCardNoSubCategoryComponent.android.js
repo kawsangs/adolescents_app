@@ -11,6 +11,7 @@ const GridCardNoSubCategoryComponent = (props) => {
               audio={props.audio}
               itemUuid={props.uuid}
               rippled={true}
+              rippleStyle={{marginTop: 3, marginRight: 2}}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={`កាតទី${props.order}`}
