@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import GenderSelectionComponent from '../shared/GenderSelectionComponent';
 import CreateAccountSelectionsComponent from './CreateAccountSelectionsComponent';
@@ -8,22 +9,25 @@ import appUserService from '../../services/app_user_service';
 import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
+import { setLoginUserOccupation } from '../../features/users/loginUserOccupationSlice';
 
 const CreateAccountFormComponent = (props) => {
   const [state, setState] = useState({
     gender: 'male',
     age: 0,
     province: null,
-    characteristics: []
+    characteristics: [],
+    occupation: null,
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
+  const dispatch = useDispatch();
 
   const updateState = (fieldName, value) => {
     const newState = state;
     newState[fieldName] = value;
     setState({...newState});
-    setIsValid(appUserService.isValidForm(state.age, state.province));
+    setIsValid(appUserService.isValidForm(state.age, state.province, state.occupation));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
   }
 
@@ -31,6 +35,7 @@ const CreateAccountFormComponent = (props) => {
     return <CreateAccountSelectionsComponent
               age={state.age}
               province={state.province}
+              occupation={state.occupation}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
               playingUuid={playingUuid}
@@ -43,10 +48,12 @@ const CreateAccountFormComponent = (props) => {
       gender: state.gender,
       age: parseInt(state.age),
       province_id: state.province,
-      characteristics: state.characteristics
+      characteristics: state.characteristics,
+      occupation: state.occupation
     }
 
     appUserService.createUser(user);
+    dispatch(setLoginUserOccupation(state.occupation));
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]})
   }
 

@@ -8,15 +8,15 @@ import {largeFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 
 const AlertModalConfirmationButtonsComponent = (props) => {
-  const renderButton = (label, onPress, style) => {
-    return <TouchableOpacity onPress={() => onPress()} style={[styles.btn, style]}>
-              <BoldLabelComponent label={label} style={{fontSize: largeFontSize(), color: color.primaryColor}} />
+  const renderButton = (label, onPress, style, labelStyle) => {
+    return <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.isOutlineButton && styles.outline, style]}>
+              <BoldLabelComponent label={label} style={[{fontSize: largeFontSize(), color: color.primaryColor}, labelStyle]} />
            </TouchableOpacity>
   }
 
   return <View style={styles.container}>
-            {renderButton(props.leftButtonLabel, props.onCancel, {marginRight: 22})}
-            {renderButton(props.rightButtonLabel, props.onConfirm)}
+            {renderButton(props.leftButtonLabel, props.onCancel, {...props.leftButtonStyle, marginRight: 22}, props.leftButtonLabelStyle)}
+            {renderButton(props.rightButtonLabel, props.onConfirm, props.rightButtonStyle, props.rightButtonLabelStyle)}
           </View>
 }
 
@@ -31,6 +31,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: componentUtil.mediumPressableItemSize(),
     minWidth: componentUtil.mediumPressableItemSize(),
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: color.primaryColor,
+    borderRadius: 6,
+    marginBottom: 14,
+    marginTop: 12,
+    width: 80,
   }
 });
 

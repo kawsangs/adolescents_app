@@ -6925,10 +6925,10 @@
   "resolved" "https://registry.npmjs.org/react-native-audio-player-button/-/react-native-audio-player-button-1.0.1.tgz"
   "version" "1.0.1"
 
-"react-native-bottom-sheet-picker@^1.1.5":
-  "integrity" "sha512-d1pkgYONtIaKIPYy1DE8EQKxpZYJiaykVBT/Us7K3d0/oros186cnoE1x5uFvQQXbbfbn5Wluuomn9qIJaGJAA=="
-  "resolved" "https://registry.npmjs.org/react-native-bottom-sheet-picker/-/react-native-bottom-sheet-picker-1.1.5.tgz"
-  "version" "1.1.5"
+"react-native-bottom-sheet-picker@^1.1.12":
+  "integrity" "sha512-RG3dfx8+OboJH7OygTMgxNwOR8jFHlbNdG8unePJWb4Oj+Q4opxlTKeP1NIAHQBk5gj0bzJoQTtcogJ6dmEUJA=="
+  "resolved" "https://registry.npmjs.org/react-native-bottom-sheet-picker/-/react-native-bottom-sheet-picker-1.1.12.tgz"
+  "version" "1.1.12"
   dependencies:
     "react-native-vector-icons" "^9.2.0"
 

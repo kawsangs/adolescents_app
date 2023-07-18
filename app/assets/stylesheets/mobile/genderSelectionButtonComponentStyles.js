@@ -26,13 +26,12 @@ const genderSelectionButtonComponentStyles = StyleSheet.create({
     flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingBottom: 10,
-    paddingTop: 10,
+    paddingBottom: 2,
+    paddingTop: 2,
   },
   label: {
     color: color.whiteColor,
     fontSize: xLargeFontSize(),
-    marginTop: 2,
   },
   audioContainer: {
     alignItems: 'center',

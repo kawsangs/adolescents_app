@@ -1,7 +1,7 @@
 import {Platform} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import {getStyleOfDevice, isLowPixelDensityDevice} from '../utils/responsive_util';
+import {getStyleOfDevice, isLowPixelDensityDevice, isShortScreenDevice} from '../utils/responsive_util';
 
 export const defaultPickerSnapPoints = getStyleOfDevice(['60%'], ['65%']);
 export const defaultPickerContentHeight = hp('55%');
@@ -16,3 +16,8 @@ export const signUpConfirmationSnapPoints = Platform.OS == 'ios' ? getStyleOfDev
 export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('25%', confirmationiOSMobile.height) : getStyleOfDevice('36%', confirmationAndroidMobile.height);
 export const videoFilterSnapPoints = getStyleOfDevice(['52%'], ['65%']);
 export const videoFilterContentHeight = getStyleOfDevice(hp('47%'), hp('60%'));
+
+export const androidOccupationSnapPoints = isShortScreenDevice() ? ['80.5%'] : ['72%'];
+export const androidOccupationContentHeight = isShortScreenDevice() ? 512 : 522;
+export const iosOccupationSnapPoints = DeviceInfo.hasNotch() ? ['66%'] : isShortScreenDevice() ? ['79%'] : ['72%'];
+export const iosOccupationContentHeight = DeviceInfo.hasNotch() ? 490 : isShortScreenDevice() ? 500 : 500;

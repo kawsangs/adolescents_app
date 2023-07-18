@@ -94,5 +94,8 @@
   "noResult": "មិនមានលទ្ធផល",
   "filterClinic": "ស្វែងរកគ្លីនិក",
   "search": "ស្វែងរក",
-  "hour": "ម៉ោង"
+  "hour": "ម៉ោង",
+  "occupation": "មុខរបរ",
+  "selectYourOccupation": "ជ្រើសរើសមុខរបររបស់អ្នក",
+  "yourOccupaton": "មុខរបររបស់អ្នក"
 }

@@ -5,7 +5,7 @@ const profileInfoComponentStyles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    paddingVertical: 6
+    minHeight: 56
   },
   infoWrapper: {
     alignItems: 'center',

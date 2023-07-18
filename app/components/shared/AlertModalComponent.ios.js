@@ -4,6 +4,7 @@ import {Modal, Portal} from 'react-native-paper';
 
 import AlertModalConfirmationButtonsComponent from './alertModals/AlertModalConfirmationButtonsComponent';
 import {cardBorderRadius} from '../../constants/component_constant';
+import color from '../../themes/color';
 
 const AlertModalComponent = (props) => {
   return (
@@ -19,6 +20,9 @@ const AlertModalComponent = (props) => {
           onConfirm={() => props.onConfirm()}
           leftButtonLabel={props.leftButtonLabel}
           rightButtonLabel={props.rightButtonLabel}
+          isOutlineButton={true}
+          rightButtonStyle={{borderColor: color.redColor}}
+          rightButtonLabelStyle={{color: color.redColor}}
         />
       </Modal>
     </Portal>
