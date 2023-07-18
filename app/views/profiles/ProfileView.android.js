@@ -20,8 +20,8 @@ const ProfileView = () => {
 
   const message = () => {
     return <React.Fragment>
-              <Text style={{fontSize: descriptionFontSize, lineHeight: 25}}>ព័ត៌មានដែលបានជ្រើសរើសនឹងត្រូវបាត់បង់នៅពេលចាកចេញ។</Text>
-              <Text style={{marginTop: 12, fontSize: descriptionFontSize}}>តើអ្នកពិតជាចង់ចាកចេញមែន​ឬទេ?</Text>
+              <Text style={{fontSize: descriptionFontSize, lineHeight: 25}}>ព័ត៌មានមុខរបរដែលអ្នកបានជ្រើសរើសនឹងត្រូវបោះបង់នៅពេលចាកចេញ។</Text>
+              <Text style={{marginTop: 12, fontSize: descriptionFontSize}}>តើអ្នកពិតជាចង់បោះបង់មែន​ឬទេ?</Text>
            </React.Fragment>
   }
 
