@@ -13,7 +13,7 @@ export default [
     "name_km": "បោះបង់ការសិក្សា (ឈប់រៀន)",
     "name_en": "Dropout student",
     "audio": null,
-    "subtitle": "អ្នកដែលរៀននៅក្រៅសាលា"
+    "subtitle": "អ្នកដែលរៀនក្រៅសាលា"
   },
   {
     "uuid":"occupation_3",

@@ -57,6 +57,7 @@ const ProfileInfoComponent = (props) => {
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               updateOccupation={(value) => props.updateSelectedOccupation(value)}
               loggedInUser={loggedInUser}
+              selectedValue={props.selectedOccupation}
             />
   }
 

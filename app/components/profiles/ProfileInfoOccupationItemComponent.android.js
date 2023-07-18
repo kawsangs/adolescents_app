@@ -22,11 +22,11 @@ const ProfileInfoOccupationItemComponent = (props) => {
 
   const renderCustomPicker = () => {
     return <View style={{flexDirection: 'row', alignItems: 'center', height: '100%', marginTop: -3}}>
+              {!info.value && <NoticeBadgeComponent style={{position: 'relative', width: 16, height: 16, marginRight: 6}} disableFixPosition={true}/>}
               <Text style={[styles.valueLabel, {color: color.primaryColor, marginRight: 4}]}>
                 { !info.value ? 'ជ្រើសរើសមុខរបររបស់អ្នក' : info.value }
               </Text>
               <Icon name='pencil-outline' size={22} color={color.primaryColor} />
-              <NoticeBadgeComponent style={{right: -12, top: 8, width: 16, height: 16}}/>
            </View>
   }
 
@@ -34,7 +34,7 @@ const ProfileInfoOccupationItemComponent = (props) => {
     return <CustomBottomSheetPickerComponent
               bottomSheetTitle={t('yourOccupaton')}
               items={userHelper.getOccupationDataset(i18n.language)}
-              selectedItem={props.value}
+              selectedItem={props.selectedValue}
               onSelectItem={(item) => props.updateOccupation(item)}
               pickerUuid='user-occupation-picker'
               placeholderAudio={null}

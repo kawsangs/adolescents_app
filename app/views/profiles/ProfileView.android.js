@@ -20,7 +20,7 @@ const ProfileView = () => {
 
   const message = () => {
     return <React.Fragment>
-              <Text style={{fontSize: descriptionFontSize}}>ព័ត៌មានដែលបានជ្រើសរើសនឹងត្រូវបាត់បង់នៅពេលចាកចេញ។</Text>
+              <Text style={{fontSize: descriptionFontSize, lineHeight: 25}}>ព័ត៌មានដែលបានជ្រើសរើសនឹងត្រូវបាត់បង់នៅពេលចាកចេញ។</Text>
               <Text style={{marginTop: 12, fontSize: descriptionFontSize}}>តើអ្នកពិតជាចង់ចាកចេញមែន​ឬទេ?</Text>
            </React.Fragment>
   }
@@ -30,7 +30,7 @@ const ProfileView = () => {
               visible={visible}
               message={message}
               leftButtonLabel='ទេ'
-              rightButtonLabel='បាទ/ចាស'
+              rightButtonLabel='បោះបង់'
               onDismiss={() => setVisible(false)}
               onConfirm={() => onBackPress()}
            />
