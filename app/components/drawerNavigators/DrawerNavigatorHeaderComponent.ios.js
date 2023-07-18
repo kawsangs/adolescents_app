@@ -3,11 +3,11 @@ import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {useSelector} from 'react-redux';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import AnonymousIconComponent from '../shared/AnonymousIconComponent';
+import NoticeBadgeComponent from '../shared/NoticeBadgeComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import translationHelper from '../../helpers/translation_helper';
@@ -40,11 +40,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
         </Text>
         <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10, marginTop: 2}} />
 
-        { userOccupation == 'n_a' &&
-          <View style={{width: 16, height: 16, backgroundColor: color.redColor, borderRadius: 16, justifyContent: 'center', alignItems: 'center', position: 'absolute', top: -10, right: -4}}>
-            <FontAwesomeIcon name='exclamation' size={11} color='white' />
-          </View>
-        }
+        { userOccupation == 'n_a' && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>
     </TouchableOpacity>
   )

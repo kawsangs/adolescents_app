@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerComponent';
+import NoticeBadgeComponent from '../shared/NoticeBadgeComponent';
 import color from '../../themes/color';
 import userHelper from '../../helpers/user_helper';
 import { androidOccupationContentHeight, androidOccupationSnapPoints } from '../../constants/modal_constant';
@@ -25,6 +26,7 @@ const ProfileInfoOccupationItemComponent = (props) => {
                 { !info.value ? 'ជ្រើសរើសមុខរបររបស់អ្នក' : info.value }
               </Text>
               <Icon name='pencil-outline' size={22} color={color.primaryColor} />
+              <NoticeBadgeComponent style={{right: -12, top: 8, width: 16, height: 16}}/>
            </View>
   }
 
