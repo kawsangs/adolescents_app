@@ -14,7 +14,9 @@ import {resetSelectedVidAuthor} from '../../features/videos/filterVideoAuthorSli
 import {resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
 import { setLoginUserOccupation } from '../../features/users/loginUserOccupationSlice';
 
-const ProfileMainComponent = (props) => {
+const {useImperativeHandle} = React;
+
+const ProfileMainComponent = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const [loggedInUser, setLoggedInUser] = React.useState(User.currentLoggedIn());
   const currentOccupation = loggedInUser.occupation;
@@ -25,6 +27,11 @@ const ProfileMainComponent = (props) => {
       return () => {}
     }, [])
   )
+
+  useImperativeHandle(ref, () => ({
+    currentOccupation,
+    selectedOccupation,
+  }))
 
   onPress = () => {
     SearchHistory.deleteAll();
@@ -80,6 +87,6 @@ const ProfileMainComponent = (props) => {
       {renderButton()}
     </View>
   )
-}
+})
 
 export default ProfileMainComponent;
