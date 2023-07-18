@@ -5,7 +5,7 @@ export default [
     "name_km": "សិស្ស/និស្សិត",
     "name_en": "Student",
     "audio": null,
-    "subtitle": "វិទ្យាល័យ, អនុវិទ្យាល័យ, សាកលវិទ្យាល័យ"
+    "subtitle": "អនុវិទ្យាល័យ, វិទ្យាល័យ, សាកលវិទ្យាល័យ"
   },
   {
     "uuid":"occupation_2",
@@ -21,7 +21,7 @@ export default [
     "name_km": "បុគ្គលិកសេវាកំសាន្ត",
     "name_en": "Entertainment worker",
     "audio": null,
-    "subtitle": "បុគ្គលិកនៅបៀរហ្គាឌិន, ខារ៉ាអូខេ, កន្លែងម៉ាស្សា, ..."
+    "subtitle": "បុគ្គលិកបៀរហ្គាឌិន, ខារ៉ាអូខេ, កន្លែងម៉ាស្សា, ..."
   },
   {
     "uuid":"occupation_4",
@@ -29,7 +29,7 @@ export default [
     "name_km": "បុគ្គលិករោងចក្រ",
     "name_en": "Factory worker",
     "audio": null,
-    "subtitle": "រោងចក្រកាត់ដេរសម្លៀកបំពាក់, ស្បែកជើង, ..."
+    "subtitle": "រោងចក្រកាត់ដេរសំលៀកបំពាក់, ស្បែកជើង, ..."
   },
   {
     "uuid":"occupation_5",
