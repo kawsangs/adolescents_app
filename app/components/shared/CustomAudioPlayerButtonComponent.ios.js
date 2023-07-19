@@ -15,6 +15,7 @@ const CustomAudioPlayerButtonComponent = (props) => {
   return <AudioPlayerButton
             {...props}
             {...rippleProps}
+            ref={props.audioRef}
             isSpeakerIcon={true}
             iconSize={24}
             iconPrimaryColor={props.iconPrimaryColor || color.primaryColor}

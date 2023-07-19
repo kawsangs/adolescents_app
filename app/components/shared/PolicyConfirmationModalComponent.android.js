@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Linking} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -19,7 +19,13 @@ import mobileStyles from '../../assets/stylesheets/mobile/policyConfirmationModa
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const PolicyConfirmationModalComponent = (props) => {
+  const audioRef = React.createRef();
   const [playingUuid, setPlayingUuid] = useState(null);
+
+  useEffect(() => {
+    audioRef.current?.onPress();
+  }, []);
+
   const renderIcon = () => {
     return <View style={styles.infoIcon}>
               <Icon name="exclamation" size={18} color={color.secondaryColor} />
@@ -47,6 +53,7 @@ const PolicyConfirmationModalComponent = (props) => {
 
   const renderAudioBtn = () => {
     return <CustomAudioPlayerButtonComponent
+              audioRef={audioRef}
               audio={audioSources['0.39.mp3']}
               itemUuid='privacy-policy-terms'
               buttonColor="transparent"
