@@ -36,7 +36,7 @@ const audioSources = {
   "0.36.mp3": require("../assets/audios/20221124_0.36.mp3"),
   "0.37.mp3": require("../assets/audios/20221124_0.37.mp3"),
   "0.38.mp3": require("../assets/audios/20221124_0.38.mp3"),
-  "0.39.mp3": require("../assets/audios/20230228_0.39.mp3"),
+  "0.39.mp3": require("../assets/audios/20230718_0.39.mp3"),
   "0.40.mp3": require("../assets/audios/20230228_0.40.mp3"),
   "0.41.mp3": require("../assets/audios/20230228_0.41.mp3"),
   "0.42.mp3": require("../assets/audios/20230307_0.42.mp3"),
