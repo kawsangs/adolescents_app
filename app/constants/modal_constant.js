@@ -17,7 +17,10 @@ export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOf
 export const videoFilterSnapPoints = getStyleOfDevice(['52%'], ['65%']);
 export const videoFilterContentHeight = getStyleOfDevice(hp('47%'), hp('60%'));
 
-export const androidOccupationSnapPoints = isShortScreenDevice() ? ['80.5%'] : ['72%'];
-export const androidOccupationContentHeight = isShortScreenDevice() ? 512 : 522;
+export const androidOccupationSnapPoints = isShortScreenDevice() ? ['80.5%'] : ['65.6%'];
+export const androidOccupationContentHeight = isShortScreenDevice() ? 512 : 458;
 export const iosOccupationSnapPoints = DeviceInfo.hasNotch() ? ['66%'] : isShortScreenDevice() ? ['79%'] : ['72%'];
 export const iosOccupationContentHeight = DeviceInfo.hasNotch() ? 490 : isShortScreenDevice() ? 500 : 500;
+
+export const androidEducationLevelSnapPoints = isShortScreenDevice() ? ['80.5%'] : ['48%'];
+export const androidEducationLevelContentHeight = isShortScreenDevice() ? 512 : 329;
