@@ -3,6 +3,7 @@ import arrayUtil from '../utils/array_util';
 import provinces from '../db/data/provinces';
 import characteristics from '../db/data/characteristics';
 import occupations from '../db/data/occupations';
+import educations from '../db/data/educations';
 
 const userHelper = (() => {
   return {
@@ -10,6 +11,7 @@ const userHelper = (() => {
     getProvinceDataset,
     getCharacteristicDataset,
     getOccupationDataset,
+    getEducationDataset,
   }
 
   function getAgeDataset(postfix) {
@@ -31,6 +33,10 @@ const userHelper = (() => {
 
   function getOccupationDataset(language) {
     return _getPickerDataset(occupations, language);
+  }
+
+  function getEducationDataset(language) {
+    return _getPickerDataset(educations, language);
   }
 
   // private method

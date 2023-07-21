@@ -52,9 +52,9 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderOccupationPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title={t('occupation')}
-              placeholder={t('selectYourOccupation')}
-              bottomSheetTitle={t('yourOccupaton')}
+              title='មុខរបរ'
+              placeholder='ជ្រើសរើសមុខរបរ'
+              bottomSheetTitle='មុខរបរ'
               required={true}
               requiredColor={color.blackColor}
               items={userHelper.getOccupationDataset(i18n.language)}
