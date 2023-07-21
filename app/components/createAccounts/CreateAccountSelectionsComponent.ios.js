@@ -6,7 +6,10 @@ import CustomBottomSheetPickerComponent from '../shared/CustomBottomSheetPickerC
 import characteristics from '../../db/data/characteristics';
 import userHelper from '../../helpers/user_helper';
 import audioSources from '../../constants/audio_source_constant';
-import {iosOccupationContentHeight, iosOccupationSnapPoints} from '../../constants/modal_constant';
+import {
+  iosOccupationContentHeight, iosOccupationSnapPoints,
+  iosEducationLevelContentHeight, iosEducationLevelSnapPoints
+} from '../../constants/modal_constant';
 import color from '../../themes/color';
 
 const CreateAccountSelectionsComponent = (props) => {
@@ -50,6 +53,12 @@ const CreateAccountSelectionsComponent = (props) => {
            />
   }
 
+  const onOccupationChange = (occupation) => {
+    props.updateState('occupation', occupation)
+    if (occupation == 'student' && props.educationLevel == 'dropout_student')
+      props.updateState('educationLevel', null);
+  }
+
   const renderOccupationPicker = () => {
     return <CustomBottomSheetPickerComponent
               title='មុខរបរ'
@@ -59,7 +68,7 @@ const CreateAccountSelectionsComponent = (props) => {
               requiredColor={color.blackColor}
               items={userHelper.getOccupationDataset(i18n.language)}
               selectedItem={props.occupation}
-              onSelectItem={(item) => props.updateState('occupation', item)}
+              onSelectItem={(item) => onOccupationChange(item)}
               pickerUuid='user-occupation-picker'
               placeholderAudio={null}
               playingUuid={props.playingUuid}
@@ -71,10 +80,36 @@ const CreateAccountSelectionsComponent = (props) => {
            />
   }
 
+  const renderEducationLevelPicker = () => {
+    return <CustomBottomSheetPickerComponent
+              title="កម្រិតវប្បធម៌"
+              placeholder="ជ្រើសរើសកម្រិតវប្បធម៌"
+              bottomSheetTitle="កម្រិតវប្បធម៌"
+              required={true}
+              requiredColor={color.blackColor}
+              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
+              selectedItem={props.educationLevel}
+              onSelectItem={(item) => props.updateState('educationLevel', item)}
+              pickerUuid='user-education-picker'
+              placeholderAudio={null}
+              playingUuid={props.playingUuid}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              containerStyle={{marginTop: sectionMarginTop}}
+              snapPoints={iosEducationLevelSnapPoints}
+              pickerContentHeight={iosEducationLevelContentHeight}
+              showSubtitle={true}
+              subtitleStyle={{marginTop: 0}}
+              itemTextStyle={{marginTop: -2}}
+              listItemStyle={{paddingTop: 0}}
+              disabled={!props.occupation}
+           />
+  }
+
   return <React.Fragment>
             { renderAgePicker() }
             { renderProvincePicker() }
             { renderOccupationPicker() }
+            { renderEducationLevelPicker() }
             <CheckboxComponent items={characteristics} title={t('yourCharacteristic')}
               selectedItems={props.characteristics}
               style={{marginTop: sectionMarginTop}}

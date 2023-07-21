@@ -18,6 +18,7 @@ const CreateAccountFormComponent = (props) => {
     province: null,
     characteristics: [],
     occupation: null,
+    educationLevel: null,
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -27,7 +28,7 @@ const CreateAccountFormComponent = (props) => {
     const newState = state;
     newState[fieldName] = value;
     setState({...newState});
-    setIsValid(appUserService.isValidForm(state.age, state.province, state.occupation));
+    setIsValid(appUserService.isValidForm(state.age, state.province, state.occupation, state.educationLevel));
     asyncStorageService.setItem(USER_INFO_CHANGED, true);
   }
 
@@ -36,6 +37,7 @@ const CreateAccountFormComponent = (props) => {
               age={state.age}
               province={state.province}
               occupation={state.occupation}
+              educationLevel={state.educationLevel}
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
               playingUuid={playingUuid}

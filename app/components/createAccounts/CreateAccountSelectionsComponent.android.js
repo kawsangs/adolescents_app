@@ -11,7 +11,6 @@ import {
   androidEducationLevelContentHeight, androidEducationLevelSnapPoints
 } from '../../constants/modal_constant';
 import color from '../../themes/color';
-import {isShortScreenDevice} from '../../utils/responsive_util';
 
 const CreateAccountSelectionsComponent = (props) => {
   const {t, i18n} = useTranslation();
@@ -54,6 +53,12 @@ const CreateAccountSelectionsComponent = (props) => {
            />
   }
 
+  const onOccupationChange = (occupation) => {
+    props.updateState('occupation', occupation)
+    if (occupation == 'student' && props.educationLevel == 'dropout_student')
+      props.updateState('educationLevel', null);
+  }
+
   const renderOccupationPicker = () => {
     return <CustomBottomSheetPickerComponent
               title='មុខរបរ'
@@ -63,7 +68,7 @@ const CreateAccountSelectionsComponent = (props) => {
               requiredColor={color.blackColor}
               items={userHelper.getOccupationDataset(i18n.language)}
               selectedItem={props.occupation}
-              onSelectItem={(item) => props.updateState('occupation', item)}
+              onSelectItem={(item) => onOccupationChange(item)}
               pickerUuid='user-occupation-picker'
               placeholderAudio={null}
               playingUuid={props.playingUuid}
@@ -85,7 +90,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle="កម្រិតវប្បធម៌"
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getEducationDataset(i18n.language)}
+              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
               selectedItem={props.educationLevel}
               onSelectItem={(item) => props.updateState('educationLevel', item)}
               pickerUuid='user-education-picker'
@@ -99,6 +104,7 @@ const CreateAccountSelectionsComponent = (props) => {
               subtitleStyle={{marginTop: 0}}
               itemTextStyle={{marginTop: -2}}
               listItemStyle={{paddingTop: 0}}
+              disabled={!props.occupation}
            />
   }
 
