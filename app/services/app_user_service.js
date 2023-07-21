@@ -25,8 +25,8 @@ const createAccountService = (() => {
     appVisitService.updateAppVisitsWithoutUser(params.uuid);  // update user uuid to app_visit
   }
 
-  function isValidForm(age, province, occupation) {
-    return age > 0 && !!province && !!occupation;
+  function isValidForm(age, province, occupation, educationLevel) {
+    return age > 0 && !!province && !!occupation && !!educationLevel;
   }
 
   function createAnonymousUser() {
