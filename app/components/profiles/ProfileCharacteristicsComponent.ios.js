@@ -34,7 +34,7 @@ const ProfileCharacteristicsComponent = (props) => {
   }
 
   return <React.Fragment>
-            <Text style={{fontSize: descriptionFontSize, marginBottom: 6, marginTop: 18}}>ស្ថានភាពរស់នៅ</Text>
+            <Text style={{fontSize: descriptionFontSize, marginBottom: 6, marginTop: getStyleOfDevice(10, 18)}}>ស្ថានភាពរស់នៅ</Text>
             {renderItems()}
           </React.Fragment>
 }

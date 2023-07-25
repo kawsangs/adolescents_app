@@ -62,7 +62,7 @@ const ProfileInfoItemWithPickerComponent = (props) => {
       return renderPicker();
 
     return <React.Fragment>
-            <View style={styles.infoWrapper}>
+            <View style={[styles.infoWrapper, {marginBottom: getStyleOfDevice(10, 0)}]}>
               <Text style={[styles.label, {flex: 3}]}>{props.label}</Text>
               <View style={[styles.valueWrapper, {flex: 8}]}>
                 <Text style={styles.valueLabel}>{info.value}</Text>
