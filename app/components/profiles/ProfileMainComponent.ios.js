@@ -22,17 +22,20 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const [loggedInUser, setLoggedInUser] = React.useState(User.currentLoggedIn());
   const currentOccupation = loggedInUser.occupation;
-  const [selectedOccupation, setSelectedOccupation] = React.useState(loggedInUser.occupation);
+  const [occupation, setOccupation] = React.useState(loggedInUser.occupation);
+  const [educationLevel, setEducationLevel] = React.useState(loggedInUser.education_level);
+
   useFocusEffect(
     useCallback(() => {
-      setSelectedOccupation(loggedInUser.occupation); 
+      setOccupation(loggedInUser.occupation); 
+      setEducationLevel(loggedInUser.education_level); 
       return () => {}
     }, [])
   )
 
   useImperativeHandle(ref, () => ({
     currentOccupation,
-    selectedOccupation,
+    occupation,
   }))
 
   onPress = () => {
@@ -43,15 +46,15 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
   }
 
   updateProfile = () => {
-    User.update(loggedInUser.uuid, { occupation: selectedOccupation, synced: false });
+    User.update(loggedInUser.uuid, { occupation: occupation, education_level: educationLevel, synced: false });
     setLoggedInUser(User.findByUuid(loggedInUser.uuid))
-    dispatch(setLoginUserOccupation(selectedOccupation))
+    dispatch(setLoginUserOccupation(occupation))
   }
 
   const renderSaveBtn = () => {
     return <React.Fragment>
               <Text style={{color: 'white', textAlign: 'center', marginBottom: 8, lineHeight: 24}}>
-                { selectedOccupation != 'n_a' ? `ដើម្បីផ្លាស់ប្ដូរមុខរបរ សូមចុច "រក្សាទុក"` : ''}
+                { (occupation != 'n_a' && educationLevel != 'n_a') ? `ដើម្បីផ្លាស់ប្ដូរមុខរបរ និងកម្រិតវប្បធម៌ សូមចុច "រក្សាទុក"` : ''}
               </Text>
               <BigButtonComponent
                 label='រក្សាទុក'
@@ -61,13 +64,13 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
                 playingUuid={props.playingUuid}
                 updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
                 onPress={() => updateProfile()}
-                disabled={selectedOccupation == 'n_a'}
+                disabled={occupation == 'n_a' || educationLevel == 'n_a'}
               />
            </React.Fragment>
   }
 
   const renderButton = () => {
-    if (currentOccupation == 'n_a')
+    if (!User.isLoginAsAnonymous() && currentOccupation == 'n_a')
       return renderSaveBtn()
 
     return <BigButtonComponent
@@ -83,8 +86,9 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
 
   return (
     <View style={{flexGrow: 1, flexDirection: 'column'}}>
-      <ProfileInfoComponent playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} selectedOccupation={selectedOccupation}
-        updateSelectedOccupation={(occupation) => setSelectedOccupation(occupation)}
+      <ProfileInfoComponent playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} occupation={occupation} educationLevel={educationLevel}
+        updateOccupation={(occupation) => setOccupation(occupation)}
+        updateEducationLevel={(item) => setEducationLevel(item)}
       />
       {renderButton()}
     </View>

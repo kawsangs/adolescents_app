@@ -22,6 +22,18 @@ export const anonymousInfo = [
     audio: null,
   },
   {
+    uuid: 'user-occupation',
+    label: 'មុខរបរ',
+    value: 'អនាមិក',
+    audio: null,
+  },
+  {
+    uuid: 'user-education_level',
+    label: 'កម្រិតវប្បធម៌',
+    value: 'អនាមិក',
+    audio: null,
+  },
+  {
     uuid: 'user-characteristic',
     label: 'ស្ថានភាពរស់នៅ',
     value: 'អនាមិក',

@@ -17,8 +17,10 @@ const CreateAccountFormComponent = (props) => {
     age: 0,
     province: null,
     characteristics: [],
-    occupation: null,
-    educationLevel: null,
+    // occupation: null,
+    // educationLevel: null,
+    occupation: 'n_a',
+    educationLevel: 'n_a',
   });
   const [isValid, setIsValid] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);

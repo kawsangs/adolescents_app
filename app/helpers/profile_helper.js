@@ -2,6 +2,7 @@ import genders from '../db/data/genders';
 import provinces from '../db/data/provinces';
 import characteristics from '../db/data/characteristics';
 import occupations from '../db/data/occupations';
+import educations from '../db/data/educations';
 
 const profileHelper = (() => {
   return {
@@ -9,6 +10,7 @@ const profileHelper = (() => {
     getProvince,
     getCharacteristic,
     getOccupation,
+    getEducation
   }
 
   function getGender(value) {
@@ -25,6 +27,10 @@ const profileHelper = (() => {
 
   function getOccupation(value) {
     return occupations.find(occupation => occupation.value == value)
+  }
+
+  function getEducation(value) {
+    return educations.find(education => education.value == value)
   }
 })()
 

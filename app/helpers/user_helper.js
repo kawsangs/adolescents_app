@@ -36,6 +36,8 @@ const userHelper = (() => {
   }
 
   function getEducationDataset(language, occupation) {
+    if (occupation == 'n_a') return [];
+
     return _getPickerDataset(occupation == 'student' ? educations.slice(0, -1) : educations, language);
   }
 

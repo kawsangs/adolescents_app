@@ -60,7 +60,7 @@ const createAccountService = (() => {
     networkService.checkConnection(async () => {
       let response = null;
       if (!!params.id)
-        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation });
+        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level });
       else
         response = await new AppUserApi().post(await _userApiParams(params));
 
@@ -80,8 +80,8 @@ const createAccountService = (() => {
       gender: user ? user.gender : null,
       age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
-      occupation: user ? user.occupation : null,
-      education_level: user ? user.education_level : null,
+      occupation: user ? user.occupation : 'n_a',
+      education_level: user ? user.education_level : 'n_a',
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
@@ -103,6 +103,7 @@ const createAccountService = (() => {
       registered_at: user.registered_at,
       province_id: user.province_id,
       occupation: user.occupation,
+      education_level: user.education_level,
       gender: user.gender,
       age: user.age,
       platform: Platform.OS
