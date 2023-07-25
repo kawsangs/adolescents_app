@@ -24,8 +24,9 @@ const schemaV8 = {
       const oldObjects = oldRealm.objects('User');
       const newObjects = newRealm.objects('User');
       for (let i = 0; i < oldObjects.length; i++) {
-        // if the user is anonymous the occupation is set to null
+        // if the user is anonymous the occupation and education_level are set to null
         newObjects[i].occupation = oldObjects[i].age == -1 ? null : !oldObjects[i].occupation ? 'n_a' : oldObjects[i].occupation;
+        newObjects[i].education_level = oldObjects[i].age == -1 ? null : !oldObjects[i].education_level ? 'n_a' : oldObjects[i].education_level;
         newObjects[i].synced = false;
       }
     }

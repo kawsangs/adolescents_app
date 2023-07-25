@@ -51,7 +51,8 @@ const CreateAccountFormComponent = (props) => {
       age: parseInt(state.age),
       province_id: state.province,
       characteristics: state.characteristics,
-      occupation: state.occupation
+      occupation: state.occupation,
+      education_level: state.educationLevel
     }
     appUserService.createUser(user);
     dispatch(setLoginUserOccupation(state.occupation));

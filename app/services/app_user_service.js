@@ -81,6 +81,7 @@ const createAccountService = (() => {
       age: user ? user.age : -1,
       province_id: user ? user.province_id : null,
       occupation: user ? user.occupation : null,
+      education_level: user ? user.education_level : null,
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
