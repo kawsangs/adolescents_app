@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {descriptionFontSize} from '../../../constants/component_constant';
 
 const profileInfoComponentStyles = StyleSheet.create({
@@ -10,7 +10,12 @@ const profileInfoComponentStyles = StyleSheet.create({
   infoWrapper: {
     alignItems: 'center',
     flex: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    ...Platform.select({
+      ios: {
+        paddingTop: 3
+      }
+    })
   },
   label: {
     fontSize: descriptionFontSize,
@@ -21,7 +26,12 @@ const profileInfoComponentStyles = StyleSheet.create({
     alignItems: 'center',
     flex: 6,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        paddingTop: 3
+      }
+    })
   },
   valueLabel: {
     fontSize: descriptionFontSize,

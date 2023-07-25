@@ -17,7 +17,7 @@ const ProfileInfoItemWithPickerComponent = (props) => {
   const {info, playingUuid} = props;
 
   const renderPickerLabel = () => {
-    return <View style={{flexDirection: 'row', alignItems: 'center', height: '100%', marginTop: -3}}>
+    return <View style={[{flexDirection: 'row', alignItems: 'center', height: '100%'}, !props.disabled && {marginTop: -2}]}>
               {!info.value && <NoticeBadgeComponent style={{position: 'relative', width: 16, height: 16, marginRight: 6}} disableFixPosition={true}/>}
               <Text style={[styles.valueLabel, {color: props.disabled ? color.disabledColor : color.primaryColor, marginRight: 4}]}>
                 { !info.value ? props.pickerLabel : info.value }
@@ -41,15 +41,14 @@ const ProfileInfoItemWithPickerComponent = (props) => {
               pickerContentHeight={props.contentHeight}
               customPicker={renderPickerLabel()}
               showSubtitle={true}
-              subtitleStyle={{marginTop: 0}}
-              itemTextStyle={{marginTop: -2}}
+              itemTextStyle={{marginTop: -4}}
               listItemStyle={{paddingTop: 0}}
            />
   }
 
   const renderPicker = () => {
     return <React.Fragment>
-              <View style={[styles.infoWrapper, props.disabled && {height: 62}]}>
+              <View style={[styles.infoWrapper, {paddingTop: 0, height: 56}]}>
                 <Text style={[styles.label, {flex: 3}]}>{props.label}</Text>
                 { props.disabled ? <View style={[styles.valueWrapper, {flex: 8}]}>{renderPickerLabel()}</View>
                   : renderCustomPicker()
@@ -64,7 +63,7 @@ const ProfileInfoItemWithPickerComponent = (props) => {
 
     return <React.Fragment>
             <View style={styles.infoWrapper}>
-              <Text style={[styles.label, {flex: 3}]}>មុខរបរ</Text>
+              <Text style={[styles.label, {flex: 3}]}>{props.label}</Text>
               <View style={[styles.valueWrapper, {flex: 8}]}>
                 <Text style={styles.valueLabel}>{info.value}</Text>
               </View>

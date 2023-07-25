@@ -77,6 +77,8 @@ const CreateAccountSelectionsComponent = (props) => {
               snapPoints={iosOccupationSnapPoints}
               pickerContentHeight={iosOccupationContentHeight}
               showSubtitle={true}
+              itemTextStyle={{marginTop: -4}}
+              listItemStyle={{paddingTop: 0}}
            />
   }
 
@@ -98,8 +100,7 @@ const CreateAccountSelectionsComponent = (props) => {
               snapPoints={iosEducationLevelSnapPoints}
               pickerContentHeight={iosEducationLevelContentHeight}
               showSubtitle={true}
-              subtitleStyle={{marginTop: 0}}
-              itemTextStyle={{marginTop: -2}}
+              itemTextStyle={{marginTop: -4}}
               listItemStyle={{paddingTop: 0}}
               disabled={!props.occupation}
            />
