@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		286F14112A70D625000CB173 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 286F14102A70D5FB000CB173 /* SimpleLineIcons.ttf */; };
 		288E6021294436AA00E31D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 288E6020294436AA00E31D22 /* GoogleService-Info.plist */; };
 		2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
 		2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
@@ -49,6 +50,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = YouthMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = YouthMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YouthMobile/main.m; sourceTree = "<group>"; };
+		286F14102A70D5FB000CB173 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		288E6020294436AA00E31D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../project files/Adolescent/google-services/google-services (bong Sokly)/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2890FE6D292FD551008BBF78 /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		2890FE6F292FD957008BBF78 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				EECC1EE528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf */,
 				EECC1EE628F6B8AC00AA3DD9 /* FontAwesome5_Regular.ttf */,
 				EECC1EE728F6B8AC00AA3DD9 /* FontAwesome.ttf */,
+				286F14102A70D5FB000CB173 /* SimpleLineIcons.ttf */,
 				EECC1EEB28F6B8AC00AA3DD9 /* MaterialIcons.ttf */,
 			);
 			path = Fonts;
@@ -300,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286F14112A70D625000CB173 /* SimpleLineIcons.ttf in Resources */,
 				288E6021294436AA00E31D22 /* GoogleService-Info.plist in Resources */,
 				2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */,
 				2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */,

@@ -2,13 +2,12 @@ import React from 'react';
 import {View} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import ProfileCharacteristicsComponent from './ProfileCharacteristicsComponent';
 import ProfileInfoListItemComponent from './ProfileInfoListItemComponent';
 import ProfileInfoItemWithPickerComponent from './ProfileInfoItemWithPickerComponent';
-import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import GradientViewComponent from '../shared/GradientViewComponent';
+import ProfileIconComponent from '../shared/ProfileIconComponent';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {anonymousInfo} from '../../constants/user_constant';
 import {
@@ -110,9 +109,7 @@ const ProfileInfoComponent = (props) => {
 
   renderProfileIcon = () => {
     return <GradientViewComponent style={{ width: 76, height: 76, borderRadius: 76, justifyContent: 'center', alignItems: 'center', position: 'absolute', top: 12, left: 16, zIndex: 1, borderWidth: 3, borderColor: color.whiteColor }}>
-              {loggedInUser.anonymous ? <AnonymousIconComponent size={38} color={color.whiteColor} containerStyle={{marginLeft: -3}}/>
-                : <FeatherIcon name='user' color={color.whiteColor} size={38} />
-              }
+              <ProfileIconComponent/>
            </GradientViewComponent>
   }
 
