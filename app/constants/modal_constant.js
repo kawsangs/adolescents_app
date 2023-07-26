@@ -17,12 +17,12 @@ export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOf
 export const videoFilterSnapPoints = getStyleOfDevice(['52%'], ['65%']);
 export const videoFilterContentHeight = getStyleOfDevice(hp('47%'), hp('60%'));
 
-export const androidOccupationSnapPoints = isShortScreenDevice() ? ['72.8%'] : ['65.6%'];
-export const androidOccupationContentHeight = isShortScreenDevice() ? 455 : 458;
+export const androidOccupationSnapPoints = getStyleOfDevice(['55%'], isShortScreenDevice() ? ['72.8%'] : ['65.6%']);
+export const androidOccupationContentHeight = getStyleOfDevice(462, isShortScreenDevice() ? 455 : 458);
 export const iosOccupationSnapPoints = getStyleOfDevice(['45%'], DeviceInfo.hasNotch() ? ['60%'] : isShortScreenDevice() ? ['71%'] : ['65%']);
 export const iosOccupationContentHeight = getStyleOfDevice( 440, DeviceInfo.hasNotch() ? 452 : isShortScreenDevice() ? 450 : 454);
 
-export const androidEducationLevelSnapPoints = isShortScreenDevice() ? ['54%'] : ['48%'];
-export const androidEducationLevelContentHeight = isShortScreenDevice() ? 327 : 329;
+export const androidEducationLevelSnapPoints = getStyleOfDevice(['40%'], isShortScreenDevice() ? ['54%'] : ['48%']);
+export const androidEducationLevelContentHeight = getStyleOfDevice(333, isShortScreenDevice() ? 327 : 329);
 export const iosEducationLevelSnapPoints = getStyleOfDevice(['34%'], DeviceInfo.hasNotch() ? ['45%'] : isShortScreenDevice() ? ['52%'] : ['48%']);
 export const iosEducationLevelContentHeight = getStyleOfDevice(320, DeviceInfo.hasNotch() ? 325 : isShortScreenDevice() ? 322 : 325);
