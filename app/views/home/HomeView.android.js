@@ -7,13 +7,13 @@ import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationH
 import CardListComponent from '../../components/shared/CardListComponent';
 
 import syncService from '../../services/sync_service';
-import Category from '../../models/Category';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
+import categoryHelper from '../../helpers/category_helper';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const categories = Category.getParentCategories();
+  const categories = categoryHelper.getHomeCategories();
 
   useEffect(() => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection

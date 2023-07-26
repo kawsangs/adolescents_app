@@ -1,5 +1,5 @@
 import schemaHelper from '../../helpers/schema_helper';
-import Category from '../migrations/v2/category';
+import Category from '../migrations/v7/category';
 import Facility from '../migrations/v5/facility';
 import Video from '../migrations/v5/video';
 import Topic from '../migrations/v6/topic';
@@ -29,6 +29,8 @@ const schemaV8 = {
         newObjects[i].education_level = oldObjects[i].age == -1 ? 'n_a' : !oldObjects[i].education_level ? 'n_a' : oldObjects[i].education_level;
         newObjects[i].synced = false;
       }
+      const categories = newRealm.objects('Category');
+      newRealm.delete(categories);
     }
   },
 }

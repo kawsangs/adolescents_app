@@ -39,7 +39,7 @@ const TiltedCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <TiltedCardImageComponent image={props.item.imageSource} />
+          <TiltedCardImageComponent image={props.item.imageSource || props.item.image_url} />
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />
@@ -48,7 +48,7 @@ const TiltedCardComponent = (props) => {
               index={props.index}
               points={!!subitem[props.item.code] ? subitem[props.item.code].points : subitem.default.points}
               pointPostfix={!!subitem[props.item.code] ? subitem[props.item.code].label : subitem.default.label}
-              audio={props.item.audioSource}
+              audio={props.item.audioSource || props.item.audio_url}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               containerStyle={{paddingLeft: 8, paddingBottom: 1}}

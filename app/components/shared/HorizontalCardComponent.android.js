@@ -24,7 +24,7 @@ const HorizontalCardComponent = (props) => {
       onPress={() => onPress()}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
-        <HorizontalCardImageComponent image={props.item.imageSource} />
+        <HorizontalCardImageComponent image={props.item.imageSource || props.item.image_url} />
         <HorizontalCardInfoComponent
           uuid={props.item.uuid}
           title={props.item.name}
