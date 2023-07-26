@@ -40,7 +40,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
         </Text>
         <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10, marginTop: -2}} />
 
-        { userOccupation == 'n_a' && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
+        { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>
     </TouchableOpacity>
   )

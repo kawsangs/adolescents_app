@@ -94,8 +94,5 @@
   "noResult": "No result",
   "filterClinic": "Filter Clinic",
   "search": "Search",
-  "hour": "h",
-  "occupation": "Occupation",
-  "selectYourOccupation": "Select your occupation",
-  "yourOccupaton": "Your occupation"
+  "hour": "h"
 }

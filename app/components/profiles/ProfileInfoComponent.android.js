@@ -6,14 +6,19 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import ProfileCharacteristicsComponent from './ProfileCharacteristicsComponent';
 import ProfileInfoListItemComponent from './ProfileInfoListItemComponent';
-import ProfileInfoOccupationItemComponent from './ProfileInfoOccupationItemComponent';
+import ProfileInfoItemWithPickerComponent from './ProfileInfoItemWithPickerComponent';
 import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import GradientViewComponent from '../shared/GradientViewComponent';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {anonymousInfo} from '../../constants/user_constant';
+import {
+  androidOccupationContentHeight, androidOccupationSnapPoints,
+  androidEducationLevelSnapPoints, androidEducationLevelContentHeight
+} from '../../constants/modal_constant';
 import User from '../../models/User';
 import translationHelper from '../../helpers/translation_helper';
 import profileHelper from '../../helpers/profile_helper';
+import userHelper from '../../helpers/user_helper';
 import color from '../../themes/color';
 
 const ProfileInfoComponent = (props) => {
@@ -43,22 +48,55 @@ const ProfileInfoComponent = (props) => {
         audio: province.audio,
       }
     ]
-    return infos.map((info, index) => {
+    const nonPickerComponents =  infos.map((info, index) => {
       return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 0} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} />
     })
+    return <React.Fragment>
+              { nonPickerComponents }
+              { renderOccupation() }
+              { renderEducationLevel() }
+           </React.Fragment>
+  }
+
+  onOccupationChange = (occupation) => {
+    props.updateOccupation(occupation)
+    if (occupation == 'student' && props.educationLevel == 'dropout_student')
+      props.updateEducationLevel('n_a');
   }
 
   renderOccupation = () => {
     const info = {
-      value: (!!props.selectedOccupation && props.selectedOccupation != 'n_a') ? profileHelper.getOccupation(props.selectedOccupation).name_km : null,
-      audio: (!!props.selectedOccupation && props.selectedOccupation != 'n_a') ? profileHelper.getOccupation(props.selectedOccupation).audio : null,
+      value: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).name_km : null,
+      audio: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).audio : null,
     }
-    return <ProfileInfoOccupationItemComponent key='user-occupation' info={info} playingUuid={props.playingUuid}
+    return <ProfileInfoItemWithPickerComponent uuid='user-occupation-picker' info={info} playingUuid={props.playingUuid}
+              label='មុខរបរ' bottomSheetTitle='មុខរបរ' pickerLabel='ជ្រើសរើសមុខរបរ'
+              items={userHelper.getOccupationDataset(i18n.language)}
+              selectedValue={props.occupation}
+              isPickerVisible={loggedInUser.occupation == 'n_a'}
+              snapPoints={androidOccupationSnapPoints}
+              contentHeight={androidOccupationContentHeight}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-              updateOccupation={(value) => props.updateSelectedOccupation(value)}
-              loggedInUser={loggedInUser}
-              selectedValue={props.selectedOccupation}
-            />
+              updateSelectedItem={(value) => onOccupationChange(value)}
+           />
+  }
+
+  renderEducationLevel = () => {
+    let info = { value: null, audio: null }
+    if (props.educationLevel != 'n_a' && props.occupation != 'n_a')
+      info = { value: profileHelper.getEducation(props.educationLevel).name_km, audio: profileHelper.getEducation(props.educationLevel).audio }
+
+    return <ProfileInfoItemWithPickerComponent uuid='user-education-picker' info={info} playingUuid={props.playingUuid}
+              label='កម្រិតវប្បធម៌' bottomSheetTitle='កម្រិតវប្បធម៌' pickerLabel='ជ្រើសរើសកម្រិតវប្បធម៌'
+              disabled={props.occupation == 'n_a'}
+              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
+              selectedValue={props.educationLevel}
+              isPickerVisible={loggedInUser.education_level == 'n_a'}
+              snapPoints={androidEducationLevelSnapPoints}
+              contentHeight={androidEducationLevelContentHeight}
+              updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+              updateSelectedItem={(value) => props.updateEducationLevel(value)}
+           />
   }
 
   renderAnonymousInfo = () => {
@@ -86,7 +124,6 @@ const ProfileInfoComponent = (props) => {
         style={{borderRadius: cardBorderRadius, marginTop: 44, paddingLeft: 16, paddingBottom: paddingBottom, paddingTop: 36, marginBottom: 12}}
       >
         { !loggedInUser.anonymous ? renderInfo() : renderAnonymousInfo()}
-        { renderOccupation() }
         { loggedInUser.characteristics.length > 0 &&
           <ProfileCharacteristicsComponent
             playingUuid={props.playingUuid}

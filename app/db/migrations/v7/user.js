@@ -14,7 +14,8 @@ const UserSchema = {
     synced: { type: 'bool', default: false },
     logged_in: { type: 'bool', default: true },
     anonymous: { type: 'bool', default: false },
-    occupation: 'string?'
+    occupation: 'string?',
+    education_level: 'string?'
   }
 }
 

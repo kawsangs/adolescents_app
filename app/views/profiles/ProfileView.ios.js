@@ -44,7 +44,7 @@ const ProfileView = () => {
   }
 
   const onPress = () => {
-    if (profileRef.current?.currentOccupation != profileRef.current?.selectedOccupation)
+    if (profileRef.current?.currentOccupation != profileRef.current?.occupation)
       return setVisible(true)
 
     onBackPress()

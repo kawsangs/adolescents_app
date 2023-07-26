@@ -5,18 +5,10 @@ export default [
     "name_km": "សិស្ស/និស្សិត",
     "name_en": "Student",
     "audio": null,
-    "subtitle": "អនុវិទ្យាល័យ, វិទ្យាល័យ, សាកលវិទ្យាល័យ"
+    "subtitle": ""
   },
   {
     "uuid":"occupation_2",
-    "value": "dropout_student",
-    "name_km": "បោះបង់ការសិក្សា (ឈប់រៀន)",
-    "name_en": "Dropout student",
-    "audio": null,
-    "subtitle": "អ្នកដែលរៀនក្រៅសាលា"
-  },
-  {
-    "uuid":"occupation_3",
     "value": "entertainment_worker",
     "name_km": "បុគ្គលិកសេវាកំសាន្ត",
     "name_en": "Entertainment worker",
@@ -24,7 +16,7 @@ export default [
     "subtitle": "បុគ្គលិកបៀរហ្គាឌិន, ខារ៉ាអូខេ, កន្លែងម៉ាស្សា, ..."
   },
   {
-    "uuid":"occupation_4",
+    "uuid":"occupation_3",
     "value": "factory_worker",
     "name_km": "បុគ្គលិករោងចក្រ",
     "name_en": "Factory worker",
@@ -32,15 +24,15 @@ export default [
     "subtitle": "រោងចក្រកាត់ដេរសំលៀកបំពាក់, ស្បែកជើង, ..."
   },
   {
-    "uuid":"occupation_5",
+    "uuid":"occupation_4",
     "value": "local_migrant_worker",
     "name_km": "កម្មករចំណាកស្រុក (ក្នុងប្រទេស)",
     "name_en": "Migrant worker (Local)",
     "audio": null,
-    "subtitle": "ចំណាកស្រុកធ្វើការឆ្លងខេត្ត"
+    "subtitle": "ចំណាកស្រុកធ្វើការឆ្លងស្រុក ឬខេត្ត"
   },
   {
-    "uuid":"occupation_6",
+    "uuid":"occupation_5",
     "value": "oversea_migrant_worker",
     "name_km": "កម្មករចំណាកស្រុក (ក្រៅប្រទេស)",
     "name_en": "Migrant worker (Oversea)",

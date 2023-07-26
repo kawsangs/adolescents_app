@@ -23,6 +23,10 @@ class User {
     return BaseModel.findByAttr(MODEL, {logged_in: true})[0];
   }
 
+  static isLoginAsAnonymous = () => {
+    return BaseModel.findByAttr(MODEL, {logged_in: true})[0].age == -1;
+  }
+
   static hasCurrentLoggedIn = () => {
     return !!this.currentLoggedIn();
   }
