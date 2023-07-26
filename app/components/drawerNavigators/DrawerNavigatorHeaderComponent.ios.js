@@ -6,8 +6,8 @@ import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
-import AnonymousIconComponent from '../shared/AnonymousIconComponent';
 import NoticeBadgeComponent from '../shared/NoticeBadgeComponent';
+import ProfileIconComponent from '../shared/ProfileIconComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import translationHelper from '../../helpers/translation_helper';
@@ -18,17 +18,13 @@ const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
   const loggedInUser = User.currentLoggedIn();
   const userOccupation = useSelector(state => state.loginUserOccupation.value)
-  const renderIcon = () => {
-    return loggedInUser.anonymous ? <AnonymousIconComponent size={29} color={color.whiteColor}/>
-                             : <FeatherIcon name='user' color={color.whiteColor} size={29} />
-  }
 
   return (
     <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileView')}
       style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}
     >
       <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 64, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
-        {renderIcon()}
+        <ProfileIconComponent iconSize={29} />
       </GradientViewComponent>
 
       <View style={{position: 'relative', flexDirection: 'row', alignItems: 'center'}}>
