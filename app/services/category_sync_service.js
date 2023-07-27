@@ -3,26 +3,38 @@ import CategoryApi from '../api/categoryApi';
 import apiService from './api_service';
 import categoryHelper from '../helpers/category_helper';
 import Category from '../models/Category';
+import DownloadedFile from '../models/DownloadedFile';
 import fileDownloadService from './file_download_service';
 import fileUtil from '../utils/file_util';
 import imageSources from '../constants/image_source_constant';
 import audioSources from '../constants/audio_source_constant';
 
+const itemsPerPage = 20;
+
 const categorySyncService = (() => {
   return {
-    syncData
+    syncAll
   }
 
-  // Todo: create a function to sync all the categoies
-  async function syncData(page, successCallback, failureCallback) {
-    const response = await new CategoryApi().load(page);
-    apiService.handleApiResponse(response, (res) => {
-      _handleSaveCategory(res.categories)
-      !!successCallback && successCallback()
-    }, (error) => !!failureCallback && failureCallback())
+  function syncAll(successCallback, failureCallback) {
+    _syncAndRemoveByPage(1, 1, successCallback, failureCallback);
   }
 
   // private method
+  async function _syncAndRemoveByPage(page, totalPage, successCallback, failureCallback, prevCategories = []) {
+    if(page > totalPage) {
+      Category.deleteAll();
+      _handleSaveCategory(prevCategories)
+      !!successCallback && successCallback()
+    }
+
+    const response = await new CategoryApi().load(page);
+    apiService.handleApiResponse(response, (res) => {
+      const allPage = Math.ceil(res.pagy.count / itemsPerPage)
+      _syncAndRemoveByPage(page+1, allPage, successCallback, failureCallback, [...prevCategories, ...res.categories]);
+    }, (error) => !!failureCallback && failureCallback())
+  }
+
   function _handleSaveCategory(categories) {
     categories.map(category => {
       _saveOrUpdate(category);
@@ -39,42 +51,27 @@ const categorySyncService = (() => {
     if (!existedCate) {
       let { children, content_sources, lft, rgt, ...data } = category;
       Category.create({...data, sources: categoryHelper.getFormattedSources(category.content_sources)})
-
       const savedCate = Category.findById(category.id);
-      _handleSaveFiles(category, (imageFilename) => {
-        Category.update(savedCate.uuid, { image: imageFilename })
-      }, (audioFilename) => {
-        Category.update(savedCate.uuid, { audio: audioFilename })
-      });
+      _handleSaveFiles(category, savedCate.uuid);
       return
     }
 
     // Update the category
     let { children, content_sources, lft, rgt, id, ...data } = category;
     Category.update(existedCate.uuid, {...data, sources: categoryHelper.getFormattedSources(category.content_sources)});
-
-    _handleSaveFiles(category, (imageFilename) => {
-      Category.update(existedCate.uuid, {...data, image: imageFilename, sources: categoryHelper.getFormattedSources(category.content_sources)});
-    }, (audioFilename) => {
-      Category.update(existedCate.uuid, {...data, audio: audioFilename, sources: categoryHelper.getFormattedSources(category.content_sources)});
-    });
+    _handleSaveFiles(category, existedCate.uuid);
   }
 
-  async function _handleSaveFiles(category, imageCallback, audioCallback) {
+  async function _handleSaveFiles(category, categoryUuid) {
     const imageFile = !!category.image_url ? `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(category.image_url)}` : null;
     const audioFile = !!category.audio_url ? `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(category.audio_url)}` : null;
 
-    if (!!imageFile && !await RNFS.exists(imageFile) && !imageSources.hasOwnProperty(imageFile))
-      _handleDownloadFile(category.image_url, (filename) => imageCallback(filename))
+    // Check if the image name is not downloaded and is not existed in the offline image then start to download the image
+    if (!!imageFile && !await RNFS.exists(imageFile) && !imageSources.hasOwnProperty(fileUtil.getFilenameFromUrl(category.image_url)))
+      fileDownloadService.download(category.image_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'}));
 
-    if (!!audioFile && !await RNFS.exists(audioFile) && !audioSources.hasOwnProperty(audioFile))
-      _handleDownloadFile(category.audio_url, (filename) => audioCallback(filename))
-  }
-
-  function _handleDownloadFile(url, successCallback) {
-    fileDownloadService.download(url, (filename, isNewFile) => {
-      (!!isNewFile && !!successCallback ) && successCallback(filename)
-    })
+    if (!!audioFile && !await RNFS.exists(audioFile) && !audioSources.hasOwnProperty(fileUtil.getFilenameFromUrl(category.audio_url)))
+      fileDownloadService.download(category.audio_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'audio'}));
   }
 })();
 

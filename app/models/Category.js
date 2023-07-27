@@ -16,7 +16,6 @@ class Category {
         this.create({...data, sources: categoryHelper.getFormattedSources(subCategory.content_sources)})
       });
     });
-
   }
 
   static create = (data) => {
@@ -56,6 +55,10 @@ class Category {
 
   static isSubCategory = (uuid) => {
     return this.getSubCategories(uuid).length > 0;
+  }
+
+  static deleteAll = () => {
+    BaseModel.deleteAll(MODEL);
   }
 }
 

@@ -24,7 +24,7 @@ const SubCategoryView = ({route}) => {
   }, [])
 
   const onRefresh = () => {
-    categorySyncService.syncData(1, () => {
+    categorySyncService.syncAll(() => {
       listRef.current?.stopRefreshLoading()
     })
   }

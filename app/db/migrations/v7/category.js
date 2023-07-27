@@ -5,20 +5,23 @@ import RNFS from 'react-native-fs';
 import imageSources from '../../../constants/image_source_constant';
 import audioSources from '../../../constants/audio_source_constant';
 import fileUtil from '../../../utils/file_util';
+import DownloadedFile from '../../../models/DownloadedFile';
 
 class Category extends Realm.Object {
    get imageSource() {
-    if (!this.image_url)
-      return this.image ? imageSources[this.image] : null;
+    if (!this.image_url) return null;
 
-    return !!this.image ? { uri: `file://${RNFS.DocumentDirectoryPath}/${this.image}` } : imageSources[fileUtil.getFilenameFromUrl(this.image_url)];
+    const filename = fileUtil.getFilenameFromUrl(this.image_url);
+    const downloadedImage = DownloadedFile.findImageByName(filename)
+    return !!downloadedImage ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedImage.name}` } : !!imageSources[filename] ? imageSources[filename] : null;
   }
 
   get audioSource() {
-    if (!this.audio_url)
-      return this.audio ? audioSources[this.audio] : null;
+    if (!this.audio_url) return null;
 
-    return !!this.audio ? { uri: `file://${RNFS.DocumentDirectoryPath}/${this.audio}` } : audioSources[fileUtil.getFilenameFromUrl(this.audio_url)];
+    const filename = fileUtil.getFilenameFromUrl(this.audio_url);
+    const downloadedAudio = DownloadedFile.findAudioByName(filename)
+    return !!downloadedAudio ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedAudio.name}` } : !!audioSources[filename] ? audioSources[filename] : null;
   }
 }
 
@@ -33,8 +36,6 @@ Category.schema = {
     description: 'string?',
     audio_url: 'string?',
     image_url: 'string?',
-    audio: 'string?',
-    image: 'string?',
     parent_code: 'string?',
     parent_id: 'string?',
     level: 'int',
