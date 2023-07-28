@@ -7,6 +7,7 @@ import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComp
 import { cardElevation } from '../../constants/component_constant';
 import Category from '../../models/Category';
 import visitService from '../../services/visit_service';
+import categoryHelper from '../../helpers/category_helper';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponentStyles';
@@ -24,13 +25,13 @@ const HorizontalCardComponent = (props) => {
       onPress={() => onPress()}
     >
       <View style={{flex: 1, flexDirection: 'row'}}>
-        <HorizontalCardImageComponent image={props.item.imageSource || props.item.image_url} />
+        <HorizontalCardImageComponent image={categoryHelper.getFileByUrl(props.item.image_url, 'image')} />
         <HorizontalCardInfoComponent
-          uuid={props.item.uuid}
+          uuid={props.item.id}
           title={props.item.name}
           index={props.index}
-          points={Category.getSubCategories(props.item.uuid).length}
-          audio={props.item.audioSource}
+          points={Category.getSubCategories(props.item.id).length}
+          audio={categoryHelper.getFileByUrl(props.item.audio_url, 'audio')}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
         />

@@ -39,16 +39,16 @@ const TiltedCardComponent = (props) => {
 
       <View style={styles.backgroundContainer}>
         <View style={styles.infoContainer}>
-          <TiltedCardImageComponent image={props.item.imageSource || props.item.image_url} />
+          <TiltedCardImageComponent image={!!props.item.image ? props.item.image : categoryHelper.getFileByUrl(props.item.image_url, 'image')} />
 
           <View style={styles.footer}>
             <BoldLabelComponent label={props.item.name} numberOfLines={2} style={styles.title} />
             <CardPointAndAudioFooterComponent
-              uuid={props.item.uuid}
+              uuid={props.item.id}
               index={props.index}
               points={!!subitem[props.item.code] ? subitem[props.item.code].points : subitem.default.points}
               pointPostfix={!!subitem[props.item.code] ? subitem[props.item.code].label : subitem.default.label}
-              audio={props.item.audioSource || props.item.audio_url}
+              audio={!!props.item.audio ? props.item.audio : categoryHelper.getFileByUrl(props.item.audio_url, 'audio')}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               containerStyle={{paddingLeft: 8, paddingBottom: 1}}

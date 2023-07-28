@@ -1,27 +1,15 @@
 'use strict';
 
 import Realm from 'realm';
-import RNFS from 'react-native-fs';
-import imageSources from '../../../constants/image_source_constant';
-import audioSources from '../../../constants/audio_source_constant';
-import fileUtil from '../../../utils/file_util';
-import DownloadedFile from '../../../models/DownloadedFile';
+import categoryHelper from '../../../helpers/category_helper';
 
 class Category extends Realm.Object {
    get imageSource() {
-    if (!this.image_url) return null;
-
-    const filename = fileUtil.getFilenameFromUrl(this.image_url);
-    const downloadedImage = DownloadedFile.findImageByName(filename)
-    return !!downloadedImage ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedImage.name}` } : !!imageSources[filename] ? imageSources[filename] : null;
+      return categoryHelper.getFileByUrl(this.image_url, 'image');
   }
 
   get audioSource() {
-    if (!this.audio_url) return null;
-
-    const filename = fileUtil.getFilenameFromUrl(this.audio_url);
-    const downloadedAudio = DownloadedFile.findAudioByName(filename)
-    return !!downloadedAudio ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedAudio.name}` } : !!audioSources[filename] ? audioSources[filename] : null;
+    return categoryHelper.getFileByUrl(this.audio_url, 'audio');
   }
 }
 

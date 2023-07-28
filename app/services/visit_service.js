@@ -19,7 +19,7 @@ const visitService = (() => {
 
   function recordVisitCategory(category) {
     category.pageable_type = pageable_types.page;
-    navigationService.navigateCategory(category.uuid)
+    navigationService.navigateCategory(category.id)
     recordVisitAction(category, null)
   }
 

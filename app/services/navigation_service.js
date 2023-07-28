@@ -16,10 +16,10 @@ const navigationService = (() => {
     navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
   }
 
-  async function navigateCategory(categoryUuid) {
+  async function navigateCategory(categoryId) {
     const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
-    let routeName = Category.isParentCategory(categoryUuid) ? 'SubCategoryView' : 'LeafCategoryDetailView';
-    navigationRef.current?.navigate(routeName, { uuid: categoryUuid, textSize: savedFontSize || xLargeFontSize() });
+    let routeName = Category.isParentCategory(categoryId) ? 'SubCategoryView' : 'LeafCategoryDetailView';
+    navigationRef.current?.navigate(routeName, { id: categoryId, textSize: savedFontSize || xLargeFontSize() });
   }
 })();
 

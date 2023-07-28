@@ -42,19 +42,15 @@ class Category {
     return BaseModel.findByAttr(MODEL, {parent_code: null});
   }
 
-  static getSubCategories = (uuid) => {
-    const parentCategory = this.findByUuid(uuid);
+  static getSubCategories = (id) => {
+    const parentCategory = this.findById(id);
     if (!parentCategory) return [];
     return BaseModel.findByAttr(MODEL, {parent_code: `'${parentCategory.code}'`});
   }
 
-  static isParentCategory = (uuid) => {
-    const category = this.findByUuid(uuid)
+  static isParentCategory = (id) => {
+    const category = this.findById(id)
     return !!category && !category.parent_code;
-  }
-
-  static isSubCategory = (uuid) => {
-    return this.getSubCategories(uuid).length > 0;
   }
 
   static deleteAll = () => {
