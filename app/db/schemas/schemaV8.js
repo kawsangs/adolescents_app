@@ -6,6 +6,7 @@ import Topic from '../migrations/v6/topic';
 import Tag from '../migrations/v5/tag';
 import User from '../migrations/v7/user';
 import {schemaNames} from '../../constants/schema_constant';
+import uuidv4 from '../../utils/uuidv4_util';
 
 const changedSchemas = [
   { label: schemaNames[0], data: User },
@@ -29,8 +30,13 @@ const schemaV8 = {
         newObjects[i].education_level = oldObjects[i].age == -1 ? 'n_a' : !oldObjects[i].education_level ? 'n_a' : oldObjects[i].education_level;
         newObjects[i].synced = false;
       }
-      const categories = newRealm.objects('Category');
-      newRealm.delete(categories);
+
+      oldRealm.objects('FacilityImage').map(facilityImage => {
+        newRealm.create('DownloadedFile', { uuid: uuidv4(), name: facilityImage.name, type: 'image' });
+      });
+      newRealm.deleteModel('FacilityImage');  //Delete FaciltyImage model
+
+      newRealm.delete(newRealm.objects('Category'));
     }
   },
 }

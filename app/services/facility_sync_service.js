@@ -3,6 +3,7 @@ import apiService from './api_service';
 import fileDownloadService from './file_download_service';
 import Facility from '../models/Facility';
 import FacilityImage from '../models/FacilityImage';
+import DownloadedFile from '../models/DownloadedFile';
 import {itemsPerPage} from '../constants/sync_data_constant';
 
 const facilitySyncService = (() => {
@@ -53,9 +54,15 @@ const facilitySyncService = (() => {
       return !!callback && callback();
 
     const facility = facilities[index]
-    if (!!facility.logo && !FacilityImage.isFileNameExisted(facility.logo)) {
+    // if (!!facility.logo && !FacilityImage.isFileNameExisted(facility.logo)) {
+    //   fileDownloadService.download(facility.logo, (filename, isNewFile) => {
+    //     !!isNewFile && FacilityImage.create({name: filename})
+    //     _handleDownloadLogo(index + 1, facilities, callback)
+    //   }, () => _handleDownloadLogo(index + 1, facilities, callback))
+    // }
+    if (!!facility.logo && !DownloadedFile.isFileNameExisted(facility.logo)) {
       fileDownloadService.download(facility.logo, (filename, isNewFile) => {
-        !!isNewFile && FacilityImage.create({name: filename})
+        !!isNewFile && DownloadedFile.create({name: filename, type: 'image'})
         _handleDownloadLogo(index + 1, facilities, callback)
       }, () => _handleDownloadLogo(index + 1, facilities, callback))
     }

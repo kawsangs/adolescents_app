@@ -6,14 +6,14 @@ import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import NoResultMessageComponent from '../shared/NoResultMessageComponent';
 import Facility from '../../models/Facility';
-import FacilityImage from '../../models/FacilityImage';
+import DownloadedFile from '../../models/DownloadedFile';
 import Tag from '../../models/Tag';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import facilityHelper from '../../helpers/facility_helper';
 
 const FacilityListViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll())
-  const [facilityImages, setFacilityImages] = useState(FacilityImage.getAll())
+  const [facilityImages, setFacilityImages] = useState(DownloadedFile.getAllImages())
   const [tags] = useState(Tag.getAll());
   const [selectedTagUuid, setSelectedTagUuid] = useState(null);
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
@@ -29,7 +29,7 @@ const FacilityListViewComponent = (props) => {
 
   const renderList = () => {
     return <FacilityScrollableListComponent facilityImages={facilityImages} hasInternet={props.hasInternet} selectedTagUuid={selectedTagUuid}
-              reloadFacilityImages={() => setFacilityImages(FacilityImage.getAll())}
+              reloadFacilityImages={() => setFacilityImages(DownloadedFile.getAllImages())}
            />
   }
 

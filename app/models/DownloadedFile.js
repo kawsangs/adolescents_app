@@ -10,6 +10,10 @@ class DownloadedFile {
     return BaseModel.getAll(MODEL);
   }
 
+  static getAllImages() {
+    return BaseModel.findByAttr(MODEL, {type: `'image'`});
+  }
+
   static create(data) {
     BaseModel.create(MODEL, {...data, uuid: uuidv4()})
   }
@@ -22,11 +26,15 @@ class DownloadedFile {
     return BaseModel.findByAttr(MODEL, {name: `'${name}'`, type: `'audio'`}, 'AND')[0];
   }
 
+  static findByName(name) {
+    return BaseModel.findByAttr(MODEL, {name: `'${name}'`})[0];
+  }
+
   static isFileNameExisted(fileUrl) {
     return !!this.findByName(fileUtil.getFilenameFromUrl(fileUrl))
   }
 
-  static getPath(fileUrl) {
+  static getPathByUrl(fileUrl) {
     if (!fileUrl) return null;
 
     const file = this.findByName(fileUtil.getFilenameFromUrl(fileUrl))
