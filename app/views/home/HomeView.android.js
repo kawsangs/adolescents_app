@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
-
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';

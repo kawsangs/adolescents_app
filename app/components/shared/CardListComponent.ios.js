@@ -5,7 +5,7 @@ import HorizontalCardComponent from './HorizontalCardComponent';
 import TiltedCardComponent from './TiltedCardComponent';
 import GridCardComponent from './GridCardComponent';
 import ComingSoonMessageComponent from './ComingSoonMessageComponent';
-import {ROW_CARD, TILTED_CARD, GRID_CARD} from '../../constants/card_constant';
+import {ROW_CARD, TILTED_CARD} from '../../constants/card_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const CardListComponent = (props) => {
