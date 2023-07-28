@@ -9,21 +9,25 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 import {descriptionFontSize} from '../../utils/font_size_util';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import color from '../../themes/color';
+import {navigationRef} from '../../navigators/app_navigator';
+import visitService from '../../services/visit_service';
 
 const FacilityHorizontalListComponent = (props) => {
-
-  const viewDetail = () => {
-    console.log('view detail =====')
+  const viewDetail = (facility) => {
+    visitService.recordVisitFacility(facility, () => {
+      const facilityUuid = !!facility.uuid ? facility.uuid : facility.id
+      navigationRef.current?.navigate('FacilityDetailView', {uuid: facilityUuid, isFromCategoryDetail: true})
+    });
   }
 
-  const renderItem = (item, index) => {
-    return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail()}
+  const renderItem = (facility, index) => {
+    return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail(facility)}
               style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: 100, paddingHorizontal: 4, paddingTop: 8, borderWidth: 0.4, borderColor: color.lightGrayColor}]}
            >
-              <FacilityLogoComponent facility={item} containerStyle={{flex: 0, height: 85}}
+              <FacilityLogoComponent facility={facility} containerStyle={{flex: 0, height: 85}}
                 customImageStyle={{width: '100%', height: '80%'}}
               />
-              <BoldLabelComponent label={item.name} numberOfLines={2} style={{lineHeight: getStyleOfDevice(26, 23), textAlign: 'center'}} />
+              <BoldLabelComponent label={facility.name} numberOfLines={2} style={{lineHeight: getStyleOfDevice(26, 23), textAlign: 'center'}} />
            </Card>
   }
 

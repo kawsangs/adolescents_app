@@ -35,7 +35,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
       <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
       <Appbar.Header style={[styles.header]}>
         <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
-          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}} onPress={() => navigationRef.current?.navigate('FacilityView')}/>
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}} onPress={() => !props.isFromCategoryDetail ? navigationRef.current?.navigate('FacilityView') : navigationRef.current?.goBack()}/>
         </Animated.View>
         <Animated.View style={{flex: 1, paddingLeft: 8, opacity: headerOpacity}}>
           <NavigationHeaderTitleComponent label={Facility.findByUuid(props.uuid).name} />
