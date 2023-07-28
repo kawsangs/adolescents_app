@@ -20,6 +20,7 @@ const categoryHelper = (() => {
     getHomeCategories,
     getFormattedSources,
     getFileByUrl,
+    getFacilitiesByTagList,
   }
 
   function isMentalSupport(category) {
@@ -67,6 +68,16 @@ const categoryHelper = (() => {
     const downloadedFile = type == 'image' ? DownloadedFile.findImageByName(filename) : DownloadedFile.findAudioByName(filename);
     const fileSource = type == 'image' ? imageSources[filename] : audioSources[filename];
     return !!downloadedFile ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedFile.name}` } : !!fileSource ? fileSource : null;
+  }
+
+  function getFacilitiesByTagList(tagList) {
+    let facilities = []
+    tagList.split(',').map(tag => {
+      const facility = Facility.findByTag(tag)
+      if(!!facility)
+        facilities = [...facilities, ...facility]
+    });
+    return facilities;
   }
 })()
 

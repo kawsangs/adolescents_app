@@ -20,7 +20,7 @@ const FacilityLogoComponent = (props) => {
   }
 
   return (
-      <View style={{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}}>
+      <View style={[{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}, props.containerStyle]}>
         { !!logoPath ? <ImageComponent source={{uri: logoPath}} resizeMode="contain" imageStyle={[styles.image, props.customImageStyle]} emptyStyle={styles.emptyView} />
           : renderDefaultImage()
         }

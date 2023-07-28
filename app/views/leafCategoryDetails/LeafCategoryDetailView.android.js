@@ -13,6 +13,7 @@ const LeafCategoryDetailView = ({route, navigation}) => {
       audio={category.audioSource}
       image={category.imageSource}
       sources={category.sources}
+      tagList={category.tag_list}
       defaultTextSize={route.params.textSize}
     />
   )

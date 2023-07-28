@@ -5,9 +5,11 @@ import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
 import HtmlDescriptionComponent from './HtmlDescriptionComponent';
 import SourceLinksComponent from './SourceLinksComponent';
+import FacilityHorizontalListComponent from './FacilityHorizontalListComponent';
 import color from '../../themes/color';
 import { scrollViewPaddingBottom } from '../../constants/component_constant';
 import { headerWithAudioMaxHeight } from '../../constants/android_component_constant';
+import categoryHelper from '../../helpers/category_helper';
 
 const ScrollViewWithAudioComponent = (props) => {
   const scrollY = new Animated.Value(0);
@@ -19,6 +21,7 @@ const ScrollViewWithAudioComponent = (props) => {
         <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: parseFloat(textSize) + 2, marginTop: 14, lineHeight: 30, marginBottom: 10}} />
         <HtmlDescriptionComponent source={props.description} textSize={textSize} />
         { props.sources.length > 0 && <SourceLinksComponent sources={props.sources} textSize={textSize} /> }
+        <FacilityHorizontalListComponent facilities={categoryHelper.getFacilitiesByTagList(props.tagList)} />
       </View>
     )
   }
