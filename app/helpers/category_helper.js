@@ -21,6 +21,7 @@ const categoryHelper = (() => {
     getFormattedSources,
     getFileByUrl,
     getFacilitiesByTagList,
+    getVideosByTagList,
   }
 
   function isMentalSupport(category) {
@@ -71,13 +72,29 @@ const categoryHelper = (() => {
   }
 
   function getFacilitiesByTagList(tagList) {
-    let facilities = []
+    return findItemsByTagList(tagList, 'facility');
+    // let facilities = []
+    // tagList.split(',').map(tag => {
+    //   const facility = Facility.findByTag(tag)
+    //   if(!!facility)
+    //     facilities = [...facilities, ...facility]
+    // });
+    // return facilities;
+  }
+
+  function getVideosByTagList(tagList) {
+    return findItemsByTagList(tagList, 'video')
+  }
+
+  // private method
+  function findItemsByTagList(tagList, type) {
+    let result = [];
     tagList.split(',').map(tag => {
-      const facility = Facility.findByTag(tag)
-      if(!!facility)
-        facilities = [...facilities, ...facility]
-    });
-    return facilities;
+      const items = type == 'facility' ? Facility.findByTag(tag) : Video.findByTag(tag)
+      if (items.length > 0)
+        result = [...result, ...items]
+    })
+    return result;
   }
 })()
 
