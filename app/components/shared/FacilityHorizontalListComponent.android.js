@@ -40,7 +40,7 @@ const FacilityHorizontalListComponent = (props) => {
         renderItem={({item, index}) => renderItem(item, index)}
         keyExtractor={item => item.uuid}
         horizontal={true}
-        customContentContainerStyle={[{paddingRight: 4, paddingBottom: 4, alignItems: 'center', height: 155, marginTop: 10}]}
+        customContentContainerStyle={[{paddingRight: 4, paddingBottom: 4, alignItems: 'center', height: 155, marginTop: 14}]}
       />
     </View>
   )

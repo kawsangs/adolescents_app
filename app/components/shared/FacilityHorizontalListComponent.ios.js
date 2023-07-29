@@ -21,10 +21,10 @@ const FacilityHorizontalListComponent = (props) => {
 
   const renderItem = (facility, index) => {
     return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail(facility)}
-              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: 100, paddingHorizontal: 4, paddingTop: 8}]}
+              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: getStyleOfDevice(130, 100), paddingHorizontal: getStyleOfDevice(8, 4), paddingTop: 8}]}
            >
               <FacilityLogoComponent facility={facility} containerStyle={{flex: 0, height: 85}}
-                customImageStyle={{width: '100%', height: '80%'}}
+                customImageStyle={{width: '100%', height: getStyleOfDevice('90%', '80%')}}
               />
               <BoldLabelComponent label={facility.name} numberOfLines={2} style={{lineHeight: getStyleOfDevice(26, 23), textAlign: 'center'}} />
            </Card>
@@ -39,7 +39,7 @@ const FacilityHorizontalListComponent = (props) => {
         renderItem={({item, index}) => renderItem(item, index)}
         keyExtractor={item => item.uuid}
         horizontal={true}
-        customContentContainerStyle={[{paddingRight: 4, paddingBottom: 4, alignItems: 'center', height: 155, marginTop: 10}]}
+        customContentContainerStyle={[{paddingRight: 4, paddingBottom: 4, alignItems: 'center', height: 155, marginTop: 14}]}
       />
     </View>
   )

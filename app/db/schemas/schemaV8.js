@@ -1,12 +1,13 @@
 import schemaHelper from '../../helpers/schema_helper';
 import Category from '../migrations/v7/category';
 import Facility from '../migrations/v5/facility';
-import Video from '../migrations/v5/video';
+import Video from '../migrations/v7/video';
 import Topic from '../migrations/v6/topic';
 import Tag from '../migrations/v5/tag';
 import User from '../migrations/v7/user';
 import {schemaNames} from '../../constants/schema_constant';
 import uuidv4 from '../../utils/uuidv4_util';
+import videos from '../../db/json/videos.json';
 
 const changedSchemas = [
   { label: schemaNames[0], data: User },
@@ -35,6 +36,14 @@ const schemaV8 = {
         newRealm.create('DownloadedFile', { uuid: uuidv4(), name: facilityImage.name, type: 'image' });
       });
       newRealm.deleteModel('FacilityImage');  //Delete FaciltyImage model
+
+      // Add the tag_list to the existing videos with the matched id
+      const newVideos = newRealm.objects('Video');
+      videos.map(video => {
+        const index = newVideos.map(newVideo => newVideo.id).indexOf(video.id);
+        if (index != -1)
+          newVideos[index].tag_list = video.tag_list
+      });
 
       newRealm.delete(newRealm.objects('Category'));
     }
