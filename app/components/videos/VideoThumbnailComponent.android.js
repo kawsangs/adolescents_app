@@ -20,7 +20,7 @@ const VideoThumbnailComponent = (props) => {
 
   const renderThumbnail = () => {
     return (
-      <View style={{justifyContent: 'center', height: HEIGHT}}>
+      <View style={[{justifyContent: 'center', height: HEIGHT}, props.thumbnailStyle]}>
         {renderPlayButton()}
         <Image source={{ uri: youtubeHelper.getThumbnail(props.url) }} resizeMode='cover' style={styles.image} />
       </View>
@@ -30,7 +30,7 @@ const VideoThumbnailComponent = (props) => {
   if (!!props.hasInternet)
     return renderThumbnail()
 
-  return <EmptyMediaComponent isImage={false} style={styles.emptyBackground}/>
+  return <EmptyMediaComponent isImage={false} style={[styles.emptyBackground, props.emptyComponentStyle]}/>
 }
 
 const styles = StyleSheet.create({

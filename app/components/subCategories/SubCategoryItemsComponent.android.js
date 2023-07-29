@@ -9,7 +9,7 @@ const SubCategoryItemsComponent = (props) => {
   const isGridView = useSelector(state => state.subCategoryDisplayMode.isGridView);
   const renderCard = (item, index) => {
     if (isGridView)
-      return <GridCardComponent key={item.uuid}
+      return <GridCardComponent key={item.id}
               index={index}
               item={item}
               containerStyle={{marginTop: 14}}
@@ -18,7 +18,7 @@ const SubCategoryItemsComponent = (props) => {
            />
 
     return <ListViewCardComponent
-              key={item.uuid}
+              key={item.id}
               item={item}
               index={index}
               playingUuid={props.playingUuid}

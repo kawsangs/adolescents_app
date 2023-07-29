@@ -31,6 +31,8 @@ const FacilityHorizontalListComponent = (props) => {
            </Card>
   }
 
+  if (props.facilities.length == 0) return <View/>
+
   return (
     <View style={{marginTop: 12}}>
       <BoldLabelComponent label='គ្លីនិក:' style={{fontSize: descriptionFontSize()}} />

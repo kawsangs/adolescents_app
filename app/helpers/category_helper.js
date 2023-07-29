@@ -73,13 +73,6 @@ const categoryHelper = (() => {
 
   function getFacilitiesByTagList(tagList) {
     return findItemsByTagList(tagList, 'facility');
-    // let facilities = []
-    // tagList.split(',').map(tag => {
-    //   const facility = Facility.findByTag(tag)
-    //   if(!!facility)
-    //     facilities = [...facilities, ...facility]
-    // });
-    // return facilities;
   }
 
   function getVideosByTagList(tagList) {

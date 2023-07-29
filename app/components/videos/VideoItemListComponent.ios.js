@@ -45,7 +45,7 @@ const VideoItemListComponent = (props) => {
       <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(video)}
         style={{marginBottom: 13, borderRadius: cardBorderRadius}} key={video.uuid}
       >
-        <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} viewDetail={() => viewDetail(video)} />
+        <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} />
         <View style={styles.labelContainer}>
           <BoldLabelComponent label={video.name} numberOfLines={2} style={styles.title} />
           <Text style={styles.author} numberOfLines={1}>{t('author')}: {VideoAuthor.getName(video.author_uuid)}</Text>

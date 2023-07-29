@@ -41,17 +41,13 @@ const ScrollViewWithAudioComponent = (props) => {
   }
 
   const renderContent = () => {
-    // console.log('Videos = ', categoryHelper.getVideosByTagList(props.tagList))
-    console.log('Taglist = ', Video.getAll())
-    // console.log('Taglist = ', props.tagList)
-
     return (
       <View style={styles.scrollViewContent}>
         <BoldLabelComponent label={props.title} style={{color: color.blackColor, fontSize: parseFloat(textSize) + 2, marginTop: 14, lineHeight: 30, marginBottom: 10}} />
         <HtmlDescriptionComponent source={props.description} textSize={textSize} />
         { props.sources.length > 0 && <SourceLinksComponent sources={props.sources} textSize={textSize} /> }
         <FacilityHorizontalListComponent facilities={categoryHelper.getFacilitiesByTagList(props.tagList)} />
-        <VideoHorizontalListComponent videos={categoryHelper.getVideosByTagList(props.tagList)} playVideo={playVideo} />
+        <VideoHorizontalListComponent videos={categoryHelper.getVideosByTagList(props.tagList)} playVideo={playVideo} hasInternet={hasInternet} />
       </View>
     )
   }

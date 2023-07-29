@@ -18,9 +18,14 @@ const visitService = (() => {
   }
 
   function recordVisitCategory(category) {
-    category.pageable_type = pageable_types.page;
     navigationService.navigateCategory(category.id)
-    recordVisitAction(category, null)
+    const categoryParams = {
+      name: category.name,
+      code: category.code,
+      pageable_type: pageable_types.page,
+      parent_code: category.parent_code || null
+    };
+    recordVisitAction(categoryParams, null)
   }
 
   function recordVisitVideo(video, callback) {
