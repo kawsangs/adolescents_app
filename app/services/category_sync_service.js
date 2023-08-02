@@ -26,6 +26,7 @@ const categorySyncService = (() => {
       Category.deleteAll();
       _handleSaveCategory(prevCategories)
       !!successCallback && successCallback()
+      return;
     }
 
     const response = await new CategoryApi().load(page);

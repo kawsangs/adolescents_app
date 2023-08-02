@@ -11,7 +11,7 @@ import Notification from '../db/migrations/v1/notification';
 import Tag from '../db/migrations/v4/tag';
 import FacilityImage from '../db/migrations/v5/facility_image';
 import VideoAuthor from '../db/migrations/v5/video_author';
-import DownloadedFile from '../db/migrations/v7/downloaded_file';
+import DownloadedFile from '../db/migrations/v8/downloaded_file';
 
 import { schemaNames } from '../constants/schema_constant';
 
