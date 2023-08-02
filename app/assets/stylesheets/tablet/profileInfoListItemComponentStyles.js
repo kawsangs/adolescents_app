@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {descriptionFontSize} from '../../../constants/component_constant';
+import {FontFamily} from '../../../themes/font';
 
 const profileInfoComponentStyles = StyleSheet.create({
   container: {
@@ -34,8 +35,16 @@ const profileInfoComponentStyles = StyleSheet.create({
     })
   },
   valueLabel: {
+    fontFamily: FontFamily.bold,
     fontSize: descriptionFontSize,
-    fontWeight: 'bold'
+    ...Platform.select({
+      ios: {
+        marginTop: 2
+      },
+      android: {
+        marginTop: 4
+      }
+    })
   },
   audioWrapper: {
     alignItems: 'flex-end',

@@ -63,21 +63,21 @@ const ProfileInfoItemWithPickerComponent = (props) => {
 
     return <React.Fragment>
             <View style={[styles.infoWrapper, {marginBottom: getStyleOfDevice(10, 0)}]}>
-              <Text style={[styles.label, {flex: 3}]}>{props.label}</Text>
-              <View style={[styles.valueWrapper, {flex: 8}]}>
+              <Text style={[styles.label, {flex: !!info.audio ? 6 : 3}]}>{props.label}</Text>
+              <View style={[styles.valueWrapper, {flex: !!info.audio ? 6 : 8}]}>
                 <Text style={styles.valueLabel}>{info.value}</Text>
               </View>
             </View>
-            <View style={styles.audioWrapper}>
-              { !!info.audio &&
-                <CustomAudioPlayerButtonComponent
-                  audio={info.audio}
-                  itemUuid={props.uuid}
-                  playingUuid={playingUuid}
-                  updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
-                />
-              }
-            </View>
+            { !!info.audio &&
+              <View style={styles.audioWrapper}>
+                  <CustomAudioPlayerButtonComponent
+                    audio={info.audio}
+                    itemUuid={props.uuid}
+                    playingUuid={playingUuid}
+                    updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
+                  />
+              </View>
+            }
           </React.Fragment>
   }
 
