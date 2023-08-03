@@ -113,7 +113,7 @@ const ProfileInfoComponent = (props) => {
            </GradientViewComponent>
   }
 
-  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? 8 : 0;
+  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? 8 : 6;
   return (
     <View>
       {renderProfileIcon()}

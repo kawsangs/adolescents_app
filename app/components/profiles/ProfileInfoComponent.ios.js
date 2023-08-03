@@ -116,7 +116,7 @@ const ProfileInfoComponent = (props) => {
            </GradientViewComponent>
   }
 
-  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? getStyleOfDevice(10, 8) : 0;
+  const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? getStyleOfDevice(10, 8) : 6;
   return (
     <React.Fragment>
       {renderProfileIcon()}
