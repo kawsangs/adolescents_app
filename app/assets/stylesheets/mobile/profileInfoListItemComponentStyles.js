@@ -1,5 +1,6 @@
 import {StyleSheet, Platform} from 'react-native';
 import {descriptionFontSize} from '../../../constants/component_constant';
+import {FontFamily} from '../../../themes/font';
 
 const profileInfoComponentStyles = StyleSheet.create({
   container: {
@@ -34,11 +35,26 @@ const profileInfoComponentStyles = StyleSheet.create({
     })
   },
   valueLabel: {
+    fontFamily: FontFamily.bold,
     fontSize: descriptionFontSize,
-    fontWeight: 'bold'
+    ...Platform.select({
+      ios: {
+        marginTop: 2
+      },
+      android: {
+        marginTop: 4
+      }
+    })
   },
   audioWrapper: {
-    flex: 2
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        marginTop: 6
+      }
+    })
   }
 });
 
