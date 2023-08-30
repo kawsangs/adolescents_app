@@ -15,8 +15,8 @@ const AlertModalConfirmationButtonsComponent = (props) => {
   }
 
   return <View style={styles.container}>
-            {renderButton(props.leftButtonLabel, props.onCancel, {...props.leftButtonStyle, marginRight: 22}, props.leftButtonLabelStyle)}
-            {renderButton(props.rightButtonLabel, props.onConfirm, props.rightButtonStyle, props.rightButtonLabelStyle)}
+            { !!props.leftButtonLabel && renderButton(props.leftButtonLabel, props.onCancel, {...props.leftButtonStyle, marginRight: 22}, props.leftButtonLabelStyle)}
+            { !!props.rightButtonLabel && renderButton(props.rightButtonLabel, props.onConfirm, props.rightButtonStyle, props.rightButtonLabelStyle)}
           </View>
 }
 

@@ -21,8 +21,8 @@ const AlertModalComponent = (props) => {
           leftButtonLabel={props.leftButtonLabel}
           rightButtonLabel={props.rightButtonLabel}
           isOutlineButton={true}
-          rightButtonStyle={{borderColor: color.redColor}}
-          rightButtonLabelStyle={{color: color.redColor}}
+          rightButtonStyle={[{borderColor: color.redColor}, props.rightButtonStyle]}
+          rightButtonLabelStyle={[{color: color.redColor}, props.rightButtonLabelStyle]}
         />
       </Modal>
     </Portal>

@@ -20,7 +20,8 @@ const MentalSupportCardComponent = (props) => {
     }
 
     visitService.recordVisitAction(visitParams)
-    Linking.openURL(props.intend);
+    Linking.openURL(props.intend)
+      .catch(() => props.showAlertMessage());
   }
 
   return (
