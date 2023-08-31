@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
 import {cardElevation} from '../../../constants/component_constant';
-import audioUtil from '../../../utils/audio_util';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 import sharedStyles from '../../../assets/stylesheets/shared/sharedStyles';
 import tabletStyles from '../../../assets/stylesheets/tablet/topicListCardComponentStyles';
@@ -20,7 +19,7 @@ const TopicListCardComponent = (props) => {
       <View style={{height: 20, borderWidth: 0}}>
         <CustomAudioPlayerButtonComponent
           itemUuid={props.uuid}
-          audio={audioUtil.getAudioSourceByFilePath(props.audio)}
+          audio={props.audio}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
           accessibilityLabel={props.accessibilityLabel}

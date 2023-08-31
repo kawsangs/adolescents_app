@@ -57,7 +57,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
               onEndReachedThreshold={0.3}
               onEndReached={() => onEndReached()}
               contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 70}}
-              ListFooterComponent={renderListFooter()}
+              ListFooterComponent={!props.hideFooterLoading && renderListFooter()}
               refreshControl={!props.horizontal && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={color.whiteColor} />}
               onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}
             />

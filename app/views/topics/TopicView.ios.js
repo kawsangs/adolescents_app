@@ -1,11 +1,11 @@
 import React from 'react';
+import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderComponent from '../../components/shared/NavigationHeaderComponent';
 import NavigationHeaderMenuButtonComponent from '../../components/shared/navigationHeaders/NavigationHeaderMenuButtonComponent';
 import TopicMainComponent from '../../components/topics/TopicMainComponent';
-import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
 
 const TopicView = (props) => {
   const {t} = useTranslation();
@@ -17,11 +17,14 @@ const TopicView = (props) => {
   }
 
   return (
-    <GradientScrollViewComponent
-      header={renderHeader()}
-      body={<TopicMainComponent/>}
-      scrollViewStyle={{paddingHorizontal: 0, paddingBottom: gradientScrollViewPaddingBottom}}
-    />
+    <View style={{height: '100%'}}>
+      <GradientScrollViewComponent
+        header={renderHeader()}
+        body={<TopicMainComponent/>}
+        scrollViewStyle={{paddingHorizontal: 0}}
+        isNotScrollView={true}
+      />
+    </View>
   )
 }
 

@@ -1,11 +1,11 @@
 'use strict';
 
 import Realm from 'realm';
-import fileService from '../../../services/file_service';
+import fileUtil from '../../../utils/file_util';
 
 class Question extends Realm.Object {
   get audioSource() {
-    return fileService.getByUrl(this.audio, 'audio');
+    return fileUtil.getSourceByUrl(this.audio, 'audio');
   }
 }
 

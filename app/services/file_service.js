@@ -1,14 +1,10 @@
 import RNFS from 'react-native-fs';
 import urlUtil from '../utils/url_util';
 import fileUtil from '../utils/file_util';
-import DownloadedFile from '../models/DownloadedFile';
-import audioSources from '../constants/audio_source_constant';
-import imageSources from '../constants/image_source_constant';
 
 const fileService = (() => {
   return {
     download,
-    getByUrl,
   }
 
   async function download(filePath, successCallback, failureCallback = null) {
@@ -27,15 +23,6 @@ const fileService = (() => {
     }).catch(err => {
       !!failureCallback && failureCallback()
     })
-  }
-
-  function getByUrl(url, type) {
-    if (!url) return null;
-
-    const filename = fileUtil.getFilenameFromUrl(url);
-    const downloadedFile = type == 'image' ? DownloadedFile.findImageByName(filename) : DownloadedFile.findAudioByName(filename);
-    const fileSource = type == 'image' ? imageSources[filename] : audioSources[filename];
-    return !!downloadedFile ? { uri: `file://${RNFS.DocumentDirectoryPath}/${downloadedFile.name}` } : !!fileSource ? fileSource : null;
   }
 })()
 

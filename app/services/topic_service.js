@@ -22,17 +22,18 @@ const topicService = (() => {
     _syncAndRemoveByPage(1, 1, successCallback, failureCallback);
   }
 
-  function saveTopicCollection(topics, isOffline = false) {
+  function saveTopicCollection(topics, isOffline = false, callback) {
     const formattedTopics = [];
     const formattedQuestions = [];
     const formattedOptions = [];
+    let audios = [];
 
     topics.map(topic => {
       formattedTopics.push({ ...topic, uuid: topic.id, service_uuids: topic.service_ids, question_uuids: modelHelper.getItemUuids(topic.questions) });
-      !isOffline && _handleSaveFiles(topic);  // download audio of the topic
+      audios.push(topic.audio);
       topic.questions.map(question => {
         formattedQuestions.push({...question, uuid: question.id, topic_uuid: question.topic_id, option_uuids: modelHelper.getItemUuids(question.options)});
-        !isOffline && _handleSaveFiles(question);  // download audio of the question
+        audios.push(question.audio);
         question.options.map(option => {
           formattedOptions.push({...option, uuid: option.id, question_uuid: option.question_id});
         })
@@ -42,16 +43,22 @@ const topicService = (() => {
     Topic.seedData(formattedTopics);
     Question.seedData(formattedQuestions);
     Option.seedData(formattedOptions);
+
+    if (isOffline) return;
+
+    audios.map((audio, index) => {
+      _handleSaveFiles(audio, index, (itemIndex) => {
+        if (itemIndex == audios.length - 1)
+          !!callback && callback();
+      })
+    })
   }
 
   // privat method
    async function _syncAndRemoveByPage(page, totalPage, successCallback, failureCallback, prevTopics = []) {
     if(page > totalPage) {
       Topic.deleteAll();
-      saveTopicCollection(prevTopics)
-      setTimeout(() => {
-        !!successCallback && successCallback()
-      }, 200);
+      saveTopicCollection(prevTopics, false, successCallback)
       return;
     }
 
@@ -62,10 +69,16 @@ const topicService = (() => {
     }, (error) => !!failureCallback && failureCallback())
   }
 
-  async function _handleSaveFiles(item) {
-    const audioFile = !!item.audio ? `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(item.audio)}` : null;
-    if (!!audioFile && !await RNFS.exists(audioFile) && !audioSources.hasOwnProperty(fileUtil.getFilenameFromUrl(item.audio)))
-      fileService.download(item.audio, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'audio'}));
+  async function _handleSaveFiles(audio, index, callback) {
+    const audioFile = `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(audio)}`;
+    if (!await RNFS.exists(audioFile) && !audioSources.hasOwnProperty(fileUtil.getFilenameFromUrl(audio))) {
+      fileService.download(audio, (filename, isNewFile) => {
+        !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'audio'})
+        !!callback && callback(index);
+      });
+    }
+    else
+      !!callback && callback(index);
   }
 })();
 

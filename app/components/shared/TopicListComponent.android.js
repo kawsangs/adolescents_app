@@ -47,7 +47,7 @@ const TopicListComponent = (props) => {
           keyExtractor={item => item.uuid}
           hasInternet={hasInternet}
           refreshingAction={() => onRefresh()}
-          customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewBigPaddingBottom + 75, paddingTop: 16}}
+          customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewBigPaddingBottom, paddingTop: 16}}
           hideFooterLoading={true}
         />
 }

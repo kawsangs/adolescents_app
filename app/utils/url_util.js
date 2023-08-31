@@ -9,7 +9,6 @@ const urlUtil = (() => {
   }
 
   function getRelativeUrl(responsibleModel) {
-    // return `/api/${environment.apiVersion}/${responsibleModel}`;
     return `api/${environment.apiVersion}/${responsibleModel}`;
   }
 
@@ -17,7 +16,6 @@ const urlUtil = (() => {
     if (!relativeUrl) return null;
 
     return _getServerUrl() + relativeUrl;
-    // return environment.domain + relativeUrl;
   }
 
   function getWebsiteUrl(url) {
