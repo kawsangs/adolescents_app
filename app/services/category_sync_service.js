@@ -4,7 +4,7 @@ import apiService from './api_service';
 import categoryHelper from '../helpers/category_helper';
 import Category from '../models/Category';
 import DownloadedFile from '../models/DownloadedFile';
-import fileDownloadService from './file_download_service';
+import fileService from './file_service';
 import fileUtil from '../utils/file_util';
 import imageSources from '../constants/image_source_constant';
 import audioSources from '../constants/audio_source_constant';
@@ -69,10 +69,10 @@ const categorySyncService = (() => {
 
     // Check if the image name is not downloaded and is not existed in the offline image then start to download the image
     if (!!imageFile && !await RNFS.exists(imageFile) && !imageSources.hasOwnProperty(fileUtil.getFilenameFromUrl(category.image_url)))
-      fileDownloadService.download(category.image_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'}));
+      fileService.download(category.image_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'}));
 
     if (!!audioFile && !await RNFS.exists(audioFile) && !audioSources.hasOwnProperty(fileUtil.getFilenameFromUrl(category.audio_url)))
-      fileDownloadService.download(category.audio_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'audio'}));
+      fileService.download(category.audio_url, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'audio'}));
   }
 })();
 
