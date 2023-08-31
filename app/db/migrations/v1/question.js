@@ -1,6 +1,15 @@
 'use strict';
 
-const QuestionSchema = {
+import Realm from 'realm';
+import fileService from '../../../services/file_service';
+
+class Question extends Realm.Object {
+  get audioSource() {
+    return fileService.getByUrl(this.audio, 'audio');
+  }
+}
+
+Question.schema = {
   name: 'Question',
   primaryKey: 'uuid',
   properties: {
@@ -17,4 +26,4 @@ const QuestionSchema = {
   }
 }
 
-export default QuestionSchema;
+export default Question;
