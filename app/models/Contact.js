@@ -1,10 +1,11 @@
 import BaseModel from './BaseModel';
+import contacts from '../db/json/contacts.json';
 
 const MODEL = "Contact";
 
 class Contact {
-  static seedData = (items) => {
-    BaseModel.seedData(MODEL, items);
+  static seedData = () => {
+    BaseModel.seedData(MODEL, this.#getFormattedContacts(contacts));
   }
 
   static getAll = () => {
@@ -13,6 +14,15 @@ class Contact {
 
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(MODEL, uuid);
+  }
+
+  // private method
+  static #getFormattedContacts = (contacts) => {
+    let formattedContacts = [];
+    contacts.map(contact => {
+      formattedContacts.push({...contact, contact_directory_id: contact.contact_directory.id})
+    });
+    return formattedContacts;
   }
 }
 

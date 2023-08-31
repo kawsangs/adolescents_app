@@ -6,6 +6,7 @@ import Tag from '../models/Tag';
 import Topic from '../models/Topic';
 import topicService from './topic_service';
 import topics from '../db/json/topics.json';
+import Contact from '../models/Contact';
 
 const seedDataService = (() => {
   return {
@@ -19,6 +20,7 @@ const seedDataService = (() => {
     Video.getAll().length == 0 && Video.seedData();
     VideoAuthor.getAll().length == 0 && VideoAuthor.seedData();
     Topic.getAll().length == 0 && topicService.saveTopicCollection(topics, true);
+    Contact.getAll().length == 0 && Contact.seedData();
   }
 })();
 
