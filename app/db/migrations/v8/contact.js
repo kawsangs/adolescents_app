@@ -9,7 +9,7 @@ const ContactSchema = {
     type: 'string',
     value: 'string',
     display_order: 'int',
-    contact_directory_id: 'string?'
+    contact_directory_name: 'string?'
   }
 }
 

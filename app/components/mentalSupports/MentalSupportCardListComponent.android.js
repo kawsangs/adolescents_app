@@ -11,7 +11,7 @@ import contactService from '../../services/contact_service';
 const MentalSupportCardListComponent = () => {
   const listRef = useRef();
   const [hasInternet, setHasInternet] = useState(true);
-  const [contacts, setContacts] = useState(Contact.getAll());
+  const [contacts, setContacts] = useState(Contact.getMentalSupportContacts());
 
   useEffect(() => {
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {

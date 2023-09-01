@@ -8,19 +8,31 @@ class Contact {
     BaseModel.seedData(MODEL, this.#getFormattedContacts(contacts));
   }
 
+  static createCollection = (data) => {
+    BaseModel.seedData(MODEL, this.#getFormattedContacts(data));
+  }
+
   static getAll = () => {
-    return BaseModel.getAll(MODEL);
+    return BaseModel.getAll(MODEL).sorted('display_order', false);
   }
 
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
-  // private method
+  static getMentalSupportContacts = () => {
+    return BaseModel.findByAttr(MODEL, {contact_directory_name: "'សេវាគាំទ្រផ្លូវចិត្ត'"}, '', {});
+  }
+
+  static deleteAll = () => {
+    BaseModel.deleteAll(MODEL);
+  }
+
+  // private methods
   static #getFormattedContacts = (contacts) => {
     let formattedContacts = [];
     contacts.map(contact => {
-      formattedContacts.push({...contact, uuid: contact.id, contact_directory_id: contact.contact_directory.id})
+      formattedContacts.push({...contact, uuid: contact.id, contact_directory_name: !!contact.contact_directory ? contact.contact_directory.name : null})
     });
     return formattedContacts;
   }
