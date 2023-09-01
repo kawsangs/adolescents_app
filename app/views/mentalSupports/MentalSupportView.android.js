@@ -9,6 +9,7 @@ const MentalSupportView = (props) => {
     <GradientScrollViewComponent
       header={<NavigationHeaderWithBackButtonComponent label={props.route.params.name} />}
       body={<MentalSupportCardListComponent />}
+      isNotScrollView={true}
     />
   )
 }

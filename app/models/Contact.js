@@ -20,7 +20,7 @@ class Contact {
   static #getFormattedContacts = (contacts) => {
     let formattedContacts = [];
     contacts.map(contact => {
-      formattedContacts.push({...contact, contact_directory_id: contact.contact_directory.id})
+      formattedContacts.push({...contact, uuid: contact.id, contact_directory_id: contact.contact_directory.id})
     });
     return formattedContacts;
   }

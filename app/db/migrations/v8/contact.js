@@ -5,7 +5,7 @@ const ContactSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    id: 'string?',    // the user's id returned from the server
+    name: 'string',
     type: 'string',
     value: 'string',
     display_order: 'int',
