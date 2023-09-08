@@ -37,9 +37,9 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderProvincePicker = () => {
     return <CustomBottomSheetPickerComponent
-              title={t('yourProvince')}
-              placeholder={t('selectYourProvince')}
-              bottomSheetTitle={t('yourProvince')}
+              title={t('yourLocation')}
+              placeholder={t('selectYourLocation')}
+              bottomSheetTitle={t('yourLocation')}
               required={true}
               requiredColor={color.blackColor}
               items={userHelper.getProvinceDataset(i18n.language)}
@@ -61,9 +61,9 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderOccupationPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title='មុខរបរ'
-              placeholder='ជ្រើសរើសមុខរបរ'
-              bottomSheetTitle='មុខរបរ'
+              title={t('occupation')}
+              placeholder={t('selectOccupation')}
+              bottomSheetTitle={t('occupation')}
               required={true}
               requiredColor={color.blackColor}
               items={userHelper.getOccupationDataset(i18n.language)}
@@ -85,9 +85,9 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderEducationLevelPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title="កម្រិតវប្បធម៌"
-              placeholder="ជ្រើសរើសកម្រិតវប្បធម៌"
-              bottomSheetTitle="កម្រិតវប្បធម៌"
+              title={t('educationalLevel')}
+              placeholder={t('selectEducationalLevel')}
+              bottomSheetTitle={t('educationalLevel')}
               required={true}
               requiredColor={color.blackColor}
               items={userHelper.getEducationDataset(i18n.language, props.occupation)}
