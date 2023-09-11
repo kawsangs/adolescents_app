@@ -17,7 +17,6 @@ const i18nextInit = () => {
       .init({
         lng: environment.defaultLanguage,
         fallbackLng: environment.defaultLanguage,
-        debug: true,
         resources: {
           en: { translation: en },
           km: { translation: km }

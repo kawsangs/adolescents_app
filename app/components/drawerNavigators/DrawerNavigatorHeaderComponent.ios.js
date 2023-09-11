@@ -30,11 +30,11 @@ const DrawerNavigatorHeaderComponent = (props) => {
       <View style={{position: 'relative', flexDirection: 'row', alignItems: 'center'}}>
         <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
           {!loggedInUser.anonymous ?
-            `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('year')}`
+            `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('yearOld')}`
             : t('anonymous')
           }
         </Text>
-        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: 10, marginTop: 2}} />
+        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: 2}} />
 
         { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>

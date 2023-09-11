@@ -14,11 +14,14 @@ const dateTimeHelper = (() => {
   }
 
   function getTranslatedDate(date, language) {
-    const months = ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'];
+    const months = {
+      'km': ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'],
+      'en': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    };
   
     const day = Moment(date).format('DD');
     let month = parseInt(Moment(date).format('M')) - 1;
-    month = months[month];
+    month = months[language][month];
     const year = Moment(date).format('YYYY');
 
     return `${translationHelper.translateNumber(day, language)} ${month} ${translationHelper.translateNumber(year, language)}`;

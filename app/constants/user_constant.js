@@ -5,37 +5,37 @@ export const maximumAge = 51;
 export const anonymousInfo = [
   {
     uuid: 'user-gender',
-    label: 'អត្តសញ្ញាណយែនឌ័រ',
+    label: 'genderIdentity',
     value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-age',
-    label: 'អាយុ',
+    label: 'age',
     value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-province',
-    label: 'ទីតាំង',
+    label: 'location',
     value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-occupation',
-    label: 'មុខរបរ',
+    label: 'occupation',
     value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-education_level',
-    label: 'កម្រិតវប្បធម៌',
+    label: 'educationalLevel',
     value: 'អនាមិក',
     audio: null,
   },
   {
     uuid: 'user-characteristic',
-    label: 'ស្ថានភាពរស់នៅ',
+    label: 'characteristic',
     value: 'អនាមិក',
     audio: null,
   }

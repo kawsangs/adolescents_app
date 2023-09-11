@@ -4,6 +4,7 @@ import {Text} from 'react-native-paper';
 import DeviceInfo from 'react-native-device-info';
 import {useDispatch} from 'react-redux';
 import { useFocusEffect } from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 import ProfileInfoComponent from './ProfileInfoComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
@@ -19,6 +20,7 @@ import { setLoginUserOccupation } from '../../features/users/loginUserOccupation
 const {useImperativeHandle} = React;
 
 const ProfileMainComponent = React.forwardRef((props, ref) => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [loggedInUser, setLoggedInUser] = React.useState(User.currentLoggedIn());
   const currentOccupation = loggedInUser.occupation;
@@ -54,10 +56,10 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
   const renderSaveBtn = () => {
     return <React.Fragment>
               <Text style={{color: 'white', textAlign: 'center', marginBottom: 8, lineHeight: 24}}>
-                { (occupation != 'n_a' && educationLevel != 'n_a') ? `ដើម្បីផ្លាស់ប្ដូរមុខរបរ និងកម្រិតវប្បធម៌ សូមចុច "រក្សាទុក"` : ''}
+                { (occupation != 'n_a' && educationLevel != 'n_a') ? t('pressSaveToUpdateOccupationAndEducationalLevel') : ''}
               </Text>
               <BigButtonComponent
-                label='រក្សាទុក'
+                label={t('save')}
                 uuid='save-button'
                 audio={null}
                 style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16)}}
@@ -74,7 +76,7 @@ const ProfileMainComponent = React.forwardRef((props, ref) => {
       return renderSaveBtn()
 
     return <BigButtonComponent
-              label='ចាប់ផ្ដើមសាជាថ្មី'
+              label={t('startAgain')}
               uuid='reset-button'
               style={{marginBottom: DeviceInfo.hasNotch() ? 26 : getStyleOfDevice(26, 16), marginTop: 12}}
               audio={audioSources['0.43.mp3']}

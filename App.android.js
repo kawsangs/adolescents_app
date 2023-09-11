@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
 import { StatusBar, Text, AppState, Alert, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -59,7 +60,7 @@ Text.defaultProps.allowFontScaling = false;
 MobileTokenService.onNotificationArrived();
 
 const App: () => Node = () => {
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
   let backHandler = null;
 
   const appState = useRef(AppState.currentState);
@@ -67,6 +68,7 @@ const App: () => Node = () => {
   const notif = new NotifService((token) => {}, (notif) => {});
 
   useEffect(() => {
+    setDefaultLocale();
     SplashScreen.hide();
     MobileTokenService.onNotificationOpenApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
@@ -89,6 +91,11 @@ const App: () => Node = () => {
       subscription.remove();
     };
   }, []);
+
+  const setDefaultLocale = async () => {
+    const selectedLanguage = await AsyncStorage.getItem('APP_LANGUAGE')
+    i18n.changeLanguage(selectedLanguage);
+  }
 
   return (
     <React.Fragment>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
@@ -9,6 +10,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 import {descriptionFontSize} from '../../constants/component_constant';
 
 const ProfileView = () => {
+  const {t} = useTranslation();
   const profileRef = React.createRef();
   const [playingUuid, setPlayingUuid] = React.useState(null);
   const [visible, setVisible] = React.useState(false)
@@ -20,8 +22,8 @@ const ProfileView = () => {
 
   const message = () => {
     return <React.Fragment>
-              <Text style={{fontSize: descriptionFontSize, lineHeight: 25}}>ព័ត៌មានមុខរបរដែលអ្នកបានជ្រើសរើសនឹងត្រូវបោះបង់នៅពេលចាកចេញ។</Text>
-              <Text style={{marginTop: 12, fontSize: descriptionFontSize}}>តើអ្នកពិតជាចង់បោះបង់មែន​ឬទេ?</Text>
+              <Text style={{fontSize: descriptionFontSize, lineHeight: 25}}>{t('discardSelectedOccupationMessage')}</Text>
+              <Text style={{marginTop: 12, fontSize: descriptionFontSize}}>{t('doYouReallyWantToDiscard')}</Text>
            </React.Fragment>
   }
 
@@ -29,8 +31,8 @@ const ProfileView = () => {
     return <AlertModalComponent
               visible={visible}
               message={message}
-              leftButtonLabel='ទេ'
-              rightButtonLabel='បោះបង់'
+              leftButtonLabel={t('no')}
+              rightButtonLabel={t('discard')}
               onDismiss={() => setVisible(false)}
               onConfirm={() => onBackPress()}
            />
@@ -52,7 +54,7 @@ const ProfileView = () => {
 
   return (
     <GradientScrollViewComponent
-      header={<NavigationHeaderWithBackButtonComponent label='ព័ត៌មានរបស់អ្នក' onPress={() => onPress()}/>}
+      header={<NavigationHeaderWithBackButtonComponent label={t('yourProfile')} onPress={() => onPress()}/>}
       body={renderContent()}
       scrollViewStyle={{paddingBottom: 86}}
       scrollable={true}

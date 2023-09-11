@@ -30,20 +30,20 @@ const ProfileInfoComponent = (props) => {
     const infos = [
       {
         uuid: 'user-gender',
-        label: 'អត្តសញ្ញាណយែនឌ័រ',
-        value: gender.name_km,
+        label: t('genderIdentity'),
+        value: gender[`name_${i18n.language}`],
         audio: gender.audio,
       },
       {
         uuid: 'user-age',
-        label: 'អាយុ',
-        value: `${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('year')}`,
+        label: t('age'),
+        value: `${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('yearOld')}`,
         audio: null,
       },
       {
         uuid: 'user-province',
-        label: 'ទីតាំង',
-        value: province.name_km,
+        label: t('location'),
+        value: province[`name_${i18n.language}`],
         audio: province.audio,
       }
     ]
@@ -65,11 +65,11 @@ const ProfileInfoComponent = (props) => {
 
   renderOccupation = () => {
     const info = {
-      value: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).name_km : null,
+      value: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation)[`name_${i18n.language}`] : null,
       audio: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).audio : null,
     }
     return <ProfileInfoItemWithPickerComponent uuid='user-occupation-picker' info={info} playingUuid={props.playingUuid}
-              label='មុខរបរ' bottomSheetTitle='មុខរបរ' pickerLabel='ជ្រើសរើសមុខរបរ'
+              label={t('occupation')} bottomSheetTitle={t('occupation')} pickerLabel={t('selectOccupation')}
               items={userHelper.getOccupationDataset(i18n.language)}
               selectedValue={props.occupation}
               isPickerVisible={loggedInUser.occupation == 'n_a'}
@@ -83,10 +83,10 @@ const ProfileInfoComponent = (props) => {
   renderEducationLevel = () => {
     let info = { value: null, audio: null }
     if (props.educationLevel != 'n_a' && props.occupation != 'n_a')
-      info = { value: profileHelper.getEducation(props.educationLevel).name_km, audio: profileHelper.getEducation(props.educationLevel).audio }
+      info = { value: profileHelper.getEducation(props.educationLevel)[`name_${i18n.language}`], audio: profileHelper.getEducation(props.educationLevel).audio }
 
     return <ProfileInfoItemWithPickerComponent uuid='user-education-picker' info={info} playingUuid={props.playingUuid}
-              label='កម្រិតវប្បធម៌' bottomSheetTitle='កម្រិតវប្បធម៌' pickerLabel='ជ្រើសរើសកម្រិតវប្បធម៌'
+              label={t('educationalLevel')} bottomSheetTitle={t('educationalLevel')} pickerLabel={t('selectEducationalLevel')}
               disabled={props.occupation == 'n_a'}
               items={userHelper.getEducationDataset(i18n.language, props.occupation)}
               selectedValue={props.educationLevel}
@@ -100,7 +100,7 @@ const ProfileInfoComponent = (props) => {
 
   renderAnonymousInfo = () => {
     return anonymousInfo.map((info, index) => {
-      return <ProfileInfoListItemComponent key={index} info={info} gender={null} playingUuid={props.playingUuid} hasIcon={false}
+      return <ProfileInfoListItemComponent key={index} info={info} label={t(info.label)} value={t('anonymous')} gender={null} playingUuid={props.playingUuid} hasIcon={false}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{paddingVertical: 16, paddingBottom: 10}}
             />

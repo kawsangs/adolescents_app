@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, Divider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {useTranslation} from 'react-i18next';
 
 import BottomSheetModalMainComponent from '../shared/BottomSheetModalMainComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -18,6 +19,7 @@ import {storeSelectedVidAuthor, resetSelectedVidAuthor} from '../../features/vid
 
 const VideoFilterBottomSheetComponent = (props) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
   const onSelect = (author) => {
     props.closeBottomSheet()
@@ -51,8 +53,8 @@ const VideoFilterBottomSheetComponent = (props) => {
 
   const bottomSheetTitle = () => {
     return <View style={{paddingHorizontal: screenHorizontalPadding, paddingBottom: 16}}>
-              <BoldLabelComponent label='ស្វែងរកវីដេអូ' style={{fontSize: bottomSheetTitleFontSize}} />
-              <Text style={{fontSize: mediumFontSize(), color: color.grayColor}}>ច្រោះតាមរយៈអ្នកផលិត</Text>
+              <BoldLabelComponent label={t('findVideo')} style={{fontSize: bottomSheetTitleFontSize}} />
+              <Text style={{fontSize: mediumFontSize(), color: color.grayColor}}>{t('filterByAuthor')}</Text>
            </View>
   }
 

@@ -79,6 +79,7 @@ const CreateAccountSelectionsComponent = (props) => {
               showSubtitle={true}
               itemTextStyle={{marginTop: -4}}
               listItemStyle={{paddingTop: 0}}
+              placeholderStyle={{paddingLeft: 14}}
            />
   }
 
@@ -103,6 +104,7 @@ const CreateAccountSelectionsComponent = (props) => {
               itemTextStyle={{marginTop: -4}}
               listItemStyle={{paddingTop: 0}}
               disabled={!props.occupation}
+              placeholderStyle={{paddingLeft: 14}}
            />
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTranslation} from 'react-i18next';
 
 import TextComponent from '../TextComponent';
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
@@ -12,6 +13,7 @@ import mobileStyles from '../../../assets/stylesheets/mobile/genderSelectionButt
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GenderSelectionButtonComponent = (props) => {
+  const {i18n} = useTranslation();
   const renderAudioButton = () => {
     return <View style={styles.audioContainer}>
             <CustomAudioPlayerButtonComponent
@@ -34,11 +36,11 @@ const GenderSelectionButtonComponent = (props) => {
     return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }]}
               onPress={() => props.updateValue(props.value)}
             >
-            <View style={{justifyContent: 'flex-end', marginTop: 0}}>
+            <View style={{justifyContent: 'center', flex: 1}}>
               <Icon name={props.icon} size={props.size} color={labelColor}/>
             </View>
             <View style={{justifyContent: 'flex-end'}}>
-              <TextComponent label={props.label} style={[styles.label, { color: labelColor }]} />
+              <TextComponent label={props.label} style={[styles.label, { color: labelColor }, i18n.language != 'km' && {fontSize: 14}]} />
             </View>
           </TouchableOpacity>
   }
