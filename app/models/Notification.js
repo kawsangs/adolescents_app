@@ -18,7 +18,7 @@ class Notification {
   }
 
   static create = (params) => {
-    BaseModel.create(MODEL, { ...params, uuid: uuidv4(), createdAt: Moment().toDate() });
+    BaseModel.createL(MODEL, this._buildData(params));
   }
 
   static deleteAll = () => {
@@ -42,6 +42,20 @@ class Notification {
 
   static deleteByUuid = (uuid) => {
     BaseModel.deleteByUuid(MODEL, uuid)
+  }
+
+  // private method
+  static _buildData = (item) => {
+    const params = {
+      uuid: uuidv4(),
+      id: !!item.id ? item.id : null,
+      title: item.title,
+      content: item.body,
+      createdAt: Moment().toDate(),
+      data: !!item.data ? JSON.stringify(item.data) : null,
+    };
+
+    return params;
   }
 }
 

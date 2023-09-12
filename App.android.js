@@ -27,8 +27,7 @@ import { environment } from './app/config/environment';
 import appVisitService from './app/services/app_visit_service'
 import systemBackButtonHelper from './app/helpers/system_back_button_helper';
 import seedDataService from './app/services/seed_data_service';
-
-import MobileTokenService from './app/services/mobile_token_service';
+import notificationService from './app/services/notification_service';
 
 import { store } from './app/store'
 import { Provider } from 'react-redux'
@@ -57,8 +56,6 @@ const theme = {
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 
-MobileTokenService.onNotificationArrived();
-
 const App: () => Node = () => {
   const {t, i18n} = useTranslation();
   let backHandler = null;
@@ -70,7 +67,7 @@ const App: () => Node = () => {
   useEffect(() => {
     setDefaultLocale();
     SplashScreen.hide();
-    MobileTokenService.onNotificationOpenApp(() => navigationRef.current?.navigate('NotificationView'));
+    notificationService.onNotificationOpenedApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
     backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
