@@ -14,4 +14,8 @@ export const schemaNames = [
   'VideoAuthor',
   'DownloadedFile',
   'Contact',
+  'Form',
+  'Question',
+  'Answer',
+  'Quiz',
 ];
