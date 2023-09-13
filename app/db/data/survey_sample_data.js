@@ -7,9 +7,6 @@ export const questions = [
     hint: '',
     display_order: 1,
     audio: null,
-    topic_uuid: '123',
-    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
-    option_uuids: null,
     form_id: 1,
     section_id: 'section1',
     required: true,
@@ -22,9 +19,6 @@ export const questions = [
     hint: 'Hint of the survey question 2',
     display_order: 2,
     audio: null,
-    topic_uuid: '123',
-    answers: [{ label: 'q2 | Answer 1', value: 1 }, { label: 'q2 | Answer 2', value: 2 }],
-    option_uuids: null,
     form_id: 1,
     section_id: 'section1',
     required: true,
@@ -37,9 +31,6 @@ export const questions = [
     hint: 'Hint of the survey question 3',
     display_order: 2,
     audio: null,
-    topic_uuid: '123',
-    answers: [{ label: 'q3 | Answer 1', value: 1 }, { label: 'q3 | Answer 2', value: 2 }],
-    option_uuids: null,
     form_id: 1,
     section_id: 'section2',
     required: true,
@@ -52,9 +43,6 @@ export const questions = [
     hint: 'Hint of the survey question 4',
     display_order: 2,
     audio: null,
-    topic_uuid: '123',
-    answers: [{ label: 'q4 | Answer 1', value: 1 }, { label: 'q4 | Answer 2', value: 2 }],
-    option_uuids: null,
     form_id: 1,
     section_id: 'section2',
     required: true,
@@ -135,7 +123,47 @@ export const options = [
     score: 2,
     question_id: 2,
     question_code: 'question2'
-  }
+  },
+  {
+    id: 7,
+    name: 'Q4: answer 1',
+    value: '4.1',
+    score: 1,
+    question_id: 4,
+    question_code: 'question4'
+  },
+  {
+    id: 8,
+    name: 'Q4: answer 2',
+    value: '4.2',
+    score: 2,
+    question_id: 4,
+    question_code: 'question4'
+  },
+  {
+    id: 9,
+    name: 'Q4: answer 3',
+    value: '4.3',
+    score: 3,
+    question_id: 4,
+    question_code: 'question4'
+  },
+  {
+    id: 10,
+    name: 'Q4: answer 4',
+    value: '4.4',
+    score: 4,
+    question_id: 4,
+    question_code: 'question4'
+  },
+  {
+    id: 11,
+    name: 'Q4: answer 5',
+    value: '4.5',
+    score: 5,
+    question_id: 4,
+    question_code: 'question4'
+  },
 ]
 
 

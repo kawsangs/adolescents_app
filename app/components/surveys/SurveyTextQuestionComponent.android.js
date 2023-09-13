@@ -3,11 +3,11 @@ import { TextInput } from 'react-native';
 // import {useSelector} from 'react-redux';
 
 import color from '../../themes/color';
+import User from '../../models/User';
+
 
 const SurveyTextQuestionComponent = (props) => {
   const [answer, setAnswer] = useState('');
-  // const currentUser = useSelector(state => state.currentUser)
-  // const currentQuiz = useSelector(state => state.currentQuiz)
 
   const onTextChange = (text) => {
     setAnswer(text);
@@ -16,8 +16,8 @@ const SurveyTextQuestionComponent = (props) => {
     const answerParams = {
       question_id: props.question.id,
       question_code: props.question.code,
-      user_uuid: props.currentUser.uuid,
-      quiz_uuid: props.currentQuiz.uuid,
+      user_uuid: User.currentLoggedIn().uuid,
+      survey_uuid: props.surveyUuid,
       value: text || '',
     }
     props.updateAnswer(answerParams)

@@ -44,11 +44,24 @@ const SurveyContentComponent = (props) => {
     });
   }
 
+  const goNextOrFinish = () => {
+    setPlayingUuid(null);
+    if (currentSection < sections.length - 1) {
+      buttonRef.current?.validateForm(currentSection + 1, answers, sections[currentSection].uuid);
+      setCurrentSection(currentSection + 1);
+    }
+    else if (currentSection == sections.length - 1) {
+      console.log('==== Sumbit Survey to server ====')
+      // new SurveyFormService().submitSurvey(answers, currentQuiz.uuid);
+      // navigation.reset({ index: 1, routes: [{name: 'BottomTab'}, { name: 'NotificationListScreen' }]});
+    }
+  }
+
   return <View style={{height: '100%'}}>
           <ScrollView contentContainerStyle={{height: '100%'}}>
             {renderQuestions()}
           </ScrollView>
-          <SurveyBottomButtonComponent ref={buttonRef} onPress={() => {}} />
+          <SurveyBottomButtonComponent ref={buttonRef} onPress={goNextOrFinish} />
         </View>
 }
 

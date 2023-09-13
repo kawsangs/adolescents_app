@@ -21,7 +21,6 @@ const SurveyView = () => {
       header={<NavigationHeaderWithBackButtonComponent label='Survey' />}
       body={<SurveyContentComponent formId={1} surveyUuid={uuid}/>}
       scrollable={false}
-      // scrollViewStyle={subCategories.length == 0 ? {paddingHorizontal: 0, paddingBottom: 0} : {}}
       scrollViewStyle={{paddingBottom: 16}}
     />
   )
