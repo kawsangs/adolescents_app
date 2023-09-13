@@ -1,86 +1,55 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, ScrollView} from 'react-native';
 
 import SurveyQuestionComponent from './SurveyQuestionComponent';
+import SurveyBottomButtonComponent from './SurveyBottomButtonComponent';
+import SurveySection from '../../models/SurveySection';
+import SurveyQuestion from '../../models/SurveyQuestion';
 
 const SurveyContentComponent = (props) => {
+  const sections = SurveySection.findByFormId(props.formId);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [playingUuid, setPlayingUuid] = useState(null);
+  const buttonRef = React.useRef(null);
 
-  const questions = [
-    {
-      uuid: 'abcde123',
-      code: 'question1',
-      name: 'តើការមានស្នេហាក្នុងវ័យសិក្សាមានផលប៉ះបាល់អ្វីខ្លះ?',
-      type: 'Questions::SelectOne',
-      hint: '',
-      display_order: 1,
-      audio: null,
-      topic_uuid: '123',
-      answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
-      option_uuids: null,
-      form_id: 1,
-      section_id: 'section1'
-    },
-    {
-      uuid: 'abcde1233',
-      code: 'question2',
-      name: 'Survey multi select question 2?',
-      type: 'Questions::SelectMultiple',
-      hint: 'Hint of the survey question 2',
-      display_order: 2,
-      audio: null,
-      topic_uuid: '123',
-      answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
-      option_uuids: null,
-      form_id: 1,
-      section_id: 'section1'
-    },
-    {
-      uuid: 'abcde1234',
-      code: 'question3',
-      name: 'Survey Text question 3?',
-      type: 'Questions::Text',
-      hint: 'Hint of the survey question 3',
-      display_order: 2,
-      audio: null,
-      topic_uuid: '123',
-      answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
-      option_uuids: null,
-      form_id: 1,
-      section_id: 'section2'
-    },
-    {
-      uuid: 'abcde1235',
-      code: 'question4',
-      name: 'Survey multi select question 4?',
-      type: 'Questions::SelectMultiple',
-      hint: 'Hint of the survey question 4',
-      display_order: 2,
-      audio: null,
-      topic_uuid: '123',
-      answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
-      option_uuids: null,
-      form_id: 1,
-      section_id: 'section2'
-    },
-  ]
+  useEffect(() => {
+    let formattedAnswers = {};
+    sections.map((section, index) => {
+      formattedAnswers[index] = {};
+    });
+    setAnswers(formattedAnswers)
+  }, []);
+
+  const updateAnswers = (key, answer) => {
+    const newAnswers = answers;
+    if (!!answer && !!answer.value)
+      newAnswers[currentSection][key] = answer;
+    else
+      delete newAnswers[currentSection][key];
+
+    setAnswers(newAnswers);
+    buttonRef.current?.validateForm(currentSection, newAnswers, sections[currentSection].uuid);
+  }
+
   const renderQuestions = () => {
-    return questions.map((question, index) => {
+    return SurveyQuestion.findBySectionId(sections[currentSection].uuid).map((question, index) => {
+      const key = `section_${currentSection}_q_${index}`;
       return <SurveyQuestionComponent
                 key={index}
                 question={question}
+                surveyUuid={props.surveyUuid}
+                updateAnswers={(answer) => updateAnswers(key, answer)}
              />
     });
   }
 
-  return <React.Fragment>
-          {renderQuestions()}
-        </React.Fragment>
-
-  // return (
-  //   <SurveyQuestionComponent
-  //     question={question}
-  //   />
-  // )
+  return <View style={{height: '100%'}}>
+          <ScrollView contentContainerStyle={{height: '100%'}}>
+            {renderQuestions()}
+          </ScrollView>
+          <SurveyBottomButtonComponent ref={buttonRef} onPress={() => {}} />
+        </View>
 }
 
 export default SurveyContentComponent;

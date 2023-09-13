@@ -1,4 +1,4 @@
-const questions = [
+export const questions = [
   {
     id: 1,
     code: 'question1',
@@ -23,7 +23,7 @@ const questions = [
     display_order: 2,
     audio: null,
     topic_uuid: '123',
-    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    answers: [{ label: 'q2 | Answer 1', value: 1 }, { label: 'q2 | Answer 2', value: 2 }],
     option_uuids: null,
     form_id: 1,
     section_id: 'section1',
@@ -38,7 +38,7 @@ const questions = [
     display_order: 2,
     audio: null,
     topic_uuid: '123',
-    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    answers: [{ label: 'q3 | Answer 1', value: 1 }, { label: 'q3 | Answer 2', value: 2 }],
     option_uuids: null,
     form_id: 1,
     section_id: 'section2',
@@ -53,7 +53,7 @@ const questions = [
     display_order: 2,
     audio: null,
     topic_uuid: '123',
-    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    answers: [{ label: 'q4 | Answer 1', value: 1 }, { label: 'q4 | Answer 2', value: 2 }],
     option_uuids: null,
     form_id: 1,
     section_id: 'section2',
@@ -61,7 +61,7 @@ const questions = [
   },
 ]
 
-const form = {
+export const form = {
   id: 1,
   code: 'fo_001',
   name: 'ចាប់ផ្តើមដំណើររបស់អ្នក',
@@ -72,20 +72,72 @@ const form = {
   audio: null,
 }
 
-const sections = [
+export const sections = [
   {
     uuid: 'section1',
     name: 'ផ្នែកទី១',
-    form_id: '1',
+    form_id: 1,
     display_order: 1
   },
   {
     uuid: 'section2',
     name: 'ផ្នែកទី២',
-    form_id: '1',
+    form_id: 1,
     display_order: 2
   }
 ]
+
+export const options = [
+  {
+    id: 1,
+    name: 'Q1: answer 1',
+    value: '1.1',
+    score: 1,
+    question_id: 1,
+    question_code: 'question1',
+  },
+  {
+    id: 2,
+    name: 'Q1: answer 1',
+    value: '1.2',
+    score: 1,
+    question_id: 1,
+    question_code: 'question1',
+  },
+  {
+    id: 3,
+    name: 'Q2: answer 1',
+    value: '2.1',
+    score: 2,
+    question_id: 2,
+    question_code: 'question2'
+  },
+  {
+    id: 4,
+    name: 'Q2: answer 2',
+    value: '2.2',
+    score: 2,
+    question_id: 2,
+    question_code: 'question2'
+  },
+  {
+    id: 5,
+    name: 'Q2: answer 3',
+    value: '2.3',
+    score: 2,
+    question_id: 2,
+    question_code: 'question2'
+  },
+  {
+    id: 6,
+    name: 'Q2: answer 4',
+    value: '2.4',
+    score: 2,
+    question_id: 2,
+    question_code: 'question2'
+  }
+]
+
 
 const answers = [
   {

@@ -1,7 +1,9 @@
 
 import React, {useState} from 'react';
 import { RadioButton } from 'react-native-paper';
+
 import RadioButtonComponent from '../shared/radioButtons/RadioButtonComponent';
+import User from '../../models/User';
 
 const SurveySelectOneQuestionComponent = (props) => {
   const {options} = props;
@@ -16,8 +18,8 @@ const SurveySelectOneQuestionComponent = (props) => {
       question_code: props.question.code,
       value: option.value,
       score: option.score,
-      user_uuid: props.currentUser.uuid,
-      quiz_uuid: props.currentQuiz.uuid,
+      user_uuid: User.currentLoggedIn().uuid,
+      survey_uuid: props.surveyUuid,
     }
     props.updateAnswer(answerParams);
   }

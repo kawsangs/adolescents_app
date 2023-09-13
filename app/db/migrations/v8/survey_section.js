@@ -1,7 +1,7 @@
 'use strict';
 
 const SurveySectionSchema = {
-  name: 'Section',
+  name: 'SurveySection',
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',

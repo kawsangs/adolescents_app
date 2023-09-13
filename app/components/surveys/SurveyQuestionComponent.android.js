@@ -8,6 +8,7 @@ import SurveyTextQuestionComponent from './SurveyTextQuestionComponent';
 import color from '../../themes/color';
 import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 import uuidv4 from '../../utils/uuidv4_util';
+import SurveyOption from '../../models/SurveyOption';
 
 const SurveyQuestionComponent = (props) => {
 
@@ -36,85 +37,13 @@ const SurveyQuestionComponent = (props) => {
   };
 
   const renderQuestion = () => {
-    const options = {
-      SelectOne: [
-        {
-          id: 1,
-          name: 'Option 1',
-          value: '1',
-          score: 0,
-          alert_message: null,
-          alert_audio: null,
-          alert_audio_url: null,
-          warning: false,
-          recursive: false,
-          question_id: '1',
-          question_code: "q1"
-        },
-        {
-          id: 2,
-          name: 'Option 2',
-          value: '2',
-          score: 0,
-          alert_message: null,
-          alert_audio: null,
-          alert_audio_url: null,
-          warning: false,
-          recursive: false,
-          question_id: '1',
-          question_code: "q1"
-        }
-      ],
-      SelectMultiple: [
-        {
-          id: 1,
-          name: 'Check option 1',
-          value: '1',
-          score: 0,
-          alert_message: null,
-          alert_audio: null,
-          alert_audio_url: null,
-          warning: false,
-          recursive: false,
-          question_id: '1',
-          question_code: "q1"
-        },
-        {
-          id: 2,
-          name: 'Check option 2',
-          value: '2',
-          score: 0,
-          alert_message: null,
-          alert_audio: null,
-          alert_audio_url: null,
-          warning: false,
-          recursive: false,
-          question_id: '1',
-          question_code: "q1"
-        },
-        {
-          id: 3,
-          name: 'Check option 3',
-          value: '3',
-          score: 0,
-          alert_message: null,
-          alert_audio: null,
-          alert_audio_url: null,
-          warning: false,
-          recursive: false,
-          question_id: '1',
-          question_code: "q1"
-        }
-      ]
-    }
-
     const type = props.question.type.split('::')[1];
     if (typeof QuestionComponents[type] !== 'undefined') {
       return React.createElement(QuestionComponents[type], {
                 key: uuidv4(),
+                surveyUuid: props.surveyUuid,
                 question: props.question,
-                // options: Option.byQuestion(props.question.id),
-                options: options[type],
+                options: SurveyOption.findByQuestion(props.question.id),
                 buttonColor: color.primaryColor,
                 statisticPrefix: 'Survey',
                 updateAnswer: (answer) => props.updateAnswers(answer),
