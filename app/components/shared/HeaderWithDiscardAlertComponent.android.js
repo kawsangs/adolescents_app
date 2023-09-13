@@ -26,15 +26,15 @@ const HeaderWidthDiscardAlertComponent = (props) => {
     <React.Fragment>
       <NavigationHeaderComponent
         leftButton={props.leftButton(() => onLeftBtnPress())}
-        label={t('provideIdentity')}
+        label={props.title}
       />
       <AlertModalComponent
         visible={modalVisible}
         message={props.message}
         onDismiss={() => setModalVisible(false)}
         onConfirm={() => goBack()}
-        leftButtonLabel={t('continue')}
-        rightButtonLabel={t('cancel')}
+        leftButtonLabel={props.leftButtonLabel || t('continue')}
+        rightButtonLabel={props.rightButtonLabel || t('cancel')}
       />
     </React.Fragment>
   )
