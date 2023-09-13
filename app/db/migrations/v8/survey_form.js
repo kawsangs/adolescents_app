@@ -1,7 +1,7 @@
 'use strict';
 
-const FormSchema = {
-  name: 'Form',
+const SurveyFormSchema = {
+  name: 'SurveyForm',
   primaryKey: 'id',
   properties: {
     id: 'int',
@@ -16,4 +16,4 @@ const FormSchema = {
   }
 };
 
-export default FormSchema;
+export default SurveyFormSchema;

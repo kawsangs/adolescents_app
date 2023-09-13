@@ -1,7 +1,7 @@
 'use strict';
 
-const QuestionSchema = {
-  name: 'Question',
+const SurveyQuestionSchema = {
+  name: 'SurveyQuestion',
   primaryKey: 'id',
   properties: {
     id: 'int',
@@ -26,4 +26,4 @@ const QuestionSchema = {
   }
 };
 
-export default QuestionSchema;
+export default SurveyQuestionSchema;

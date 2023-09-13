@@ -1,0 +1,100 @@
+const questions = [
+  {
+    id: 1,
+    code: 'question1',
+    name: 'តើការមានស្នេហាក្នុងវ័យសិក្សាមានផលប៉ះបាល់អ្វីខ្លះ?',
+    type: 'Questions::SelectOne',
+    hint: '',
+    display_order: 1,
+    audio: null,
+    topic_uuid: '123',
+    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    option_uuids: null,
+    form_id: 1,
+    section_id: 'section1',
+    required: true,
+  },
+  {
+    id: 2,
+    code: 'question2',
+    name: 'Survey multi select question 2?',
+    type: 'Questions::SelectMultiple',
+    hint: 'Hint of the survey question 2',
+    display_order: 2,
+    audio: null,
+    topic_uuid: '123',
+    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    option_uuids: null,
+    form_id: 1,
+    section_id: 'section1',
+    required: true,
+  },
+  {
+    id: 3,
+    code: 'question3',
+    name: 'Survey Text question 3?',
+    type: 'Questions::Text',
+    hint: 'Hint of the survey question 3',
+    display_order: 2,
+    audio: null,
+    topic_uuid: '123',
+    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    option_uuids: null,
+    form_id: 1,
+    section_id: 'section2',
+    required: true,
+  },
+  {
+    id: 4,
+    code: 'question4',
+    name: 'Survey multi select question 4?',
+    type: 'Questions::SelectMultiple',
+    hint: 'Hint of the survey question 4',
+    display_order: 2,
+    audio: null,
+    topic_uuid: '123',
+    answers: [{ label: 'Answer 1', value: 1 }, { label: 'Answer 2', value: 2 }],
+    option_uuids: null,
+    form_id: 1,
+    section_id: 'section2',
+    required: true,
+  },
+]
+
+const form = {
+  id: 1,
+  code: 'fo_001',
+  name: 'ចាប់ផ្តើមដំណើររបស់អ្នក',
+  type: null,
+  version: null,
+  question_count: 4,
+  image: null,
+  audio: null,
+}
+
+const sections = [
+  {
+    uuid: 'section1',
+    name: 'ផ្នែកទី១',
+    form_id: '1',
+    display_order: 1
+  },
+  {
+    uuid: 'section2',
+    name: 'ផ្នែកទី២',
+    form_id: '1',
+    display_order: 2
+  }
+]
+
+const answers = [
+  {
+    id: 'answer1',
+    question_id: 1,
+    question_code: 'question1',
+    value: 'answer_value_1',
+    score: 0,
+    user_uuid: 'user1',
+    survey_uuid: 'survey1'
+  }
+]

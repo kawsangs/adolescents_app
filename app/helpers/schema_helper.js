@@ -14,9 +14,11 @@ import VideoAuthor from '../db/migrations/v5/video_author';
 import DownloadedFile from '../db/migrations/v8/downloaded_file';
 import Contact from '../db/migrations/v8/contact';
 import Form from '../db/migrations/v8/form';
-import Question from '../db/migrations/v8/question';
+import QuizQuestion from '../db/migrations/v8/quiz_question';
+import QuizOption from '../db/migrations/v8/quiz_option';
 import Answer from '../db/migrations/v8/answer';
 import Quiz from '../db/migrations/v8/quiz';
+import Section from '../db/migrations/v8/section';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -46,9 +48,11 @@ const schemaHelper = (() => {
       DownloadedFile,
       Contact,
       Form,
-      Question,
+      QuizQuestion,
+      QuizOption,
       Answer,
       Quiz,
+      Section,
     ];
 
     changedSchemas.map((schema) => {

@@ -15,7 +15,8 @@ export const schemaNames = [
   'DownloadedFile',
   'Contact',
   'Form',
-  'Question',
+  'QuizQuestion',
   'Answer',
   'Quiz',
+  'Section',
 ];

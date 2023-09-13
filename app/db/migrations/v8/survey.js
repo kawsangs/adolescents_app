@@ -1,16 +1,16 @@
 'use strict';
 
-const QuizSchema = {
-  name: 'Quiz',
+const SurveySchema = {
+  name: 'Survey',
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
     user_uuid: 'string',
     form_id: 'int',
-    quizzed_at: 'date',
+    surveyed_at: 'date',
     finished: 'bool?',
     uploaded_id: 'int?'
   }
 };
 
-export default QuizSchema;
+export default SurveySchema;

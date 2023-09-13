@@ -1,7 +1,7 @@
 'use strict';
 
-const AnswerSchema = {
-  name: 'Answer',
+const SurveyAnswerSchema = {
+  name: 'SurveyAnswer',
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
@@ -10,9 +10,9 @@ const AnswerSchema = {
     value: 'string',
     score: { type: 'int', default: 0 },
     user_uuid: 'string',
-    quiz_uuid: 'string',
+    survey_uuid: 'string',
     voice: 'string?',
   }
 };
 
-export default AnswerSchema;
+export default SurveyAnswerSchema;
