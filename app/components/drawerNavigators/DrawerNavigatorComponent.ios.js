@@ -11,14 +11,14 @@ import translationHelper from '../../helpers/translation_helper';
 import pkg from '../../../package';
 
 const DrawerNavigatorComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   return (
     <View style={{flexGrow: 1, paddingLeft: 24, paddingRight: 20, backgroundColor: 'rgba(66, 145, 240, 0.97)'}}>
       <View style={{flexGrow: 1}}>
         <DrawerNavigatorHeaderComponent/>
         <DrawerNavigatorItemsComponent navigation={props.navigation}/>
       </View>
-      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, i18n.language)}</Text>
+      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
     </View>
   )
 }

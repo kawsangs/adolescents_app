@@ -22,7 +22,7 @@ export default [
   {
     "uuid":"province_4",
     "value": "04",
-    "name": "kampongCham",
+    "name": "kampongChhang",
     "audio": audioSources["0.17.mp3"]
   },
   {

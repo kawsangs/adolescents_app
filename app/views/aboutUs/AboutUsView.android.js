@@ -14,7 +14,7 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import pkg from '../../../package';
 
 const AboutUsView = () => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const renderListItems = (language) => {
     const items = {
       km: [
@@ -70,7 +70,7 @@ const AboutUsView = () => {
         {renderEnglishText()}
         <AboutUsLogosComponent/>
         <View style={{alignSelf: 'flex-end', justifyContent: 'flex-end', marginTop: 26}}>
-          <Text style={{ fontSize: xLargeFontSize() }}>{t('version')} {translationHelper.translateNumber(pkg.version, i18n.language)}</Text>
+          <Text style={{ fontSize: xLargeFontSize() }}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
         </View>
       </ScrollView>
     </View>

@@ -15,7 +15,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {storeSelectedLocation, resetSelectedLocation} from '../../features/facilities/filterFacilityLocationSlice';
 
 const FacilityFilterFormComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [province, setProvince] = useState(null);
   const [district, setDistrict] = useState(null);
@@ -45,7 +45,7 @@ const FacilityFilterFormComponent = (props) => {
               title={t('province')}
               placeholder={t('selectProvince')}
               bottomSheetTitle={t('selectProvince')}
-              items={userHelper.getProvinceDataset(i18n.language)}
+              items={userHelper.getProvinceDataset(t)}
               selectedItem={province}
               onSelectItem={(item) => onSelectProvince(item)}
               pickerUuid='clinic-province-picker'

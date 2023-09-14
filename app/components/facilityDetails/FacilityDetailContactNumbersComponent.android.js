@@ -10,14 +10,14 @@ import contactHelper from '../../helpers/contact_helper';
 import {PHONE} from '../../constants/contact_constant';
 
 const FacilityDetailContactNumbersComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {t} = useTranslation();
   const renderContactNumbers = () => {
     return props.contactNumbers.map((number, index) => {
       return <TouchableOpacity key={index} style={{justifyContent: 'center', height: 30, marginTop: 12}}
                 onPress={() => contactHelper.openContactLink(PHONE, number)}
              >
                 <Text style={{fontSize: largeFontSize(), marginLeft: 8,  color: color.primaryColor, textAlign: 'center'}}>
-                    {translationHelper.translateNumber(contactHelper.getFormattedPhoneNumber(number), i18n.language)}
+                    {translationHelper.translateNumber(contactHelper.getFormattedPhoneNumber(number), t)}
                 </Text>
              </TouchableOpacity>
     });

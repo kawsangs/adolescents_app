@@ -35,7 +35,7 @@ const FacilityDetailWorkingDaysComponent = (props) => {
     return workingHours.map((workingHour, index) => {
       return <Text key={`hour-${index}`} style={{fontSize: descriptionFontSize}}>
                 { !workingHour.close_at && workingHour.open_at == 24 ? `24${t('hour')}`
-                  : `${dateTimeHelper.getReadableTime(workingHour.open_at, i18n.language)} - ${dateTimeHelper.getReadableTime(workingHour.close_at, i18n.language)}`
+                  : `${dateTimeHelper.getReadableTime(workingHour.open_at, i18n.language, t)} - ${dateTimeHelper.getReadableTime(workingHour.close_at, i18n.language, t)}`
                 }
              </Text>
     })

@@ -9,13 +9,13 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import genders from '../../db/data/genders';
 
 const GenderSelectionComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const renderGenders = () => {
     return genders.map((gender, index) => {
       return <GenderSelectionButtonComponent key={index} uuid={gender.uuid}
                 icon={gender.icon}
                 size={gender.size}
-                label={gender[`name_${i18n.language}`]}
+                label={t(gender.name)}
                 value={gender.value}
                 selectedValue={props.selectedValue}
                 audio={gender.audio}

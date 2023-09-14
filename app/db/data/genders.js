@@ -4,8 +4,7 @@ export default [
   {
     uuid: 'gender-1',
     icon: "gender-male",
-    name_km: 'ប្រុស',
-    name_en: 'Male',
+    name: 'male',
     value: 'male',
     audio: audioSources["0.3.mp3"],
     size: 34,
@@ -14,8 +13,7 @@ export default [
   {
     uuid: 'gender-2',
     icon: "gender-female",
-    name_km: 'ស្រី',
-    name_en: 'Female',
+    name: 'female',
     value: 'female',
     audio: audioSources["0.4.mp3"],
     size: 36,
@@ -24,8 +22,7 @@ export default [
   {
     uuid: 'gender-3',
     icon: "gender-transgender",
-    name_km: 'LGBT+',
-    name_en: 'LGBT+',
+    name: 'lgbt',
     value: 'lgbt',
     audio: audioSources["0.5.mp3"],
     size: 28,
@@ -34,8 +31,7 @@ export default [
   {
     uuid: 'gender-4',
     icon: "progress-question",
-    name_km: 'មិនដឹង',
-    name_en: 'Unknown',
+    name: 'unknown',
     value: 'unknown',
     audio: audioSources["0.6.mp3"],
     size: 28,

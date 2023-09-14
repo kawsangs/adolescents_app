@@ -30,7 +30,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
       <View style={{position: 'relative', flexDirection: 'row', alignItems: 'center'}}>
         <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
           {!loggedInUser.anonymous ?
-            `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('yearOld')}`
+            `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, t)} ${t('yearOld')}`
             : t('anonymous')
           }
         </Text>

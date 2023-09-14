@@ -14,13 +14,13 @@ import mobileStyles from '../../assets/stylesheets/mobile/profileInfoListItemCom
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const ProfileCharacteristicsComponent = (props) => {
-  const {i18n, t} = useTranslation();
+  const {t} = useTranslation();
   renderItems = () => {
     return User.currentLoggedIn().characteristics.map(characteristic => {
       const characObj = profileHelper.getCharacteristic(characteristic)
       return (<View key={characObj.uuid} style={{flexDirection: 'row', alignItems: 'center', marginVertical: 2, height: 48}}>
                 <View style={styles.infoWrapper}>
-                  <Text style={[{marginLeft: 20}, styles.valueLabel]}>{characObj[`name_${i18n.language}`]}</Text>
+                  <Text style={[{marginLeft: 20}, styles.valueLabel]}>{t(characObj.name)}</Text>
                 </View>
                 <View style={styles.audioWrapper}>
                   <CustomAudioPlayerButtonComponent
@@ -36,7 +36,7 @@ const ProfileCharacteristicsComponent = (props) => {
   }
 
   return <React.Fragment>
-            <Text style={{fontSize: descriptionFontSize, marginBottom: 12, marginTop: getStyleOfDevice(10, 18)}}>ស្ថានភាពរស់នៅ</Text>
+            <Text style={{fontSize: descriptionFontSize, marginBottom: 12, marginTop: getStyleOfDevice(10, 18)}}>{t('characteristic')}</Text>
             {renderItems()}
           </React.Fragment>
 }

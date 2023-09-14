@@ -31,19 +31,19 @@ const ProfileInfoComponent = (props) => {
       {
         uuid: 'user-gender',
         label: t('genderIdentity'),
-        value: gender[`name_${i18n.language}`],
+        value: t(gender.name),
         audio: gender.audio,
       },
       {
         uuid: 'user-age',
         label: t('age'),
-        value: `${translationHelper.translateNumber(loggedInUser.age, i18n.language)} ${t('yearOld')}`,
+        value: `${translationHelper.translateNumber(loggedInUser.age, t)} ${t('yearOld')}`,
         audio: null,
       },
       {
         uuid: 'user-province',
         label: t('location'),
-        value: province[`name_${i18n.language}`],
+        value: t(province.name),
         audio: province.audio,
       }
     ]
@@ -65,12 +65,12 @@ const ProfileInfoComponent = (props) => {
 
   renderOccupation = () => {
     const info = {
-      value: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation)[`name_${i18n.language}`] : null,
+      value: props.occupation != 'n_a' ? t(profileHelper.getOccupation(props.occupation).name) : null,
       audio: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).audio : null,
     }
     return <ProfileInfoItemWithPickerComponent uuid='user-occupation-picker' info={info} playingUuid={props.playingUuid}
               label={t('occupation')} bottomSheetTitle={t('occupation')} pickerLabel={t('selectOccupation')}
-              items={userHelper.getOccupationDataset(i18n.language)}
+              items={userHelper.getOccupationDataset(t)}
               selectedValue={props.occupation}
               isPickerVisible={loggedInUser.occupation == 'n_a'}
               snapPoints={androidOccupationSnapPoints}
@@ -83,12 +83,12 @@ const ProfileInfoComponent = (props) => {
   renderEducationLevel = () => {
     let info = { value: null, audio: null }
     if (props.educationLevel != 'n_a' && props.occupation != 'n_a')
-      info = { value: profileHelper.getEducation(props.educationLevel)[`name_${i18n.language}`], audio: profileHelper.getEducation(props.educationLevel).audio }
+      info = { value: t(profileHelper.getEducation(props.educationLevel).name), audio: profileHelper.getEducation(props.educationLevel).audio }
 
     return <ProfileInfoItemWithPickerComponent uuid='user-education-picker' info={info} playingUuid={props.playingUuid}
               label={t('educationalLevel')} bottomSheetTitle={t('educationalLevel')} pickerLabel={t('selectEducationalLevel')}
               disabled={props.occupation == 'n_a'}
-              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
+              items={userHelper.getEducationDataset(props.occupation, t)}
               selectedValue={props.educationLevel}
               isPickerVisible={loggedInUser.education_level == 'n_a'}
               snapPoints={androidEducationLevelSnapPoints}

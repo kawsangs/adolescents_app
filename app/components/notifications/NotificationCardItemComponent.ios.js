@@ -14,7 +14,7 @@ import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_
 import dateTimeHelper from '../../helpers/date_time_helper';
 
 const NotificationCardItemComponent = (props) => {
-  const {i18n, t} = useTranslation();
+  const {t} = useTranslation();
   const [numberOfLines, setNumberOfLines] = React.useState(null)
   const [contentLines, setContentLines] = React.useState(null);
 
@@ -43,7 +43,7 @@ const NotificationCardItemComponent = (props) => {
           </Text>
 
           <View style={{flexDirection: 'row', marginTop: 10}}>
-            <Text style={{fontSize: mediumFontSize(), color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, i18n.language)}</Text>
+            <Text style={{fontSize: mediumFontSize(), color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, t)}</Text>
             { contentLines > 2 && renderToggleViewButton()}
           </View>
         </View>

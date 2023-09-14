@@ -4,6 +4,7 @@ import provinces from '../db/data/provinces';
 import characteristics from '../db/data/characteristics';
 import occupations from '../db/data/occupations';
 import educations from '../db/data/educations';
+import translationHelper from './translation_helper';
 
 const userHelper = (() => {
   return {
@@ -14,11 +15,11 @@ const userHelper = (() => {
     getEducationDataset,
   }
 
-  function getAgeDataset(postfix) {
+  function getAgeDataset(postfix, translation) {
     const ages = arrayUtil.getRangeOfNumber(minimumAge, maximumAge);
     const dataset = [];
     ages.map(age => {
-      dataset.push({ label: `${age} ${postfix}`, value: age });
+      dataset.push({ label: `${translationHelper.translateNumber(age, translation)} ${postfix}`, value: age });
     });
     return dataset
   }

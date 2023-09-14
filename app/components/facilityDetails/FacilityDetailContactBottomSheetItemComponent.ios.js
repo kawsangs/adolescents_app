@@ -13,7 +13,7 @@ import translationHelper from '../../helpers/translation_helper';
 import contactHelper from '../../helpers/contact_helper';
 
 const FacililityDetailContactBottomSheetItemComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {t} = useTranslation();
   const renderIcon = () => {
     return props.type == WEBSITE ? <FeatherIcon name={props.icon} size={24} color={color.primaryColor} />
                                  : <FontAwesome name={props.icon} size={24} color={color.primaryColor} />
@@ -24,7 +24,7 @@ const FacililityDetailContactBottomSheetItemComponent = (props) => {
       <TouchableOpacity onPress={() => contactHelper.openContactLink(props.type, props.item)} style={styles.container}>
         {renderIcon()}
         <Text style={styles.label} numberOfLines={2}>
-          { props.type == PHONE ? translationHelper.translateNumber(props.item, i18n.language) : props.item}
+          { props.type == PHONE ? translationHelper.translateNumber(props.item, t) : props.item}
         </Text>
       </TouchableOpacity>
     </React.Fragment>

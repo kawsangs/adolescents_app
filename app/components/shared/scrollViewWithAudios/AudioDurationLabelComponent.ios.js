@@ -10,7 +10,7 @@ import { screenHorizontalPadding } from '../../../constants/component_constant';
 import {headerWithAudioScrollDistance} from '../../../constants/ios_component_constant';
 
 const AudioDurationLabelComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
   const labelPositionY = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [0, 6],
@@ -21,8 +21,8 @@ const AudioDurationLabelComponent = (props) => {
   const reversePlaySeconds = audioUtil.getReverseSeconds(props.playSeconds, props.duration);
 
   return <Animated.View style={[styles.secondsContainer, {transform: [{translateY: labelPositionY}]}]}>
-            <Text style={styles.label}>{ translationHelper.translateNumber(playSeconds, i18n.language) }</Text>
-            <Text style={styles.label}>{ translationHelper.translateNumber(reversePlaySeconds, i18n.language) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(playSeconds, t) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(reversePlaySeconds, t) }</Text>
          </Animated.View>
 }
 

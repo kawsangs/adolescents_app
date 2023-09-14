@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Card} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 
 import FacilityLogoComponent from '../facilities/FacilityLogoComponent';
 import BoldLabelComponent from './BoldLabelComponent';
@@ -12,6 +13,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
 
 const FacilityHorizontalListComponent = (props) => {
+  const {t} = useTranslation();
   const viewDetail = (facility) => {
     visitService.recordVisitFacility(facility, () => {
       const facilityUuid = !!facility.uuid ? facility.uuid : facility.id
@@ -32,7 +34,7 @@ const FacilityHorizontalListComponent = (props) => {
 
   return (
     <View style={{marginTop: 12}}>
-      <BoldLabelComponent label='គ្លីនិក:' style={{fontSize: descriptionFontSize()}} />
+      <BoldLabelComponent label={`${t('clinic')}:`} style={{fontSize: descriptionFontSize()}} />
 
       <CustomFlatListComponent
         data={props.facilities}

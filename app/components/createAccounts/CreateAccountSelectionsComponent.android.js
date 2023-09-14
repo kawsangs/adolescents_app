@@ -23,7 +23,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle={t('yourAge')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getAgeDataset(t('yearOld'))}
+              items={userHelper.getAgeDataset(t('yearOld'), t)}
               selectedItem={props.age}
               onSelectItem={(item) => props.updateState('age', item)}
               pickerUuid='user-age-picker'
