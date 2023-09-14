@@ -1,11 +1,29 @@
 import BaseModel from './BaseModel';
 import categories from '../db/json/categories.json';
+import uuidv4 from '../utils/uuidv4_util';
+import categoryHelper from '../helpers/category_helper';
 
 const MODEL = "Category";
 
 class Category {
   static seedData = () => {
-    BaseModel.seedData(MODEL, this.#getFormattedCategories());
+    categories.map(category => {
+      const {children, content_sources, lft, rgt, ...data} = category;
+      this.create({...data, sources: categoryHelper.getFormattedSources(category.content_sources)})
+
+      category.children.map(subCategory => {
+        const {children, content_sources, lft, rgt, ...data} = subCategory;
+        this.create({...data, sources: categoryHelper.getFormattedSources(subCategory.content_sources)})
+      });
+    });
+  }
+
+  static create = (data) => {
+    BaseModel.create(MODEL, {...data, uuid: uuidv4()});
+  }
+
+  static update = (uuid, data) => {
+    BaseModel.update(MODEL, uuid, data)
   }
 
   static getAll = () => {
@@ -16,35 +34,27 @@ class Category {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
+  static findById = (id) => {
+    return BaseModel.findByAttr(MODEL, { id: `'${id}'` })[0];
+  }
+
   static getParentCategories = () => {
-    return BaseModel.findByAttr(MODEL, {parent_code: null}, '', {type: 'ASC', column: 'order'});
+    return BaseModel.findByAttr(MODEL, {parent_code: null});
   }
 
-  static getSubCategories = (uuid) => {
-    const parentCategory = this.findByUuid(uuid);
-    return BaseModel.findByAttr(MODEL, {parent_code: `'${parentCategory.code}'`}, '', {type: 'ASC', column: 'order'});
+  static getSubCategories = (id) => {
+    const parentCategory = this.findById(id);
+    if (!parentCategory) return [];
+    return BaseModel.findByAttr(MODEL, {parent_code: `'${parentCategory.code}'`});
   }
 
-  static isParentCategory = (uuid) => {
-    const category = this.findByUuid(uuid)
+  static isParentCategory = (id) => {
+    const category = this.findById(id)
     return !!category && !category.parent_code;
   }
 
-  static isSubCategory = (uuid) => {
-    return this.getSubCategories(uuid).length > 0;
-  }
-
-  // private method
-  static #getFormattedCategories = () => {
-    let formattedCategires = [];
-    categories.map(category => {
-      let sources = [];
-      category.sources.map(source => {
-        sources.push(JSON.stringify(source));
-      });
-      formattedCategires.push({...category, sources: sources})
-    });
-    return formattedCategires;
+  static deleteAll = () => {
+    BaseModel.deleteAll(MODEL);
   }
 }
 

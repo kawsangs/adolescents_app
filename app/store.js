@@ -4,6 +4,7 @@ import filterFacilityLocationReducer from './features/facilities/filterFacilityL
 import subCategoryDisplayModeReducer from './features/subCategories/subCategoryDisplayModeSlice';
 import filterVideoAuthorReducer from './features/videos/filterVideoAuthorSlice';
 import loginUserOccupationReducer from './features/users/loginUserOccupationSlice';
+import parentCategoryReducer from './features/parentCategories/parentCategorySlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     subCategoryDisplayMode: subCategoryDisplayModeReducer,
     filterVideoAuthor: filterVideoAuthorReducer,
     loginUserOccupation: loginUserOccupationReducer,
+    parentCategory: parentCategoryReducer,
   }
 })

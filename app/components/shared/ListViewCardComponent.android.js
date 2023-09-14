@@ -25,7 +25,7 @@ const ListViewCardComponent = (props) => {
 
         <CustomAudioPlayerButtonComponent
           audio={props.item.audioSource}
-          itemUuid={props.item.uuid}
+          itemUuid={props.item.id}
           playingUuid={props.playingUuid}
           updatePlayingUuid={props.updatePlayingUuid}
           rippled={true}

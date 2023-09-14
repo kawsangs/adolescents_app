@@ -14,11 +14,11 @@ import mobileStyles from '../../assets/stylesheets/mobile/gridCardComponentStyle
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GridCardComponent = (props) => {
-  const points = Category.getSubCategories(props.item.uuid).length;
+  const points = Category.getSubCategories(props.item.id).length;
   const renderInfoWithNoSubCategory = () => {
     return <GridCardNoSubCategoryComponent
               title={props.item.name}
-              uuid={props.item.uuid}
+              uuid={props.item.id}
               order={props.index + 1}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}
@@ -30,6 +30,7 @@ const GridCardComponent = (props) => {
     return <GridCardWithSubCategoryComponent
               title={props.item.name}
               uuid={props.item.uuid}
+              id={props.item.id}
               order={props.index + 1}
               audio={props.item.audioSource}
               playingUuid={props.playingUuid}

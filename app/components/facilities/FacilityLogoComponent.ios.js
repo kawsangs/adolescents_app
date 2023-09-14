@@ -5,11 +5,11 @@ import ImageComponent from '../shared/ImageComponent';
 import EmptyImageComponent from '../shared/EmptyImageComponent';
 import { cardBorderRadius } from '../../constants/component_constant';
 import {defaultFacilities} from '../../constants/facility_constant';
-import FacilityImage from '../../models/FacilityImage';
+import DownloadedFile from '../../models/DownloadedFile';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const FacilityLogoComponent = (props) => {
-  const logoPath =  FacilityImage.getImagePath(props.facility.logo)
+  const logoPath = DownloadedFile.getPathByUrl(props.facility.logo)
   const renderDefaultImage = () => {
     let logo = null;
     defaultFacilities.map(defaultFacility => {
@@ -20,7 +20,7 @@ const FacilityLogoComponent = (props) => {
   }
 
   return (
-      <View style={{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}}>
+      <View style={[{flex: getStyleOfDevice(0.8, 1.2), justifyContent: 'center', alignItems: 'center'}, props.containerStyle]}>
         { !!logoPath ? <ImageComponent source={{uri: logoPath}} resizeMode="contain" imageStyle={[styles.image, props.customImageStyle]} emptyStyle={styles.emptyView} />
           : renderDefaultImage()
         }

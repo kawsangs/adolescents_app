@@ -2,7 +2,7 @@ import RNFS from 'react-native-fs';
 import urlUtil from '../utils/url_util';
 import fileUtil from '../utils/file_util';
 
-const fileDownloadService = (() => {
+const fileService = (() => {
   return {
     download,
   }
@@ -26,4 +26,4 @@ const fileDownloadService = (() => {
   }
 })()
 
-export default fileDownloadService;
+export default fileService;

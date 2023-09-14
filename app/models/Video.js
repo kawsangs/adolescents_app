@@ -25,6 +25,10 @@ class Video {
     return BaseModel.findByAttr(MODEL, { author_uuid: `"${authorUuid}"` })
   }
 
+  static findByTag = (tag) => {
+    return BaseModel.containsByAttr(MODEL, 'tag_list', `'${tag}'`);
+  }
+
   static create = (data) => {
     BaseModel.create(MODEL, this.#getFormattedData(data, true))
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, TouchableOpacity, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import EmptyMediaComponent from '../shared/EmptyMediaComponent';
@@ -21,17 +21,17 @@ const VideoThumbnailComponent = (props) => {
 
   const renderThumbnail = () => {
     return (
-      <TouchableOpacity onPress={() => props.viewDetail()} style={{justifyContent: 'center', height: HEIGHT}}>
+      <View style={[{justifyContent: 'center', height: HEIGHT}, props.thumbnailStyle]}>
         {renderPlayButton()}
         <Image source={{ uri: youtubeHelper.getThumbnail(props.url) }} resizeMode='cover' style={styles.image} />
-      </TouchableOpacity>
+      </View>
     )
   }
 
   if (!!props.hasInternet)
     return renderThumbnail()
 
-  return <EmptyMediaComponent isImage={false} style={styles.emptyBackground}/>
+  return <EmptyMediaComponent isImage={false} style={[styles.emptyBackground, props.emptyComponentStyle]}/>
 }
 
 const styles = StyleSheet.create({
