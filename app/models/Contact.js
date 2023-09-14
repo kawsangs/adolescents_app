@@ -20,10 +20,6 @@ class Contact {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
-  static getMentalSupportContacts = () => {
-    return BaseModel.findByAttr(MODEL, {contact_directory_name: "'សេវាគាំទ្រផ្លូវចិត្ត'"}, '', {});
-  }
-
   static deleteAll = () => {
     BaseModel.deleteAll(MODEL);
   }
@@ -32,7 +28,7 @@ class Contact {
   static #getFormattedContacts = (contacts) => {
     let formattedContacts = [];
     contacts.map(contact => {
-      formattedContacts.push({...contact, uuid: contact.id, contact_directory_name: !!contact.contact_directory ? contact.contact_directory.name : null})
+      formattedContacts.push({...contact, uuid: contact.id, contact_directory_uuid: contact.contact_directory_uuid})
     });
     return formattedContacts;
   }

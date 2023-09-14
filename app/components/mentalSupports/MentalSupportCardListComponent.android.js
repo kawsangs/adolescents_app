@@ -11,7 +11,7 @@ import contactService from '../../services/contact_service';
 const MentalSupportCardListComponent = () => {
   const listRef = useRef();
   const [hasInternet, setHasInternet] = useState(true);
-  const [contacts, setContacts] = useState(Contact.getMentalSupportContacts());
+  const [contacts, setContacts] = useState(Contact.getAll());
 
   useEffect(() => {
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
@@ -30,7 +30,7 @@ const MentalSupportCardListComponent = () => {
   }
 
   const renderItem = (contact) => {
-    return <MentalSupportCardComponent name={contact.name} intend={contact.intend} channel={contact.channel} errorMessage={contact.errorMessage} />
+    return <MentalSupportCardComponent name={contact.name} value={contact.value} type={contact.type} />
   }
 
   return <CustomFlatListComponent

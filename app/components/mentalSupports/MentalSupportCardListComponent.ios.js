@@ -1,12 +1,14 @@
 import React, {useRef, useEffect, useState} from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import {Text, Snackbar} from 'react-native-paper';
+import {View} from 'react-native';
 
 import MentalSupportCardComponent from './MentalSupportCardComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import Contact from '../../models/Contact';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import { gradientScrollViewBigPaddingBottom } from '../../constants/ios_component_constant';
+import { contactErrorMessages } from '../../constants/contact_constant';
 import contactService from '../../services/contact_service';
 import color from '../../themes/color';
 
@@ -36,13 +38,13 @@ const MentalSupportCardListComponent = () => {
   }
 
   const renderItem = (contact) => {
-    return <MentalSupportCardComponent name={contact.name} intend={contact.intend} channel={contact.type}
-              showAlertMessage={() => setState({ alertVisible: true, alertMessage: contact.errorMessage })}
+    return <MentalSupportCardComponent name={contact.name} value={contact.value} type={contact.type}
+              showAlertMessage={() => setState({ alertVisible: true, alertMessage: contactErrorMessages[contact.type] })}
            />
   }
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <CustomFlatListComponent
         ref={listRef}
         data={contacts}
@@ -57,7 +59,7 @@ const MentalSupportCardListComponent = () => {
         visible={state.alertVisible}
         onDismiss={() => setState({ alertVisible: false, alertMessage: '' })}
         duration={2000}
-        style={{backgroundColor: 'rgba(0, 0, 0, 0.6)', borderRadius: 10}}
+        style={{backgroundColor: 'rgba(0, 0, 0, 0.6)', borderRadius: 10, marginBottom: 62}}
       >
         <Text style={{color: color.whiteColor, lineHeight: 22}}>{ state.alertMessage }</Text>
       </Snackbar>
