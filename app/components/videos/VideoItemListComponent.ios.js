@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
-import DeviceInfo from 'react-native-device-info';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
@@ -12,8 +11,9 @@ import VideoThumbnailComponent from './VideoThumbnailComponent';
 import Video from '../../models/Video';
 import VideoAuthor from '../../models/VideoAuthor';
 import {getStyleOfDevice} from '../../utils/responsive_util';
-import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import {cardBorderRadius, cardElevation, screenHorizontalPadding} from '../../constants/component_constant';
+import { gradientScrollViewBigPaddingBottom } from '../../constants/ios_component_constant';
+
 import visitService from '../../services/visit_service';
 import videoSyncService from '../../services/video_sync_service';
 import videoAuthorSyncService from '../../services/video_author_sync_service';
@@ -81,7 +81,7 @@ const VideoItemListComponent = (props) => {
             hasInternet={props.hasInternet}
             endReachedAction={() => onEndReached()}
             refreshingAction={() => onRefresh()}
-            customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: getStyleOfDevice(350, DeviceInfo.hasNotch() ? 430 : 330)}}
+            customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewBigPaddingBottom }}
             style={{paddingTop: 16}}
           />
 }

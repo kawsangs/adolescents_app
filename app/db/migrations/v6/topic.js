@@ -1,6 +1,15 @@
 'use strict';
 
-const TopicSchema = {
+import Realm from 'realm';
+import fileUtil from '../../../utils/file_util';
+
+class Topic extends Realm.Object {
+  get audioSource() {
+    return fileUtil.getSourceByUrl(this.audio, 'audio');
+  }
+}
+
+Topic.schema = {
   name: 'Topic',
   primaryKey: 'uuid',
   properties: {
@@ -15,4 +24,4 @@ const TopicSchema = {
   }
 }
 
-export default TopicSchema;
+export default Topic;

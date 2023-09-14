@@ -2,7 +2,6 @@ import React, {useCallback} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 
 import TopicListComponent from '../shared/TopicListComponent';
-import Topic from '../../models/Topic';
 import Question from '../../models/Question';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
@@ -36,7 +35,7 @@ const TopicMainComponent = (props) => {
   }
 
   return (
-    <TopicListComponent items={Topic.getAll()} onPress={(item, moveNext) => onPress(item)}
+    <TopicListComponent onPress={(item, moveNext) => onPress(item)}
       playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} hideAudio={false}
     />
   )

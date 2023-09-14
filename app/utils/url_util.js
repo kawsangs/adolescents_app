@@ -9,13 +9,13 @@ const urlUtil = (() => {
   }
 
   function getRelativeUrl(responsibleModel) {
-    return `/api/${environment.apiVersion}/${responsibleModel}`;
+    return `api/${environment.apiVersion}/${responsibleModel}`;
   }
 
   function getAbsoluteUrl(relativeUrl) {
     if (!relativeUrl) return null;
 
-    return environment.domain + relativeUrl;
+    return _getServerUrl() + relativeUrl;
   }
 
   function getWebsiteUrl(url) {
@@ -31,6 +31,10 @@ const urlUtil = (() => {
   }
 
   // private method
+  function _getServerUrl() {
+    return `${environment.serverUrl}${new RegExp(/\/$/).test(environment.serverUrl) ? '' : '/'}`;
+  }
+
   function _hostnamePattern() {
     const addressPattern = `[a-z0-9]([-_]{1})?([.]{1})?`;
     const entityTypePattern = `([.][a-z]{2,})`;

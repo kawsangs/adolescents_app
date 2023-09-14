@@ -14,6 +14,18 @@ class Topic {
   static findByUuid = (uuid) => {
     return BaseModel.findByUuid(MODEL, uuid);
   }
+
+  static create = (data) => {
+    BaseModel.create(MODEL, data);
+  }
+
+  static update = (uuid, data) => {
+    BaseModel.update(MODEL, uuid, data);
+  }
+
+  static deleteAll = () => {
+    BaseModel.deleteAll(MODEL)
+  }
 }
 
 export default Topic;

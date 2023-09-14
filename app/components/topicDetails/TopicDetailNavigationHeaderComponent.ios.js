@@ -7,7 +7,6 @@ import ScrollViewHeaderNavigationComponent from '../shared/scrollViewWithAudios/
 
 import color from '../../themes/color';
 import Question from '../../models/Question';
-import audioSources from '../../constants/audio_source_constant';
 
 const TopicDetailNavigationHeaderComponent = (props) => {
   const question = Question.findByUuid(props.uuid)
@@ -19,7 +18,7 @@ const TopicDetailNavigationHeaderComponent = (props) => {
         containerStyle={{backgroundColor: color.primaryColor}}
       />
       <View style={{backgroundColor: color.primaryColor, height: 100, zIndex: 1}}>
-        <HeaderAudioControlComponent uuid={props.uuid} audio={audioSources[question.audio]} scrollY={new Animated.Value(0)} hideAnimation={true}
+        <HeaderAudioControlComponent uuid={props.uuid} audio={question.audioSource} scrollY={new Animated.Value(0)} hideAnimation={true}
           sliderContainerStyle={{backgroundColor: 'transparent', marginBottom: -13}}
         />
       </View>

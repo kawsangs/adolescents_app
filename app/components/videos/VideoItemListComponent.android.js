@@ -80,7 +80,7 @@ const VideoItemListComponent = (props) => {
             hasInternet={props.hasInternet}
             endReachedAction={() => onEndReached()}
             refreshingAction={() => onRefresh()}
-            customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 170}}
+            customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 120}}
             style={{paddingTop: 16}}
           />
 }

@@ -9,7 +9,6 @@ import CardListComponent from '../../components/shared/CardListComponent';
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
-import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 
@@ -52,7 +51,6 @@ const HomeView = (props) => {
     <GradientScrollViewComponent
       header={<HomeNavigationHeaderComponent navigation={props.navigation}/>}
       body={renderBody()}
-      scrollViewStyle={{paddingBottom: gradientScrollViewBigPaddingBottom}}
     />
   )
 }

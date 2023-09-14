@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import DeviceInfo from 'react-native-device-info';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import TopicDetailNavigationHeaderComponent from '../../components/topicDetails/TopicDetailNavigationHeaderComponent';
@@ -19,7 +18,7 @@ const TopicDetailView = (props) => {
     <GradientScrollViewComponent
       header={<TopicDetailNavigationHeaderComponent title={props.route.params.name} uuid={props.route.params.uuid} textSize={textSize} updateTextSize={(size) => setTextSize(size)} />}
       body={<TopicDetailMainComponent uuid={props.route.params.uuid} topicUuid={props.route.params.topic_uuid} type={props.route.params.type} textSize={textSize} />}
-      scrollViewStyle={{paddingHorizontal: 0, paddingTop: 6, paddingBottom: DeviceInfo.hasNotch() ? 220 : 170}}
+      scrollViewStyle={{paddingHorizontal: 0, paddingTop: 6}}
     />
   )
 }

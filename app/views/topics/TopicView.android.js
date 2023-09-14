@@ -20,6 +20,7 @@ const TopicView = (props) => {
       header={renderHeader()}
       body={<TopicMainComponent/>}
       scrollViewStyle={{paddingHorizontal: 0}}
+      isNotScrollView={true}
     />
   )
 }

@@ -30,7 +30,7 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
     <LinearGradient
       colors={backgroundColors}
       start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
-      style={{flexGrow: 1, width: '100%'}}
+      style={{height: '100%', width: '100%'}}
     >
       {props.header}
 
