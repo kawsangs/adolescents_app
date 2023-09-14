@@ -9,6 +9,7 @@ import { cardElevation, cardBorderRadius, descriptionFontSize } from '../../cons
 import { pageable_types } from '../../constants/visit_constant';
 import { PHONE } from '../../constants/contact_constant';
 import visitService from '../../services/visit_service';
+import toastMessageHelper from '../../helpers/toast_message_helper';
 
 const MentalSupportCardComponent = (props) => {
   const onPress = () => {
@@ -20,7 +21,8 @@ const MentalSupportCardComponent = (props) => {
     }
 
     visitService.recordVisitAction(visitParams)
-    Linking.openURL(props.intend);
+    Linking.openURL(props.intend)
+      .catch(() => toastMessageHelper.showMessage(props.errorMessage));
   }
 
   return (
