@@ -16,9 +16,14 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
     setIsValid(Object.keys(answers[currentSection]).length == SurveyQuestion.findBySectionId(sectionUuid).length)
   }
 
-  return <BigButtonComponent label={'Next'}
+  const buttons = {
+    next: {label: 'បន្ទាប់', audio: null},
+    finish: {label: 'បញ្ចប់', audio: null}
+  }
+
+  return <BigButtonComponent label={props.currentSection != props.sections.length - 1 ? buttons.next.label : buttons.finish.label}
             uuid='save-button'
-            audio={null}
+            audio={props.currentSection != props.sections.length - 1 ? buttons.next.audio : buttons.finish.audio}
             playingUuid={props.playingUuid}
             updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             disabled={ !isValid }

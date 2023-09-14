@@ -61,7 +61,11 @@ const SurveyContentComponent = (props) => {
           <ScrollView contentContainerStyle={{height: '100%'}}>
             {renderQuestions()}
           </ScrollView>
-          <SurveyBottomButtonComponent ref={buttonRef} onPress={goNextOrFinish} />
+          <SurveyBottomButtonComponent ref={buttonRef}
+            sections={sections}
+            currentSection={currentSection}
+            onPress={goNextOrFinish}
+          />
         </View>
 }
 

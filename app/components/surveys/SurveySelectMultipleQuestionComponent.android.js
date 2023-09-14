@@ -36,9 +36,9 @@ const SurveySelectMultipleQuestionComponent = (props) => {
   }
 
   const renderOptions = () => {
-    return options.map(option => {
+    return options.map((option, index) => {
       return (
-        <TouchableOpacity
+        <TouchableOpacity key={`check-box${index}`}
           onPress={() => onPressCheckItem(option, option.id.toString())}
           style={{flexDirection: 'row', alignItems: 'center', borderBottomWidth: 1, borderColor: color.lightGrayColor, paddingVertical: 6}}
         >
