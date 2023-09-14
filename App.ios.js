@@ -72,7 +72,7 @@ const App: () => Node = () => {
         appState.current.match(/inactive|background/) && nextAppState === "active"
       ) {
         notif.removeAll();
-      }g
+      }
 
       appState.current = nextAppState;
       setAppStateVisible(appState.current);

@@ -13,7 +13,7 @@ import {
 import color from '../../themes/color';
 
 const CreateAccountSelectionsComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const sectionMarginTop = 22
 
   const renderAgePicker = () => {
@@ -42,7 +42,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle={t('yourLocation')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getProvinceDataset(i18n.language)}
+              items={userHelper.getProvinceDataset(t)}
               selectedItem={props.province}
               onSelectItem={(item) => props.updateState('province', item)}
               pickerUuid='user-province-picker'
@@ -66,7 +66,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle={t('occupation')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getOccupationDataset(i18n.language)}
+              items={userHelper.getOccupationDataset(t)}
               selectedItem={props.occupation}
               onSelectItem={(item) => onOccupationChange(item)}
               pickerUuid='user-occupation-picker'
@@ -91,7 +91,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle={t('educationalLevel')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
+              items={userHelper.getEducationDataset(props.occupation, t)}
               selectedItem={props.educationLevel}
               onSelectItem={(item) => props.updateState('educationLevel', item)}
               pickerUuid='user-education-picker'
