@@ -62,7 +62,7 @@ const FacilityFilterFormComponent = (props) => {
               title={t('district')}
               placeholder={t('selectDistrict')}
               bottomSheetTitle={t('selectDistrict')}
-              items={locationHelper.getDistrictsByProvince(province)}
+              items={locationHelper.getDistrictsByProvince(province, t)}
               selectedItem={district}
               onSelectItem={(item) => setDistrict(item)}
               pickerUuid='clinic-district-picker'

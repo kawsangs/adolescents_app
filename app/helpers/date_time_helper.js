@@ -7,7 +7,7 @@ const dateTimeHelper = (() => {
     getTranslatedDate,
   }
 
-  function getReadableTime(hour, language, translation) {
+  function getReadableTime(hour, translation) {
     const time = Moment.utc(hour * 3600 * 1000).format("hh:mm a");
     return `${translationHelper.translateNumber(time.substring(0, 5), translation)} ${translation(time.substring(6, 8))}`;
   }
