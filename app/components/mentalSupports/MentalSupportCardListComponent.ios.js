@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState} from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import {Text, Snackbar} from 'react-native-paper';
 import {View} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 import MentalSupportCardComponent from './MentalSupportCardComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
@@ -16,6 +17,7 @@ const MentalSupportCardListComponent = () => {
   const listRef = useRef();
   const [hasInternet, setHasInternet] = useState(true);
   const [contacts, setContacts] = useState(Contact.getAll());
+  const {t} = useTranslation();
   const [state, setState] = useState({
     alertVisible: false,
     alertMessage: '',
