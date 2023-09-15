@@ -12,6 +12,7 @@ import Tag from '../db/migrations/v4/tag';
 import FacilityImage from '../db/migrations/v5/facility_image';
 import VideoAuthor from '../db/migrations/v5/video_author';
 import DownloadedFile from '../db/migrations/v8/downloaded_file';
+import Contact from '../db/migrations/v8/contact';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -39,6 +40,7 @@ const schemaHelper = (() => {
       FacilityImage,
       VideoAuthor,
       DownloadedFile,
+      Contact,
     ];
 
     changedSchemas.map((schema) => {
