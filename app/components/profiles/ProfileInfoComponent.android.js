@@ -43,7 +43,7 @@ const ProfileInfoComponent = (props) => {
       {
         uuid: 'user-province',
         label: t('location'),
-        value: t(province.name),
+        value: t(province.code),
         audio: province.audio,
       }
     ]
@@ -65,7 +65,7 @@ const ProfileInfoComponent = (props) => {
 
   renderOccupation = () => {
     const info = {
-      value: props.occupation != 'n_a' ? t(profileHelper.getOccupation(props.occupation).name) : null,
+      value: props.occupation != 'n_a' ? t(profileHelper.getOccupation(props.occupation).code) : null,
       audio: props.occupation != 'n_a' ? profileHelper.getOccupation(props.occupation).audio : null,
     }
     return <ProfileInfoItemWithPickerComponent uuid='user-occupation-picker' info={info} playingUuid={props.playingUuid}
@@ -83,7 +83,7 @@ const ProfileInfoComponent = (props) => {
   renderEducationLevel = () => {
     let info = { value: null, audio: null }
     if (props.educationLevel != 'n_a' && props.occupation != 'n_a')
-      info = { value: t(profileHelper.getEducation(props.educationLevel).name), audio: profileHelper.getEducation(props.educationLevel).audio }
+      info = { value: t(profileHelper.getEducation(props.educationLevel).code), audio: profileHelper.getEducation(props.educationLevel).audio }
 
     return <ProfileInfoItemWithPickerComponent uuid='user-education-picker' info={info} playingUuid={props.playingUuid}
               label={t('educationalLevel')} bottomSheetTitle={t('educationalLevel')} pickerLabel={t('selectEducationalLevel')}

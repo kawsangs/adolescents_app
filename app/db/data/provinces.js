@@ -4,151 +4,151 @@ export default [
   {
     "uuid":"province_1",
     "value": "01",
-    "name": "banteayMeanchey",
+    "code": "btm",
     "audio": audioSources["0.14.mp3"]
   },
   {
     "uuid":"province_2",
     "value": "02",
-    "name": "battambang",
+    "code": "btb",
     "audio": audioSources["0.15.mp3"]
   },
   {
     "uuid":"province_3",
     "value": "03",
-    "name": "kampongCham",
+    "code": "kpc",
     "audio": audioSources["0.16.mp3"]
   },
   {
     "uuid":"province_4",
     "value": "04",
-    "name": "kampongChhang",
+    "code": "kpch",
     "audio": audioSources["0.17.mp3"]
   },
   {
     "uuid":"province_5",
     "value": "05",
-    "name": "kampongSpeu",
+    "code": "kpsp",
     "audio": audioSources["0.18.mp3"]
   },
   {
     "uuid":"province_6",
     "value": "06",
-    "name": "kampongThom",
+    "code": "kpt",
     "audio": audioSources["0.19.mp3"]
   },
   {
     "uuid":"province_7",
     "value": "07",
-    "name": "kampot",
+    "code": "kp",
     "audio": audioSources["0.20.mp3"]
   },
   {
     "uuid":"province_8",
     "value": "08",
-    "name": "kandal",
+    "code": "kdl",
     "audio": audioSources["0.21.mp3"]
   },
   {
     "uuid":"province_9",
     "value": "09",
-    "name": "kohKong",
+    "code": "kk",
     "audio": audioSources["0.22.mp3"]
   },
   {
     "uuid":"province_10",
     "value": "10",
-    "name": "kratie",
+    "code": "kt",
     "audio": audioSources["0.23.mp3"]
   },
   {
     "uuid":"province_11",
     "value": "11",
-    "name": "mondulKiri",
+    "code": "mdk",
     "audio": audioSources["0.24.mp3"]
   },
   {
     "uuid":"province_12",
     "value": "12",
-    "name": "phnomPenh",
+    "code": "pp",
     "audio": audioSources["0.25.mp3"]
   },
   {
     "uuid":"province_13",
     "value": "13",
-    "name": "preahVihear",
+    "code": "pvh",
     "audio": audioSources["0.26.mp3"]
   },
   {
     "uuid":"province_14",
     "value": "14",
-    "name": "preyVeng",
+    "code": "pv",
     "audio": audioSources["0.27.mp3"]
   },
   {
     "uuid":"province_15",
     "value": "15",
-    "name": "pursat",
+    "code": "ps",
     "audio": audioSources["0.28.mp3"]
   },
   {
     "uuid":"province_16",
     "value": "16",
-    "name": "ratanakKiri",
+    "code": "rtk",
     "audio": audioSources["0.29.mp3"]
   },
   {
     "uuid":"province_17",
     "value": "17",
-    "name": "siemReap",
+    "code": "sr",
     "audio": audioSources["0.30.mp3"]
   },
   {
     "uuid":"province_18",
     "value": "18",
-    "name": "preahSihanouk",
+    "code": "psh",
     "audio": audioSources["0.31.mp3"]
   },
   {
     "uuid":"province_19",
     "value": "19",
-    "name": "stungTreng",
+    "code": "str",
     "audio": audioSources["0.32.mp3"]
   },
   {
     "uuid":"province_20",
     "value": "20",
-    "name": "svayRieng",
+    "code": "svr",
     "audio": audioSources["0.33.mp3"]
   },
   {
     "uuid":"province_21",
     "value": "21",
-    "name": "takeo",
+    "code": "tk",
     "audio": audioSources["0.34.mp3"]
   },
   {
     "uuid":"province_22",
     "value": "22",
-    "name": "oddarMeanchey",
+    "code": "omc",
     "audio": audioSources["0.35.mp3"]
   },
   {
     "uuid":"province_23",
     "value": "23",
-    "name": "kep",
+    "code": "kep",
     "audio": audioSources["0.36.mp3"]
   },
   {
     "uuid":"province_24",
     "value": "24",
-    "name": "pailin",
+    "code": "pl",
     "audio": audioSources["0.37.mp3"]
   },
   {
     "uuid":"province_25",
     "value": "25",
-    "name": "tboungKhmum",
+    "code": "tbk",
     "audio": audioSources["0.38.mp3"]
   }
 ]

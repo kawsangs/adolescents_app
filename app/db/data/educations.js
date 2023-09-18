@@ -2,29 +2,29 @@ export default [
   {
     "uuid":"education_1",
     "value": "general_knowledge",
-    "name": "generalKnowledge",
+    "code": "eduGK",
     "audio": null,
-    "subtitle": "generalKnowledgeSubtitle"
+    "subtitle_code": "eduGKSub"
   },
   {
     "uuid":"education_2",
     "value": "university",
-    "name": "bachelorAndAssociateDegree",
+    "code": "eduBA",
     "audio": null,
-    "subtitle": "bachelorAndAssociateDegreeSubtitle"
+    "subtitle_code": "eduBASub"
   },
   {
     "uuid":"education_3",
     "value": "tvet",
-    "name": "tvet",
+    "code": "tvet",
     "audio": null,
-    "subtitle": "tvetSubtitle"
+    "subtitle_code": "tvetSubtitle"
   },
   {
     "uuid":"education_4",
     "value": "dropout_student",
-    "name": "dropoutStudent",
+    "code": "eduDropout",
     "audio": null,
-    "subtitle": "dropoutStudentSubtitle"
+    "subtitle_code": "eduDropoutSub"
   },
 ];

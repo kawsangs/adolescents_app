@@ -27,7 +27,7 @@ const CheckboxComponent = (props) => {
 
       <View style={styles.checkboxContainer}>
         { props.items.map((item, index) => (
-            <CheckboxItemComponent key={index} label={t(item.name)} value={item.value}
+            <CheckboxItemComponent key={index} label={t(item.code)} value={item.value}
               uuid={`characteristic-${index}`}
               audio={item.audio}
               isSelected={isSelected(item.value)}

@@ -20,7 +20,7 @@ const ProfileCharacteristicsComponent = (props) => {
       const characObj = profileHelper.getCharacteristic(characteristic)
       return (<View key={characObj.uuid} style={{flexDirection: 'row', alignItems: 'center', marginVertical: 2, height: 48}}>
                 <View style={styles.infoWrapper}>
-                  <Text style={[{marginLeft: 20}, styles.valueLabel]}>{t(characObj.name)}</Text>
+                  <Text style={[{marginLeft: 20}, styles.valueLabel]}>{t(characObj.code)}</Text>
                 </View>
                 <View style={styles.audioWrapper}>
                   <CustomAudioPlayerButtonComponent

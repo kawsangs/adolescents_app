@@ -2,43 +2,43 @@ export default [
   {
     "uuid":"occupation_1",
     "value": "student",
-    "name": "studentAndUniversityStudent",
+    "code": "stuAndUniStu",
     "audio": null,
-    "subtitle": null
+    "subtitle_code": null
   },
   {
     "uuid":"occupation_2",
     "value": "entertainment_worker",
-    "name": "entertainmentWorker",
+    "code": "entmWorker",
     "audio": null,
-    "subtitle": "entertainmentWorkerSubtitle"
+    "subtitle_code": "entmWorkerSub"
   },
   {
     "uuid":"occupation_3",
     "value": "factory_worker",
-    "name": "factoryWorker",
+    "code": "fctyWorker",
     "audio": null,
-    "subtitle": "factoryWorkerSubtitle"
+    "subtitle_code": "fctyWorkerSub"
   },
   {
     "uuid":"occupation_4",
     "value": "local_migrant_worker",
-    "name": "localMigrantWorker",
+    "code": "lmgtWorker",
     "audio": null,
-    "subtitle": "localMigrantWorkerSubtitle"
+    "subtitle_code": "lmgtWorkerSub"
   },
   {
     "uuid":"occupation_5",
     "value": "oversea_migrant_worker",
-    "name": "overseaMigrantWorker",
+    "code": "omgtWorker",
     "audio": null,
-    "subtitle": "overseaMigrantWorkerSubtitle"
+    "subtitle_code": "omgtWorkerSub"
   },
   {
     "uuid":"occupation_7",
     "value": "other",
-    "name": "other",
+    "code": "other",
     "audio": null,
-    "subtitle": null
+    "subtitle_code": null
   }
 ]

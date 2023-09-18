@@ -46,7 +46,7 @@ const userHelper = (() => {
   function _getPickerDataset(data, translation) {
     const dataset = [];
     data.map(item => {
-      dataset.push({ label: translation(item.name), value: item.value, audio: item.audio, uuid: item.uuid, subtitle: translation(item.subtitle) || null });
+      dataset.push({ label: translation(item.code), value: item.value, audio: item.audio, uuid: item.uuid, subtitle: translation(item.subtitle_code) || null });
     });
     return dataset;
   }

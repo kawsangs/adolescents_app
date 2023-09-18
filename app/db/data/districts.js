@@ -1,818 +1,818 @@
 export default [
   {
     "id": "0102",
-    "name": "mongkolBorei"
+    "code": "mkb"
   },
   {
     "id": "0103",
-    "name": "phnumSrok"
+    "code": "phs"
   },
   {
     "id": "0104",
-    "name": "preahNetrPreah"
+    "code": "pnp"
   },
   {
     "id": "0105",
-    "name": "ouChrov"
+    "code": "ocv"
   },
   {
     "id": "0106",
-    "name": "sereiSaophoan"
+    "code": "ssp"
   },
   {
     "id": "0107",
-    "name": "thmaPuok"
+    "code": "tp"
   },
   {
     "id": "0108",
-    "name": "svayChek"
+    "code": "svc"
   },
   {
-   "id": "0109",
-   "name": "malai"
+    "id": "0109",
+    "code": "ml"
   },
   {
     "id": "0110",
-    "name": "poiPet"
+    "code": "ppt"
   },
   {
     "id": "0201",
-    "name": "banan"
+    "code": "bn"
   },
   {
     "id": "0202",
-    "name": "thmaKoul"
+    "code": "tmk"
   },
   {
     "id": "0203",
-    "name": "battambang"
+    "code": "btb"
   },
   {
     "id": "0204",
-    "name": "bavel"
+    "code": "bv"
   },
   {
     "id": "0205",
-    "name": "aekPhnum"
+    "code": "akp"
   },
   {
     "id": "0206",
-    "name": "moungRuessei"
+    "code": "mrs"
   },
   {
     "id": "0207",
-    "name": "rotonakMondol"
+    "code": "rtm"
   },
   {
     "id": "0208",
-    "name": "sangkae"
+    "code": "sk"
   },
   {
     "id": "0209",
-    "name": "samlout"
+    "code": "sl"
   },
   {
     "id": "0210",
-    "name": "sampovLun"
+    "code": "spl"
   },
   {
     "id": "0211",
-    "name": "phnumProek"
+    "code": "php"
   },
   {
     "id": "0212",
-    "name": "kamrieng"
+    "code": "kr"
   },
   {
     "id": "0213",
-    "name": "koasKrala"
+    "code": "kkl"
   },
   {
     "id": "0214",
-    "name": "rukhKiri"
+    "code": "rkr"
   },
   {
     "id": "0301",
-    "name": "batheay"
+    "code": "bt"
   },
   {
     "id": "0302",
-    "name": "chamkarLeu"
+    "code": "ckl"
   },
   {
     "id": "0303",
-    "name": "cheungPrey"
+    "code": "cp"
   },
   {
     "id": "0305",
-    "name": "kampongCham"
+    "code": "kpc"
   },
   {
     "id": "0306",
-    "name": "kampongSiem"
+    "code": "kpsi"
   },
   {
     "id": "0307",
-    "name": "kangMeas"
+    "code": "kgm"
   },
   {
     "id": "0308",
-    "name": "kaohSoutin"
+    "code": "kst"
   },
   {
     "id": "0313",
-    "name": "preyChhor"
+    "code": "pyc"
   },
   {
     "id": "0314",
-    "name": "sreiSanthor"
+    "code": "sst"
   },
   {
     "id": "0315",
-    "name": "stungTreng"
+    "code": "str"
   },
   {
     "id": "0401",
-    "name": "baribour"
+    "code": "brb"
   },
   {
     "id": "0402",
-    "name": "cholKiri"
+    "code": "ckr"
   },
   {
     "id": "0403",
-    "name": "kampongChhang"
+    "code": "kpch"
   },
   {
     "id": "0404",
-    "name": "kampongLeaeng"
+    "code": "kpl"
   },
   {
     "id": "0405",
-    "name": "kampongTralach"
+    "code": "kptl"
   },
   {
     "id": "0406",
-    "name": "roleaBier"
+    "code": "rlb"
   },
   {
    "id": "0407",
-   "name": "sameakkiMeanChey"
+   "code": "smc"
   },
   {
     "id": "0408",
-    "name": "tuekPhos"
+    "code": "tkp"
   },
   {
     "id": "0501",
-    "name": "basedth"
+    "code": "bsd"
   },
   {
     "id": "0502",
-    "name": "chbarMon"
+    "code": "cbm"
   },
   {
     "id": "0503",
-    "name": "kongPisei"
+    "code": "kps"
   },
   {
     "id": "0504",
-    "name": "aoral"
+    "code": "aor"
   },
   {
     "id": "0505",
-    "name": "odongk"
+    "code": "odk"
   },
   {
     "id": "0506",
-    "name": "phnumSruoch"
+    "code": "phsr"
   },
   {
     "id": "0507",
-    "name": "samraongTong"
+    "code": "srt"
   },
   {
     "id": "0508",
-    "name": "thpong"
+    "code": "thp"
   },
   {
     "id": "0601",
-    "name": "baray"
+    "code": "bry"
   },
   {
     "id": "0602",
-    "name": "kampongSvay"
+    "code": "kpsy"
   },
   {
     "id": "0603",
-    "name": "stuengSaen"
+    "code": "sts"
   },
   {
     "id": "0604",
-    "name": "prasatBallangk"
+    "code": "psbl"
   },
   {
     "id": "0605",
-    "name": "prasatSambour"
+    "code": "pssb"
   },
   {
     "id": "0606",
-    "name": "sandan"
+    "code": "snd"
   },
   {
     "id": "0607",
-    "name": "santuk"
+    "code": "snt"
   },
   {
     "id": "0608",
-    "name": "stoung"
+    "code": "stg"
   },
   {
     "id": "0609",
-    "name": "taingKouk"
+    "code": "tgk"
   },
   {
     "id": "0701",
-    "name": "angkorChey"
+    "code": "akc"
   },
   {
     "id": "0702",
-    "name": "banteayMeas"
+    "code": "btme"
   },
   {
     "id": "0703",
-    "name": "chhuk"
+    "code": "cuk"
   },
   {
     "id": "0704",
-    "name": "chumKiri"
+    "code": "chk"
   },
   {
     "id": "0705",
-    "name": "dangTong"
+    "code": "dgt"
   },
   {
     "id": "0706",
-    "name": "kampongTrach"
+    "code": "kptr"
   },
   {
     "id": "0707",
-    "name": "tuekChhou"
+    "code": "tkc"
   },
   {
     "id": "0708",
-    "name": "kampot"
+    "code": "kp"
   },
   {
     "id": "0709",
-    "name": "bokor"
+    "code": "bk"
   },
   {
     "id": "0801",
-    "name": "kandalStueng"
+    "code": "kds"
   },
   {
     "id": "0802",
-    "name": "kienSvay"
+    "code": "kns"
   },
   {
     "id": "0803",
-    "name": "khsachKandal"
+    "code": "kskd"
   },
   {
     "id": "0804",
-    "name": "kaohThum"
+    "code": "kot"
   },
   {
     "id": "0805",
-    "name": "leukDaek"
+    "code": "lkd"
   },
   {
     "id": "0806",
-    "name": "lveaAem"
+    "code": "lva"
   },
   {
     "id": "0807",
-    "name": "mukhKampul"
+    "code": "mkp"
   },
   {
     "id": "0808",
-    "name": "angkSnuol"
+    "code": "aks"
   },
   {
     "id": "0809",
-    "name": "ponheaLueu"
+    "code": "phl"
   },
   {
     "id": "0810",
-    "name": "sang"
+    "code": "sang"
   },
   {
     "id": "0811",
-    "name": "taKhmau"
+    "code": "tkm"
   },
   {
     "id": "0901",
-    "name": "botumSakor"
+    "code": "btsk"
   },
   {
     "id": "0902",
-    "name": "kiriSakor"
+    "code": "krsk"
   },
   {
     "id": "0903",
-    "name": "kohKong"
+    "code": "kk"
   },
   {
     "id": "0904",
-    "name": "khemaraPhoumin"
+    "code": "krpm"
   },
   {
     "id": "0905",
-    "name": "mondolSeima"
+    "code": "mdsm"
   },
   {
     "id": "0906",
-    "name": "ស្រែ អំបិល"
+    "code": "smb"
   },
   {
     "id": "0907",
-    "name": "thmaBang"
+    "code": "tmb"
   },
   {
     "id": "1001",
-    "name": "chhloung"
+    "code": "chl"
   },
   {
     "id": "1002",
-    "name": "kracheh"
+    "code": "kt"
   },
   {
     "id": "1003",
-    "name": "prekPrasab"
+    "code": "pps"
   },
   {
     "id": "1004",
-    "name": "sambour"
+    "code": "sbr"
   },
   {
     "id": "1005",
-    "name": "snuol"
+    "code": "snl"
   },
   {
     "id": "1006",
-    "name": "chetrBorei"
+    "code": "cbr"
   },
   {
     "id": "1101",
-    "name": "kaevSeima"
+    "code": "ksm"
   },
   {
     "id": "1102",
-    "name": "kaohNheaek"
+    "code": "knh"
   },
   {
     "id": "1103",
-    "name": "ouReang"
+    "code": "ourg"
   },
   {
     "id": "1104",
-    "name": "pechChreada"
+    "code": "pcd"
   },
   {
     "id": "1105",
-    "name": "saenMonourom"
+    "code": "smnr"
   },
   {
     "id": "1201",
-    "name": "chamkarMon"
+    "code": "ckm"
   },
   {
     "id": "1202",
-    "name": "dounPenh"
+    "code": "dph"
   },
   {
     "id": "1203",
-    "name": "prampirMeakkakra"
+    "code": "pmkk"
   },
   {
     "id": "1204",
-    "name": "tuolKouk"
+    "code": "tlk"
   },
   {
     "id": "1205",
-    "name": "dangkao"
+    "code": "dgk"
   },
   {
     "id": "1206",
-    "name": "meanChey"
+    "code": "mcy"
   },
   {
     "id": "1207",
-    "name": "russeyKeo"
+    "code": "rsk"
   },
   {
     "id": "1208",
-    "name": "saensokh"
+    "code": "ssk"
   },
   {
     "id": "1209",
-    "name": "purSenChey"
+    "code": "psc"
   },
   {
     "id": "1210",
-    "name": "chraoyChongvar"
+    "code": "ccv"
   },
   {
     "id": "1211",
-    "name": "praekPnov"
+    "code": "pkp"
   },
   {
     "id": "1212",
-    "name": "chbarAmpov"
+    "code": "cba"
   },
   {
     "id": "1213",
-    "name": "boengKengKang"
+    "code": "bkk"
   },
   {
     "id": "1214",
-    "name": "kamboul"
+    "code": "kbl"
   },
   {
     "id": "1301",
-    "name": "cheySaen"
+    "code": "cys"
   },
   {
     "id": "1302",
-    "name": "chhaeb"
+    "code": "chb"
   },
   {
     "id": "1303",
-    "name": "choamKsant"
+    "code": "chks"
   },
   {
     "id": "1304",
-    "name": "kuleaen"
+    "code": "kul"
   },
   {
     "id": "1305",
-    "name": "rovieng"
+    "code": "rov"
   },
   {
     "id": "1306",
-    "name": "sangkumThmei"
+    "code": "skt"
   },
   {
     "id": "1307",
-    "name": "tbaengMeanChey"
+    "code": "tbmc"
   },
   {
     "id": "1308",
-    "name": "preahVihear"
+    "code": "pvh"
   },
   {
     "id": "1401",
-    "name": "baPhnum"
+    "code": "bph"
   },
   {
     "id": "1402",
-    "name": "kamchayMear"
+    "code": "kcm"
   },
   {
     "id": "1403",
-    "name": "kampongTrabaek"
+    "code": "kptb"
   },
   {
     "id": "1404",
-    "name": "kanhchriech"
+    "code": "kchr"
   },
   {
     "id": "1405",
-    "name": "meSang"
+    "code": "mes"
   },
   {
     "id": "1406",
-    "name": "peamChor"
+    "code": "pmc"
   },
   {
     "id": "1407",
-    "name": "peamRo"
+    "code": "pmr"
   },
   {
     "id": "1408",
-    "name": "peaReang"
+    "code": "per"
   },
   {
     "id": "1409",
-    "name": "preahSdach"
+    "code": "psd"
   },
   {
     "id": "1410",
-    "name": "preyVeng"
+    "code": "pv"
   },
   {
     "id": "1411",
-    "name": "purRieng"
+    "code": "pur"
   },
   {
     "id": "1412",
-    "name": "sithorKandal"
+    "code": "stkd"
   },
   {
     "id": "1413",
-    "name": "svayAntor"
+    "code": "svat"
   },
   {
     "id": "1501",
-    "name": "bakan"
+    "code": "bak"
   },
   {
     "id": "1502",
-    "name": "kandieng"
+    "code": "kdg"
   },
   {
     "id": "1503",
-    "name": "krakor"
+    "code": "krk"
   },
   {
     "id": "1504",
-    "name": "phnumKravanh"
+    "code": "pkv"
   },
   {
     "id": "1505",
-    "name": "pursat"
+    "code": "ps"
   },
   {
     "id": "1506",
-    "name": "vealVeaeng"
+    "code": "vlv"
   },
   {
     "id": "1507",
-    "name": "taLouSenchey"
+    "code": "tlsc"
   },
   {
     "id": "1601",
-    "name": "andoungMeas"
+    "code": "adm"
   },
   {
     "id": "1602",
-    "name": "banLung"
+    "code": "bnl"
   },
   {
     "id": "1603",
-    "name": "barKaev"
+    "code": "brk"
   },
   {
     "id": "1604",
-    "name": "kounMom"
+    "code": "knm"
   },
   {
     "id": "1605",
-    "name": "lumphat"
+    "code": "lpt"
   },
   {
     "id": "1606",
-    "name": "ouChum"
+    "code": "ochm"
   },
   {
     "id": "1607",
-    "name": "ouYaDav"
+    "code": "oyd"
   },
   {
     "id": "1608",
-    "name": "taVeaeng"
+    "code": "tvg"
   },
   {
     "id": "1609",
-    "name": "veunSai"
+    "code": "vns"
   },
   {
     "id": "1701",
-    "name": "angkorChum"
+    "code": "akch"
   },
   {
     "id": "1702",
-    "name": "angkorThum"
+    "code": "akth"
   },
   {
     "id": "1703",
-    "name": "banteaySrei"
+    "code": "bts"
   },
   {
     "id": "1704",
-    "name": "chiKraeng"
+    "code": "chkg"
   },
   {
     "id": "1706",
-    "name": "kralanh"
+    "code": "krl"
   },
   {
     "id": "1707",
-    "name": "puok"
+    "code": "puok"
   },
   {
     "id": "1709",
-    "name": "prasatBakong"
+    "code": "psbk"
   },
   {
     "id": "1710",
-    "name": "siemReap"
+    "code": "sr"
   },
   {
     "id": "1711",
-    "name": "soutrNikom"
+    "code": "snk"
   },
   {
     "id": "1712",
-    "name": "sreiSnam"
+    "code": "srsm"
   },
   {
     "id": "1713",
-    "name": "svayLeu"
+    "code": "svl"
   },
   {
     "id": "1714",
-    "name": "varin"
+    "code": "vrn"
   },
   {
     "id": "1801",
-    "name": "preahSihanouk"
+    "code": "psh"
   },
   {
     "id": "1802",
-    "name": "preyNob"
+    "code": "pyn"
   },
   {
     "id": "1803",
-    "name": "stuengHav"
+    "code": "sth"
   },
   {
     "id": "1804",
-    "name": "kampongSeila"
+    "code": "kpsl"
   },
   {
     "id": "1805",
-    "name": "kaohRung"
+    "code": "khru"
   },
   {
     "id": "1901",
-    "name": "sesan"
+    "code": "sesan"
   },
   {
     "id": "1902",
-    "name": "siemBouk"
+    "code": "smbk"
   },
   {
     "id": "1903",
-    "name": "siemPang"
+    "code": "smpg"
   },
   {
     "id": "1904",
-    "name": "stungTreng",
+    "code": "str",
   },
   {
     "id": "1905",
-    "name": "thalaBarivat"
+    "code": "tlbv"
   },
   {
     "id": "1906",
-    "name": "boreiOuSvaySenchey"
+    "code": "bross"
   },
   {
     "id": "2001",
-    "name": "chantrea"
+    "code": "cntr"
   },
   {
     "id": "2002",
-    "name": "kampongRou"
+    "code": "kpr"
   },
   {
     "id": "2003",
-    "name": "rumduol"
+    "code": "rmdl"
   },
   {
     "id": "2004",
-    "name": "romeasHaek"
+    "code": "rmhk"
   },
   {
     "id": "2005",
-    "name": "svayChrum"
+    "code": "svch"
   },
   {
     "id": "2006",
-    "name": "svayRieng"
+    "code": "svr"
   },
   {
     "id": "2007",
-    "name": "svayTeab"
+    "code": "svt"
   },
   {
     "id": "2008",
-    "name": "bavet"
+    "code": "bvt"
   },
   {
     "id": "2101",
-    "name": "angkorBorei"
+    "code": "akbr"
   },
   {
     "id": "2102",
-    "name": "bati"
+    "code": "bati"
   },
   {
     "id": "2103",
-    "name": "boreiCholsar"
+    "code": "brcs"
   },
   {
     "id": "2104",
-    "name": "kiriVong"
+    "code": "krv"
   },
   {
     "id": "2105",
-    "name": "kaohAndaet"
+    "code": "kad"
   },
   {
     "id": "2106",
-    "name": "preyKabbas"
+    "code": "pykb"
   },
   {
     "id": "2107",
-    "name": "samraong"
+    "code": "smr"
   },
   {
     "id": "2108",
-    "name": "dounKaev"
+    "code": "dkv"
   },
   {
     "id": "2109",
-    "name": "tramKak"
+    "code": "trmk"
   },
   {
     "id": "2110",
-    "name": "treang"
+    "code": "trg"
   },
   {
     "id": "2201",
-    "name": "anlongVeaeng"
+    "code": "alv"
   },
   {
     "id": "2202",
-    "name": "banteayAmpil"
+    "code": "btap"
   },
   {
     "id": "2203",
-    "name": "chongKal"
+    "code": "chkl"
   },
   {
     "id": "2204",
-    "name": "samraong"
+    "code": "smr"
   },
   {
     "id": "2205",
-    "name": "trapeangPrasat"
+    "code": "tpps"
   },
   {
     "id": "2301",
-    "name": "damnakChangAeur"
+    "code": "dnca"
   },
   {
     "id": "2302",
-    "name": "kep"
+    "code": "kep"
   },
   {
     "id": "2401",
-    "name": "pailin"
+    "code": "pl"
   },
   {
     "id": "2402",
-    "name": "salaKrau"
+    "code": "slk"
   },
   {
     "id": "2501",
-    "name": "dambae"
+    "code": "dmb"
   },
   {
     "id": "2502",
-    "name": "krouchChhmar"
+    "code": "krcm"
   },
   {
     "id": "2503",
-    "name": "memot"
+    "code": "memot"
   },
   {
     "id": "2504",
-    "name": "ouReangOv"
+    "code": "orv"
   },
   {
     "id": "2505",
-    "name": "ponheaKraek"
+    "code": "phk"
   },
   {
     "id": "2506",
-    "name": "suong"
+    "code": "sug"
   },
   {
     "id": "2507",
-    "name": "tboungKhmum"
+    "code": "tbk"
   }
 ]
