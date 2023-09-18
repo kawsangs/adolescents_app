@@ -3,7 +3,6 @@ import RNFS from 'react-native-fs';
 import Category from '../models/Category';
 import Video from '../models/Video';
 import Facility from '../models/Facility';
-import {mentalSupportContacts} from '../constants/mental_support_constant';
 import {offlineHomeCatgories} from '../constants/category_constant';
 import {ROW_CARD, TILTED_CARD} from '../constants/card_constant';
 import audioSources from '../constants/audio_source_constant';
