@@ -7,8 +7,8 @@ class SurveyAnswer {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
-  static findByQuiz(quizUuid) {
-    return BaseModel.findByAttr(MODEL,  { quiz_uuid: `'${quizUuid}'` });
+  static findBySurvey(surveyUuid) {
+    return [...BaseModel.findByAttr(MODEL,  { survey_uuid: `'${surveyUuid}'` })];
   }
 
   static upsert(data) {

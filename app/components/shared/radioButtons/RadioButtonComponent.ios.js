@@ -8,7 +8,7 @@ const RadioButtonComponent = (props) => {
   return (
     <TouchableOpacity onPress={() => props.onPress(props.value)} style={{flexDirection: 'row', alignItems: 'center', borderBottomWidth: 1, borderColor: color.lightGrayColor, paddingVertical: 6}}>
       <View style={{minHeight: 48, justifyContent: 'center', paddingRight: 12}}>
-        <RadioButton value={props.value} style={{paddingLeft: 0}} uncheckedColor={color.primaryColor} color={color.secondaryColor}
+        <RadioButton.Android value={props.value} style={{paddingLeft: 0}} uncheckedColor={color.primaryColor} color={color.secondaryColor}
           onPress={() => props.onPress(props.value)}
         />
       </View>

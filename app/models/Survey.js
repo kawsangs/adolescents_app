@@ -3,6 +3,10 @@ import BaseModel from './BaseModel';
 const MODEL = "Survey";
 
 class Survey {
+  static getUnfinished() {
+    return [...BaseModel.findByAttr(MODEL, {finished: false})];
+  }
+
   static findByUuid(uuid) {
     return BaseModel.findByUuid(MODEL, uuid);
   }
@@ -13,6 +17,10 @@ class Survey {
 
   static setFinished(uuid) {
     BaseModel.update(MODEL, uuid, { finished: true });
+  }
+
+  static deleteByUuid(uuid) {
+    BaseModel.deleteByUuid(MODEL, uuid);
   }
 
   static deleteAll() {

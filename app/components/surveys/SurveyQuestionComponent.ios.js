@@ -5,7 +5,7 @@ import {Text} from 'react-native-paper';
 import SurveySelectOneQuestionComponent from './SurveySelectOneQuestionComponent';
 import SurveySelectMultipleQuestionComponent from './SurveySelectMultipleQuestionComponent';
 import SurveyTextQuestionComponent from './SurveyTextQuestionComponent';
-// import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
+import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 import uuidv4 from '../../utils/uuidv4_util';

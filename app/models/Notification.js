@@ -25,6 +25,10 @@ class Notification {
     BaseModel.create(MODEL, this._buildData(params));
   }
 
+  static update(uuid, data) {
+    BaseModel.update(MODEL, uuid, data)
+  }
+
   static deleteAll = () => {
     BaseModel.deleteAll(MODEL);
   }

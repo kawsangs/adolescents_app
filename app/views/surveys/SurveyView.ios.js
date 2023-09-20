@@ -11,7 +11,7 @@ import Notification from '../../models/Notification';
 const SurveyView = ({route, navigation}) => {
   const uuid = uuidv4();
   useEffect(() => {
-    Notification.update(route.params.uuid, {read: true});
+    // Notification.update(route.params.uuid, {read: true});
     createSurvey();
   }, []);
 

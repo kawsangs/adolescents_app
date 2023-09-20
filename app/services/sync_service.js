@@ -1,13 +1,17 @@
 import appUserService from './app_user_service';
 import visitService from './visit_service';
+import surveyService from './survey_service';
 
 const syncService = (() => {
   return {
-    syncUsersAndVisits,
+    syncUsersAndDependencies,
   }
 
-  function syncUsersAndVisits() {
-    appUserService.syncUsers(() => visitService.syncVisits());
+  function syncUsersAndDependencies() {
+    appUserService.syncUsers(() => {
+      visitService.syncVisits();
+      // surveyService.syncSurveys();
+    });
   }
 })();
 
