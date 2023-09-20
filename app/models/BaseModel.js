@@ -27,7 +27,7 @@ class BaseModel {
 
   static create = (model, data) => {
     realm.write(() => {
-      realm.create(model, data);
+      realm.create(model, data, 'modified');
     });
   }
 

@@ -1,53 +1,51 @@
 import messaging from '@react-native-firebase/messaging';
 import Notification from '../models/Notification';
+import User from '../models/User';
+import surveyService from './survey_service';
+import {navigationRef} from '../navigators/app_navigator';
+import visitService from './visit_service';
 
 const notificationService = (() => {
   return {
-    onNotificationArrived,
+    onNotificationArrivedInBackground,
+    onNotificationArrivedInForeground,
     onNotificationOpenedApp,
   }
 
-  // 
-  function onNotificationArrived(callback) {
-    // when the receiving push notification in the app is in background or terminated
+  // when receiving push notification when the app is in background or terminated (works when called in the index.js)
+  function onNotificationArrivedInBackground() {
     messaging().setBackgroundMessageHandler(async remoteMessage => {
       console.log('== 1. == set background message handler = ', remoteMessage);
-      _saveNotification(remoteMessage);
-      !!callback && callback();
+      _saveNotificationAndSurvey(remoteMessage);
     });
+  }
 
-    // when receiving push notification (this method is not get called in background state or quit state)
+  // when receiving push notification when the app is in foreground (works when called in the App.js)
+  function onNotificationArrivedInForeground(callback) {
     messaging().onMessage(async remoteMessage => {
       console.log('== 2. == On message = ', remoteMessage);
-      _saveNotification(remoteMessage);
-
+      _saveNotificationAndSurvey(remoteMessage);
       !!callback && callback();
     });
   }
 
-  function onNotificationOpenedApp(callback) {
-    // when the notification open the app from a background state
+  function onNotificationOpenedApp() {
+    // when the notification open the app from a background state (worked)
     messaging().onNotificationOpenedApp(remoteMessage => {
       console.log('== 3. == On notification opened app = ', remoteMessage);
-      if (remoteMessage)
-        _saveNotification(remoteMessage);
-
-      !!callback && callback();
+      _handleScreenNavigation(remoteMessage);
     });
 
-    // when the notification opened the app from a quit state
-    // This method get called when the app launched without receiving any push notification
+    // when the notification opened the app from a quit state (worked)
+    // This method also get called when the app launched without receiving any push notification
     messaging().getInitialNotification()
       .then(async remoteMessage => {
         console.log('== 4. == get initial notification (from quit state) = ', remoteMessage);
-        if (remoteMessage) {
-          _saveNotification(remoteMessage);
-          !!callback && callback();
-        }
+        _handleScreenNavigation(remoteMessage);
       })
   }
 
-  function _saveNotification(remoteMessage) {
+  function _saveNotificationAndSurvey(remoteMessage) {
     const message = Notification.findById(remoteMessage.messageId);
     if(!!message) return;
 
@@ -55,9 +53,42 @@ const notificationService = (() => {
     if (Object.keys(remoteMessage.data).length > 0)
       data = JSON.parse(remoteMessage.data.payload) || null;
 
+    if (!!data.form_id)
+      surveyService.findAndSave(data.form_id);
+
     Notification.create({...remoteMessage.notification, data: data});
   }
 
+  function _handleScreenNavigation(remoteMessage) {
+    if (Object.keys(remoteMessage.data).length > 0) {
+      const data =  JSON.parse(remoteMessage.data.payload)
+      if (!!data.form_id) {
+        _navigateToSurveyScreen(remoteMessage, data);
+        return
+      }
+    }
+    _navigateToNextScreen('NotificationView');
+  }
+
+  function _navigateToSurveyScreen(remoteMessage, data) {
+    const notification = Notification.findById(remoteMessage.notification.id);
+    const visitParams = {
+      pageable_type: 'NotificationOccurrence',
+      pageable_id: data.notification_occurrence_id,
+      code: 'open_remote_notification',
+      name: 'Open remote notification',
+    };
+    visitService.recordVisitAction(visitParams);
+    !!notification && _navigateToNextScreen('SurveyView', { uuid: notification.uuid, form_id: data.form_id, title: remoteMessage.notification.title });
+  }
+
+  function _navigateToNextScreen(screenName, params) {
+    if (!!User.currentLoggedIn()) {
+      setTimeout(() => {
+        navigationRef.current?.navigate(screenName, params);
+      }, 100);
+    }
+  }
 })();
 
 export default notificationService;

@@ -4,7 +4,6 @@ import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import NavigationHeaderCloseButtonComponent from '../shared/navigationHeaders/NavigationHeaderCloseButtonComponent';
 import HeaderWithDiscardAlertComponent from '../shared/HeaderWithDiscardAlertComponent';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import color from '../../themes/color';

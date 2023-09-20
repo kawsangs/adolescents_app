@@ -11,8 +11,7 @@ const SurveyFormSchema = {
     question_count: 'int?',
     audio: 'string?',
     audio_url: 'string?',
-    appVersion: 'string?',
-    type: 'string?'
+    app_version: 'string?',
   }
 };
 

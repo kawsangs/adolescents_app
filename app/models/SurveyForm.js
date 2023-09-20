@@ -1,3 +1,4 @@
+import DeviceInfo from 'react-native-device-info';
 import BaseModel from './BaseModel';
 
 const MODEL = 'SurveyForm'
@@ -7,8 +8,8 @@ class SurveyForm {
     return BaseModel.findByAttr(MODEL, {id: id})[0]
   }
 
-  static create(data) {
-    BaseModel.create(MODEL, data);
+  static upsert(data) {
+    BaseModel.create(MODEL, {...data, app_version: DeviceInfo.getVersion()});
   }
 }
 

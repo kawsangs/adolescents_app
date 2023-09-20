@@ -17,8 +17,12 @@ class Notification {
     return BaseModel.findByAttr(MODEL, {id: `'${id}'`}, '', {})[0];
   }
 
+  static findByTitle = (title) => {
+    return BaseModel.findByAttr(MODEL, {title: `'${title}'`}, '', {})[0];
+  }
+
   static create = (params) => {
-    BaseModel.createL(MODEL, this._buildData(params));
+    BaseModel.create(MODEL, this._buildData(params));
   }
 
   static deleteAll = () => {

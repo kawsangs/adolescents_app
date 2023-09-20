@@ -53,7 +53,6 @@ export const form = {
   id: 1,
   code: 'fo_001',
   name: 'ចាប់ផ្តើមដំណើររបស់អ្នក',
-  type: null,
   version: null,
   question_count: 4,
   image: null,

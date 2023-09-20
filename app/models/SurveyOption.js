@@ -11,7 +11,7 @@ class SurveyOption {
     return BaseModel.findByAttr(MODEL, {question_id: questionId});
   }
 
-  static create(data) {
+  static upsert(data) {
     BaseModel.create(MODEL, data);
   }
 }

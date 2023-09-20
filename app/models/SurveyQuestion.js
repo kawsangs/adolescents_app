@@ -12,13 +12,13 @@ class SurveyQuestion {
     return BaseModel.findByAttr(MODEL, {section_id: `'${id}'`});
   }
 
-  static create(data) {
+  static upsert(data) {
     BaseModel.create(MODEL, data);
   }
 
-  static update(id, data) {
-    realm.write(() => {
-      realm.create(MODEL, Object.assign(data, { id: id }), 'modified');
+  static upsertCollection(items) {
+    items.map(item => {
+      this.upsert(item)
     });
   }
 }

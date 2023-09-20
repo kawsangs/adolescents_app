@@ -11,7 +11,7 @@ class SurveySection {
     return BaseModel.findByAttr(MODEL, {form_id: formId}, '', {type: 'ASC', column: 'display_order'});
   }
 
-  static create(data) {
+  static upsert(data) {
     BaseModel.create(MODEL, data)
   }
 }

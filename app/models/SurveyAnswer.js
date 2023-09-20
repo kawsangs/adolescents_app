@@ -11,6 +11,10 @@ class SurveyAnswer {
     return BaseModel.findByAttr(MODEL,  { quiz_uuid: `'${quizUuid}'` });
   }
 
+  static upsert(data) {
+    BaseModel.create(MODEL, data);
+  }
+
   static update(uuid, data) {
     BaseModel.update(MODEL, uuid, data);
   }
