@@ -51,7 +51,7 @@ class Video {
   static #getFormattedVideos = () => {
     let formattedVideos = [];
     videos.map(video => {
-      formattedVideos.push(this.#getFormattedData(video, true))
+      formattedVideos.push({...video, uuid: video.id, author_uuid: video.video_author_uuid})
     });
     return formattedVideos;
   }

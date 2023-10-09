@@ -13,7 +13,7 @@ import {
 import color from '../../themes/color';
 
 const CreateAccountSelectionsComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const sectionMarginTop = 22
 
   const renderAgePicker = () => {
@@ -23,7 +23,7 @@ const CreateAccountSelectionsComponent = (props) => {
               bottomSheetTitle={t('yourAge')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getAgeDataset(t('yearOld'))}
+              items={userHelper.getAgeDataset(t('yearOld'), t)}
               selectedItem={props.age}
               onSelectItem={(item) => props.updateState('age', item)}
               pickerUuid='user-age-picker'
@@ -37,12 +37,12 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderProvincePicker = () => {
     return <CustomBottomSheetPickerComponent
-              title={t('yourProvince')}
-              placeholder={t('selectYourProvince')}
-              bottomSheetTitle={t('yourProvince')}
+              title={t('yourLocation')}
+              placeholder={t('selectYourLocation')}
+              bottomSheetTitle={t('yourLocation')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getProvinceDataset(i18n.language)}
+              items={userHelper.getProvinceDataset(t)}
               selectedItem={props.province}
               onSelectItem={(item) => props.updateState('province', item)}
               pickerUuid='user-province-picker'
@@ -61,12 +61,12 @@ const CreateAccountSelectionsComponent = (props) => {
 
   const renderOccupationPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title='មុខរបរ'
-              placeholder='ជ្រើសរើសមុខរបរ'
-              bottomSheetTitle='មុខរបរ'
+              title={t('occupation')}
+              placeholder={t('selectOccupation')}
+              bottomSheetTitle={t('occupation')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getOccupationDataset(i18n.language)}
+              items={userHelper.getOccupationDataset(t)}
               selectedItem={props.occupation}
               onSelectItem={(item) => onOccupationChange(item)}
               pickerUuid='user-occupation-picker'
@@ -80,17 +80,18 @@ const CreateAccountSelectionsComponent = (props) => {
               subtitleStyle={{marginTop: 0}}
               itemTextStyle={{marginTop: -2}}
               listItemStyle={{paddingTop: 0}}
+              placeholderStyle={{paddingLeft: 14}}
            />
   }
 
   const renderEducationLevelPicker = () => {
     return <CustomBottomSheetPickerComponent
-              title="កម្រិតវប្បធម៌"
-              placeholder="ជ្រើសរើសកម្រិតវប្បធម៌"
-              bottomSheetTitle="កម្រិតវប្បធម៌"
+              title={t('educationalLevel')}
+              placeholder={t('selectEducationalLevel')}
+              bottomSheetTitle={t('educationalLevel')}
               required={true}
               requiredColor={color.blackColor}
-              items={userHelper.getEducationDataset(i18n.language, props.occupation)}
+              items={userHelper.getEducationDataset(props.occupation, t)}
               selectedItem={props.educationLevel}
               onSelectItem={(item) => props.updateState('educationLevel', item)}
               pickerUuid='user-education-picker'
@@ -105,6 +106,7 @@ const CreateAccountSelectionsComponent = (props) => {
               itemTextStyle={{marginTop: -2}}
               listItemStyle={{paddingTop: 0}}
               disabled={!props.occupation}
+              placeholderStyle={{paddingLeft: 14}}
            />
   }
 

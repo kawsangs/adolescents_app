@@ -1,11 +1,13 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import BigButtonComponent from '../BigButtonComponent';
 import color from '../../../themes/color';
 import audioSources from '../../../constants/audio_source_constant';
 
 const PolicyConfirmationButtonComponent = (props) => {
-  return <BigButtonComponent label='យល់ព្រម' style={{marginTop: 16}}
+  const {t} = useTranslation();
+  return <BigButtonComponent label={t('confirm')} style={{marginTop: 16}}
             uuid='confirm-button'
             audio={audioSources['0.40.mp3']}
             playingUuid={props.playingUuid}

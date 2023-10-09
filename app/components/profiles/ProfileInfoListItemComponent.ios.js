@@ -15,10 +15,10 @@ const ProfileInfoListItem = (props) => {
   const {info, gender, playingUuid} = props;
   return <View style={[styles.container, props.containerStyle]}>
             <View style={styles.infoWrapper}>
-              <Text style={styles.label}>{info.label}</Text>
+              <Text style={styles.label}>{props.label || info.label}</Text>
               <View style={styles.valueWrapper}>
                 {props.hasIcon && <Icon name={gender.icon} size={30} style={{marginRight: 8}} color={color.lightBlackColor} />}
-                <Text style={styles.valueLabel}>{info.value}</Text>
+                <Text style={styles.valueLabel}>{props.value || info.value}</Text>
               </View>
             </View>
             <View style={styles.audioWrapper}>

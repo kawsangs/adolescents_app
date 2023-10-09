@@ -8,7 +8,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
-import { StatusBar, Text, AppState, Alert, View } from 'react-native';
+import { StatusBar, Text, AppState } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -23,7 +23,6 @@ import color from './app/themes/color';
 import { FontFamily } from './app/themes/font';
 import { environment } from './app/config/environment';
 import appVisitService from './app/services/app_visit_service'
-import systemBackButtonHelper from './app/helpers/system_back_button_helper';
 import seedDataService from './app/services/seed_data_service';
 
 import MobileTokenService from './app/services/mobile_token_service';
@@ -56,19 +55,17 @@ Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 
 const App: () => Node = () => {
-  const {t} = useTranslation();
-  let backHandler = null;
-
+  const {i18n} = useTranslation();
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const notif = new NotifService((token) => {}, (notif) => {});
 
   useEffect(() => {
+    setDefaultLocale();
     SplashScreen.hide();
     MobileTokenService.onNotificationOpenApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
-    backHandler = systemBackButtonHelper.handleBackToExitApp(t('pressBackTwiceToExitTheApp'));
 
     const subscription = AppState.addEventListener("change", nextAppState => {
       if (
@@ -82,11 +79,14 @@ const App: () => Node = () => {
     });
 
     return () => {
-      backHandler.remove();
       subscription.remove();
     };
   }, []);
 
+  const setDefaultLocale = async () => {
+    const selectedLanguage = await AsyncStorage.getItem('APP_LANGUAGE')
+    i18n.changeLanguage(selectedLanguage);
+  }
 
   return (
     <React.Fragment>

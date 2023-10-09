@@ -4,6 +4,7 @@ import provinces from '../db/data/provinces';
 import characteristics from '../db/data/characteristics';
 import occupations from '../db/data/occupations';
 import educations from '../db/data/educations';
+import translationHelper from './translation_helper';
 
 const userHelper = (() => {
   return {
@@ -14,38 +15,38 @@ const userHelper = (() => {
     getEducationDataset,
   }
 
-  function getAgeDataset(postfix) {
+  function getAgeDataset(postfix, translation) {
     const ages = arrayUtil.getRangeOfNumber(minimumAge, maximumAge);
     const dataset = [];
     ages.map(age => {
-      dataset.push({ label: `${age} ${postfix}`, value: age });
+      dataset.push({ label: `${translationHelper.translateNumber(age, translation)} ${postfix}`, value: age });
     });
     return dataset
   }
 
-  function getProvinceDataset(language) {
-    return _getPickerDataset(provinces, language);
+  function getProvinceDataset(translation) {
+    return _getPickerDataset(provinces, translation);
   }
 
   function getCharacteristicDataset(language) {
     return _getPickerDataset(characteristics, language);
   }
 
-  function getOccupationDataset(language) {
-    return _getPickerDataset(occupations, language);
+  function getOccupationDataset(translation) {
+    return _getPickerDataset(occupations, translation);
   }
 
-  function getEducationDataset(language, occupation) {
+  function getEducationDataset(occupation, translation) {
     if (occupation == 'n_a') return [];
 
-    return _getPickerDataset(occupation == 'student' ? educations.slice(0, -1) : educations, language);
+    return _getPickerDataset(occupation == 'student' ? educations.slice(0, -1) : educations, translation);
   }
 
   // private method
-  function _getPickerDataset(data, language) {
+  function _getPickerDataset(data, translation) {
     const dataset = [];
     data.map(item => {
-      dataset.push({ label: item[`name_${language}`], value: item.value, audio: item.audio, uuid: item.uuid, subtitle: item.subtitle || null });
+      dataset.push({ label: translation(item.code), value: item.value, audio: item.audio, uuid: item.uuid, subtitle: translation(item.subtitle_code) || null });
     });
     return dataset;
   }

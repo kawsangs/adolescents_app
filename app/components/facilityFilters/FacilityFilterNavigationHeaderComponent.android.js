@@ -15,7 +15,7 @@ const FacilityFilterNavigationHeaderComponent = (props) => {
   const {t} = useTranslation();
   const renderResetBtn = () => {
     return <TouchableOpacity onPress={() => props.markAsReset()} style={{height: componentUtil.pressableItemSize(), justifyContent: 'center'}}>
-              <Text style={{color: color.whiteColor, fontSize: xLargeFontSize()}}>{t('filterReset')}</Text>
+              <Text style={{color: color.whiteColor, fontSize: xLargeFontSize()}}>{t('reset')}</Text>
            </TouchableOpacity>
   }
 

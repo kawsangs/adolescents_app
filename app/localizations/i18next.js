@@ -6,6 +6,10 @@ import { environment } from '../config/environment';
 
 import en from './en.json';
 import km from './km.json';
+import datetimeEN from './date_time_en.json';
+import datetimeKM from './date_time_km.json';
+import locationEN from './location_en.json';
+import locationKM from './location_km.json';
 
 const i18nextInit = () => {
   if (i18next.isInitialized)
@@ -17,10 +21,9 @@ const i18nextInit = () => {
       .init({
         lng: environment.defaultLanguage,
         fallbackLng: environment.defaultLanguage,
-        debug: true,
         resources: {
-          en: { translation: en },
-          km: { translation: km }
+          en: { translation: {...en, ...datetimeEN, ...locationEN} },
+          km: { translation: {...km, ...datetimeKM, ...locationKM} }
         }
       })
   );

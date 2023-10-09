@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTranslation} from 'react-i18next';
 
 import TextComponent from '../TextComponent';
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
@@ -12,6 +13,7 @@ import mobileStyles from '../../../assets/stylesheets/mobile/genderSelectionButt
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GenderSelectionButtonComponent = (props) => {
+  const {i18n} = useTranslation();
   const renderAudioButton = () => {
     return <View style={[styles.audioContainer, {height: 38}]}>
               <CustomAudioPlayerButtonComponent
@@ -31,14 +33,14 @@ const GenderSelectionButtonComponent = (props) => {
     const bgColor = (props.selectedValue == props.value) ? color.secondaryColor : '#ebedf1';
     const labelColor = (props.selectedValue == props.value) ? color.whiteColor : color.primaryColor;
 
-    return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor, paddingTop: 0, paddingBottom: 0 }]}
+    return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor}]}
               onPress={() => props.updateValue(props.value)}
             >
-            <View style={{justifyContent: 'flex-end', marginTop: -4}}>
+            <View style={{justifyContent: 'flex-end', flex: 1}}>
               <Icon name={props.icon} size={props.size} color={labelColor}/>
             </View>
-            <View style={{justifyContent: 'flex-end'}}>
-              <TextComponent label={props.label} style={[styles.label, { color: labelColor }]} />
+            <View style={{justifyContent: 'center', flex: 1}}>
+              <TextComponent label={props.label} style={[styles.label, { color: labelColor }, i18n.language != 'km' && {fontSize: 15}]} />
             </View>
           </TouchableOpacity>
   }

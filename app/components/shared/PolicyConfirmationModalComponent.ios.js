@@ -3,6 +3,7 @@ import {View, Linking} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {useTranslation, Trans} from 'react-i18next';
 
 import BottomSheetModalMainComponent from './BottomSheetModalMainComponent';
 import BoldLabelComponent from './BoldLabelComponent';
@@ -19,6 +20,7 @@ import mobileStyles from '../../assets/stylesheets/mobile/policyConfirmationModa
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const PolicyConfirmationModalComponent = (props) => {
+  const {t} = useTranslation();
   const [checked, setChecked] = useState(false);
   const [playingUuid, setPlayingUuid] = useState(null);
   const renderIcon = () => {
@@ -35,15 +37,18 @@ const PolicyConfirmationModalComponent = (props) => {
   const renderContent = () => {
     return <React.Fragment>
               <Text style={styles.instruction}>
-                សូមអានលក្ខខណ្ឌខាងក្រោម មុនពេលធ្វើការចុះឈ្មោះចូលប្រើប្រាស់កម្មវិធី សុខភាពយុវជន។ ដោយចុច <BoldLabelComponent label='"យល់ព្រម"' style={styles.instruction}/> បញ្ចាក់ថាអ្នកបានអាន និងយល់ព្រមទៅនឹង {renderUrl('“គោលការណ៍ឯកជនភាព”', PRIVACY_POLICY_URL)} និង {renderUrl('“គោលការណ៍ និងលក្ខខណ្ឌ”', TERMS_AND_CONDITIONS_URL)} ប្រើប្រាស់កម្មវិធីសុខភាពយុវជន។
+                <Trans
+                  i18nKey='termsOfRegistrationDescription'
+                  components={{
+                    bold: <BoldLabelComponent label={`"${t('confirm')}"`} style={styles.instruction}/>,
+                    privacyLink: <Text onPress={() =>  Linking.openURL(PRIVACY_POLICY_URL)} style={{color: color.primaryColor}}/>,
+                    termsLink: <Text onPress={() =>  Linking.openURL(TERMS_AND_CONDITIONS_URL)} style={{color: color.primaryColor}}/>
+                  }}
+                />
               </Text>
-              <Text style={styles.redNotice}>ការសម្ងាត់ព័ត៌មាន និងសុវត្តិភាពអ្នកជាអាទិភាពរបស់យើង!</Text>
+              <Text style={styles.redNotice}>{t('yourConfidentialityAndSecurityAreOurPriority')}</Text>
               <PolicyConfirmationButtonComponent checked={checked} saveUser={() => saveUser()} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}/>
            </React.Fragment>
-  }
-
-  const renderUrl = (label, url) => {
-    return <Text onPress={() =>  Linking.openURL(url)} style={{color: color.primaryColor}}>{label}</Text>
   }
 
   const renderAudioBtn = () => {
@@ -60,7 +65,7 @@ const PolicyConfirmationModalComponent = (props) => {
 
   return (
     <BottomSheetModalMainComponent
-      title='លក្ខខណ្ឌចុះឈ្មោះប្រើប្រាស់'
+      title={t('termsOfRegistration')}
       titleIcon={renderIcon()}
       titleStyle={styles.title}
       titleContainerStyle={styles.titleContainer}

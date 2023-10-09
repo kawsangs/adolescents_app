@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Linking} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
+import {useTranslation} from 'react-i18next';
 
 import color from '../../themes/color';
 import ContactIconComponent from '../shared/ContactIconComponent';
@@ -13,6 +14,7 @@ import toastMessageHelper from '../../helpers/toast_message_helper';
 import contactUtil from '../../utils/contact_util';
 
 const MentalSupportCardComponent = (props) => {
+  const {t} = useTranslation();
   const onPress = () => {
     const visitParams = {
       code: contactCodes[props.type] || props.type,

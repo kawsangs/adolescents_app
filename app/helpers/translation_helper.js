@@ -1,17 +1,15 @@
-import {numbers} from '../db/data/number';
-
 const translationHelper = (() => {
   return {
     translateNumber
   }
 
-  function translateNumber(value, language) {
+  function translateNumber(value, translation) {
     const string = value.toString();
     let result = '';
 
     for (let i = 0; i < string.length; i++) {
       const text = string[i];
-      result += isNaN(parseInt(text)) ? text : numbers[text][language];
+      result += isNaN(parseInt(text)) ? text : translation(text);
     }
 
     return result;

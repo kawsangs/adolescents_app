@@ -19,10 +19,10 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TiltedCardComponent = (props) => {
   const subitem = {
-    'catg_lvl_1_clinic_and_examination_service': { points: Facility.getAll().length, label: 'គ្លីនិក' },
-    'catg_lvl_1_mental_support': { points: Contact.getAll().length, label: 'សេវា' },
-    'catg_lvl_1_entertainment': { points: Video.getAll().length, label: 'វីដេអូ' },
-    'default': { points: categoryHelper.getSubPoint(props.item), label: 'ចំនុច' }
+    'catg_lvl_1_clinic_and_examination_service': { points: Facility.getAll().length, label: 'clinic' },
+    'catg_lvl_1_mental_support': { points: Contact.getAll().length, label: 'service' },
+    'catg_lvl_1_entertainment': { points: Video.getAll().length, label: 'video' },
+    'default': { points: categoryHelper.getSubPoint(props.item), label: 'point' }
   }
 
   const onPress = () => {

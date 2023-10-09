@@ -11,7 +11,7 @@ import mobileStyles from '../../assets/stylesheets/mobile/cardPointAndAudioFoote
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CardPointAndAudioFooterComponent = (props) => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   const renderAudioBtn = () => {
     return <CustomAudioPlayerButtonComponent
@@ -26,7 +26,7 @@ const CardPointAndAudioFooterComponent = (props) => {
 
   return (
     <View style={[styles.container, props.containerStyle]}>
-      <Text style={styles.label}>{translationHelper.translateNumber(props.points, i18n.language)} { props.pointPostfix || t('point')}</Text>
+      <Text style={styles.label}>{translationHelper.translateNumber(props.points, t)} { t(props.pointPostfix || 'point', {count: parseInt(props.points)})}</Text>
       { renderAudioBtn() }
     </View>
   )

@@ -9,7 +9,7 @@ import {cardBorderRadius} from '../../constants/component_constant';
 import {xLargeFontSize} from '../../utils/font_size_util';
 
 const CheckboxComponent = (props) => {
-  const {i18n} = useTranslation();
+  const {t} = useTranslation();
   const onPress = (value) => {
     const selectedItems = props.selectedItems.indexOf(value) != -1
                           ? props.selectedItems.filter(item => item != value)
@@ -27,7 +27,7 @@ const CheckboxComponent = (props) => {
 
       <View style={styles.checkboxContainer}>
         { props.items.map((item, index) => (
-            <CheckboxItemComponent key={index} label={item[`name_${i18n.language}`]} value={item.value}
+            <CheckboxItemComponent key={index} label={t(item.code)} value={item.value}
               uuid={`characteristic-${index}`}
               audio={item.audio}
               isSelected={isSelected(item.value)}

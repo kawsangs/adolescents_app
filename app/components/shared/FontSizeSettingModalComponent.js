@@ -34,9 +34,9 @@ const FontSizeSettingModalComponent = (props) => {
     return (
       <View style={{paddingHorizontal: 8}}>
         <View style={styles.letterAWrapper} >
-          <Text style={[styles.textSize, {fontSize: largeFontSize()}, activeText(largeFontSize())]}>ក</Text>
-          <Text style={[styles.textSize, {fontSize: xLargeFontSize()}, activeText(xLargeFontSize())]}>ក</Text>
-          <Text style={[styles.textSize, {fontSize: xxLargeFontSize()}, activeText(xxLargeFontSize())]}>ក</Text>
+          <Text style={[styles.textSize, {fontSize: largeFontSize()}, activeText(largeFontSize())]}>{t('sampleCharacter')}</Text>
+          <Text style={[styles.textSize, {fontSize: xLargeFontSize()}, activeText(xLargeFontSize())]}>{t('sampleCharacter')}</Text>
+          <Text style={[styles.textSize, {fontSize: xxLargeFontSize()}, activeText(xxLargeFontSize())]}>{t('sampleCharacter')}</Text>
         </View>
 
         <Slider
