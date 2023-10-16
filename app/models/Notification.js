@@ -56,7 +56,7 @@ class Notification {
   static _buildData = (item) => {
     const params = {
       uuid: uuidv4(),
-      id: !!item.id ? item.id : null,
+      id: !!item.id ? item.id.toString() : null,
       title: item.title,
       content: item.body,
       createdAt: Moment().toDate(),

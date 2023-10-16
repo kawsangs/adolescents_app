@@ -4,7 +4,7 @@ const SurveyFormSchema = {
   name: 'SurveyForm',
   primaryKey: 'id',
   properties: {
-    id: 'int',
+    id: 'string',
     code: 'string',
     name: 'string',
     version: 'string?',

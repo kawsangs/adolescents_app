@@ -12,6 +12,7 @@ import { cardElevation, cardBorderRadius } from '../../constants/component_const
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
 import dateTimeHelper from '../../helpers/date_time_helper';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const NotificationCardItemComponent = (props) => {
   const {t} = useTranslation();
@@ -60,10 +61,21 @@ const NotificationCardItemComponent = (props) => {
     )
   }
 
+  const onPressItem = () => {
+    console.log('notification = ', props.notification)
+    if (!!props.notification.data) {
+      const data = JSON.parse(props.notification.data)
+      navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
+      return;
+    }
+    setNumberOfLines(!numberOfLines ? 2 : null)
+  }
+
   return (
     <Swipeable renderRightActions={renderDeleteAction}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}
+        // onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}
+        onPress={() => onPressItem()}
       >
         { renderInfo() }
       </Card>

@@ -1,6 +1,7 @@
 import messaging from '@react-native-firebase/messaging';
 import Notification from '../models/Notification';
 import User from '../models/User';
+import SurveyForm from '../models/SurveyForm';
 import surveyService from './survey_service';
 import {navigationRef} from '../navigators/app_navigator';
 import visitService from './visit_service';
@@ -39,47 +40,50 @@ const notificationService = (() => {
     // when the notification opened the app from a quit state (worked)
     // This method also get called when the app launched without receiving any push notification
     messaging().getInitialNotification()
-      .then(async remoteMessage => {
+      .then( remoteMessage => {
         console.log('== 4. == get initial notification (from quit state) = ', remoteMessage);
+        _saveNotificationAndSurvey(remoteMessage);
         _handleScreenNavigation(remoteMessage);
       })
   }
 
+  // private method
   function _saveNotificationAndSurvey(remoteMessage) {
-    const message = Notification.findById(remoteMessage.messageId);
-    if(!!message) return;
+    if (!!remoteMessage && Object.keys(remoteMessage.data).length > 0) {
+      const payload =  JSON.parse(remoteMessage.data.payload) || null;
+      if (!payload) return;
 
-    let data = null;
-    if (Object.keys(remoteMessage.data).length > 0)
-      data = JSON.parse(remoteMessage.data.payload) || null;
+      if (!Notification.findById(payload.mobile_notification_id))
+        Notification.create({...remoteMessage.notification, id: payload.mobile_notification_id, data: payload});
 
-    if (!!data.form_id)
-      surveyService.findAndSave(data.form_id);
-
-    Notification.create({...remoteMessage.notification, data: data});
+      if (!!payload.topic_id && !SurveyForm.findById(payload.topic_id))
+        surveyService.findAndSave(payload.topic_id);
+    }
   }
 
   function _handleScreenNavigation(remoteMessage) {
-    if (Object.keys(remoteMessage.data).length > 0) {
-      const data =  JSON.parse(remoteMessage.data.payload)
-      if (!!data.form_id) {
-        _navigateToSurveyScreen(remoteMessage, data);
+    if (!!remoteMessage && Object.keys(remoteMessage.data).length > 0) {
+      const payload =  JSON.parse(remoteMessage.data.payload) || null;
+      if (!payload) return;
+
+      const notification = Notification.findById(payload.mobile_notification_id);
+      if (!!payload.topic_id && !!notification) {
+        _navigateToSurveyScreen(payload.topic_id, notification);
         return
       }
+      !!notification && _navigateToNextScreen('NotificationView');
     }
-    _navigateToNextScreen('NotificationView');
   }
 
-  function _navigateToSurveyScreen(remoteMessage, data) {
-    const notification = Notification.findById(remoteMessage.notification.id);
-    const visitParams = {
-      pageable_type: 'NotificationOccurrence',
-      pageable_id: data.notification_occurrence_id,
-      code: 'open_remote_notification',
-      name: 'Open remote notification',
-    };
-    visitService.recordVisitAction(visitParams);
-    !!notification && _navigateToNextScreen('SurveyView', { uuid: notification.uuid, form_id: data.form_id, title: remoteMessage.notification.title });
+  function _navigateToSurveyScreen(topicId, notification) {
+    // const visitParams = {
+    //   pageable_type: 'NotificationOccurrence',
+    //   pageable_id: data.notification_occurrence_id,
+    //   code: 'open_remote_notification',
+    //   name: 'Open remote notification',
+    // };
+    // visitService.recordVisitAction(visitParams);
+    !!notification && _navigateToNextScreen('SurveyView', { uuid: notification.uuid, topic_id: topicId, title: notification.title });
   }
 
   function _navigateToNextScreen(screenName, params) {

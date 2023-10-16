@@ -5,7 +5,7 @@ const MODEL = 'SurveyForm'
 
 class SurveyForm {
   static findById(id) {
-    return BaseModel.findByAttr(MODEL, {id: id})[0]
+    return BaseModel.findByAttr(MODEL, {id: `'${id}'`})[0]
   }
 
   static upsert(data) {
