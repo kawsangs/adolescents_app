@@ -62,12 +62,9 @@ const NotificationCardItemComponent = (props) => {
   }
 
   const onPressItem = () => {
-    console.log('notification = ', props.notification)
     if (!!props.notification.data) {
       const data = JSON.parse(props.notification.data)
-      // console.log('===== notification data = ', data)
-      // navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
-      navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: "a9952cd6-f64c-4edc-83f8-224421ee553b", title: props.notification.title });
+      navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
       return;
     }
     setNumberOfLines(!numberOfLines ? 2 : null)
@@ -76,7 +73,6 @@ const NotificationCardItemComponent = (props) => {
   return (
     <Swipeable renderRightActions={renderDeleteAction}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        // onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}
         onPress={() => onPressItem()}
       >
         { renderInfo() }

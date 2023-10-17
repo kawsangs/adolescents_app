@@ -14,8 +14,6 @@ const SurveyView = ({route, navigation}) => {
   const uuid = uuidv4();
   useEffect(() => {
     Notification.update(route.params.uuid, {read: true});
-    // surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
-
     if (!SurveyForm.findById(route.params.topic_id))
       surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
     else

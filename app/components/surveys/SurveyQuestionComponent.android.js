@@ -45,17 +45,22 @@ const SurveyQuestionComponent = (props) => {
                 options: SurveyOption.findByQuestion(props.question.id),
                 buttonColor: color.primaryColor,
                 statisticPrefix: 'Survey',
+                currentAnswer: props.currentAnswer,
                 updateAnswer: (answer) => props.updateAnswers(answer),
             })
     }
   }
 
-  return (
-    <View style={{padding: 16, marginTop: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
-      { renderTitle() }
-      { renderQuestion() }
-    </View>
-  )
+  if (props.isVisible) {
+    return (
+      <View style={{padding: 16, marginTop: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
+        { renderTitle() }
+        { renderQuestion() }
+      </View>
+    )
+  }
+
+  return;
 }
 
 export default SurveyQuestionComponent;

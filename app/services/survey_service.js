@@ -10,6 +10,11 @@ import uuidv4 from '../utils/uuidv4_util';
 import Comparator from '../utils/Comparator';
 import surveyQuestionService from './survey_question_service';
 
+const OPERATORS = {
+  'AND': '&&',
+  'OR': '||',
+}
+
 const surveyService = (() => {
   return {
     findAndSave,

@@ -7,6 +7,10 @@ import User from '../../models/User';
 const SurveyTextQuestionComponent = (props) => {
   const [answer, setAnswer] = useState('');
 
+  useEffect(() => {
+    setAnswer(!!props.currentAnswer ? props.currentAnswer.value : '');
+  }, []);
+
   const onTextChange = (text) => {
     setAnswer(text);
     if (!text) return props.updateAnswer(null);

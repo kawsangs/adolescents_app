@@ -27,7 +27,7 @@ const SurveyContentComponent = (props) => {
   }, []);
 
   const updateAnswers = (key, answer, questions) => {
-    const newAnswers = answers;
+    let newAnswers = {...answers};
     if (!!answer && !!answer.value)
       newAnswers[currentSection][key] = answer;
     else
@@ -74,10 +74,12 @@ const SurveyContentComponent = (props) => {
       handleSkipLogic(key, index, isQuestionVisible, question.type.split('::')[1], questions);
 
       return <SurveyQuestionComponent
-                key={index}
+                key={key}
                 question={question}
                 surveyUuid={props.surveyUuid}
+                currentAnswer={(!!answers[currentSection] && !!answers[currentSection][key]) ? answers[currentSection][key] : null}
                 updateAnswers={(answer) => updateAnswers(key, answer, questions)}
+                isVisible={isQuestionVisible}
              />
     });
   }

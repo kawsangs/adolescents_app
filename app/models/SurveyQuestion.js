@@ -15,7 +15,7 @@ class SurveyQuestion {
     SurveyOption.upsertCollection(data.options)
     console.log('============================')
     console.log('== criteria = ', data.criterias)
-    // SurveyCriteria.upsertCollection(data.criterias)
+    SurveyCriteria.upsertCollection(data.criterias)
   }
 
   static upsertCollection(items) {

@@ -5,7 +5,7 @@ import MatchAllComparator from './MatchAllComparator';
 const comparators = { 
   'in': MatchAnyComparator,
   'match_all': MatchAllComparator,
-  'equal': EqualComparator,
+  '=': EqualComparator,
 }
 
 export default class Comparator {
