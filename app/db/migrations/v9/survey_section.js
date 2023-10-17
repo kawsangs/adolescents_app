@@ -2,11 +2,11 @@
 
 const SurveySectionSchema = {
   name: 'SurveySection',
-  primaryKey: 'uuid',
+  primaryKey: 'id',
   properties: {
-    uuid: 'string',
-    name: 'string',
-    form_id: 'int',
+    id: 'string',
+    name: 'string?',
+    topic_id: 'string',
     display_order: 'int',
   }
 };

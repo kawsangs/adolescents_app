@@ -6,7 +6,7 @@ const SurveySchema = {
   properties: {
     uuid: 'string',
     user_uuid: 'string',
-    form_id: 'int',
+    topic_id: 'string',
     surveyed_at: 'date',
     finished: 'bool?',
     uploaded_id: 'int?'

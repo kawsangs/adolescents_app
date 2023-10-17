@@ -15,31 +15,32 @@ const SurveyView = ({route, navigation}) => {
   const uuid = uuidv4();
   useEffect(() => {
     Notification.update(route.params.uuid, {read: true});
-    // createSurvey();
+    // surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
 
     if (!SurveyForm.findById(route.params.topic_id))
-      surveyService.findAndSave(route.params.topic_id);
+      surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
+    else {
+      console.log('=== create survey ====')
+      createNewSurvey();
+    }
   }, []);
 
-  // const createSurvey = () => {
-  //   Survey.create({
-  //     uuid,
-  //     user_uuid: User.currentLoggedIn().uuid,
-  //     form_id: 1,
-  //     // form_id: route.params.form_id,
-  //     surveyed_at: new Date()
-  //   });
-  // }
+  const createNewSurvey = () => {
+    Survey.create({
+      uuid,
+      user_uuid: User.currentLoggedIn().uuid,
+      topic_id: route.params.topic_id,
+      surveyed_at: new Date()
+    });
+  }
 
   return (
-    <View/>
-
-    // <GradientScrollViewComponent
-    //   header={<SurveyNavigationHeaderComponent />}
-    //   body={<SurveyContentComponent formId={1} surveyUuid={uuid}/>}
-    //   scrollable={false}
-    //   scrollViewStyle={{paddingBottom: 16}}
-    // />
+    <GradientScrollViewComponent
+      header={<SurveyNavigationHeaderComponent />}
+      body={<SurveyContentComponent topicId={route.params.topic_id} surveyUuid={uuid}/>}
+      scrollable={false}
+      scrollViewStyle={{paddingBottom: 16}}
+    />
   )
 }
 

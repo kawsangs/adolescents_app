@@ -7,8 +7,8 @@ class SurveySection {
     return BaseModel.findByUuid(MODEL, uuid)
   }
 
-  static findByFormId(formId) {
-    return BaseModel.findByAttr(MODEL, {form_id: formId}, '', {type: 'ASC', column: 'display_order'});
+  static findByTopicId(topicId) {
+    return BaseModel.findByAttr(MODEL, {topic_id: `'${topicId}'`}, '', {type: 'ASC', column: 'display_order'});
   }
 
   static upsert(data) {

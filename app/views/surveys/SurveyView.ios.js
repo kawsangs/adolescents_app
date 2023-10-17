@@ -7,20 +7,23 @@ import uuidv4 from '../../utils/uuidv4_util';
 import Survey from '../../models/Survey';
 import User from '../../models/User';
 import Notification from '../../models/Notification';
+import surveyService from '../../services/survey_service';
 
 const SurveyView = ({route, navigation}) => {
   const uuid = uuidv4();
   useEffect(() => {
-    // Notification.update(route.params.uuid, {read: true});
-    createSurvey();
+    Notification.update(route.params.uuid, {read: true});
+    if (!SurveyForm.findById(route.params.topic_id))
+      surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
+    else
+      createNewSurvey();
   }, []);
 
-  const createSurvey = () => {
+  const createNewSurvey = () => {
     Survey.create({
       uuid,
       user_uuid: User.currentLoggedIn().uuid,
-      form_id: 1,
-      // form_id: route.params.form_id,
+      topic_id: route.params.topic_id,
       surveyed_at: new Date()
     });
   }
@@ -28,7 +31,7 @@ const SurveyView = ({route, navigation}) => {
   return (
     <GradientScrollViewComponent
       header={<SurveyNavigationHeaderComponent />}
-      body={<SurveyContentComponent formId={1} surveyUuid={uuid}/>}
+      body={<SurveyContentComponent topicId={1} surveyUuid={uuid}/>}
       scrollable={false}
       scrollViewStyle={{paddingBottom: 16}}
     />

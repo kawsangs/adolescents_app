@@ -9,7 +9,7 @@ import surveyService from '../../services/survey_service';
 import {navigationRef} from '../../navigators/app_navigator';
 
 const SurveyContentComponent = (props) => {
-  const sections = SurveySection.findByFormId(props.formId);
+  const sections = SurveySection.findByTopicId(props.formId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
   const [playingUuid, setPlayingUuid] = useState(null);

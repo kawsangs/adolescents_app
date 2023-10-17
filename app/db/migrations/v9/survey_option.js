@@ -4,17 +4,10 @@ const SurveyOptionSchema = {
   name: 'SurveyOption',
   primaryKey: 'id',
   properties: {
-    id: 'int',
+    id: 'string',
     name: 'string',
+    question_id: 'string',
     value: 'string',
-    score: { type: 'int', default: 0 },
-    alert_message: 'string?',
-    alert_audio: 'string?',
-    alert_audio_url: 'string?',
-    warning: { type: 'bool', default: false },
-    recursive: { type: 'bool', default: false },
-    question_id: 'int',
-    question_code: 'string',
   }
 };
 

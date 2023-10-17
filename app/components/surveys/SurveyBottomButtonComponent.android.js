@@ -9,12 +9,32 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   const [isValid, setIsValid] = useState(false);
 
   useImperativeHandle(ref, () => ({
-    validateForm
+    validateForm,
+    updateValidStatus,
   }))
 
-  const validateForm = (currentSection, answers, sectionUuid) => {
-    setIsValid(Object.keys(answers[currentSection]).length == SurveyQuestion.findBySectionId(sectionUuid).length)
+  const validateForm = (currentSection, questionVisibleStatuses, questions) => {
+    let query = '';
+    for (let index in questionVisibleStatuses) {
+      if (!!questionVisibleStatuses[index]) {
+        if (!!query)
+          query += ' && ';
+
+        const questionType = questions[index].type.split('::')[1].toLowerCase();
+        query += questionType == 'note' ? 'true'
+                 : `${!!props.answers[currentSection][`section_${currentSection}_q_${index}`] && !!props.answers[currentSection][`section_${currentSection}_q_${index}`].value}`;
+      }
+    }
+    setIsValid(eval(query));
   }
+
+  const updateValidStatus = (status) => {
+    setIsValid(status);
+  }
+
+  // const validateForm = (currentSection, answers, sectionUuid) => {
+  //   setIsValid(Object.keys(answers[currentSection]).length == SurveyQuestion.findBySectionId(sectionUuid).length)
+  // }
 
   const buttons = {
     next: {label: 'បន្ទាប់', audio: null},

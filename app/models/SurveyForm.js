@@ -4,11 +4,16 @@ import BaseModel from './BaseModel';
 const MODEL = 'SurveyForm'
 
 class SurveyForm {
+  static getAll() {
+    return BaseModel.getAll(MODEL);
+  }
+
   static findById(id) {
     return BaseModel.findByAttr(MODEL, {id: `'${id}'`})[0]
   }
 
   static upsert(data) {
+    console.log('==== save survey form to realm ====')
     BaseModel.create(MODEL, {...data, app_version: DeviceInfo.getVersion()});
   }
 }

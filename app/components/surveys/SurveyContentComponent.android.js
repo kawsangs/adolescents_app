@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {View, ScrollView} from 'react-native';
 
 import SurveyQuestionComponent from './SurveyQuestionComponent';
@@ -9,11 +9,12 @@ import surveyService from '../../services/survey_service';
 import {navigationRef} from '../../navigators/app_navigator';
 
 const SurveyContentComponent = (props) => {
-  const sections = SurveySection.findByFormId(props.formId);
+  const sections = SurveySection.findByTopicId(props.topicId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
   const [playingUuid, setPlayingUuid] = useState(null);
-  const buttonRef = React.useRef(null);
+  const buttonRef = useRef(null);
+  const visibleQuestions = useRef([]);
 
   useEffect(() => {
     let formattedAnswers = {};
@@ -23,7 +24,7 @@ const SurveyContentComponent = (props) => {
     setAnswers(formattedAnswers)
   }, []);
 
-  const updateAnswers = (key, answer) => {
+  const updateAnswers = (key, answer, questions) => {
     const newAnswers = answers;
     if (!!answer && !!answer.value)
       newAnswers[currentSection][key] = answer;
@@ -31,17 +32,20 @@ const SurveyContentComponent = (props) => {
       delete newAnswers[currentSection][key];
 
     setAnswers(newAnswers);
-    buttonRef.current?.validateForm(currentSection, newAnswers, sections[currentSection].uuid);
+    setTimeout(() => {
+      buttonRef.current?.validateForm(currentSection, visibleQuestions.current, questions);
+    }, 200)
   }
 
   const renderQuestions = () => {
-    return SurveyQuestion.findBySectionId(sections[currentSection].uuid).map((question, index) => {
+    const questions = SurveyQuestion.findBySectionId(sections[currentSection].id);
+    return questions.map((question, index) => {
       const key = `section_${currentSection}_q_${index}`;
       return <SurveyQuestionComponent
                 key={index}
                 question={question}
                 surveyUuid={props.surveyUuid}
-                updateAnswers={(answer) => updateAnswers(key, answer)}
+                updateAnswers={(answer) => updateAnswers(key, answer, questions)}
              />
     });
   }
