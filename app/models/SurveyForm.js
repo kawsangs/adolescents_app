@@ -13,7 +13,6 @@ class SurveyForm {
   }
 
   static upsert(data) {
-    console.log('==== save survey form to realm ====')
     BaseModel.create(MODEL, {...data, app_version: DeviceInfo.getVersion()});
   }
 }

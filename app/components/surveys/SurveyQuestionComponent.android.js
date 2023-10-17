@@ -5,27 +5,27 @@ import {Text} from 'react-native-paper';
 import SurveySelectOneQuestionComponent from './SurveySelectOneQuestionComponent';
 import SurveySelectMultipleQuestionComponent from './SurveySelectMultipleQuestionComponent';
 import SurveyTextQuestionComponent from './SurveyTextQuestionComponent';
-// import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
+import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
 import uuidv4 from '../../utils/uuidv4_util';
 import SurveyOption from '../../models/SurveyOption';
 
 const SurveyQuestionComponent = (props) => {
-
   const renderTitle = () => {
-    return <View style={{flexDirection: 'row'}}>
+    return <View style={{flexDirection: 'row', borderWidth: 0}}>
               <View style={{flex: 1, justifyContent: 'center'}}>
-                <Text style={{marginBottom: 6, fontSize: largeFontSize()}}>{props.question.name}</Text>
-                { props.question.hint && <Text style={{fontSize: 13, color: color.grayColor}}>{props.question.hint}</Text> }
+                <Text style={{marginBottom: 6, fontSize: largeFontSize(), lineHeight: 26}}>{props.question.name}</Text>
+                { props.question.hint && <Text style={{fontSize: 13, color: color.grayColor, lineHeight: 22}}>{props.question.hint}</Text> }
               </View>
               <View style={{marginLeft: 4}}>
-                {/* <CustomAudioPlayerButtonComponent
+                <CustomAudioPlayerButtonComponent
+                  rippled={true}
                   itemUuid={props.question.id}
                   audio={props.question.audio}
                   playingUuid={props.playingUuid}
                   updatePlayingUuid={props.updatePlayingUuid}
-                /> */}
+                />
               </View>
            </View>
   }

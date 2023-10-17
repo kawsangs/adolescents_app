@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import SurveyNavigationHeaderComponent from '../../components/surveys/SurveyNavigationHeaderComponent';
@@ -34,8 +33,8 @@ const SurveyView = ({route, navigation}) => {
 
   return (
     <GradientScrollViewComponent
-      header={<SurveyNavigationHeaderComponent />}
-      body={<SurveyContentComponent topicId={route.params.topic_id} surveyUuid={uuid}/>}
+      header={<SurveyNavigationHeaderComponent title={route.params.title} surveyUuid={uuid} />}
+      body={<SurveyContentComponent topicId={route.params.topic_id} surveyUuid={uuid} />}
       scrollable={false}
       scrollViewStyle={{paddingBottom: 16}}
     />

@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-
+import {useTranslation} from 'react-i18next';
 import BigButtonComponent from '../shared/BigButtonComponent';
-// import SurveyQuestion from '../../models/SurveyQuestion';
 
 const {useImperativeHandle} = React;
 
 const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   const [isValid, setIsValid] = useState(false);
+  const {t} = useTranslation();
 
   useImperativeHandle(ref, () => ({
     validateForm,
@@ -14,14 +14,6 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   }))
 
   const validateForm = (currentSection, questionVisibleStatuses, questions) => {
-    // console.log('=== current section = ', currentSection)
-    // console.log('++++++++++++++++++++++++++++')
-    // console.log('=== question visible statuses = ', questionVisibleStatuses)
-    // console.log('============================')
-    // console.log('=== current questions = ', questions)
-    // console.log('============================')
-    // console.log('=== answers = ', props.answers)
-
     let query = '';
     for (let index in questionVisibleStatuses) {
       if (!!questionVisibleStatuses[index]) {
@@ -40,13 +32,9 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
     setIsValid(status);
   }
 
-  // const validateForm = (currentSection, answers, sectionUuid) => {
-  //   setIsValid(Object.keys(answers[currentSection]).length == SurveyQuestion.findBySectionId(sectionUuid).length)
-  // }
-
   const buttons = {
-    next: {label: 'បន្ទាប់', audio: null},
-    finish: {label: 'បញ្ចប់', audio: null}
+    next: {label: t('next'), audio: null},
+    finish: {label: t('finish'), audio: null}
   }
 
   return <BigButtonComponent label={props.currentSection != props.sections.length - 1 ? buttons.next.label : buttons.finish.label}

@@ -6,10 +6,6 @@ import realm from '../db/schema';
 const MODEL = 'SurveyQuestion';
 
 class SurveyQuestion {
-  // static findByTopicId(topicId) {
-  //   return BaseModel.findByAttr(MODEL, {topic_id: topicId}, '', {type: 'ASC', column: 'display_order'});
-  // }
-
   static findBySectionId(id) {
     return BaseModel.findByAttr(MODEL, {section_id: `'${id}'`});
   }

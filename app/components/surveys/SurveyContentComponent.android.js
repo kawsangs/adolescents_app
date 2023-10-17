@@ -75,7 +75,9 @@ const SurveyContentComponent = (props) => {
                 key={index}
                 question={question}
                 surveyUuid={props.surveyUuid}
+                playingUuid={playingUuid}
                 updateAnswers={(answer) => updateAnswers(key, answer, questions)}
+                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
              />
     });
   }
@@ -102,6 +104,8 @@ const SurveyContentComponent = (props) => {
             currentSection={currentSection}
             answers={answers}
             onPress={goNextOrFinish}
+            playingUuid={playingUuid}
+            updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
           />
         </View>
 }
