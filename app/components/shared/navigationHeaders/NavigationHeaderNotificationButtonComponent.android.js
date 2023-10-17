@@ -15,7 +15,6 @@ const NavigationHeaderNotificationButtonComponent = (props) => {
   const dispatch = useDispatch()
 
   useFocusEffect(() => {
-    console.log('=== on notification button focused ====')
     dispatch(setUnreadNotification());
   });
 

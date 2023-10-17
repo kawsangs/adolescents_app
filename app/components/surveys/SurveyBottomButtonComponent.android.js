@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import BigButtonComponent from '../shared/BigButtonComponent';
-import SurveyQuestion from '../../models/SurveyQuestion';
+// import SurveyQuestion from '../../models/SurveyQuestion';
 
 const {useImperativeHandle} = React;
 
@@ -14,6 +14,14 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   }))
 
   const validateForm = (currentSection, questionVisibleStatuses, questions) => {
+    // console.log('=== current section = ', currentSection)
+    // console.log('++++++++++++++++++++++++++++')
+    // console.log('=== question visible statuses = ', questionVisibleStatuses)
+    // console.log('============================')
+    // console.log('=== current questions = ', questions)
+    // console.log('============================')
+    // console.log('=== answers = ', props.answers)
+
     let query = '';
     for (let index in questionVisibleStatuses) {
       if (!!questionVisibleStatuses[index]) {

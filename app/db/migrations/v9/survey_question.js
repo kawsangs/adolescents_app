@@ -16,7 +16,6 @@ const SurveyQuestionSchema = {
     audio_url: 'string?',
     topic_id: 'string?',
     section_id: 'string?',
-    criterias: 'string?',
   }
 };
 

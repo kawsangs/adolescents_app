@@ -37,10 +37,40 @@ const SurveyContentComponent = (props) => {
     }, 200)
   }
 
+  const handleSkipLogic = (key, index, isQuestionVisible, questionType, questions) => {
+    if (isQuestionVisible) {
+      visibleQuestions.current[index] = true;
+      // Enable the bottom button if it is the note question
+      if (questionType.toLowerCase() == 'note' && index == questions.length - 1)
+        setTimeout(() => {
+          buttonRef.current?.validateForm(currentSection, visibleQuestions.current, questions);
+        }, 200);
+    }
+    else {
+      // reset the answer of the question that is not visible
+      visibleQuestions.current[index] = false;
+      let newAnswers = {...answers};
+      if (!!newAnswers[currentSection] && !!newAnswers[currentSection][key]) {
+        delete newAnswers[currentSection][key];
+        setAnswers(newAnswers)
+      }
+    }
+
+    // Move to next section if the currenct section has no question matched with the criteria
+    if (visibleQuestions.current.filter(q => q == true).length == 0 && index == questions.length - 1) {
+      visibleQuestions.current = [];
+      if (currentSection < sections.length - 1 )
+        setCurrentSection(currentSection + 1);
+    }
+  }
+
   const renderQuestions = () => {
     const questions = SurveyQuestion.findBySectionId(sections[currentSection].id);
     return questions.map((question, index) => {
       const key = `section_${currentSection}_q_${index}`;
+      const isQuestionVisible = surveyService.isQuestionMatchCriterias(question, answers, currentSection);
+      handleSkipLogic(key, index, isQuestionVisible, question.type.split('::')[1], questions);
+
       return <SurveyQuestionComponent
                 key={index}
                 question={question}
@@ -53,13 +83,13 @@ const SurveyContentComponent = (props) => {
   const goNextOrFinish = () => {
     setPlayingUuid(null);
     if (currentSection < sections.length - 1) {
-      buttonRef.current?.validateForm(currentSection + 1, answers, sections[currentSection].uuid);
+      visibleQuestions.current = [];
+      buttonRef.current?.updateValidStatus(false);
       setCurrentSection(currentSection + 1);
     }
     else if (currentSection == sections.length - 1) {
-      console.log('==== Mark survey as finished ====')
       surveyService.finishSurvey(answers, props.surveyUuid);
-      navigationRef.current?.reset({ index: 1, routes: [{name: 'HomeViewStack'}, { name: 'NotificationView' }]});
+      navigationRef.current?.goBack();
     }
   }
 
@@ -70,6 +100,7 @@ const SurveyContentComponent = (props) => {
           <SurveyBottomButtonComponent ref={buttonRef}
             sections={sections}
             currentSection={currentSection}
+            answers={answers}
             onPress={goNextOrFinish}
           />
         </View>

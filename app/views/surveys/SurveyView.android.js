@@ -19,10 +19,8 @@ const SurveyView = ({route, navigation}) => {
 
     if (!SurveyForm.findById(route.params.topic_id))
       surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
-    else {
-      console.log('=== create survey ====')
+    else
       createNewSurvey();
-    }
   }, []);
 
   const createNewSurvey = () => {

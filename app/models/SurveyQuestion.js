@@ -1,5 +1,6 @@
 import BaseModel from './BaseModel';
 import SurveyOption from './SurveyOption';
+import SurveyCriteria from './SurveyCriteria';
 import realm from '../db/schema';
 
 const MODEL = 'SurveyQuestion';
@@ -14,10 +15,11 @@ class SurveyQuestion {
   }
 
   static upsert(data) {
-    BaseModel.create(MODEL, {...data, criterias: JSON.stringify(data.criterias)});
-    console.log('++++++++++++++++++++++++++++++++')
-    console.log('=== question options = ', data.options)
+    BaseModel.create(MODEL, data);
     SurveyOption.upsertCollection(data.options)
+    console.log('============================')
+    console.log('== criteria = ', data.criterias)
+    // SurveyCriteria.upsertCollection(data.criterias)
   }
 
   static upsertCollection(items) {

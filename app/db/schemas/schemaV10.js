@@ -12,6 +12,7 @@ import SurveyOption from '../migrations/v9/survey_option';
 import SurveyAnswer from '../migrations/v9/survey_answer';
 import Survey from '../migrations/v9/survey';
 import SurveySection from '../migrations/v9/survey_section';
+import SurveyCriteria from '../migrations/v9/survey_criteria';
 import {schemaNames} from '../../constants/schema_constant';
 
 const changedSchemas = [
@@ -28,6 +29,7 @@ const changedSchemas = [
   { label: schemaNames[18], data: SurveyAnswer },
   { label: schemaNames[19], data: Survey },
   { label: schemaNames[20], data: SurveySection },
+  { label: schemaNames[21], data: SurveyCriteria },
 ];
 
 const schemaV10 = {

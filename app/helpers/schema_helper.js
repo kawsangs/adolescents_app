@@ -19,6 +19,7 @@ import SurveyOption from '../db/migrations/v9/survey_option';
 import SurveyAnswer from '../db/migrations/v9/survey_answer';
 import Survey from '../db/migrations/v9/survey';
 import SurveySection from '../db/migrations/v9/survey_section';
+import SurveyCriteria from '../db/migrations/v9/survey_criteria';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -53,6 +54,7 @@ const schemaHelper = (() => {
       SurveyAnswer,
       Survey,
       SurveySection,
+      SurveyCriteria,
     ];
 
     changedSchemas.map((schema) => {

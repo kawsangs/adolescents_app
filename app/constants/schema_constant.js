@@ -20,4 +20,5 @@ export const schemaNames = [
   'SurveyAnswer',
   'Survey',
   'SurveySection',
+  'SurveyCriteria',
 ];
