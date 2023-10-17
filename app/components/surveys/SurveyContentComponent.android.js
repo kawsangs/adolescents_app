@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {View, ScrollView} from 'react-native';
+import { useDispatch } from 'react-redux';
 
 import SurveyQuestionComponent from './SurveyQuestionComponent';
 import SurveyBottomButtonComponent from './SurveyBottomButtonComponent';
@@ -7,12 +8,13 @@ import SurveySection from '../../models/SurveySection';
 import SurveyQuestion from '../../models/SurveyQuestion';
 import surveyService from '../../services/survey_service';
 import {navigationRef} from '../../navigators/app_navigator';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const SurveyContentComponent = (props) => {
+  const dispatch = useDispatch();
   const sections = SurveySection.findByTopicId(props.topicId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [playingUuid, setPlayingUuid] = useState(null);
   const buttonRef = useRef(null);
   const visibleQuestions = useRef([]);
 
@@ -75,15 +77,13 @@ const SurveyContentComponent = (props) => {
                 key={index}
                 question={question}
                 surveyUuid={props.surveyUuid}
-                playingUuid={playingUuid}
                 updateAnswers={(answer) => updateAnswers(key, answer, questions)}
-                updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
              />
     });
   }
 
   const goNextOrFinish = () => {
-    setPlayingUuid(null);
+    dispatch(setPlayingAudio('null'));
     if (currentSection < sections.length - 1) {
       visibleQuestions.current = [];
       buttonRef.current?.updateValidStatus(false);
@@ -104,8 +104,6 @@ const SurveyContentComponent = (props) => {
             currentSection={currentSection}
             answers={answers}
             onPress={goNextOrFinish}
-            playingUuid={playingUuid}
-            updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
           />
         </View>
 }

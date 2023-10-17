@@ -5,6 +5,7 @@ import subCategoryDisplayModeReducer from './features/subCategories/subCategoryD
 import filterVideoAuthorReducer from './features/videos/filterVideoAuthorSlice';
 import loginUserOccupationReducer from './features/users/loginUserOccupationSlice';
 import parentCategoryReducer from './features/parentCategories/parentCategorySlice';
+import currentPlayingAudioReducer from './features/audios/currentPlayingAudioSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     filterVideoAuthor: filterVideoAuthorReducer,
     loginUserOccupation: loginUserOccupationReducer,
     parentCategory: parentCategoryReducer,
+    currentPlayingAudio: currentPlayingAudioReducer,
   }
 })

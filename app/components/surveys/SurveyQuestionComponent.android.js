@@ -23,8 +23,6 @@ const SurveyQuestionComponent = (props) => {
                   rippled={true}
                   itemUuid={props.question.id}
                   audio={props.question.audio}
-                  playingUuid={props.playingUuid}
-                  updatePlayingUuid={props.updatePlayingUuid}
                 />
               </View>
            </View>

@@ -40,8 +40,6 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   return <BigButtonComponent label={props.currentSection != props.sections.length - 1 ? buttons.next.label : buttons.finish.label}
             uuid='save-button'
             audio={props.currentSection != props.sections.length - 1 ? buttons.next.audio : buttons.finish.audio}
-            playingUuid={props.playingUuid}
-            updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             disabled={ !isValid }
             onPress={() => props.onPress()}
             accessibilityLabel='ប៊ូតុងក្រោមគេ'

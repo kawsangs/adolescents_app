@@ -27,8 +27,6 @@ const SurveyNavigationHeaderComponent = (props) => {
                   rippled={true}
                   itemUuid='exit-survey-audio'
                   audio={null}
-                  playingUuid={props.playingUuid}
-                  updatePlayingUuid={props.updatePlayingUuid}
                 />
               </View>
            </View>

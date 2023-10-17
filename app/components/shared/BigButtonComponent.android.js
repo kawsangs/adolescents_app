@@ -25,8 +25,6 @@ const BigButtonComponent = (props) => {
             buttonColor="transparent"
             containerStyle={{position: 'absolute', right: 0}}
             buttonStyle={styles.audioBtn}
-            playingUuid={props.playingUuid}
-            updatePlayingUuid={props.updatePlayingUuid}
             accessibilityLabel={props.accessibilityLabel}
             iconPrimaryColor={props.iconPrimaryColor}
            />
