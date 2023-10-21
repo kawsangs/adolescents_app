@@ -31,7 +31,7 @@
     "qs": "^6.11.0",
     "react": "18.1.0",
     "react-i18next": "^11.18.3",
-    "react-native": "0.70.3",
+    "react-native": "0.72.6",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-audio-player-button": "^1.0.11",
     "react-native-bottom-sheet-picker": "^1.1.12",
