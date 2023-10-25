@@ -1,5 +1,5 @@
 export const minimumAge = 13;
-export const maximumAge = 51;
+export const maximumAge = 99;
 
 
 export const anonymousInfo = [
