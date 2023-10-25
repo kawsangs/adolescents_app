@@ -7,6 +7,10 @@ class Survey {
     return [...BaseModel.findByAttr(MODEL, {finished: false})];
   }
 
+  static getFinished() {
+    return [...BaseModel.findByAttr(MODEL, {finished: true})];
+  }
+
   static findByUuid(uuid) {
     return BaseModel.findByUuid(MODEL, uuid);
   }

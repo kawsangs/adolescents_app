@@ -25,7 +25,8 @@ const SurveyView = ({route, navigation}) => {
       uuid,
       user_uuid: User.currentLoggedIn().uuid,
       topic_id: route.params.topic_id,
-      surveyed_at: new Date()
+      surveyed_at: new Date(),
+      notification_id: route.params.uuid
     });
   }
 
@@ -33,7 +34,7 @@ const SurveyView = ({route, navigation}) => {
     <GradientScrollViewComponent
       header={<SurveyNavigationHeaderComponent title={route.params.title} surveyUuid={uuid} />}
       body={<SurveyContentComponent topicId={route.params.topic_id} surveyUuid={uuid} />}
-      scrollable={false}
+      isNotScrollView={true}
       scrollViewStyle={{paddingBottom: 16}}
     />
   )

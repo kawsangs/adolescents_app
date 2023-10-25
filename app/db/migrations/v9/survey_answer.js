@@ -5,12 +5,11 @@ const SurveyAnswerSchema = {
   primaryKey: 'uuid',
   properties: {
     uuid: 'string',
-    question_id: 'int',
-    question_code: 'string',
+    question_id: 'string',
+    option_id: 'string?',
     value: 'string',
-    score: { type: 'int', default: 0 },
     user_uuid: 'string',
-    survey_uuid: 'string',
+    survey_id: 'string',
     voice: 'string?',
   }
 };

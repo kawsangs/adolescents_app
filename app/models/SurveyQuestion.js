@@ -10,11 +10,13 @@ class SurveyQuestion {
     return BaseModel.findByAttr(MODEL, {section_id: `'${id}'`});
   }
 
+  static findAllBySurveyForm(surveyFormId) {
+    return BaseModel.findByAttr(MODEL, { survey_id: `${surveyFormId}` });
+  }
+
   static upsert(data) {
     BaseModel.create(MODEL, data);
     SurveyOption.upsertCollection(data.options)
-    console.log('============================')
-    console.log('== criteria = ', data.criterias)
     SurveyCriteria.upsertCollection(data.criterias)
   }
 

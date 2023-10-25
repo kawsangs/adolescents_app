@@ -24,6 +24,7 @@ const contactService = (() => {
 
     const response = await new ContactApi().load(page);
     apiService.handleApiResponse(response, (res) => {
+      console.log('=== contact = ', res.contacts)
       const allPage = Math.ceil(res.pagy.count / itemsPerPage)
       _syncAndRemoveByPage(page+1, allPage, successCallback, failureCallback, [...prevContacts, ...res.contacts]);
     }, (error) => !!failureCallback && failureCallback())

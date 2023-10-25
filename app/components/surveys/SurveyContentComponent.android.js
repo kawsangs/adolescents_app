@@ -97,16 +97,20 @@ const SurveyContentComponent = (props) => {
     }
   }
 
-  return <View style={{height: '100%'}}>
-          <ScrollView contentContainerStyle={{height: '100%'}}>
-            {renderQuestions()}
-          </ScrollView>
-          <SurveyBottomButtonComponent ref={buttonRef}
-            sections={sections}
-            currentSection={currentSection}
-            answers={answers}
-            onPress={goNextOrFinish}
-          />
+  return <View style={{flex: 1}}>
+          <View style={{flex: 1}}>
+            <ScrollView style={{height: '100%'}} contentContainerStyle={{padding: 16}} scrollEnabled={true}>
+              {renderQuestions()}
+            </ScrollView>
+          </View>
+          <View style={{borderWidth: 0, paddingTop: 6, paddingHorizontal: 16, paddingBottom: 16}}>
+            <SurveyBottomButtonComponent ref={buttonRef}
+              sections={sections}
+              currentSection={currentSection}
+              answers={answers}
+              onPress={goNextOrFinish}
+            />
+          </View>
         </View>
 }
 

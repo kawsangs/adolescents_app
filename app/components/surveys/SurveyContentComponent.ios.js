@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {View, ScrollView} from 'react-native';
+import { useDispatch } from 'react-redux';
 
 import SurveyQuestionComponent from './SurveyQuestionComponent';
 import SurveyBottomButtonComponent from './SurveyBottomButtonComponent';
@@ -7,13 +8,15 @@ import SurveySection from '../../models/SurveySection';
 import SurveyQuestion from '../../models/SurveyQuestion';
 import surveyService from '../../services/survey_service';
 import {navigationRef} from '../../navigators/app_navigator';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const SurveyContentComponent = (props) => {
-  const sections = SurveySection.findByTopicId(props.formId);
+  const dispatch = useDispatch();
+  const sections = SurveySection.findByTopicId(props.topicId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [playingUuid, setPlayingUuid] = useState(null);
-  const buttonRef = React.useRef(null);
+  const buttonRef = useRef(null);
+  const visibleQuestions = useRef([]);
 
   useEffect(() => {
     let formattedAnswers = {};
@@ -23,51 +26,91 @@ const SurveyContentComponent = (props) => {
     setAnswers(formattedAnswers)
   }, []);
 
-  const updateAnswers = (key, answer) => {
-    const newAnswers = answers;
+  const updateAnswers = (key, answer, questions) => {
+    let newAnswers = {...answers};
     if (!!answer && !!answer.value)
       newAnswers[currentSection][key] = answer;
     else
       delete newAnswers[currentSection][key];
 
     setAnswers(newAnswers);
-    buttonRef.current?.validateForm(currentSection, newAnswers, sections[currentSection].uuid);
+    setTimeout(() => {
+      buttonRef.current?.validateForm(currentSection, visibleQuestions.current, questions);
+    }, 200)
+  }
+
+  const handleSkipLogic = (key, index, isQuestionVisible, questionType, questions) => {
+    if (isQuestionVisible) {
+      visibleQuestions.current[index] = true;
+      // Enable the bottom button if it is the note question
+      if (questionType.toLowerCase() == 'note' && index == questions.length - 1)
+        setTimeout(() => {
+          buttonRef.current?.validateForm(currentSection, visibleQuestions.current, questions);
+        }, 200);
+    }
+    else {
+      // reset the answer of the question that is not visible
+      visibleQuestions.current[index] = false;
+      let newAnswers = {...answers};
+      if (!!newAnswers[currentSection] && !!newAnswers[currentSection][key]) {
+        delete newAnswers[currentSection][key];
+        setAnswers(newAnswers)
+      }
+    }
+
+    // Move to next section if the currenct section has no question matched with the criteria
+    if (visibleQuestions.current.filter(q => q == true).length == 0 && index == questions.length - 1) {
+      visibleQuestions.current = [];
+      if (currentSection < sections.length - 1 )
+        setCurrentSection(currentSection + 1);
+    }
   }
 
   const renderQuestions = () => {
-    return SurveyQuestion.findBySectionId(sections[currentSection].uuid).map((question, index) => {
+    const questions = SurveyQuestion.findBySectionId(sections[currentSection].id);
+    return questions.map((question, index) => {
       const key = `section_${currentSection}_q_${index}`;
+      const isQuestionVisible = surveyService.isQuestionMatchCriterias(question, answers, currentSection);
+      handleSkipLogic(key, index, isQuestionVisible, question.type.split('::')[1], questions);
+
       return <SurveyQuestionComponent
-                key={index}
+                key={key}
                 question={question}
                 surveyUuid={props.surveyUuid}
-                updateAnswers={(answer) => updateAnswers(key, answer)}
+                currentAnswer={(!!answers[currentSection] && !!answers[currentSection][key]) ? answers[currentSection][key] : null}
+                updateAnswers={(answer) => updateAnswers(key, answer, questions)}
+                isVisible={isQuestionVisible}
              />
     });
   }
 
   const goNextOrFinish = () => {
-    setPlayingUuid(null);
+    dispatch(setPlayingAudio('null'));
     if (currentSection < sections.length - 1) {
-      buttonRef.current?.validateForm(currentSection + 1, answers, sections[currentSection].uuid);
+      visibleQuestions.current = [];
+      buttonRef.current?.updateValidStatus(false);
       setCurrentSection(currentSection + 1);
     }
     else if (currentSection == sections.length - 1) {
-      console.log('==== Mark survey as finished ====')
       surveyService.finishSurvey(answers, props.surveyUuid);
-      navigationRef.current?.reset({ index: 1, routes: [{name: 'HomeViewStack'}, { name: 'NotificationView' }]});
+      navigationRef.current?.goBack();
     }
   }
 
-  return <View style={{height: '100%'}}>
-          <ScrollView contentContainerStyle={{height: '100%'}}>
-            {renderQuestions()}
-          </ScrollView>
-          <SurveyBottomButtonComponent ref={buttonRef}
-            sections={sections}
-            currentSection={currentSection}
-            onPress={goNextOrFinish}
-          />
+  return <View style={{flex: 1}}>
+          <View style={{flex: 1}}>
+            <ScrollView style={{height: '100%'}} contentContainerStyle={{padding: 16}} scrollEnabled={true}>
+              {renderQuestions()}
+            </ScrollView>
+          </View>
+          <View style={{borderWidth: 0, paddingTop: 6, paddingHorizontal: 16, paddingBottom: 16}}>
+            <SurveyBottomButtonComponent ref={buttonRef}
+              sections={sections}
+              currentSection={currentSection}
+              answers={answers}
+              onPress={goNextOrFinish}
+            />
+          </View>
         </View>
 }
 

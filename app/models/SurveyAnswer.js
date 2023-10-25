@@ -1,3 +1,4 @@
+import realm from '../db/schema';
 import BaseModel from './BaseModel';
 
 const MODEL = 'SurveyAnswer'
@@ -8,7 +9,7 @@ class SurveyAnswer {
   }
 
   static findBySurvey(surveyUuid) {
-    return [...BaseModel.findByAttr(MODEL,  { survey_uuid: `'${surveyUuid}'` })];
+    return [...BaseModel.findByAttr(MODEL,  { survey_id: `'${surveyUuid}'` })];
   }
 
   static upsert(data) {
@@ -17,6 +18,12 @@ class SurveyAnswer {
 
   static update(uuid, data) {
     BaseModel.update(MODEL, uuid, data);
+  }
+
+  static deleteSurveyAnswersBySurvey(surveyUuid) {
+    const answers = BaseModel.findByAttr(MODEL, {survey_id: `'${surveyUuid}'`});
+    if (answers.length > 0)
+      realm.write(() => realm.delete(answers));
   }
 }
 

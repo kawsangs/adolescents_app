@@ -22,8 +22,7 @@ const NavigationHeaderNotificationButtonComponent = (props) => {
   }
 
   return <NavigationHeaderButtonComponent
-            // onPress={() => navigationRef.current?.navigate("NotificationView")}
-            onPress={() => navigationRef.current?.navigate("SurveyView")}
+            onPress={() => navigationRef.current?.navigate("NotificationView")}
             icon={renderIcon()}
           />
 }

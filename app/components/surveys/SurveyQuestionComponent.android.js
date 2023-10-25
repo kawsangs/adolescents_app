@@ -5,9 +5,10 @@ import {Text} from 'react-native-paper';
 import SurveySelectOneQuestionComponent from './SurveySelectOneQuestionComponent';
 import SurveySelectMultipleQuestionComponent from './SurveySelectMultipleQuestionComponent';
 import SurveyTextQuestionComponent from './SurveyTextQuestionComponent';
+import SurveyVoiceRecordQuestionComponent from './SurveyVoiceRecordQuestionComponent';
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
-import {largeFontSize, descriptionFontSize} from '../../utils/font_size_util';
+import {largeFontSize} from '../../utils/font_size_util';
 import uuidv4 from '../../utils/uuidv4_util';
 import SurveyOption from '../../models/SurveyOption';
 
@@ -32,7 +33,7 @@ const SurveyQuestionComponent = (props) => {
     SelectOne: SurveySelectOneQuestionComponent,
     SelectMultiple: SurveySelectMultipleQuestionComponent,
     Text: SurveyTextQuestionComponent,
-    // VoiceRecording: SurveyFormVoiceRecordComponent,
+    VoiceRecording: SurveyVoiceRecordQuestionComponent,
   };
 
   const renderQuestion = () => {
@@ -53,7 +54,7 @@ const SurveyQuestionComponent = (props) => {
 
   if (props.isVisible) {
     return (
-      <View style={{padding: 16, marginTop: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
+      <View style={{padding: 16, marginBottom: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
         { renderTitle() }
         { renderQuestion() }
       </View>

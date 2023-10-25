@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import { RadioButton } from 'react-native-paper';
 
@@ -15,11 +14,10 @@ const SurveySelectOneQuestionComponent = (props) => {
 
     const answerParams = {
       question_id: props.question.id,
-      question_code: props.question.code,
       value: option.value,
-      score: option.score,
+      option: option.id,
       user_uuid: User.currentLoggedIn().uuid,
-      survey_uuid: props.surveyUuid,
+      survey_id: props.surveyUuid,
     }
     props.updateAnswer(answerParams);
   }
@@ -34,6 +32,7 @@ const SurveySelectOneQuestionComponent = (props) => {
                     value={option.id.toString()}
                     onPress={(value) => onSelect(value)}
                     selectedValue={selectedOption}
+                    isSelected={!!props.currentAnswer && props.currentAnswer.value == option.value}
                 />
         })
       }

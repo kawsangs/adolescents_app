@@ -8,7 +8,7 @@ const SurveyCriteriaSchema = {
     question_id: 'string',
     question_code: 'string?',
     operator: 'string?',
-    response_value: 'string',
+    response_value: 'string?',
   }
 };
 

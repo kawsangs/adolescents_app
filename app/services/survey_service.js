@@ -4,6 +4,7 @@ import SurveyQuestion from '../models/SurveyQuestion';
 import SurveyAnswer from '../models/SurveyAnswer';
 import SurveySection from '../models/SurveySection';
 import SurveyCriteria from '../models/SurveyCriteria';
+import User from '../models/User';
 import SurveyFormApi from '../api/surveyFormApi';
 import SurveyApi from '../api/surveyApi';
 import uuidv4 from '../utils/uuidv4_util';
@@ -35,12 +36,13 @@ const surveyService = (() => {
   function finishSurvey(answers, surveyUuid) {
     _saveAnswer(answers, () => {
       Survey.setFinished(surveyUuid);
+      syncSurveys();
     });
   }
 
   function syncSurveys() {
     const surveyApi = new SurveyApi();
-    _syncSurvey(0, Survey.getUnfinished(), surveyApi)
+    _syncSurvey(0, Survey.getFinished(), surveyApi)
   }
 
   function isQuestionMatchCriterias(question, answers, currentSection) {
@@ -90,7 +92,9 @@ const surveyService = (() => {
   function _saveSectionsAndQuestions(sections, topicId, callback) {
     sections.map(section => {
       SurveySection.upsert({ id: section.id, name: section.name, topic_id: topicId, display_order: section.display_order });
-      const questions = section.questions.map(question => ({ ...question, topic_id: topicId }));
+      const questions = section.questions.map(question => ({ ...question, topic_id: topicId, question_code: question.code }));
+      console.log('==== save questions = ', questions)
+
       SurveyQuestion.upsertCollection(questions);
     });
     surveyQuestionService.downloadAudioCollection(sections, callback);
@@ -111,33 +115,32 @@ const surveyService = (() => {
 
     surveyApi.post(surveyApi.listingUrl(), _buildParams(surveys[index]), (res) => {
       console.log('== upload survey success = ', res)
-      // delete the survey from relam after submitted to server successfully
+      // delete the survey and survey answers from relam after submitted to server successfully
+      SurveyAnswer.deleteSurveyAnswersBySurvey(surveys[index].uuid);
       Survey.deleteByUuid(surveys[index].uuid);
     }, (error) => {
       console.log('== upload survey error = ', error)
     })
   }
 
-  function _buildParams(survey, surveyAnswers) {
-    const answers_attributes = SurveyAnswer.findBySurvey(survey.uuid).map(answer => {
+  function _buildParams(survey) {
+    const surveyAnswersAttributes = SurveyAnswer.findBySurvey(survey.uuid).map(answer => {
       return {
-        uuid: answer.uuid,
         question_id: answer.question_id,
-        question_code: answer.question_code,
-        value: answer.value,
-        score: answer.score,
-        user_uuid: answer.user_uuid,
-        quiz_uuid: answer.survey_uuid
+        option_id: answer.option_id,
+        value: answer.value
       }
     });
 
+    const userId = !!survey.user_uuid ? User.findByUuid(survey.user_uuid).id : User.currentLoggedIn().id;
     return {
-      id: survey.uploaded_id,
-      uuid: survey.uuid,
-      user_uuid: survey.user_uuid,
-      topic_id: survey.topic_id,
-      quizzed_at: survey.surveyed_at,
-      answers_attributes: answers_attributes
+      survey: {
+        app_user_id: userId,
+        topic_id: survey.topic_id,
+        quizzed_at: survey.surveyed_at,
+        mobile_notification_id: survey.notification_id,
+        survey_answers_attributes: surveyAnswersAttributes,
+      }
     }
   }
 })();

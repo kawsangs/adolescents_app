@@ -35,17 +35,17 @@ const SurveySelectMultipleQuestionComponent = (props) => {
 
     setAnswers(newAnswers);
     let answerParams = {
-      question_id: option.question_id,
-      question_code: option.question_code,
+      question_id: props.question.id,
       value: '',
-      score: 0,
+      option_id: '',
       user_uuid: User.currentLoggedIn().uuid,
-      survey_uuid: props.surveyUuid,
+      survey_id: props.surveyUuid,
     }
 
     if (newAnswers.length > 0) {
       const answeredOptions = options.filter(option => newAnswers.includes(option.id.toString()));
       answerParams.value = answeredOptions.map(o => o.value).join(',');
+      answerParams.option_id = answeredOptions.map(o => o.id).join(',');
     }
     props.updateAnswer(answerParams);
   }

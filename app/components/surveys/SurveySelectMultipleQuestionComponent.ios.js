@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import { Checkbox, Text } from 'react-native-paper';
 
@@ -8,6 +8,21 @@ import User from '../../models/User';
 const SurveySelectMultipleQuestionComponent = (props) => {
   const {options} = props;
   const [answers, setAnswers] = useState([])
+
+  useEffect(() => {
+    setAnswers(getSelectedId())
+  }, []);
+
+  const getSelectedId = () => {
+    let selectedIds = [];
+    if (!!props.currentAnswer && !!props.currentAnswer.value) {
+      props.currentAnswer.value.split(',').map(value => {
+        const filteredOption = options.filter(option => option.value == value)[0]
+        selectedIds.push(filteredOption.id)
+      });
+    }
+    return selectedIds
+  }
 
   const onPressCheckItem = (option, value) => {
     let newAnswers = [...answers] || [];
@@ -20,17 +35,17 @@ const SurveySelectMultipleQuestionComponent = (props) => {
 
     setAnswers(newAnswers);
     let answerParams = {
-      question_id: option.question_id,
-      question_code: option.question_code,
+      question_id: props.question.id,
       value: '',
-      score: 0,
+      option_id: '',
       user_uuid: User.currentLoggedIn().uuid,
-      survey_uuid: props.surveyUuid,
+      survey_id: props.surveyUuid,
     }
 
     if (newAnswers.length > 0) {
       const answeredOptions = options.filter(option => newAnswers.includes(option.id.toString()));
       answerParams.value = answeredOptions.map(o => o.value).join(',');
+      answerParams.option_id = answeredOptions.map(o => o.id).join(',');
     }
     props.updateAnswer(answerParams);
   }
