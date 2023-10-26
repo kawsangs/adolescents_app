@@ -13,6 +13,10 @@ class Notification {
     return Notification.getAll().filtered('read = false');
   }
 
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(MODEL, uuid);
+  }
+
   static findById = (id) => {
     return BaseModel.findByAttr(MODEL, {id: `'${id}'`}, '', {})[0];
   }

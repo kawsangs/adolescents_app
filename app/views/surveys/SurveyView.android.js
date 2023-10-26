@@ -26,7 +26,7 @@ const SurveyView = ({route, navigation}) => {
       user_uuid: User.currentLoggedIn().uuid,
       topic_id: route.params.topic_id,
       surveyed_at: new Date(),
-      notification_id: route.params.uuid
+      notification_id: Notification.findByUuid(route.params.uuid).id,
     });
   }
 

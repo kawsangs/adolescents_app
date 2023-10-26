@@ -13,6 +13,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
 import dateTimeHelper from '../../helpers/date_time_helper';
 import {navigationRef} from '../../navigators/app_navigator';
+import visitService from '../../services/visit_service';
 
 const NotificationCardItemComponent = (props) => {
   const {t} = useTranslation();
@@ -64,6 +65,13 @@ const NotificationCardItemComponent = (props) => {
   const onPressItem = () => {
     if (!!props.notification.data) {
       const data = JSON.parse(props.notification.data)
+      const visitParams = {
+        pageable_type: 'Notification',
+        pageable_id: notification.id,
+        code: 'open_in_app_notification',
+        name: 'Open in-app notification',
+      };
+      visitService.recordVisitAction(visitParams);
       navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
       return;
     }

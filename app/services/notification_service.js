@@ -76,13 +76,13 @@ const notificationService = (() => {
   }
 
   function _navigateToSurveyScreen(topicId, notification) {
-    // const visitParams = {
-    //   pageable_type: 'NotificationOccurrence',
-    //   pageable_id: data.notification_occurrence_id,
-    //   code: 'open_remote_notification',
-    //   name: 'Open remote notification',
-    // };
-    // visitService.recordVisitAction(visitParams);
+    const visitParams = {
+      pageable_type: 'Notification',
+      pageable_id: notification.id,
+      code: 'open_remote_notification',
+      name: 'Open remote notification',
+    };
+    visitService.recordVisitAction(visitParams);
     !!notification && _navigateToNextScreen('SurveyView', { uuid: notification.uuid, topic_id: topicId, title: notification.title });
   }
 
