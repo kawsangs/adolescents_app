@@ -8,6 +8,7 @@ import SubCategoryItemsComponent from '../../components/subCategories/SubCategor
 import Category from '../../models/Category';
 import categorySyncService from '../../services/category_sync_service';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 import categoryHelper from '../../helpers/category_helper';
 
 const SubCategoryView = ({route}) => {
@@ -39,7 +40,7 @@ const SubCategoryView = ({route}) => {
   return (
     <GradientScrollViewComponent
       ref={listRef}
-      header={<SubCategoryNavigationHeaderComponent label={category.name} clearAudio={() => setPlayingUuid(null)} />}
+      header={<SubCategoryNavigationHeaderComponent label={category.name} clearAudio={() => { setPlayingUuid(null); dispatch(setPlayingAudio('null'));}} />}
       body={<SubCategoryItemsComponent items={subCategories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />}
       scrollViewStyle={subCategories.length == 0 ? {paddingHorizontal: 0, paddingBottom: 0} : {}}
       hasInternet={hasInternet}

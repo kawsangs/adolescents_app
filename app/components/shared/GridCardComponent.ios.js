@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image} from 'react-native';
 import {Card} from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 
 import GridCardNoSubCategoryComponent from './gridCards/GridCardNoSubCategoryComponent';
 import GridCardWithSubCategoryComponent from './gridCards/GridCardWithSubCategoryComponent';
@@ -10,10 +11,12 @@ import visitService from '../../services/visit_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/gridCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/gridCardComponentStyles';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GridCardComponent = (props) => {
+  const dispatch = useDispatch();
   const points = Category.getSubCategories(props.item.id).length;
   const renderInfoWithNoSubCategory = () => {
     return <GridCardNoSubCategoryComponent
@@ -39,6 +42,7 @@ const GridCardComponent = (props) => {
   }
 
   const onPress = () => {
+    dispatch(setPlayingAudio(null));
     props.updatePlayingUuid(null);
     visitService.recordVisitCategory(props.item);
   }

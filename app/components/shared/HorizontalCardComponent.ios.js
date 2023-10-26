@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Card} from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 
 import HorizontalCardImageComponent from './horizontalCard/HorizontalCardImageComponent';
 import HorizontalCardInfoComponent from './horizontalCard/HorizontalCardInfoComponent';
@@ -11,11 +12,14 @@ import categoryHelper from '../../helpers/category_helper';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 import tabletStyles from '../../assets/stylesheets/tablet/horizontalCardComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/horizontalCardComponentStyles';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HorizontalCardComponent = (props) => {
+  const dispatch = useDispatch();
   const onPress = () => {
+    dispatch(setPlayingAudio(null));
     props.updatePlayingUuid(null);
     visitService.recordVisitCategory(props.item)
   }

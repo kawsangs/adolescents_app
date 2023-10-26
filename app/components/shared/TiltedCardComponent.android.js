@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Card} from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import TiltedCardImageComponent from './tiltedCard/TiltedCardImageComponent';
@@ -14,10 +15,12 @@ import { cardElevation } from '../../constants/component_constant';
 import Contact from '../../models/Contact';
 import Facility from '../../models/Facility';
 import Video from '../../models/Video';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TiltedCardComponent = (props) => {
+  const dispatch = useDispatch();
   const subitem = {
     'catg_lvl_1_clinic_and_examination_service': { points: Facility.getAll().length, label: 'clinic' },
     'catg_lvl_1_mental_support': { points: Contact.getAll().length, label: 'service' },
@@ -26,6 +29,7 @@ const TiltedCardComponent = (props) => {
   }
 
   const onPress = () => {
+    dispatch(setPlayingAudio(null));
     props.updatePlayingUuid(null);
     categoryVisitService.recordVisit(props.item);
   }
