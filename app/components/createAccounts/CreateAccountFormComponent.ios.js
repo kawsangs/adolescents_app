@@ -10,6 +10,7 @@ import asyncStorageService from '../../services/async_storage_service';
 import {navigationRef} from '../../navigators/app_navigator';
 import {USER_INFO_CHANGED} from '../../constants/async_storage_constant';
 import { setLoginUserOccupation } from '../../features/users/loginUserOccupationSlice';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const CreateAccountFormComponent = (props) => {
   const [state, setState] = useState({
@@ -41,7 +42,10 @@ const CreateAccountFormComponent = (props) => {
               characteristics={state.characteristics}
               updateState={(fieldName, value) => updateState(fieldName, value)}
               playingUuid={playingUuid}
-              updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
+              updatePlayingUuid={(uuid) => {
+                dispatch(setPlayingAudio(uuid))
+                setPlayingUuid(uuid);
+              }}
            />
   }
 

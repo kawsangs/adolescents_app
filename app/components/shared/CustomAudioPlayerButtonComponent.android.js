@@ -16,6 +16,11 @@ const CustomAudioPlayerButtonComponent = (props) => {
     rippleWidth: btnSize
   } : {};
 
+  const updatePlayingUuid = (uuid) => {
+    dispatch(setPlayingAudio(uuid))
+    !!props.updatePlayingUuid && props.updatePlayingUuid(uuid);
+  }
+
   return <AudioPlayerButton
             {...props}
             {...rippleProps}
@@ -25,7 +30,7 @@ const CustomAudioPlayerButtonComponent = (props) => {
             iconSecondaryColor={color.secondaryColor}
             allowPause={true}
             playingUuid={playingUuid}
-            updatePlayingUuid={(uuid) => dispatch(setPlayingAudio(uuid))}
+            updatePlayingUuid={(uuid) => updatePlayingUuid(uuid)}
          />
 }
 
