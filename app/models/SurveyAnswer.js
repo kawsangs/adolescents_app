@@ -20,10 +20,14 @@ class SurveyAnswer {
     BaseModel.update(MODEL, uuid, data);
   }
 
-  static deleteSurveyAnswersBySurvey(surveyUuid) {
-    const answers = BaseModel.findByAttr(MODEL, {survey_id: `'${surveyUuid}'`});
+  static deleteAnswersWihoutVoice(surveyUuid) {
+    const answers = this.findBySurvey(surveyUuid).filter(answer => !answer.voice);
     if (answers.length > 0)
       realm.write(() => realm.delete(answers));
+  }
+
+  static deleteByUuid(uuid) {
+    BaseModel.deleteByUuid(MODEL, uuid);
   }
 }
 

@@ -10,7 +10,7 @@ const syncService = (() => {
   function syncUsersAndDependencies() {
     appUserService.syncUsers(() => {
       visitService.syncVisits();
-      // surveyService.syncSurveys();
+      surveyService.syncSurveys();
     });
   }
 })();

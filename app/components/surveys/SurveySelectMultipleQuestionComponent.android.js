@@ -36,6 +36,7 @@ const SurveySelectMultipleQuestionComponent = (props) => {
     setAnswers(newAnswers);
     let answerParams = {
       question_id: props.question.id,
+      question_code: props.question.code,
       value: '',
       option_id: '',
       user_uuid: User.currentLoggedIn().uuid,

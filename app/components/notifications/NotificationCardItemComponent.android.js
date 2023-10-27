@@ -65,13 +65,13 @@ const NotificationCardItemComponent = (props) => {
   const onPressItem = () => {
     if (!!props.notification.data) {
       const data = JSON.parse(props.notification.data)
-      const visitParams = {
-        pageable_type: 'Notification',
-        pageable_id: notification.id,
-        code: 'open_in_app_notification',
-        name: 'Open in-app notification',
-      };
-      visitService.recordVisitAction(visitParams);
+      // const visitParams = {
+      //   pageable_type: 'Notification',
+      //   pageable_id: props.notification.id,
+      //   code: 'open_in_app_notification',
+      //   name: 'Open in-app notification',
+      // };
+      // visitService.recordVisitAction(visitParams);
       navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
       return;
     }

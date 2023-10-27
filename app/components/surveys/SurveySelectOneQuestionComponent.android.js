@@ -14,6 +14,7 @@ const SurveySelectOneQuestionComponent = (props) => {
 
     const answerParams = {
       question_id: props.question.id,
+      question_code: props.question.code,
       value: option.value,
       option: option.id,
       user_uuid: User.currentLoggedIn().uuid,

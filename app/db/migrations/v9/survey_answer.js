@@ -6,6 +6,7 @@ const SurveyAnswerSchema = {
   properties: {
     uuid: 'string',
     question_id: 'string',
+    question_code: 'string?',
     option_id: 'string?',
     value: 'string',
     user_uuid: 'string',

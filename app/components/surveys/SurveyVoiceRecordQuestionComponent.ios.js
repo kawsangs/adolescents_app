@@ -17,6 +17,7 @@ const SurveyVoiceRecordQuestionComponent = (props) => {
 
     const answerParams = {
       question_id: props.question.id,
+      question_code: props.question.code,
       user_uuid: User.currentLoggedIn().uuid,
       survey_id: props.surveyUuid,
       value: audioPath || '',

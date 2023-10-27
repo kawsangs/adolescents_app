@@ -10,7 +10,7 @@ const SurveySchema = {
     surveyed_at: 'date',
     finished: 'bool?',
     uploaded_id: 'int?',
-    notification_id: 'int?'
+    notification_id: 'string?'
   }
 };
 

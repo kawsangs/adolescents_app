@@ -10,6 +10,7 @@ import SurveyApi from '../api/surveyApi';
 import uuidv4 from '../utils/uuidv4_util';
 import Comparator from '../utils/Comparator';
 import surveyQuestionService from './survey_question_service';
+import surveyAnswerService from './survey_answer_service';
 
 const OPERATORS = {
   'AND': '&&',
@@ -56,7 +57,7 @@ const surveyService = (() => {
       const comparator = Comparator.get(criteria.operator);
 
       for (let section in answers) {
-        if (Object.keys(answers[section]).length == 0 || section > currentSection)
+        if (Object.keys(answers[section]).length == 0 || parseInt(section) > currentSection)
           break;
 
         for (let answerIndex in answers[section]) {
@@ -93,8 +94,6 @@ const surveyService = (() => {
     sections.map(section => {
       SurveySection.upsert({ id: section.id, name: section.name, topic_id: topicId, display_order: section.display_order });
       const questions = section.questions.map(question => ({ ...question, topic_id: topicId, question_code: question.code }));
-      console.log('==== save questions = ', questions)
-
       SurveyQuestion.upsertCollection(questions);
     });
     surveyQuestionService.downloadAudioCollection(sections, callback);
@@ -116,7 +115,8 @@ const surveyService = (() => {
     surveyApi.post(surveyApi.listingUrl(), _buildParams(surveys[index]), (res) => {
       console.log('== upload survey success = ', res)
       // delete the survey and survey answers from relam after submitted to server successfully
-      SurveyAnswer.deleteSurveyAnswersBySurvey(surveys[index].uuid);
+      surveyAnswerService.uploadAnswersAudio(surveys[index].uuid);
+      SurveyAnswer.deleteAnswersWihoutVoice(surveys[index].uuid)
       Survey.deleteByUuid(surveys[index].uuid);
     }, (error) => {
       console.log('== upload survey error = ', error)
@@ -126,6 +126,7 @@ const surveyService = (() => {
   function _buildParams(survey) {
     const surveyAnswersAttributes = SurveyAnswer.findBySurvey(survey.uuid).map(answer => {
       return {
+        uuid: answer.uuid,
         question_id: answer.question_id,
         option_id: answer.option_id,
         value: answer.value
