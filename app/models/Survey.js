@@ -15,6 +15,10 @@ class Survey {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
+  static findByTopicId(topicId) {
+    return BaseModel.findByAttr(MODEL, {topic_id: `'${topicId}'`}, '', {});
+  }
+
   static create(data) {
     BaseModel.create(MODEL, data);
   }

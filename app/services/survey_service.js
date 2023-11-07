@@ -23,6 +23,7 @@ const surveyService = (() => {
     finishSurvey,
     syncSurveys,
     isQuestionMatchCriterias,
+    isExist,
   }
 
   function findAndSave(id, callback) {
@@ -53,6 +54,9 @@ const surveyService = (() => {
 
     let queries = [];
     criterias.map((criteria, index) => {
+      if (!criteria.response_value && !criteria.question_code)
+        queries.push('true')
+
       let matchedAnswer = null;
       const comparator = Comparator.get(criteria.operator);
 
@@ -82,6 +86,20 @@ const surveyService = (() => {
       return true
 
     return false
+  }
+
+  function isExist(topicId) {
+    const sections = [...SurveySection.findByTopicId(topicId)]
+    if (!SurveyForm.findById(topicId) || sections.length == 0)
+      return false;
+
+    let hasQuestion = true;
+    sections.map(section => {
+      if (SurveyQuestion.findBySectionId(section.id).length == 0)
+        hasQuestion = false
+    });
+
+    return hasQuestion;
   }
 
   // private method

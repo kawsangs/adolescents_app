@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
-import {Card} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
@@ -11,6 +10,7 @@ import color from '../../themes/color';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
+import uuidv4 from '../../utils/uuidv4_util';
 import dateTimeHelper from '../../helpers/date_time_helper';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
@@ -79,7 +79,7 @@ const NotificationCardItemComponent = (props) => {
   }
 
   return (
-    <Swipeable renderRightActions={renderDeleteAction}>
+    <Swipeable renderRightActions={renderDeleteAction} key={uuidv4()}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
         onPress={() => onPressItem()}
       >

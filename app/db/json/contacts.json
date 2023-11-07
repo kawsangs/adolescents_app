@@ -6,7 +6,7 @@
 "type": "hotline",
 "display_order": 1,
 "updated_at": "2023-08-03T11:10:06.500+07:00",
-"contact_directory_uuid": "e63469e6-7939-4efa-be75-375bf1d5517d"
+"contact_directory_id": "e63469e6-7939-4efa-be75-375bf1d5517d"
 },
 {
 "id": "fa2f7afb-adce-45ac-a4b2-c72463735d3a",
@@ -15,7 +15,7 @@
 "type": "sms",
 "display_order": 2,
 "updated_at": "2023-08-03T11:10:06.509+07:00",
-"contact_directory_uuid": "e63469e6-7939-4efa-be75-375bf1d5517d"
+"contact_directory_id": "e63469e6-7939-4efa-be75-375bf1d5517d"
 },
 {
 "id": "dc7a8e24-fd3e-4fe7-a5cf-bf235d3b061c",
@@ -24,7 +24,7 @@
 "type": "messenger",
 "display_order": 3,
 "updated_at": "2023-08-03T11:10:06.518+07:00",
-"contact_directory_uuid": "e63469e6-7939-4efa-be75-375bf1d5517d"
+"contact_directory_id": "e63469e6-7939-4efa-be75-375bf1d5517d"
 },
 {
 "id": "a9b4eb68-24b2-4dba-a072-b825bd6a9e21",
@@ -33,6 +33,6 @@
 "type": "telegram",
 "display_order": 4,
 "updated_at": "2023-08-03T11:10:06.526+07:00",
-"contact_directory_uuid": "e63469e6-7939-4efa-be75-375bf1d5517d"
+"contact_directory_id": "e63469e6-7939-4efa-be75-375bf1d5517d"
 }
 ]

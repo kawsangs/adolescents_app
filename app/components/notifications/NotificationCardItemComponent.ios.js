@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text} from 'react-native-paper';
-import {Card} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
@@ -11,7 +10,10 @@ import color from '../../themes/color';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import { mediumFontSize, largeFontSize, xLargeFontSize } from '../../utils/font_size_util';
+import uuidv4 from '../../utils/uuidv4_util';
 import dateTimeHelper from '../../helpers/date_time_helper';
+import {navigationRef} from '../../navigators/app_navigator';
+import visitService from '../../services/visit_service';
 
 const NotificationCardItemComponent = (props) => {
   const {t} = useTranslation();
@@ -60,10 +62,26 @@ const NotificationCardItemComponent = (props) => {
     )
   }
 
+  const onPressItem = () => {
+    if (!!props.notification.data) {
+      const data = JSON.parse(props.notification.data)
+      // const visitParams = {
+      //   pageable_type: 'Notification',
+      //   pageable_id: props.notification.id,
+      //   code: 'open_in_app_notification',
+      //   name: 'Open in-app notification',
+      // };
+      // visitService.recordVisitAction(visitParams);
+      navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
+      return;
+    }
+    setNumberOfLines(!numberOfLines ? 2 : null)
+  }
+
   return (
-    <Swipeable renderRightActions={renderDeleteAction}>
+    <Swipeable renderRightActions={renderDeleteAction} key={uuidv4()}>
       <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)}
+        onPress={() => onPressItem()}
       >
         { renderInfo() }
       </Card>

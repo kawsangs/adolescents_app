@@ -1,7 +1,6 @@
 import messaging from '@react-native-firebase/messaging';
 import Notification from '../models/Notification';
 import User from '../models/User';
-import SurveyForm from '../models/SurveyForm';
 import surveyService from './survey_service';
 import {navigationRef} from '../navigators/app_navigator';
 import visitService from './visit_service';
@@ -56,7 +55,7 @@ const notificationService = (() => {
       if (!Notification.findById(payload.mobile_notification_id))
         Notification.create({...remoteMessage.notification, id: payload.mobile_notification_id, data: payload});
 
-      if (!!payload.topic_id && !SurveyForm.findById(payload.topic_id))
+      if (!!payload.topic_id && !surveyService.isExist(payload.topic_id))
         surveyService.findAndSave(payload.topic_id);
     }
   }

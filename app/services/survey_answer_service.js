@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import SurveyAnswerApi from '../api/surveyAnswerApi';
 import SurveyAnswer from '../models/SurveyAnswer';
@@ -27,12 +28,13 @@ const surveyAnswerService = (() => {
   }
 
   function _buildParams(answer) {
+    const audioPath = Platform.OS == 'ios' ? RNFetchBlob.wrap(decodeURIComponent(answer.voice)) : RNFetchBlob.wrap('file://'+ answer.voice)
     return [
       {
         name: 'voice',
         filename : 'voiceRecord.aac',
         type:'audio/aac',
-        data: RNFetchBlob.wrap('file://'+ answer.voice)
+        data: audioPath
       }
     ]
   }

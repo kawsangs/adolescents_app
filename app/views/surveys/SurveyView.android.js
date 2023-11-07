@@ -5,7 +5,6 @@ import SurveyNavigationHeaderComponent from '../../components/surveys/SurveyNavi
 import SurveyContentComponent from '../../components/surveys/SurveyContentComponent';
 import uuidv4 from '../../utils/uuidv4_util';
 import Survey from '../../models/Survey';
-import SurveyForm from '../../models/SurveyForm';
 import User from '../../models/User';
 import Notification from '../../models/Notification';
 import surveyService from '../../services/survey_service';
@@ -14,7 +13,7 @@ const SurveyView = ({route, navigation}) => {
   const uuid = uuidv4();
   useEffect(() => {
     Notification.update(route.params.uuid, {read: true});
-    if (!SurveyForm.findById(route.params.topic_id))
+    if (!surveyService.isExist(route.params.topic_id))
       surveyService.findAndSave(route.params.topic_id, () => createNewSurvey());
     else
       createNewSurvey();
