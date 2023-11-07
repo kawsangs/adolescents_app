@@ -23,7 +23,7 @@ const SurveyQuestionComponent = (props) => {
                 <CustomAudioPlayerButtonComponent
                   rippled={true}
                   itemUuid={props.question.id}
-                  audio={props.question.audio}
+                  audio={ !!props.question.audio ? {uri: props.question.audio} : null}
                 />
               </View>
            </View>

@@ -4,6 +4,7 @@ import fileService from './file_service';
 import Facility from '../models/Facility';
 import DownloadedFile from '../models/DownloadedFile';
 import {itemsPerPage} from '../constants/sync_data_constant';
+import fileUtil from '../utils/file_util';
 
 const facilitySyncService = (() => {
   return {
@@ -55,7 +56,7 @@ const facilitySyncService = (() => {
     const facility = facilities[index]
     if (!!facility.logo && !DownloadedFile.isFileNameExisted(facility.logo)) {
       fileService.download(facility.logo, (filename, isNewFile) => {
-        !!isNewFile && DownloadedFile.create({name: filename, type: 'image'})
+        !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'})
         _handleDownloadLogo(index + 1, facilities, callback)
       }, () => _handleDownloadLogo(index + 1, facilities, callback))
     }
