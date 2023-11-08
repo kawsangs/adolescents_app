@@ -8,6 +8,7 @@ const SurveyOptionSchema = {
     name: 'string',
     question_id: 'string',
     value: 'string',
+    image_url: 'string?',
   }
 };
 

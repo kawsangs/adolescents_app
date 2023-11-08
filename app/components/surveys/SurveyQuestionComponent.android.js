@@ -6,6 +6,7 @@ import SurveySelectOneQuestionComponent from './SurveySelectOneQuestionComponent
 import SurveySelectMultipleQuestionComponent from './SurveySelectMultipleQuestionComponent';
 import SurveyTextQuestionComponent from './SurveyTextQuestionComponent';
 import SurveyVoiceRecordQuestionComponent from './SurveyVoiceRecordQuestionComponent';
+import SurveyNoteComponent from './SurveyNoteComponent';
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
@@ -34,6 +35,7 @@ const SurveyQuestionComponent = (props) => {
     SelectMultiple: SurveySelectMultipleQuestionComponent,
     Text: SurveyTextQuestionComponent,
     VoiceRecording: SurveyVoiceRecordQuestionComponent,
+    Note: SurveyNoteComponent,
   };
 
   const renderQuestion = () => {

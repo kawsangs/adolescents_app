@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
-import SurveyOption from './SurveyOption';
 import SurveyCriteria from './SurveyCriteria';
 import realm from '../db/schema';
+import surveyOptionService from '../services/survey_option_service';
 
 const MODEL = 'SurveyQuestion';
 
@@ -10,13 +10,13 @@ class SurveyQuestion {
     return BaseModel.findByAttr(MODEL, {section_id: `'${id}'`});
   }
 
-  static findAllBySurveyForm(surveyFormId) {
-    return BaseModel.findByAttr(MODEL, { survey_id: `${surveyFormId}` });
+  static findAllByTopicId(topicId) {
+    return BaseModel.findByAttr(MODEL, { topic_id: `${topicId}` });
   }
 
   static upsert(data) {
     BaseModel.create(MODEL, data);
-    SurveyOption.upsertCollection(data.options)
+    surveyOptionService.save(data.options);
     SurveyCriteria.upsertCollection(data.criterias)
   }
 
@@ -30,6 +30,11 @@ class SurveyQuestion {
     realm.write(() => {
       realm.create(MODEL, Object.assign(data, { id: id }), 'modified');
     });
+  }
+
+  static deleteByTopicId(topicId) {
+    questions = BaseModel.findByAttr(MODEL, { topic_id: `'${topicId}'` });
+
   }
 }
 

@@ -15,6 +15,20 @@ class SurveyForm {
   static upsert(data) {
     BaseModel.create(MODEL, {...data, app_version: DeviceInfo.getVersion()});
   }
+
+  static deleteByIdWithDependency(id) {
+    const form = this.findById(id);
+    if (!!form) {
+      // Question.byForm(id).map(question => {
+      //   Option.deleteAllByQuestionId(question.id);
+      //   Criteria.deleteAllByQuestionId(question.id);
+      // });
+      // Question.deleteAllByFormId(id);
+      // realm.write(() => {
+      //   realm.delete(form);
+      // });
+    }
+  }
 }
 
 export default SurveyForm;
