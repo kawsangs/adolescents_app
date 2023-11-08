@@ -12,7 +12,7 @@ import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const SurveyContentComponent = (props) => {
   const dispatch = useDispatch();
-  const sections = SurveySection.findByTopicId(props.topicId);
+  const sections = SurveySection.findAllByTopicId(props.topicId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
   const buttonRef = useRef(null);

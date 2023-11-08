@@ -48,7 +48,7 @@ const surveyService = (() => {
   }
 
   function isQuestionMatchCriterias(question, answers, currentSection) {
-    const criterias = SurveyCriteria.findByQuestion(question.id);
+    const criterias = SurveyCriteria.findAllByQuestion(question.id);
     if (criterias.length == 0)
       return true;
 
@@ -89,7 +89,7 @@ const surveyService = (() => {
   }
 
   function isExist(topicId) {
-    const sections = [...SurveySection.findByTopicId(topicId)]
+    const sections = [...SurveySection.findAllByTopicId(topicId)]
     if (!SurveyForm.findById(topicId) || sections.length == 0)
       return false;
 

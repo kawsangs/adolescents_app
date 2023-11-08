@@ -11,7 +11,7 @@ class SurveyQuestion {
   }
 
   static findAllByTopicId(topicId) {
-    return BaseModel.findByAttr(MODEL, { topic_id: `${topicId}` });
+    return BaseModel.findByAttr(MODEL, { topic_id: `'${topicId}'` });
   }
 
   static upsert(data) {
@@ -32,9 +32,8 @@ class SurveyQuestion {
     });
   }
 
-  static deleteByTopicId(topicId) {
-    questions = BaseModel.findByAttr(MODEL, { topic_id: `'${topicId}'` });
-
+  static deleteAllByTopicId(topicId) {
+    BaseModel.deleteByCollection(this.findAllByTopicId(topicId));
   }
 }
 

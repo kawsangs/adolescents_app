@@ -45,7 +45,7 @@ const SurveyQuestionComponent = (props) => {
                 key: uuidv4(),
                 surveyUuid: props.surveyUuid,
                 question: props.question,
-                options: SurveyOption.findByQuestion(props.question.id),
+                options: SurveyOption.findAllByQuestion(props.question.id),
                 buttonColor: color.primaryColor,
                 statisticPrefix: 'Survey',
                 currentAnswer: props.currentAnswer,

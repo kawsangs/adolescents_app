@@ -6,33 +6,40 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import HeaderWithDiscardAlertComponent from '../shared/HeaderWithDiscardAlertComponent';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
+import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
+import Survey from '../../models/Survey';
 
-const SurveyNavigationHeaderComponent = () => {
+const SurveyNavigationHeaderComponent = (props) => {
   const {t} = useTranslation();
-
-  // Todo: move label to locale
   const confirmMessage = () => {
     return <View style={{flexDirection: "row"}}>
-              <View style={{marginTop: 4}}><Icon name="exclamation" size={22} color={color.secondaryColor} /></View>
-              <View style={{marginLeft: 16}}>
-                <Text style={{fontSize: largeFontSize(), marginBottom: 8}}>រាល់ចម្លើយដែលអ្នកបានឆ្លើយនឹងត្រូវបាត់បង់។</Text>
+              <View><Icon name="exclamation" size={22} color={color.secondaryColor} /></View>
+              <View style={{marginLeft: 16, flex: 1, borderWidth: 0}}>
+                <Text style={{fontSize: largeFontSize(), marginBottom: 4}}>{t('allYourAnswersWillBeDeleted')}</Text>
                 <Text style={{fontSize: largeFontSize()}}>
-                  តើអ្នក​ពិតជា​ចង់​ចាកចេញ​ពី​ការស្ទង់​មតិ​នេះ​មែន​ទេ?
+                  {t('doYouReallyWantToLeaveThisSurvey')}
                 </Text>
+              </View>
+              <View>
+                <CustomAudioPlayerButtonComponent
+                  rippled={true}
+                  itemUuid='exit-survey-audio'
+                  audio={null}
+                />
               </View>
            </View>
   }
 
   return <HeaderWithDiscardAlertComponent
-            title="Survey"
+            title={props.title}
             leftButton={(onPress) => <NavigationHeaderBackButtonComponent onPress={() => onPress()} />}
             message={() => confirmMessage()}
-            leftButtonLabel={'បោះបង់'}
-            rightButtonLabel={'បាទ/ចាស'}
+            leftButtonLabel={t('cancel')}
+            rightButtonLabel={t('yes')}
             hasDiscardAlert={() => (true)}
-            onGoBack={() => console.log('== Remove Survey from realm ==')}
+            onGoBack={() => Survey.deleteByUuid(props.surveyUuid)}
          />
 }
 

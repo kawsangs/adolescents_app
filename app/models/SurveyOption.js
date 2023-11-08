@@ -7,7 +7,7 @@ class SurveyOption {
     return BaseModel.getAll(MODEL);
   }
 
-  static findByQuestion(questionId) {
+  static findAllByQuestion(questionId) {
     return BaseModel.findByAttr(MODEL, {question_id: `'${questionId}'`});
   }
 
@@ -19,6 +19,10 @@ class SurveyOption {
     items.map(item => {
       this.upsert(item);
     });
+  }
+
+  static deleteAllByQuestionId(questionId) {
+    BaseModel.deleteByCollection(this.findAllByQuestion(questionId));
   }
 }
 

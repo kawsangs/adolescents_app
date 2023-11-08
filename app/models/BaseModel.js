@@ -53,6 +53,17 @@ class BaseModel {
     realm.write(() => realm.delete(items));
   }
 
+  static deleteItem(item) {
+    if (!!item)
+      realm.write(() => realm.delete(item));
+  }
+
+  static deleteByCollection(items) {
+    if (items.length == 0) return;
+
+    realm.write(() => realm.delete(items));
+  }
+
   static containsByAttr = (model, column, value) => {
     return realm.objects(model).filtered(`${column} CONTAINS[c] ${value}`);
   }

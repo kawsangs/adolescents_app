@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import Notification from '../models/Notification';
 import User from '../models/User';
@@ -15,7 +16,6 @@ const notificationService = (() => {
   // when receiving push notification when the app is in background or terminated (works when called in the index.js)
   function onNotificationArrivedInBackground() {
     messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('== 1. == set background message handler = ', remoteMessage);
       _saveNotificationAndSurvey(remoteMessage);
     });
   }
@@ -23,7 +23,6 @@ const notificationService = (() => {
   // when receiving push notification when the app is in foreground (works when called in the App.js)
   function onNotificationArrivedInForeground(callback) {
     messaging().onMessage(async remoteMessage => {
-      console.log('== 2. == On message = ', remoteMessage);
       _saveNotificationAndSurvey(remoteMessage);
       !!callback && callback();
     });
@@ -32,15 +31,16 @@ const notificationService = (() => {
   function onNotificationOpenedApp() {
     // when the notification open the app from a background state (worked)
     messaging().onNotificationOpenedApp(remoteMessage => {
-      console.log('== 3. == On notification opened app = ', remoteMessage);
-      _handleScreenNavigation(remoteMessage);
+      _saveNotificationAndSurvey(remoteMessage);
+      setTimeout(() => {
+        _handleScreenNavigation(remoteMessage);
+      }, 50);
     });
 
     // when the notification opened the app from a quit state (worked)
     // This method also get called when the app launched without receiving any push notification
     messaging().getInitialNotification()
       .then( remoteMessage => {
-        console.log('== 4. == get initial notification (from quit state) = ', remoteMessage);
         _saveNotificationAndSurvey(remoteMessage);
         _handleScreenNavigation(remoteMessage);
       })
