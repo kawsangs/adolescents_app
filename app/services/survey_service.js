@@ -131,7 +131,6 @@ const surveyService = (() => {
     if (index == surveys.length) return;
 
     surveyApi.post(surveyApi.listingUrl(), _buildParams(surveys[index]), (res) => {
-      console.log('== upload survey success = ', res)
       // delete the survey and survey answers from relam after submitted to server successfully
       surveyAnswerService.uploadAnswersAudio(surveys[index].uuid);
       SurveyAnswer.deleteAnswersWihoutVoice(surveys[index].uuid)

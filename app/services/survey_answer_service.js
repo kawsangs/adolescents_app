@@ -19,7 +19,6 @@ const surveyAnswerService = (() => {
       return
 
     surveyAnswerApi.update(surveyAnswerApi.listingObjectUrl(answers[index].uuid), _buildParams(answers[index]), (res) => {
-      console.log('== upload survey answer audio success = ')
       SurveyAnswer.deleteByUuid(answers[index]);
       _upload(index + 1, answers, surveyAnswerApi);
     }, (error) => {

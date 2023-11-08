@@ -36,7 +36,6 @@ const surveyQuestionService = (() => {
       SurveyQuestion.update(question.id, { audio: fileUrl });
       _downloadQuestionAudio(index + 1, questions, callback);
     }, () => {
-      console.log('=== download audio error ===')
       !!callback && callback()
     });
   }

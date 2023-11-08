@@ -76,7 +76,7 @@ const notificationService = (() => {
 
   function _navigateToSurveyScreen(topicId, notification) {
     const visitParams = {
-      pageable_type: 'Notification',
+      pageable_type: 'MobileNotification',
       pageable_id: notification.id,
       code: 'open_remote_notification',
       name: 'Open remote notification',
