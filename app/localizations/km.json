@@ -157,5 +157,8 @@
   "yes": "បាទ/ចាស",
   "allYourAnswersWillBeDeleted": "រាល់ចម្លើយដែលអ្នកបានឆ្លើយនឹងត្រូវបាត់បង់។",
   "doYouReallyWantToLeaveThisSurvey": "តើអ្នក​ពិតជា​ចង់​ចាកចេញ​ពី​ការស្ទង់​មតិ​នេះ​មែន​ទេ?",
-  "thankYouForPaticipatingInTheSurvey": "អរគុណសម្រាប់ការចូលរួមការស្ទង់មតិ"
+  "thankYouForPaticipatingInTheSurvey": "អរគុណសម្រាប់ការចូលរួមការស្ទង់មតិ",
+  "noSurveyQuestionnaireDueToNoInternetConnection": "មិនមានកម្រងសំណួរនៃការស្ទង់មតិ! បញ្ហាអាចបណ្ដាលមកពីមិនមានប្រព័ន្ធអ៊ីនធឺណិត។ សូមចុចប៊ូតុងខាងក្រោមដើម្បីទាញយកកម្រងសំណួរនៃការស្ទង់មតិ។",
+  "failedToFetchSurveyQuestion": "មានបញ្ហារអាក់រអួលក្នុងការទាញយកកម្រងសំណួរនៃការស្ទង់មតិ។ សូមពិនិត្យមើលប្រព័ន្ធអ៊ីនធឺណិតរបស់អ្នកហើយព្យាយាមម្តងទៀត។",
+  "downloadSurvey": "ទាញយកកម្រងសំណួរ"
 }

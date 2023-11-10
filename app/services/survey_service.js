@@ -26,12 +26,12 @@ const surveyService = (() => {
     isExist,
   }
 
-  function findAndSave(id, callback) {
+  function findAndSave(id, successCallback, failureCallback) {
     new SurveyFormApi().load(id, (res) => {
       _saveForm(res);
-      _saveSectionsAndQuestions(res.sections, id, callback);
+      _saveSectionsAndQuestions(res.sections, id, successCallback);
     }, (error) => {
-      console.log('== find survey error = ', error)
+      !!failureCallback && failureCallback(error);
     });
   }
 
