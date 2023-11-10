@@ -41,6 +41,7 @@ const TopicMainComponent = (props) => {
   return (
     <TopicListComponent onPress={(item, moveNext) => onPress(item)}
       playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} hideAudio={false}
+      searchText={props.searchText}
     />
   )
 }

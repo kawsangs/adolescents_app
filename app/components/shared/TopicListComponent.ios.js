@@ -23,6 +23,14 @@ const TopicListComponent = (props) => {
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, []);
 
+  useEffect(() => {
+    if (!!props.searchText)
+      setTopics(Topic.containByName(props.searchText))
+    else
+      setTopics(Topic.getAll());
+    
+  }, [props.searchText])
+
   const renderItem = (item, index) => {
     return <TopicListCardComponent key={`const_${index}`} uuid={item.uuid} name={item.name_km} index={index} audio={item.audioSource}
               playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} hideAudio={props.hideAudio}

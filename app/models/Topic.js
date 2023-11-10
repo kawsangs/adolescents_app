@@ -15,6 +15,10 @@ class Topic {
     return BaseModel.findByUuid(MODEL, uuid);
   }
 
+  static containByName = (name) => {
+    return BaseModel.containsByAttr(MODEL, 'name_km', `'${name}'`);
+  }
+
   static create = (data) => {
     BaseModel.create(MODEL, data);
   }
