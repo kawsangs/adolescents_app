@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
+import TextHighlight from 'react-native-text-highlighter';
 
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
@@ -44,7 +45,13 @@ const TopicListCardComponent = (props) => {
         <View style={{flex: 1}}>
           { !props.hideAudio && renderAudioButton()}
           <View style={styles.labelContainer}>
-            <Text numberOfLines={2} style={[styles.label, props.hideAudio && {paddingTop: 0 }]}>{props.name}</Text>
+            <TextHighlight
+              textToHighlight={props.name}
+              searchWords={[props.searchText]}
+              containerStyle={{marginTop: 10}}
+              numberOfLines={2}
+              textStyle={styles.label}
+            />
           </View>
         </View>
         <Icon name="chevron-right" color={color.primaryColor} size={32} style={{width: 25, alignSelf: 'center'}} />

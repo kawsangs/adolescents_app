@@ -35,6 +35,7 @@ const TopicListComponent = (props) => {
               playingUuid={props.playingUuid} updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)} hideAudio={props.hideAudio}
               onPress={() => props.onPress(item, (item.move_next != null && item.move_next != undefined) ? item.move_next : true)}
               accessibilityLabel={`ជំនួយទី${index + 1}`}
+              searchText={props.searchText}
            />
   }
 

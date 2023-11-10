@@ -1,6 +1,8 @@
 import {StyleSheet, Platform} from 'react-native';
 import {isLowPixelDensityDevice} from '../../../utils/responsive_util';
 import {cardBorderRadius, descriptionFontSize} from '../../../constants/component_constant';
+import {FontFamily} from '../../../themes/font';
+import color from '../../../themes/color';
 
 const topicListCardComponentStyles = StyleSheet.create({
   card: {
@@ -23,9 +25,10 @@ const topicListCardComponentStyles = StyleSheet.create({
     zIndex: -1,
   },
   label: {
+    color: color.blackColor,
+    fontFamily: FontFamily.regular,
     fontSize: descriptionFontSize,
     lineHeight: 26,
-    paddingTop: 10
   },
   btnContainer: {
     position: 'absolute',
