@@ -37,6 +37,7 @@ const categorySyncService = (() => {
   }
 
   function _handleSaveCategory(categories) {
+    Category.seedData();
     categories.map(category => {
       _saveOrUpdate(category);
 
