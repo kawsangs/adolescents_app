@@ -8,8 +8,10 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import NoResultMessageComponent from '../shared/NoResultMessageComponent';
 import VideoThumbnailComponent from './VideoThumbnailComponent';
+import TagScrollBarComponent from '../shared/tagScrollBars/TagScrollBarComponent';
 import Video from '../../models/Video';
 import VideoAuthor from '../../models/VideoAuthor';
+import Tag from '../../models/Tag';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation} from '../../constants/component_constant';
 import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
@@ -25,8 +27,11 @@ const VideoItemListComponent = (props) => {
   const [videos, setVideos] = useState(Video.getAll());
   const {t} = useTranslation();
   const listRef = useRef();
+  const [tags] = useState(Tag.getAll());
   const [flatListRef, setFlatListRef] = useState(React.createRef());
   const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
+
+  console.log('== tags = ', tags)
 
   useEffect(() => {
     (!!flatListRef.scrollToEnd && videos.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
@@ -68,21 +73,46 @@ const VideoItemListComponent = (props) => {
     }, () => listRef.current?.stopRefreshLoading())
   }
 
-  if (videos.length == 0)
-    return <NoResultMessageComponent/>
+  const updateVideoList = (tagUuid) => {
+    setVideos(Video.findByTagAndAuthor(tagUuid, !!selectedVidAuthor ? selectedVidAuthor.uuid : null));
+  }
 
-  return <CustomFlatListComponent
-            setFlatListRef={(ref) => setFlatListRef(ref)}
-            ref={listRef}
-            data={videos}
-            renderItem={({item}) => renderItem(item)}
-            keyExtractor={item => item.uuid}
-            hasInternet={props.hasInternet}
-            endReachedAction={() => onEndReached()}
-            refreshingAction={() => onRefresh()}
-            customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 120}}
-            style={{paddingTop: 16}}
-          />
+  return (
+    <View style={{flex: 1, flexDirection: 'column'}}>
+      <TagScrollBarComponent tags={tags} onToggleFilter={updateVideoList} hasInternet={true} contentContainerStyle={{paddingRight: screenHorizontalPadding}}/>
+
+      { videos.length == 0 ? <NoResultMessageComponent/>
+        :
+        <CustomFlatListComponent
+          setFlatListRef={(ref) => setFlatListRef(ref)}
+          ref={listRef}
+          data={videos}
+          renderItem={({item}) => renderItem(item)}
+          keyExtractor={item => item.uuid}
+          hasInternet={props.hasInternet}
+          endReachedAction={() => onEndReached()}
+          refreshingAction={() => onRefresh()}
+          customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 120}}
+          style={{paddingTop: 16}}
+        />
+      }
+    </View>
+  )
+
+
+
+  // return <CustomFlatListComponent
+  //           setFlatListRef={(ref) => setFlatListRef(ref)}
+  //           ref={listRef}
+  //           data={videos}
+  //           renderItem={({item}) => renderItem(item)}
+  //           keyExtractor={item => item.uuid}
+  //           hasInternet={props.hasInternet}
+  //           endReachedAction={() => onEndReached()}
+  //           refreshingAction={() => onRefresh()}
+  //           customContentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 120}}
+  //           style={{paddingTop: 16}}
+  //         />
 }
 
 export default VideoItemListComponent;
