@@ -51,6 +51,11 @@ const VideoItemListComponent = (props) => {
         <View style={styles.labelContainer}>
           <BoldLabelComponent label={video.name} numberOfLines={2} style={styles.title} />
           <Text style={styles.author} numberOfLines={1}>{t('author')}: {VideoAuthor.getName(video.author_uuid)}</Text>
+          { !!video.tag_list &&
+            <Text style={[styles.author, {color: '#b5b5b5', flex: 1}]} numberOfLines={1}>
+              {video.tag_list}
+            </Text>
+          }
         </View>
       </Card>
     )
