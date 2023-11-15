@@ -13,6 +13,7 @@ const systemBackButtonHelper = (() => {
 
   function handleBackToExitApp(message) {
     let lastPress = null;
+    let isToastVisible = false;
 
     return BackHandler.addEventListener('hardwareBackPress', () => {
       const currentScreen = navigationRef.current?.getCurrentRoute().name.toLowerCase();
@@ -25,8 +26,13 @@ const systemBackButtonHelper = (() => {
 
       if (lastPress && (now - lastPress) < DOUBLE_PRESS_DELAY)
         return false;
-      else
+      else if (!isToastVisible) {
         toastMessageHelper.showMessage(message);
+        isToastVisible = true;
+        setTimeout(() => {
+          isToastVisible = false;
+        }, 2500);
+      }
 
       lastPress = now;
       return true;
