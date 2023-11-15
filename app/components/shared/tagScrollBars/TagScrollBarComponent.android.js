@@ -7,7 +7,7 @@ import color from '../../../themes/color';
 import {largeFontSize} from '../../../utils/font_size_util';
 import componentUtil from '../../../utils/component_util';
 import {isLowPixelDensityDevice, getStyleOfDevice} from '../../../utils/responsive_util';
-import tagSyncService from '../../../services/tag_sync_service';
+import TagSyncService from '../../../services/tag_sync_service';
 import {screenHorizontalPadding} from '../../../constants/component_constant';
 
 const TagScrollBarComponent = (props) => {
@@ -31,7 +31,7 @@ const TagScrollBarComponent = (props) => {
     if (synced)
       return listRef.current?.stopPaginateLoading()
 
-    tagSyncService.syncAllData((newTags) => {
+    new TagSyncService(props.type).syncAllData((newTags) => {
       synced = true;
       listRef.current?.stopPaginateLoading();
     }, () => listRef.current?.stopPaginateLoading())

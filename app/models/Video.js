@@ -1,5 +1,5 @@
 import BaseModel from './BaseModel';
-import Tag from './Tag';
+import VideoTag from './VideoTag';
 import videos from '../db/json/videos.json';
 import {itemsPerPage} from '../constants/sync_data_constant';
 
@@ -36,7 +36,7 @@ class Video {
 
     let filteredTags = this.getAll();
     if (!!tagUuid) {
-      const tag = Tag.findByUuid(tagUuid);
+      const tag = VideoTag.findByUuid(tagUuid);
       filteredTags = this.findByTag(tag.name);
     }
     if (!!authorUuid)
