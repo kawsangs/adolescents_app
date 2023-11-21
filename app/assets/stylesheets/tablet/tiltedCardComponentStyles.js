@@ -10,10 +10,10 @@ const tiltedCardComponentStyles = StyleSheet.create({
     borderRadius: 70,
     ...Platform.select({
       ios: {
-        maxHeight: 178,
+        maxHeight: 158,
       },
       android: {
-        maxHeight: 188,
+        maxHeight: 158,
       }
     })
   },
@@ -69,18 +69,22 @@ const tiltedCardComponentStyles = StyleSheet.create({
   },
   title: {
     fontSize: cardTitleFontSize,
-    flex: 1,
+    flexGrow: 1,
     lineHeight: 27,
     paddingHorizontal: 8,
     ...Platform.select({
       ios: {
         paddingTop: 8,
+      },
+      android: {
+        paddingTop: 10
       }
-    })
+    }),
   },
   footer: {
-    flex: 3,
-    paddingTop: 8
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 8,
   }
 });
 

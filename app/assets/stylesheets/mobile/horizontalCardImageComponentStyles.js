@@ -3,13 +3,13 @@ import { cardBorderRadius } from '../../../constants/component_constant';
 
 const HorizontalCardImageComponentStyles = StyleSheet.create({
   container:{
-    flex: 2
+    width: 120
   },
   image: {
     borderRadius: cardBorderRadius,
     elevation: 6,
     width: '100%',
-    height: '103%',
+    height: '100%',
     position: 'absolute',
     top: -16,
   }

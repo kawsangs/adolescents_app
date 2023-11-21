@@ -55,7 +55,7 @@ const TiltedCardComponent = (props) => {
               audio={!!props.item.audio ? props.item.audio : categoryHelper.getFileByUrl(props.item.audio_url, 'audio')}
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
-              containerStyle={{paddingLeft: 8, paddingBottom: 1}}
+              containerStyle={{paddingLeft: 8, paddingBottom: 1, paddingRight: getStyleOfDevice(0, 8)}}
             />
           </View>
         </View>

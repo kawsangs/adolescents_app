@@ -50,7 +50,7 @@ const categoryHelper = (() => {
         code: category.code,
         audio_url: category.audio_url,
         image_url: category.image_url,
-        display: (index == 0 || index == 1) ? ROW_CARD : TILTED_CARD
+        display: index == 0 ? ROW_CARD : TILTED_CARD
       }
       formattedCates.push(data);
     })

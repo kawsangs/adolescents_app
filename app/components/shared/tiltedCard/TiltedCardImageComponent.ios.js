@@ -3,16 +3,17 @@ import {View, StyleSheet, Image} from 'react-native';
 import {getStyleOfDevice} from '../../../utils/responsive_util';
 
 const TiltedCardImageComponent = (props) => {
-  return <View style={{flex: 2}}>
+  return <View style={{height: 45}}>
             <Image source={props.image} style={styles.image} resizeMode='contain' />
          </View>
 }
 
 const styles = StyleSheet.create({
   image: {
-    height: getStyleOfDevice(145, 115),
-    width: '90%',
-    top: getStyleOfDevice(-75, -46),
+    height: getStyleOfDevice(115, 90),
+    width: '75%',
+    top: getStyleOfDevice(-65, -44),
+    alignSelf: 'center',
     zIndex: 1,
   }
 });

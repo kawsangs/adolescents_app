@@ -18,6 +18,7 @@ const HorizontalCardInfoComponent = (props) => {
 
       <CardPointAndAudioFooterComponent uuid={props.uuid} index={props.index} points={props.points} audio={props.audio} playingUuid={props.playingUuid}
         updatePlayingUuid={props.updatePlayingUuid}
+        containerStyle={{paddingRight: 4}}
       />
     </View>
   )
