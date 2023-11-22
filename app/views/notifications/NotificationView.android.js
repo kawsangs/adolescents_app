@@ -12,6 +12,7 @@ import NavigationHeaderWithBackButtonComponent from '../../components/shared/Nav
 import { resetNotification } from '../../features/notifications/unreadNotificationsSlice';
 import color from '../../themes/color';
 import Notification from '../../models/Notification';
+import SurveyForm from '../../models/SurveyForm';
 import {largeFontSize} from '../../utils/font_size_util';
 
 const STEP = 20
@@ -62,6 +63,11 @@ const NotificationView = (props) => {
 
   const deleteNotification = () => {
     setNotifications(notifications.filter(notification => notification.uuid != selectedNotification.uuid))
+    if (!!selectedNotification.data) {
+      const data = JSON.parse(selectedNotification.data)
+      if (!!data && data.topic_id)
+        SurveyForm.deleteByIdWithDependency(data.topic_id);
+    }
     Notification.deleteByUuid(selectedNotification.uuid);
     setSelectedNotification(null);
     setModalVisible(false);

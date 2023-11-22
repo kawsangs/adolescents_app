@@ -16,10 +16,10 @@ const fileService = (() => {
     }
 
     if (await RNFS.exists(options.toFile))
-      return !!successCallback && successCallback(filename, false);   // return (filename, isNewFile)
+      return !!successCallback && successCallback(options.toFile, false);   // return (filename, isNewFile)
 
     await RNFS.downloadFile(options).promise.then(res => {
-      !!successCallback && successCallback(filename, true)
+      !!successCallback && successCallback(options.toFile, true)
     }).catch(err => {
       !!failureCallback && failureCallback()
     })

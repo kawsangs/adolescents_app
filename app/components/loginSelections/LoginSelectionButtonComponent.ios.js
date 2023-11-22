@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useDispatch } from 'react-redux';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -12,18 +13,18 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 import sharedStyles from '../../assets/stylesheets/shared/sharedStyles';
 import tabletStyles from '../../assets/stylesheets/tablet/loginSelectionButtonComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/loginSelectionButtonComponentStyles';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const LoginSelectionButtonComponent = (props) => {
+  const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(false);
   const renderAudioButton = () => {
     return <CustomAudioPlayerButtonComponent
               audio={props.audio}
               buttonStyle={styles.audioBtn}
               itemUuid={props.uuid}
-              playingUuid={props.playingUuid}
-              updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={props.accessibilityLabel}
               buttonColor="transparent"
            />
@@ -39,6 +40,7 @@ const LoginSelectionButtonComponent = (props) => {
   }
 
   const onPress = () => {
+    dispatch(setPlayingAudio('null'));
     setDisabled(true);
     !!props.onPress && props.onPress();
 

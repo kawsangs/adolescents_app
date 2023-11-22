@@ -27,7 +27,7 @@ class BaseModel {
 
   static create = (model, data) => {
     realm.write(() => {
-      realm.create(model, data);
+      realm.create(model, data, 'modified');
     });
   }
 
@@ -48,6 +48,17 @@ class BaseModel {
 
   static deleteAll = (model) => {
     const items = realm.objects(model);
+    if (items.length == 0) return;
+
+    realm.write(() => realm.delete(items));
+  }
+
+  static deleteItem(item) {
+    if (!!item)
+      realm.write(() => realm.delete(item));
+  }
+
+  static deleteByCollection(items) {
     if (items.length == 0) return;
 
     realm.write(() => realm.delete(items));

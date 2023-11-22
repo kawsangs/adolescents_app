@@ -4,7 +4,6 @@ import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Notification from '../models/Notification';
 import {REGISTERED_TOKEN, TOKEN_SYNCED} from '../constants/async_storage_constant';
 
 const MobileTokenService = (() => {
@@ -12,54 +11,6 @@ const MobileTokenService = (() => {
 
   return {
     handleSyncingToken: handleSyncingToken,
-    onNotificationOpenApp: onNotificationOpenApp,
-    onNotificationArrived: onNotificationArrived
-  }
-
-  function onNotificationArrived(callback) {
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      _upsertToMessage(remoteMessage);
-
-      !!callback && callback();
-    });
-
-    messaging().onMessage(async remoteMessage => {
-      _upsertToMessage(remoteMessage);
-
-      !!callback && callback();
-    });
-  }
-
-  function _upsertToMessage(remoteMessage) {
-    message = Notification.findById(remoteMessage.messageId);
-
-    if(!!message) return;
-
-    params = {
-      id: remoteMessage.messageId,
-      title: remoteMessage.notification.title,
-      content: remoteMessage.notification.body
-    }
-
-    Notification.create(params)
-  }
-
-  function onNotificationOpenApp(callback) {
-    messaging().onNotificationOpenedApp(remoteMessage => {
-      if (remoteMessage)
-        _upsertToMessage(remoteMessage);
-
-      callback();
-    });
-
-    messaging()
-      .getInitialNotification()
-      .then(async remoteMessage => {
-        if (remoteMessage) {
-          _upsertToMessage(remoteMessage);
-          callback();
-        }
-      })
   }
 
   async function requestUserPermission(retryCount = 1) {

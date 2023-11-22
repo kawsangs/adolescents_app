@@ -7,15 +7,13 @@ import navigationUtil from '../../utils/navigation_util';
 
 import { useDispatch } from 'react-redux';
 import { increaseNotification } from '../../features/notifications/unreadNotificationsSlice'
-
-import MobileTokenService from '../../services/mobile_token_service';
+import notificationService from '../../services/notification_service';
 
 const MainView = () => {
   const dispatch = useDispatch()
-
-  MobileTokenService.onNotificationArrived(function() {
+  notificationService.onNotificationArrivedInForeground(() => {
     dispatch(increaseNotification());
-  })
+  });
 
   useEffect(() => {
     const initialNavigation = async () => {

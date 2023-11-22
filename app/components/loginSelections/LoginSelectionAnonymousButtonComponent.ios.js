@@ -1,5 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
 import LoginSelectionButtonComponent from './LoginSelectionButtonComponent';
 import FormBottomSheetModalComponent from '../shared/FormBottomSheetModalComponent';
@@ -9,8 +10,10 @@ import audioSources from '../../constants/audio_source_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import appUserService from '../../services/app_user_service';
 import {environment} from '../../config/environment';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const LoginSelectionAnonymousButtonComponent = (props) => {
+  const dispatch = useDispatch();
   const {t} = useTranslation();
   let bottomSheetRef = React.createRef();
   let modalRef = React.createRef();
@@ -20,8 +23,8 @@ const LoginSelectionAnonymousButtonComponent = (props) => {
   }
 
   const onPress = () => {
+    dispatch(setPlayingAudio('null'));
     if (environment.hasPrivacyConfirmation) {
-      props.updatePlayingUuid(null)
       bottomSheetRef.current?.setBodyContent(<PolicyConfirmationModalComponent saveUser={() => saveUser()} />)
       modalRef.current?.present()
       return
@@ -36,8 +39,6 @@ const LoginSelectionAnonymousButtonComponent = (props) => {
         label={t('loginAsGuest')}
         audio={audioSources["0.2.mp3"]}
         isAnonymous={true}
-        playingUuid={props.playingUuid}
-        updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
         onPress={() => onPress()}
         accessibilityLabel='ប៊ូតុងទី2'
       />

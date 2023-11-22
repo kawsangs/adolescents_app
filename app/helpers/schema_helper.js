@@ -13,6 +13,13 @@ import FacilityImage from '../db/migrations/v5/facility_image';
 import VideoAuthor from '../db/migrations/v5/video_author';
 import DownloadedFile from '../db/migrations/v8/downloaded_file';
 import Contact from '../db/migrations/v8/contact';
+import SurveyForm from '../db/migrations/v9/survey_form';
+import SurveyQuestion from '../db/migrations/v9/survey_question';
+import SurveyOption from '../db/migrations/v9/survey_option';
+import SurveyAnswer from '../db/migrations/v9/survey_answer';
+import Survey from '../db/migrations/v9/survey';
+import SurveySection from '../db/migrations/v9/survey_section';
+import SurveyCriteria from '../db/migrations/v9/survey_criteria';
 
 import { schemaNames } from '../constants/schema_constant';
 
@@ -41,6 +48,13 @@ const schemaHelper = (() => {
       VideoAuthor,
       DownloadedFile,
       Contact,
+      SurveyForm,
+      SurveyQuestion,
+      SurveyOption,
+      SurveyAnswer,
+      Survey,
+      SurveySection,
+      SurveyCriteria,
     ];
 
     changedSchemas.map((schema) => {

@@ -13,12 +13,24 @@ class Notification {
     return Notification.getAll().filtered('read = false');
   }
 
+  static findByUuid = (uuid) => {
+    return BaseModel.findByUuid(MODEL, uuid);
+  }
+
   static findById = (id) => {
     return BaseModel.findByAttr(MODEL, {id: `'${id}'`}, '', {})[0];
   }
 
+  static findByTitle = (title) => {
+    return BaseModel.findByAttr(MODEL, {title: `'${title}'`}, '', {})[0];
+  }
+
   static create = (params) => {
-    BaseModel.create(MODEL, { ...params, uuid: uuidv4(), createdAt: Moment().toDate() });
+    BaseModel.create(MODEL, this._buildData(params));
+  }
+
+  static update(uuid, data) {
+    BaseModel.update(MODEL, uuid, data)
   }
 
   static deleteAll = () => {
@@ -42,6 +54,20 @@ class Notification {
 
   static deleteByUuid = (uuid) => {
     BaseModel.deleteByUuid(MODEL, uuid)
+  }
+
+  // private method
+  static _buildData = (item) => {
+    const params = {
+      uuid: uuidv4(),
+      id: !!item.id ? item.id.toString() : null,
+      title: item.title,
+      content: item.body,
+      createdAt: Moment().toDate(),
+      data: !!item.data ? JSON.stringify(item.data) : null,
+    };
+
+    return params;
   }
 }
 

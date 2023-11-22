@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 import TopicListComponent from '../shared/TopicListComponent';
 import Question from '../../models/Question';
@@ -10,13 +11,16 @@ import asyncStorageService from '../../services/async_storage_service';
 import {QUESTION} from '../../constants/faq_constant';
 import {TEXT_SIZE} from '../../constants/async_storage_constant';
 import {xLargeFontSize} from '../../utils/font_size_util';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const TopicMainComponent = (props) => {
+  const dispatch = useDispatch();
   const [playingUuid, setPlayingUuid] = React.useState(null);
 
   useFocusEffect(
     useCallback(() => {
       return () => {
+        dispatch(setPlayingAudio(null));
         setPlayingUuid(null);
         setTimeout(() => {
           audioPlayerService.clearAllAudio();

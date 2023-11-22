@@ -14,4 +14,11 @@ export const schemaNames = [
   'VideoAuthor',
   'DownloadedFile',
   'Contact',
+  'SurveyForm',
+  'SurveyQuestion',
+  'SurveyOption',
+  'SurveyAnswer',
+  'Survey',
+  'SurveySection',
+  'SurveyCriteria',
 ];

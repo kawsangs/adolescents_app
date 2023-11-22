@@ -12,11 +12,14 @@ const unreadNotificationsSlice = createSlice({
     increaseNotification: (state) => {
       state.value += 1;
     },
+    setUnreadNotification: (state) => {
+      state.value = Notification.getUnreads().length;
+    },
     resetNotification: (state) => {
       state.value = 0;
     }
   }
 })
 
-export const { increaseNotification, resetNotification } = unreadNotificationsSlice.actions
+export const { increaseNotification, resetNotification, setUnreadNotification } = unreadNotificationsSlice.actions
 export default unreadNotificationsSlice.reducer

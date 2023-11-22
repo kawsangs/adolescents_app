@@ -151,5 +151,14 @@
   "6": "6",
   "7": "7",
   "8": "8",
-  "9": "9"
+  "9": "9",
+  "next": "Next",
+  "finish": "Finish",
+  "yes": "Yes",
+  "allYourAnswersWillBeDeleted": "All your answers will be deleted",
+  "doYouReallyWantToLeaveThisSurvey": "Do you really want to leave this survey?",
+  "thankYouForPaticipatingInTheSurvey": "Thank you for participating in the survey",
+  "noSurveyQuestionnaireDueToNoInternetConnection": "There is no survey questionnaire! The problem may be due to no internet connection. Please press the button below to download the survey questionnaire.",
+  "failedToFetchSurveyQuestion": "There was a problem downloading the survey questionnaire. Please check your internet connection and try again.",
+  "downloadSurvey": "Download survey"
 }

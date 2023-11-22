@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 import {Card} from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -8,9 +9,12 @@ import { cardElevation, cardBorderRadius } from '../../constants/component_const
 import {cardTitleFontSize, cardTitleLineHeight} from '../../constants/component_constant';
 import visitService from '../../services/visit_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
 const ListViewCardComponent = (props) => {
+  const dispatch = useDispatch();
   const onPress = () => {
+    dispatch(setPlayingAudio(null));
     props.updatePlayingUuid(null);
     visitService.recordVisitCategory(props.item);
   }
