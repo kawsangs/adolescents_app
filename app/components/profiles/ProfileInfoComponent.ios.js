@@ -30,6 +30,12 @@ const ProfileInfoComponent = (props) => {
     const province = profileHelper.getProvince(loggedInUser.province_id)
     const infos = [
       {
+        uuid: 'user-uuid',
+        label: t('uuid'),
+        value: loggedInUser.user_uuid,
+        audio: null,
+      },
+      {
         uuid: 'user-gender',
         label: t('genderIdentity'),
         value: t(gender.name),
@@ -49,7 +55,8 @@ const ProfileInfoComponent = (props) => {
       }
     ]
     const nonPickerComponents = infos.map((info, index) => {
-     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 0}
+     return <ProfileInfoListItemComponent key={info.uuid} info={info} gender={gender} playingUuid={props.playingUuid} hasIcon={index == 1}
+              textSelectable={index == 0}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
             />
     })
@@ -102,8 +109,16 @@ const ProfileInfoComponent = (props) => {
   }
 
   renderAnonymousInfo = () => {
-    return anonymousInfo.map((info, index) => {
-      return <ProfileInfoListItemComponent key={index} info={info} label={t(info.label)} value={t('anonymous')} gender={null} playingUuid={props.playingUuid} hasIcon={false}
+    const userUuid = {
+      uuid: 'user-uuid',
+      label: t('uuid'),
+      value: loggedInUser.user_uuid,
+      audio: null,
+    }
+    return [userUuid, ...anonymousInfo].map((info, index) => {
+      return <ProfileInfoListItemComponent key={index} info={info} label={t(info.label)} gender={null} playingUuid={props.playingUuid} hasIcon={false}
+              value={index > 0 ? t('anonymous') : null}
+              textSelectable={index == 0}
               updatePlayingUuid={(uuid) => props.updatePlayingUuid(uuid)}
               containerStyle={{paddingVertical: 16, paddingBottom: 10}}
             />
