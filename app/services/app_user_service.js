@@ -8,6 +8,7 @@ import networkService from './network_service';
 import appVisitService from './app_visit_service';
 import User from '../models/User';
 import uuidv4 from '../utils/uuidv4_util';
+import randomId from '../utils/id_util';
 
 const createAccountService = (() => {
   return {
@@ -85,7 +86,8 @@ const createAccountService = (() => {
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
-      anonymous: !user
+      anonymous: !user,
+      user_uuid: randomId(),
     }
 
     return params;
