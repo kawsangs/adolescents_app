@@ -161,5 +161,6 @@
   "noSurveyQuestionnaireDueToNoInternetConnection": "There is no survey questionnaire! The problem may be due to no internet connection. Please press the button below to download the survey questionnaire.",
   "failedToFetchSurveyQuestion": "There was a problem downloading the survey questionnaire. Please check your internet connection and try again.",
   "downloadSurvey": "Download survey",
-  "uuid": "UUID"
+  "uuid": "UUID",
+  "deleteAccount": "Delete account"
 }
