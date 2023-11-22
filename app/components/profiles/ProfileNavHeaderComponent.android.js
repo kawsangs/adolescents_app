@@ -9,10 +9,16 @@ import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
 import {largeFontSize} from '../../utils/font_size_util';
+import {navigationRef} from '../../navigators/app_navigator';
 
 const ProfileNavHeaderComponent = (props) => {
   const {t} = useTranslation();
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
+
+  const goToDeleteAccount = () => {
+    setIsMenuVisible(false);
+    navigationRef.current?.navigate('DeleteAccountView');
+  }
 
   const renderRightButton = () => {
     return <Menu
@@ -28,7 +34,7 @@ const ProfileNavHeaderComponent = (props) => {
             >
               <Menu.Item
                 theme={{colors: {text: color.redColor} }}
-                onPress={() => {}}
+                onPress={() => goToDeleteAccount()}
                 title={t('deleteAccount')}
                 icon='trash'
                 titleStyle={{fontSize: largeFontSize(), color: color.blackColor}}

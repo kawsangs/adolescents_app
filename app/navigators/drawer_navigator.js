@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import BottomTabNavigator from './bottom_tab_navigator';
 import DrawerNavigatorComponent from '../components/drawerNavigators/DrawerNavigatorComponent';
 import AboutUsView from '../views/aboutUs/AboutUsView';
-import ProfileView from '../views/profiles/ProfileView';
+import ProfileStackNavigator from './profile_stack_navigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +21,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen name="BottomTabs" component={BottomTabNavigator} />
       <Drawer.Screen name="AboutUsView" component={AboutUsView} />
-      <Drawer.Screen name="ProfileView" component={ProfileView} />
+      <Drawer.Screen name="ProfileView" component={ProfileStackNavigator} />
     </Drawer.Navigator>
   )
 }
