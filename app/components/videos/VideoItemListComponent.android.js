@@ -82,11 +82,13 @@ const VideoItemListComponent = (props) => {
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <TagScrollBarComponent tags={tags} onToggleFilter={updateVideoList} hasInternet={props.hasInternet}
-        contentContainerStyle={{paddingRight: screenHorizontalPadding}}
-        containerStyle={{marginBottom: -5}}
-        type='videoTag'
-      />
+      { tags.length > 0 &&
+        <TagScrollBarComponent tags={tags} onToggleFilter={updateVideoList} hasInternet={props.hasInternet}
+          contentContainerStyle={{paddingRight: screenHorizontalPadding}}
+          containerStyle={{marginBottom: -5}}
+          type='videoTag'
+        />
+      }
 
       { videos.length == 0 ? <NoResultMessageComponent/>
         :
