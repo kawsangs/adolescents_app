@@ -38,6 +38,7 @@ const schemaV10 = {
   onMigration: (oldRealm, newRealm) => {
     if (oldRealm.schemaVersion < 10) {
       newRealm.delete(newRealm.objects('Video'));
+      newRealm.delete(newRealm.objects('Category'));
     }
   },
 }
