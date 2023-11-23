@@ -28,13 +28,13 @@ const SubCategoryView = ({route}) => {
   }, [])
 
   const onRefresh = () => {
-    categorySyncService.syncAll(() => {
+    categorySyncService.syncByParentCategory(route.params.id, () => {
       setTimeout(() => {
         setSubCategories([...Category.getSubCategories(route.params.id)])
-      }, 600);
+      }, 1000);
       dispatch(setParentCategories(categoryHelper.getHomeCategories()))
       listRef.current?.stopRefreshLoading()
-    }, () => listRef.current?.stopRefreshLoading())
+    }, () => listRef.current?.stopRefreshLoading());
   }
 
   return (

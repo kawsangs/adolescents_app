@@ -56,6 +56,16 @@ class Category {
   static deleteAll = () => {
     BaseModel.deleteAll(MODEL);
   }
+
+  static deleteSubCategoriesByParent = (parentId) => {
+    const parentCategory = this.findById(parentId);
+    if (!parentCategory) return;
+
+    const categories = this.getAll().filter(category => category.parent_code == parentCategory.code);
+    if (categories.length > 0) {
+      BaseModel.deleteByCollection(categories);
+    }
+  }
 }
 
 export default Category;
