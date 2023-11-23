@@ -1,3 +1,5 @@
+import { StackActions } from '@react-navigation/native';
+
 import User from '../models/User';
 import Category from '../models/Category';
 import {navigationRef} from '../navigators/app_navigator';
@@ -19,7 +21,7 @@ const navigationService = (() => {
   async function navigateCategory(categoryId) {
     const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);
     let routeName = Category.isParentCategory(categoryId) ? 'SubCategoryView' : 'LeafCategoryDetailView';
-    navigationRef.current?.navigate(routeName, { id: categoryId, textSize: savedFontSize || xLargeFontSize() });
+    navigationRef.current?.dispatch(StackActions.push(routeName, { id: categoryId, textSize: savedFontSize || xLargeFontSize() }))
   }
 })();
 

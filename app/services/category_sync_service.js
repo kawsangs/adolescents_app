@@ -16,18 +16,28 @@ const categorySyncService = (() => {
     new CategoryApi().load(parentCateId, (res) => {
       if (res.children.length > 0) {
         Category.deleteSubCategoriesByParent(parentCateId);
-        res.children.map(category => {
-          Category.create(category);
-          _handleSaveFiles(category);   // Download the image and audio
-        });
+        _handleSaveCategories(res.children, successCallback);
       }
-      !!successCallback && successCallback();
+      else {
+        Category.deleteSubCategoriesByParent(parentCateId);
+        !!successCallback && successCallback();
+      }
     }, (error) => {
       !!failureCallback && failureCallback();
     });
   }
 
   // private method
+  function _handleSaveCategories(categories, successCallback) {
+    categories.map(category => {
+      Category.create(category);
+      Category.deleteSubCategoriesByParent(category.id);
+      _handleSaveCategories(category.children);
+      _handleSaveFiles(category);
+    });
+    !!successCallback && successCallback();
+  }
+
   async function _handleSaveFiles(category) {
     const imageFile = !!category.image_url ? `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(category.image_url)}` : null;
     const audioFile = !!category.audio_url ? `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(category.audio_url)}` : null;
