@@ -43,6 +43,10 @@ class User {
   static logOut = () => {
     this.update(this.currentLoggedIn().uuid, { logged_in: false });
   }
+
+  static deleteAccount = (user) => {
+    BaseModel.deleteItem(user);
+  }
 }
 
 export default User;

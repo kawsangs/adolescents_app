@@ -7,15 +7,19 @@ import apiService from './api_service';
 import networkService from './network_service';
 import appVisitService from './app_visit_service';
 import User from '../models/User';
+import Visit from '../models/Visit';
+import Survey from '../models/Survey';
+import SearchHistory from '../models/SearchHistory';
 import uuidv4 from '../utils/uuidv4_util';
 import randomId from '../utils/id_util';
 
-const createAccountService = (() => {
+const appUserService = (() => {
   return {
     createUser,
     isValidForm,
     createAnonymousUser,
     syncUsers,
+    deleteUser,
   }
 
   function createUser(user) {
@@ -43,6 +47,20 @@ const createAccountService = (() => {
       return;
     }
     _sendUnsyncUsers(0, unsyncedUsers, callback);
+  }
+
+  function deleteUser() {
+    const user = User.currentLoggedIn();
+    SearchHistory.deleteAll();
+    Visit.deleteByUser(user.uuid);
+    Survey.deleteByUser(user.uuid);
+
+    if (!!user.id) {
+      new AppUserApi().delete(user.id);
+      dispatch(resetSelectedVidAuthor())
+      dispatch(resetSelectedLocation())
+      User.deleteAccount(user);
+    }
   }
 
   // private method
@@ -114,4 +132,4 @@ const createAccountService = (() => {
   }
 })();
 
-export default createAccountService;
+export default appUserService;

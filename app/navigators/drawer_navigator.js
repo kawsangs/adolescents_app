@@ -21,7 +21,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen name="BottomTabs" component={BottomTabNavigator} />
       <Drawer.Screen name="AboutUsView" component={AboutUsView} />
-      <Drawer.Screen name="ProfileView" component={ProfileStackNavigator} />
+      <Drawer.Screen name="ProfileNavigator" component={ProfileStackNavigator} />
     </Drawer.Navigator>
   )
 }

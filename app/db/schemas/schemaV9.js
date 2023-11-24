@@ -4,10 +4,9 @@ import Facility from '../migrations/v5/facility';
 import Video from '../migrations/v8/video';
 import Topic from '../migrations/v6/topic';
 import Tag from '../migrations/v5/tag';
-import User from '../migrations/v8/user';
+import User from '../migrations/v7/user';
 import {schemaNames} from '../../constants/schema_constant';
 import uuidv4 from '../../utils/uuidv4_util';
-import randomId from '../../utils/id_util';
 
 const changedSchemas = [
   { label: schemaNames[0], data: User },
@@ -23,12 +22,6 @@ const schemaV9 = {
   schemaVersion: 9,
   onMigration: (oldRealm, newRealm) => {
     if (oldRealm.schemaVersion < 9) {
-      const newUsers = newRealm.objects('User');
-      newUsers.map((user, index) => {
-        newUsers[index].synced = false;
-        newUsers[index].user_uuid = randomId();
-      });
-
       oldRealm.objects('FacilityImage').map(facilityImage => {
         newRealm.create('DownloadedFile', { uuid: uuidv4(), name: facilityImage.name, type: 'image' });
       });

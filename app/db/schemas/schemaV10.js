@@ -4,7 +4,7 @@ import Facility from '../migrations/v5/facility';
 import Video from '../migrations/v8/video';
 import Topic from '../migrations/v6/topic';
 import Tag from '../migrations/v5/tag';
-import User from '../migrations/v7/user';
+import User from '../migrations/v9/user';
 import Notification from '../migrations/v9/notification';
 import SurveyForm from '../migrations/v9/survey_form';
 import SurveyQuestion from '../migrations/v9/survey_question';
@@ -14,6 +14,7 @@ import Survey from '../migrations/v9/survey';
 import SurveySection from '../migrations/v9/survey_section';
 import SurveyCriteria from '../migrations/v9/survey_criteria';
 import {schemaNames} from '../../constants/schema_constant';
+import randomId from '../../utils/id_util';
 
 const changedSchemas = [
   { label: schemaNames[0], data: User },
@@ -39,6 +40,12 @@ const schemaV10 = {
     if (oldRealm.schemaVersion < 10) {
       newRealm.delete(newRealm.objects('Video'));
       newRealm.delete(newRealm.objects('Category'));
+
+      const newUsers = newRealm.objects('User');
+      newUsers.map((user, index) => {
+        newUsers[index].synced = false;
+        newUsers[index].user_uuid = randomId();
+      });
     }
   },
 }

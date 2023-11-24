@@ -20,7 +20,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
   const userOccupation = useSelector(state => state.loginUserOccupation.value)
 
   return (
-    <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileView')}
+    <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileNavigator')}
       style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}
     >
       <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 64, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>

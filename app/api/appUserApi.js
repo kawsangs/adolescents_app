@@ -22,6 +22,11 @@ class AppUserApi {
     const url = `${urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('app_users'))}/${userId}`;
     return httpRequest.send(url, options, environment.apiKey, 'json');
   }
+
+  delete = (userId) => {
+    const url = `${urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('app_users'))}/${userId}`;
+    return httpRequest.send(url, { method: 'DELETE' }, environment.apiKey, 'json');
+  }
 }
 
 export default AppUserApi;

@@ -162,5 +162,6 @@
   "failedToFetchSurveyQuestion": "មានបញ្ហារអាក់រអួលក្នុងការទាញយកកម្រងសំណួរនៃការស្ទង់មតិ។ សូមពិនិត្យមើលប្រព័ន្ធអ៊ីនធឺណិតរបស់អ្នកហើយព្យាយាមម្តងទៀត។",
   "downloadSurvey": "ទាញយកកម្រងសំណួរ",
   "uuid": "លេខសម្គាល់",
-  "deleteAccount": "លុបគណនី"
+  "deleteAccount": "លុបគណនី",
+  "doYouReallyWantToDeleteThisAccount": "តើអ្នកពិតជាចង់លុបគណនីនេះមែនទេ?"
 }

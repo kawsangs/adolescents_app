@@ -162,5 +162,6 @@
   "failedToFetchSurveyQuestion": "There was a problem downloading the survey questionnaire. Please check your internet connection and try again.",
   "downloadSurvey": "Download survey",
   "uuid": "UUID",
-  "deleteAccount": "Delete account"
+  "deleteAccount": "Delete account",
+  "doYouReallyWantToDeleteThisAccount": "Do you really want to delete this account?"
 }

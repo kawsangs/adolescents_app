@@ -34,6 +34,11 @@ class Survey {
   static deleteAll() {
     BaseModel.deleteAll(MODEL);
   }
+
+  static deleteByUser(userUuid) {
+    const surveys = BaseModel.findByAttr(MODEL, {user_uuid: `'${userUuid}'`});
+    BaseModel.deleteByCollection(surveys);
+  }
 }
 
 export default Survey;
