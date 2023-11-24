@@ -5,7 +5,7 @@ import FacilityCardItemComponent from './FacilityCardItemComponent';
 import CustomFlatListComponent from '../shared/CustomFlatListComponent';
 import facilityHelper from '../../helpers/facility_helper';
 import facilitySyncService from '../../services/facility_sync_service';
-import tagSyncService from '../../services/tag_sync_service';
+import TagSyncService from '../../services/tag_sync_service';
 import uuidv4 from '../../utils/uuidv4_util';
 import Facility from '../../models/Facility';
 
@@ -32,7 +32,7 @@ const FacilityScrollableListComponent = (props) => {
     if (!!filteredProvince.province || !!props.selectedTagUuid)
       return listRef.current?.stopRefreshLoading()
 
-    tagSyncService.syncAllData()
+    new TagSyncService('tag').syncAllData();
     facilitySyncService.syncAllData((newFacilities) => {
       setFacilities(newFacilities)
       listRef.current?.stopRefreshLoading()
