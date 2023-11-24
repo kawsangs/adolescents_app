@@ -77,9 +77,11 @@ const DeleteAccountView = () => {
   }
 
   const confirmMessage = () => {
-    return <View style={{flexDirection: "row"}}>
-              <Icon name="exclamation" size={22} color={color.secondaryColor} />
-              <Text style={{fontSize: largeFontSize(), marginLeft: 16}}>{t('doYouReallyWantToDeleteThisAccount')}</Text>
+    return <View style={{}}>
+              <View style={{height: 80, width: 80, borderRadius: 80, borderColor: color.secondaryColor, borderWidth: 4, justifyContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+                <Icon name="exclamation" size={36} color={color.secondaryColor} />
+              </View>
+              <Text style={{fontSize: largeFontSize(), marginLeft: 16, marginTop: 16, textAlign: 'center'}}>{t('doYouReallyWantToDeleteThisAccount')}</Text>
            </View>
   }
 
