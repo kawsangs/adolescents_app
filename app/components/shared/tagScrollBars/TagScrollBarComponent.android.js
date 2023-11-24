@@ -2,22 +2,22 @@ import React, {useState, useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
 
-import CustomFlatListComponent from '../shared/CustomFlatListComponent';
-import color from '../../themes/color';
-import {largeFontSize} from '../../utils/font_size_util';
-import componentUtil from '../../utils/component_util';
-import {isLowPixelDensityDevice, getStyleOfDevice} from '../../utils/responsive_util';
-import tagSyncService from '../../services/tag_sync_service';
-import {screenHorizontalPadding} from '../../constants/component_constant';
+import CustomFlatListComponent from '../CustomFlatListComponent';
+import color from '../../../themes/color';
+import {largeFontSize} from '../../../utils/font_size_util';
+import componentUtil from '../../../utils/component_util';
+import {isLowPixelDensityDevice, getStyleOfDevice} from '../../../utils/responsive_util';
+import TagSyncService from '../../../services/tag_sync_service';
+import {screenHorizontalPadding} from '../../../constants/component_constant';
 
-const FacilityTagScrollBarComponent = (props) => {
+const TagScrollBarComponent = (props) => {
   const listRef = useRef();
   const [selectedUuid, setSelectedUuid] = useState(null);
   let synced = false;
 
   const toggleFilter = (tag) => {
     const tagUuid = selectedUuid == tag.uuid ? null : tag.uuid;
-    props.updateFacilityList(tagUuid);
+    !!props.onToggleFilter && props.onToggleFilter(tagUuid);
     setSelectedUuid(tagUuid);
   }
 
@@ -31,7 +31,7 @@ const FacilityTagScrollBarComponent = (props) => {
     if (synced)
       return listRef.current?.stopPaginateLoading()
 
-    tagSyncService.syncAllData((newTags) => {
+    new TagSyncService(props.type).syncAllData((newTags) => {
       synced = true;
       listRef.current?.stopPaginateLoading();
     }, () => listRef.current?.stopPaginateLoading())
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FacilityTagScrollBarComponent;
+export default TagScrollBarComponent;

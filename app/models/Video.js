@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import VideoTag from './VideoTag';
 import videos from '../db/json/videos.json';
 import {itemsPerPage} from '../constants/sync_data_constant';
 
@@ -29,6 +30,21 @@ class Video {
     return BaseModel.containsByAttr(MODEL, 'tag_list', `'${tag}'`);
   }
 
+  static findByTagAndAuthor = (tagUuid, authorUuid) => {
+    if (!tagUuid && !authorUuid)
+      return this.getAll();
+
+    let filteredTags = this.getAll();
+    if (!!tagUuid) {
+      const tag = VideoTag.findByUuid(tagUuid);
+      filteredTags = this.findByTag(tag.name);
+    }
+    if (!!authorUuid)
+      filteredTags = filteredTags.filter(tag => tag.author_uuid == authorUuid);
+
+    return filteredTags;
+  }
+
   static create = (data) => {
     BaseModel.create(MODEL, this.#getFormattedData(data, true))
   }
@@ -51,7 +67,7 @@ class Video {
   static #getFormattedVideos = () => {
     let formattedVideos = [];
     videos.map(video => {
-      formattedVideos.push({...video, uuid: video.id, author_uuid: video.video_author_uuid})
+      formattedVideos.push({...video, uuid: video.id, author_uuid: !!video.video_author ? video.video_author.id : null})
     });
     return formattedVideos;
   }

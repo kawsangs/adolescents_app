@@ -35,7 +35,11 @@ const changedSchemas = [
 const schemaV10 = {
   schema: schemaHelper.getSchemas(changedSchemas),
   schemaVersion: 10,
-  onMigration: (oldRealm, newRealm) => {},
+  onMigration: (oldRealm, newRealm) => {
+    if (oldRealm.schemaVersion < 10) {
+      newRealm.delete(newRealm.objects('Video'));
+    }
+  },
 }
 
 export default schemaV10;

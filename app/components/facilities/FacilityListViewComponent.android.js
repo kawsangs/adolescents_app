@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import NoResultMessageComponent from '../shared/NoResultMessageComponent';
+import TagScrollBarComponent from '../shared/tagScrollBars/TagScrollBarComponent';
 import Facility from '../../models/Facility';
 import DownloadedFile from '../../models/DownloadedFile';
 import Tag from '../../models/Tag';
@@ -35,7 +35,10 @@ const FacilityListViewComponent = (props) => {
 
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <FacilityTagScrollBarComponent tags={tags} updateFacilityList={updateFacilityList} hasInternet={props.hasInternet} contentContainerStyle={{paddingRight: screenHorizontalPadding}}/>
+      <TagScrollBarComponent tags={tags} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet}
+        contentContainerStyle={{paddingRight: screenHorizontalPadding}}
+        type={'tag'}
+      />
       {facilities.length > 0 ? renderList() : <NoResultMessageComponent/>}
     </View>
   )

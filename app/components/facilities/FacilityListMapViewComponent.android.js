@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {View, Dimensions} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import FacilityTagScrollBarComponent from './FacilityTagScrollBarComponent';
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import MapComponent from '../shared/MapComponent';
+import TagScrollBarComponent from '../shared/tagScrollBars/TagScrollBarComponent';
 import Facility from '../../models/Facility';
 import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
@@ -49,7 +49,7 @@ const FacilityListMapViewComponent = (props) => {
       <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
         currentRegion={mapRegion} markers={markers}
       />
-      <FacilityTagScrollBarComponent tags={Tag.getAll()} updateFacilityList={(tagUuid) => updateFacilityList(tagUuid)} hasInternet={props.hasInternet}/>
+      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}

@@ -1,47 +1,55 @@
-import TagApi from '../api/tagApi';
 import apiService from './api_service';
-import Tag from '../models/Tag';
 import {itemsPerPage} from '../constants/sync_data_constant';
+import VideoTag from '../models/VideoTag';
+import Tag from '../models/Tag';
+import VideoTagApi from '../api/videoTagApi';
+import TagApi from '../api/tagApi';
 
-const tagSyncService = (() => {
-  return {
-    syncAllData
+export default class TagSyncService {
+  constructor(type) {
+    if (type == 'videoTag') {
+      this.apiController = new VideoTagApi();
+      this.model = VideoTag;
+      this.fieldName = 'video_tags';
+    }
+    else {
+      this.apiController = new TagApi();
+      this.model = Tag;
+      this.fieldName = 'tags';
+    }
   }
 
-  function syncAllData(successCallback, failureCallback) {
-    _syncByPage(1, 1, successCallback, failureCallback)
+  syncAllData = (successCallback, failureCallback) => {
+    this._syncByPage(1, 1, successCallback, failureCallback);
   }
 
-  // private method
-  async function _syncByPage(page, totalPage, successCallback, failureCallback) {
+  _syncByPage = async (page, totalPage, successCallback, failureCallback) => {
     if (page > totalPage) {
-      !!successCallback && successCallback(Tag.getAll())
+      !!successCallback && successCallback(this.model.getAll())
       return
     }
 
-    const response = await new TagApi().load(page)
+    const response = await this.apiController.load(page)
     apiService.handleApiResponse(response, (res) => {
       if (page == 1)
-        Tag.deleteAll()
+        this.model.deleteAll()
 
       const allPage = Math.ceil(res.pagy.count / itemsPerPage)
-      _handleSaveTag(res.tags, () => {
-        _syncByPage(page+1, allPage, successCallback)
+      this._handleSaveTag(res[this.fieldName], () => {
+        this._syncByPage(page+1, allPage, successCallback)
       })
     }, (error) => !!failureCallback && failureCallback())
   }
 
-  function _handleSaveTag(tags, callback) {
+  _handleSaveTag = (tags, callback) => {
     tags.map(tag => {
-      if (!!Tag.findByUuid(tag.id)) {
+      if (!!this.model.findByUuid(tag.id)) {
         const {id, ...tagParams} = tag;
-        Tag.update(id, tagParams)
+        this.model.update(id, tagParams)
       }
       else
-        Tag.create(tag)
+        this.model.create(tag)
     })
     !!callback && callback()
   }
-})()
-
-export default tagSyncService
+}
