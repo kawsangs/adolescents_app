@@ -50,11 +50,21 @@ class Category {
 
   static isParentCategory = (id) => {
     const category = this.findById(id)
-    return !!category && !category.parent_code;
+    return !!category && !category.parent_code || this.getSubCategories(id).length > 0;
   }
 
   static deleteAll = () => {
     BaseModel.deleteAll(MODEL);
+  }
+
+  static deleteSubCategoriesByParent = (parentId) => {
+    const parentCategory = this.findById(parentId);
+    if (!parentCategory) return;
+
+    const categories = this.getAll().filter(category => category.parent_code == parentCategory.code);
+    if (categories.length > 0) {
+      BaseModel.deleteByCollection(categories);
+    }
   }
 }
 

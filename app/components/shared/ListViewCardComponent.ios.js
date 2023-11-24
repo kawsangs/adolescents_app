@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Image} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -10,9 +11,17 @@ import {cardTitleFontSize, cardTitleLineHeight} from '../../constants/component_
 import visitService from '../../services/visit_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
+import Category from '../../models/Category';
+import translationHelper from '../../helpers/translation_helper';
+import tabletStyles from '../../assets/stylesheets/tablet/cardPointAndAudioFooterComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/cardPointAndAudioFooterComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const ListViewCardComponent = (props) => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
+  const points = Category.getSubCategories(props.item.id).length;
   const onPress = () => {
     dispatch(setPlayingAudio(null));
     props.updatePlayingUuid(null);
@@ -38,6 +47,7 @@ const ListViewCardComponent = (props) => {
       </View>
       <View style={{paddingHorizontal: 8, paddingVertical: 10}}>
         <BoldLabelComponent label={props.item.name} numberOfLines={2} style={{fontSize: cardTitleFontSize, lineHeight: cardTitleLineHeight}} />
+        { points > 0 && <Text style={[styles.label, {marginTop: 2}]}>{translationHelper.translateNumber(points, t)} { t(props.pointPostfix || 'point', {count: parseInt(props.points)})}</Text> }
       </View>
     </Card>
   )
