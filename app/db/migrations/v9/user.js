@@ -16,7 +16,8 @@ const UserSchema = {
     anonymous: { type: 'bool', default: false },
     occupation: 'string?',
     education_level: 'string?',
-    user_uuid: 'string?'
+    user_uuid: 'string?',
+    deleted: { type: 'bool', default: false },
   }
 }
 

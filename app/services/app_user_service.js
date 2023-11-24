@@ -19,7 +19,7 @@ const appUserService = (() => {
     isValidForm,
     createAnonymousUser,
     syncUsers,
-    deleteUser,
+    deleteCurrentUser,
   }
 
   function createUser(user) {
@@ -47,20 +47,26 @@ const appUserService = (() => {
       return;
     }
     _sendUnsyncUsers(0, unsyncedUsers, callback);
+    _sendDeletedUsers();
   }
 
-  function deleteUser() {
+  function deleteCurrentUser() {
     const user = User.currentLoggedIn();
     SearchHistory.deleteAll();
     Visit.deleteByUser(user.uuid);
     Survey.deleteByUser(user.uuid);
 
-    if (!!user.id) {
-      new AppUserApi().delete(user.id);
-      dispatch(resetSelectedVidAuthor())
-      dispatch(resetSelectedLocation())
-      User.deleteAccount(user);
-    }
+    networkService.checkConnection(() => {
+      if (!!user.id)
+        new AppUserApi().delete(user.id);  // send API request to delete the user
+
+      User.deleteAccount(user);  // delete user from realm
+    }, () => {
+      if (!user.id)
+        User.deleteAccount(user);
+      else
+        User.markAsDeleted(user.uuid);
+    });
   }
 
   // private method
@@ -90,6 +96,15 @@ const appUserService = (() => {
         !!callback && callback();
       });
     }, callback)
+  }
+
+  function _sendDeletedUsers() {
+    networkService.checkConnection(() => {
+      User.deleted().map(user => {
+        if (!!user.id)
+          new AppUserApi().delete(user.id);
+      })
+    });
   }
 
   function _buildData(user) {

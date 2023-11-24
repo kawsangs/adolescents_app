@@ -44,6 +44,14 @@ class User {
     this.update(this.currentLoggedIn().uuid, { logged_in: false });
   }
 
+  static deleted = () => {
+    return [...BaseModel.findByAttr(MODEL, {deleted: true})];
+  }
+
+  static markAsDeleted = (uuid) => {
+    this.update(uuid, {deleted: true});
+  }
+
   static deleteAccount = (user) => {
     BaseModel.deleteItem(user);
   }
