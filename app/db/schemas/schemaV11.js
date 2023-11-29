@@ -4,8 +4,8 @@ import Facility from '../migrations/v5/facility';
 import Video from '../migrations/v8/video';
 import Topic from '../migrations/v6/topic';
 import Tag from '../migrations/v5/tag';
-import User from '../migrations/v7/user';
 import Notification from '../migrations/v9/notification';
+import User from '../migrations/v10/user';
 import SurveyForm from '../migrations/v9/survey_form';
 import SurveyQuestion from '../migrations/v9/survey_question';
 import SurveyOption from '../migrations/v9/survey_option';
@@ -14,6 +14,7 @@ import Survey from '../migrations/v9/survey';
 import SurveySection from '../migrations/v9/survey_section';
 import SurveyCriteria from '../migrations/v9/survey_criteria';
 import {schemaNames} from '../../constants/schema_constant';
+import randomId from '../../utils/id_util';
 
 const changedSchemas = [
   { label: schemaNames[0], data: User },
@@ -32,15 +33,18 @@ const changedSchemas = [
   { label: schemaNames[21], data: SurveyCriteria },
 ];
 
-const schemaV10 = {
+const schemaV11 = {
   schema: schemaHelper.getSchemas(changedSchemas),
-  schemaVersion: 10,
+  schemaVersion: 11,
   onMigration: (oldRealm, newRealm) => {
-    if (oldRealm.schemaVersion < 10) {
-      newRealm.delete(newRealm.objects('Video'));
-      newRealm.delete(newRealm.objects('Category'));
+    if (oldRealm.schemaVersion < 11) {
+      const newUsers = newRealm.objects('User');
+      newUsers.map((user, index) => {
+        newUsers[index].synced = false;
+        newUsers[index].user_uuid = randomId();
+      });
     }
   },
 }
 
-export default schemaV10;
+export default schemaV11;
