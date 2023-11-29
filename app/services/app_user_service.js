@@ -50,7 +50,7 @@ const appUserService = (() => {
     _sendDeletedUsers();
   }
 
-  function deleteCurrentUser() {
+  function deleteCurrentUser(reasonId) {
     const user = User.currentLoggedIn();
     SearchHistory.deleteAll();
     Visit.deleteByUser(user.uuid);
@@ -58,14 +58,14 @@ const appUserService = (() => {
 
     networkService.checkConnection(() => {
       if (!!user.id)
-        new AppUserApi().delete(user.id);  // send API request to delete the user
+        new AppUserApi().delete(user.id, reasonId);  // send API request to delete the user
 
       User.deleteAccount(user);  // delete user from realm
     }, () => {
       if (!user.id)
         User.deleteAccount(user);
       else
-        User.markAsDeleted(user.uuid);
+        User.update(user.uuid, { reason_id: reasonId });
     });
   }
 
@@ -83,9 +83,6 @@ const appUserService = (() => {
 
   function _sendRequestToApi(params, callback) {
     networkService.checkConnection(async () => {
-      console.log('== User api params = ', params)
-      console.log('=============================')
-
       let response = null;
       if (!!params.id)
         response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level, uuid: params.user_uuid });
@@ -105,7 +102,7 @@ const appUserService = (() => {
     networkService.checkConnection(() => {
       User.deleted().map(user => {
         if (!!user.id)
-          new AppUserApi().delete(user.id);
+          new AppUserApi().delete(user.id, user.reason_id);
       })
     });
   }

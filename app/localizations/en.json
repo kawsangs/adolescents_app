@@ -163,5 +163,6 @@
   "downloadSurvey": "Download survey",
   "uuid": "UUID",
   "deleteAccount": "Delete account",
-  "doYouReallyWantToDeleteThisAccount": "Do you really want to delete this account?"
+  "doYouReallyWantToDeleteThisAccount": "Do you really want to delete this account?",
+  "pleaseProvideReasonYouWantToDeleteYourAccount": "Please provide a reason why you want to delete your account"
 }

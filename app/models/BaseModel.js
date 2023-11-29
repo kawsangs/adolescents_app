@@ -68,6 +68,10 @@ class BaseModel {
     return realm.objects(model).filtered(`${column} CONTAINS[c] ${value}`);
   }
 
+  static findAttrNotEmpty = (model, column) => {
+    return realm.objects(model).filtered(`${column} != null`);
+  }
+
   // private method
   static #findByAttrQuery = (attr, operator = '', sortAttr = {}) => {
     const columns = Object.keys(attr);

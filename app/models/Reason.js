@@ -16,8 +16,16 @@ class Reason {
     BaseModel.create(MODEL, params);
   }
 
-  static update = (uuid, params) => {
-    BaseModel.update(MODEL, uuid, params);
+  static findById = (id) => {
+    return BaseModel.findByAttr(MODEL, {id: `'${id}'`})[0];
+  }
+
+  static update = (id, params) => {
+    BaseModel.update(MODEL, id, params);
+  }
+
+  static deleteById = (id) => {
+    BaseModel.deleteItem(this.findById(id));
   }
 }
 

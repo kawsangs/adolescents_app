@@ -45,11 +45,7 @@ class User {
   }
 
   static deleted = () => {
-    return [...BaseModel.findByAttr(MODEL, {deleted: true})];
-  }
-
-  static markAsDeleted = (uuid) => {
-    this.update(uuid, {deleted: true});
+    return [...BaseModel.findAttrNotEmpty(MODEL, 'reason_id')];
   }
 
   static deleteAccount = (user) => {

@@ -17,7 +17,7 @@ const UserSchema = {
     occupation: 'string?',
     education_level: 'string?',
     user_uuid: 'string?',
-    deleted: { type: 'bool', default: false },
+    reason_id: 'string?'
   }
 }
 

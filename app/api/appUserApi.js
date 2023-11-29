@@ -23,9 +23,15 @@ class AppUserApi {
     return httpRequest.send(url, options, environment.apiKey, 'json');
   }
 
-  delete = (userId) => {
+  delete = (userId, reasonId) => {
+    const options = {
+      method: 'DELETE',
+      params: {
+        app_user: { reason_ids: reasonId }
+      }
+    }
     const url = `${urlUtil.getAbsoluteUrl(urlUtil.getRelativeUrl('app_users'))}/${userId}`;
-    return httpRequest.send(url, { method: 'DELETE' }, environment.apiKey, 'json');
+    return httpRequest.send(url, options, environment.apiKey, 'json');
   }
 }
 

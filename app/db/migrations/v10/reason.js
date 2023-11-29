@@ -8,7 +8,6 @@ const ReasonSchema = {
     code: 'string?',
     name_km: 'string',
     name_en: 'string',
-    deleted_at: 'date?',
     updated_at: 'date?'
   }
 }

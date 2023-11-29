@@ -163,5 +163,6 @@
   "downloadSurvey": "ទាញយកកម្រងសំណួរ",
   "uuid": "លេខសម្គាល់",
   "deleteAccount": "លុបគណនី",
-  "doYouReallyWantToDeleteThisAccount": "តើអ្នកពិតជាចង់លុបគណនីនេះមែនទេ?"
+  "doYouReallyWantToDeleteThisAccount": "តើអ្នកពិតជាចង់លុបគណនីនេះមែនទេ?",
+  "pleaseProvideReasonYouWantToDeleteYourAccount": "សូមបញ្ជាក់ពីមូលហេតុដែលអ្នកចង់លុបគណនីរបស់អ្នក"
 }
