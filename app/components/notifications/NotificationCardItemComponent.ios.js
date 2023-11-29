@@ -63,7 +63,8 @@ const NotificationCardItemComponent = (props) => {
   }
 
   const onPressItem = () => {
-    if (!!props.notification.data) {
+    const data = !!props.notification.data ? JSON.parse(props.notification.data) : null;
+    if (!!data && !!data.topic_id) {
       const data = JSON.parse(props.notification.data)
       const visitParams = {
         pageable_type: 'MobileNotification',
