@@ -8,6 +8,7 @@ import topicService from './topic_service';
 import topics from '../db/json/topics.json';
 import Contact from '../models/Contact';
 import VideoTag from '../models/VideoTag';
+import Reason from '../models/Reason';
 
 const seedDataService = (() => {
   return {
@@ -23,6 +24,7 @@ const seedDataService = (() => {
     Topic.getAll().length == 0 && topicService.saveTopicCollection(topics, true);
     Contact.getAll().length == 0 && Contact.seedData();
     VideoTag.getAll().length == 0 && VideoTag.seedData();
+    Reason.getAll().length == 0 && Reason.seedData();
   }
 })();
 
