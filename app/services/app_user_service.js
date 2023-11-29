@@ -83,9 +83,12 @@ const appUserService = (() => {
 
   function _sendRequestToApi(params, callback) {
     networkService.checkConnection(async () => {
+      console.log('== User api params = ', params)
+      console.log('=============================')
+
       let response = null;
       if (!!params.id)
-        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level });
+        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level, uuid: params.user_uuid });
       else
         response = await new AppUserApi().post(await _userApiParams(params));
 
@@ -141,7 +144,8 @@ const appUserService = (() => {
       education_level: user.education_level,
       gender: user.gender,
       age: user.age,
-      platform: Platform.OS
+      platform: Platform.OS,
+      uuid: user.user_uuid,
     }
     return params;
   }
