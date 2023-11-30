@@ -12,9 +12,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		286F14112A70D625000CB173 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 286F14102A70D5FB000CB173 /* SimpleLineIcons.ttf */; };
-		288E6021294436AA00E31D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 288E6020294436AA00E31D22 /* GoogleService-Info.plist */; };
 		2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */; };
 		2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F47FAC7DD11343B2B98C7D9A /* KantumruyPro-SemiBold.ttf */; };
+		28CA41FF2B184A3500186AD0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28CA41FE2B184A3500186AD0 /* GoogleService-Info.plist */; };
 		28CCCA46292F7B9200AFBCCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		3F0E6ED149C3F7AF6F87C05A /* libPods-YouthMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA946D09571F6B7E66F7272C /* libPods-YouthMobile.a */; };
 		73B602A5B2E3A68596C1C248 /* libPods-YouthMobile-YouthMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6F8A9D1E1FCAF6444D006E /* libPods-YouthMobile-YouthMobileTests.a */; };
@@ -51,9 +51,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = YouthMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = YouthMobile/main.m; sourceTree = "<group>"; };
 		286F14102A70D5FB000CB173 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		288E6020294436AA00E31D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../project files/Adolescent/google-services/google-services (bong Sokly)/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2890FE6D292FD551008BBF78 /* KantumruyPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		2890FE6F292FD957008BBF78 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
+		28CA41FE2B184A3500186AD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../project files/Adolescent/google-services/Adolescent google services files (production)/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E989442E8EF0F723C749516 /* Pods-YouthMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouthMobile.release.xcconfig"; path = "Target Support Files/Pods-YouthMobile/Pods-YouthMobile.release.xcconfig"; sourceTree = "<group>"; };
 		4D6F8A9D1E1FCAF6444D006E /* libPods-YouthMobile-YouthMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouthMobile-YouthMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A06967DD0A44348F1496E0 /* KantumruyPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "KantumruyPro-Regular.ttf"; path = "../app/assets/fonts/KantumruyPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		13B07FAE1A68108700A75B9A /* YouthMobile */ = {
 			isa = PBXGroup;
 			children = (
-				288E6020294436AA00E31D22 /* GoogleService-Info.plist */,
+				28CA41FE2B184A3500186AD0 /* GoogleService-Info.plist */,
 				EED90091294087B800A17D71 /* YouthMobile.entitlements */,
 				EECC1EDB28F6B8AC00AA3DD9 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -304,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				286F14112A70D625000CB173 /* SimpleLineIcons.ttf in Resources */,
-				288E6021294436AA00E31D22 /* GoogleService-Info.plist in Resources */,
 				2890FE71292FDA1C008BBF78 /* KantumruyPro-Regular.ttf in Resources */,
 				2890FE72292FDA1C008BBF78 /* KantumruyPro-SemiBold.ttf in Resources */,
 				EECC1EF528F6B8AC00AA3DD9 /* FontAwesome5_Solid.ttf in Resources */,
@@ -317,6 +316,7 @@
 				EECC1EF028F6B8AC00AA3DD9 /* FontAwesome5_Brands.ttf in Resources */,
 				EECC1EF728F6B8AC00AA3DD9 /* FontAwesome.ttf in Resources */,
 				EECC1EFB28F6B8AC00AA3DD9 /* MaterialIcons.ttf in Resources */,
+				28CA41FF2B184A3500186AD0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

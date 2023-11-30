@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
@@ -19,8 +19,8 @@ import {resetSelectedLocation} from '../../features/facilities/filterFacilityLoc
 const DeleteAccountQuestionnaireComponent = (props) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const [answer, setAnswer] = React.useState(null);
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [answer, setAnswer] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const renderQuestion = () => {
     const options = props.reasons.map(reason => ({value: reason.code, name: reason.name_km, id: reason.id}));
@@ -47,7 +47,7 @@ const DeleteAccountQuestionnaireComponent = (props) => {
     dispatch(resetSelectedVidAuthor())
     dispatch(resetSelectedLocation())
     appUserService.deleteCurrentUser(answer.value);
-    navigationService.logOut();
+    navigationService.logOut(true);
   }
 
   const confirmMessage = () => {

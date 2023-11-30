@@ -31,10 +31,8 @@ const reasonService = (() => {
   function _handleManipulateReason(reasons) {
     reasons.map(reason => {
       const savedReason = Reason.findById(reason.id);
-      if (!reason.deleted_at) {
-        !!Reason.findById(reason.id)
+      if (!reason.deleted_at)
         !!savedReason ? Reason.update(reason.id, reason) : Reason.create(reason)
-      }
       else if (!!savedReason)
         Reason.deleteById(reason.id)
     })

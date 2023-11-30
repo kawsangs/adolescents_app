@@ -13,9 +13,9 @@ const navigationService = (() => {
     navigateCategory,
   }
 
-  function logOut() {
+  function logOut(isDeletAccount = false) {
     User.logOut();
-    navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView' }]});
+    navigationRef.current?.reset({ index: 0, routes: [{ name: 'LoginSelectionView', params: {is_delete_account: isDeletAccount} }]});
   }
 
   async function navigateCategory(categoryId) {
