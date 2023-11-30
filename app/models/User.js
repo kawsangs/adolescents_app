@@ -45,7 +45,7 @@ class User {
   }
 
   static deleted = () => {
-    return [...BaseModel.findAttrNotEmpty(MODEL, 'reason_id')];
+    return [...BaseModel.findAttrNotEmpty(MODEL, 'reason_code')];
   }
 
   static deleteAccount = (user) => {

@@ -19,19 +19,17 @@ const DeleteAccountView = () => {
     networkService.checkConnection(() => {
       setIsLoading(true);
       reasonService.syncData(() => {
-        console.log('=== load reason success ===')
         setReasons(Reason.getAll());
         setIsLoading(false);
       }, () => {
-        console.log('== load reason failed ==')
         setIsLoading(false);
       })
     });
   }, []);
 
   const renderContent = () => {
-    if (isLoading) 
-      return <View style={{flex: 1, justifyContent: 'center'}}><ActivityIndicator size="large" color={color.primaryColor} /></View>
+    if (isLoading)
+      return <View style={{flex: 1, justifyContent: 'center'}}><ActivityIndicator size="large" color={color.whiteColor} /></View>
 
     return <DeleteAccountQuestionnaireComponent reasons={reasons}/>
   }

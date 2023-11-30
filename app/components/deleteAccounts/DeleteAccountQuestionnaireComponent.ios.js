@@ -21,35 +21,18 @@ const DeleteAccountQuestionnaireComponent = (props) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [answer, setAnswer] = React.useState(null);
-
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const renderQuestion = () => {
-    const options = [
-      {id: 1, name: 'ខ្ញុំឈប់ប្រើកម្មវិធីនេះ', value: 1},
-      {id: 2, name: 'មិនមានព័ត៌មានដែលខ្ញុំចង់ដឹង', value: 2},
-      {id: 3, name: 'ផ្សេងៗ', value: 3}
-    ];
-
+    const options = props.reasons.map(reason => ({value: reason.code, name: reason.name_km, id: reason.id}));
     return <View style={{padding: 16, marginBottom: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1, justifyContent: 'center'}}>
-                  <Text style={{marginBottom: 6, fontSize: largeFontSize(), lineHeight: 26}}>
-                    សូមបញ្ជាក់ពីមូលហេតុដែលអ្នកចង់លុបគណនីរបស់អ្នក
-                  </Text>
-                </View>
-                <View style={{marginLeft: 4}}>
-                  <CustomAudioPlayerButtonComponent
-                    rippled={true}
-                    itemUuid={'question1'}
-                    audio={null}
-                  />
-                </View>
-              </View>
+              <Text style={{marginBottom: 6, fontSize: largeFontSize(), lineHeight: 26}}>
+                {t('pleaseProvideReasonYouWantToDeleteYourAccount')}
+              </Text>
               <SurveySelectOneQuestionComponent
                 key={uuidv4()}
-                surveyUuid='survey1'
-                question={{id: 'q1', code: 'q1'}}
+                surveyUuid='deleteAccount'
+                question={{id: 'question1', code: 'question1'}}
                 options={options}
                 buttonColor={color.primaryColor}
                 currentAnswer={answer}
@@ -59,9 +42,12 @@ const DeleteAccountQuestionnaireComponent = (props) => {
   }
 
   const deleteUser = () => {
+    if (!answer)
+      return;
+
     dispatch(resetSelectedVidAuthor())
     dispatch(resetSelectedLocation())
-    appUserService.deleteCurrentUser();
+    appUserService.deleteCurrentUser(answer.value);
     navigationService.logOut();
   }
 

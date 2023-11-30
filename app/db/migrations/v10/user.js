@@ -17,7 +17,7 @@ const UserSchema = {
     occupation: 'string?',
     education_level: 'string?',
     user_uuid: 'string?',
-    reason_id: 'string?'
+    reason_code: 'string?'
   }
 }
 

@@ -41,16 +41,16 @@ const appUserService = (() => {
   }
 
   function syncUsers(callback) {
+    _sendDeletedUsers();
     const unsyncedUsers = User.unsynced();
     if (unsyncedUsers.length == 0) {
       callback();
       return;
     }
     _sendUnsyncUsers(0, unsyncedUsers, callback);
-    _sendDeletedUsers();
   }
 
-  function deleteCurrentUser(reasonId) {
+  function deleteCurrentUser(reasonCode) {
     const user = User.currentLoggedIn();
     SearchHistory.deleteAll();
     Visit.deleteByUser(user.uuid);
@@ -58,14 +58,14 @@ const appUserService = (() => {
 
     networkService.checkConnection(() => {
       if (!!user.id)
-        new AppUserApi().delete(user.id, reasonId);  // send API request to delete the user
+        new AppUserApi().delete(user.id, reasonCode);  // send API request to delete the user
 
       User.deleteAccount(user);  // delete user from realm
     }, () => {
       if (!user.id)
         User.deleteAccount(user);
       else
-        User.update(user.uuid, { reason_id: reasonId });
+        User.update(user.uuid, { reason_code: reasonCode });
     });
   }
 
@@ -102,7 +102,7 @@ const appUserService = (() => {
     networkService.checkConnection(() => {
       User.deleted().map(user => {
         if (!!user.id)
-          new AppUserApi().delete(user.id, user.reason_id);
+          new AppUserApi().delete(user.id, user.reason_code);
       })
     });
   }

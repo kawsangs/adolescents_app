@@ -5,7 +5,6 @@ import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch} from 'react-redux';
 
-import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
 import SurveySelectOneQuestionComponent from '../surveys/SurveySelectOneQuestionComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import AlertModalComponent from '../shared/AlertModalComponent';
@@ -24,27 +23,14 @@ const DeleteAccountQuestionnaireComponent = (props) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const renderQuestion = () => {
-    const options = props.reasons.map(reason => ({value: reason.id, name: reason.name_km, id: reason.id}));
-    // console.log('== answer options = ', options)
-
+    const options = props.reasons.map(reason => ({value: reason.code, name: reason.name_km, id: reason.id}));
     return <View style={{padding: 16, marginBottom: 16, borderWidth: 1.5, borderColor: '#dbdbdb', borderRadius: 10, backgroundColor: color.whiteColor}}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1, justifyContent: 'center'}}>
-                  <Text style={{marginBottom: 6, fontSize: largeFontSize(), lineHeight: 26}}>
-                    {t('pleaseProvideReasonYouWantToDeleteYourAccount')}
-                  </Text>
-                </View>
-                <View style={{marginLeft: 4}}>
-                  <CustomAudioPlayerButtonComponent
-                    rippled={true}
-                    itemUuid={'question1'}
-                    audio={null}
-                  />
-                </View>
-              </View>
+              <Text style={{marginBottom: 6, fontSize: largeFontSize(), lineHeight: 26}}>
+                {t('pleaseProvideReasonYouWantToDeleteYourAccount')}
+              </Text>
               <SurveySelectOneQuestionComponent
                 key={uuidv4()}
-                surveyUuid='survey1'
+                surveyUuid='deleteAccount'
                 question={{id: 'question1', code: 'question1'}}
                 options={options}
                 buttonColor={color.primaryColor}
