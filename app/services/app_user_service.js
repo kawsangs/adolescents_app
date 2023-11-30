@@ -7,14 +7,19 @@ import apiService from './api_service';
 import networkService from './network_service';
 import appVisitService from './app_visit_service';
 import User from '../models/User';
+import Visit from '../models/Visit';
+import Survey from '../models/Survey';
+import SearchHistory from '../models/SearchHistory';
 import uuidv4 from '../utils/uuidv4_util';
+import randomId from '../utils/id_util';
 
-const createAccountService = (() => {
+const appUserService = (() => {
   return {
     createUser,
     isValidForm,
     createAnonymousUser,
     syncUsers,
+    deleteCurrentUser,
   }
 
   function createUser(user) {
@@ -36,12 +41,32 @@ const createAccountService = (() => {
   }
 
   function syncUsers(callback) {
+    _sendDeletedUsers();
     const unsyncedUsers = User.unsynced();
     if (unsyncedUsers.length == 0) {
       callback();
       return;
     }
     _sendUnsyncUsers(0, unsyncedUsers, callback);
+  }
+
+  function deleteCurrentUser(reasonCode) {
+    const user = User.currentLoggedIn();
+    SearchHistory.deleteAll();
+    Visit.deleteByUser(user.uuid);
+    Survey.deleteByUser(user.uuid);
+
+    networkService.checkConnection(() => {
+      if (!!user.id)
+        new AppUserApi().delete(user.id, reasonCode);  // send API request to delete the user
+
+      User.deleteAccount(user);  // delete user from realm
+    }, () => {
+      if (!user.id)
+        User.deleteAccount(user);
+      else
+        User.update(user.uuid, { reason_code: reasonCode });
+    });
   }
 
   // private method
@@ -60,7 +85,7 @@ const createAccountService = (() => {
     networkService.checkConnection(async () => {
       let response = null;
       if (!!params.id)
-        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level });
+        response = await new AppUserApi().put(params.id, { device_id: await DeviceInfo.getUniqueId(), occupation: params.occupation, education_level: params.education_level, uuid: params.user_uuid });
       else
         response = await new AppUserApi().post(await _userApiParams(params));
 
@@ -71,6 +96,15 @@ const createAccountService = (() => {
         !!callback && callback();
       });
     }, callback)
+  }
+
+  function _sendDeletedUsers() {
+    networkService.checkConnection(() => {
+      User.deleted().map(user => {
+        if (!!user.id)
+          new AppUserApi().delete(user.id, user.reason_code);
+      })
+    });
   }
 
   function _buildData(user) {
@@ -85,7 +119,8 @@ const createAccountService = (() => {
       registered_at: Moment().toDate(),
       characteristics: user ? user.characteristics : [],
       synced: false,
-      anonymous: !user
+      anonymous: !user,
+      user_uuid: randomId(),
     }
 
     return params;
@@ -106,10 +141,11 @@ const createAccountService = (() => {
       education_level: user.education_level,
       gender: user.gender,
       age: user.age,
-      platform: Platform.OS
+      platform: Platform.OS,
+      uuid: user.user_uuid,
     }
     return params;
   }
 })();
 
-export default createAccountService;
+export default appUserService;

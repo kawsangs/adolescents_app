@@ -160,5 +160,10 @@
   "thankYouForPaticipatingInTheSurvey": "អរគុណសម្រាប់ការចូលរួមការស្ទង់មតិ",
   "noSurveyQuestionnaireDueToNoInternetConnection": "មិនមានកម្រងសំណួរនៃការស្ទង់មតិ! បញ្ហាអាចបណ្ដាលមកពីមិនមានប្រព័ន្ធអ៊ីនធឺណិត។ សូមចុចប៊ូតុងខាងក្រោមដើម្បីទាញយកកម្រងសំណួរនៃការស្ទង់មតិ។",
   "failedToFetchSurveyQuestion": "មានបញ្ហារអាក់រអួលក្នុងការទាញយកកម្រងសំណួរនៃការស្ទង់មតិ។ សូមពិនិត្យមើលប្រព័ន្ធអ៊ីនធឺណិតរបស់អ្នកហើយព្យាយាមម្តងទៀត។",
-  "downloadSurvey": "ទាញយកកម្រងសំណួរ"
+  "downloadSurvey": "ទាញយកកម្រងសំណួរ",
+  "uuid": "លេខសម្គាល់",
+  "deleteAccount": "លុបគណនី",
+  "doYouReallyWantToDeleteThisAccount": "តើអ្នកពិតជាចង់លុបគណនីនេះមែនទេ?",
+  "pleaseProvideReasonYouWantToDeleteYourAccount": "សូមបញ្ជាក់ពីមូលហេតុដែលអ្នកចង់លុបគណនីរបស់អ្នក",
+  "deleteAccountMessage": "គណនីរបស់អ្នកនឹងត្រូវបានលុបចេញជាបណ្ដោះអាសន្ន ហើយនឹងត្រូវលុបចេញជាអចិន្ត្រៃយ៍ក្នុងរយៈពេល {{days}} ថ្ងៃបន្ទាប់"
 }

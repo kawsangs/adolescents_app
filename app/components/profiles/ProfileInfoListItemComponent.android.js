@@ -18,7 +18,7 @@ const ProfileInfoListItem = (props) => {
               <Text style={styles.label}>{props.label || info.label}</Text>
               <View style={styles.valueWrapper}>
                 {props.hasIcon && <Icon name={gender.icon} size={30} style={{marginRight: 8}} color={color.lightBlackColor} />}
-                <Text style={styles.valueLabel}>{props.value || info.value}</Text>
+                <Text selectable={props.textSelectable} style={styles.valueLabel}>{props.value || info.value}</Text>
               </View>
             </View>
             <View style={styles.audioWrapper}>

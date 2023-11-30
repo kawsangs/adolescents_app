@@ -3,7 +3,7 @@ import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
-import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
+import ProfileNavHeaderComponent from '../../components/profiles/ProfileNavHeaderComponent';
 import ProfileMainComponent from '../../components/profiles/ProfileMainComponent';
 import AlertModalComponent from '../../components/shared/AlertModalComponent';
 import {navigationRef} from '../../navigators/app_navigator';
@@ -54,7 +54,7 @@ const ProfileView = () => {
 
   return (
     <GradientScrollViewComponent
-      header={<NavigationHeaderWithBackButtonComponent label={t('yourProfile')} onPress={() => onPress()}/>}
+      header={<ProfileNavHeaderComponent onPress={() => onPress()}/>}
       body={renderContent()}
       scrollViewStyle={{paddingBottom: 86}}
       scrollable={true}

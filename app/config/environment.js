@@ -11,5 +11,6 @@ export const environment = {
   isUserBasedAuth: false,
   apiVersion: 'v1',
   isUserBasedApi: false,
-  hasPrivacyConfirmation: true
+  hasPrivacyConfirmation: true,
+  accountDeletionDuration: 30  // days
 };

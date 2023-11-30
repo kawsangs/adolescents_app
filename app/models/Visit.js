@@ -31,6 +31,11 @@ class Visit {
     BaseModel.deleteByUuid(MODEL, uuid);
   }
 
+  static deleteByUser = (userUuid) => {
+    const visits = BaseModel.findByAttr(MODEL, {user_uuid: `'${userUuid}'`});
+    BaseModel.deleteByCollection(visits);
+  }
+
   // private method
   static #buildParams = (params) => {
     return {
