@@ -15,10 +15,10 @@ import VideoTag from '../../models/VideoTag';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {cardBorderRadius, cardElevation, screenHorizontalPadding} from '../../constants/component_constant';
 import { gradientScrollViewBigPaddingBottom } from '../../constants/ios_component_constant';
-
 import visitService from '../../services/visit_service';
 import videoSyncService from '../../services/video_sync_service';
 import videoAuthorSyncService from '../../services/video_author_sync_service';
+import TagSyncService from '../../services/tag_sync_service';
 import tabletStyles from '../../assets/stylesheets/tablet/videoItemListComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/videoItemListComponentStyles';
 
@@ -72,6 +72,7 @@ const VideoItemListComponent = (props) => {
   }
 
   const onRefresh = () => {
+    new TagSyncService('videoTag').syncAllData();
     videoSyncService.syncData(1, () => {
       videoAuthorSyncService.syncAllData(() => listRef.current?.stopRefreshLoading())
     }, () => listRef.current?.stopRefreshLoading())
