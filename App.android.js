@@ -34,6 +34,7 @@ import { Provider } from 'react-redux'
 import { navigationRef } from './app/navigators/app_navigator';
 
 import NotifService from './app/services/NotifService';
+import useInAppUpdate from './app/hooks/useInAppUpdate';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -63,6 +64,7 @@ const App: () => Node = () => {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const notif = new NotifService((token) => {}, (notif) => {});
+  useInAppUpdate();
 
   useEffect(() => {
     setDefaultLocale();

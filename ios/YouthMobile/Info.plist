@@ -92,5 +92,10 @@
 	<false/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app requires access to your microphone</string>
+
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>itms-apps</string>
+  </array>
 </dict>
 </plist>
