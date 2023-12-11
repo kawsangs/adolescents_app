@@ -21,6 +21,8 @@ const CardPointAndAudioFooterComponent = (props) => {
               playingUuid={props.playingUuid}
               updatePlayingUuid={props.updatePlayingUuid}
               accessibilityLabel={`កាតទី${props.index + 1}`}
+              buttonStyle={getStyleOfDevice({}, {height: 30, width: 30})}
+              rippleStyle={getStyleOfDevice({}, {left: -9, top: -9})}
            />
   }
 
