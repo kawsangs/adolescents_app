@@ -36,14 +36,6 @@
           <category android:name="android.intent.category.BROWSABLE" />
           <data
             android:scheme="https"
-            android:host="youthhealth-stg.childhelplinecambodia.org"
-          />
-          <data
-            android:scheme="http"
-            android:host="youthhealth-stg.childhelplinecambodia.org"
-          />
-          <data
-            android:scheme="https"
             android:host="youthhealth.childhelplinecambodia.org"
           />
           <data
