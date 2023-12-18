@@ -42,26 +42,52 @@ const audioSources = {
   "0.42.mp3": require("../assets/audios/20230307_0.42.mp3"),
   "0.43.mp3": require("../assets/audios/20230228_0.43.mp3"),
   "0.44.mp3": require("../assets/audios/20230307_0.44.mp3"),
+
+  // Categories
+  // Home page
   "1.mp3": require("../assets/audios/20221124_1.mp3"),
   "2.mp3": require("../assets/audios/20221124_2.mp3"),
   "3.mp3": require("../assets/audios/20221124_3.mp3"),
   "4.mp3": require("../assets/audios/20221124_4.mp3"),
   "5.mp3": require("../assets/audios/20221124_5.mp3"),
   "6.mp3": require("../assets/audios/20221124_6.mp3"),
+
+  // សុខភាពផ្លូវភេទនិងសុខភាពបន្តពូជ
+  "health.1.mp3": require("../assets/audios/20231218_health.1.mp3"),
   "1.1.mp3": require("../assets/audios/20221116_1.1.mp3"),
   "1.2.mp3": require("../assets/audios/20221116_1.2.mp3"),
   "1.3.mp3": require("../assets/audios/20221116_1.3.mp3"),
   "1.4.mp3": require("../assets/audios/20221116_1.4.mp3"),
+
+  // old: សុខភាពបន្តពូជ => new: under សុខភាពផ្លូវភេទនិងសុខភាពបន្តពូជ
   "2.1.mp3": require("../assets/audios/20221116_2.1.mp3"),
   "2.2.mp3": require("../assets/audios/20221116_2.2.mp3"),
   "2.3.mp3": require("../assets/audios/20221116_2.3.mp3"),
   "2.4.mp3": require("../assets/audios/20221116_2.4.mp3"),
   "2.5.mp3": require("../assets/audios/20221116_2.5.mp3"),
   "2.6.mp3": require("../assets/audios/20221116_2.6.mp3"),
+
+  // យេនឌ័រនិងនិន្នាការភេទ
+  "gender_3.mp3": require("../assets/audios/20231218_gender_3.mp3"),
   "3.1.mp3": require("../assets/audios/20221116_3.1.mp3"),
   "3.2.mp3": require("../assets/audios/20221116_3.2.mp3"),
   "3.3.mp3": require("../assets/audios/20221116_3.3.mp3"),
-  "3.4.mp3": require("../assets/audios/20221116_3.4.mp3"),
+
+  // ការបង្ការគ្រឿងញៀននិងគ្រឿងស្រវឹង
+  "drug.3.mp3": require("../assets/audios/20231218_drug.3.mp3"),
+  "drug.3.1.mp3": require("../assets/audios/20231218_drug.3.1.mp3"),
+
+  // ការយល់ដឹងពីមេរោគអេដស៍
+  "hiv.4.mp3": require("../assets/audios/20231218_hiv.4.mp3"),
+  "hiv.4.1.mp3": require("../assets/audios/20231218_hiv.4.1.mp3"),
+  "hiv.4.2.mp3": require("../assets/audios/20231218_hiv.4.2.mp3"),
+  "hiv.4.3.mp3": require("../assets/audios/20231218_hiv.4.3.mp3"),
+  "hiv.4.4.mp3": require("../assets/audios/20231218_hiv.4.4.mp3"),
+
+  // ចំណាកស្រុកយុវជន
+  "migrant.5.mp3": require("../assets/audios/20231218_migrant.5.mp3"),
+  "migrant.5.1.mp3": require("../assets/audios/20231218_migrant.5.1.mp3"),
+
   "7.1.mp3": require("../assets/audios/20221104_7.1.mp3"),
   "7.2.mp3": require("../assets/audios/20221104_7.2.mp3"),
   "7.3.mp3": require("../assets/audios/20221104_7.3.mp3"),
