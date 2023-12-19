@@ -45,9 +45,6 @@ const audioSources = {
 
   // Categories
   // Home page
-  "1.mp3": require("../assets/audios/20221124_1.mp3"),
-  "2.mp3": require("../assets/audios/20221124_2.mp3"),
-  "3.mp3": require("../assets/audios/20221124_3.mp3"),
   "4.mp3": require("../assets/audios/20221124_4.mp3"),
   "5.mp3": require("../assets/audios/20221124_5.mp3"),
   "6.mp3": require("../assets/audios/20221124_6.mp3"),
@@ -65,7 +62,6 @@ const audioSources = {
   "2.3.mp3": require("../assets/audios/20221116_2.3.mp3"),
   "2.4.mp3": require("../assets/audios/20221116_2.4.mp3"),
   "2.5.mp3": require("../assets/audios/20221116_2.5.mp3"),
-  "2.6.mp3": require("../assets/audios/20221116_2.6.mp3"),
 
   // យេនឌ័រនិងនិន្នាការភេទ
   "gender_3.mp3": require("../assets/audios/20231218_gender_3.mp3"),
