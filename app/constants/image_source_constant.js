@@ -21,6 +21,7 @@ const imageSources = {
   'sexual_desire.png': require("../assets/images/categories/sexual_desire.png"),
   'sexual_education.png': require("../assets/images/categories/sexual_education.png"),
   'sexual_health_social_and_gender.png': require("../assets/images/categories/sexual_health_social_and_gender.png"),
+  'sexual_orientation.png': require("../assets/images/categories/sexual_orientation.png"),
   'sti_virus.png': require("../assets/images/categories/sti_virus.png"),
   'understanding_gender.png': require("../assets/images/categories/understanding_gender.png"),
   'violence_and_emotional_control.png': require("../assets/images/categories/violence_and_emotional_control.png"),
