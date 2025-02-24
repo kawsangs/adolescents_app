@@ -62,7 +62,7 @@
     "react-native-youtube-iframe": "^2.3.0",
     "react-native-youtube-popup-player": "^1.0.3",
     "react-redux": "^9.2.0",
-    "realm": "^12.14.1",
+    "realm": "^20.1.0",
     "rn-fetch-blob": "^0.12.0",
     "sp-react-native-in-app-updates": "^1.4.0"
   },
