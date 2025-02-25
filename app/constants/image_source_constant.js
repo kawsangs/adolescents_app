@@ -21,12 +21,21 @@ const imageSources = {
   'sexual_desire.png': require("../assets/images/categories/sexual_desire.png"),
   'sexual_education.png': require("../assets/images/categories/sexual_education.png"),
   'sexual_health_social_and_gender.png': require("../assets/images/categories/sexual_health_social_and_gender.png"),
+  'sexual_orientation.png': require("../assets/images/categories/sexual_orientation.png"),
   'sti_virus.png': require("../assets/images/categories/sti_virus.png"),
   'understanding_gender.png': require("../assets/images/categories/understanding_gender.png"),
   'violence_and_emotional_control.png': require("../assets/images/categories/violence_and_emotional_control.png"),
+  'hiv_virus.png': require("../assets/images/categories/hiv_virus.png"),
+  'drug_and_alcohol_prevention.png': require("../assets/images/categories/drug_and_alcohol_prevention.png"),
+  'understanding_hiv.png': require("../assets/images/categories/understanding_hiv.png"),
+  'hiv_aids_awareness.png': require("../assets/images/categories/hiv_aids_awareness.png"),
+  'hiv_testing.png': require("../assets/images/categories/hiv_testing.png"),
+  'hiv_aids_treatment.png': require("../assets/images/categories/hiv_aids_treatment.png"),
+  'understanding_prevention_and_control_laws.png': require("../assets/images/categories/understanding_prevention_and_control_laws.png"),
+  'youth_migration.png': require("../assets/images/categories/youth_migration.png"),
   rhac: require("../assets/images/rhac_logo.png"),
   marie_stopes: require("../assets/images/marie_stopes_logo.png"),
-  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg") 
+  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg")
 }
 
 export default imageSources;
