@@ -2,10 +2,11 @@ import React from 'react';
 import {Appbar} from 'react-native-paper';
 import NavigationHeaderTitleComponent from './navigationHeaders/NavigationHeaderTitleComponent';
 import {navigationHeaderHorizontalPadding} from '../../constants/component_constant';
+import color from '../../themes/color';
 
 const NavigationHeaderComponent = (props) => {
   return (
-    <Appbar.Header style={[{elevation: 0, paddingHorizontal: navigationHeaderHorizontalPadding}, props.headerStyle]}>
+    <Appbar.Header style={[{elevation: 0, paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: color.primaryColor}, props.headerStyle]}>
       { props.leftButton }
       { !!props.customTitle ?
         props.customTitle
