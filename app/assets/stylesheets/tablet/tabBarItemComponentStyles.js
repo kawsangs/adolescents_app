@@ -8,9 +8,6 @@ const TabBarItemComponentStyles = StyleSheet.create({
   },
   itemContainer: {
     alignItems: 'center',
-    flex: 1,
-    paddingBottom: 12,
-    paddingTop: 6
   },
   label: {
     fontSize: smallFontSize(),
