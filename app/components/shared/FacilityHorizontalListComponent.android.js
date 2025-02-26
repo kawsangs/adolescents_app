@@ -24,7 +24,7 @@ const FacilityHorizontalListComponent = (props) => {
 
   const renderItem = (facility, index) => {
     return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail(facility)}
-              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: 100, paddingHorizontal: 4, paddingTop: 8, borderWidth: 0.4, borderColor: color.lightGrayColor}]}
+              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: 100, padding: 8, borderWidth: 0.4, borderColor: color.lightGrayColor, backgroundColor: color.whiteColor}]}
            >
               <FacilityLogoComponent facility={facility} containerStyle={{flex: 0, height: 85}}
                 customImageStyle={{width: '100%', height: '80%'}}

@@ -19,10 +19,10 @@ const VideoHorizontalListComponent = (props) => {
   const renderItem = (video, index) => {
     return (
       <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(video)}
-        style={{marginBottom: 13, borderRadius: cardBorderRadius, width: 150, height: 140, marginRight: 16}} key={video.uuid}
+        style={{marginBottom: 13, borderRadius: cardBorderRadius, width: 150, height: 140, marginRight: 16, backgroundColor: '#ffffff'}} key={video.uuid}
       >
         <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} thumbnailStyle={styles.thumbnail} emptyComponentStyle={styles.thumbnail} />
-        <View style={{paddingHorizontal: 8, paddingVertical: 4, flex: 1, justifyContent: 'center'}}>
+        <View style={{paddingHorizontal: 8, paddingVertical: 3, width: '100%', justifyContent: 'center', minHeight: 48}}>
           <BoldLabelComponent label={video.name} numberOfLines={2} style={{lineHeight: 22}} />
         </View>
       </Card>
