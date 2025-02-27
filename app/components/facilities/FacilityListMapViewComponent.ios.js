@@ -55,6 +55,7 @@ const FacilityListMapViewComponent = (props) => {
           setFlatListRef={(ref) => setFlatListRef(ref)}
           itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
           customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
+          isMapView={true}
         />
       </View>
     </View>

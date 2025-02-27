@@ -30,6 +30,7 @@ const FacilityListViewComponent = (props) => {
   const renderList = () => {
     return <FacilityScrollableListComponent facilityImages={facilityImages} hasInternet={props.hasInternet} selectedTagUuid={selectedTagUuid}
               reloadFacilityImages={() => setFacilityImages(DownloadedFile.getAllImages())}
+              isMapView={props.isMapView}
            />
   }
 

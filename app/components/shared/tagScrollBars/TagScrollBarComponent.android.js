@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
     minWidth: 60,
     paddingHorizontal: 12,
+    paddingBottom: 4
   },
   label: {
     color: color.primaryColor,

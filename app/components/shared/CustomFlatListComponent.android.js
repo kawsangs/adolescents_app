@@ -60,6 +60,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
               refreshControl={!props.horizontal && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
               onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}
               showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
             />
         </View>
 })

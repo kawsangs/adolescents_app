@@ -25,7 +25,7 @@ const FacilityCardItemComponent = (props) => {
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail()}
+    <Card mode="elevated" elevation={props.isMapView ? 1 : cardElevation} onPress={() => viewDetail()}
       style={[{borderRadius: cardBorderRadius, height: getStyleOfDevice(100, 90), marginTop: 11}, props.containerStyle]}
     >
       <View style={{flexDirection: 'row', flexGrow: 1}}>

@@ -44,7 +44,7 @@ const FacilityScrollableListComponent = (props) => {
             setFlatListRef={props.setFlatListRef}
             ref={listRef}
             data={facilities}
-            renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={props.itemContainerStyle} accessibilityLabel={item.name} />}
+            renderItem={({item}) => <FacilityCardItemComponent facility={item} containerStyle={props.itemContainerStyle} accessibilityLabel={item.name} isMapView={props.isMapView ?? false} />}
             keyExtractor={item => uuidv4()}
             hasInternet={props.hasInternet}
             horizontal={props.horizontal}

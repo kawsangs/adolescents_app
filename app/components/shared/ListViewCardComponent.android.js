@@ -30,7 +30,7 @@ const ListViewCardComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation}
-      style={{marginTop: 16, flexGrow: 1, borderRadius: cardBorderRadius}}
+      style={{marginTop: 16, flexGrow: 1, borderRadius: cardBorderRadius, backgroundColor: 'white'}}
       onPress={() => onPress()}
     >
       <View>

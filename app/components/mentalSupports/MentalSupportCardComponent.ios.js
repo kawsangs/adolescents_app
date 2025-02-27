@@ -27,7 +27,7 @@ const MentalSupportCardComponent = (props) => {
 
   return (
     <Card mode="elevated" elevation={cardElevation} style={styles.card} onPress={() => onPress()}>
-      <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', height: 80, alignItems: 'center'}}>
         <View style={{width: 45}}>
           <ContactIconComponent type={props.type} size={40} />
         </View>
