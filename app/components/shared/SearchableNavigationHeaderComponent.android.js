@@ -43,7 +43,7 @@ const SeachableNavigationHeaderComponent = (props) => {
   }
 
   return (
-    <Appbar.Header style={[{elevation: 0, paddingHorizontal: navigationHeaderHorizontalPadding}, props.headerStyle]}>
+    <Appbar.Header style={[{elevation: 0, paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: color.primaryColor}, props.headerStyle]}>
       { !isSearching ? props.leftButton :
         <NavigationHeaderBackButtonComponent onPress={() => closeSearch()}/>
       }

@@ -6,6 +6,12 @@ import color from '../../../themes/color';
 const topicListCardComponentStyles = StyleSheet.create({
   card: {
     borderRadius: cardBorderRadius,
+    backgroundColor: 'white',
+    height: 94
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
     height: 94
   },
   labelContainer: {

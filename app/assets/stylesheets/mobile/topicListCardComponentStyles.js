@@ -7,6 +7,19 @@ import color from '../../../themes/color';
 const topicListCardComponentStyles = StyleSheet.create({
   card: {
     borderRadius: cardBorderRadius,
+    backgroundColor: 'white',
+    ...Platform.select({
+      ios: {
+        height: isLowPixelDensityDevice() ? 88 : 94,
+      },
+      android: {
+        height: isLowPixelDensityDevice() ? 84 : 94,
+      }
+    })
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
     ...Platform.select({
       ios: {
         height: isLowPixelDensityDevice() ? 88 : 94,
