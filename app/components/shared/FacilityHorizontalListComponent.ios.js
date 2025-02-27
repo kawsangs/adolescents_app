@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -23,7 +23,7 @@ const FacilityHorizontalListComponent = (props) => {
 
   const renderItem = (facility, index) => {
     return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail(facility)}
-              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: getStyleOfDevice(130, 100), paddingHorizontal: getStyleOfDevice(8, 4), paddingVertical: 8, backgroundColor: '#ffffff'}]}
+              style={[{marginLeft: index == 0 ? 4 : 16}, styles.card]}
            >
               <FacilityLogoComponent facility={facility} containerStyle={{flex: 0, height: 85}}
                 customImageStyle={{width: '100%', height: getStyleOfDevice('90%', '80%')}}
@@ -48,5 +48,18 @@ const FacilityHorizontalListComponent = (props) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: cardBorderRadius,
+    borderWidth: 0.4,
+    borderColor: color.lightGrayColor,
+    backgroundColor: color.whiteColor,
+    height: 155,
+    width: getStyleOfDevice(130, 100),
+    paddingHorizontal: getStyleOfDevice(8, 4),
+    paddingVertical: 8,
+  }
+});
 
 export default FacilityHorizontalListComponent;
