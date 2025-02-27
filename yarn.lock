@@ -1835,7 +1835,7 @@
   resolved "https://registry.npmjs.org/@jsamr/react-native-li/-/react-native-li-2.3.1.tgz"
   integrity sha512-Qbo4NEj48SQ4k8FZJHFE2fgZDKTWaUGmVxcIQh3msg5JezLdTMMHuRRDYctfdHI6L0FZGObmEv3haWbIvmol8w==
 
-"@miblanchard/react-native-slider@^2.2.0", "@miblanchard/react-native-slider@^2.6.0":
+"@miblanchard/react-native-slider@^2.6.0":
   version "2.6.0"
   resolved "https://registry.npmjs.org/@miblanchard/react-native-slider/-/react-native-slider-2.6.0.tgz"
   integrity sha512-o7hk/f/8vkqh6QNR5L52m+ws846fQeD/qNCC9CCSRdBqjq66KiCgbxzlhRzKM/gbtxcvMYMIEEJ1yes5cr6I3A==
@@ -2118,7 +2118,7 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
-"@react-native-community/netinfo@^11.4.1", "@react-native-community/netinfo@>=5.9.10":
+"@react-native-community/netinfo@^11.4.1":
   version "11.4.1"
   resolved "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-11.4.1.tgz"
   integrity sha512-B0BYAkghz3Q2V09BF88RA601XursIEA111tnc2JOaN7axJWmNefmfjZqw/KdSxKZp7CZUuPpjBmz/WCR9uaHYg==
@@ -6692,9 +6692,10 @@ react-native-audio-player-button@^1.0.12:
   resolved "https://registry.npmjs.org/react-native-audio-player-button/-/react-native-audio-player-button-1.0.12.tgz"
   integrity sha512-nXTZPiMrk8sd5iuNhmIxqszZmGhBElDvpP9wEVM2E/AJZ6WM1Gi/FXqhAyZSUPUSGjWuMJ/UesvydPlHu8GnUQ==
 
-"react-native-audio-recorder-button@github:limkimsan/react-native-audio-recorder-button#update-react-native-permission-version":
-  version "1.0.1"
-  resolved "git+ssh://git@github.com/limkimsan/react-native-audio-recorder-button.git#178660fccedc4cbf5cb88d0843dcc9bf1b94e4a9"
+react-native-audio-recorder-button@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/react-native-audio-recorder-button/-/react-native-audio-recorder-button-1.0.2.tgz"
+  integrity sha512-FemX1m3FYimr9N2klBNCOW7GqMHM02ul1uXWJ2h3f2EdQnUON1hIfPOgBffNcNXGmkwE4lTU36pt2EAZPi/1KQ==
 
 react-native-bottom-sheet-picker@^1.2.2:
   version "1.2.2"
@@ -6902,7 +6903,7 @@ react-native-vector-icons@^9.2.0:
     prop-types "^15.7.2"
     yargs "^16.1.1"
 
-react-native-webview@^11.23.1, react-native-webview@^13.13.2, react-native-webview@>=7.0.0:
+react-native-webview@^13.13.2, react-native-webview@>=7.0.0:
   version "13.13.2"
   resolved "https://registry.npmjs.org/react-native-webview/-/react-native-webview-13.13.2.tgz"
   integrity sha512-zACPDTF0WnaEnKZ9mA/r/UpcOpV2gQM06AAIrOOexnO8UJvXL8Pjso0b/wTqKFxUZZnmjKuwd8gHVUosVOdVrw==
@@ -6910,22 +6911,22 @@ react-native-webview@^11.23.1, react-native-webview@^13.13.2, react-native-webvi
     escape-string-regexp "^4.0.0"
     invariant "2.2.4"
 
-react-native-youtube-iframe-player@*:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/react-native-youtube-iframe-player/-/react-native-youtube-iframe-player-1.0.3.tgz"
-  integrity sha512-ppAa8WlK4L/EXPWcxxQzhBDSbDxLbECwHR7fz3GzNaV/tXvlXF0wOw9o8QWsRKMcQBW2bvZRTI7v/oFqONpJOg==
+react-native-youtube-iframe-player@*, react-native-youtube-iframe-player@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/react-native-youtube-iframe-player/-/react-native-youtube-iframe-player-1.0.4.tgz"
+  integrity sha512-9xrPp4e1awPSkVdEkUGr+6Ml2kywc+A8ZK9y+FDNw4ea8m6OCS8rJdqpQ1myoQuRHTsAGa1vPsZTes+r8qAfrw==
 
-react-native-youtube-iframe@^2.2.2, react-native-youtube-iframe@^2.3.0:
+react-native-youtube-iframe@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/react-native-youtube-iframe/-/react-native-youtube-iframe-2.3.0.tgz"
   integrity sha512-M+z63xwXVtS4dX3k8PbtHUUcWN+gRZt6J1EtPE7Y60BMOB979KjpkdrHqeR96or9pNR2W8K5tQhIkMXW2jwo7Q==
   dependencies:
     events "^3.2.0"
 
-react-native-youtube-popup-player@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/react-native-youtube-popup-player/-/react-native-youtube-popup-player-1.0.3.tgz"
-  integrity sha512-wFb/sGo423YKNboJHmTSOsWvc5K55TvDoFB7p32AIvyoNQJbMISS7Gseeo0rYHclanlXpDR3uxaE6Sui84pyyQ==
+react-native-youtube-popup-player@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/react-native-youtube-popup-player/-/react-native-youtube-popup-player-1.0.4.tgz"
+  integrity sha512-NcdJmYbJn9mQR6g+4ti70bcvAtCZGI5sfj9tu+kcRZ/iobBExSbk0Q0/jZ0/lyWClsTvq6N9LQxzYpydoRislg==
 
 react-native@*, react-native@^*, "react-native@^0.0.0-0 || >=0.60 <1.0", "react-native@^0.0.0-0 || >=0.65 <1.0", "react-native@>= 0.64.3", react-native@>=0.20.0, react-native@>=0.33, react-native@>=0.35, react-native@>=0.57.0, react-native@>=0.58.4, react-native@>=0.59, react-native@>=0.60, react-native@>=0.65.0, react-native@>=0.70.0, react-native@>=0.71.0, react-native@>=0.8.0, react-native@0.77.1:
   version "0.77.1"
