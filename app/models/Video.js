@@ -67,7 +67,12 @@ class Video {
   static #getFormattedVideos = () => {
     let formattedVideos = [];
     videos.map(video => {
-      formattedVideos.push({...video, uuid: video.id, author_uuid: !!video.video_author ? video.video_author.id : null})
+      formattedVideos.push({
+        ...video,
+        uuid: video.id,
+        author_uuid: !!video.video_author ? video.video_author.id : null,
+        author_name: !!video.video_author ? video.video_author.name : null,
+      })
     });
     return formattedVideos;
   }

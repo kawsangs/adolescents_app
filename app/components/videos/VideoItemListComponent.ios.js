@@ -51,7 +51,7 @@ const VideoItemListComponent = (props) => {
         <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} />
         <View style={styles.labelContainer}>
           <BoldLabelComponent label={video.name} numberOfLines={2} style={styles.title} />
-          <Text style={styles.author} numberOfLines={1}>{t('author')}: {VideoAuthor.getName(video.author_uuid)}</Text>
+          <Text style={styles.author} numberOfLines={1}>{t('author')}: {video.author_name}</Text>
           { !!video.tag_list &&
             <Text style={[styles.author, {color: '#b5b5b5', flex: 1}]} numberOfLines={1}>
               {video.tag_list}

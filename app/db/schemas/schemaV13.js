@@ -1,7 +1,7 @@
 import schemaHelper from '../../helpers/schema_helper';
 import Category from '../migrations/v13/category';
 import Facility from '../migrations/v13/facility';
-import Video from '../migrations/v8/video';
+import Video from '../migrations/v13/video';
 import Topic from '../migrations/v13/topic';
 import Question from '../migrations/v13/question';
 import Tag from '../migrations/v5/tag';
@@ -38,6 +38,9 @@ const schemaV13 = {
   schema: schemaHelper.getSchemas(changedSchemas),
   schemaVersion: 13,
   onMigration: (oldRealm, newRealm) => {
+    if (oldRealm.schemaVersion < 13) {
+      newRealm.delete(newRealm.objects('Video'));
+    }
   },
 }
 
