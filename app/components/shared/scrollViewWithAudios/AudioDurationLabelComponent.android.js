@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: mediumFontSize()
+    fontSize: mediumFontSize(),
+    lineHeight: mediumFontSize()
   }
 });
 

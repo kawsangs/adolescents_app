@@ -9,7 +9,7 @@ import Question from '../../models/Question';
 
 const TopicDetailDescription = (props) => {
   return (
-    <Card mode="elevated" elevation={cardElevation} style={{borderRadius: cardBorderRadius, paddingBottom: 0}}>
+    <Card mode="elevated" elevation={cardElevation} style={{borderRadius: cardBorderRadius, paddingBottom: 0, backgroundColor: color.whiteColor}}>
       <Text style={{fontSize: parseFloat(props.textSize), lineHeight: descriptionLineHeight, padding: 16, color: color.blackColor}}>
         { props.type == OPTION ? Option.findByUuid(props.uuid).message : Question.findByUuid(props.uuid).answer }
       </Text>
