@@ -22,7 +22,7 @@ const MapComponent = (props) => {
     <MapView
       ref={_map}
       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-      style={{position: 'absolute', width: '100%', height: '100%'}}
+      style={{zIndex: -1, width: '100%', height: '100%'}}
       region={{
         latitude: props.initRegion.latitude,
         longitude: props.initRegion.longitude,

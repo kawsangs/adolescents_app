@@ -46,11 +46,8 @@ const FacilityListMapViewComponent = (props) => {
 
   return (
     <View style={{flexGrow: 1}}>
-      <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
-        currentRegion={mapRegion} markers={markers}
-      />
       <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
-      <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
+      <View style={{bottom: 256, position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}
           itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
@@ -58,6 +55,9 @@ const FacilityListMapViewComponent = (props) => {
           isMapView={true}
         />
       </View>
+      <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
+        currentRegion={mapRegion} markers={markers}
+      />
     </View>
   )
 }
