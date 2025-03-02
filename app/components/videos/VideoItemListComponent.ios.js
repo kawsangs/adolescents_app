@@ -46,7 +46,7 @@ const VideoItemListComponent = (props) => {
   const renderItem = (video) => {
     return (
       <Card mode="elevated" elevation={cardElevation} onPress={() => viewDetail(video)}
-        style={{marginBottom: 13, borderRadius: cardBorderRadius}} key={video.uuid}
+        style={{marginBottom: 13, borderRadius: cardBorderRadius, backgroundColor: 'white'}} key={video.uuid}
       >
         <VideoThumbnailComponent url={video.url} hasInternet={props.hasInternet} />
         <View style={styles.labelContainer}>
