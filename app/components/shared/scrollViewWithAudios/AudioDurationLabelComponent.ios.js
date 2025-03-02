@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   label: {
     color: color.whiteColor,
     fontSize: mediumFontSize(),
-    lineHeight: mediumFontSize()
   }
 });
 

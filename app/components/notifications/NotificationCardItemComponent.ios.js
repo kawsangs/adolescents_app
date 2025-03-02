@@ -21,7 +21,7 @@ const NotificationCardItemComponent = (props) => {
   const [contentLines, setContentLines] = React.useState(null);
 
   const renderToggleViewButton = () => {
-    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48}}>
+    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48, marginTop: -4}}>
               <Text style={{color: color.primaryColor, fontSize: largeFontSize()}}>
                 { !numberOfLines ? t('viewLess') : t('viewMore')}
               </Text>

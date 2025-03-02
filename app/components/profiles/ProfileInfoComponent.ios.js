@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -126,9 +127,11 @@ const ProfileInfoComponent = (props) => {
   }
 
   renderProfileIcon = () => {
-    return <GradientViewComponent style={{ width: 76, height: 76, borderRadius: 66, justifyContent: 'center', alignItems: 'center', position: 'absolute', top: 12, left: 16, zIndex: 1, borderWidth: 3, borderColor: color.whiteColor }}>
-              <ProfileIconComponent/>
-           </GradientViewComponent>
+    return <GradientViewComponent style={{ width: 76, height: 76, borderRadius: 66, position: 'absolute', top: 12, left: 16, zIndex: 1, borderWidth: 3, borderColor: color.whiteColor}}>
+              <View style={{alignItems: 'center', marginTop: 16, marginRight: 6}}>
+                <ProfileIconComponent iconSize={29} />
+              </View>
+            </GradientViewComponent>
   }
 
   const paddingBottom = (loggedInUser.anonymous || loggedInUser.characteristics.length > 0) ? getStyleOfDevice(10, 8) : 6;
