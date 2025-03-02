@@ -11,6 +11,7 @@ import {descriptionFontSize} from '../../utils/font_size_util';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
+import color from '../../themes/color';
 
 const FacilityHorizontalListComponent = (props) => {
   const {t} = useTranslation();
