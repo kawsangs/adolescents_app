@@ -36,7 +36,7 @@
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-audio-player-button": "^1.0.12",
     "react-native-audio-recorder-button": "^1.0.2",
-    "react-native-bottom-sheet-picker": "^1.2.3",
+    "react-native-bottom-sheet-picker": "^1.2.4",
     "react-native-device-info": "^14.0.4",
     "react-native-easy-toast": "^2.3.0",
     "react-native-encrypted-storage": "^4.0.3",
