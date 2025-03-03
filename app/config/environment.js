@@ -7,8 +7,7 @@ export const environment = {
   defaultLanguage: KM,
   sentryDSN: '',
   encryptionKey: '',        // Use 256 bytes key
-  // apiKey: '6650308c078ed719a6c4ded9dd092fa0',
-  apiKey: 'b33befe315730b4eed94ada294802734',
+  apiKey: '',
   isUserBasedAuth: false,
   apiVersion: 'v1',
   isUserBasedApi: false,
