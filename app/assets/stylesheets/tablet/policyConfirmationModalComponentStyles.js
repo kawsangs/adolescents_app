@@ -34,7 +34,7 @@ const policyConfirmationModalComponentStyles = StyleSheet.create({
   redNotice: {
     color: color.requiredColor,
     fontSize: Platform.OS == 'ios' ? largeFontSize() : largeFontSize() + 0.5,
-    lineHeight: 22,
+    lineHeight: 28,
     marginTop: 16,
     marginBottom: -8,
     textAlign: "center"
