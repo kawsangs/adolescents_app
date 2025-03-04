@@ -30,7 +30,7 @@ const FacilitySearchListComponent = (props) => {
   const viewDetail = (facility) => {
     SearchHistory.upsert(facility.name)
     visitService.recordVisitFacility(facility, () => {
-      navigationRef.current?.navigate('FacilityDetailView', {uuid: facility.uuid})
+      navigationRef.current?.navigate('FacilityDetailView', {uuid: facility.uuid, isFromCategoryDetail: false})
       setTimeout(() => {
         props.updateSearchText("");
       }, 100);

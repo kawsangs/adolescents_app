@@ -34,7 +34,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
             : t('anonymous')
           }
         </Text>
-        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: -2}} />
+        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: 3}} />
 
         { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>

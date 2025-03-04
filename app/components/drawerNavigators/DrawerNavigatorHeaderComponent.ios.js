@@ -21,7 +21,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
 
   return (
     <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileNavigator')}
-      style={{flexDirection: 'row', borderWidth: 0, marginTop: 40, alignItems: 'center'}}
+      style={{flexDirection: 'row', borderWidth: 0, marginTop: 56, alignItems: 'center'}}
     >
       <GradientViewComponent style={{ width: 64, height: 64, borderRadius: 64, justifyContent: 'center', alignItems: 'center', elevation: 4 }}>
         <ProfileIconComponent iconSize={29} />
@@ -34,7 +34,7 @@ const DrawerNavigatorHeaderComponent = (props) => {
             : t('anonymous')
           }
         </Text>
-        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: 2}} />
+        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: -2}} />
 
         { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>

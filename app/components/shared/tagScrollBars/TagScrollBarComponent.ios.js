@@ -63,11 +63,12 @@ const styles = StyleSheet.create({
     marginRight: 12,
     minWidth: 60,
     paddingHorizontal: 12,
+    paddingTop: 4
   },
   label: {
     color: color.primaryColor,
     fontSize: largeFontSize(),
-    lineHeight: getStyleOfDevice(28, 24)
+    lineHeight: getStyleOfDevice(28, 26)
   }
 });
 

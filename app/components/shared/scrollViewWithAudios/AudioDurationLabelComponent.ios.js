@@ -13,7 +13,7 @@ const AudioDurationLabelComponent = (props) => {
   const {t, i18n} = useTranslation();
   const labelPositionY = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: [0, 6],
+    outputRange: [0, 5],
     extrapolate: 'clamp'
   });
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: color.whiteColor,
-    fontSize: mediumFontSize()
+    fontSize: mediumFontSize(),
   }
 });
 

@@ -31,6 +31,7 @@ const ProfileNavHeaderComponent = (props) => {
                   />
                 </View>
               }
+              contentStyle={{backgroundColor: 'white'}}
             >
               <Menu.Item
                 theme={{colors: {text: color.redColor} }}
@@ -38,6 +39,7 @@ const ProfileNavHeaderComponent = (props) => {
                 title={t('deleteAccount')}
                 icon='trash'
                 titleStyle={{fontSize: largeFontSize(), color: color.blackColor}}
+                contentStyle={{backgroundColor: 'white'}}
               />
           </Menu>
   }

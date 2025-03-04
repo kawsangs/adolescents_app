@@ -4,6 +4,7 @@ import {getiPadStyle, getAndroidTabletStyle} from '../../../utils/responsive_uti
 
 const horizontalCardComponentStyles = StyleSheet.create({
   container: {
+    backgroundColor: "#ffffff",
     borderRadius: cardBorderRadius,
     paddingLeft: 12,
     paddingRight: 4,

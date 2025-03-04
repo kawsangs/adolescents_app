@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, RefreshControl} from 'react-native';
+import {ScrollView, StyleSheet, RefreshControl, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding} from '../../constants/component_constant';

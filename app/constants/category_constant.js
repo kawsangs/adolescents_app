@@ -22,15 +22,5 @@ export const offlineHomeCatgories = [
     "parent_code": null,
     "display": TILTED_CARD,
     "level": 1
-  },
-  {
-    "id": "category_06",
-    "code": "catg_lvl_1_entertainment",
-    "name": "ការកំសាន្ត (វីដេអូអប់រំ)",
-    "audio": audioSources['6.mp3'],
-    "image": imageSources['entertainment.png'],
-    "parent_code": null,
-    "display": TILTED_CARD,
-    "level": 1
   }
 ]

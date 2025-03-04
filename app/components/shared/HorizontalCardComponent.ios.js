@@ -28,7 +28,7 @@ const HorizontalCardComponent = (props) => {
     <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
       onPress={() => onPress()}
     >
-      <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', height: '100%'}}>
         <HorizontalCardImageComponent image={categoryHelper.getFileByUrl(props.item.image_url, 'image')} />
         <HorizontalCardInfoComponent
           uuid={props.item.id}

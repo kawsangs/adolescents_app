@@ -132,7 +132,7 @@ const ProfileInfoComponent = (props) => {
     <View>
       {renderProfileIcon()}
       <Card mode="elevated" elevation={cardElevation}
-        style={{borderRadius: cardBorderRadius, marginTop: 44, paddingLeft: 16, paddingBottom: paddingBottom, paddingTop: 36, marginBottom: 12}}
+        style={{borderRadius: cardBorderRadius, marginTop: 44, paddingLeft: 16, paddingBottom: paddingBottom, paddingTop: 36, marginBottom: 12, backgroundColor: 'white'}}
       >
         { !loggedInUser.anonymous ? renderInfo() : renderAnonymousInfo()}
         { loggedInUser.characteristics.length > 0 &&

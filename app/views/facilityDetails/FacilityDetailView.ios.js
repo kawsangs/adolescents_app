@@ -1,5 +1,5 @@
 import React from 'react';
-import {Animated, View, ScrollView} from 'react-native';
+import {Animated, View, ScrollView, SafeAreaView} from 'react-native';
 
 import FacilityDetailNavigationHeaderComponent from '../../components/facilityDetails/FacilityDetailNavigationHeaderComponent';
 import FacilityDetailGalleryComponent from '../../components/facilityDetails/FacilityDetailGalleryComponent';
@@ -11,7 +11,7 @@ const FacilityDetailView = (props) => {
   const scrollY = new Animated.Value(0);
 
   return (
-    <View style={{flexGrow: 1, backgroundColor: color.whiteColor}}>
+    <View style={{flexGrow: 1, backgroundColor: color.whiteColor, paddingTop: 24}}>
       <FacilityDetailNavigationHeaderComponent scrollY={scrollY} uuid={props.route.params.uuid} isFromCategoryDetail={props.route.params.isFromCategoryDetail} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}}
         scrollEventThrottle={16}

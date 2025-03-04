@@ -21,11 +21,11 @@ const NotificationCardItemComponent = (props) => {
   const [contentLines, setContentLines] = React.useState(null);
 
   const renderToggleViewButton = () => {
-    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48}}>
+    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48, marginTop: -4}}>
               <Text style={{color: color.primaryColor, fontSize: largeFontSize()}}>
                 { !numberOfLines ? t('viewLess') : t('viewMore')}
               </Text>
-              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: color.primaryColor}} />
+              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: color.primaryColor, marginTop: 3}} />
            </View>
   }
 
@@ -93,6 +93,7 @@ const NotificationCardItemComponent = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     borderRadius: cardBorderRadius,
     marginTop: 16,
     padding: 16,

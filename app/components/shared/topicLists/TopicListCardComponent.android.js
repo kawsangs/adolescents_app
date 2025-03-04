@@ -41,7 +41,7 @@ const TopicListCardComponent = (props) => {
     <Card mode="elevated" elevation={cardElevation} style={[styles.card, {marginTop: cardMarginTop()}]}
       onPress={() => props.onPress()}
     >
-      <View style={{flexDirection: 'row', flex: 1, paddingHorizontal: 16}}>
+      <View style={styles.innerContainer}>
         <View style={{flex: 1}}>
           { !props.hideAudio && renderAudioButton()}
           <View style={styles.labelContainer}>

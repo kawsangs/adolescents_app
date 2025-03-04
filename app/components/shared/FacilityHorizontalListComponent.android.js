@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Card} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 
@@ -8,7 +8,7 @@ import BoldLabelComponent from './BoldLabelComponent';
 import CustomFlatListComponent from './CustomFlatListComponent';
 import {getStyleOfDevice} from '../../utils/responsive_util';
 import {descriptionFontSize} from '../../utils/font_size_util';
-import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
+import { cardBorderRadius } from '../../constants/component_constant';
 import color from '../../themes/color';
 import {navigationRef} from '../../navigators/app_navigator';
 import visitService from '../../services/visit_service';
@@ -23,8 +23,8 @@ const FacilityHorizontalListComponent = (props) => {
   }
 
   const renderItem = (facility, index) => {
-    return <Card key={index} mode="elevated" elevation={cardElevation} onPress={() => viewDetail(facility)}
-              style={[{borderRadius: cardBorderRadius, height: '100%', marginLeft: index == 0 ? 4 : 16, width: 100, paddingHorizontal: 4, paddingTop: 8, borderWidth: 0.4, borderColor: color.lightGrayColor}]}
+    return <Card key={index} mode="elevated" elevation={1} onPress={() => viewDetail(facility)}
+              style={[{marginLeft: index == 0 ? 4 : 16}, styles.card]}
            >
               <FacilityLogoComponent facility={facility} containerStyle={{flex: 0, height: 85}}
                 customImageStyle={{width: '100%', height: '80%'}}
@@ -49,5 +49,18 @@ const FacilityHorizontalListComponent = (props) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: cardBorderRadius,
+    borderWidth: 0.4,
+    borderColor: color.lightGrayColor,
+    backgroundColor: color.whiteColor,
+    height: 155,
+    width: 100,
+    padding: 8,
+    marginBottom: 6,
+  }
+});
 
 export default FacilityHorizontalListComponent;

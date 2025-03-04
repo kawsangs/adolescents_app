@@ -1,21 +1,17 @@
 import React from 'react';
-import TextTicker from 'react-native-text-ticker';
+import { Text } from 'react-native-paper';
+import {Ticker} from 'react-native-ticker-tape';
+
 import {xxLargeFontSize} from '../../utils/font_size_util';
 import {FontFamily} from '../../themes/font';
 import color from '../../themes/color';
 
 const AutoScrollLabelComponent = (props) => {
-  return <TextTicker
-            style={{color: color.whiteColor, fontSize: xxLargeFontSize(), fontFamily: FontFamily.bold, lineHeight: 30, marginTop: 4}}
-            loop
-            bounce={false}
-            repeatSpacer={60}
-            marqueeDelay={2000}
-            scrollSpeed={20}
-            shouldAnimateTreshold={16}
-         >
-            {props.label}
-         </TextTicker>
+  return <Ticker msPerPX={50} loop={true}>
+    <Text style={{color: color.whiteColor, fontSize: xxLargeFontSize(), fontFamily: FontFamily.bold, lineHeight: 30}}>
+      {props.label}
+    </Text>
+  </Ticker>
 }
 
 export default AutoScrollLabelComponent;
