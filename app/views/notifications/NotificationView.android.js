@@ -56,23 +56,23 @@ const NotificationView = (props) => {
     //   }
     // }
 
-    const noti = {
-      title: "ការជូនដំណឹងសាកល្បងទី​ 3",
-      id: '1',
-      body: 'អត្ថបទនៃការជូនដំណឹងសាកល្បងទី 3',
-      data: {
-        topic_id: '8c0ee3f4-c092-4b32-89e1-8fe08274fa6e'
-      }
-    }
-
     // const noti = {
-    //   title: "ការជូនដំណឹងសាកល្បងទី​ 4",
+    //   title: "ការជូនដំណឹងសាកល្បងទី​ 3",
     //   id: '1',
-    //   body: 'អត្ថបទការជូនដំណឹងសាកល្បងទី​ 4',
+    //   body: 'អត្ថបទនៃការជូនដំណឹងសាកល្បងទី 3',
     //   data: {
-    //     topic_id: 'c21dfe5e-f32f-4df4-ac86-59875c91ac14'
+    //     topic_id: '8c0ee3f4-c092-4b32-89e1-8fe08274fa6e'
     //   }
-    // };
+    // }
+
+    const noti = {
+      title: "ការជូនដំណឹងសាកល្បងទី​ 4",
+      id: '1',
+      body: 'អត្ថបទការជូនដំណឹងសាកល្បងទី​ 4',
+      data: {
+        topic_id: 'c21dfe5e-f32f-4df4-ac86-59875c91ac14'
+      }
+    };
 
     Notification.create(noti);
   }
