@@ -11,8 +11,9 @@ import User from '../../models/User';
 import Notification from '../../models/Notification';
 import surveyService from '../../services/survey_service';
 
+const uuid = uuidv4();
+
 const SurveyView = ({route, navigation}) => {
-  const uuid = uuidv4();
   const [hasInternet, setHasInternet] = useState(false);
   const [hasForm, setHasForm] = useState(false);
 

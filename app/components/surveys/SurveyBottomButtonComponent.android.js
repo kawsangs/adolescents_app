@@ -16,7 +16,7 @@ const SurveyBottomButtonComponent = React.forwardRef((props, ref) => {
   const validateForm = (currentSection, questionVisibleStatuses, questions) => {
     let query = '';
     for (let index in questionVisibleStatuses) {
-      if (!!questionVisibleStatuses[index]) {
+      if (!!questionVisibleStatuses[index] && Object.keys(props.answers).length > 0) {
         if (!!query)
           query += ' && ';
 

@@ -29,15 +29,58 @@ const NotificationView = (props) => {
   useEffect(() => {
     Notification.setAllAsRead();
     dispatch(resetNotification());
+    // mockNoti();
   }, []);
 
-  const onEndReached = () => {
-    if (notifications[notifications.length - 1].uuid == firstRecord.uuid)
-      return;
+  const mockNoti = () => {
+    // const noti = {
+    //   title: "ការជូនដំណឹងសាកល្បង",
+    //   id: '1',
+    //   body: 'អត្ថបទការជូនដំណឹងសាកល្បង',
+    //   data: {
+    //     topic_id: 'b6c8bfef-abac-4dc1-830d-82f46026da95'
+    //   }
+    // };
 
-    const nextNotifications = Notification.getAll().slice(currentIndex + 1, currentIndex + STEP)
-    setNotifications([...notifications, ...nextNotifications]);
-    setCurrentIndex(currentIndex + STEP)
+    // const noti = {
+    //   title: "ការជូនដំណឹងសាកល្បងទី​ ២",
+    //   id: '1',
+    //   body: 'អត្ថបទនៃការជូនដំណឹងសាកល្បងទី ២',
+    //   data: {
+    //     topic_id: '09fbae7a-f89d-4063-bb0e-df493118d5d6'
+    //   }
+    // }
+
+    const noti = {
+      title: "ការជូនដំណឹងសាកល្បងទី​ 3",
+      id: '1',
+      body: 'អត្ថបទនៃការជូនដំណឹងសាកល្បងទី 3',
+      data: {
+        topic_id: '8c0ee3f4-c092-4b32-89e1-8fe08274fa6e'
+      }
+    }
+
+    // const noti = {
+    //   title: "ការជូនដំណឹងសាកល្បងទី​ 4",
+    //   id: '1',
+    //   body: 'អត្ថបទការជូនដំណឹងសាកល្បងទី​ 4',
+    //   data: {
+    //     topic_id: 'c21dfe5e-f32f-4df4-ac86-59875c91ac14'
+    //   }
+    // };
+
+    Notification.create(noti);
+  }
+
+
+
+  const onEndReached = () => {
+    // if (notifications[notifications.length - 1].uuid == firstRecord.uuid)
+    //   return;
+
+    // const nextNotifications = Notification.getAll().slice(currentIndex + 1, currentIndex + STEP)
+    // setNotifications([...notifications, ...nextNotifications]);
+    // setCurrentIndex(currentIndex + STEP)
   }
 
   const openConfirmModal = (notification) => {
