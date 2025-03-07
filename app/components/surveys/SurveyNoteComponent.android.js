@@ -9,12 +9,16 @@ import fileUtil from '../../utils/file_util';
 
 const SurveyNoteComponent = (props) => {
   const onPress = (url) => {
-    Linking.canOpenURL(url).then(supported => {
-      if (supported)
-        Linking.openURL(url);
-      else
-        alert(`មិនអាចបើកតំណនេះ`);
-    });
+    console.log('==== open link = ', url);
+
+    Linking.openURL(url);
+
+    // Linking.canOpenURL(url).then(supported => {
+    //   if (supported)
+    //     Linking.openURL(url);
+    //   else
+    //     alert(`មិនអាចបើកតំណនេះ`);
+    // });
   }
 
   const renderItems = () => {

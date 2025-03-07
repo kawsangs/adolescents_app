@@ -5,7 +5,6 @@ import NotificationCardItemComponent from './NotificationCardItemComponent';
 import NotificationEmptyListComponent from './NotificationEmptyListComponent';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import {gradientScrollViewBigPaddingBottom} from '../../constants/ios_component_constant';
-import moment from 'moment/moment';
 
 const NotificationMainComponent = (props) => {
   if (props.notifications.length) {
