@@ -36,7 +36,7 @@ const SurveyContentComponent = (props) => {
       newAnswers[currentSection][key] = answer;
     }
     else {
-      if (Object.keys(newAnswers).length > 0)
+      if (Object.keys(newAnswers).length > 0 && !!newAnswers[currentSection] && !!newAnswers[currentSection][key])
         delete newAnswers[currentSection][key];
     }
 
