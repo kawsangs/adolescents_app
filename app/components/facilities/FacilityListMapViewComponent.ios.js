@@ -44,12 +44,9 @@ const FacilityListMapViewComponent = (props) => {
     }
   }
 
-  console.log('==== screen height = ', Dimensions.get('screen').height);
-
   return (
     <View style={{flexGrow: 1}}>
       <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
-      {/* <View style={{bottom: 256, position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}> */}
       <View style={{bottom: Dimensions.get('screen').height <= 852 ? 268 : 256 , position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}

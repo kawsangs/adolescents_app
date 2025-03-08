@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, View, StyleSheet } from 'react-native';
+import { Animated, View, StyleSheet, Dimensions } from 'react-native';
 
 import AudioControlButton from './AudioControlButton';
 import { screenHorizontalPadding } from '../../../constants/component_constant';
@@ -39,7 +39,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
   const forwardBackwardSize = getStyleOfDevice(34, isLowPixelDensityDevice() ? 30 : 32);
 
   return (
-    <View style={{flex: 1, paddingHorizontal: screenHorizontalPadding}}>
+    <View style={{flex: 1, paddingHorizontal: screenHorizontalPadding, marginTop: Dimensions.get('screen').height <= 852 ? -16 : 0}}>
       <Animated.View style={[styles.audioControl,
         !props.hideAnimation ? {transform: [{scaleX: audioControlScale}, {scaleY: audioControlScale}, {translateY: audioControlPositionY}]} : {}]}
       >
