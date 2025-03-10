@@ -10,6 +10,7 @@ import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {smalliPhoneHeight} from '../../constants/ios_device_constant';
 
 const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -47,7 +48,7 @@ const FacilityListMapViewComponent = (props) => {
   return (
     <View style={{flexGrow: 1}}>
       <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
-      <View style={{bottom: 256, position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
+      <View style={{bottom: Dimensions.get('screen').height <= smalliPhoneHeight ? 268 : 256 , position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}
           itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
