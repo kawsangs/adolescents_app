@@ -165,5 +165,8 @@
   "deleteAccount": "Delete account",
   "doYouReallyWantToDeleteThisAccount": "Do you really want to delete this account?",
   "pleaseProvideReasonYouWantToDeleteYourAccount": "Please provide a reason why you want to delete your account",
-  "deleteAccountMessage": "Your account will be temporarily deleted and will be permanently deleted in the next {{days}} days"
+  "deleteAccountMessage": "Your account will be temporarily deleted and will be permanently deleted in the next {{days}} days",
+  "surveyComplete": "Survey complete",
+  "congratulation": "Congratulation!",
+  "youHaveSuccessfullyCompleteTheSurvey": "You have successfully complete the survey."
 }

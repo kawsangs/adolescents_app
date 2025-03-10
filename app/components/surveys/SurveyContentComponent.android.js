@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import SurveyQuestionComponent from './SurveyQuestionComponent';
 import SurveyBottomButtonComponent from './SurveyBottomButtonComponent';
 import SurveyEndMessageComponent from './SurveyEndMessageComponent';
-import SurveyCompleteModalComponent from './SurveyCompleteModalComponent';
 import SurveySection from '../../models/SurveySection';
 import SurveyQuestion from '../../models/SurveyQuestion';
 import surveyService from '../../services/survey_service';
@@ -17,7 +16,6 @@ const SurveyContentComponent = (props) => {
   const sections = SurveySection.findAllByTopicId(props.topicId);
   const [currentSection, setCurrentSection] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [modalVisible, setModalVisible] = useState(false);
   const buttonRef = useRef(null);
   const visibleQuestions = useRef([]);
 
@@ -104,7 +102,7 @@ const SurveyContentComponent = (props) => {
     }
     else if (currentSection == sections.length - 1) {
       surveyService.finishSurvey(answers, props.surveyUuid);
-      setModalVisible(true);
+      navigationRef.current?.navigate('SurveyCompleteView');
     }
   }
 
@@ -125,13 +123,6 @@ const SurveyContentComponent = (props) => {
               onPress={goNextOrFinish}
             />
           </View>
-          <SurveyCompleteModalComponent
-            visible={modalVisible}
-            onPressButton={() => {
-              setModalVisible(false);
-              navigationRef.current?.goBack();
-            }}
-          />
         </View>
 }
 
