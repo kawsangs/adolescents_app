@@ -166,7 +166,6 @@
   "doYouReallyWantToDeleteThisAccount": "តើអ្នកពិតជាចង់លុបគណនីនេះមែនទេ?",
   "pleaseProvideReasonYouWantToDeleteYourAccount": "សូមបញ្ជាក់ពីមូលហេតុដែលអ្នកចង់លុបគណនីរបស់អ្នក",
   "deleteAccountMessage": "គណនីរបស់អ្នកនឹងត្រូវបានលុបចេញជាបណ្ដោះអាសន្ន ហើយនឹងត្រូវលុបចេញជាអចិន្ត្រៃយ៍ក្នុងរយៈពេល {{days}} ថ្ងៃបន្ទាប់",
-  "surveyComplete": "កម្រងសំណួរបានបញ្ចប់",
-  "congratulation": "សូមអបអរសាទរ!",
-  "youHaveSuccessfullyCompleteTheSurvey": "អ្នកបានបញ្ចប់ការឆ្លើយកម្រងសំណួរដោយជោគជ័យ។"
+  "thankYou": "សូមអរគុណ!!!",
+  "forParticipatingInTheSurvey": "សម្រាប់ការចូលរួមការស្ទង់មតិរបស់អ្នក"
 }

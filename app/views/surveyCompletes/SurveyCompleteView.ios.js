@@ -24,10 +24,10 @@ const SurveyCompleteView = () => {
       />
 
       <Text style={styles.description}>
-        {t('congratulation')}
+        {t('thankYou')}
       </Text>
       <Text style={styles.description}>
-        {t('youHaveSuccessfullyCompleteTheSurvey')}
+        {t('forParticipatingInTheSurvey')}
       </Text>
 
       <Button style={styles.btn} onPress={() => {
