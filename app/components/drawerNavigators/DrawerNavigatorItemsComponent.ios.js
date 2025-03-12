@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Linking, Share} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';

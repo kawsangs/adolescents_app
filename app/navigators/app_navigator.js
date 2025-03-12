@@ -12,6 +12,7 @@ import FacilityDetailView from '../views/facilityDetails/FacilityDetailView';
 import FacilityFilterView from '../views/facilityFilters/FacilityFilterView';
 import TopicDetailView from '../views/topicDetails/TopicDetailView';
 import SurveyView from '../views/surveys/SurveyView';
+import SurveyCompleteView from '../views/surveyCompletes/SurveyCompleteView';
 import DrawerNavigator from './drawer_navigator';
 
 const Stack = createNativeStackNavigator();
@@ -97,6 +98,13 @@ function AppNaviator() {
         <Stack.Screen
           name="SurveyView"
           component={SurveyView}
+          options={{
+            header: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="SurveyCompleteView"
+          component={SurveyCompleteView}
           options={{
             header: () => null,
           }}

@@ -29,10 +29,16 @@ const SurveyContentComponent = (props) => {
 
   const updateAnswers = (key, answer, questions) => {
     let newAnswers = {...answers};
-    if (!!answer && !!answer.value)
+    if (!!answer && !!answer.value) {
+      if (!newAnswers[currentSection])
+        newAnswers[currentSection] = {}
+
       newAnswers[currentSection][key] = answer;
-    else
-      delete newAnswers[currentSection][key];
+    }
+    else {
+      if (Object.keys(newAnswers).length > 0 && !!newAnswers[currentSection] && !!newAnswers[currentSection][key])
+        delete newAnswers[currentSection][key];
+    }
 
     setAnswers(newAnswers);
     setTimeout(() => {
@@ -68,21 +74,23 @@ const SurveyContentComponent = (props) => {
   }
 
   const renderQuestions = () => {
-    const questions = SurveyQuestion.findBySectionId(sections[currentSection].id);
-    return questions.map((question, index) => {
-      const key = `section_${currentSection}_q_${index}`;
-      const isQuestionVisible = surveyService.isQuestionMatchCriterias(question, answers, currentSection);
-      handleSkipLogic(key, index, isQuestionVisible, question.type.split('::')[1], questions);
+    if (sections.length > 0) {
+      const questions = SurveyQuestion.findBySectionId(sections[currentSection].id);
+      return questions.map((question, index) => {
+        const key = `section_${currentSection}_q_${index}`;
+        const isQuestionVisible = surveyService.isQuestionMatchCriterias(question, answers, currentSection);
+        handleSkipLogic(key, index, isQuestionVisible, question.type.split('::')[1], questions);
 
-      return <SurveyQuestionComponent
-                key={key}
-                question={question}
-                surveyUuid={props.surveyUuid}
-                currentAnswer={(!!answers[currentSection] && !!answers[currentSection][key]) ? answers[currentSection][key] : null}
-                updateAnswers={(answer) => updateAnswers(key, answer, questions)}
-                isVisible={isQuestionVisible}
-             />
-    });
+        return <SurveyQuestionComponent
+                  key={key}
+                  question={question}
+                  surveyUuid={props.surveyUuid}
+                  currentAnswer={(!!answers[currentSection] && !!answers[currentSection][key]) ? answers[currentSection][key] : null}
+                  updateAnswers={(answer) => updateAnswers(key, answer, questions)}
+                  isVisible={isQuestionVisible}
+              />
+      });
+    }
   }
 
   const goNextOrFinish = () => {
@@ -94,14 +102,14 @@ const SurveyContentComponent = (props) => {
     }
     else if (currentSection == sections.length - 1) {
       surveyService.finishSurvey(answers, props.surveyUuid);
-      navigationRef.current?.goBack();
+      navigationRef.current?.navigate('SurveyCompleteView');
     }
   }
 
   return <View style={{flex: 1}}>
           <View style={{flex: 1}}>
             <ScrollView contentContainerStyle={{padding: 16, flexGrow: 1}} scrollEnabled={true}>
-              { currentSection == sections.length - 1 &&
+              { (sections.length > 0 && currentSection == sections.length) &&
                 <SurveyEndMessageComponent visibleQuestions={visibleQuestions.current} />
               }
               {renderQuestions()}

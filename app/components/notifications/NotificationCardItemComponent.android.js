@@ -34,7 +34,7 @@ const NotificationCardItemComponent = (props) => {
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 1}}>
           <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
-          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 24}} numberOfLines={numberOfLines}
+          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 26}} numberOfLines={numberOfLines}
             onTextLayout={(event) => {
               if (!!contentLines) return
               setContentLines(event.nativeEvent.lines.length);
