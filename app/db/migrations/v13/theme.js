@@ -6,13 +6,14 @@ const ThemeSchema = {
   properties: {
     id: 'string',
     name: 'string',
-    description: 'string?',
-    active: { type: 'bool', default: true },
+    status: 'string',
     default: { type: 'bool', default: false },
-    bg_color: 'string',
-    text_color: 'string',
-    button_color: 'string',
-    nav_bar_color: 'string'
+    primary_color: 'string',
+    secondary_color: 'string',
+    primary_text_color: 'string',
+    secondary_text_color: 'string',
+    published_at: 'date?',
+    updated_at: 'date?'
   }
 }
 

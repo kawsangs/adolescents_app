@@ -11,6 +11,11 @@ class Theme {
     return [...BaseModel.findByAttr(MODEL, { active: true })];
   }
 
+  static create = (params) => {
+    console.log('**** theme params = ', params);
+    BaseModel.create(MODEL, params);
+  }
+
   static findById = (id) => {
     return BaseModel.findByAttr(MODEL, { id: `'${id}'` })[0];
   }
@@ -19,7 +24,7 @@ class Theme {
     BaseModel.update(MODEL, id, params);
   }
 
-  static delete = (id) => {
+  static deleteById = (id) => {
     BaseModel.deleteItem(this.findById(id));
   }
 }
