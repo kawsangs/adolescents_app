@@ -1,4 +1,5 @@
 import BaseModel from './BaseModel';
+import Moment from 'moment';
 
 const MODEL = 'Theme';
 
@@ -12,8 +13,7 @@ class Theme {
   }
 
   static create = (params) => {
-    console.log('**** theme params = ', params);
-    BaseModel.create(MODEL, params);
+    BaseModel.create(MODEL, {...params, updated_at: Moment.unix(params.updated_at).toDate()});
   }
 
   static findById = (id) => {
@@ -21,11 +21,15 @@ class Theme {
   }
 
   static update = (id, params) => {
-    BaseModel.update(MODEL, id, params);
+    BaseModel.update(MODEL, id, { ...params, updated_at: Moment.unix(params.updated_at).toDate() });
   }
 
   static deleteById = (id) => {
     BaseModel.deleteItem(this.findById(id));
+  }
+
+  static deleteAll = () => {
+    BaseModel.deleteAll(MODEL);
   }
 }
 

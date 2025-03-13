@@ -21,27 +21,30 @@ const ThemeView = () => {
   const [themes, setThemes] = useState(Theme.getAll());
 
   useEffect(() => {
-
     console.log('==== APP theme use effect ====');
 
-    setIsLoading(true);
-    themeService.syncData(() => {
-      setThemes(Theme.getAll());
-      setIsLoading(false);
-    }, () => {
-      setIsLoading(false);
+    // setIsLoading(true);
+    // themeService.syncData(() => {
+    //   setThemes(Theme.getAll());
+    //   setIsLoading(false);
+    // }, () => {
+    //   setIsLoading(false);
+    // });
+
+    networkService.checkConnection(() => {
+      setIsLoading(true);
+      themeService.syncData(() => {
+        setThemes(Theme.getAll());
+        setIsLoading(false);
+      }, () => {
+        setIsLoading(false);
+      });
     });
 
-
-    // networkService.checkConnection(() => {
-    //   setIsLoading(true);
-    //   themeService.syncData(() => {
-    //     setThemes(Theme.getAll());
-    //     setIsLoading(false);
-    //   }, () => {
-    //     setIsLoading(false);
-    //   });
-    // });
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setHasInternet(state.isConnected && state.isInternetReachable)
+    });
+    return () => !!unsubscribe && unsubscribe();
   }, []);
 
   const onRefresh = () => {
