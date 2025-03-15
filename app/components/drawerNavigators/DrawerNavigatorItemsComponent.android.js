@@ -22,7 +22,6 @@ const DrawerNavigatorItemsComponent = (props) => {
         {label: t('termsAndConditions'), icon: 'file-text', url: TERMS_AND_CONDITIONS_URL, type: LINK, accessibility_label: 'ប៊ូតុងគោលការណ៍ និងលក្ខខណ្ឌ'},
       ],
       second: [
-        {label: t('theme'), icon: 'info', url: 'AppThemeView', type: SCREEN, accessibility_label: 'ប៊ូតុងម៉ូដរចនា'},
         {label: t('about'), icon: 'info', url: 'AboutUsView', type: SCREEN, accessibility_label: 'ប៊ូតុងអំពីកម្មវិធី'},
       ]
     }

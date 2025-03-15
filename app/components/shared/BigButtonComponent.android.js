@@ -40,7 +40,7 @@ const BigButtonComponent = (props) => {
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}
       disabled={props.disabled || disabled}
     >
-      <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 2) }} />
+      <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 0), lineHeight: 32 }} />
       {!props.hideAudio && renderAudioBtn()}
     </TouchableOpacity>
   )
