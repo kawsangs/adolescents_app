@@ -8,12 +8,8 @@ class Theme {
     return [...BaseModel.getAll(MODEL)];
   }
 
-  static getAllActive = () => {
-    return [...BaseModel.findByAttr(MODEL, { active: true })];
-  }
-
   static create = (params) => {
-    BaseModel.create(MODEL, {...params, updated_at: Moment.unix(params.updated_at).toDate()});
+    BaseModel.create(MODEL, {...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate()});
   }
 
   static findById = (id) => {
@@ -21,7 +17,7 @@ class Theme {
   }
 
   static update = (id, params) => {
-    BaseModel.update(MODEL, id, { ...params, updated_at: Moment.unix(params.updated_at).toDate() });
+    BaseModel.update(MODEL, id, { ...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate() });
   }
 
   static deleteById = (id) => {

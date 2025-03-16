@@ -9,6 +9,8 @@ export const contactSnapPoints = getStyleOfDevice(['32%'], ['44%']);
 export const contactContentHeight = getStyleOfDevice('27%', '37.5%');
 export const servicesSnapPoints = ['38%'];
 export const servicesContentHeight = '33%';
+export const appThemeSnapPoints = getStyleOfDevice(['32%'], ['64%']);
+export const appThemeContentHeight = getStyleOfDevice('27%', '62%');
 
 const confirmationiOSMobile = DeviceInfo.hasNotch() ? {snapPoints: ['46%'], height: '43%'} : isLowPixelDensityDevice() ? {snapPoints: ['53%'], height: '57%'} : {snapPoints: ['50%'], height: '44%'}
 const confirmationAndroidMobile = isLowPixelDensityDevice() ? {snapPoints: ['56%'], height: '50%'} : {snapPoints: ['52%'], height: '46%'}
