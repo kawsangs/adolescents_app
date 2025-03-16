@@ -1,9 +1,25 @@
 import BaseModel from './BaseModel';
 import Moment from 'moment';
+import color from '../themes/color';
 
 const MODEL = 'Theme';
 
 class Theme {
+  static seedOriginalTheme = () => {
+    this.create({
+      id: '1',
+      name: 'ម៉ូដរចនាដើម',
+      status: 'published',
+      default: true,
+      primary_color: color.primaryColor,
+      secondary_color: color.secondaryColor,
+      primary_text_color: 'white',
+      secondary_text_color: 'black',
+      published_at: Moment().toDate(),
+      updated_at: Moment().toDate()
+    });
+  }
+
   static getAll = () => {
     return [...BaseModel.getAll(MODEL)];
   }
