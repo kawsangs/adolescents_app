@@ -15,7 +15,6 @@ class Theme {
       secondary_color: color.secondaryColor,
       primary_text_color: 'white',
       secondary_text_color: 'black',
-      published_at: Moment().toDate(),
       updated_at: Moment().toDate()
     });
   }
@@ -25,7 +24,12 @@ class Theme {
   }
 
   static create = (params) => {
-    BaseModel.create(MODEL, {...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate()});
+    BaseModel.create(MODEL, {
+      ...params,
+      android_images: (!!params.assets && !!params.assets.android) ? JSON.stringify(params.assets.android) : null,
+      ios_images: (!!params.assets && !!params.assets.ios) ? JSON.stringify(params.assets.ios) : null,
+      updated_at: Moment.unix(params.updated_at).toDate(),
+    });
   }
 
   static findById = (id) => {

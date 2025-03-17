@@ -12,8 +12,9 @@ const ThemeSchema = {
     secondary_color: 'string',
     primary_text_color: 'string',
     secondary_text_color: 'string',
-    published_at: 'date?',
-    updated_at: 'date?'
+    android_images: 'string?',
+    ios_images: 'string?',
+    updated_at: 'date?',
   }
 }
 

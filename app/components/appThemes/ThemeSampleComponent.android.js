@@ -5,6 +5,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import GradientScrollViewComponent from '../shared/GradientScrollViewComponent';
 import color, { backgroundColors } from '../../themes/color';
+import fileUtil from '../../utils/file_util';
 
 const ThemeSampleComponent = (props) => {
   const header = () => {
@@ -15,6 +16,16 @@ const ThemeSampleComponent = (props) => {
         <Text style={styles.headerLabel}>សុខភាពយុវជន</Text>
       </View>
     )
+  }
+
+  const body = () => {
+    let images;
+    if (!!props.theme.android_images)
+      images = JSON.parse(props.theme.android_images);
+
+    return images != null
+      ? <Image source={fileUtil.getSourceByUrl(images.xxhdpi, 'image')} style={styles.themeImage} />
+      : <View/>
   }
 
   const getBackgroundColors = () => {
@@ -33,6 +44,8 @@ const ThemeSampleComponent = (props) => {
         <GradientScrollViewComponent
           backgroundColors={getBackgroundColors()}
           header={header()}
+          body={body()}
+          isNotScrollView={true}
           gradientContainerStyle={{borderRadius: 6, height: 250, width: 140}}
         />
         <Text numberOfLines={1} style={{textAlign: 'center', marginTop: 8}}>{ props.theme.name }</Text>
@@ -74,6 +87,12 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     marginHorizontal: 6,
+  },
+  themeImage: {
+    width: 140,
+    height: 230,
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6
   }
 });
 
