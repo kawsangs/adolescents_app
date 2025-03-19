@@ -37,6 +37,7 @@ const changeThemeInfoSampleComponent = () => {
               backgroundColors={item.backgroundColors}
               header={header(item.color)}
               gradientContainerStyle={{borderRadius: 6}}
+              isForSample={true}
             />
           </View>
         ))

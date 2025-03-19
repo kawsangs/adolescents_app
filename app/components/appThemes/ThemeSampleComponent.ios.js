@@ -111,6 +111,7 @@ const ThemeSampleComponent = (props) => {
           body={body()}
           isNotScrollView={true}
           gradientContainerStyle={{borderRadius: 6, height: 250, width: 140}}
+          isForSample={true}
         />
         <Text numberOfLines={1} style={{textAlign: 'center', marginTop: 8}}>{ props.theme.name }</Text>
       </TouchableOpacity>

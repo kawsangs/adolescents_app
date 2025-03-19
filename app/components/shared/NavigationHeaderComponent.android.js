@@ -11,7 +11,7 @@ const NavigationHeaderComponent = (props) => {
 
   return (
     <Appbar.Header style={[
-      {paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: appTheme.primary_color ?? color.primaryColor},
+      {paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: appTheme.primary_color ?? color.primaryColor, zIndex: 1},
       props.headerStyle
     ]}>
       { props.leftButton }

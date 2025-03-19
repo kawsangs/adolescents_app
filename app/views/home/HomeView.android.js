@@ -1,10 +1,11 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
 import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import BottomSheet from "@gorhom/bottom-sheet";
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
@@ -29,7 +30,7 @@ const HomeView = (props) => {
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
   let bottomSheetRef = React.createRef();
-  let modalRef = React.createRef();
+  let modalRef = useRef(null);
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
@@ -62,13 +63,10 @@ const HomeView = (props) => {
   );
 
   const showThemeModal = () => {
-    bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
     bottomSheetRef.current?.setBodyContent(
-      <ThemeBottomSheetComponent closeBottomSheet={() => {
-        console.log('==== close bottom sheet ===');
-        modalRef.current?.dismiss()
-      }} />
+      <ThemeBottomSheetComponent bottomSheetRef={modalRef} closeBottomSheet={() => modalRef.current?.dismiss()} />
     );
+    bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
     modalRef.current?.present();
   }
 
