@@ -23,6 +23,10 @@ class Theme {
     return [...BaseModel.getAll(MODEL)];
   }
 
+  static getDefault = () => {
+    return BaseModel.findByAttr(MODEL, { default: true })[0];
+  }
+
   static create = (params) => {
     BaseModel.create(MODEL, {
       ...params,

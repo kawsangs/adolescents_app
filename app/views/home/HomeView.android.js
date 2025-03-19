@@ -63,7 +63,12 @@ const HomeView = (props) => {
 
   const showThemeModal = () => {
     bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
-    bottomSheetRef.current?.setBodyContent(<ThemeBottomSheetComponent />);
+    bottomSheetRef.current?.setBodyContent(
+      <ThemeBottomSheetComponent closeBottomSheet={() => {
+        console.log('==== close bottom sheet ===');
+        modalRef.current?.dismiss()
+      }} />
+    );
     modalRef.current?.present();
   }
 
@@ -73,7 +78,6 @@ const HomeView = (props) => {
         <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
         
         <TouchableOpacity
-          // onPress={() => { showModal() }}
           onPress={() => setIsModalVisible(true)}
           style={styles.editThemeButton}
         >

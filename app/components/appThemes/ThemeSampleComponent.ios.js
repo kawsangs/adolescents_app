@@ -18,7 +18,6 @@ const ThemeSampleComponent = (props) => {
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
-
   }, []);
 
   const header = () => {

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, RefreshControl, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useSelector } from 'react-redux';
+
 import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
@@ -10,6 +12,7 @@ const {useImperativeHandle} = React
 
 const GradientScrollViewComponent = React.forwardRef((props, ref) => {
   const [refreshing, setRefreshing] = useState(false);
+  const appTheme = useSelector(state => state.appTheme.value);
 
   const stopRefreshLoading = () => {
     setRefreshing(false)
@@ -26,9 +29,18 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
     !!props.refreshingAction && props.refreshingAction()
   }
 
+  const getBackgroundColors = () => {
+    if (props.backgroundColors)
+      return props.backgroundColors;
+
+    return !!appTheme
+      ? [appTheme.secondary_color, appTheme.primary_color]
+      : backgroundColors;
+  }
+
   return (
     <LinearGradient
-      colors={backgroundColors}
+      colors={getBackgroundColors()}
       start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
       style={[{height: '100%', width: '100%'}, props.gradientContainerStyle]}
     >
