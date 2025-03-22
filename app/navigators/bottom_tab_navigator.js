@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import HomeStackNavigator from './home_stack_navigator';
 import VideoView from '../views/videos/VideoView';
@@ -19,14 +20,15 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
+  const appTheme = useSelector(state => state.appTheme.value);
   const { t } = useTranslation();
   return (
     <Tab.Navigator
       initialRouteName="HomeViewStack"
       screenOptions={{
         tabBarStyle: styles.tabBar,
-        tabBarActiveTintColor: color.secondaryColor,
-        tabBarInactiveTintColor: color.primaryColor,
+        tabBarActiveTintColor: appTheme.secondary_color ?? color.secondaryColor,
+        tabBarInactiveTintColor: appTheme.primary_color ?? color.primaryColor,
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true
       }}

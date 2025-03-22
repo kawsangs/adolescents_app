@@ -8,6 +8,7 @@ import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 const CustomAudioPlayerButtonComponent = (props) => {
   const dispatch = useDispatch();
   const playingUuid = useSelector(state => state.currentPlayingAudio.value)
+  const appTheme = useSelector(state => state.appTheme.value);
   const btnSize = componentUtil.pressableItemSize()
   const rippleProps = props.rippled ? {
     buttonHeight: btnSize,
@@ -26,7 +27,7 @@ const CustomAudioPlayerButtonComponent = (props) => {
             {...rippleProps}
             isSpeakerIcon={true}
             iconSize={24}
-            iconPrimaryColor={props.iconPrimaryColor || color.primaryColor}
+            iconPrimaryColor={props.iconPrimaryColor || (appTheme.primary_color ?? color.primaryColor)}
             iconSecondaryColor={color.secondaryColor}
             allowPause={true}
             playingUuid={playingUuid}

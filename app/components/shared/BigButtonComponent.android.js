@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
+import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import CustomAudioPlayerButtonComponent from './CustomAudioPlayerButtonComponent';
@@ -11,11 +12,12 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const BigButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
+  const appTheme = useSelector(state => state.appTheme.value);
   const colorSet = () => {
     if (props.disabled)
       return { bgColor: color.disabledColor, textColor: color.mutedColor };
 
-    return { bgColor: props.buttonColor || color.bigButtonColor, textColor: props.textColor || color.primaryColor };
+    return { bgColor: props.buttonColor || color.bigButtonColor, textColor: props.textColor || (appTheme.primary_color ?? color.primaryColor) };
   }
 
   const renderAudioBtn = () => {
