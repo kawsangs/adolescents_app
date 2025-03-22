@@ -16,12 +16,15 @@ import {videoFilterSnapPoints} from '../../constants/modal_constant';
 const VideoNavHeaderComponent = (props) => {
   const {t} = useTranslation();
   const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
+  const appTheme = useSelector(state => state.appTheme.value);
   let bottomSheetRef = React.createRef();
   let modalRef = React.createRef();
   const filterBtn = () => {
     return (
       <View style={{position: 'relative'}}>
-        <NavigationHeaderButtonComponent onPress={() => showAuthorList()} icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color="white"/>} />
+        <NavigationHeaderButtonComponent onPress={() => showAuthorList()}
+          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color={appTheme.primary_text_color ?? "white"}/>}
+        />
         {!!selectedVidAuthor.uuid && <NotifyBadgeComponent right={10} top={15} />}
       </View>
     )

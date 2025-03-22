@@ -34,8 +34,8 @@ const HomeAppThemeSectionComponent = () => {
 
   return (
     <View>
-      <View style={{borderWidth: 0.2, marginTop: 26, marginBottom: 14, opacity: 0.4, borderColor: appTheme.text_primary_color ?? 'white'}}/>
-      <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់" style={{fontSize: 16, color: appTheme.text_primary_color ?? "white"}}/>
+      <View style={{borderWidth: 0.2, marginTop: 26, marginBottom: 14, opacity: 0.4, borderColor: appTheme.primary_text_color ?? 'white'}}/>
+      <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់" style={{fontSize: 16, color: appTheme.primary_text_color ?? "white"}}/>
 
       <FlatList
         data={themes}
@@ -56,8 +56,8 @@ const HomeAppThemeSectionComponent = () => {
             id: selectedTheme.id,
             primary_color: selectedTheme.primary_color,
             secondary_color: selectedTheme.secondary_color,
-            text_primary_color: selectedTheme.text_primary_color,
-            text_secondary_color: selectedTheme.text_secondary_color,
+            primary_text_color: selectedTheme.primary_text_color,
+            secondary_text_color: selectedTheme.secondary_text_color,
             android_images: selectedTheme.android_images,
             ios_images: selectedTheme.ios_images
           }));

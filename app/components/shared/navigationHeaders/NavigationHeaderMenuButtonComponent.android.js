@@ -10,10 +10,11 @@ import User from '../../../models/User';
 
 const NavigationHeaderMenuButtonComponent = (props) => {
   const userOccupation = useSelector(state => state.loginUserOccupation.value)
+  const appTheme = useSelector(state => state.appTheme.value);
 
   return <View style={{flexDirection: 'row', height: '100%'}}>
               <NavigationHeaderButtonComponent onPress={() => props.navigation.openDrawer()}
-                icon={<IonIcon name="reorder-two-outline" color={color.whiteColor} size={28} />}
+                icon={<IonIcon name="reorder-two-outline" color={appTheme.primary_text_color ?? color.whiteColor} size={28} />}
               />
               { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent/> }
            </View>

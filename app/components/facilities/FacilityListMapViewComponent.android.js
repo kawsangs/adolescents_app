@@ -34,7 +34,7 @@ const FacilityListMapViewComponent = (props) => {
   const updateFacilityList = (tagUuid) => {
     const filteredFacilities = facilityHelper.getFacilities(filteredProvince, tagUuid)
     if (selectedTagUuid != tagUuid) setSelectedTagUuid(tagUuid);
-    (!!flatListRef.scrollToEnd && filteredFacilities.length > 0 && facilities.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
+    (!!flatListRef && !!flatListRef.scrollToEnd && filteredFacilities.length > 0 && facilities.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
     setFacilities(filteredFacilities);
 
     if (filteredFacilities.length > 0) {

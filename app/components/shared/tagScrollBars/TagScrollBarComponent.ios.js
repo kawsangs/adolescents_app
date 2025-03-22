@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import CustomFlatListComponent from '../CustomFlatListComponent';
 import color from '../../../themes/color';
@@ -13,6 +14,7 @@ import {screenHorizontalPadding} from '../../../constants/component_constant';
 const TagScrollBarComponent = (props) => {
   const listRef = useRef();
   const [selectedUuid, setSelectedUuid] = useState(null);
+  const appTheme = useSelector(state => state.appTheme.value);
   let synced = false;
 
   const toggleFilter = (tag) => {
@@ -22,8 +24,16 @@ const TagScrollBarComponent = (props) => {
   }
 
   const renderItem = (tag) => {
-    return <TouchableOpacity style={[styles.item, selectedUuid == tag.uuid && {backgroundColor: color.secondaryColor}]} onPress={() => toggleFilter(tag)}>
-              <Text style={[styles.label, selectedUuid == tag.uuid && {color: color.whiteColor}]}>{tag.name}</Text>
+    const colors = {
+      text: appTheme.primary_color ?? color.primaryColor,
+      selectedText: appTheme.primary_text_color ?? color.whiteColor,
+      background: appTheme.primary_text_color ?? color.whiteColor,
+      selectedBackground: appTheme.secondary_color ?? color.secondaryColor
+    };
+    return <TouchableOpacity style={[styles.item, {backgroundColor: selectedUuid == tag.uuid ? colors.selectedBackground : colors.background}]}
+              onPress={() => toggleFilter(tag)}
+           >
+              <Text style={[styles.label, {color: selectedUuid == tag.uuid ? colors.selectedText : colors.text}]}>{tag.name}</Text>
            </TouchableOpacity>
   }
 
@@ -56,7 +66,6 @@ const TagScrollBarComponent = (props) => {
 const styles = StyleSheet.create({
   item: {
     alignItems: 'center',
-    backgroundColor: color.whiteColor,
     borderRadius: getStyleOfDevice(35, 25),
     height: getStyleOfDevice(componentUtil.tabletPressableItemSize(), isLowPixelDensityDevice() ? 40 : componentUtil.pressableItemSize()),
     justifyContent: 'center',
@@ -66,7 +75,6 @@ const styles = StyleSheet.create({
     paddingTop: 4
   },
   label: {
-    color: color.primaryColor,
     fontSize: largeFontSize(),
     lineHeight: getStyleOfDevice(28, 26)
   }

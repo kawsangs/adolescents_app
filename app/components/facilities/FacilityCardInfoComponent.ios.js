@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
@@ -11,6 +12,7 @@ import {largeFontSize, mediumFontSize} from '../../utils/font_size_util';
 
 const FacilityCardInfoComponent = (props) => {
   const [titleLine, setTitleLine] = React.useState(0);
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderServices = () => {
     if (props.services.length == 0) return;
 
@@ -35,7 +37,11 @@ const FacilityCardInfoComponent = (props) => {
           {renderServices()}
         </View>
       </View>
-      <FeatherIcon name="chevron-right" color={color.primaryColor} size={32} style={{alignSelf: 'center'}} />
+      <FeatherIcon name="chevron-right"
+        color={appTheme.primary_color ?? color.primaryColor}
+        size={32}
+        style={{alignSelf: 'center'}}
+      />
     </View>
   )
 }

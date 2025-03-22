@@ -8,8 +8,8 @@ const initialState = {
     id: defaultTheme.id,
     primary_color: defaultTheme.primary_color,
     secondary_color: defaultTheme.secondary_color,
-    text_primary_color: defaultTheme.text_primary_color,
-    text_secondary_color: defaultTheme.text_secondary_color,
+    primary_text_color: defaultTheme.primary_text_color,
+    secondary_text_color: defaultTheme.secondary_text_color,
     android_images: defaultTheme.android_images,
     ios_images: defaultTheme.ios_images
   }

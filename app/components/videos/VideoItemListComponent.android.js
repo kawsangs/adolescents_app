@@ -32,7 +32,7 @@ const VideoItemListComponent = (props) => {
   const selectedVidAuthor = useSelector(state => state.filterVideoAuthor);
 
   useEffect(() => {
-    (!!flatListRef.scrollToEnd && videos.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
+    (!!flatListRef && !!flatListRef.scrollToEnd && videos.length > 0) && flatListRef.scrollToIndex({index: 0, animated: true})
     setVideos(!!selectedVidAuthor.uuid ? Video.findByAuthor(selectedVidAuthor.uuid) : Video.getAll())
   }, [selectedVidAuthor])
 

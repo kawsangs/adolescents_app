@@ -71,8 +71,8 @@ const ThemeBottomSheetComponent = (props) => {
                 id: selectedTheme.id,
                 primary_color: selectedTheme.primary_color,
                 secondary_color: selectedTheme.secondary_color,
-                text_primary_color: selectedTheme.text_primary_color,
-                text_secondary_color: selectedTheme.text_secondary_color,
+                primary_text_color: selectedTheme.primary_text_color,
+                secondary_text_color: selectedTheme.secondary_text_color,
                 android_images: selectedTheme.android_images,
                 ios_images: selectedTheme.ios_images
               }));
