@@ -5,13 +5,13 @@ import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import IonIcon from 'react-native-vector-icons/Ionicons';
-import BottomSheet from "@gorhom/bottom-sheet";
+// import BottomSheet from "@gorhom/bottom-sheet";
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
-import ThemeBottomSheetComponent from '../../components/appThemes/ThemeBottomSheetComponent';
-import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
+// import ThemeBottomSheetComponent from '../../components/appThemes/ThemeBottomSheetComponent';
+// import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
 import ChangeThemeInfoModalComponent from '../../components/appThemes/ChangeThemeInfoModalComponent';
 
 import syncService from '../../services/sync_service';
@@ -22,11 +22,12 @@ import networkService from '../../services/network_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import color from '../../themes/color';
-import { appThemeSnapPoints } from '../../constants/modal_constant';
+// import { appThemeSnapPoints } from '../../constants/modal_constant';
+import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent.android';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
   let bottomSheetRef = React.createRef();
@@ -62,36 +63,28 @@ const HomeView = (props) => {
     }, [])
   );
 
-  const showThemeModal = () => {
-    bottomSheetRef.current?.setBodyContent(
-      <ThemeBottomSheetComponent bottomSheetRef={modalRef} closeBottomSheet={() => modalRef.current?.dismiss()} />
-    );
-    bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
-    modalRef.current?.present();
-  }
+  // const showThemeModal = () => {
+  //   bottomSheetRef.current?.setBodyContent(
+  //     <ThemeBottomSheetComponent bottomSheetRef={modalRef} closeBottomSheet={() => modalRef.current?.dismiss()} />
+  //   );
+  //   bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
+  //   modalRef.current?.present();
+  // }
 
   const renderBody = () => {
     return (
       <View>
         <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
         
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => setIsModalVisible(true)}
           style={styles.editThemeButton}
         >
           <IonIcon name="color-palette-outline" size={24} color={color.primaryColor} />
           <Text style={styles.buttonLabel}>ជម្រើសផ្ទៃអេក្រង់</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={appThemeSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
-        <ChangeThemeInfoModalComponent
-          visible={isModalVisible}
-          onDismiss={() => setIsModalVisible(false)}
-          onTryNow={() => {
-            setIsModalVisible(false);
-            showThemeModal();
-          }}
-        />
+        <HomeAppThemeSectionComponent/>
       </View>
     )
   }

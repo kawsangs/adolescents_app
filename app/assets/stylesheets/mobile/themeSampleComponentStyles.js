@@ -1,19 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import color from '../../../themes/color';
-
 const ThemeSampleComponentStyles = StyleSheet.create({
-  container: {
-    borderWidth: 3,
+  appContainer: {
+    borderWidth: 2,
     borderColor: 'white',
-    height: 300,
-    width: 160,
-    padding: 6,
-  },
-  selectedContainer: {
-    borderWidth: 3,
-    borderColor: color.secondaryColor,
     borderRadius: 10,
+    height: 168,
+    width: 100,
+    padding: 4,
   },
   headerContainer: {
     alignItems: 'center',
@@ -22,43 +16,38 @@ const ThemeSampleComponentStyles = StyleSheet.create({
     width: '100%',
     height: 20,
     flexDirection: 'row',
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-  },
-  headerLabel: {
-    color: 'white',
-    fontSize: 8,
-    lineHeight: 12,
-    marginTop: -2
+    paddingHorizontal: 4,
   },
   logo: {
-    width: 10,
-    height: 10,
-    marginHorizontal: 6,
+    width: 4,
+    height: 4,
+    marginHorizontal: 2,
   },
   themeImage: {
-    width: 140,
-    height: 230,
-    borderBottomLeftRadius: 6,
-    borderBottomRightRadius: 6,
+    width: '100%',
+    height: '100%',
     position: 'absolute',
+    zIndex: 0,
   },
-  cardContainer: {
+  longCardContainer: {
     backgroundColor: "#ffffff",
     borderRadius: 4,
-    height: 35,
+    height: 25,
     paddingLeft: 4,
     paddingRight: 4,
     width: '100%',
   },
+  longCardBlankText: {
+    borderRadius: 8,
+    height: 3,
+    opacity: 0.3,
+  },
   gridCardContainer: {
-    maxHeight: 60,
-    width: 60,
-    height: 50,
-    borderRadius: 6,
+    width: '47%',
+    height: 25,
+    borderRadius: 4,
     backgroundColor: 'white',
     marginTop: 4,
-    paddingLeft: 3
   }
 });
 
