@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import TextComponent from './TextComponent';
 import GenderSelectionButtonComponent from './genderSelections/GenderSelectionButtonComponent';
@@ -10,6 +11,7 @@ import genders from '../../db/data/genders';
 
 const GenderSelectionComponent = (props) => {
   const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderGenders = () => {
     return genders.map((gender, index) => {
       return <GenderSelectionButtonComponent key={index} uuid={gender.uuid}
@@ -29,7 +31,7 @@ const GenderSelectionComponent = (props) => {
 
   return (
     <View>
-      <TextComponent label={t('genderIdentity')} required={true} requiredColor={color.blackColor} style={{color: color.whiteColor, fontSize: xLargeFontSize()}} />
+      <TextComponent label={t('genderIdentity')} required={true} requiredColor={color.blackColor} style={{color: appTheme.primary_text_color ?? color.whiteColor, fontSize: xLargeFontSize()}} />
       <View style={{flexDirection: 'row', marginTop: 8, justifyContent: 'space-between'}}>
         { renderGenders() }
       </View>

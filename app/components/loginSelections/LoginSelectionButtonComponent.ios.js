@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import GradientViewComponent from '../shared/GradientViewComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -20,6 +20,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const LoginSelectionButtonComponent = (props) => {
   const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(false);
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderAudioButton = () => {
     return <CustomAudioPlayerButtonComponent
               audio={props.audio}
@@ -55,7 +56,7 @@ const LoginSelectionButtonComponent = (props) => {
       disabled={disabled}
     >
       { renderGradientIcon() }
-      <BoldLabelComponent label={props.label} style={styles.label} />
+      <BoldLabelComponent label={props.label} style={[styles.label, {color: appTheme.primary_color}]} />
       { renderAudioButton() }
     </TouchableOpacity>
   )
