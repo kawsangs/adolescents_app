@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import color from '../../themes/color';
@@ -12,6 +13,7 @@ import {largeFontSize} from '../../utils/font_size_util';
 
 const FacilityViewRouteButtonComponent = (props) => {
   const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   const openMap = () => {
     mapHelper.viewRoute(props.latitude, props.longitude, t('unableToViewTheRoute'));
   }
@@ -19,7 +21,7 @@ const FacilityViewRouteButtonComponent = (props) => {
   const btnColor = () => {
     if (!props.latitude || !props.longitude)  return color.mutedColor;
 
-    return color.primaryColor;
+    return appTheme.primary_color ?? color.primaryColor;
   }
 
   return <TouchableOpacity onPress={() => openMap()} style={[styles.btn, {borderColor: btnColor()}]} disabled={!props.latitude || !props.longitude}>

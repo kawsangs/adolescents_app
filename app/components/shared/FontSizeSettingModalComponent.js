@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {Modal, Portal, Text} from 'react-native-paper';
 import {Slider} from '@miblanchard/react-native-slider';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import {cardBorderRadius} from '../../constants/component_constant';
@@ -13,6 +14,7 @@ import {TEXT_SIZE} from '../../constants/async_storage_constant';
 const FontSizeSettingModalComponent = (props) => {
   const {t} = useTranslation();
   const [textSize, setTextSize] = useState(props.textSize || xLargeFontSize());
+  const appTheme = useSelector(state => state.appTheme.value);
   useEffect(() => {
     if (textSize != props.textSize)
       setTextSize(props.textSize)
@@ -45,8 +47,8 @@ const FontSizeSettingModalComponent = (props) => {
           minimumValue={largeFontSize()}
           onValueChange={(textSize) => onTextSizeChange(textSize)}
           value={textSize || props.textSize}
-          thumbStyle={{width: 12, height: 12, backgroundColor: color.primaryColor}}
-          minimumTrackTintColor={color.primaryColor}
+          thumbStyle={{width: 12, height: 12, backgroundColor: appTheme.primary_color ?? color.primaryColor}}
+          minimumTrackTintColor={appTheme.primary_color ?? color.primaryColor}
         />
       </View>
     )

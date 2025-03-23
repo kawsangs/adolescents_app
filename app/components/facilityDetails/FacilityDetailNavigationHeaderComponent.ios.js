@@ -1,6 +1,7 @@
 import React from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
 import { Appbar } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
@@ -12,6 +13,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 const scrollDistant = 100;
 
 const FacilityDetailNavigationHeaderComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, scrollDistant],
     outputRange: [0, 1],
@@ -26,7 +28,7 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
+      <Animated.View style={[styles.background, {opacity: headerOpacity, backgroundColor: appTheme.primary_color ?? color.primaryColor}]}/>
       <Appbar.Header style={[styles.header]}>
         <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
           <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}} onPress={() => {
@@ -57,7 +59,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   background: {
-    backgroundColor: color.primaryColor,
     position: 'absolute',
     height: '100%',
     width: '100%',

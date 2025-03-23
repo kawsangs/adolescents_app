@@ -1,8 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import {Card, Text} from 'react-native-paper';
+import {Card} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 import TextHighlight from 'react-native-text-highlighter';
+import { useSelector } from 'react-redux';
 
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
@@ -14,6 +15,7 @@ import mobileStyles from '../../../assets/stylesheets/mobile/topicListCardCompon
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const TopicListCardComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderAudioButton = () => {
     return (
       <View style={{height: 20, borderWidth: 0}}>
@@ -54,7 +56,7 @@ const TopicListCardComponent = (props) => {
             />
           </View>
         </View>
-        <Icon name="chevron-right" color={color.primaryColor} size={32} style={{width: 25, alignSelf: 'center'}} />
+        <Icon name="chevron-right" color={appTheme.primary_color ?? color.primaryColor} size={32} style={{width: 25, alignSelf: 'center'}} />
       </View>
     </Card>
   )
