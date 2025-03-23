@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: xxLargeFontSize(),
+    lineHeight: 34,
     textTransform: 'capitalize',
     width: '90%'
   }

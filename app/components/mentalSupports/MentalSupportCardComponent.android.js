@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Linking} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
-import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import ContactIconComponent from '../shared/ContactIconComponent';
@@ -14,7 +14,7 @@ import toastMessageHelper from '../../helpers/toast_message_helper';
 import contactUtil from '../../utils/contact_util';
 
 const MentalSupportCardComponent = (props) => {
-  const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   const onPress = () => {
     const visitParams = {
       code: contactCodes[props.type] || props.type,
@@ -37,7 +37,7 @@ const MentalSupportCardComponent = (props) => {
         <View style={{paddingLeft: 16, flex: 1}}>
           <Text numberOfLines={2} style={{fontSize: descriptionFontSize}}>{props.name}</Text>
         </View>
-        <Icon name="chevron-right" color={color.primaryColor} size={32} style={{paddingRight: 8}} />
+        <Icon name="chevron-right" color={appTheme.primary_color ?? color.primaryColor} size={32} style={{paddingRight: 8}} />
       </View>
     </Card>
   )
