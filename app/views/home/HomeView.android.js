@@ -1,18 +1,13 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-paper';
+import React, {useCallback, useEffect, useState} from 'react';
+import { View, StyleSheet } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-// import BottomSheet from "@gorhom/bottom-sheet";
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
-// import ThemeBottomSheetComponent from '../../components/appThemes/ThemeBottomSheetComponent';
-// import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
-import ChangeThemeInfoModalComponent from '../../components/appThemes/ChangeThemeInfoModalComponent';
+import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent.android';
 
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
@@ -22,16 +17,11 @@ import networkService from '../../services/network_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import color from '../../themes/color';
-// import { appThemeSnapPoints } from '../../constants/modal_constant';
-import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent.android';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
-  // const [isModalVisible, setIsModalVisible] = useState(false);
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
-  let bottomSheetRef = React.createRef();
-  let modalRef = useRef(null);
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
@@ -63,27 +53,10 @@ const HomeView = (props) => {
     }, [])
   );
 
-  // const showThemeModal = () => {
-  //   bottomSheetRef.current?.setBodyContent(
-  //     <ThemeBottomSheetComponent bottomSheetRef={modalRef} closeBottomSheet={() => modalRef.current?.dismiss()} />
-  //   );
-  //   bottomSheetRef.current?.setSnapPoints(appThemeSnapPoints);
-  //   modalRef.current?.present();
-  // }
-
   const renderBody = () => {
     return (
       <View>
         <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
-        
-        {/* <TouchableOpacity
-          onPress={() => setIsModalVisible(true)}
-          style={styles.editThemeButton}
-        >
-          <IonIcon name="color-palette-outline" size={24} color={color.primaryColor} />
-          <Text style={styles.buttonLabel}>ជម្រើសផ្ទៃអេក្រង់</Text>
-        </TouchableOpacity> */}
-
         <HomeAppThemeSectionComponent/>
       </View>
     )

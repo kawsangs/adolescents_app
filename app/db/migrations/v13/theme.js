@@ -2,8 +2,9 @@
 
 const ThemeSchema = {
   name: 'Theme',
-  primaryKey: 'id',
+  primaryKey: 'uuid',
   properties: {
+    uuid: 'string',
     id: 'string',
     name: 'string',
     status: 'string',

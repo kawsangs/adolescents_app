@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import ChangeThemeInfoModalComponent from '../appThemes/ChangeThemeInfoModalComponent';
 import Theme from '../../models/Theme';
 import { setAppTheme } from '../../features/appThemes/appThemeSlice';
-import asyncStorageService from '../../services/async_storage_service';
-import { SELECTED_THEME_ID } from '../../constants/async_storage_constant';
 
 import AppThemeSampleComponent from './AppThemeSampleComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -51,7 +49,7 @@ const HomeAppThemeSectionComponent = () => {
         theme={selectedTheme}
         onDismiss={() => setIsModalVisible(false)}
         applyTheme={() => {
-          asyncStorageService.setItem(SELECTED_THEME_ID, selectedTheme.id);
+          Theme.updateDefault(selectedTheme.uuid);
           dispatch(setAppTheme({
             id: selectedTheme.id,
             primary_color: selectedTheme.primary_color,

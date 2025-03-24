@@ -36,7 +36,7 @@ const themeService = (() => {
     themes.map(theme => {
       const savedTheme = Theme.findById(theme.id);
       if (!theme.deleted_at) {
-        !!savedTheme ? Theme.update(theme.id, theme) : Theme.create(theme);
+        !!savedTheme ? Theme.update(theme.uuid, theme) : Theme.create(theme);
         _handleSaveImages(theme.assets);
       }
       else if (!!savedTheme && !!theme.deleted_at)

@@ -1,21 +1,15 @@
 import BaseModel from './BaseModel';
 import Moment from 'moment';
-import color from '../themes/color';
+import uuidv4 from '../utils/uuidv4_util';
+import { originalTheme } from '../constants/app_theme_constant';
 
 const MODEL = 'Theme';
 
 class Theme {
   static seedOriginalTheme = () => {
-    this.create({
-      id: '1',
-      name: 'ម៉ូដរចនាដើម',
-      status: 'published',
-      default: true,
-      primary_color: color.primaryColor,
-      secondary_color: color.secondaryColor,
-      primary_text_color: 'white',
-      secondary_text_color: 'black',
-      updated_at: Moment().toDate()
+    BaseModel.create(MODEL, {
+      ...originalTheme,
+      updated_at: Moment.unix(Moment().toDate()).toDate(),
     });
   }
 
@@ -30,6 +24,7 @@ class Theme {
   static create = (params) => {
     BaseModel.create(MODEL, {
       ...params,
+      uuid: uuidv4(),
       android_images: (!!params.assets && !!params.assets.android) ? JSON.stringify(params.assets.android) : null,
       ios_images: (!!params.assets && !!params.assets.ios) ? JSON.stringify(params.assets.ios) : null,
       updated_at: Moment.unix(params.updated_at).toDate(),
@@ -40,8 +35,14 @@ class Theme {
     return BaseModel.findByAttr(MODEL, { id: `'${id}'` })[0];
   }
 
-  static update = (id, params) => {
-    BaseModel.update(MODEL, id, { ...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate() });
+  static update = (uuid, params) => {
+    BaseModel.update(MODEL, uuid, { ...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate() });
+  }
+
+  static updateDefault = (uuid) => {
+    const defaultTheme = this.getDefault();
+    BaseModel.update(MODEL, defaultTheme.uuid, { default: false });
+    BaseModel.update(MODEL, uuid, { default: true });
   }
 
   static deleteById = (id) => {
