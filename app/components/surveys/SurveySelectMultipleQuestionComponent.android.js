@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import { Checkbox, Text } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import User from '../../models/User';
@@ -8,6 +9,7 @@ import User from '../../models/User';
 const SurveySelectMultipleQuestionComponent = (props) => {
   const {options} = props;
   const [answers, setAnswers] = useState([])
+  const appTheme = useSelector(state => state.appTheme.value);
 
   useEffect(() => {
     setAnswers(getSelectedId())
@@ -58,7 +60,9 @@ const SurveySelectMultipleQuestionComponent = (props) => {
           onPress={() => onPressCheckItem(option, option.id.toString())}
           style={{flexDirection: 'row', alignItems: 'center', borderBottomWidth: 1, borderColor: color.lightGrayColor, paddingVertical: 6}}
         >
-          <Checkbox.Item status={answers.includes(option.id.toString()) ? 'checked' : 'unchecked'} mode='android' uncheckedColor={color.primaryColor} color={color.secondaryColor}
+          <Checkbox.Item status={answers.includes(option.id.toString()) ? 'checked' : 'unchecked'} mode='android'
+            uncheckedColor={appTheme.primary_color ?? color.primaryColor}
+            color={appTheme.secondary_color ?? color.secondaryColor}
             value={option.id.toString()} style={{paddingLeft: 0}}
           />
           <Text style={{flexShrink: 1}}>{option.name}</Text>

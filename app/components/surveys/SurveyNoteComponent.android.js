@@ -2,12 +2,14 @@ import React from 'react';
 import {View, Image, TouchableOpacity, Linking} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather'
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import fileUtil from '../../utils/file_util';
 
 const SurveyNoteComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const onPress = (url) => {
     Linking.canOpenURL(url).then(supported => {
       if (supported)
@@ -32,11 +34,11 @@ const SurveyNoteComponent = (props) => {
           }
 
           <View style={{flex: 1, paddingLeft: 12}}>
-            <Text numberOfLines={2} style={{color: color.primaryColor, fontSize: largeFontSize()}}>
+            <Text numberOfLines={2} style={{color: appTheme.primary_color ?? color.primaryColor, fontSize: largeFontSize()}}>
               {option.name}
             </Text>
           </View>
-          <Icon name="chevron-right" color={color.primaryColor} size={24} />
+          <Icon name="chevron-right" color={appTheme.primary_color ?? color.primaryColor} size={24} />
         </TouchableOpacity>
       )
     })

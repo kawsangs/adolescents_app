@@ -2,7 +2,7 @@ import { KM } from '../constants/main_constant';
 
 export const environment = {
   // serverUrl: 'https://youthhealth-stg.ilabsea.org',
-  serverUrl: 'http://192.168.1.111:3000',
+  serverUrl: 'http://192.168.0.107:3000',
   type: 'development',
   showIntroSlider: true,
   defaultLanguage: KM,
