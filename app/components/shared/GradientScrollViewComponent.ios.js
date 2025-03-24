@@ -54,7 +54,7 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
           scrollEnabled={props.scrollable ?? true}
           scrollEventThrottle={16}
           onScroll={(event) => !!props.onScroll && props.onScroll(event)}
-          refreshControl={!!props.allowPullRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={color.whiteColor} />}
+          refreshControl={!!props.allowPullRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={appTheme.primary_text_color ?? color.whiteColor} />}
         >
           {props.body}
         </ScrollView>
