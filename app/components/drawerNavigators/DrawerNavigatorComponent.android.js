@@ -24,7 +24,7 @@ const DrawerNavigatorComponent = (props) => {
         <DrawerNavigatorHeaderComponent/>
         <DrawerNavigatorItemsComponent navigation={props.navigation}/>
       </View>
-      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
+      <Text style={{color: appTheme.primary_text_color ?? 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
     </View>
   )
 }

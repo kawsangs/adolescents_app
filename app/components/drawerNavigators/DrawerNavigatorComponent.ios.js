@@ -14,6 +14,7 @@ import pkg from '../../../package';
 
 const DrawerNavigatorComponent = (props) => {
   const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   return (
     <View style={{
       flexGrow: 1, paddingLeft: 24, paddingRight: 20,
@@ -23,7 +24,7 @@ const DrawerNavigatorComponent = (props) => {
         <DrawerNavigatorHeaderComponent/>
         <DrawerNavigatorItemsComponent navigation={props.navigation}/>
       </View>
-      <Text style={{color: 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
+      <Text style={{color: appTheme.primary_text_color ?? 'white', paddingBottom: 64, fontSize: largeFontSize()}}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
     </View>
   )
 }

@@ -10,4 +10,6 @@ export const originalTheme = {
   secondary_color: color.secondaryColor,
   primary_text_color: 'white',
   secondary_text_color: 'black',
+  ios_images: '{}',
+  android_images: '{}'
 };
