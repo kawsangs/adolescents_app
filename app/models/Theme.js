@@ -35,6 +35,10 @@ class Theme {
     return BaseModel.findByAttr(MODEL, { id: `'${id}'` })[0];
   }
 
+  static findAllByPage = (page) => {
+    return [...BaseModel.findByAttr(MODEL, { page: page })];
+  }
+
   static update = (uuid, params) => {
     BaseModel.update(MODEL, uuid, { ...params, updated_at: Moment.unix(params.updated_at).toDate(), published_at: Moment.unix(params.published_at).toDate() });
   }

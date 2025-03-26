@@ -9,6 +9,7 @@ const ThemeSchema = {
     name: 'string',
     status: 'string',
     default: { type: 'bool', default: false },
+    page: 'int?',
     primary_color: 'string',
     secondary_color: 'string',
     primary_text_color: 'string',

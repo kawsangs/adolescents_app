@@ -28,36 +28,46 @@ const themeService = (() => {
     const response = await new ThemeApi().load(page);
     apiService.handleApiResponse(response, (res) => {
       const allPage = Math.ceil(res.pagy.count / itemsPerPage);
-      _handleSaveThemes(0, res.themes, () => {
+      _handleRemoveThemes(res.themes, page);
+      _handleSaveThemes(0, res.themes, page, () => {
         _syncByPage(page+1, allPage, successCallback, failureCallback);
       })
     }, (error) => !!failureCallback && failureCallback());
   }
 
-  function _handleSaveThemes(index, themes, callback) {
+  function _handleRemoveThemes(themes, page) {
+    const localThemes = Theme.findAllByPage(page);
+    const unmatchThemes = _getUnmatchThemes(themes, localThemes);
+    unmatchThemes.forEach(theme => {
+      if (!!Theme.findById(theme.id))
+        Theme.deleteById(theme.id);
+    });
+  }
+
+  function _getUnmatchThemes(serverThemes, localThemes) {
+    var result = [serverThemes, localThemes].sort((a,b)=> b.length - a.length)
+                    .reduce((a,b)=>a.filter(o => !b.some(v => v.id === o.id)));
+    return result;
+  }
+
+  function _handleSaveThemes(index, themes, page, callback) {
     if (index >= themes.length) {
       callback();
       return;
     }
-    _saveTheme(themes[index], () => {
-      _handleSaveThemes(index+1, themes, callback);
+    _saveTheme(themes[index], page, () => {
+      _handleSaveThemes(index+1, themes, page, callback);
     });
   }
 
-  function _saveTheme(theme, callback) {
+  function _saveTheme(theme, page, callback) {
     const savedTheme = Theme.findById(theme.id);
-    if (!theme.deleted_at) {
-      if (!!savedTheme) {
-        callback();
-        return;
-      }
-      Theme.create(theme);
-      _handleSaveSampleImage(theme.assets, callback);
-    }
-    else if (!!savedTheme && !!theme.deleted_at) {
-      Theme.deleteById(theme.id);
+    if (!!savedTheme) {
       callback();
+      return;
     }
+    Theme.create({...theme, page: page});
+    _handleSaveSampleImage(theme.assets, callback);
   }
 
   async function _handleSaveSampleImage(assets, callback) {
@@ -79,9 +89,6 @@ const themeService = (() => {
   async function downloadThemeImages(theme, callback) {
     const {android_images, ios_images} = theme;
     const images = Object.values(JSON.parse(Platform.OS == 'ios' ? ios_images : android_images));
-
-    console.log('=== theme images = ', images.length);
-
     if (images.length == 0) {
       callback();
       return;
