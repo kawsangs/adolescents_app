@@ -14,18 +14,22 @@ const initialState = {
     secondary_text_color: defaultTheme.secondary_text_color,
     android_images: defaultTheme.android_images,
     ios_images: defaultTheme.ios_images
-  }
+  },
+  items: Theme.getAll()
 }
 
 const appThemeSlice = createSlice({
   name: 'appTheme',
   initialState,
   reducers: {
-    setAppTheme: (state, action) => {
+    setSelectedAppTheme: (state, action) => {
       state.value = action.payload;
+    },
+    setAppThemes: (state, action) => {
+      state.items = action.payload;
     }
   }
 });
 
-export const {setAppTheme} = appThemeSlice.actions;
+export const {setSelectedAppTheme, setAppThemes} = appThemeSlice.actions;
 export default appThemeSlice.reducer;

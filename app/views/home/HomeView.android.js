@@ -17,6 +17,8 @@ import networkService from '../../services/network_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import color from '../../themes/color';
+import { setAppThemes } from '../../features/appThemes/appThemeSlice';
+import Theme from '../../models/Theme';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -36,7 +38,9 @@ const HomeView = (props) => {
     });
 
     networkService.checkConnection(() => {
-      themeService.syncData();
+      themeService.syncData(() => {
+        dispatch(setAppThemes(Theme.getAll()));
+      });
     });
 
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }

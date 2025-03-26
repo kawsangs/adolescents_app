@@ -9,6 +9,9 @@ import currentPlayingAudioReducer from './features/audios/currentPlayingAudioSli
 import appThemeReducer from './features/appThemes/appThemeSlice';
 
 export const store = configureStore({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
   reducer: {
     unreadNotifications: unreadNotificationsReducer,
     filterFacilityLocation: filterFacilityLocationReducer,

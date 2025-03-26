@@ -6,12 +6,15 @@ const themeUtil = (() => {
     getAndroidBackgroundImage
   }
 
-  function getAndroidBackgroundImage(appTheme) {
+  function getAndroidBackgroundImage(appTheme, isSample = false) {
     if (appTheme == null || appTheme.android_images == null)
       return '';
 
     const images = JSON.parse(appTheme.android_images);
     const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
+
+    if (isSample)
+      return images.mdpi;
 
     if (devicePixelRatio >= XXHDPIRatio)
       return images.xxhdpi

@@ -10,9 +10,16 @@ import BigButtonComponent from '../shared/BigButtonComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import ChangeThemeInfoSampleComponent from './ChangeThemeInfoSampleComponent';
 import color from '../../themes/color';
+import themeService from '../../services/theme_service';
 
 const ChangeThemeInfoModalComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
+
+  const applyTheme = () => {
+    themeService.downloadThemeImages(props.theme, () => {
+      props.applyTheme();
+    });
+  }
 
   return (
     <Portal>
@@ -50,7 +57,7 @@ const ChangeThemeInfoModalComponent = (props) => {
               buttonColor={appTheme.primary_color ?? color.primaryColor}
               textColor="white"
               iconPrimaryColor="white"
-              onPress={props.applyTheme}
+              onPress={applyTheme}
             />
           </View>
         </View>

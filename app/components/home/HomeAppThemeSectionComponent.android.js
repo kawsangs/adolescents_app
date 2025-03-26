@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ChangeThemeInfoModalComponent from '../appThemes/ChangeThemeInfoModalComponent';
 import Theme from '../../models/Theme';
-import { setAppTheme } from '../../features/appThemes/appThemeSlice';
+import { setSelectedAppTheme } from '../../features/appThemes/appThemeSlice';
 
 import AppThemeSampleComponent from './AppThemeSampleComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 
 const HomeAppThemeSectionComponent = () => {
-  const [themes] = useState(Theme.getAll());
+  const themes = useSelector(state => state.appTheme.items);
   const [selectedTheme, setSelectedTheme] = useState(Theme.getDefault());
   const [isModalVisible, setIsModalVisible] = useState(false);
   const appTheme = useSelector(state => state.appTheme.value);
@@ -29,6 +29,9 @@ const HomeAppThemeSectionComponent = () => {
       </View>
     )
   }
+
+  if (themes.length == 0)
+    return <View/>
 
   return (
     <View>
@@ -50,7 +53,7 @@ const HomeAppThemeSectionComponent = () => {
         onDismiss={() => setIsModalVisible(false)}
         applyTheme={() => {
           Theme.updateDefault(selectedTheme.uuid);
-          dispatch(setAppTheme({
+          dispatch(setSelectedAppTheme({
             id: selectedTheme.id,
             primary_color: selectedTheme.primary_color,
             secondary_color: selectedTheme.secondary_color,

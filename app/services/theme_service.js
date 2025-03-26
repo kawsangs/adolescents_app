@@ -11,7 +11,8 @@ const itemsPerPage = 20;
 
 const themeService = (() => {
   return {
-    syncData
+    syncData,
+    downloadThemeImages
   }
 
   function syncData(successCallback, failureCallback) {
@@ -27,32 +28,81 @@ const themeService = (() => {
     const response = await new ThemeApi().load(page);
     apiService.handleApiResponse(response, (res) => {
       const allPage = Math.ceil(res.pagy.count / itemsPerPage);
-      _handleManipulateTheme(res.themes);
-      _syncByPage(page+1, allPage, successCallback, failureCallback);
+      _handleSaveThemes(0, res.themes, () => {
+        _syncByPage(page+1, allPage, successCallback, failureCallback);
+      })
     }, (error) => !!failureCallback && failureCallback());
   }
 
-  function _handleManipulateTheme(themes) {
-    themes.map(theme => {
-      const savedTheme = Theme.findById(theme.id);
-      if (!theme.deleted_at) {
-        !!savedTheme ? Theme.update(theme.uuid, theme) : Theme.create(theme);
-        _handleSaveImages(theme.assets);
-      }
-      else if (!!savedTheme && !!theme.deleted_at)
-        Theme.deleteById(theme.id);
+  function _handleSaveThemes(index, themes, callback) {
+    if (index >= themes.length) {
+      callback();
+      return;
+    }
+    _saveTheme(themes[index], () => {
+      _handleSaveThemes(index+1, themes, callback);
     });
   }
 
-  async function _handleSaveImages(assets) {
+  function _saveTheme(theme, callback) {
+    const savedTheme = Theme.findById(theme.id);
+    if (!theme.deleted_at) {
+      if (!!savedTheme) {
+        callback();
+        return;
+      }
+      Theme.create(theme);
+      _handleSaveSampleImage(theme.assets, callback);
+    }
+    else if (!!savedTheme && !!theme.deleted_at) {
+      Theme.deleteById(theme.id);
+      callback();
+    }
+  }
+
+  async function _handleSaveSampleImage(assets, callback) {
     const {android, ios} = assets;
-    let images = Platform.OS == 'ios' ? Object.values(ios) : Object.values(android);
+    const image = Platform.OS == 'ios' ? ios['1x'] : android['mdpi']
+    const imageFile = `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(image)}`;
+    if (!!imageFile && !await RNFS.exists(imageFile)) {
+      fileService.download(image, (filename, isNewFile) => {
+        !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'})
+        callback();
+      }, () => {
+        callback();
+      });
+      return;
+    }
+    callback();
+  }
+
+  async function downloadThemeImages(theme, callback) {
+    const {android_images, ios_images} = theme;
+    const images = Object.values(JSON.parse(Platform.OS == 'ios' ? ios_images : android_images));
+
+    console.log('=== theme images = ', images.length);
+
+    if (images.length == 0) {
+      callback();
+      return;
+    }
+
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
       const imageFile = `${RNFS.DocumentDirectoryPath}/${fileUtil.getFilenameFromUrl(image)}`;
+      const isLastItem = i == images.length - 1;
       if (!!imageFile && !await RNFS.exists(imageFile)) {
-        console.log('=== download image ===', image);
-        fileService.download(image, (filename, isNewFile) => !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'}));
+        fileService.download(image, (filename, isNewFile) => {
+          !!isNewFile && DownloadedFile.create({name: fileUtil.getFilenameFromUrl(filename), type: 'image'})
+          if (isLastItem)
+            callback();
+        }, () => {
+          if (isLastItem)
+            callback();
+        });
+      }
+      else if (isLastItem) {
+        callback();
       }
     }
   }

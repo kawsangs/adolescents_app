@@ -2,6 +2,7 @@ import React from 'react';
 import {View, TouchableOpacity, ImageBackground} from 'react-native';
 import {Text} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
+import { useSelector } from 'react-redux';
 
 import { backgroundColors } from '../../themes/color';
 import fileUtil from '../../utils/file_util';
@@ -9,6 +10,7 @@ import themeUtil from '../../utils/theme_util';
 import styles from '../../assets/stylesheets/mobile/appThemeSampleComponentStyles';
 
 const AppThemeSampleComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const getBackgroundColors = () => {
     if (props.theme == null)
       return backgroundColors;
@@ -29,14 +31,14 @@ const AppThemeSampleComponent = (props) => {
         >
           { !!props.theme.android_images &&
             <ImageBackground
-              source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(props.theme), 'image')}
+              source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(props.theme, true), 'image')}
               style={{height: '100%', width: '100%'}}
               imageStyle={{borderRadius: 6}}
             />
           }
         </LinearGradient>
       </TouchableOpacity>
-      <Text style={{marginTop: 3, fontSize: 12, textAlign: 'center', color: props.theme.primary_text_color}}>
+      <Text style={{marginTop: 3, fontSize: 12, textAlign: 'center', color: appTheme.primary_text_color}}>
         {props.theme.name}
       </Text>
     </View>
