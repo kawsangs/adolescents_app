@@ -12,6 +12,7 @@ import { setUnreadNotification } from '../../../features/notifications/unreadNot
 
 const NavigationHeaderNotificationButtonComponent = (props) => {
   const unreadNotificationsCount = useSelector((state) => state.unreadNotifications.value)
+  const appTheme = useSelector(state => state.appTheme.value);
   const dispatch = useDispatch()
 
   useFocusEffect(() => {
@@ -24,7 +25,7 @@ const NavigationHeaderNotificationButtonComponent = (props) => {
       <View>
         { !!unreadNotificationsCount && <NotificationBadgeComponent notificationCount={unreadNotificationsCount}/> }
 
-        <IonIcon name="notifications-outline" size={navigationHeaderIconSize} color="white"/>
+        <IonIcon name="notifications-outline" size={navigationHeaderIconSize} color={ appTheme.primary_text_color ?? "white" }/>
       </View>
     )
   }
