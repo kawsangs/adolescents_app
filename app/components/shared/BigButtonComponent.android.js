@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, ActivityIndicator} from 'react-native';
 import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from './BoldLabelComponent';
@@ -42,7 +42,10 @@ const BigButtonComponent = (props) => {
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}
       disabled={props.disabled || disabled}
     >
-      <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 0), lineHeight: 32 }} />
+      <View style={{flexDirection: 'row'}}>
+        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 0), lineHeight: 32 }} />
+        { props.isLoading && <ActivityIndicator size="small" color={colorSet().textColor} style={{marginLeft: 8}} /> }
+      </View>
       {!props.hideAudio && renderAudioBtn()}
     </TouchableOpacity>
   )

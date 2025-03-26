@@ -43,7 +43,7 @@ const SurveyView = ({route, navigation}) => {
   }
 
   const renderContent = () => {
-    // if (!hasInternet && !hasForm)
+    if (!hasInternet && !hasForm)
       return <SurveyRedownloadButtonComponent topicId={route.params.topic_id} createNewSurvey={createNewSurvey} />
 
     return <SurveyContentComponent topicId={route.params.topic_id} surveyUuid={uuid} />

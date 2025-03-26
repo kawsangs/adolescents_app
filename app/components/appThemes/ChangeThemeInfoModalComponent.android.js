@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import { Modal, Portal, Text } from 'react-native-paper';
 import IonIcon from 'react-native-vector-icons/Ionicons';
@@ -14,10 +14,13 @@ import themeService from '../../services/theme_service';
 
 const ChangeThemeInfoModalComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
+  const [disabled, setDisabled] = useState(false);
 
   const applyTheme = () => {
+    setDisabled(true);
     themeService.downloadThemeImages(props.theme, () => {
       props.applyTheme();
+      setDisabled(false);
     });
   }
 
@@ -55,9 +58,11 @@ const ChangeThemeInfoModalComponent = (props) => {
               style={{marginBottom: 16, marginTop: 28}}
               audio={null}
               buttonColor={appTheme.primary_color ?? color.primaryColor}
-              textColor="white"
-              iconPrimaryColor="white"
+              textColor={appTheme.primary_text_color ?? "white"}
+              iconPrimaryColor={appTheme.primary_text_color ?? "white"}
               onPress={applyTheme}
+              disabled={disabled}
+              isLoading={disabled}
             />
           </View>
         </View>
