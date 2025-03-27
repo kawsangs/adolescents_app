@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0)',
     elevation: 0,
     paddingHorizontal: navigationHeaderHorizontalPadding,
+    zIndex: 1
   },
 });
 
