@@ -27,6 +27,7 @@ const loginSelectionViewStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         fontSize: 46,
+        lineHeight: 56,
       },
       android: {
         fontSize: 36,

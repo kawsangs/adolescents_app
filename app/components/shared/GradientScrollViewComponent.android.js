@@ -47,7 +47,7 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
     >
       {props.header}
 
-      { (!!appTheme.android_images && !props.isForSample) &&
+      { (!props.hideBackgroundImage && !!appTheme.android_images && !props.isForSample) &&
         <ImageBackground source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(appTheme), 'image')}
           style={styles.themeImage}
         />

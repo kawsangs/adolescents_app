@@ -12,6 +12,7 @@ const loginSelectionViewStyles = StyleSheet.create({
   title: {
     color: color.whiteColor,
     fontSize: 26,
+    lineHeight: 36,
     marginTop: 15,
     textAlign: 'center',
     textShadowColor: '#000',
