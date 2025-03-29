@@ -1,13 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const ThemeSampleComponentStyles = StyleSheet.create({
   appContainer: {
-    borderWidth: 2,
-    borderColor: 'white',
-    borderRadius: 10,
-    height: 168,
-    width: 100,
-    padding: 4,
+    borderColor: 'black',
+    borderWidth: 1.5,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    width: 250,
+    height: 380,
+    padding: 12,
   },
   headerContainer: {
     alignItems: 'center',
@@ -31,23 +32,31 @@ const ThemeSampleComponentStyles = StyleSheet.create({
   },
   longCardContainer: {
     backgroundColor: "#ffffff",
-    borderRadius: 4,
-    height: 25,
+    borderRadius: 6,
+    height: 70,
     paddingLeft: 4,
     paddingRight: 4,
     width: '100%',
   },
   longCardBlankText: {
+    backgroundColor: 'black',
     borderRadius: 8,
-    height: 3,
+    height: 6,
     opacity: 0.3,
   },
   gridCardContainer: {
     width: '47%',
-    height: 25,
-    borderRadius: 4,
     backgroundColor: 'white',
-    marginTop: 4,
+    marginTop: 7,
+    borderRadius: 6,
+    ...Platform.select({
+      ios: {
+        height: 60
+      },
+      android: {
+        height: '25%'
+      }
+    })
   }
 });
 

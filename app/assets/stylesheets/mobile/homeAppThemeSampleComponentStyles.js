@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const AppThemeSampleComponentStyles = StyleSheet.create({
+const HomeAppThemeSampleComponentStyles = StyleSheet.create({
   appContainer: {
     borderWidth: 2,
     borderColor: 'white',
@@ -20,4 +20,4 @@ const AppThemeSampleComponentStyles = StyleSheet.create({
   },
 });
 
-export default AppThemeSampleComponentStyles;
+export default HomeAppThemeSampleComponentStyles;

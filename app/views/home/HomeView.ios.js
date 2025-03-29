@@ -6,11 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
+import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent';
+
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
+import themeService from '../../services/theme_service';
+import networkService from '../../services/network_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
+import color from '../../themes/color';
+import { setAppThemes } from '../../features/appThemes/appThemeSlice';
+import Theme from '../../models/Theme';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
@@ -29,6 +36,12 @@ const HomeView = (props) => {
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;
     });
 
+    networkService.checkConnection(() => {
+      themeService.syncData(() => {
+        dispatch(setAppThemes(Theme.getAll()));
+      });
+    });
+
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, []);
 
@@ -44,12 +57,19 @@ const HomeView = (props) => {
   );
 
   const renderBody = () => {
-    return <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
+    return (
+      <React.Fragment>
+        <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
+        <HomeAppThemeSectionComponent/>
+      </React.Fragment>
+    )
   }
 
   return (
     <GradientScrollViewComponent
-      header={<HomeNavigationHeaderComponent navigation={props.navigation}/>}
+      header={
+        <HomeNavigationHeaderComponent navigation={props.navigation}/>
+      }
       body={renderBody()}
     />
   )

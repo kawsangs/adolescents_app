@@ -74,23 +74,4 @@ const HomeView = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  editThemeButton: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderRadius: 50,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    height: 48,
-    marginTop: 32,
-    paddingHorizontal: 16,
-  },
-  buttonLabel: {
-    color: color.primaryColor,
-    fontSize: 16,
-    marginLeft: 10,
-  }
-});
-
 export default HomeView

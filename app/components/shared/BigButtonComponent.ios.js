@@ -45,7 +45,7 @@ const BigButtonComponent = (props) => {
       disabled={props.disabled || disabled}
     >
       <View style={{flexDirection: 'row'}}>
-        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor }} />
+        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, lineHeight: 38 }} />
         { props.isLoading && <ActivityIndicator size="small" color={colorSet().textColor} style={{marginLeft: 8}} /> }
       </View>
       

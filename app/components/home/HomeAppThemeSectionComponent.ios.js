@@ -50,7 +50,9 @@ const HomeAppThemeSectionComponent = () => {
       <ChangeThemeInfoModalComponent
         visible={isModalVisible}
         theme={selectedTheme}
-        onDismiss={() => setIsModalVisible(false)}
+        onDismiss={() => {
+          setIsModalVisible(false);
+        }}
         applyTheme={() => {
           Theme.updateDefault(selectedTheme.uuid);
           dispatch(setSelectedAppTheme({

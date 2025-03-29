@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux';
 import { backgroundColors } from '../../themes/color';
 import fileUtil from '../../utils/file_util';
 import themeUtil from '../../utils/theme_util';
-import styles from '../../assets/stylesheets/mobile/appThemeSampleComponentStyles';
+import styles from '../../assets/stylesheets/mobile/homeAppThemeSampleComponentStyles';
 
-const AppThemeSampleComponent = (props) => {
+const HomeAppThemeSampleComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
   const getBackgroundColors = () => {
     if (props.theme == null)
@@ -45,4 +45,4 @@ const AppThemeSampleComponent = (props) => {
   );
 }
 
-export default AppThemeSampleComponent;
+export default HomeAppThemeSampleComponent;

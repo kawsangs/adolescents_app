@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {View, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, ImageBackground} from 'react-native';
 import { Card } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,7 +14,7 @@ import styles from '../../assets/stylesheets/mobile/themeSampleComponentStyles';
 const ThemeSampleComponent = (props) => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.parentCategory.value)
-  const appBorderRadius = props.appBorderRadius ?? 6
+  const appBorderRadius = 20
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
@@ -31,17 +31,17 @@ const ThemeSampleComponent = (props) => {
 
   const longCard = () => {
     return (
-      <Card mode="elevated" elevation={cardElevation} style={[styles.longCardContainer, props.longCardContainerStyle]}>
+      <Card mode="elevated" elevation={cardElevation} style={styles.longCardContainer}>
         <View style={{flexDirection: 'row', height: '100%'}}>
-          <View style={[{height: '100%', width: '30%', justifyContent: 'center'}, props.longCardImageContainerStyle]}>
+          <View style={{width: '35%', height: '100%', justifyContent: 'center'}}>
             <ImageBackground source={categoryHelper.getFileByUrl(categories[0].image_url, 'image')} resizeMode='contain'
               style={{ width: '100%', height: '100%'}}
             />
           </View>
-          <View style={[{flex: 1, flexDirection: 'column', paddingLeft: 6, paddingVertical: 6}, props.longCardTextContainer]}>
-            <View style={[{backgroundColor: 'black', width: '98%'}, styles.longCardBlankText, props.longCardBlankTextStyle]} />
+          <View style={{flex: 1, flexDirection: 'column', paddingLeft: 6, paddingVertical: 10}}>
+            <View style={[{width: '98%'}, styles.longCardBlankText]} />
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <View style={[{backgroundColor: 'black', width: '30%'}, styles.longCardBlankText, props.longCardBlankTextStyle]} />
+              <View style={[{width: '30%'}, styles.longCardBlankText]} />
             </View>
           </View>
         </View>
@@ -51,11 +51,11 @@ const ThemeSampleComponent = (props) => {
 
   const gridCard = (item, index) => {
     return (
-      <Card mode="elevated" elevation={cardElevation} style={[styles.gridCardContainer, props.gridCardContainerStyle]} key={index}>
+      <Card mode="elevated" elevation={cardElevation} style={styles.gridCardContainer} key={index}>
         <ImageBackground
           source={!!item.image ? item.image : categoryHelper.getFileByUrl(item.image_url, 'image')}
           resizeMode='contain'
-          style={[{ width: '90%', height: '90%', marginTop: 3, alignSelf: 'center', marginLeft: 4}, props.gridCardImageStyle]}
+          style={{ width: '90%', height: '100%', marginTop: 0, alignSelf: 'center', marginLeft: 4}}
         />
       </Card>
     )
@@ -83,7 +83,7 @@ const ThemeSampleComponent = (props) => {
             imageStyle={{borderBottomLeftRadius: appBorderRadius, borderBottomRightRadius: appBorderRadius}}
           />
         }
-        <View style={{padding: props.mainPadding ?? 3}}>
+        <View style={{padding: 8}}>
           { categories.length > 0 && longCard() }
           { gridCards() }
         </View>
@@ -110,19 +110,10 @@ const ThemeSampleComponent = (props) => {
   }
 
   return (
-    <View style={[{flexDirection: 'row', marginBottom: 20}, props.containerStyle]}>
-      {
-        !props.onSelect
-          ? <View style={[styles.appContainer, props.appContainerStyle]}>
-              { gradientScrollView() }
-            </View>
-          : <TouchableOpacity
-              onPress={() => props.onSelect()}
-              style={[styles.appContainer, props.appContainerStyle]}
-            >
-              { gradientScrollView() }
-            </TouchableOpacity>
-      }
+    <View style={{flexDirection: 'row', marginBottom: 20, position: 'absolute', top: -20, left: 220 / 4.2}}>
+      <View style={styles.appContainer}>
+        { gradientScrollView() }
+      </View>
     </View>
   );
 }

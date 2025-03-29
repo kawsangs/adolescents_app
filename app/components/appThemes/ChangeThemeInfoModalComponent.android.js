@@ -8,7 +8,7 @@ import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
-import ChangeThemeInfoSampleComponent from './ChangeThemeInfoSampleComponent';
+import ThemeSampleComponent from './ThemeSampleComponent';
 import color from '../../themes/color';
 import themeService from '../../services/theme_service';
 
@@ -42,7 +42,7 @@ const ChangeThemeInfoModalComponent = (props) => {
 
         <View style={{paddingHorizontal: 16, flex: 1, flexDirection: 'column'}}>
           <View style={{flex: 1}}>
-            <ChangeThemeInfoSampleComponent theme={props.theme}/>
+            <ThemeSampleComponent theme={props.theme} />
           </View>
           <View>
             <BoldLabelComponent
