@@ -4,6 +4,7 @@ import {Text, Button} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import FastImage from 'react-native-fast-image';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
@@ -14,6 +15,7 @@ import { navigationRef } from '../../navigators/app_navigator';
 
 const SurveyCompleteView = () => {
   const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   const resolvedSource = Image.resolveAssetSource(require('../../assets/images/check-mark.gif'));
 
   useEffect(() => {
@@ -41,10 +43,11 @@ const SurveyCompleteView = () => {
         {t('forParticipatingInTheSurvey')}
       </Text>
 
-      <Button style={styles.btn} onPress={() => {
+      <Button style={[styles.btn, { backgroundColor: appTheme.primary_color ?? color.primaryColor }]} onPress={() => {
         navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
       }}
-        labelStyle={{color: color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
+        labelStyle={{color: appTheme.primary_text_color ?? color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
+        contentStyle={{width: '100%'}}
       >
         {t('confirm')}
       </Button>
@@ -67,14 +70,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   btn: {
-    alignItems: 'center',
+    // alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: color.primaryColor,
     borderRadius: buttonBorderRadius,
     justifyContent: 'center',
     height: componentUtil.pressableItemSize(),
-    minWidth: componentUtil.pressableItemSize(),
-    paddingHorizontal: 12,
+    // minWidth: componentUtil.pressableItemSize(),
+    // paddingHorizontal: 12,
     width: '70%',
     marginTop: 60
   },

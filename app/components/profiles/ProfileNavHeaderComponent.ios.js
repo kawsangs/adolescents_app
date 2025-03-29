@@ -40,7 +40,7 @@ const ProfileNavHeaderComponent = (props) => {
                 onPress={() => goToDeleteAccount()}
                 title={t('deleteAccount')}
                 icon='trash'
-                titleStyle={{fontSize: largeFontSize(), color: color.blackColor, marginTop: 6}}
+                titleStyle={{fontSize: largeFontSize(), color: color.blackColor, marginTop: 6, lineHeight: 28}}
                 contentStyle={{backgroundColor: 'white'}}
               />
           </Menu>

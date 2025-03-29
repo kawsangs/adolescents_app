@@ -25,6 +25,7 @@ const CreateAccountNavigationHeaderComponent = () => {
   }
 
   return <HeaderWithDiscardAlertComponent
+            title={t('provideIdentity')}
             leftButton={(onPress) => <NavigationHeaderCloseButtonComponent onPress={() => onPress()}/>}
             message={() => confirmMessage()}
             hasDiscardAlert={() => hasUserInfoChanged()}
