@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, RefreshControl, View} from 'react-native';
+import {ScrollView, StyleSheet, RefreshControl, ImageBackground, Dimensions} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector } from 'react-redux';
 
@@ -7,6 +7,8 @@ import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_constant';
 import color from '../../themes/color';
+import fileUtil from '../../utils/file_util';
+import themeUtil from '../../utils/theme_util';
 
 const {useImperativeHandle} = React
 
@@ -46,6 +48,12 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
     >
       {props.header}
 
+      { (!props.hideBackgroundImage && !!appTheme.android_images && !props.isForSample) &&
+        <ImageBackground source={fileUtil.getSourceByUrl(themeUtil.getiOSBackgroundImage(appTheme), 'image')}
+          style={styles.themeImage}
+        />
+      }
+
       { props.isNotScrollView ? 
           props.body
         :
@@ -68,6 +76,14 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: screenHorizontalPadding,
     paddingBottom: gradientScrollViewPaddingBottom
+  },
+  themeImage: {
+    height: Dimensions.get('screen').height,
+    width: Dimensions.get('screen').width,
+    position: 'absolute',
+    top: 112, // 112 is the sum of the status bar + app bar (56 * 2)
+    left: 0,
+    zIndex: 0
   }
 });
 

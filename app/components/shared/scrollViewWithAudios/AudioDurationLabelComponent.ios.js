@@ -24,8 +24,8 @@ const AudioDurationLabelComponent = (props) => {
   const labelColor = appTheme.primary_text_color ?? color.whiteColor;
 
   return <Animated.View style={[styles.secondsContainer, {transform: [{translateY: labelPositionY}]}]}>
-            <Text tyle={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(playSeconds, t) }</Text>
-            <Text tyle={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(reversePlaySeconds, t) }</Text>
+            <Text style={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(playSeconds, t) }</Text>
+            <Text style={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(reversePlaySeconds, t) }</Text>
          </Animated.View>
 }
 

@@ -49,7 +49,9 @@ const FacilityListMapViewComponent = (props) => {
       <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
         currentRegion={mapRegion} markers={markers}
       />
-      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
+      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}
+        containerStyle={{zIndex: 1, position: "absolute"}}
+      />
       <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}

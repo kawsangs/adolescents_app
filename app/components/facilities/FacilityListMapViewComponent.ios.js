@@ -46,9 +46,11 @@ const FacilityListMapViewComponent = (props) => {
   }
 
   return (
-    <View style={{flexGrow: 1}}>
-      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}/>
-      <View style={{bottom: Dimensions.get('screen').height <= smalliPhoneHeight ? 268 : 256 , position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
+    <View style={{flexGrow: 1, zIndex: 1}}>
+      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}
+        containerStyle={{zIndex: 1, position: "absolute"}}
+      />
+      <View style={{bottom: Dimensions.get('screen').height <= smalliPhoneHeight ? 200 : 188 , position: 'absolute', zIndex: 1, flexGrow: 0, width: '100%'}}>
         <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
           setFlatListRef={(ref) => setFlatListRef(ref)}
           itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}

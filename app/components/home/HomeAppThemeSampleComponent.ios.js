@@ -31,7 +31,7 @@ const HomeAppThemeSampleComponent = (props) => {
         >
           { !!props.theme.android_images &&
             <ImageBackground
-              source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(props.theme, true), 'image')}
+              source={fileUtil.getSourceByUrl(themeUtil.getiOSBackgroundImage(props.theme, true), 'image')}
               style={{height: '100%', width: '100%'}}
               imageStyle={{borderRadius: 6}}
             />

@@ -73,12 +73,12 @@ const ThemeSampleComponent = (props) => {
   const body = () => {
     let images;
     if (!!props.theme.android_images)
-      images = JSON.parse(props.theme.android_images);
+      images = JSON.parse(props.theme.ios_images);
 
     return (
       <View style={{flex: 1}}>
         { images != null &&
-          <ImageBackground source={fileUtil.getSourceByUrl(images.xhdpi, 'image')}
+          <ImageBackground source={fileUtil.getSourceByUrl(images['1x'], 'image')}
             style={styles.themeImage}
             imageStyle={{borderBottomLeftRadius: appBorderRadius, borderBottomRightRadius: appBorderRadius}}
           />
