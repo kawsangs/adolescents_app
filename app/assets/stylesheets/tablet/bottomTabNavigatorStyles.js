@@ -14,7 +14,8 @@ const bottomTabNavigatorStyles = StyleSheet.create({
     ...Platform.select({
       ios: {
         height: 74,
-        paddingBottom: 0
+        paddingBottom: 0,
+        marginBottom: 10
       },
       android: {
         height: 62,
@@ -25,7 +26,7 @@ const bottomTabNavigatorStyles = StyleSheet.create({
   tabBarItem: {
     backgroundColor: color.whiteColor,
     opacity: 0.98,
-    marginRight: -1
+    marginRight: -1,
   },
   tabBarLeftItem: {
     borderBottomLeftRadius: BORDER_RADIUS,

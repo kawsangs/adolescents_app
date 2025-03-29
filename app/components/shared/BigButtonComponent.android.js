@@ -43,7 +43,7 @@ const BigButtonComponent = (props) => {
       disabled={props.disabled || disabled}
     >
       <View style={{flexDirection: 'row'}}>
-        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: getStyleOfDevice(6, 0), lineHeight: 32 }} />
+        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, marginTop: 0, lineHeight: 32 }} />
         { props.isLoading && <ActivityIndicator size="small" color={colorSet().textColor} style={{marginLeft: 8}} /> }
       </View>
       {!props.hideAudio && renderAudioBtn()}
