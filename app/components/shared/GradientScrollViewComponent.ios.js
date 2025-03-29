@@ -9,6 +9,7 @@ import {gradientScrollViewPaddingBottom} from '../../constants/ios_component_con
 import color from '../../themes/color';
 import fileUtil from '../../utils/file_util';
 import themeUtil from '../../utils/theme_util';
+import { getStyleOfDevice } from '../../utils/responsive_util';
 
 const {useImperativeHandle} = React
 
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('screen').height,
     width: Dimensions.get('screen').width,
     position: 'absolute',
-    top: 112, // 112 is the sum of the status bar + app bar (56 * 2)
+    top: getStyleOfDevice(86, 112), // 112 is the sum of the status bar + app bar (56 * 2) [mobile], 86 is the sub of the status bar height & app bar height (iPad)
     left: 0,
     zIndex: 0
   }

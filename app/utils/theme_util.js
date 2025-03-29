@@ -1,4 +1,5 @@
 import { PixelRatio } from 'react-native';
+import DeviceInfo from 'react-native-device-info'
 import { XXHDPIRatio, XHDPIRatio, HDPIRatio } from '../constants/screen_size_constant';
 
 const devicePixelRatio = Math.round(PixelRatio.roundToNearestPixel(PixelRatio.get()));
@@ -17,7 +18,7 @@ const themeUtil = (() => {
     if (isSample)
       return images.mdpi;
 
-    if (devicePixelRatio >= XXHDPIRatio)
+    if (DeviceInfo.isTablet() || devicePixelRatio >= XXHDPIRatio)
       return images.xxhdpi
     else if (devicePixelRatio >= XHDPIRatio)
       return images.xhdpi;
@@ -35,7 +36,7 @@ const themeUtil = (() => {
     if (isSample)
       return images['1x'];
 
-    if (devicePixelRatio >= XXHDPIRatio)
+    if (DeviceInfo.isTablet() || devicePixelRatio >= XXHDPIRatio)
       return images['3x'];
     else if (devicePixelRatio >= XHDPIRatio)
       return images['2x'];
