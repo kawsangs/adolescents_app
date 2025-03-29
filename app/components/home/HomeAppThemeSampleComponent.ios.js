@@ -7,7 +7,11 @@ import { useSelector } from 'react-redux';
 import { backgroundColors } from '../../themes/color';
 import fileUtil from '../../utils/file_util';
 import themeUtil from '../../utils/theme_util';
-import styles from '../../assets/stylesheets/mobile/homeAppThemeSampleComponentStyles';
+import {getStyleOfDevice} from '../../utils/responsive_util';
+import mobileStyles from '../../assets/stylesheets/mobile/homeAppThemeSampleComponentStyles';
+import tabletStyles from '../../assets/stylesheets/tablet/homeAppThemeSampleComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HomeAppThemeSampleComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
@@ -19,10 +23,10 @@ const HomeAppThemeSampleComponent = (props) => {
   }
 
   return (
-    <View style={{marginBottom: 20, width: 75}}>
+    <View style={styles.container}>
       <TouchableOpacity
         onPress={() => props.onSelect()}
-        style={styles.appContainer}
+        style={styles.appThemeContainer}
       >
         <LinearGradient
           colors={getBackgroundColors()}
@@ -38,7 +42,7 @@ const HomeAppThemeSampleComponent = (props) => {
           }
         </LinearGradient>
       </TouchableOpacity>
-      <Text style={{marginTop: 3, fontSize: 12, textAlign: 'center', color: appTheme.primary_text_color}}>
+      <Text style={[styles.label, {color: appTheme.primary_text_color}]}>
         {props.theme.name}
       </Text>
     </View>

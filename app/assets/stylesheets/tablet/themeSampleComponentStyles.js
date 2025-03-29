@@ -5,16 +5,16 @@ const ThemeSampleComponentStyles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 20,
     position: 'absolute',
-    top: -80,
-    left: 220 / 4.2
+    top: -60,
+    left: 220 / 1.3,
   },
   appThemeContainer: {
     borderColor: 'black',
     borderWidth: 1.5,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    width: 250,
-    height: 380,
+    width: 450,
+    height: 580,
     padding: 12,
   },
   headerContainer: {
@@ -22,7 +22,7 @@ const ThemeSampleComponentStyles = StyleSheet.create({
     borderTopRightRadius: 6,
     borderTopLeftRadius: 6,
     width: '100%',
-    height: 20,
+    height: 56,
     flexDirection: 'row',
     paddingHorizontal: 4,
   },
@@ -40,36 +40,36 @@ const ThemeSampleComponentStyles = StyleSheet.create({
   longCardContainer: {
     backgroundColor: "#ffffff",
     borderRadius: 6,
-    height: 70,
+    height: 110,
     paddingLeft: 4,
     paddingRight: 4,
     width: '100%',
   },
   longCardImageContainer: {
     width: '35%',
-    height: '100%',
+    height: '90%',
     justifyContent: 'center'
   },
   longCardTextContainer: {
     flex: 1,
     flexDirection: 'column',
     paddingLeft: 6,
-    paddingVertical: 10
+    paddingVertical: 14
   },
   longCardBlankText: {
     backgroundColor: 'black',
     borderRadius: 8,
-    height: 6,
+    height: 10,
     opacity: 0.3,
   },
   gridCardContainer: {
     width: '47%',
     backgroundColor: 'white',
-    marginTop: 7,
+    marginTop: 10,
     borderRadius: 6,
     ...Platform.select({
       ios: {
-        height: 60
+        height: 110
       },
       android: {
         height: '25%'
@@ -78,8 +78,8 @@ const ThemeSampleComponentStyles = StyleSheet.create({
   },
   gridCardImage: {
     width: '90%',
-    height: '100%',
-    marginTop: 0,
+    height: '96%',
+    marginTop: 4,
     alignSelf: 'center',
     marginLeft: 4
   }

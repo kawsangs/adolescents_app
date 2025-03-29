@@ -11,6 +11,8 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import ThemeSampleComponent from './ThemeSampleComponent';
 import color from '../../themes/color';
 import themeService from '../../services/theme_service';
+import {screenHorizontalPadding} from '../../constants/component_constant';
+import { getStyleOfDevice } from '../../utils/responsive_util';
 
 const ChangeThemeInfoModalComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
@@ -32,7 +34,7 @@ const ChangeThemeInfoModalComponent = (props) => {
         style={{ marginTop: 0, marginBottom: 0 }}
       >
         <NavigationHeaderComponent
-          headerStyle={{position: 'absolute', backgroundColor: 'transparent', width: '100%', marginTop: 56}}
+          headerStyle={{position: 'absolute', backgroundColor: 'transparent', width: '100%', marginTop: getStyleOfDevice(28, 56)}}
           rightButton={
             <NavigationHeaderButtonComponent onPress={() => props.onDismiss()}
               icon={<IonIcon name="close" size={24} color={appTheme.primary_color ?? color.primaryColor} />}
@@ -40,7 +42,7 @@ const ChangeThemeInfoModalComponent = (props) => {
           }
         />
 
-        <View style={{paddingHorizontal: 16, flex: 1, flexDirection: 'column'}}>
+        <View style={{paddingHorizontal: screenHorizontalPadding, flex: 1, flexDirection: 'column'}}>
           <View style={{flex: 1}}>
             <ThemeSampleComponent theme={props.theme} />
           </View>

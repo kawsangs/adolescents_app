@@ -6,10 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import GradientScrollViewComponent from '../shared/GradientScrollViewComponent';
 import color, { backgroundColors } from '../../themes/color';
 import fileUtil from '../../utils/file_util';
+import {getStyleOfDevice} from '../../utils/responsive_util';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import { cardElevation } from '../../constants/component_constant';
-import styles from '../../assets/stylesheets/mobile/themeSampleComponentStyles';
+import mobileStyles from '../../assets/stylesheets/mobile/themeSampleComponentStyles';
+import tabletStyles from '../../assets/stylesheets/tablet/themeSampleComponentStyles';
+
+const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const ThemeSampleComponent = (props) => {
   const dispatch = useDispatch();
@@ -21,10 +25,11 @@ const ThemeSampleComponent = (props) => {
   }, []);
 
   const header = () => {
+    const blankTextHeight = getStyleOfDevice(10, 4)
     return (
       <View style={[styles.headerContainer, { backgroundColor: props.theme != null ? props.theme.primary_color : color.primaryColor }]}>
-        <View style={{width: '18%', height: 4, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8, marginRight: 6}} />
-        <View style={{width: '60%', height: 4, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8}} />
+        <View style={{width: '18%', height: blankTextHeight, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8, marginRight: 6}} />
+        <View style={{width: '60%', height: blankTextHeight, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8}} />
       </View>
     )
   }
@@ -33,12 +38,12 @@ const ThemeSampleComponent = (props) => {
     return (
       <Card mode="elevated" elevation={cardElevation} style={styles.longCardContainer}>
         <View style={{flexDirection: 'row', height: '100%'}}>
-          <View style={{width: '35%', height: '100%', justifyContent: 'center'}}>
+          <View style={styles.longCardImageContainer}>
             <ImageBackground source={categoryHelper.getFileByUrl(categories[0].image_url, 'image')} resizeMode='contain'
               style={{ width: '100%', height: '100%'}}
             />
           </View>
-          <View style={{flex: 1, flexDirection: 'column', paddingLeft: 6, paddingVertical: 10}}>
+          <View style={styles.longCardTextContainer}>
             <View style={[{width: '98%'}, styles.longCardBlankText]} />
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
               <View style={[{width: '30%'}, styles.longCardBlankText]} />
@@ -55,7 +60,7 @@ const ThemeSampleComponent = (props) => {
         <ImageBackground
           source={!!item.image ? item.image : categoryHelper.getFileByUrl(item.image_url, 'image')}
           resizeMode='contain'
-          style={{ width: '90%', height: '100%', marginTop: 0, alignSelf: 'center', marginLeft: 4}}
+          style={styles.gridCardImage}
         />
       </Card>
     )
@@ -83,7 +88,7 @@ const ThemeSampleComponent = (props) => {
             imageStyle={{borderBottomLeftRadius: appBorderRadius, borderBottomRightRadius: appBorderRadius}}
           />
         }
-        <View style={{padding: 8}}>
+        <View style={{padding: getStyleOfDevice(12, 8)}}>
           { categories.length > 0 && longCard() }
           { gridCards() }
         </View>
@@ -110,8 +115,8 @@ const ThemeSampleComponent = (props) => {
   }
 
   return (
-    <View style={{flexDirection: 'row', marginBottom: 20, position: 'absolute', top: -20, left: 220 / 4.2}}>
-      <View style={styles.appContainer}>
+    <View style={styles.container}>
+      <View style={styles.appThemeContainer}>
         { gradientScrollView() }
       </View>
     </View>

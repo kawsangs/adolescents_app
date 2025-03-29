@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import ChangeThemeInfoModalComponent from '../appThemes/ChangeThemeInfoModalComponent';
 import Theme from '../../models/Theme';
 import { setSelectedAppTheme } from '../../features/appThemes/appThemeSlice';
+import {largeFontSize, mediumFontSize} from '../../utils/font_size_util';
+import { getStyleOfDevice } from '../../utils/responsive_util';
 
 import HomeAppThemeSampleComponent from './HomeAppThemeSampleComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
@@ -35,8 +37,10 @@ const HomeAppThemeSectionComponent = () => {
 
   return (
     <View>
-      <View style={{borderWidth: 0.2, marginTop: 26, marginBottom: 14, opacity: 0.4, borderColor: appTheme.primary_text_color ?? 'white'}}/>
-      <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់" style={{fontSize: 16, color: appTheme.primary_text_color ?? "white"}}/>
+      <View style={{borderWidth: getStyleOfDevice(0.38, 0.2), marginTop: 26, marginBottom: getStyleOfDevice(18, 14), opacity: 0.4, borderColor: appTheme.primary_text_color ?? 'white'}}/>
+      <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់"
+        style={{fontSize: getStyleOfDevice(largeFontSize(), mediumFontSize()), color: appTheme.primary_text_color ?? "white"}}
+      />
 
       <FlatList
         data={themes}
@@ -44,7 +48,7 @@ const HomeAppThemeSectionComponent = () => {
         keyExtractor={item => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={{marginTop: 12, width: '100%'}}
+        style={{marginTop: getStyleOfDevice(18, 12), width: '100%'}}
       />
 
       <ChangeThemeInfoModalComponent
