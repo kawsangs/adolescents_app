@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,10 +13,8 @@ import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
 import themeService from '../../services/theme_service';
-import networkService from '../../services/network_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
-import color from '../../themes/color';
 import { setAppThemes } from '../../features/appThemes/appThemeSlice';
 import Theme from '../../models/Theme';
 
@@ -32,17 +30,13 @@ const HomeView = (props) => {
       if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable) {
         syncService.syncUsersAndDependencies();
         MobileTokenService.handleSyncingToken();
+        themeService.syncData(() => {
+          dispatch(setAppThemes(Theme.getAll()));
+        });
       }
 
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;
     });
-
-    networkService.checkConnection(() => {
-      themeService.syncData(() => {
-        dispatch(setAppThemes(Theme.getAll()));
-      });
-    });
-
     return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
   }, []);
 
