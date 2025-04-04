@@ -8,11 +8,11 @@ const MODEL = "Category";
 class Category {
   static seedData = () => {
     categories.map(category => {
-      const {children, content_sources, lft, rgt, ...data} = category;
+      const {children, content_sources, ...data} = category;
       this.create({...data, sources: categoryHelper.getFormattedSources(category.content_sources)})
 
       category.children.map(subCategory => {
-        const {children, content_sources, lft, rgt, ...data} = subCategory;
+        const {children, content_sources, ...data} = subCategory;
         this.create({...data, sources: categoryHelper.getFormattedSources(subCategory.content_sources)})
       });
     });
