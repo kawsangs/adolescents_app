@@ -1,12 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 import Theme from '../../models/Theme';
-import { originalTheme } from '../../constants/app_theme_constant';
+import themes from '../../db/json/themes.json';
 
-const defaultTheme = Theme.getDefault() ?? originalTheme;
+const defaultFromJson = {
+  ...themes[0],
+  android_images: (!!themes[0].assets && !!themes[0].assets.android) ? JSON.stringify(themes[0].assets.android) : null,
+  ios_images: (!!themes[0].assets && !!themes[0].assets.ios) ? JSON.stringify(themes[0].assets.ios) : null,
+};
+
+const defaultTheme = Theme.getDefault() || defaultFromJson;
 
 const initialState = {
   value: {
-    uuid: defaultTheme.uuid,
     id: defaultTheme.id,
     primary_color: defaultTheme.primary_color,
     secondary_color: defaultTheme.secondary_color,

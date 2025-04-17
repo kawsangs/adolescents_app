@@ -32,7 +32,13 @@ const HomeView = (props) => {
         MobileTokenService.handleSyncingToken();
         themeService.syncData(() => {
           dispatch(setAppThemes(Theme.getAll()));
+        }, () => {
+          dispatch(setAppThemes(Theme.getAll()));
         });
+      }
+      else {
+        if (Theme.getAll().length > 0)
+          dispatch(setAppThemes(Theme.getAll()));
       }
 
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;

@@ -1,15 +1,20 @@
 import BaseModel from './BaseModel';
 import Moment from 'moment';
 import uuidv4 from '../utils/uuidv4_util';
-import { originalTheme } from '../constants/app_theme_constant';
+import themes from '../db/json/themes.json';
 
 const MODEL = 'Theme';
 
 class Theme {
   static seedOriginalTheme = () => {
-    BaseModel.create(MODEL, {
-      ...originalTheme,
-      updated_at: Moment.unix(Moment().toDate()).toDate(),
+    themes.forEach(theme => {
+      BaseModel.create(MODEL, {
+        ...theme,
+        uuid: uuidv4(),
+        updated_at: Moment.unix(theme.updated_at).toDate(),
+        android_images: (!!theme.assets && !!theme.assets.android) ? JSON.stringify(theme.assets.android) : null,
+        ios_images: (!!theme.assets && !!theme.assets.ios) ? JSON.stringify(theme.assets.ios) : null,
+      });
     });
   }
 
