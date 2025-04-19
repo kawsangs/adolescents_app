@@ -46,7 +46,7 @@ const FacilitySearchHeaderComponent = (props) => {
   }
 
   return (
-    <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: appTheme.primary_color ?? color.primaryColor, zIndex: 1}, props.headerStyle]}>
+    <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: 'transparent', zIndex: 1}, props.headerStyle]}>
       <NavigationHeaderBackButtonComponent onPress={() => closeSearch()}/>
       {renderSearchBox()}
     </Appbar.Header>
