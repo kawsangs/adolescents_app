@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     color: color.blackColor,
     lineHeight: 30,
     marginRight: 8,
+    marginTop: 3
   },
   btn: {
     minHeight: componentUtil.pressableItemSize(),

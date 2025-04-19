@@ -1,3 +1,5 @@
+import { compressToUTF16 } from 'lz-string';
+
 import BaseModel from './BaseModel';
 import categories from '../db/json/categories.json';
 import uuidv4 from '../utils/uuidv4_util';
@@ -19,7 +21,11 @@ class Category {
   }
 
   static create = (data) => {
-    BaseModel.create(MODEL, {...data, uuid: uuidv4()});
+    BaseModel.create(MODEL, {
+      ...data,
+      uuid: uuidv4(),
+      description: !!data.description ? compressToUTF16(data.description) : null
+    });
   }
 
   static update = (uuid, data) => {

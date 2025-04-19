@@ -86,7 +86,11 @@ const categoryHelper = (() => {
       if (items.length > 0)
         result = [...result, ...items]
     })
-    return result;
+
+    // Filter duplicate item by uuid
+    return [...new Set(result.map(item => item.uuid))].map(uuid => {
+      return result.find(item => item.uuid === uuid);
+    });
   }
 })()
 
