@@ -7,7 +7,6 @@ const ThemeSchema = {
     uuid: 'string',
     id: 'string',
     name: 'string',
-    status: 'string',
     default: { type: 'bool', default: false },
     page: 'int?',
     primary_color: 'string',
@@ -16,7 +15,6 @@ const ThemeSchema = {
     secondary_text_color: 'string',
     android_images: 'string?',
     ios_images: 'string?',
-    updated_at: 'date?',
   }
 }
 

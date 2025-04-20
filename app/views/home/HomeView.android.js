@@ -28,6 +28,8 @@ const HomeView = (props) => {
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
       if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable) {
+        console.log('=== START SYNCING DATA =-======');
+
         syncService.syncUsersAndDependencies();
         MobileTokenService.handleSyncingToken();
         themeService.syncData(() => {

@@ -15,6 +15,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HomeAppThemeSampleComponent = (props) => {
   const appTheme = useSelector(state => state.appTheme.value);
+  const names = props.theme.name.split(' ');
   const getBackgroundColors = () => {
     if (props.theme == null)
       return backgroundColors;
@@ -43,7 +44,10 @@ const HomeAppThemeSampleComponent = (props) => {
         </LinearGradient>
       </TouchableOpacity>
       <Text style={[styles.label, {color: appTheme.primary_text_color}]}>
-        {props.theme.name}
+        { names[0] }
+      </Text>
+      <Text style={[styles.label, {color: appTheme.primary_text_color}]}>
+        { names[1] }
       </Text>
     </View>
   );
