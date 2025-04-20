@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import { View } from 'react-native';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
+import { AppState, View } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,21 +22,18 @@ const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
+  const appState = useRef(AppState.currentState);
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
     let previousStatus = false;  // we store the previousStatus in order to prevent the syncUsers from calling twice when has internet connection
+    let subscription;
     const unsubscribeNetInfo = NetInfo.addEventListener((state) => {
       if (state.isConnected && state.isInternetReachable != previousStatus && state.isInternetReachable) {
-        console.log('=== START SYNCING DATA =-======');
-
         syncService.syncUsersAndDependencies();
         MobileTokenService.handleSyncingToken();
-        themeService.syncData(() => {
-          dispatch(setAppThemes(Theme.getAll()));
-        }, () => {
-          dispatch(setAppThemes(Theme.getAll()));
-        });
+        syncAppTheme();
+        subscription = AppState.addEventListener('change', handleAppStateChange);
       }
       else {
         if (Theme.getAll().length > 0)
@@ -45,7 +42,10 @@ const HomeView = (props) => {
 
       if (previousStatus != state.isInternetReachable) previousStatus = state.isInternetReachable;
     });
-    return () => { unsubscribeNetInfo && unsubscribeNetInfo() }
+    return () => {
+      unsubscribeNetInfo && unsubscribeNetInfo();
+      subscription && subscription.remove();
+    }
   }, []);
 
   useFocusEffect(
@@ -58,6 +58,19 @@ const HomeView = (props) => {
       }
     }, [])
   );
+
+  const syncAppTheme = () => {
+    themeService.syncData(() => {
+      dispatch(setAppThemes(Theme.getAll()));
+    });
+  }
+
+  const handleAppStateChange = (nextAppState) => {
+    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
+      syncAppTheme();
+    }
+    appState.current = nextAppState;
+  };
 
   const renderBody = () => {
     return (

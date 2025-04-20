@@ -15,13 +15,13 @@ const themeService = (() => {
     downloadThemeImages
   }
 
-  function syncData(successCallback, failureCallback) {
-    _syncByPage(1, 1, successCallback, failureCallback)
+  function syncData(callback) {
+    _syncByPage(1, 1, callback)
   }
 
-  async function _syncByPage(page, totalPage, successCallback, failureCallback) {
+  async function _syncByPage(page, totalPage, callback) {
     if(page > totalPage) {
-      !!successCallback && successCallback();
+      !!callback && callback();
       return;
     }
 
@@ -30,9 +30,9 @@ const themeService = (() => {
       const allPage = Math.ceil(res.pagy.count / itemsPerPage);
       _handleRemoveThemes(res.themes, page);
       _handleSaveThemes(0, res.themes, page, () => {
-        _syncByPage(page+1, allPage, successCallback, failureCallback);
+        _syncByPage(page+1, allPage, callback);
       })
-    }, (error) => !!failureCallback && failureCallback());
+    }, (error) => !!callback && callback());
   }
 
   function _handleRemoveThemes(themes, page) {
