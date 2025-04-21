@@ -23,5 +23,6 @@ export const schemaNames = [
   'SurveyCriteria',
   'VideoTag',
   'Reason',
-  'Theme'
+  'Theme',
+  'ThemeUsage',
 ];
