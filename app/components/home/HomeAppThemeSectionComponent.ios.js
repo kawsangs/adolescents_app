@@ -16,7 +16,6 @@ const HomeAppThemeSectionComponent = () => {
   const themes = useSelector(state => state.appTheme.items);
   const [selectedTheme, setSelectedTheme] = useState(Theme.getDefault());
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const appTheme = useSelector(state => state.appTheme.value);
   const dispatch = useDispatch();
 
   const listItem = (theme) => {

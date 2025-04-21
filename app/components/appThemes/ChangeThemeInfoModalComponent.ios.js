@@ -11,6 +11,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import ThemeSampleComponent from './ThemeSampleComponent';
 import color from '../../themes/color';
 import themeService from '../../services/theme_service';
+import networkService from '../../services/network_service';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 
@@ -20,7 +21,12 @@ const ChangeThemeInfoModalComponent = (props) => {
 
   const applyTheme = () => {
     setDisabled(true);
-    themeService.downloadThemeImages(props.theme, () => {
+    networkService.checkConnection(() => {
+      themeService.downloadThemeImages(props.theme, () => {
+        props.applyTheme();
+        setDisabled(false);
+      });
+    }, () => {
       props.applyTheme();
       setDisabled(false);
     });
