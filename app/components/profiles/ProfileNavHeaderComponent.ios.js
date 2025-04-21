@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import { Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
@@ -15,7 +14,6 @@ import {navigationRef} from '../../navigators/app_navigator';
 const ProfileNavHeaderComponent = (props) => {
   const {t} = useTranslation();
   const [isMenuVisible, setIsMenuVisible] = React.useState(false);
-  const appTheme = useSelector(state => state.appTheme.value);
 
   const goToDeleteAccount = () => {
     setIsMenuVisible(false);
@@ -29,7 +27,7 @@ const ProfileNavHeaderComponent = (props) => {
               anchor={
                 <View style={{flexDirection: 'row', height: '100%'}}>
                   <NavigationHeaderButtonComponent onPress={() => setIsMenuVisible(true)}
-                    icon={<Icon name='more-vertical' size={20} color={appTheme.primary_text_color ?? color.whiteColor} />}
+                    icon={<Icon name='more-vertical' size={20} color={color.whiteColor} />}
                   />
                 </View>
               }

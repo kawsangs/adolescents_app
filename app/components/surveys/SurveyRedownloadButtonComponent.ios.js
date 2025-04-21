@@ -20,7 +20,6 @@ const SurveyFormRedownloadButtonComponent = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const appTheme = useSelector(state => state.appTheme.value);
   const primaryColor = appTheme.primary_color ?? color.primaryColor;
-  const btnLabelColor = appTheme.primary_text_color ?? color.whiteColor;
 
   const downloadSurveyForm = () => {
     NetInfo.fetch().then(state => {
@@ -51,8 +50,8 @@ const SurveyFormRedownloadButtonComponent = (props) => {
         <TouchableOpacity onPress={() => downloadSurveyForm()} mode="contained"
           style={{borderRadius: 6, height: 48, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', backgroundColor: primaryColor, paddingHorizontal: 16}}
         >
-          <Icon name='download' size={20} color={btnLabelColor} />
-          <BoldLabelComponent label={t('downloadSurvey')} style={{fontSize: largeFontSize(), color: btnLabelColor, marginLeft: 8}} />
+          <Icon name='download' size={20} color={color.whiteColor} />
+          <BoldLabelComponent label={t('downloadSurvey')} style={{fontSize: largeFontSize(), color: color.whiteColor, marginLeft: 8}} />
         </TouchableOpacity>
       </React.Fragment>
     )

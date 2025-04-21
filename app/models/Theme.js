@@ -6,12 +6,13 @@ const MODEL = 'Theme';
 
 class Theme {
   static seedOriginalTheme = () => {
-    themes.forEach(theme => {
+    themes.forEach((theme, index) => {
       BaseModel.create(MODEL, {
         ...theme,
         uuid: uuidv4(),
         android_images: (!!theme.assets && !!theme.assets.android) ? JSON.stringify(theme.assets.android) : null,
         ios_images: (!!theme.assets && !!theme.assets.ios) ? JSON.stringify(theme.assets.ios) : null,
+        default: index == 0,
       });
     });
   }

@@ -10,13 +10,12 @@ import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilityFilterButtonComponent = () => {
   const selectedProvince = useSelector(state => state.filterFacilityLocation.value.province);
-  const appTheme = useSelector(state => state.appTheme.value);
 
   return (
     <React.Fragment>
       <View style={{position: 'relative'}}>
         <NavigationHeaderButtonComponent onPress={() => navigationRef.current?.navigate("FacilityFilterView")}
-          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color={appTheme.primary_text_color ?? 'white'}/>}
+          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color={'white'}/>}
         />
 
         {!!selectedProvince && <NotifyBadgeComponent right={10} top={15} />}

@@ -17,8 +17,8 @@ const PolicyConfirmationButtonComponent = (props) => {
             onPress={() => props.saveUser()}
             accessibilityLabel='ប៊ូតុងយល់ព្រម'
             buttonColor={appTheme.primary_color ?? color.primaryColor}
-            textColor={appTheme.primary_text_color ?? color.whiteColor}
-            iconPrimaryColor={appTheme.primary_text_color ?? color.whiteColor}
+            textColor={color.whiteColor}
+            iconPrimaryColor={color.whiteColor}
          />
 }
 

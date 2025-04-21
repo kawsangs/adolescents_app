@@ -26,8 +26,8 @@ const TagScrollBarComponent = (props) => {
   const renderItem = (tag) => {
     const colors = {
       text: appTheme.primary_color ?? color.primaryColor,
-      selectedText: appTheme.primary_text_color ?? color.whiteColor,
-      background: appTheme.primary_text_color ?? color.whiteColor,
+      selectedText: color.whiteColor,
+      background: color.whiteColor,
       selectedBackground: appTheme.secondary_color ?? color.secondaryColor
     };
     return <TouchableOpacity style={[styles.item, {backgroundColor: selectedUuid == tag.uuid ? colors.selectedBackground : colors.background}]}

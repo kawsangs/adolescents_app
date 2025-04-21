@@ -58,8 +58,8 @@ const ChangeThemeInfoModalComponent = (props) => {
               style={{marginBottom: 16, marginTop: 28}}
               audio={null}
               buttonColor={appTheme.primary_color ?? color.primaryColor}
-              textColor={appTheme.primary_text_color ?? "white"}
-              iconPrimaryColor={appTheme.primary_text_color ?? "white"}
+              textColor="white"
+              iconPrimaryColor="white"
               onPress={applyTheme}
               disabled={disabled}
               isLoading={disabled}

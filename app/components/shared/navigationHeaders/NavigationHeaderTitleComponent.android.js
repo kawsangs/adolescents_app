@@ -1,17 +1,15 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from '../BoldLabelComponent';
 import color from '../../../themes/color';
 import {xxLargeFontSize} from '../../../utils/font_size_util';
 
 const NavigationHeaderTitleComponent = (props) => {
-  const appTheme = useSelector(state => state.appTheme.value);
   return (
     <View style={styles.container}>
       <BoldLabelComponent label={props.label}
-        style={[styles.label, {color: appTheme.primary_text_color ?? color.whiteColor}]}
+        style={[styles.label, {color: color.whiteColor}]}
         numberOfLines={1}
       />
     </View>

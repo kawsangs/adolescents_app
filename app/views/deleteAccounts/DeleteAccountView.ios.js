@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
@@ -15,7 +14,6 @@ const DeleteAccountView = () => {
   const {t} = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [reasons, setReasons] = useState(Reason.getAll());
-  const appTheme = useSelector(state => state.appTheme.value);
 
   useEffect(() => {
     networkService.checkConnection(() => {
@@ -31,7 +29,7 @@ const DeleteAccountView = () => {
 
   const renderContent = () => {
     if (isLoading)
-      return <View style={{flex: 1, justifyContent: 'center'}}><ActivityIndicator size="large" color={appTheme.primary_text_color ?? color.whiteColor} /></View>
+      return <View style={{flex: 1, justifyContent: 'center'}}><ActivityIndicator size="large" color={color.whiteColor} /></View>
 
     return <DeleteAccountQuestionnaireComponent reasons={reasons}/>
   }

@@ -46,7 +46,7 @@ const SurveyCompleteView = () => {
       <Button style={[styles.btn, { backgroundColor: appTheme.primary_color ?? color.primaryColor }]} onPress={() => {
         navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
       }}
-        labelStyle={{color: appTheme.primary_text_color ?? color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
+        labelStyle={{color: color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
         contentStyle={{width: '100%'}}
       >
         {t('confirm')}

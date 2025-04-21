@@ -2,7 +2,6 @@ import React from 'react';
 import {View, TouchableOpacity, ImageBackground} from 'react-native';
 import {Text} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
-import { useSelector } from 'react-redux';
 
 import { backgroundColors } from '../../themes/color';
 import fileUtil from '../../utils/file_util';
@@ -14,7 +13,6 @@ import tabletStyles from '../../assets/stylesheets/tablet/homeAppThemeSampleComp
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const HomeAppThemeSampleComponent = (props) => {
-  const appTheme = useSelector(state => state.appTheme.value);
   const names = props.theme.name.split(' ');
   const getBackgroundColors = () => {
     if (props.theme == null)
@@ -43,10 +41,10 @@ const HomeAppThemeSampleComponent = (props) => {
           }
         </LinearGradient>
       </TouchableOpacity>
-      <Text style={[styles.label, {color: appTheme.primary_text_color}]}>
+      <Text style={styles.label}>
         { names[0] }
       </Text>
-      <Text style={[styles.label, {color: appTheme.primary_text_color}]}>
+      <Text style={styles.label}>
         { names[1] }
       </Text>
     </View>

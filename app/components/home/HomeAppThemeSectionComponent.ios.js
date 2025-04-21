@@ -37,9 +37,9 @@ const HomeAppThemeSectionComponent = () => {
 
   return (
     <View>
-      <View style={{borderWidth: getStyleOfDevice(0.38, 0.2), marginTop: 26, marginBottom: getStyleOfDevice(18, 14), opacity: 0.4, borderColor: appTheme.primary_text_color ?? 'white'}}/>
+      <View style={{borderWidth: getStyleOfDevice(0.38, 0.2), marginTop: 26, marginBottom: getStyleOfDevice(18, 14), opacity: 0.4, borderColor: 'white'}}/>
       <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់"
-        style={{fontSize: getStyleOfDevice(largeFontSize(), mediumFontSize()), color: appTheme.primary_text_color ?? "white"}}
+        style={{fontSize: getStyleOfDevice(largeFontSize(), mediumFontSize()), color: "white"}}
       />
 
       <FlatList
@@ -63,8 +63,6 @@ const HomeAppThemeSectionComponent = () => {
             id: selectedTheme.id,
             primary_color: selectedTheme.primary_color,
             secondary_color: selectedTheme.secondary_color,
-            primary_text_color: selectedTheme.primary_text_color,
-            secondary_text_color: selectedTheme.secondary_text_color,
             android_images: selectedTheme.android_images,
             ios_images: selectedTheme.ios_images
           }));

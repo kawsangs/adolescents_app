@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import TextComponent from './TextComponent';
 import CheckboxItemComponent from './checkboxes/CheckboxItemComponent';
@@ -11,7 +10,6 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 
 const CheckboxComponent = (props) => {
   const {t} = useTranslation();
-  const appTheme = useSelector(state => state.appTheme.value);
   const onPress = (value) => {
     const selectedItems = props.selectedItems.indexOf(value) != -1
                           ? props.selectedItems.filter(item => item != value)
@@ -25,7 +23,7 @@ const CheckboxComponent = (props) => {
 
   return (
     <View style={props.style}>
-      <TextComponent label={props.title} required={props.required} style={{color: appTheme.primary_text_color ?? color.whiteColor, fontSize: xLargeFontSize()}} />
+      <TextComponent label={props.title} required={props.required} style={{color: color.whiteColor, fontSize: xLargeFontSize()}} />
 
       <View style={styles.checkboxContainer}>
         { props.items.map((item, index) => (

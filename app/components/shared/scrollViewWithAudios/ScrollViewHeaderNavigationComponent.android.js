@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useSelector } from 'react-redux';
 
 import NavigationHeaderBackButtonComponent from '../NavigationHeaderBackButtonComponent';
 import NavigationHeaderButtonComponent from '../navigationHeaders/NavigationHeaderButtonComponent';
@@ -18,11 +17,10 @@ const ScrollViewHeaderNavigationComponent = (props) => {
     outputRange: [0, 1],
     extrapolate: 'extend'
   });
-  const appTheme = useSelector(state => state.appTheme.value);
 
   const renderFontSettingButton = () => {
     return <NavigationHeaderButtonComponent onPress={() => setIsModalVisible(true)}
-            icon={<Icon name="format-size" size={navigationHeaderIconSize} color={appTheme.primary_text_color ?? 'white'} />}
+            icon={<Icon name="format-size" size={navigationHeaderIconSize} color='white' />}
           />
   }
 

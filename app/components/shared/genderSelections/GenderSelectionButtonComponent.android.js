@@ -33,7 +33,7 @@ const GenderSelectionButtonComponent = (props) => {
 
   const renderGenderIcon = () => {
     const bgColor = (props.selectedValue == props.value) ? appTheme.secondary_color ?? color.secondaryColor : '#ebedf1';
-    const labelColor = (props.selectedValue == props.value) ? appTheme.primary_text_color ?? color.whiteColor : appTheme.primary_color ?? color.primaryColor;
+    const labelColor = (props.selectedValue == props.value) ? color.whiteColor : appTheme.primary_color ?? color.primaryColor;
 
     return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }]}
               onPress={() => props.updateValue(props.value)}

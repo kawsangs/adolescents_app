@@ -28,8 +28,8 @@ const ThemeSampleComponent = (props) => {
     const blankTextHeight = getStyleOfDevice(10, 4)
     return (
       <View style={[styles.headerContainer, { backgroundColor: props.theme != null ? props.theme.primary_color : color.primaryColor }]}>
-        <View style={{width: '18%', height: blankTextHeight, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8, marginRight: 6}} />
-        <View style={{width: '60%', height: blankTextHeight, backgroundColor: props.theme.primary_text_color ?? 'white', opacity: 0.6, borderRadius: 8}} />
+        <View style={{width: '18%', height: blankTextHeight, backgroundColor: 'white', opacity: 0.6, borderRadius: 8, marginRight: 6}} />
+        <View style={{width: '60%', height: blankTextHeight, backgroundColor: 'white', opacity: 0.6, borderRadius: 8}} />
       </View>
     )
   }

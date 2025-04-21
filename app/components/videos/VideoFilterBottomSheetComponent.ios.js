@@ -33,7 +33,7 @@ const VideoFilterBottomSheetComponent = (props) => {
   const renderLeftCheckIcon = (author) => {
     const containerStyle = {backgroundColor: appTheme.primary_color ?? color.primaryColor, borderWidth: 0};
     return <View style={[styles.roundContainer, selectedVidAuthor.uuid == author.uuid && containerStyle]}>
-              { (selectedVidAuthor.uuid == author.uuid) && <Icon name='check' size={13} color={appTheme.primary_text_color ?? 'white'}/>}
+              { (selectedVidAuthor.uuid == author.uuid) && <Icon name='check' size={13} color='white'/>}
            </View>
   }
 

@@ -10,7 +10,6 @@ import {setIsGridView} from '../../features/subCategories/subCategoryDisplayMode
 const SubCategoryDisplayModeButtonsComponent = (props) => {
   const dispatch = useDispatch();
   const isGridView = useSelector(state => state.subCategoryDisplayMode.isGridView);
-  const appTheme = useSelector(state => state.appTheme.value);
 
   const onPress = () => {
     props.clearAudio();
@@ -19,7 +18,7 @@ const SubCategoryDisplayModeButtonsComponent = (props) => {
 
   return <View style={{flexDirection: 'row', height: '100%'}}>
             <NavigationHeaderButtonComponent onPress={() => onPress()}
-              icon={<Icon name={isGridView ? 'list' : 'grid'} size={20} color={appTheme.primary_text_color ?? color.whiteColor} />}
+              icon={<Icon name={isGridView ? 'list' : 'grid'} size={20} color={color.whiteColor} />}
             />
          </View>
 }

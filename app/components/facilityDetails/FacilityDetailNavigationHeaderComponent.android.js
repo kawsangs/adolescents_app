@@ -32,18 +32,12 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
     extrapolate: "clamp"
   });
 
-  let backIconColor = props.scrollY.interpolate({
-    inputRange: [0, scrollDistant],
-    outputRange: [color.whiteColor, appTheme.primary_text_color ?? color.primaryColor],
-    extrapolate: "clamp"
-  });
-
   return (
     <Animated.View style={[styles.container, {elevation: headerElevation}]}>
       <Animated.View style={[styles.background, {opacity: headerOpacity, backgroundColor: appTheme.primary_color ?? color.primaryColor}]}/>
       <Appbar.Header style={[styles.header]}>
         <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
-          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2, color: backIconColor}} onPress={() => {
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2, color: color.whiteColor}} onPress={() => {
             if (props.isFromCategoryDetail != undefined && !props.isFromCategoryDetail)
               navigationRef.current?.goBack()
 

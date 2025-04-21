@@ -15,8 +15,6 @@ const initialState = {
     id: defaultTheme.id,
     primary_color: defaultTheme.primary_color,
     secondary_color: defaultTheme.secondary_color,
-    primary_text_color: defaultTheme.primary_text_color,
-    secondary_text_color: defaultTheme.secondary_text_color,
     android_images: defaultTheme.android_images,
     ios_images: defaultTheme.ios_images
   },

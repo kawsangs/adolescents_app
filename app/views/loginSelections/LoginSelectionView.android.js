@@ -3,7 +3,6 @@ import {View, Image} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import Toast from 'react-native-easy-toast';
-import { useSelector } from 'react-redux';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import BoldLabelComponent from '../../components/shared/BoldLabelComponent';
@@ -18,7 +17,6 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const LoginSelectionView = (props) => {
   const {t} = useTranslation();
   const toastRef = React.useRef(null);
-  const appTheme = useSelector(state => state.appTheme.value);
 
   useEffect(() => {
     if (props.route.params && props.route.params.is_delete_account)
@@ -31,7 +29,7 @@ const LoginSelectionView = (props) => {
         <Image source={require('../../assets/images/logo.png')} resizeMode='contain' style={styles.logo} />
         <BoldLabelComponent label={t('youthHealth')} style={styles.title} />
 
-        <Text style={[styles.label, { color: appTheme.primary_text_color ?? 'white' }]}>{t('youCanUseThisAppInFollowingChoices')}</Text>
+        <Text style={[styles.label, { color: 'white' }]}>{t('youCanUseThisAppInFollowingChoices')}</Text>
         <LoginSelectionButtonsComponent/>
         <Toast ref={toastRef} positionValue={120} fadeOutDuration={7000}/>
       </View>

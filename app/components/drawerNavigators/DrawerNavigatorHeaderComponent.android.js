@@ -18,8 +18,6 @@ const DrawerNavigatorHeaderComponent = (props) => {
   const {t, i18n} = useTranslation();
   const loggedInUser = User.currentLoggedIn();
   const userOccupation = useSelector(state => state.loginUserOccupation.value)
-  const appTheme = useSelector(state => state.appTheme.value);
-  const labelColor = appTheme.primary_text_color ?? color.whiteColor;
 
   return (
     <TouchableOpacity onPress={() => navigationRef.current?.navigate('ProfileNavigator')}
@@ -30,13 +28,13 @@ const DrawerNavigatorHeaderComponent = (props) => {
       </GradientViewComponent>
 
       <View style={{position: 'relative', flexDirection: 'row', alignItems: 'center'}}>
-        <Text style={{color: labelColor, marginLeft: 16, fontSize: largeFontSize()}}>
+        <Text style={{color: color.whiteColor, marginLeft: 16, fontSize: largeFontSize()}}>
           {!loggedInUser.anonymous ?
             `${t(loggedInUser.gender)} | ${translationHelper.translateNumber(loggedInUser.age, t)} ${t('yearOld')}`
             : t('anonymous')
           }
         </Text>
-        <FeatherIcon name="chevron-right" color={labelColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: 3}} />
+        <FeatherIcon name="chevron-right" color={color.whiteColor} size={22} style={{marginLeft: i18n.language == 'en' ? 4 : 10, marginTop: 3}} />
 
         { (!User.isLoginAsAnonymous() && userOccupation == 'n_a') && <NoticeBadgeComponent style={{width: 16, height: 16, top: -10, right: -4}}/> }
       </View>

@@ -14,6 +14,7 @@ const HomeAppThemeSampleComponentStyles = StyleSheet.create({
     padding: 4,
   },
   label: {
+    color: 'white',
     marginTop: 3,
     fontSize: 12,
     textAlign: 'center',

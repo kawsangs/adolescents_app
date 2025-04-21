@@ -1,7 +1,6 @@
 import React from 'react';
 import { Animated, Text, StyleSheet } from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
 
 import color from '../../../themes/color';
 import audioUtil from '../../../utils/audio_util';
@@ -12,7 +11,6 @@ import {headerWithAudioScrollDistance} from '../../../constants/ios_component_co
 
 const AudioDurationLabelComponent = (props) => {
   const {t, i18n} = useTranslation();
-  const appTheme = useSelector(state => state.appTheme.value);
   const labelPositionY = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [0, 5],
@@ -21,11 +19,10 @@ const AudioDurationLabelComponent = (props) => {
 
   const playSeconds = audioUtil.getFormattedPlaySeconds(props.playSeconds);
   const reversePlaySeconds = audioUtil.getReverseSeconds(props.playSeconds, props.duration);
-  const labelColor = appTheme.primary_text_color ?? color.whiteColor;
 
   return <Animated.View style={[styles.secondsContainer, {transform: [{translateY: labelPositionY}]}]}>
-            <Text style={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(playSeconds, t) }</Text>
-            <Text style={[styles.label, {color: labelColor}]}>{ translationHelper.translateNumber(reversePlaySeconds, t) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(playSeconds, t) }</Text>
+            <Text style={styles.label}>{ translationHelper.translateNumber(reversePlaySeconds, t) }</Text>
          </Animated.View>
 }
 
@@ -36,6 +33,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: screenHorizontalPadding,
   },
   label: {
+    color: color.whiteColor,
     fontSize: mediumFontSize(),
   }
 });

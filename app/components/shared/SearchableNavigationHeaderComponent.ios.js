@@ -58,7 +58,7 @@ const SeachableNavigationHeaderComponent = (props) => {
       }
       { !isSearching &&
         <NavigationHeaderButtonComponent onPress={() => setIsSearching(true)}
-          icon={<FeatherIcon name="search" size={20} color={appTheme.primary_text_color ?? "white"}/>}
+          icon={<FeatherIcon name="search" size={20} color="white"/>}
         />
       }
     </Appbar.Header>
