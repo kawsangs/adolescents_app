@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('screen').height,
     width: Dimensions.get('screen').width,
     position: 'absolute',
-    top: 56,
+    top: 0,
     left: 0,
     zIndex: 0
   }

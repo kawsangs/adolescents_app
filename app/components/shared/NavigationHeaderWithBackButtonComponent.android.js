@@ -10,6 +10,7 @@ const NavigationHeaderWithBackButtonComponent = (props) => {
         customTitle={props.customTitle}
         label={props.label}
         headerStyle={props.headerStyle}
+        hasBackgroundColor={props.hasBackgroundColor}
       />
     )
 }

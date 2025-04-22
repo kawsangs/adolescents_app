@@ -11,6 +11,7 @@ import BoldLabelComponent from '../shared/BoldLabelComponent';
 import ThemeSampleComponent from './ThemeSampleComponent';
 import color from '../../themes/color';
 import themeService from '../../services/theme_service';
+import themeUsageService from '../../services/theme_usage_service';
 import networkService from '../../services/network_service';
 
 const ChangeThemeInfoModalComponent = (props) => {
@@ -19,6 +20,9 @@ const ChangeThemeInfoModalComponent = (props) => {
 
   const applyTheme = () => {
     setDisabled(true);
+    if (appTheme.id != props.theme.id)
+      themeUsageService.recordThemeUsage(props.theme.id);
+
     networkService.checkConnection(() => {
       themeService.downloadThemeImages(props.theme, () => {
         props.applyTheme();

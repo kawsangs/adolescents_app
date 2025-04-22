@@ -2,7 +2,6 @@ import React from 'react';
 import {View, ScrollView} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
 import BoldLabelComponent from '../../components/shared/BoldLabelComponent';
@@ -15,7 +14,6 @@ import {xLargeFontSize} from '../../utils/font_size_util';
 import pkg from '../../../package';
 
 const AboutUsView = () => {
-  const appTheme = useSelector(state => state.appTheme.value);
   const {t, i18n} = useTranslation();
   const renderListItems = (language) => {
     const items = {
@@ -65,7 +63,7 @@ const AboutUsView = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: color.whiteColor}}>
-      <NavigationHeaderWithBackButtonComponent label={t('about')} headerStyle={{backgroundColor: appTheme.primary_color ?? color.primaryColor}} />
+      <NavigationHeaderWithBackButtonComponent label={t('about')} hasBackgroundColor={true} />
       <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16,}} showsVerticalScrollIndicator={false}>
         <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10, alignSelf: 'center', lineHeight: 40}} />
         {renderKhmerText()}

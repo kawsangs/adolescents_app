@@ -19,7 +19,6 @@ const fileService = (() => {
       return !!successCallback && successCallback(options.toFile, false);   // return (filename, isNewFile)
 
     await RNFS.downloadFile(options).promise.then(res => {
-      console.log('=== download image success =====');
       !!successCallback && successCallback(options.toFile, true)
     }).catch(err => {
       !!failureCallback && failureCallback()
