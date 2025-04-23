@@ -75,6 +75,7 @@ const ChangeThemeInfoModalComponent = (props) => {
               onPress={applyTheme}
               disabled={disabled}
               isLoading={disabled}
+              hideAudio={true}
             />
           </View>
         </View>
