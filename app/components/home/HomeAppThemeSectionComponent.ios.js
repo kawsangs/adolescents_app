@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
+import {useTranslation} from 'react-i18next';
 
 import ChangeThemeInfoModalComponent from '../appThemes/ChangeThemeInfoModalComponent';
 import Theme from '../../models/Theme';
@@ -13,6 +14,7 @@ import HomeAppThemeSampleComponent from './HomeAppThemeSampleComponent';
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 
 const HomeAppThemeSectionComponent = () => {
+  const {t} = useTranslation();
   const themes = useSelector(state => state.appTheme.items);
   const [selectedTheme, setSelectedTheme] = useState(Theme.getDefault());
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -37,7 +39,7 @@ const HomeAppThemeSectionComponent = () => {
   return (
     <View>
       <View style={{borderWidth: getStyleOfDevice(0.38, 0.2), marginTop: 26, marginBottom: getStyleOfDevice(18, 14), opacity: 0.4, borderColor: 'white'}}/>
-      <BoldLabelComponent label="ជម្រើសផ្ទៃអេក្រង់"
+      <BoldLabelComponent label={t('themeOptions')}
         style={{fontSize: getStyleOfDevice(largeFontSize(), mediumFontSize()), color: "white"}}
       />
 

@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import { Modal, Portal, Text } from 'react-native-paper';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
+import {useTranslation} from 'react-i18next';
 
 import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
 import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
@@ -17,6 +18,7 @@ import {screenHorizontalPadding} from '../../constants/component_constant';
 import { getStyleOfDevice } from '../../utils/responsive_util';
 
 const ChangeThemeInfoModalComponent = (props) => {
+  const {t} = useTranslation();
   const appTheme = useSelector(state => state.appTheme.value);
   const [disabled, setDisabled] = useState(false);
 
@@ -58,14 +60,14 @@ const ChangeThemeInfoModalComponent = (props) => {
           </View>
           <View>
             <BoldLabelComponent
-              label="បង្ហាញអារម្មណ៍តាមរយៈផ្ទៃអេក្រង់"
+              label={t('expressYourFeelingThroughTheme')}
               style={{ fontSize: 36, marginBottom: 20, lineHeight: 56}}
             />
             <Text style={{fontSize: 20, color: 'black', lineHeight: 32}}>
-              ជាមួយផ្ទៃអេក្រង់ច្រើនជម្រើស អ្នកអាចផ្លាស់ប្ដូរអារម្មណ៍លើ កម្មវិធីសុខភាពយុវជន របស់អ្នក ដោយជ្រើសរើសផ្ទៃអេក្រង់ណាមួយដែលអ្នកស្រឡាញ់។
+              {t('changeThemeDescription')}
             </Text>
             <BigButtonComponent
-              label='សាកល្បងឥឡូវ'
+              label={t('tryItNow')}
               uuid='try-now-button'
               style={{marginBottom: 16, marginTop: 28}}
               audio={null}
