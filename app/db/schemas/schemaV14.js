@@ -43,6 +43,7 @@ const schemaV14 = {
     if (oldRealm.schemaVersion < 14) {
       newRealm.delete(newRealm.objects('Video'));
       newRealm.delete(newRealm.objects('Category'));
+      newRealm.delete(newRealm.objects('Theme'));
     }
   },
 }

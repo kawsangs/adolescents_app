@@ -10,6 +10,7 @@ import Contact from '../models/Contact';
 import VideoTag from '../models/VideoTag';
 import Reason from '../models/Reason';
 import Theme from '../models/Theme';
+import realm from '../db/schema';
 
 const seedDataService = (() => {
   return {
@@ -26,7 +27,7 @@ const seedDataService = (() => {
     Contact.getAll().length == 0 && Contact.seedData();
     VideoTag.getAll().length == 0 && VideoTag.seedData();
     Reason.getAll().length == 0 && Reason.seedData();
-    Theme.getAll().length == 0 && Theme.seedOriginalTheme();
+    (Theme.getAll().length == 0 && realm.schemaVersion >= 14 ) && Theme.seedOriginalTheme();
   }
 })();
 
