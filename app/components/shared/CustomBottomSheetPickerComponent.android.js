@@ -1,5 +1,6 @@
 import React from 'react';
 import {BottomSheetPicker} from 'react-native-bottom-sheet-picker';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
@@ -7,10 +8,11 @@ import {titleFontSize, bottomSheetTitleFontSize, itemFontSize} from '../../const
 import {defaultPickerContentHeight} from '../../constants/modal_constant';
 
 const CustomBottomSheetPickerComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const colorSet = (type) => {
     const colors = {
       background: props.disabled ? color.disabledCardColor : color.whiteColor,
-      primary: props.disabled ? color.grayColor : color.primaryColor,
+      primary: props.disabled ? color.grayColor : (appTheme.primary_color ?? color.primaryColor),
       text: props.disabled ? color.grayColor : color.blackColor,
     }
     return colors[type];
@@ -19,8 +21,8 @@ const CustomBottomSheetPickerComponent = (props) => {
   return <BottomSheetPicker
             {...props}
             primaryColor={colorSet('primary')}
-            secondaryColor={color.secondaryColor}
-            titleStyle={[{marginBottom: 5, fontSize: titleFontSize, fontFamily: FontFamily.regular}, props.titleStyle]}
+            secondaryColor={appTheme.secondary_color ?? color.secondaryColor}
+            titleStyle={[{marginBottom: 5, fontSize: titleFontSize, fontFamily: FontFamily.regular, color: 'white'}, props.titleStyle]}
             pickerStyle={{backgroundColor: colorSet('background')}}
             pickerBoxStyle={{paddingRight: 4}}
             bottomSheetTitleStyle={{fontSize: bottomSheetTitleFontSize, fontFamily: FontFamily.bold}}

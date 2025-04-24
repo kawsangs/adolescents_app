@@ -4,6 +4,7 @@ import {Text} from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from '../shared/BoldLabelComponent';
 import FacilityDetailContactBottomSheetComponent from './FacilityDetailContactBottomSheetComponent';
@@ -17,12 +18,14 @@ import { contactSnapPoints } from '../../constants/modal_constant';
 
 const FacilityDetailContactPlatformsComponent = (props) => {
   const {t} = useTranslation()
+  const appTheme = useSelector(state => state.appTheme.value);
+  const primaryColor = appTheme.primary_color ?? color.primaryColor;
   const renderPlatformButtons = () => {
     const platforms = [
-      {name: t("phone"), icon: "phone", size: 26, value: props.contactNumbers.length > 0 ? props.contactNumbers : null, type: PHONE, color: color.primaryColor},
-      {name: t("website"), icon: "globe", size: 28, value: props.websites.length > 0 ? props.websites : null, type: WEBSITE, color: color.primaryColor},
-      {name: t("facebook"), icon: "facebook-f", size: 26, value: props.facebookPages.length > 0 ? props.facebookPages : null, type: FACEBOOK, color: color.primaryColor},
-      {name: t("telegram"), icon: "paper-plane", size: 22, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: color.primaryColor},
+      {name: t("phone"), icon: "phone", size: 26, value: props.contactNumbers.length > 0 ? props.contactNumbers : null, type: PHONE, color: primaryColor},
+      {name: t("website"), icon: "globe", size: 28, value: props.websites.length > 0 ? props.websites : null, type: WEBSITE, color: primaryColor},
+      {name: t("facebook"), icon: "facebook-f", size: 26, value: props.facebookPages.length > 0 ? props.facebookPages : null, type: FACEBOOK, color: primaryColor},
+      {name: t("telegram"), icon: "paper-plane", size: 22, value: !!props.telegram ? props.telegram : null, type: TELEGRAM, color: primaryColor},
     ]
 
     const openContactLink = (platform) => {
@@ -44,13 +47,13 @@ const FacilityDetailContactPlatformsComponent = (props) => {
       if (platform.value)
         return (
           <View key={index} style={{alignItems: 'center'}}>
-            <TouchableOpacity onPress={() => openContactLink(platform)} style={[styles.btn]}>
-              {platform.type == WEBSITE ? <FeatherIcon name={platform.icon} size={platform.size} color={color.primaryColor} />
-               : <FontAwesome name={platform.icon} size={platform.size} color={color.primaryColor} />
+            <TouchableOpacity onPress={() => openContactLink(platform)} style={[styles.btn, {borderColor: primaryColor}]}>
+              {platform.type == WEBSITE ? <FeatherIcon name={platform.icon} size={platform.size} color={primaryColor} />
+               : <FontAwesome name={platform.icon} size={platform.size} color={primaryColor} />
               }
             </TouchableOpacity>
 
-            <Text style={{marginTop: 8, fontSize: largeFontSize(), color: color.primaryColor}}>{platform.name}</Text>
+            <Text style={{marginTop: 8, fontSize: largeFontSize(), color: primaryColor}}>{platform.name}</Text>
           </View>
         )
     });
@@ -71,7 +74,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 56,
     borderWidth: 1.5,
-    borderColor: color.primaryColor,
     justifyContent: 'center',
     height: componentUtil.mediumPressableItemSize(),
     width: componentUtil.mediumPressableItemSize(),

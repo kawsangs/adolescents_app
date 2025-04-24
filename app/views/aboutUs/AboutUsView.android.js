@@ -63,7 +63,7 @@ const AboutUsView = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: color.whiteColor}}>
-      <NavigationHeaderWithBackButtonComponent label={t('about')} />
+      <NavigationHeaderWithBackButtonComponent label={t('about')} hasBackgroundColor={true} />
       <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16,}}>
         <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10, alignSelf: 'center', lineHeight: 40}} />
         {renderKhmerText()}

@@ -6,8 +6,12 @@ import filterVideoAuthorReducer from './features/videos/filterVideoAuthorSlice';
 import loginUserOccupationReducer from './features/users/loginUserOccupationSlice';
 import parentCategoryReducer from './features/parentCategories/parentCategorySlice';
 import currentPlayingAudioReducer from './features/audios/currentPlayingAudioSlice';
+import appThemeReducer from './features/appThemes/appThemeSlice';
 
 export const store = configureStore({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
   reducer: {
     unreadNotifications: unreadNotificationsReducer,
     filterFacilityLocation: filterFacilityLocationReducer,
@@ -16,5 +20,6 @@ export const store = configureStore({
     loginUserOccupation: loginUserOccupationReducer,
     parentCategory: parentCategoryReducer,
     currentPlayingAudio: currentPlayingAudioReducer,
+    appTheme: appThemeReducer,
   }
 })

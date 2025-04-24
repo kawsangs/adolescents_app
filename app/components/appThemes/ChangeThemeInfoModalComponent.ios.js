@@ -1,0 +1,99 @@
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import { Modal, Portal, Text } from 'react-native-paper';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import { useSelector } from 'react-redux';
+import {useTranslation} from 'react-i18next';
+
+import NavigationHeaderComponent from '../shared/NavigationHeaderComponent';
+import NavigationHeaderButtonComponent from '../shared/navigationHeaders/NavigationHeaderButtonComponent';
+import BigButtonComponent from '../shared/BigButtonComponent';
+import BoldLabelComponent from '../shared/BoldLabelComponent';
+import ThemeSampleComponent from './ThemeSampleComponent';
+import color from '../../themes/color';
+import themeService from '../../services/theme_service';
+import themeUsageService from '../../services/theme_usage_service';
+import networkService from '../../services/network_service';
+import {screenHorizontalPadding} from '../../constants/component_constant';
+import { getStyleOfDevice } from '../../utils/responsive_util';
+
+const ChangeThemeInfoModalComponent = (props) => {
+  const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
+  const [disabled, setDisabled] = useState(false);
+
+  const applyTheme = () => {
+    setDisabled(true);
+    if (appTheme.id != props.theme.id)
+      themeUsageService.recordThemeUsage(props.theme.id);
+
+    networkService.checkConnection(() => {
+      themeService.downloadThemeImages(props.theme, () => {
+        props.applyTheme();
+        setDisabled(false);
+      });
+    }, () => {
+      props.applyTheme();
+      setDisabled(false);
+    });
+  }
+
+  return (
+    <Portal>
+      <Modal
+        visible={props.visible}
+        contentContainerStyle={styles.container}
+        style={{ marginTop: 0, marginBottom: 0 }}
+      >
+        <NavigationHeaderComponent
+          headerStyle={{position: 'absolute', backgroundColor: 'transparent', width: '100%', marginTop: getStyleOfDevice(28, 56)}}
+          rightButton={
+            <NavigationHeaderButtonComponent onPress={() => props.onDismiss()}
+              icon={<IonIcon name="close" size={24} color={appTheme.primary_color ?? color.primaryColor} />}
+            />
+          }
+        />
+
+        <View style={{paddingHorizontal: screenHorizontalPadding, flex: 1, flexDirection: 'column'}}>
+          <View style={{flex: 1}}>
+            <ThemeSampleComponent theme={props.theme} />
+          </View>
+          <View>
+            <BoldLabelComponent
+              label={t('expressYourFeelingThroughTheme')}
+              style={{ fontSize: 36, marginBottom: 20, lineHeight: 56}}
+            />
+            <Text style={{fontSize: 20, color: 'black', lineHeight: 32}}>
+              {t('changeThemeDescription')}
+            </Text>
+            <BigButtonComponent
+              label={t('tryItNow')}
+              uuid='try-now-button'
+              style={{marginBottom: 16, marginTop: 28}}
+              audio={null}
+              buttonColor={appTheme.primary_color ?? color.primaryColor}
+              textColor="white"
+              iconPrimaryColor="white"
+              onPress={applyTheme}
+              disabled={disabled}
+              isLoading={disabled}
+              hideAudio={true}
+            />
+          </View>
+        </View>
+      </Modal>
+    </Portal>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'flex-start',
+    backgroundColor: 'white',
+    height: '100%',
+    width: '100%',
+    paddingBottom: 16,
+  },
+});
+
+export default ChangeThemeInfoModalComponent;

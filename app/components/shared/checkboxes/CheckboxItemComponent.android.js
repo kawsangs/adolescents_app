@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Checkbox} from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import CustomAudioPlayerButtonComponent from '../CustomAudioPlayerButtonComponent';
 import color from '../../../themes/color';
@@ -11,6 +12,7 @@ import mobileStyles from '../../../assets/stylesheets/mobile/selectionItemCompon
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const CheckboxItemComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderAudioBtn = () => {
     return <CustomAudioPlayerButtonComponent
               audio={props.audio}
@@ -29,8 +31,8 @@ const CheckboxItemComponent = (props) => {
         <Checkbox.Item label={props.label}
           status={props.isSelected ? 'checked' : 'unchecked'}
           style={styles.selectionItem}
-          uncheckedColor={color.primaryColor}
-          color={color.secondaryColor}
+          uncheckedColor={appTheme.primary_color ?? color.primaryColor}
+          color={appTheme.secondary_color ?? color.secondaryColor}
           labelStyle={styles.label}
           position='leading'
           onPress={() => props.onPress(props.value)}

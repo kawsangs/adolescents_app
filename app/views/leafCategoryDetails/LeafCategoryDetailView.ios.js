@@ -1,4 +1,5 @@
 import React from 'react';
+import { decompressFromUTF16 } from 'lz-string';
 import ScrollViewWithAudioComponent from '../../components/shared/ScrollViewWithAudioComponent';
 import Category from '../../models/Category';
 
@@ -9,7 +10,7 @@ const LeafCategoryDetailView = ({route, navigation}) => {
     <ScrollViewWithAudioComponent
       uuid={route.params.id}
       title={category.name}
-      description={category.description}
+      description={!!category.description ? decompressFromUTF16(category.description) : null}
       audio={category.audioSource}
       image={category.imageSource}
       sources={category.sources}

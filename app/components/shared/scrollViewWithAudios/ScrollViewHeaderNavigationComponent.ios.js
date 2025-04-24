@@ -20,7 +20,7 @@ const ScrollViewHeaderNavigationComponent = (props) => {
 
   const renderFontSettingButton = () => {
     return <NavigationHeaderButtonComponent onPress={() => setIsModalVisible(true)}
-            icon={<Icon name="format-size" size={navigationHeaderIconSize} color={'white'} />}
+            icon={<Icon name="format-size" size={navigationHeaderIconSize} color='white' />}
           />
   }
 
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     elevation: 0,
-    paddingHorizontal: navigationHeaderHorizontalPadding
+    paddingHorizontal: navigationHeaderHorizontalPadding,
+    zIndex: 1
   },
 });
 

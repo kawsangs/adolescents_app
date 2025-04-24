@@ -33,6 +33,10 @@ const imageSources = {
   'hiv_aids_treatment.png': require("../assets/images/categories/hiv_aids_treatment.png"),
   'understanding_prevention_and_control_laws.png': require("../assets/images/categories/understanding_prevention_and_control_laws.png"),
   'youth_migration.png': require("../assets/images/categories/youth_migration.png"),
+  'child_marriage.png': require("../assets/images/categories/child_marriage.png"),
+  'family_planning.png': require("../assets/images/categories/family_planning.png"),
+  'prevention_to_child_marriage.png': require("../assets/images/categories/prevention_to_child_marriage.png"),
+  'teen_pregnancy.png': require("../assets/images/categories/teen_pregnancy.png"),
   rhac: require("../assets/images/rhac_logo.png"),
   marie_stopes: require("../assets/images/marie_stopes_logo.png"),
   chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg")

@@ -5,6 +5,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import { cardElevation, cardBorderRadius } from '../../constants/component_constant';
@@ -19,13 +20,15 @@ const NotificationCardItemComponent = (props) => {
   const {t} = useTranslation();
   const [numberOfLines, setNumberOfLines] = React.useState(null)
   const [contentLines, setContentLines] = React.useState(null);
+  const appTheme = useSelector(state => state.appTheme.value);
 
   const renderToggleViewButton = () => {
+    const primaryColor = appTheme.primary_color ?? color.primaryColor;
     return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48, marginTop: -4}}>
-              <Text style={{color: color.primaryColor, fontSize: largeFontSize()}}>
+              <Text style={{color: primaryColor, fontSize: largeFontSize()}}>
                 { !numberOfLines ? t('viewLess') : t('viewMore')}
               </Text>
-              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: color.primaryColor, marginTop: 3}} />
+              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: primaryColor, marginTop: 3}} />
            </View>
   }
 

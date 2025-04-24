@@ -4,7 +4,16 @@ import {smallFontSize} from '../../../utils/font_size_util';
 const TabBarItemComponentStyles = StyleSheet.create({
   container: {
     flex: 1,
-    width: 50
+    width: 50,
+    ...Platform.select({
+      ios: {
+        marginTop: -10
+      },
+      android: {
+        marginTop: -8
+      }
+    })
+    
   },
   itemContainer: {
     alignItems: 'center',

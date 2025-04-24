@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
 import AudioRecorder from 'react-native-audio-recorder-button';
+import { useSelector } from 'react-redux';
 
 import User from '../../models/User';
+import color from '../../themes/color';
 
 const SurveyVoiceRecordQuestionComponent = (props) => {
   const audioRef = React.createRef()
+  const appTheme = useSelector(state => state.appTheme.value);
   useEffect(() => {
     if (!!props.currentAnswer && !!props.currentAnswer.voice) {
       audioRef.current?.setRecordButtonVisible(false);
@@ -35,6 +38,7 @@ const SurveyVoiceRecordQuestionComponent = (props) => {
       containerStyle={{padding: 16, paddingHorizontal: 0, height: 125}}
       onFinishRecord={(filePath, duration) => onVoiceChange(filePath, duration)}
       onDeleteAudio={() => onVoiceChange('', 0)}
+      primaryColor={appTheme.primary_color ?? color.primaryColor}
     />
   )
 }

@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     width: 138,
   },
   line: {
-    borderBottomWidth: 1,
     borderColor: color.whiteColor,
+    borderBottomWidth: 1,
     flex: 1
   },
   label: {

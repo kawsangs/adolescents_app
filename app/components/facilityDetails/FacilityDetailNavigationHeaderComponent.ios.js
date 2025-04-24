@@ -1,10 +1,12 @@
 import React from 'react';
 import {Animated, StyleSheet, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { Appbar } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import NavigationHeaderTitleComponent from '../shared/navigationHeaders/NavigationHeaderTitleComponent';
-import color from '../../themes/color';
+import color, {backgroundColors} from '../../themes/color';
 import Facility from '../../models/Facility';
 import {navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 import {navigationRef} from '../../navigators/app_navigator';
@@ -12,6 +14,7 @@ import {navigationRef} from '../../navigators/app_navigator';
 const scrollDistant = 100;
 
 const FacilityDetailNavigationHeaderComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const headerOpacity = props.scrollY.interpolate({
     inputRange: [0, scrollDistant],
     outputRange: [0, 1],
@@ -26,10 +29,17 @@ const FacilityDetailNavigationHeaderComponent = (props) => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.background, {opacity: headerOpacity}]}/>
+      <Animated.View style={[styles.background, {opacity: headerOpacity, backgroundColor: appTheme.primary_color ?? color.primaryColor}]}>
+        <LinearGradient
+          colors={!!appTheme ? [appTheme.secondary_color, appTheme.primary_color] : backgroundColors}
+          start={{x: 0, y: -0.3}} end={{x: 1, y: 0}}
+          style={{height: '100%', width: '100%'}}
+        />
+      </Animated.View>
+
       <Appbar.Header style={[styles.header]}>
         <Animated.View style={{backgroundColor: backBtnBackground, borderRadius: 50, height: 48, justifyContent: 'center', alignItems: 'center'}}>
-          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2}} onPress={() => {
+          <NavigationHeaderBackButtonComponent iconStyle={{marginLeft: 2, color: color.whiteColor}} onPress={() => {
             if (props.isFromCategoryDetail != undefined && !props.isFromCategoryDetail)
               navigationRef.current?.goBack()
 
@@ -57,7 +67,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   background: {
-    backgroundColor: color.primaryColor,
     position: 'absolute',
     height: '100%',
     width: '100%',

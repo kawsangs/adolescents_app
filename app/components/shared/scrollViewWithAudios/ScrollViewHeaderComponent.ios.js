@@ -2,6 +2,7 @@ import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import DeviceInfo from 'react-native-device-info';
+import { useSelector } from 'react-redux';
 
 import color, {backgroundColors} from '../../../themes/color';
 import HeaderAudioControlComponent from './HeaderAudioControlComponent';
@@ -11,6 +12,7 @@ import {getStyleOfDevice} from '../../../utils/responsive_util';
 import {iPhoneStatusBarHeight, iPhoneNotchHeight} from '../../../constants/ios_component_constant';
 
 const ScrollViewHeaderComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
   const headerHeight = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
     outputRange: [headerWithAudioMaxHeight, headerWithAudioMinHeight],
@@ -26,7 +28,7 @@ const ScrollViewHeaderComponent = (props) => {
   return (
     <Animated.View style={[styles.header, { height: headerHeight }]}>
       <LinearGradient
-        colors={backgroundColors}
+        colors={!!appTheme ? [appTheme.secondary_color, appTheme.primary_color] : backgroundColors}
         start={{x: 0, y: -0.3}} end={{x: 1, y: 0}}
         style={{height: '100%', width: '100%'}}
       >

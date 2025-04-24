@@ -21,7 +21,9 @@ const VideoNavHeaderComponent = (props) => {
   const filterBtn = () => {
     return (
       <View style={{position: 'relative'}}>
-        <NavigationHeaderButtonComponent onPress={() => showAuthorList()} icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color="white"/>} />
+        <NavigationHeaderButtonComponent onPress={() => showAuthorList()}
+          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color="white"/>}
+        />
         {!!selectedVidAuthor.uuid && <NotifyBadgeComponent right={10} top={15} />}
       </View>
     )

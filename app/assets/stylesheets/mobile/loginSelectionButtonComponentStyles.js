@@ -28,7 +28,6 @@ const loginSelectionButtonComponentStyles = StyleSheet.create({
     fontSize: 24
   },
   label: {
-    color: color.primaryColor,
     flex: 1,
     fontFamily: FontFamily.bold,
     fontSize: xxLargeFontSize(),

@@ -30,7 +30,7 @@ const LoginSelectionView = (props) => {
         <Image source={require('../../assets/images/logo.png')} resizeMode='contain' style={styles.logo} />
         <BoldLabelComponent label={t('youthHealth')} style={styles.title} />
 
-        <Text style={styles.label}>{t('youCanUseThisAppInFollowingChoices')}</Text>
+        <Text style={[styles.label, { color: 'white' }]}>{t('youCanUseThisAppInFollowingChoices')}</Text>
         <LoginSelectionButtonsComponent/>
         <Toast ref={toastRef} positionValue={DeviceInfo.hasNotch() ? 140 : 120} fadeOutDuration={7000}/>
       </View>
@@ -42,6 +42,7 @@ const LoginSelectionView = (props) => {
       scrollable={false}
       scrollViewStyle={{paddingBottom: 0, paddingHorizontal: 34}}
       body={renderBody()}
+      hideBackgroundImage={true}
     />
   )
 }

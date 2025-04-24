@@ -15,7 +15,7 @@ const FacilityFilterButtonComponent = () => {
     <React.Fragment>
       <View style={{position: 'relative'}}>
         <NavigationHeaderButtonComponent onPress={() => navigationRef.current?.navigate("FacilityFilterView")}
-          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color="white"/>}
+          icon={<IonIcon name="options-outline" size={navigationHeaderIconSize} color={'white'}/>}
         />
 
         {!!selectedProvince && <NotifyBadgeComponent right={10} top={15} />}

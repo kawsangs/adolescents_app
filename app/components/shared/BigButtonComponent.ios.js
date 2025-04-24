@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, ActivityIndicator} from 'react-native';
+import { useSelector } from 'react-redux';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import CustomAudioPlayerButtonComponent from './CustomAudioPlayerButtonComponent';
@@ -11,11 +12,12 @@ import {getStyleOfDevice} from '../../utils/responsive_util';
 
 const BigButtonComponent = (props) => {
   const [disabled, setDisabled] = useState(false);
+  const appTheme = useSelector(state => state.appTheme.value);
   const colorSet = () => {
     if (props.disabled)
       return { bgColor: color.disabledColor, textColor: color.mutedColor };
 
-    return { bgColor: props.buttonColor || color.bigButtonColor, textColor: props.textColor || color.primaryColor };
+    return { bgColor: props.buttonColor || color.bigButtonColor, textColor: props.textColor || (appTheme.primary_color ?? color.primaryColor) };
   }
 
   const renderAudioBtn = () => {
@@ -42,7 +44,11 @@ const BigButtonComponent = (props) => {
     <TouchableOpacity onPress={() => onPress()} style={[styles.btn, props.style, { backgroundColor: colorSet().bgColor }]}
       disabled={props.disabled || disabled}
     >
-      <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor }} />
+      <View style={{flexDirection: 'row'}}>
+        <BoldLabelComponent label={props.label} style={{ fontSize: xLargeFontSize(), color: colorSet().textColor, lineHeight: 38 }} />
+        { props.isLoading && <ActivityIndicator size="small" color={colorSet().textColor} style={{marginLeft: 8}} /> }
+      </View>
+      
       {!props.hideAudio && renderAudioBtn()}
     </TouchableOpacity>
   )

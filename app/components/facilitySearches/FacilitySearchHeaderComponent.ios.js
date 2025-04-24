@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Appbar, TextInput} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import color from '../../themes/color';
@@ -12,8 +13,13 @@ import {navigationRef} from '../../navigators/app_navigator';
 
 const FacilitySearchHeaderComponent = (props) => {
   const {t} = useTranslation();
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderIcon = (icon, iconSize, onPress) => {
-    return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()} size={iconSize} color={color.primaryColor} style={{height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}/>
+    return <TextInput.Icon icon={icon} onPress={() => !!onPress && onPress()}
+              size={iconSize}
+              color={appTheme.primary_color ?? color.primaryColor}
+              style={{height: componentUtil.pressableItemSize(), width: componentUtil.pressableItemSize()}}
+           />
   }
 
   const renderSearchBox = () => {
@@ -40,7 +46,7 @@ const FacilitySearchHeaderComponent = (props) => {
   }
 
   return (
-    <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: color.primaryColor}, props.headerStyle]}>
+    <Appbar.Header style={[{paddingHorizontal: navigationHeaderHorizontalPadding, backgroundColor: 'transparent', zIndex: 1}, props.headerStyle]}>
       <NavigationHeaderBackButtonComponent onPress={() => closeSearch()}/>
       {renderSearchBox()}
     </Appbar.Header>

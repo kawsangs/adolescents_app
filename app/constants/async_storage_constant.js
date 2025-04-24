@@ -5,3 +5,4 @@ export const USER_INFO_CHANGED = 'USER_INFO_CHANGED';
 export const TEXT_SIZE = 'TEXT_SIZE';
 export const TOKEN_SYNCED = 'TOKEN_SYNCED';
 export const REGISTERED_TOKEN = 'registeredToken';
+export const SELECTED_THEME_ID = 'SELECTED_THEME_ID';

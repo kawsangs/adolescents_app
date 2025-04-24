@@ -69,6 +69,10 @@ const audioSources = {
   "3.2.mp3": require("../assets/audios/20221116_3.2.mp3"),
   "3.3.mp3": require("../assets/audios/20221116_3.3.mp3"),
   "gender_3.4.mp3": require("../assets/audios/20231220_gender_3.4.mp3"),
+  "gender_3.5.mp3": require("../assets/audios/20250404_gender_3.5.mp3"),
+  "gender_3.6.mp3": require("../assets/audios/20250404_gender_3.6.mp3"),
+  "gender_3.7.mp3": require("../assets/audios/20250404_gender_3.7.mp3"),
+  "gender_3.8.mp3": require("../assets/audios/20250404_gender_3.8.mp3"),
 
   // ការបង្ការគ្រឿងញៀននិងគ្រឿងស្រវឹង
   "drug.3.mp3": require("../assets/audios/20231218_drug.3.mp3"),

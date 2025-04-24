@@ -1,3 +1,5 @@
+import { compressToUTF16 } from 'lz-string';
+
 import BaseModel from './BaseModel';
 import categories from '../db/json/categories.json';
 import uuidv4 from '../utils/uuidv4_util';
@@ -8,18 +10,22 @@ const MODEL = "Category";
 class Category {
   static seedData = () => {
     categories.map(category => {
-      const {children, content_sources, lft, rgt, ...data} = category;
+      const {children, content_sources, ...data} = category;
       this.create({...data, sources: categoryHelper.getFormattedSources(category.content_sources)})
 
       category.children.map(subCategory => {
-        const {children, content_sources, lft, rgt, ...data} = subCategory;
+        const {children, content_sources, ...data} = subCategory;
         this.create({...data, sources: categoryHelper.getFormattedSources(subCategory.content_sources)})
       });
     });
   }
 
   static create = (data) => {
-    BaseModel.create(MODEL, {...data, uuid: uuidv4()});
+    BaseModel.create(MODEL, {
+      ...data,
+      uuid: uuidv4(),
+      description: !!data.description ? compressToUTF16(data.description) : null
+    });
   }
 
   static update = (uuid, data) => {

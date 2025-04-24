@@ -167,5 +167,10 @@
   "pleaseProvideReasonYouWantToDeleteYourAccount": "Please provide a reason why you want to delete your account",
   "deleteAccountMessage": "Your account will be temporarily deleted and will be permanently deleted in the next {{days}} days",
   "thankYou": "Thank you!",
-  "forParticipatingInTheSurvey": "For participating in the survey."
+  "forParticipatingInTheSurvey": "For participating in the survey.",
+  "theme": "Theme",
+  "expressYourFeelingThroughTheme": "Express your feeling through theme",
+  "changeThemeDescription": "With several options available, you can easily tweak the mood of your Youth Health Mobile by picking any theme you love",
+  "tryItNow": "Try it now",
+  "themeOptions": "Theme options"
 }

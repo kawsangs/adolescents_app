@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {View, FlatList, RefreshControl, ActivityIndicator} from 'react-native';
+import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
 import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
@@ -10,6 +11,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
   const [refreshing, setRefreshing] = useState(false);
   const [paginateLoading, setPaginateLoading] = useState(false);
   const onEndReachedCalledDuringMomentum = useRef(false)
+  const appTheme = useSelector(state => state.appTheme.value);
 
   const stopPaginateLoading = () => {
     setPaginateLoading(false)
@@ -57,7 +59,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
               onEndReached={() => onEndReached()}
               contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 50}}
               ListFooterComponent={!props.hideFooterLoading && renderListFooter()}
-              refreshControl={!props.horizontal && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[color.primaryColor]} />}
+              refreshControl={!props.horizontal && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[appTheme.primary_color ?? color.primaryColor]} />}
               onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}
               showsHorizontalScrollIndicator={false}
               showsVerticalScrollIndicator={false}

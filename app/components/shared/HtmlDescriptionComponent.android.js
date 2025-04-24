@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dimensions} from 'react-native';
-import RenderHtml, { defaultSystemFonts } from 'react-native-render-html';
+import RenderHtml, { defaultSystemFonts } from '@builder.io/react-native-render-html';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';

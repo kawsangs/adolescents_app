@@ -8,7 +8,10 @@ import {xxLargeFontSize} from '../../../utils/font_size_util';
 const NavigationHeaderTitleComponent = (props) => {
   return (
     <View style={styles.container}>
-      <BoldLabelComponent label={props.label} style={styles.label} numberOfLines={1} />
+      <BoldLabelComponent label={props.label}
+        style={[styles.label, {color: color.whiteColor}]}
+        numberOfLines={1}
+      />
     </View>
   )
 }
@@ -22,8 +25,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   label: {
-    color: color.whiteColor,
     fontSize: xxLargeFontSize(),
+    lineHeight: 34,
     textTransform: 'capitalize',
     width: '90%'
   }

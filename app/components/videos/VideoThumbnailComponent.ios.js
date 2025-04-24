@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useSelector } from 'react-redux';
 
 import EmptyMediaComponent from '../shared/EmptyMediaComponent';
 import color from '../../themes/color';
@@ -13,9 +14,11 @@ const MOBILE_HEIGHT = isLowPixelDensityDevice() ? 150 : 180;
 const HEIGHT = getStyleOfDevice(220, MOBILE_HEIGHT);
 
 const VideoThumbnailComponent = (props) => {
+  const appTheme = useSelector(state => state.appTheme.value);
+
   const renderPlayButton = () => {
     return <View style={styles.playBtn}>
-              <FeatherIcon name="play" size={24} color={color.primaryColor} style={{marginLeft: 2}} />
+              <FeatherIcon name="play" size={24} color={appTheme.primary_color ?? color.primaryColor} style={{marginLeft: 2}} />
            </View>
   }
 

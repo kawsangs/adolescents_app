@@ -10,6 +10,7 @@ const CreateAccountView = () => {
       <GradientScrollViewComponent
         header={<CreateAccountNavigationHeaderComponent/>}
         body={<CreateAccountFormComponent />}
+        hideBackgroundImage={true}
       />
     </React.Fragment>
   )

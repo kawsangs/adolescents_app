@@ -4,6 +4,7 @@ import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {useTranslation, Trans} from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import BottomSheetModalMainComponent from './BottomSheetModalMainComponent';
 import BoldLabelComponent from './BoldLabelComponent';
@@ -22,6 +23,7 @@ const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 const PolicyConfirmationModalComponent = (props) => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
+  const appTheme = useSelector(state => state.appTheme.value);
   const renderIcon = () => {
     return <View style={styles.infoIcon}>
               <Icon name="exclamation" size={18} color={color.secondaryColor} />
@@ -34,14 +36,15 @@ const PolicyConfirmationModalComponent = (props) => {
   }
 
   const renderContent = () => {
+    const primaryColor = appTheme.primary_color ?? color.primaryColor;
     return <React.Fragment>
               <Text style={styles.instruction}>
                 <Trans
                   i18nKey='termsOfRegistrationDescription'
                   components={{
                     bold: <BoldLabelComponent label={`"${t('confirm')}"`} style={styles.instruction}/>,
-                    privacyLink: <Text onPress={() =>  Linking.openURL(PRIVACY_POLICY_URL)} style={{color: color.primaryColor}}/>,
-                    termsLink: <Text onPress={() =>  Linking.openURL(TERMS_AND_CONDITIONS_URL)} style={{color: color.primaryColor}}/>
+                    privacyLink: <Text onPress={() =>  Linking.openURL(PRIVACY_POLICY_URL)} style={{color: primaryColor}}/>,
+                    termsLink: <Text onPress={() =>  Linking.openURL(TERMS_AND_CONDITIONS_URL)} style={{color: primaryColor}}/>
                   }}
                 />
               </Text>

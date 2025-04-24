@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import SurveyQuestionComponent from './SurveyQuestionComponent';
 import SurveyBottomButtonComponent from './SurveyBottomButtonComponent';
-import SurveyEndMessageComponent from './SurveyEndMessageComponent';
+// import SurveyEndMessageComponent from './SurveyEndMessageComponent';
 import SurveySection from '../../models/SurveySection';
 import SurveyQuestion from '../../models/SurveyQuestion';
 import surveyService from '../../services/survey_service';
@@ -109,9 +109,9 @@ const SurveyContentComponent = (props) => {
   return <View style={{flex: 1}}>
           <View style={{flex: 1}}>
             <ScrollView contentContainerStyle={{padding: 16, flexGrow: 1}} scrollEnabled={true}>
-              { (sections.length > 0 && currentSection == sections.length) &&
+              {/* { (sections.length > 0 && currentSection == sections.length) &&
                 <SurveyEndMessageComponent visibleQuestions={visibleQuestions.current} />
-              }
+              } */}
               {renderQuestions()}
             </ScrollView>
           </View>

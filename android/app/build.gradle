@@ -90,8 +90,8 @@ android {
         applicationId "kh.org.childhelpline.youthhealth"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "2.0.2"
+        versionName "2.0.5"
+        versionCode calculateVersionCode(versionName)
     }
     signingConfigs {
         debug {
@@ -136,4 +136,12 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+}
+
+def calculateVersionCode(versionName) {
+    def parts = versionName.split("\\.")
+    def major = parts[0].toInteger() * 10000000
+    def minor = parts[1].toInteger() * 1000
+    def patch = parts[2].toInteger()
+    return major + minor + patch
 }
