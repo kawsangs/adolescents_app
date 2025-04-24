@@ -68,7 +68,7 @@
     "react-redux": "^9.2.0",
     "realm": "^20.1.0",
     "rn-fetch-blob": "^0.12.0",
-    "sp-react-native-in-app-updates": "^1.4.0"
+    "sp-react-native-in-app-updates": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
