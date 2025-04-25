@@ -7,7 +7,7 @@ import DownloadedFile from '../models/DownloadedFile';
 import fileService from './file_service';
 import fileUtil from '../utils/file_util';
 
-const itemsPerPage = 20;
+const itemsPerPage = 10;
 
 const themeService = (() => {
   return {
