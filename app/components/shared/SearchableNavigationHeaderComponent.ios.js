@@ -12,7 +12,7 @@ import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackB
 import {navigationHeaderIconSize, navigationHeaderHorizontalPadding} from '../../constants/component_constant';
 import componentUtil from '../../utils/component_util';
 
-const SeachableNavigationHeaderComponent = (props) => {
+const SearchableNavigationHeaderComponent = (props) => {
   const {t} = useTranslation();
   const [isSearching, setIsSearching] = useState(false);
   const appTheme = useSelector(state => state.appTheme.value);
@@ -28,7 +28,7 @@ const SeachableNavigationHeaderComponent = (props) => {
         <TextInput
           value={props.searchText}
           mode="flat"
-          placeholder={t('whatServiceDoYouNeed')}
+          placeholder={t('searchForTopics')}
           autoFocus={true}
           left={renderIcon("search", navigationHeaderIconSize - 4, null)}
           right={renderIcon("x", navigationHeaderIconSize, () => props.updateSearchText(''))}
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SeachableNavigationHeaderComponent;
+export default SearchableNavigationHeaderComponent;
