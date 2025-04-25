@@ -60,7 +60,7 @@ const FacilityDetailContactPlatformsComponent = (props) => {
   }
 
   return (
-    <View style={{marginTop: 16}}>
+    <View style={{marginTop: props.hasService ? 16 : 0}}>
       <BoldLabelComponent label={t("contactVia")} style={{fontSize: xLargeFontSize(), textAlign: 'center'}} />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly', marginTop: 8}}>
         {renderPlatformButtons()}
