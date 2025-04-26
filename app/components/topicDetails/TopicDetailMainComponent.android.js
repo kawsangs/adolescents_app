@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
-import {Text} from 'react-native-paper';
+import {View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import TopicDetailDescriptionComponent from './TopicDetailDescriptionComponent';
 import FacilityCardItemComponent from '../facilities/FacilityCardItemComponent';
+import BoldLabelComponent from '../shared/BoldLabelComponent';
 import {screenHorizontalPadding} from '../../constants/component_constant';
 import topicHelper from '../../helpers/topic_helper';
+import {descriptionFontSize} from '../../utils/font_size_util';
 
 const TopicDetailMainComponent = (props) => {
   const {t} = useTranslation();
@@ -18,19 +19,16 @@ const TopicDetailMainComponent = (props) => {
       return <FacilityCardItemComponent key={index} facility={facility}
                 playingUuid={playingUuid}
                 updatePlayingUuid={(uuid) => setPlayingUuid(uuid)}
-                containerStyle={{width: Dimensions.get('screen').width - 32}}
              />
     });
   }
 
   return (
-    <React.Fragment>
-      <View style={{paddingTop: 16, paddingHorizontal: screenHorizontalPadding}}>
-        <TopicDetailDescriptionComponent uuid={props.uuid} type={props.type} textSize={props.textSize} />
-        { facilities.length > 0 && <Text style={{marginTop: 20, marginBottom: 0, color: 'white', fontSize: 16}}>{t('recommendedServiceProvider')}</Text>}
-        { renderFacilities() }
-      </View>
-    </React.Fragment>
+    <View style={{marginTop: 6, paddingBottom: 32, paddingHorizontal: screenHorizontalPadding + 8, height: '100%', backgroundColor: 'white'}}>
+      <TopicDetailDescriptionComponent uuid={props.uuid} type={props.type} textSize={props.textSize} />
+      { facilities.length > 0 && <BoldLabelComponent label={`${t('recommendedServiceProvider')}:`} style={{fontSize: descriptionFontSize(), marginTop: 10}} />}
+      { renderFacilities() }
+    </View>
   )
 }
 
