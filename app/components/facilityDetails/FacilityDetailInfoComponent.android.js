@@ -26,12 +26,16 @@ const FacilityDetailInfoComponent = (props) => {
     <View>
       <GrayView>
         <FacilityDetailTitleComponent name={facility.name} addresses={facility.addresses}/>
-        <FacilityViewRouteButtonComponent latitude={facility.latitude} longitude={facility.longitude} />
+        { (!!facility.latitude && !!facility.longitude) &&
+          <FacilityViewRouteButtonComponent latitude={facility.latitude} longitude={facility.longitude} />
+        }
       </GrayView>
 
       <FacilityDetailWorkingDayAndContactComponent workingDays={facility.working_days} contactNumbers={facility.tels}/>
       <GrayView>
-        <FacilityDetailServiceTagsComponent services={facility.services} bottomSheetRef={bottomSheetRef} modalRef={modalRef}/>
+        { (!!facility.services && facility.services.length > 0) &&
+          <FacilityDetailServiceTagsComponent services={facility.services} bottomSheetRef={bottomSheetRef} modalRef={modalRef}/>
+        }
         <FacilityDetailContactPlatformsComponent
           contactNumbers={facility.tels}
           websites={facility.websites}
@@ -39,6 +43,7 @@ const FacilityDetailInfoComponent = (props) => {
           telegram={facility.telegram_username}
           bottomSheetRef={bottomSheetRef}
           modalRef={modalRef}
+          hasService={!!facility.services && facility.services.length > 0}
         />
         { !!facility.description &&
           <Text style={{fontSize: descriptionFontSize(), marginTop: 21, lineHeight: descriptionLineHeight}}>

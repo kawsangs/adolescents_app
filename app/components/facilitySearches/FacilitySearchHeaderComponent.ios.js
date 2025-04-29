@@ -28,7 +28,7 @@ const FacilitySearchHeaderComponent = (props) => {
         <TextInput
           value={props.searchText}
           mode="flat"
-          placeholder={t('whatServiceDoYouNeed')}
+          placeholder={t('searchForClinicsOrServices')}
           left={renderIcon("search", navigationHeaderIconSize - 4, null)}
           right={renderIcon("x", navigationHeaderIconSize, () => props.updateSearchText(''))}
           style={styles.searchBox}

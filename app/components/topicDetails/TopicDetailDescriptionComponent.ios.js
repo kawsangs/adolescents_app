@@ -1,19 +1,17 @@
 import React from 'react';
-import {Card, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 
 import color from '../../themes/color';
-import {descriptionLineHeight, cardBorderRadius, cardElevation} from '../../constants/component_constant';
+import {descriptionLineHeight} from '../../constants/component_constant';
 import {OPTION} from '../../constants/faq_constant';
 import Option from '../../models/Option';
 import Question from '../../models/Question';
 
 const TopicDetailDescription = (props) => {
   return (
-    <Card mode="elevated" elevation={cardElevation} style={{borderRadius: cardBorderRadius, paddingBottom: 0, backgroundColor: color.whiteColor}}>
-      <Text style={{fontSize: parseFloat(props.textSize), lineHeight: descriptionLineHeight, padding: 16, color: color.blackColor}}>
-        { props.type == OPTION ? Option.findByUuid(props.uuid).message : Question.findByUuid(props.uuid).answer }
-      </Text>
-    </Card>
+    <Text style={{fontSize: parseFloat(props.textSize), lineHeight: descriptionLineHeight, color: color.blackColor, marginVertical: 10}}>
+      { props.type == OPTION ? Option.findByUuid(props.uuid).message : Question.findByUuid(props.uuid).answer }
+    </Text>
   )
 }
 
