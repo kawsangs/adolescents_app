@@ -33,6 +33,8 @@ import { navigationRef } from './app/navigators/app_navigator';
 
 import NotifService from './app/services/NotifService';
 import useInAppUpdate from './app/hooks/useInAppUpdate';
+import asyncStorageService from './app/services/async_storage_service';
+import { HAS_SHOWN_APP_UPDATE } from './app/constants/async_storage_constant';
 
 Sentry.init({
   dsn: environment.sentryDSN,
@@ -68,6 +70,7 @@ const App: () => Node = () => {
     notificationService.onNotificationOpenedApp(() => navigationRef.current?.navigate('NotificationView'));
     seedDataService.seedToRealm();
     appVisitService.recordVisit();
+    asyncStorageService.removeItem(HAS_SHOWN_APP_UPDATE);
 
     const subscription = AppState.addEventListener("change", nextAppState => {
       if (

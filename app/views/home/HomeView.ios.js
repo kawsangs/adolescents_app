@@ -3,26 +3,34 @@ import NetInfo from '@react-native-community/netinfo';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from 'react-native';
+import VersionCheck from 'react-native-version-check';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
 import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent';
+import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
+import AppUpdateBottomSheetComponent from '../../components/appUpdateBottomSheets/AppUpdateBottomSheetComponent';
 
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
 import themeService from '../../services/theme_service';
+import asyncStorageService from '../../services/async_storage_service';
 import categoryHelper from '../../helpers/category_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import { setAppThemes } from '../../features/appThemes/appThemeSlice';
 import Theme from '../../models/Theme';
+import {appUpdateSnapPoints} from '../../constants/modal_constant';
+import {HAS_SHOWN_APP_UPDATE} from '../../constants/async_storage_constant';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
   const appState = useRef(AppState.currentState);
+  let bottomSheetRef = React.createRef();
+  let modalRef = React.createRef();
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
@@ -59,6 +67,26 @@ const HomeView = (props) => {
     }, [])
   );
 
+  const checkAppUpdate = async () => {
+    const hasShownAppUpdate = await asyncStorageService.getItem(HAS_SHOWN_APP_UPDATE);
+    console.log('=== has shown app update = ', hasShownAppUpdate);
+    console.log('=== get current version = ');
+
+    // if (!!hasShownAppUpdate) return;
+
+    VersionCheck.needUpdate()
+      .then(res => {
+        console.log('==== need to update =', res.isNeeded);
+        if (res.isNeeded) {
+          bottomSheetRef.current?.setBodyContent(<AppUpdateBottomSheetComponent/>)
+          modalRef.current?.present()
+          asyncStorageService.setItem(HAS_SHOWN_APP_UPDATE, 'true');
+        }
+      });
+  }
+
+  checkAppUpdate();
+
   const syncAppTheme = () => {
     themeService.syncData(() => {
       dispatch(setAppThemes(Theme.getAll()));
@@ -77,6 +105,7 @@ const HomeView = (props) => {
       <React.Fragment>
         <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
         <HomeAppThemeSectionComponent/>
+        <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={appUpdateSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
       </React.Fragment>
     )
   }

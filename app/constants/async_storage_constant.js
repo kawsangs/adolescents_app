@@ -6,3 +6,4 @@ export const TEXT_SIZE = 'TEXT_SIZE';
 export const TOKEN_SYNCED = 'TOKEN_SYNCED';
 export const REGISTERED_TOKEN = 'registeredToken';
 export const SELECTED_THEME_ID = 'SELECTED_THEME_ID';
+export const HAS_SHOWN_APP_UPDATE = 'HAS_SHOWN_APP_UPDATE';

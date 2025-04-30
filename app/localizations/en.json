@@ -174,5 +174,8 @@
   "tryItNow": "Try it now",
   "themeOptions": "Theme options",
   "searchForClinicsOrServices": "Search for clinics and services",
-  "searchForTopics": "Search for topics"
+  "searchForTopics": "Search for topics",
+  "updateAvailable": "Update available",
+  "updateDescription": "A new version of the Youth Health (v {{version}}) is available for update.",
+  "updateNow": "Update now"
 }
