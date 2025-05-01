@@ -53,6 +53,10 @@ const HomeView = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    appUpdateHelper.checkForUpdate(bottomSheetRef, modalRef);
+  }, [bottomSheetRef])
+
   useFocusEffect(
     useCallback(() => {
       return () => {
@@ -63,8 +67,6 @@ const HomeView = (props) => {
       }
     }, [])
   );
-
-  appUpdateHelper.checkForUpdate(bottomSheetRef, modalRef);
 
   const syncAppTheme = () => {
     themeService.syncData(() => {
