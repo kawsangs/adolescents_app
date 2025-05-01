@@ -11,7 +11,7 @@ import type {Node} from 'react';
 import { StatusBar, Text, AppState, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import * as Sentry from "@sentry/react-native";
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider, configureFonts, MD2LightTheme } from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
@@ -42,16 +42,25 @@ Sentry.init({
 
 i18nextInit();
 
+const fontConfig = {
+  ios: {
+    regular: {
+      fontFamily: FontFamily.regular,
+      fontWeight: 'normal',
+    },
+  },
+};
+
 const theme = {
-  ...DefaultTheme,
+  ...MD2LightTheme,
   colors: {
-    ...DefaultTheme.colors,
+    ...MD2LightTheme.colors,
     primary: color.primaryColor,
   },
-  fonts: {
-    ...DefaultTheme.fonts,
-    regular: { fontFamily: FontFamily.regular },
-  }
+  fonts: configureFonts({
+    config: fontConfig,
+    isV3: false
+  })
 };
 
 Text.defaultProps = Text.defaultProps || {};
