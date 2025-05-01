@@ -16,8 +16,8 @@ export const signUpConfirmationSnapPoints = Platform.OS == 'ios' ? getStyleOfDev
 export const signUpConfirmationContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('27%', confirmationiOSMobile.height) : getStyleOfDevice('36%', confirmationAndroidMobile.height);
 export const videoFilterSnapPoints = getStyleOfDevice(['52%'], ['65%']);
 export const videoFilterContentHeight = getStyleOfDevice(hp('47%'), hp('60%'));
-export const appUpdateSnapPoints = Platform.OS == 'ios' ? getStyleOfDevice(['34%'], confirmationiOSMobile.snapPoints) : getStyleOfDevice(['31%'], ['33%']);
-export const appUpdateContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('27%', confirmationiOSMobile.height) : getStyleOfDevice('26%', '32%');
+export const appUpdateSnapPoints = Platform.OS == 'ios' ? getStyleOfDevice(['28%'], ['33%']) : getStyleOfDevice(['31%'], ['33%']);
+export const appUpdateContentHeight = Platform.OS == 'ios' ? getStyleOfDevice('21%', ['32%']) : getStyleOfDevice('26%', '32%');
 
 export const androidOccupationSnapPoints = getStyleOfDevice(['55%'], isShortScreenDevice() ? ['72.8%'] : ['65.6%']);
 export const androidOccupationContentHeight = getStyleOfDevice(462, isShortScreenDevice() ? 455 : 458);

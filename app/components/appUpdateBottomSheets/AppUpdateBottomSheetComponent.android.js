@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {useTranslation, Trans} from 'react-i18next';
 import { useSelector } from 'react-redux';
-import VersionCheck from 'react-native-version-check';
+import SpInAppUpdates from 'sp-react-native-in-app-updates';
 
 import BottomSheetModalMainComponent from '../shared/BottomSheetModalMainComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
@@ -14,17 +14,17 @@ import {appUpdateContentHeight} from '../../constants/modal_constant';
 import {largeFontSize} from '../../utils/font_size_util';
 import {bottomSheetTitleFontSize} from '../../constants/bottom_sheet_picker_constant';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
+import pkg from '../../../package';
 
 const AppUpdateBottomSheetComponent = (props) => {
   const {t} = useTranslation();
   const appTheme = useSelector(state => state.appTheme.value);
-  const [version, setVersion] = useState(VersionCheck.getCurrentVersion());
+  const [version, setVersion] = useState(pkg.version);
 
   useEffect(() => {
-    VersionCheck.getLatestVersion()
-      .then(latestVersion => {
-        setVersion(latestVersion);
-      });
+    new SpInAppUpdates().checkNeedsUpdate().then(result => {
+      setVersion(result.storeVersion);
+    })
   }, []);
 
   const renderIcon = () => {

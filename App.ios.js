@@ -62,7 +62,7 @@ const App: () => Node = () => {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const notif = new NotifService((token) => {}, (notif) => {});
-  useInAppUpdate();
+  // useInAppUpdate();
 
   useEffect(() => {
     setDefaultLocale();
