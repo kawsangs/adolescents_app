@@ -1,5 +1,5 @@
 import messaging from '@react-native-firebase/messaging';
-import {Platform} from 'react-native';
+import {Platform, PermissionsAndroid} from 'react-native';
 import MobileTokenApi from '../api/mobileTokenApi';
 import AsyncStorageService from './async_storage_service';
 import DeviceInfo from 'react-native-device-info';
@@ -15,9 +15,16 @@ const MobileTokenService = (() => {
 
   async function requestUserPermission(retryCount = 1) {
     const authStatus = await messaging().requestPermission();
-    const enabled =
+    let enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (Platform.OS == 'android' && Platform.Version >= 33) {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
+      enabled = granted === PermissionsAndroid.RESULTS.GRANTED;
+    }
 
     AsyncStorage.getItem(TOKEN_SYNCED, (error, synced) => {
       if (enabled) {
