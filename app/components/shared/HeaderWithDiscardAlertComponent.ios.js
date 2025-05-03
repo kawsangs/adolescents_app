@@ -8,7 +8,7 @@ import AlertModalComponent from './AlertModalComponent';
 import {navigationRef} from '../../navigators/app_navigator';
 import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 
-const HeaderWidthDiscardAlertComponent = (props) => {
+const HeaderWithDiscardAlertComponent = (props) => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
@@ -39,6 +39,7 @@ const HeaderWidthDiscardAlertComponent = (props) => {
       <NavigationHeaderComponent
         leftButton={props.leftButton(() => onLeftBtnPress())}
         label={props.title}
+        customTitle={props.customTitle}
       />
       <AlertModalComponent
         visible={modalVisible}
@@ -52,4 +53,4 @@ const HeaderWidthDiscardAlertComponent = (props) => {
   )
 }
 
-export default HeaderWidthDiscardAlertComponent;
+export default HeaderWithDiscardAlertComponent;
