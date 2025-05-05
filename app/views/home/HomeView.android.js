@@ -8,21 +8,26 @@ import GradientScrollViewComponent from '../../components/shared/GradientScrollV
 import HomeNavigationHeaderComponent from '../../components/home/HomeNavigationHeaderComponent';
 import CardListComponent from '../../components/shared/CardListComponent';
 import HomeAppThemeSectionComponent from '../../components/home/HomeAppThemeSectionComponent.android';
+import FormBottomSheetModalComponent from '../../components/shared/FormBottomSheetModalComponent';
 
 import syncService from '../../services/sync_service';
 import audioPlayerService from '../../services/audio_player_service';
 import MobileTokenService from '../../services/mobile_token_service';
 import themeService from '../../services/theme_service';
 import categoryHelper from '../../helpers/category_helper';
+import appUpdateHelper from '../../helpers/app_update_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import { setAppThemes } from '../../features/appThemes/appThemeSlice';
 import Theme from '../../models/Theme';
+import {appUpdateSnapPoints} from '../../constants/modal_constant';
 
 const HomeView = (props) => {
   const [playingUuid, setPlayingUuid] = useState(null);
   const categories = useSelector(state => state.parentCategory.value)
   const dispatch = useDispatch();
   const appState = useRef(AppState.currentState);
+  let bottomSheetRef = React.createRef();
+  let modalRef = React.createRef();
 
   useEffect(() => {
     dispatch(setParentCategories(categoryHelper.getHomeCategories()))
@@ -47,6 +52,10 @@ const HomeView = (props) => {
       subscription && subscription.remove();
     }
   }, []);
+
+  useEffect(() => {
+    appUpdateHelper.checkForUpdate(bottomSheetRef, modalRef);
+  }, [bottomSheetRef])
 
   useFocusEffect(
     useCallback(() => {
@@ -77,6 +86,7 @@ const HomeView = (props) => {
       <View>
         <CardListComponent items={categories} playingUuid={playingUuid} updatePlayingUuid={(uuid) => setPlayingUuid(uuid)} />
         <HomeAppThemeSectionComponent/>
+        <FormBottomSheetModalComponent ref={bottomSheetRef} formModalRef={modalRef} snapPoints={appUpdateSnapPoints} onDismiss={() => bottomSheetRef.current?.setBodyContent(null)} />
       </View>
     )
   }

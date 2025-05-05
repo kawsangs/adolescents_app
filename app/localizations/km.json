@@ -174,5 +174,8 @@
   "tryItNow": "សាកល្បងឥឡូវ",
   "themeOptions": "ជម្រើសផ្ទៃអេក្រង់",
   "searchForClinicsOrServices": "ស្វែងរកគ្លីនិកឬសេវា",
-  "searchForTopics": "ស្វែងរកប្រធានបទ"
+  "searchForTopics": "ស្វែងរកប្រធានបទ",
+  "updateAvailable": "មានកំណែថ្មី",
+  "updateDescription": "កំណែប្រែថ្មីនៃកម្មវិធី យុវជនសុខភាព (ជំនាន់ {{version}}) អាចធ្វើបច្ចុប្បន្នភាពបាន។",
+  "updateNow": "ធ្វើបច្ចុប្បន្នភាពឥឡូវនេះ"
 }

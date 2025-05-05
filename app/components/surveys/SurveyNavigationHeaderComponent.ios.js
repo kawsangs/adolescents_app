@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import HeaderWithDiscardAlertComponent from '../shared/HeaderWithDiscardAlertComponent';
 import NavigationHeaderBackButtonComponent from '../shared/NavigationHeaderBackButtonComponent';
 import CustomAudioPlayerButtonComponent from '../shared/CustomAudioPlayerButtonComponent';
+import AutoScrollLabelComponent from '../shared/AutoScrollLabelComponent';
 import color from '../../themes/color';
 import {largeFontSize} from '../../utils/font_size_util';
 import Survey from '../../models/Survey';
@@ -33,7 +34,7 @@ const SurveyNavigationHeaderComponent = (props) => {
   }
 
   return <HeaderWithDiscardAlertComponent
-            title={props.title}
+            customTitle={<AutoScrollLabelComponent label={props.title} />}
             leftButton={(onPress) => <NavigationHeaderBackButtonComponent onPress={() => onPress()} />}
             message={() => confirmMessage()}
             leftButtonLabel={t('cancel')}

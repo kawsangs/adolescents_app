@@ -2,6 +2,7 @@ import React from 'react';
 import {View, ScrollView} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
 import BoldLabelComponent from '../../components/shared/BoldLabelComponent';
@@ -62,7 +63,7 @@ const AboutUsView = () => {
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: color.whiteColor}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: color.whiteColor}}>
       <NavigationHeaderWithBackButtonComponent label={t('about')} hasBackgroundColor={true} />
       <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16,}}>
         <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10, alignSelf: 'center', lineHeight: 40}} />
@@ -73,7 +74,7 @@ const AboutUsView = () => {
           <Text style={{ fontSize: xLargeFontSize() }}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 

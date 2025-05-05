@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { RectButton } from 'react-native-gesture-handler';
@@ -24,11 +24,11 @@ const NotificationCardItemComponent = (props) => {
 
   const renderToggleViewButton = () => {
     const primaryColor = appTheme.primary_color ?? color.primaryColor;
-    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48, marginTop: -4}}>
+    return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', minWidth: 48, marginTop: 2}}>
               <Text style={{color: primaryColor, fontSize: largeFontSize()}}>
                 { !numberOfLines ? t('viewLess') : t('viewMore')}
               </Text>
-              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: primaryColor, marginTop: 3}} />
+              <Icon name={!numberOfLines ? "chevron-up" : "chevron-down"} size={18} style={{color: primaryColor}} />
            </View>
   }
 
@@ -36,21 +36,23 @@ const NotificationCardItemComponent = (props) => {
     return (
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 1}}>
-          <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
-          <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 26}} numberOfLines={numberOfLines}
-            onTextLayout={(event) => {
-              if (!!contentLines) return
-              setContentLines(event.nativeEvent.lines.length);
-              setNumberOfLines(2);
-            }}
-          >
-            {props.notification.content}
-          </Text>
+          <TouchableOpacity onPress={() => openSurvey()}>
+            <BoldLabelComponent label={props.notification.title} numberOfLines={2} style={{fontSize: xLargeFontSize(), lineHeight: 28}} />
+            <Text style={{fontSize: largeFontSize(), marginTop: 8, lineHeight: 26}} numberOfLines={numberOfLines}
+              onTextLayout={(event) => {
+                if (!!contentLines) return
+                setContentLines(event.nativeEvent.lines.length);
+                setNumberOfLines(2);
+              }}
+            >
+              {props.notification.content}
+            </Text>
+          </TouchableOpacity>
 
-          <View style={{flexDirection: 'row', marginTop: 10}}>
+          <TouchableOpacity onPress={() => setNumberOfLines(!numberOfLines ? 2 : null)} style={{flexDirection: 'row', paddingTop: 10, paddingBottom: 16}}>
             <Text style={{fontSize: mediumFontSize(), color: color.grayColor, lineHeight: 22}}>{dateTimeHelper.getTranslatedDate(props.notification.createdAt, t)}</Text>
             { contentLines > 2 && renderToggleViewButton()}
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -65,7 +67,7 @@ const NotificationCardItemComponent = (props) => {
     )
   }
 
-  const onPressItem = () => {
+  const openSurvey = () => {
     const data = !!props.notification.data ? JSON.parse(props.notification.data) : null;
     if (!!data && !!data.topic_id) {
       const data = JSON.parse(props.notification.data)
@@ -78,16 +80,12 @@ const NotificationCardItemComponent = (props) => {
       };
       visitService.recordVisitAction(visitParams);
       navigationRef.current?.navigate('SurveyView', { uuid: props.notification.uuid, topic_id: data.topic_id, title: props.notification.title });
-      return;
     }
-    setNumberOfLines(!numberOfLines ? 2 : null)
   }
 
   return (
     <Swipeable renderRightActions={renderDeleteAction} key={uuidv4()}>
-      <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-        onPress={() => onPressItem()}
-      >
+      <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}>
         { renderInfo() }
       </Card>
     </Swipeable>
@@ -100,6 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: cardBorderRadius,
     marginTop: 16,
     padding: 16,
+    paddingBottom: 0
   },
   image: {
     borderTopLeftRadius: cardBorderRadius,

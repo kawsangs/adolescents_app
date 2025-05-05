@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Dimensions} from 'react-native';
 import {useSelector} from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import MapComponent from '../shared/MapComponent';
@@ -45,7 +46,7 @@ const FacilityListMapViewComponent = (props) => {
   }
 
   return (
-    <View style={{flexGrow: 1}}>
+    <SafeAreaView style={{flexGrow: 1}}>
       <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
         currentRegion={mapRegion} markers={markers}
       />
@@ -60,7 +61,7 @@ const FacilityListMapViewComponent = (props) => {
           isMapView={true}
         />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

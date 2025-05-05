@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import FastImage from 'react-native-fast-image';
 import { useSelector } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
@@ -29,29 +30,31 @@ const SurveyCompleteView = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <FastImage
-        source={{ uri: resolvedSource.uri }} // Use resolved path
-        style={styles.gifImage}
-        resizeMode={FastImage.resizeMode.contain}
-      />
+    <SafeAreaView style={{flexGrow: 1}}>
+      <View style={styles.container}>
+        <FastImage
+          source={{ uri: resolvedSource.uri }} // Use resolved path
+          style={styles.gifImage}
+          resizeMode={FastImage.resizeMode.contain}
+        />
 
-      <Text style={styles.description}>
-        {t('thankYou')}
-      </Text>
-      <Text style={styles.description}>
-        {t('forParticipatingInTheSurvey')}
-      </Text>
+        <Text style={styles.description}>
+          {t('thankYou')}
+        </Text>
+        <Text style={styles.description}>
+          {t('forParticipatingInTheSurvey')}
+        </Text>
 
-      <Button style={[styles.btn, { backgroundColor: appTheme.primary_color ?? color.primaryColor }]} onPress={() => {
-        navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
-      }}
-        labelStyle={{color: color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
-        contentStyle={{width: '100%'}}
-      >
-        {t('confirm')}
-      </Button>
-    </View>
+        <Button style={[styles.btn, { backgroundColor: appTheme.primary_color ?? color.primaryColor }]} onPress={() => {
+          navigationRef.current?.reset({ index: 0, routes: [{ name: 'DrawerNavigator' }]});
+        }}
+          labelStyle={{color: color.whiteColor, fontSize: largeFontSize(), fontFamily: FontFamily.regular}}
+          contentStyle={{width: '100%'}}
+        >
+          {t('confirm')}
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 }
 
