@@ -20,6 +20,9 @@ export default class NotifService {
 
     PushNotification.getChannels(function(channels) {
       console.log(channels);
+      // Remove the 'sound-channel-id' of the app that installed from previous version
+      if (channels.includes('sound-channel-id'))
+        PushNotification.deleteChannel('sound-channel-id')
     });
   }
 
@@ -35,17 +38,27 @@ export default class NotifService {
       },
       (created) => console.log(`createChannel 'default-channel-id' returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
     );
+    // PushNotification.createChannel(
+    //   {
+    //     channelId: "sound-channel-id", // (required)
+    //     channelName: `Sound channel`, // (required)
+    //     channelDescription: "A sound channel", // (optional) default: undefined.
+    //     soundName: "sample.mp3", // (optional) See `soundName` parameter of `localNotification` function
+    //     importance: Importance.HIGH, // (optional) default: Importance.HIGH. Int value of the Android notification importance
+    //     vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
+    //   },
+    //   (created) => console.log(`createChannel 'sound-channel-id' returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
+    // );
     PushNotification.createChannel(
       {
-        channelId: "sound-channel-id", // (required)
-        channelName: `Sound channel`, // (required)
-        channelDescription: "A sound channel", // (optional) default: undefined.
-        soundName: "sample.mp3", // (optional) See `soundName` parameter of `localNotification` function
-        importance: Importance.HIGH, // (optional) default: Importance.HIGH. Int value of the Android notification importance
-        vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
+        channelId: "my-notification-id",
+        channelName: "My Notification",
+        soundName: "my_notification",
+        importance: Importance.HIGH,
+        vibrate: true
       },
-      (created) => console.log(`createChannel 'sound-channel-id' returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
-    );
+      (created) => console.log(`createChannel 'my-notification' returned '${created}'`)
+    )
   }
 
   createOrUpdateChannel() {
@@ -71,7 +84,8 @@ export default class NotifService {
     this.lastId++;
     PushNotification.localNotification({
       /* Android Only Properties */
-      channelId: soundName ? 'sound-channel-id' : 'default-channel-id',
+      // channelId: soundName ? 'sound-channel-id' : 'default-channel-id',
+      channelId: soundName ? 'my-notification-id' : 'default-channel-id',
       ticker: 'My Notification Ticker', // (optional)
       autoCancel: true, // (optional) default: true
       largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
@@ -113,7 +127,8 @@ export default class NotifService {
       date: new Date(Date.now() + 30 * 1000), // in 30 secs
 
       /* Android Only Properties */
-      channelId: soundName ? 'sound-channel-id' : 'default-channel-id',
+      // channelId: soundName ? 'sound-channel-id' : 'default-channel-id',
+      channelId: soundName ? 'my-notification-id' : 'default-channel-id',
       ticker: 'My Notification Ticker', // (optional)
       autoCancel: true, // (optional) default: true
       largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"

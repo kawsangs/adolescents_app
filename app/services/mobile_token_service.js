@@ -32,6 +32,9 @@ const MobileTokenService = (() => {
           .getToken()
           .then(token => {
             AsyncStorageService.setItem('FCM_TOKEN', token);
+
+            console.log('=== FCM token = ', token)
+
             _handleToken(token, synced);
           })
           .catch(error => {
