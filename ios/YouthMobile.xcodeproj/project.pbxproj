@@ -15,6 +15,7 @@
 		A63512B72DC3EA3B00A49DC2 /* KantumruyPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A68B64EA2D74009300872C67 /* KantumruyPro-Regular.ttf */; };
 		A63512B82DC3EA4800A49DC2 /* KantumruyPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A68B64EB2D74009300872C67 /* KantumruyPro-SemiBold.ttf */; };
 		A66B6F732D74B91800AC3BD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A66B6F722D74B91800AC3BD5 /* GoogleService-Info.plist */; };
+		A670A0FC2DC934A700005D78 /* my_notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A670A0FB2DC934A700005D78 /* my_notification.aiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = YouthMobile/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = YouthMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A66B6F722D74B91800AC3BD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A670A0FB2DC934A700005D78 /* my_notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = my_notification.aiff; sourceTree = "<group>"; };
 		A68B64E32D74009300872C67 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		A68B64E42D74009300872C67 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
 		A68B64E52D74009300872C67 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A670A0FB2DC934A700005D78 /* my_notification.aiff */,
 				A68B64EE2D74009300872C67 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* YouthMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -203,6 +206,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				41E296120FF115CDCCDE418A /* PrivacyInfo.xcprivacy in Resources */,
 				A66B6F732D74B91800AC3BD5 /* GoogleService-Info.plist in Resources */,
+				A670A0FC2DC934A700005D78 /* my_notification.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +320,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YouthMobile/YouthMobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XD3CR39FXN;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -329,7 +334,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = kh.org.childhelplinecambodia.youthhealth;
 				PRODUCT_NAME = YouthMobile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -350,6 +355,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YouthMobile/YouthMobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XD3CR39FXN;
 				INFOPLIST_FILE = YouthMobile/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,7 +368,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = kh.org.childhelplinecambodia.youthhealth;
 				PRODUCT_NAME = YouthMobile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

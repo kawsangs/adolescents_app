@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import PushNotification, {Importance} from 'react-native-push-notification';
 import NotificationHandler from './NotificationHandler';
 
@@ -53,7 +54,7 @@ export default class NotifService {
       {
         channelId: "my-notification-id",
         channelName: "My Notification",
-        soundName: "my_notification",
+        soundName: Platform.OS == "ios" ? "my_notification.aiff" : "my_notification",
         importance: Importance.HIGH,
         vibrate: true
       },
