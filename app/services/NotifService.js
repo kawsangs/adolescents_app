@@ -41,13 +41,13 @@ export default class NotifService {
     );
     PushNotification.createChannel(
       {
-        channelId: "my-notification-id",
-        channelName: "My Notification",
-        soundName: Platform.OS == "ios" ? "my_notification.aiff" : "my_notification",
+        channelId: "youthhealth",
+        channelName: "Youth Health Notification",
+        soundName: Platform.OS == "ios" ? "youthhealth.aiff" : "youthhealth",
         importance: Importance.HIGH,
         vibrate: true
       },
-      (created) => console.log(`createChannel 'my-notification' returned '${created}'`)
+      (created) => console.log(`createChannel 'youthhealth' returned '${created}'`)
     )
   }
 
@@ -74,7 +74,7 @@ export default class NotifService {
     this.lastId++;
     PushNotification.localNotification({
       /* Android Only Properties */
-      channelId: soundName ? 'my-notification-id' : 'default-channel-id',
+      channelId: soundName ? 'youthhealth' : 'default-channel-id',
       ticker: 'My Notification Ticker', // (optional)
       autoCancel: true, // (optional) default: true
       largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
@@ -116,7 +116,7 @@ export default class NotifService {
       date: new Date(Date.now() + 30 * 1000), // in 30 secs
 
       /* Android Only Properties */
-      channelId: soundName ? 'my-notification-id' : 'default-channel-id',
+      channelId: soundName ? 'youthhealth' : 'default-channel-id',
       ticker: 'My Notification Ticker', // (optional)
       autoCancel: true, // (optional) default: true
       largeIcon: 'ic_launcher', // (optional) default: "ic_launcher"
