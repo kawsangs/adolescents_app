@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {View, Linking} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {AppState, View, Linking} from 'react-native';
 import {Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {useTranslation, Trans} from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import BottomSheetModalMainComponent from './BottomSheetModalMainComponent';
 import BoldLabelComponent from './BoldLabelComponent';
@@ -15,6 +15,8 @@ import {signUpConfirmationContentHeight} from '../../constants/modal_constant';
 import {PRIVACY_POLICY_URL, TERMS_AND_CONDITIONS_URL} from '../../constants/main_constant';
 import audioSources from '../../constants/audio_source_constant';
 import {getStyleOfDevice} from '../../utils/responsive_util';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
+import audioPlayerService from '../../services/audio_player_service';
 import tabletStyles from '../../assets/stylesheets/tablet/policyConfirmationModalComponentStyles';
 import mobileStyles from '../../assets/stylesheets/mobile/policyConfirmationModalComponentStyles';
 
@@ -24,6 +26,22 @@ const PolicyConfirmationModalComponent = (props) => {
   const {t} = useTranslation();
   const [playingUuid, setPlayingUuid] = useState(null);
   const appTheme = useSelector(state => state.appTheme.value);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (AppState.currentState == 'background') {
+        dispatch(setPlayingAudio(null));
+        setPlayingUuid(null);
+        setTimeout(() => {
+          audioPlayerService.clearAllAudio();
+        }, 100);
+      }
+    });
+
+    return () => !!subscription && subscription.remove();
+  }, []);
+
   const renderIcon = () => {
     return <View style={styles.infoIcon}>
               <Icon name="exclamation" size={18} color={color.secondaryColor} />

@@ -1,6 +1,7 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { AppState } from 'react-native';
 
 import TopicListComponent from '../shared/TopicListComponent';
 import Question from '../../models/Question';
@@ -17,17 +18,30 @@ const TopicMainComponent = (props) => {
   const dispatch = useDispatch();
   const [playingUuid, setPlayingUuid] = React.useState(null);
 
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (AppState.currentState == 'background')
+        clearPlayingAudio();
+    });
+
+    return () => !!subscription && subscription.remove();
+  }, []);
+
   useFocusEffect(
     useCallback(() => {
       return () => {
-        dispatch(setPlayingAudio(null));
-        setPlayingUuid(null);
-        setTimeout(() => {
-          audioPlayerService.clearAllAudio();
-        }, 100);
+        clearPlayingAudio();
       }
     }, [])
   );
+
+  const clearPlayingAudio = () => {
+    dispatch(setPlayingAudio(null));
+    setPlayingUuid(null);
+    setTimeout(() => {
+      audioPlayerService.clearAllAudio();
+    }, 100);
+  }
 
   const onPress = async (item) => {
     const savedFontSize = await asyncStorageService.getItem(TEXT_SIZE);

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import GridCardNoSubCategoryComponent from './gridCards/GridCardNoSubCategoryComponent';
 import GridCardWithSubCategoryComponent from './gridCards/GridCardWithSubCategoryComponent';
-import {cardElevation} from '../../constants/component_constant';
+import {cardElevation, cardBorderRadius} from '../../constants/component_constant';
 import Category from '../../models/Category';
 import visitService from '../../services/visit_service';
 import {getStyleOfDevice} from '../../utils/responsive_util';
@@ -16,6 +16,7 @@ import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 const styles = getStyleOfDevice(tabletStyles, mobileStyles);
 
 const GridCardComponent = (props) => {
+  const containerStyle = {backgroundColor: 'white', borderRadius: cardBorderRadius, width: '48%', paddingLeft: 0, paddingBottom: 0};
   const dispatch = useDispatch();
   const points = Category.getSubCategories(props.item.id).length;
   const renderInfoWithNoSubCategory = () => {
@@ -48,8 +49,9 @@ const GridCardComponent = (props) => {
   }
 
   return (
-    <Card mode="elevated" elevation={cardElevation} style={[styles.container, props.containerStyle]}
-      onPress={() => onPress()}
+    <Card mode="elevated" elevation={cardElevation}
+      style={[containerStyle, props.containerStyle]}
+      onPress={() => {onPress();}}
     >
       <Image source={props.item.imageSource} resizeMode='cover' style={styles.image} />
       { points > 0 ? renderInfoWithSubCategory() : renderInfoWithNoSubCategory() }
