@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
+import { AppState } from 'react-native';
 
 import HeaderAudioControlButtonsComponent from './HeaderAudioControlButtonsComponent';
 import AudioDurationLabelComponent from './AudioDurationLabelComponent';
@@ -13,17 +14,31 @@ const HeaderAudioControlComponent = (props) => {
     countInterval: null,
   });
 
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+    return () => !!subscription && subscription.remove();
+  }, [state.audioPlayer]);
+  
+  const handleAppStateChange = (nextAppState) => {
+    if (AppState.currentState == 'background' && !!state.audioPlayer && !!state.countInterval)
+      clearPlayingAudio();
+  };
+
   useFocusEffect(
     useCallback(() => {
       return () => {
-        if (!!state.audioPlayer && !!state.countInterval) {
-          state.audioPlayer.release();
-          clearInterval(state.countInterval);
-          setState({ audioPlayer: null, playSeconds: 0, duration: 0, countInterval: null });
-        }
+        clearPlayingAudio();
       }
     }, [state.audioPlayer])
   );
+
+  const clearPlayingAudio = () => {
+    if (!!state.audioPlayer && !!state.countInterval) {
+      state.audioPlayer.release();
+      clearInterval(state.countInterval);
+      setState({ audioPlayer: null, playSeconds: 0, duration: 0, countInterval: null });
+    }
+  }
 
   const updateState = (audioPlayer, playSeconds, duration, countInterval) => {
     setState({ audioPlayer, playSeconds, duration, countInterval })
