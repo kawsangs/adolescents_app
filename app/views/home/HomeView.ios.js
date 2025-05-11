@@ -18,6 +18,7 @@ import categoryHelper from '../../helpers/category_helper';
 import appUpdateHelper from '../../helpers/app_update_helper';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import { setAppThemes } from '../../features/appThemes/appThemeSlice';
+import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 import Theme from '../../models/Theme';
 import {appUpdateSnapPoints} from '../../constants/modal_constant';
 
@@ -77,6 +78,13 @@ const HomeView = (props) => {
   const handleAppStateChange = (nextAppState) => {
     if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
       syncAppTheme();
+    }
+    if (AppState.currentState == 'background') {
+      dispatch(setPlayingAudio(null));
+      setPlayingUuid(null);
+      setTimeout(() => {
+        audioPlayerService.clearAllAudio();
+      }, 100);
     }
     appState.current = nextAppState;
   };

@@ -1,12 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { useDispatch } from 'react-redux';
+import { AppState } from 'react-native';
 
 import GradientScrollViewComponent from '../../components/shared/GradientScrollViewComponent';
 import SubCategoryNavigationHeaderComponent from '../../components/subCategories/SubCategoryNavigationHeaderComponent';
 import SubCategoryItemsComponent from '../../components/subCategories/SubCategoryItemsComponent';
 import Category from '../../models/Category';
 import categorySyncService from '../../services/category_sync_service';
+import audioPlayerService from '../../services/audio_player_service';
 import {setParentCategories} from '../../features/parentCategories/parentCategorySlice';
 import {setPlayingAudio} from '../../features/audios/currentPlayingAudioSlice';
 import categoryHelper from '../../helpers/category_helper';
@@ -23,8 +25,18 @@ const SubCategoryView = ({route}) => {
     const unsubscribe = NetInfo.addEventListener(state => {
       setHasInternet(state.isConnected && state.isInternetReachable)
     });
+    const appStateSubscription = AppState.addEventListener('change', (nextAppState) => {
+      if (AppState.currentState == 'background') {
+        setPlayingUuid(null);
+        dispatch(setPlayingAudio('null'));
+        audioPlayerService.clearAllAudio();
+      }
+    });
 
-    return () => !!unsubscribe && unsubscribe();
+    return () => {
+      !!unsubscribe && unsubscribe();
+      !!appStateSubscription && appStateSubscription.remove();
+    }
   }, [])
 
   const onRefresh = () => {
