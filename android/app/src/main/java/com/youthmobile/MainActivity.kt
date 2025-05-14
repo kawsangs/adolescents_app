@@ -14,7 +14,8 @@ import org.devio.rn.splashscreen.SplashScreen
 class MainActivity : ReactActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        // super.onCreate(savedInstanceState)
+        super.onCreate(null)
     
         // Enable edge-to-edge mode
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
