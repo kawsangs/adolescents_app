@@ -90,7 +90,7 @@ android {
         applicationId "kh.org.childhelpline.youthhealth"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName "2.0.12"
+        versionName "2.0.13"
         versionCode calculateVersionCode(versionName)
     }
     signingConfigs {
