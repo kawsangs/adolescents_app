@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {useTranslation, Trans} from 'react-i18next';
 import { useSelector } from 'react-redux';
-import SpInAppUpdates from 'sp-react-native-in-app-updates';
+import VersionCheck from 'react-native-version-check';
 
 import BottomSheetModalMainComponent from '../shared/BottomSheetModalMainComponent';
 import BigButtonComponent from '../shared/BigButtonComponent';
@@ -22,9 +22,10 @@ const AppUpdateBottomSheetComponent = (props) => {
   const [version, setVersion] = useState(pkg.version);
 
   useEffect(() => {
-    new SpInAppUpdates().checkNeedsUpdate().then(result => {
-      setVersion(result.storeVersion);
-    })
+    VersionCheck.getLatestVersion()
+      .then(latestVersion => {
+        setVersion(latestVersion);
+      });
   }, []);
 
   const renderIcon = () => {
