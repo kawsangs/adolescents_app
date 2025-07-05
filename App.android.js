@@ -110,7 +110,7 @@ const App: () => Node = () => {
         >
           <GestureHandlerRootView style={{flex: 1}}>
             <BottomSheetModalProvider>
-              <StatusBar barStyle={'light-content'} />
+              <StatusBar barStyle={'light-content'} backgroundColor={color.blackColor} />
               <AppNavigator/>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>
