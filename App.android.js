@@ -38,6 +38,8 @@ import useInAppUpdate from './app/hooks/useInAppUpdate';
 import asyncStorageService from './app/services/async_storage_service';
 import { HAS_SHOWN_APP_UPDATE } from './app/constants/async_storage_constant';
 
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 Sentry.init({
   dsn: environment.sentryDSN,
 });
@@ -110,7 +112,7 @@ const App: () => Node = () => {
         >
           <GestureHandlerRootView style={{flex: 1}}>
             <BottomSheetModalProvider>
-              <StatusBar barStyle={'light-content'} backgroundColor={color.blackColor} />
+              <StatusBar barStyle={'light-content'} />
               <AppNavigator/>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>

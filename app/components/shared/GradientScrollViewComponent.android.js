@@ -41,7 +41,7 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
   }
 
   return (
-    <SafeAreaView style={{flexGrow: 1}}>
+    <SafeAreaView style={{flexGrow: 1, backgroundColor: "#000000"}}>
       <LinearGradient
         colors={getBackgroundColors()}
         start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
