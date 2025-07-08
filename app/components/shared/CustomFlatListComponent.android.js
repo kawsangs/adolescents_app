@@ -3,7 +3,7 @@ import {View, FlatList, RefreshControl, ActivityIndicator} from 'react-native';
 import { useSelector } from 'react-redux';
 
 import color from '../../themes/color';
-import {screenHorizontalPadding, gradientScrollViewPaddingBottom} from '../../constants/component_constant';
+import {screenHorizontalPadding, gradientScrollViewBigPaddingBottom} from '../../constants/component_constant';
 
 const {useImperativeHandle} = React
 
@@ -57,7 +57,7 @@ const CustomFlatListComponent = React.forwardRef((props, ref) => {
               ref={ref => !!props.setFlatListRef && props.setFlatListRef(ref)}
               onEndReachedThreshold={0.3}
               onEndReached={() => onEndReached()}
-              contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewPaddingBottom + 50}}
+              contentContainerStyle={!!props.customContentContainerStyle ? props.customContentContainerStyle : {paddingHorizontal: screenHorizontalPadding, paddingBottom: gradientScrollViewBigPaddingBottom}}
               ListFooterComponent={!props.hideFooterLoading && renderListFooter()}
               refreshControl={!props.horizontal && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[appTheme.primary_color ?? color.primaryColor]} />}
               onMomentumScrollBegin = {() => {onEndReachedCalledDuringMomentum.current = false}}

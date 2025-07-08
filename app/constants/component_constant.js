@@ -17,7 +17,7 @@ export const descriptionFontSize = largeFontSize();
 export const descriptionLineHeight = getStyleOfDevice(38, isLowPixelDensityDevice() ? 28 : 36);
 export const navHeaderHeight = 56;
 export const androidBigTabletWidth = 800;
-export const gradientScrollViewBigPaddingBottom = getStyleOfDevice(170, 125);
+export const gradientScrollViewBigPaddingBottom = getStyleOfDevice(170, 185);
 export const gradientScrollViewPaddingBottom = getStyleOfDevice(90, 80);
 export const cardTitleLineHeight = getStyleOfDevice(Platform.OS == 'ios' ? 32 : 30, 28);
 export const totalNavigationHeaderHorizontalPadding = 32;

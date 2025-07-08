@@ -7,6 +7,7 @@ import loginUserOccupationReducer from './features/users/loginUserOccupationSlic
 import parentCategoryReducer from './features/parentCategories/parentCategorySlice';
 import currentPlayingAudioReducer from './features/audios/currentPlayingAudioSlice';
 import appThemeReducer from './features/appThemes/appThemeSlice';
+import sdkVersonReducer from './features/sdkVersions/sdkVersionSlice';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
@@ -21,5 +22,6 @@ export const store = configureStore({
     parentCategory: parentCategoryReducer,
     currentPlayingAudio: currentPlayingAudioReducer,
     appTheme: appThemeReducer,
+    sdkVersion: sdkVersonReducer,
   }
 })

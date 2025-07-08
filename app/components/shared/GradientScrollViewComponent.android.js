@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding, gradientScrollViewBigPaddingBottom} from '../../constants/component_constant';
+import {MIN_MODERN_ANDROID_SDK_LEVEL} from '../../constants/main_constant';
 import color from '../../themes/color';
 import fileUtil from '../../utils/file_util';
 import themeUtil from '../../utils/theme_util';
@@ -15,6 +16,7 @@ const {useImperativeHandle} = React
 const GradientScrollViewComponent = React.forwardRef((props, ref) => {
   const [refreshing, setRefreshing] = useState(false);
   const appTheme = useSelector(state => state.appTheme.value);
+  const sdkVersion = useSelector(state => state.sdkVersion.value)
 
   const stopRefreshLoading = () => {
     setRefreshing(false)
@@ -40,8 +42,8 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
       : backgroundColors;
   }
 
-  return (
-    <SafeAreaView style={{flexGrow: 1, backgroundColor: "#000000"}}>
+  const linearComponent = () => {
+    return (
       <LinearGradient
         colors={getBackgroundColors()}
         start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
@@ -69,6 +71,15 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
           </ScrollView>
         }
       </LinearGradient>
+    )
+  }
+
+  if (sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL)
+    return linearComponent();
+
+  return (
+    <SafeAreaView style={{flexGrow: 1, backgroundColor: "#000000"}}>
+      { linearComponent() }
     </SafeAreaView>
   )
 });
