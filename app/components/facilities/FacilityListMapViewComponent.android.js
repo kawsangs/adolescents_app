@@ -11,6 +11,7 @@ import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {MIN_MODERN_ANDROID_SDK_LEVEL} from '../../constants/main_constant';
 
 const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -22,6 +23,7 @@ const FacilityListMapViewComponent = (props) => {
   const initRegion = !!initLatLng ? initLatLng : {"latitude": 11.569663313293457 - regionOffset, "longitude": 104.90775299072266};
   const filteredProvince = useSelector(state => state.filterFacilityLocation.value);
   const [flatListRef, setFlatListRef] = useState(React.createRef());
+  const sdkVersion = useSelector(state => state.sdkVersion.value)
 
   useEffect(() => {
     setMapRegion(mapHelper.getInitLatLng(facilities, regionOffset));
@@ -45,22 +47,35 @@ const FacilityListMapViewComponent = (props) => {
     }
   }
 
+  const listMapView = () => {
+    return (
+      <React.Fragment>
+        <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
+          currentRegion={mapRegion} markers={markers}
+        />
+        <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}
+          containerStyle={{zIndex: 1, position: "absolute"}}
+        />
+        <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
+          <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
+            setFlatListRef={(ref) => setFlatListRef(ref)}
+            itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8, marginBottom: sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL ? 16 : 0}}
+            customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
+            isMapView={true}
+          />
+        </View>
+      </React.Fragment>
+    )
+  }
+
+  if (sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL)
+    return <View style={{flexGrow: 1}}>
+            { listMapView() }
+           </View>
+
   return (
     <SafeAreaView style={{flexGrow: 1}}>
-      <MapComponent initRegion={{latitude: initRegion.latitude, longitude: initRegion.longitude}}
-        currentRegion={mapRegion} markers={markers}
-      />
-      <TagScrollBarComponent tags={Tag.getAll()} onToggleFilter={updateFacilityList} hasInternet={props.hasInternet} type={'tag'}
-        containerStyle={{zIndex: 1, position: "absolute"}}
-      />
-      <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
-        <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
-          setFlatListRef={(ref) => setFlatListRef(ref)}
-          itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
-          customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
-          isMapView={true}
-        />
-      </View>
+      { listMapView() }
     </SafeAreaView>
   )
 }

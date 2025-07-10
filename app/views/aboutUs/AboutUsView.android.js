@@ -3,12 +3,14 @@ import {View, ScrollView} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
 
 import NavigationHeaderWithBackButtonComponent from '../../components/shared/NavigationHeaderWithBackButtonComponent';
 import BoldLabelComponent from '../../components/shared/BoldLabelComponent';
 import AboutUsLogosComponent from '../../components/aboutUs/AboutUsLogosComponent';
 import color from '../../themes/color';
 import {screenHorizontalPadding} from '../../constants/component_constant';
+import {MIN_MODERN_ANDROID_SDK_LEVEL} from '../../constants/main_constant';
 import translationHelper from '../../helpers/translation_helper';
 import {isLowPixelDensityDevice} from '../../utils/responsive_util';
 import {xLargeFontSize} from '../../utils/font_size_util';
@@ -16,6 +18,7 @@ import pkg from '../../../package';
 
 const AboutUsView = () => {
   const {t} = useTranslation();
+  const sdkVersion = useSelector(state => state.sdkVersion.value)
   const renderListItems = (language) => {
     const items = {
       km: [
@@ -62,18 +65,29 @@ const AboutUsView = () => {
            </React.Fragment>
   }
 
+  const aboutUsComponent = () => {
+    return (
+      <React.Fragment>
+        <NavigationHeaderWithBackButtonComponent label={t('about')} hasBackgroundColor={true} />
+        <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16, paddingBottom: 32}}>
+          <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10, alignSelf: 'center', lineHeight: 40}} />
+          {renderKhmerText()}
+          {renderEnglishText()}
+          <AboutUsLogosComponent/>
+          <View style={{alignSelf: 'flex-end', justifyContent: 'flex-end', marginTop: 26}}>
+            <Text style={{ fontSize: xLargeFontSize() }}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
+          </View>
+        </ScrollView>
+      </React.Fragment>
+    )
+  }
+
+  if (sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL)
+    return aboutUsComponent();
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: color.whiteColor}}>
-      <NavigationHeaderWithBackButtonComponent label={t('about')} hasBackgroundColor={true} />
-      <ScrollView contentContainerStyle={{paddingHorizontal: screenHorizontalPadding, paddingVertical: 16,}}>
-        <BoldLabelComponent label="សុខភាពយុវជន" style={{fontSize: isLowPixelDensityDevice() ? 24 : 30, marginTop: 10, alignSelf: 'center', lineHeight: 40}} />
-        {renderKhmerText()}
-        {renderEnglishText()}
-        <AboutUsLogosComponent/>
-        <View style={{alignSelf: 'flex-end', justifyContent: 'flex-end', marginTop: 26}}>
-          <Text style={{ fontSize: xLargeFontSize() }}>{t('version')} {translationHelper.translateNumber(pkg.version, t)}</Text>
-        </View>
-      </ScrollView>
+      { aboutUsComponent() }
     </SafeAreaView>
   )
 }
