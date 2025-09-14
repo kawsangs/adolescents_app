@@ -3,6 +3,7 @@
   "version": "2.0.16",
   "private": true,
   "scripts": {
+    "postinstall": "sed -i '' '1i\\\nset(CMAKE_SHARED_LINKER_FLAGS \"${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,max-page-size=16384\")' node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
@@ -67,7 +68,7 @@
     "react-native-youtube-iframe": "^2.2.2",
     "react-native-youtube-popup-player": "^1.0.6",
     "react-redux": "^9.2.0",
-    "realm": "^20.1.0",
+    "realm": "^20.2.0",
     "rn-fetch-blob": "^0.12.0",
     "sp-react-native-in-app-updates": "^1.4.0"
   },
