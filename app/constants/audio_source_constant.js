@@ -42,6 +42,16 @@ const audioSources = {
   "0.42.mp3": require("../assets/audios/20230307_0.42.mp3"),
   "0.43.mp3": require("../assets/audios/20230228_0.43.mp3"),
   "0.44.mp3": require("../assets/audios/20230307_0.44.mp3"),
+  "0.46.mp3": require("../assets/audios/20230725_0.46.mp3"),
+  "0.47.mp3": require("../assets/audios/20230725_0.47.mp3"),
+  "0.48.mp3": require("../assets/audios/20230725_0.48.mp3"),
+  "0.49.mp3": require("../assets/audios/20230725_0.49.mp3"),
+  "0.50.mp3": require("../assets/audios/20230725_0.50.mp3"),
+  "0.52.mp3": require("../assets/audios/20230725_0.52.mp3"),
+  "0.53.mp3": require("../assets/audios/20230725_0.53.mp3"),
+  "0.54.mp3": require("../assets/audios/20230725_0.54.mp3"),
+  "0.55.mp3": require("../assets/audios/20230725_0.55.mp3"),
+  "0.56.mp3": require("../assets/audios/20230725_0.56.mp3"),
 
   // Categories
   // Home page
