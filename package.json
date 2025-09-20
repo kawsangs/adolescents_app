@@ -1,6 +1,6 @@
 {
   "name": "YouthMobile",
-  "version": "2.0.17",
+  "version": "2.0.18",
   "private": true,
   "scripts": {
     "postinstall": "sed -i '' '1i\\\nset(CMAKE_SHARED_LINKER_FLAGS \"${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,max-page-size=16384\")' node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt",
