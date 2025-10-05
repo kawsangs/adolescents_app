@@ -5,7 +5,6 @@ import {useTranslation} from 'react-i18next';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import FastImage from 'react-native-fast-image';
 import { useSelector } from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import color from '../../themes/color';
 import {FontFamily} from '../../themes/font';
@@ -30,7 +29,7 @@ const SurveyCompleteView = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{flexGrow: 1}}>
+    <View style={{flexGrow: 1}}>
       <View style={styles.container}>
         <FastImage
           source={{ uri: resolvedSource.uri }} // Use resolved path
@@ -54,7 +53,7 @@ const SurveyCompleteView = () => {
           {t('confirm')}
         </Button>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

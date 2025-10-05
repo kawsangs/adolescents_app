@@ -2,11 +2,9 @@ import React, {useState} from 'react';
 import {ScrollView, StyleSheet, RefreshControl, ImageBackground, Dimensions} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector } from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {backgroundColors} from '../../themes/color';
 import {screenHorizontalPadding, gradientScrollViewBigPaddingBottom} from '../../constants/component_constant';
-import {MIN_MODERN_ANDROID_SDK_LEVEL} from '../../constants/main_constant';
 import color from '../../themes/color';
 import fileUtil from '../../utils/file_util';
 import themeUtil from '../../utils/theme_util';
@@ -42,45 +40,34 @@ const GradientScrollViewComponent = React.forwardRef((props, ref) => {
       : backgroundColors;
   }
 
-  const linearComponent = () => {
-    return (
-      <LinearGradient
-        colors={getBackgroundColors()}
-        start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
-        style={[{height: '100%', width: '100%'}, props.gradientContainerStyle]}
-      >
-        {props.header}
-
-        { (!props.hideBackgroundImage && !!appTheme.android_images && !props.isForSample) &&
-          <ImageBackground source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(appTheme), 'image')}
-            style={styles.themeImage}
-          />
-        }
-
-        { props.isNotScrollView ? 
-            props.body
-          :
-          <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
-            nestedScrollEnabled={true}
-            scrollEnabled={props.scrollable ?? true}
-            scrollEventThrottle={16}
-            onScroll={(event) => !!props.onScroll && props.onScroll(event)}
-            refreshControl={!!props.allowPullRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[appTheme.primary_color ?? color.primaryColor]} />}
-          >
-            {props.body}
-          </ScrollView>
-        }
-      </LinearGradient>
-    )
-  }
-
-  if (sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL)
-    return linearComponent();
-
   return (
-    <SafeAreaView style={{flexGrow: 1, backgroundColor: "#000000"}}>
-      { linearComponent() }
-    </SafeAreaView>
+    <LinearGradient
+      colors={getBackgroundColors()}
+      start={{x: -0.7, y: 0.2}} end={{x: 1, y: 1}}
+      style={[{height: '100%', width: '100%'}, props.gradientContainerStyle]}
+    >
+      {props.header}
+
+      { (!props.hideBackgroundImage && !!appTheme.android_images && !props.isForSample) &&
+        <ImageBackground source={fileUtil.getSourceByUrl(themeUtil.getAndroidBackgroundImage(appTheme), 'image')}
+          style={styles.themeImage}
+        />
+      }
+
+      { props.isNotScrollView ? 
+          props.body
+        :
+        <ScrollView contentContainerStyle={[styles.scrollView, props.scrollViewStyle]}
+          nestedScrollEnabled={true}
+          scrollEnabled={props.scrollable ?? true}
+          scrollEventThrottle={16}
+          onScroll={(event) => !!props.onScroll && props.onScroll(event)}
+          refreshControl={!!props.allowPullRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[appTheme.primary_color ?? color.primaryColor]} />}
+        >
+          {props.body}
+        </ScrollView>
+      }
+    </LinearGradient>
   )
 });
 
