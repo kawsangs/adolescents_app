@@ -18,7 +18,7 @@ const HeaderAudioControlButtonsComponent = (props) => {
 
   const audioControlPositionY = props.scrollY.interpolate({
     inputRange: [0, headerWithAudioScrollDistance],
-    outputRange: getStyleOfDevice([80, 15], [70, 20]),
+    outputRange: getStyleOfDevice([80, 15], [45, -5]),
     extrapolate: 'clamp'
   });
 
