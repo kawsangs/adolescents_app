@@ -5,6 +5,7 @@ import {
   BottomSheetBackdrop,
   BottomSheetScrollView,
 } from '@gorhom/bottom-sheet';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import color from '../../themes/color';
 
@@ -27,7 +28,9 @@ const BottomSheetModalComponent = (props, ref) => {
       onChange={(index) => !!props.onChange && props.onChange(index)}
     >
       <BottomSheetScrollView style={styles.contentContainer}>
-        { props.content }
+        <SafeAreaView edges={{top: 'off', bottom: 'maximum'}}>
+          { props.content }
+        </SafeAreaView>
       </BottomSheetScrollView>
     </BottomSheetModal>
   )
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: color.whiteColor,
     width: '100%',
-    flexGrow: 1.,
+    flexGrow: 1,
   },
 });
 

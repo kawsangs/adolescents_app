@@ -1,5 +1,3 @@
-import React from 'react';
-import {Platform} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -24,14 +22,12 @@ const Tab = createBottomTabNavigator();
 function BottomTabNavigator() {
   const appTheme = useSelector(state => state.appTheme.value);
   const { t } = useTranslation();
-  const insets = useSafeAreaInsets();
-  const bottomStyle = Platform.OS == 'android' ? { bottom: insets.bottom } : {};
 
   return (
     <Tab.Navigator
       initialRouteName="HomeViewStack"
       screenOptions={{
-        tabBarStyle: [styles.tabBar, bottomStyle],
+        tabBarStyle: styles.tabBar,
         tabBarActiveTintColor: appTheme.secondary_color ?? color.secondaryColor,
         tabBarInactiveTintColor: appTheme.primary_color ?? color.primaryColor,
         tabBarShowLabel: false,

@@ -39,7 +39,11 @@ const imageSources = {
   'teen_pregnancy.png': require("../assets/images/categories/teen_pregnancy.png"),
   rhac: require("../assets/images/rhac_logo.png"),
   marie_stopes: require("../assets/images/marie_stopes_logo.png"),
-  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg")
+  chhouk_sar: require("../assets/images/chhouk_sar_logo.jpeg"),
+  wellness_center: require("../assets/images/wellness_center.png"),
+  hospital: require("../assets/images/hospital.png"),
+  cwpd: require("../assets/images/cwpd.png"),
+  ahf_cambodia: require("../assets/images/ahf_cambodia.png"),
 }
 
 export default imageSources;

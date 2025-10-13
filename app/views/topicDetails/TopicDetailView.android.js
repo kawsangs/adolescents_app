@@ -3,7 +3,6 @@ import { View, ScrollView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector } from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import TopicDetailNavigationHeaderComponent from '../../components/topicDetails/TopicDetailNavigationHeaderComponent';
 import TopicDetailMainComponent from '../../components/topicDetails/TopicDetailMainComponent';
@@ -20,7 +19,7 @@ const TopicDetailView = (props) => {
   );
 
   return (
-    <SafeAreaView style={{flexGrow: 1}}>
+    <View style={{flexGrow: 1}}>
       <LinearGradient
         colors={!!appTheme ? [appTheme.secondary_color, appTheme.primary_color] : backgroundColors}
         start={{x: 0, y: -0.3}} end={{x: 1, y: 0}}
@@ -31,7 +30,7 @@ const TopicDetailView = (props) => {
           <TopicDetailMainComponent uuid={props.route.params.uuid} topicUuid={props.route.params.topic_uuid} type={props.route.params.type} textSize={textSize} />
         </ScrollView>
       </LinearGradient>
-    </SafeAreaView>
+    </View>
   )
 }
 

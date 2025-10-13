@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Dimensions} from 'react-native';
 import {useSelector} from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import FacilityScrollableListComponent from './FacilityScrollableListComponent';
 import MapComponent from '../shared/MapComponent';
@@ -11,7 +10,6 @@ import Tag from '../../models/Tag';
 import mapHelper from '../../helpers/map_helper';
 import facilityHelper from '../../helpers/facility_helper';
 import {screenHorizontalPadding} from '../../constants/component_constant';
-import {MIN_MODERN_ANDROID_SDK_LEVEL} from '../../constants/main_constant';
 
 const FacilityListMapViewComponent = (props) => {
   const [facilities, setFacilities] = useState(Facility.getAll());
@@ -59,7 +57,7 @@ const FacilityListMapViewComponent = (props) => {
         <View style={{bottom: 68, position: 'absolute', flexGrow: 0, width: '100%'}}>
           <FacilityScrollableListComponent facilities={facilities} hasInternet={props.hasInternet} horizontal={true}
             setFlatListRef={(ref) => setFlatListRef(ref)}
-            itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8, marginBottom: sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL ? 16 : 0}}
+            itemContainerStyle={{width: Dimensions.get('screen').width - 32, marginTop: 0, marginRight: 8}}
             customContentContainerStyle={{paddingBottom: 4, paddingLeft: screenHorizontalPadding, paddingRight: 8}}
             isMapView={true}
           />
@@ -68,16 +66,9 @@ const FacilityListMapViewComponent = (props) => {
     )
   }
 
-  if (sdkVersion >= MIN_MODERN_ANDROID_SDK_LEVEL)
-    return <View style={{flexGrow: 1}}>
-            { listMapView() }
-           </View>
-
-  return (
-    <SafeAreaView style={{flexGrow: 1}}>
-      { listMapView() }
-    </SafeAreaView>
-  )
+  return <View style={{flexGrow: 1}}>
+          { listMapView() }
+         </View>
 }
 
 export default FacilityListMapViewComponent;

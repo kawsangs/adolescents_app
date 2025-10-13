@@ -11,6 +11,7 @@ import type {Node} from 'react';
 import { StatusBar, Text, AppState, Alert, View } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import * as Sentry from "@sentry/react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -100,7 +101,7 @@ const App: () => Node = () => {
   }
 
   return (
-    <React.Fragment>
+    <SafeAreaProvider>
       <Provider store={store}>
         <PaperProvider
           settings={{
@@ -110,13 +111,15 @@ const App: () => Node = () => {
         >
           <GestureHandlerRootView style={{flex: 1}}>
             <BottomSheetModalProvider>
-              <StatusBar barStyle={'light-content'} />
-              <AppNavigator/>
+              <SafeAreaView edges={{top: 'off', bottom: 'maximum'}} style={{flex: 1, backgroundColor: color.whiteColor}}>
+                <StatusBar barStyle={'light-content'} />
+                <AppNavigator/>
+              </SafeAreaView>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>
         </PaperProvider>
       </Provider>
-    </React.Fragment>
+    </SafeAreaProvider>
   );
 };
 

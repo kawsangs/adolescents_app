@@ -3,7 +3,6 @@ import { Animated, View, ScrollView, StyleSheet } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import YoutubePopupPlayer from 'react-native-youtube-popup-player';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BoldLabelComponent from './BoldLabelComponent';
 import ScrollViewHeaderComponent from './scrollViewWithAudios/ScrollViewHeaderComponent';
@@ -54,7 +53,7 @@ const ScrollViewWithAudioComponent = (props) => {
   }
 
   return (
-    <SafeAreaView style={{flexGrow: 1}}>
+    <View style={{flexGrow: 1}}>
       <ScrollViewHeaderComponent title={props.title} image={props.image} audio={props.audio} uuid={props.uuid} scrollY={scrollY} textSize={textSize} updateTextSize={(textSize) => setTextSize(textSize)} />
       <ScrollView style={{flexGrow: 1, backgroundColor: color.whiteColor}} scrollEventThrottle={16}
         onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], { useNativeDriver: false })}
@@ -70,7 +69,7 @@ const ScrollViewWithAudioComponent = (props) => {
         messageLabelStyle={{fontSize: xLargeFontSize()}}
         closeModal={() => setModalVisible(false)}
       />
-    </SafeAreaView>
+    </View>
   )
 }
 
