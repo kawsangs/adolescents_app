@@ -112,7 +112,11 @@ const App: () => Node = () => {
           <GestureHandlerRootView style={{flex: 1}}>
             <BottomSheetModalProvider>
               <SafeAreaView edges={{top: 'off', bottom: 'maximum'}} style={{flex: 1, backgroundColor: color.whiteColor}}>
-                <StatusBar barStyle={'light-content'} />
+                <StatusBar
+                  translucent
+                  backgroundColor="transparent"
+                  barStyle={'light-content'}
+                />
                 <AppNavigator/>
               </SafeAreaView>
             </BottomSheetModalProvider>
